@@ -1,0 +1,261 @@
+# this is an example of the Uber API
+# as a demonstration of an API spec in YAML
+swagger: '2.0'
+info:
+  title: GraphHopper Routing API
+  description: The GraphHopper Routing API allows to calculate routes
+  version: "1.0.0"
+# the domain of the service
+host: graphhopper.com
+# array of all schemes that your API supports
+schemes:
+  - https
+# will be prefixed to all paths
+basePath: /api/1
+produces:
+  - application/json
+securityDefinitions:
+  api_key:
+    type: apiKey
+    name: key
+    in: query  
+paths:
+  /route:
+    get:
+      summary: Routing Request
+      description: |
+        The regular routing request
+      parameters:
+        - name: point
+          in: query
+          description: Specify multiple points for which the route should be calculated. The order is important. Specify at least two points.
+          required: true
+          type: array
+          items:
+            format: string
+          collectionFormat: multi
+        - name: locale
+          in: query
+          description: The locale of the resulting turn instructions. E.g. `pt_PT` for Portuguese or `de` for German
+          type: string
+        - name: instructions
+          in: query
+          description: If instruction should be calculated and returned
+          type: boolean
+        - name: vehicle
+          in: query
+          description: The vehicle for which the route should be calculated. Other vehicles are foot, bike, motorcycle, hike, ...
+          type: string
+        - name: elevation
+          in: query
+          description: If `true` a third dimension - the elevation - is included in the polyline or in the GeoJson. If enabled you have to use a modified version of the decoding method or set points_encoded to `false`. See the points_encoded attribute for more details. Additionally a request can fail if the vehicle does not support elevation. See the features object for every vehicle.
+          type: boolean
+        - name: points_encoded
+          in: query
+          description: IMPORTANT- TODO - currently you have to pass false for the swagger client - Have not found a way to force add a parameter. If `false` the coordinates in `point` and `snapped_waypoints` are returned as array using the order [lon,lat,elevation] for every point. If `true` the coordinates will be encoded as string leading to less bandwith usage. You'll need a special handling for the decoding of this string on the client-side. We provide open source code in [Java](https://github.com/graphhopper/graphhopper/blob/d70b63660ac5200b03c38ba3406b8f93976628a6/web/src/main/java/com/graphhopper/http/WebHelper.java#L43) and [JavaScript](https://github.com/graphhopper/graphhopper/blob/d70b63660ac5200b03c38ba3406b8f93976628a6/web/src/main/webapp/js/ghrequest.js#L139). It is especially important to use no 3rd party client if you set `elevation=true`!
+          type: boolean      
+          required: true
+        - name: calc_points
+          in: query
+          description: If the points for the route should be calculated at all printing out only distance and time.     
+          type: boolean          
+        - name: point_hint
+          in: query
+          description: Optional parameter. Specifies a hint for each `point` parameter to prefer a certain street for the closest location lookup. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up.
+          type: array
+          items:
+            format: string
+          collectionFormat: multi
+        - name: ch.disable
+          in: query
+          description: Use this parameter in combination with one or more parameters of this table
+          type: boolean
+        - name: weighting
+          in: query
+          description: Which kind of 'best' route calculation you need. Other option is `shortest` (e.g. for `vehicle=foot` or `bike`), `short_fastest` if time and distance is expensive (e.g. for `vehicle=truck`) and `curvature` (only for `vehicle=motorcycle`)
+          type: string
+        - name: edge_traversal
+          in: query
+          description: Use `true` if you want to consider turn restrictions for bike and motor vehicles. Keep in mind that the response time is roughly 2 times slower.
+          type: boolean
+        - name: algorithm
+          in: query
+          description: The algorithm to calculate the route. Other options are `dijkstra`, `astar`, `astarbi`, `alternative_route` and `round_trip`
+          type: string  
+        - name: heading
+          in: query
+          description: Favour a heading direction for a certain point. Specify either one heading for the start point or as many as there are points. In this case headings are associated by their order to the specific points. Headings are given as north based clockwise angle between 0 and 360 degree. This parameter also influences the tour generated with `algorithm=round_trip` and force the initial direction.
+          type: integer
+          format: int32
+        - name: heading_penalty
+          in: query
+          description: Penalty for omitting a specified heading. The penalty corresponds to the accepted time delay in seconds in comparison to the route without a heading.
+          type: integer
+          format: int32
+        - name: pass_through
+          in: query
+          description: If `true` u-turns are avoided at via-points with regard to the `heading_penalty`.
+          type: boolean      
+        - name: round_trip.distance
+          in: query
+          description: If `algorithm=round_trip` this parameter configures approximative length of the resulting round trip
+          type: integer
+          format: int32
+        - name: round_trip.seed 
+          in: query
+          description: If `algorithm=round_trip` this parameter introduces randomness if e.g. the first try wasn't good.
+          type: integer
+          format: int64
+        - name: alternative_route.max_paths
+          in: query
+          description: If `algorithm=alternative_route` this parameter sets the number of maximum paths which should be calculated. Increasing can lead to worse alternatives.
+          type: integer
+          format: int32  
+        - name: alternative_route.max_weight_factor
+          in: query
+          description: If `algorithm=alternative_route` this parameter sets the factor by which the alternatives routes can be longer than the optimal route. Increasing can lead to worse alternatives.
+          type: integer
+          format: int32      
+        - name: alternative_route.max_share_factor
+          in: query
+          description: If `algorithm=alternative_route` this parameter specifies how much alternatives routes can have maximum in common with the optimal route. Increasing can lead to worse alternatives.
+          type: integer
+          format: int32                
+        - name: key
+          in: query
+          description: Get your key at graphhopper.com
+          required: true
+          type: string
+      tags:
+        - Routing
+      responses:
+        200:
+          description: Routing Result
+          schema:
+            $ref: '#/definitions/GHResponse'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+definitions:
+  GHResponse:
+    type: object
+    properties:
+      paths:
+        type: array
+        items:
+          $ref: '#/definitions/GHResponsePath'
+      info:
+        $ref: '#/definitions/GHResponseInfo'
+  GHResponsePath:
+    type: object
+    description: A found path
+    properties:
+      distance:
+        description: The total distance of the route, in meter
+        type: number
+        format: double
+      time:
+        description: The total time of the route, in ms
+        type: integer
+        format: int64
+      ascend:
+        type: number
+        format: double
+      descend:
+        description: The total descend (downhill) of the route, in meter
+        type: number
+        format: double
+      points:
+        $ref: '#/definitions/GHResponseCoordinates'    
+      points_encoded:
+        description: Is true if the points are encoded, if not paths[0].points contains the geo json of the path (then order is lon,lat,elevation), which is easier to handle but consumes more bandwidth compared to encoded version
+        type: boolean
+      bbox:
+        description: The bounding box of the route, format <br> minLon, minLat, maxLon, maxLat
+        type: array
+        items:
+          type: number
+          format: double
+      snapped_waypoints:
+        $ref: '#/definitions/GHResponseCoordinates'   
+      instructions:
+        $ref: '#/definitions/GHResponseInstructions'  
+  GHResponseCoordinates:
+    type: object
+    properties:
+      coordinates:
+        $ref: '#/definitions/GHResponseCoordinatesArray'
+  GHResponseCoordinatesArray:
+    type: array
+    description: An array containing coordinates
+    items:
+      type: array
+      items:
+        type: number
+        format: double
+  GHResponseInstructions:
+    type: array
+    description: Contains information about the instructions for this route. The last instruction is always the Finish instruction and takes 0ms and 0meter. Keep in mind that instructions are currently under active development and can sometimes contain misleading information, so, make sure you always show an image of the map at the same time when navigating your users!
+    items:
+      $ref: '#/definitions/GHResponseInstruction'
+  GHResponseInstruction:
+    type: object
+    properties:
+      text:
+        type: string
+        description: A description what the user has to do in order to follow the route. The language depends on the locale parameter.
+      distance:
+        type: number
+        format: double
+        description: The distance for this instruction, in meter
+      time:
+        type: integer
+        format: int32
+        description: The duration for this instruction, in ms
+      interval:
+        type: array
+        items:
+          type: integer
+          format: int32
+        description: An array containing the first and the last index (relative to paths[0].points) of the points for this instruction. This is useful to know for which part of the route the instructions are valid. 
+      sign:
+        type: integer
+        format: int32
+        description: A number which specifies the sign to show e.g. for right turn etc <br>TURN_SHARP_LEFT = -3<br>TURN_LEFT = -2<br>TURN_SLIGHT_LEFT = -1<br>CONTINUE_ON_STREET = 0<br>TURN_SLIGHT_RIGHT = 1<br>TURN_RIGHT = 2<br>TURN_SHARP_RIGHT = 3<br>FINISH = 4<br>VIA_REACHED = 5<br>USE_ROUNDABOUT = 6  
+      annotation_text:
+        type: string
+        description: optional - A text describing the instruction in more detail, e.g. like surface of the way, warnings or involved costs.
+      annotation_importance:
+        type: integer
+        format: int32
+        description: optional - 0 stands for INFO, 1 for warning, 2 for costs, 3 for costs and warning
+      exit_number:
+        type: integer
+        format: int32
+        description: optional - Only available for USE_ROUNDABOUT instructions. The count of exits at which the route leaves the roundabout.    
+      turn_angle:
+        type: number
+        format: double
+        description: optional - Only available for USE_ROUNDABOUT instructions. The radian of the route within the roundabout - 0<r<2*PI for clockwise and -2PI<r<0 for counterclockwise transit. Null if the direction of rotation is undefined.     
+  GHResponseInfo:
+    type: object
+    description: Additional information for your request
+    properties:
+      copyrights:
+        type: array
+        items:
+          type: string
+      took:
+        type: integer
+        format: int32
+  Error:
+    type: object
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string
+      fields:
+        type: string
