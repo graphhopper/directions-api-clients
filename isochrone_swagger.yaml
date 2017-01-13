@@ -76,6 +76,10 @@ definitions:
         type: array
         items:
           $ref: '#/definitions/GHIsochroneResponsePolygon'
+      copyrights:
+        type: array
+        items:
+          type: string
   GHIsochroneResponsePolygon:
     type: object
     description: A found path
@@ -94,12 +98,7 @@ definitions:
           type:
             type: string
           coordinates:
-            $ref: '#/definitions/GHResponseCoordinates'
-  GHResponseCoordinates:
-    type: object
-    properties:
-      coordinates:
-        $ref: '#/definitions/GHResponseCoordinatesArray'
+            $ref: '#/definitions/GHResponseCoordinatesArray'
   GHResponseCoordinatesArray:
     type: array
     description: An array containing coordinates
