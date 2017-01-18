@@ -267,7 +267,104 @@ paths:
           description: Unexpected Error
           schema:
             $ref: '#/definitions/GHError'
+  /geocode:
+    get:
+      summary: Execute a Geocoding request
+      description: |
+        This endpoint provides forward and reverse geocoding. For more details, review the official documentation at: https://graphhopper.com/api/1/docs/geocoding/
+      parameters:
+        - name: q
+          in: query
+          description: If you do forward geocoding, then this would be a textual description of the adress you are looking for. If you do reverse geocoding this would be in lat,lon.
+          required: false
+          type: string
+        - name: locale
+          in: query
+          description: Display the search results for the specified locale. Currently French (fr), English (en), German (de) and Italian (it) are supported. If the locale wasn't found the default (en) is used.
+          required: false
+          type: string
+        - name: limit
+          in: query
+          description: Specify the maximum number of returned results
+          required: false
+          type: integer
+          format: int32
+        - name: reverse
+          in: query
+          description: Set to true to do a reverse Geocoding request
+          required: false
+          type: boolean
+        - name: point
+          in: query
+          description: The location bias in the format 'latitude,longitude' e.g. point=45.93272,11.58803
+          required: false
+          type: string
+        - name: provider
+          in: query
+          description: Can be either, default, nominatim, opencagedata
+          required: false
+          type: string
+        - name: key
+          in: query
+          description: Get your key at graphhopper.com
+          required: true
+          type: string
+      tags:
+        - Geocoding
+      responses:
+        200:
+          description: An array found locations
+          schema:
+            $ref: '#/definitions/GHGeocodingResponse'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
 definitions:
+  GHGeocodingResponse:
+    properties:
+      hits:
+        type: array
+        items:
+          $ref: '#/definitions/GHGeocodingLocation'
+      locale:
+        type: string
+  GHGeocodingLocation:
+    type: object
+    properties:
+      point:
+        $ref: '#/definitions/GHGeocodingPoint'
+      osm_id:
+        type: string
+        description: OSM Id
+      osm_type:
+        type: string
+        description: N = node, R = relation, W = way
+      name:
+        type: string
+      country:
+        type: string
+      city:
+        type: string
+      state:
+        type: string
+      street:
+        type: string
+      housenumber:
+        type: string
+      postcode:
+        type: string
+  GHGeocodingPoint:
+    type: object
+    properties:
+      lat:
+        type: number
+        format: double
+        description: Latitude
+      lng:
+        type: number
+        format: double
+        description: Longitude
   GHMatrixRequest:
     type: object
     properties:
