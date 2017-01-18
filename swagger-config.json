@@ -1,0 +1,9 @@
+{
+  "apiPackage": "com.graphhopper.directions.api.client.api",
+  "modelPackage": "com.graphhopper.directions.api.client.model",
+  "invokerPackage": "com.graphhopper.directions.api.client.client",
+  "groupId": "com.graphhopper",
+  "artifactVersion": "0.9-SNAPSHOT",
+  "library": "okhttp-gson",
+  "artifactId": "directions-api-client"
+}

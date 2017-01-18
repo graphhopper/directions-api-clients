@@ -2,8 +2,9 @@
 # as a demonstration of an API spec in YAML
 swagger: '2.0'
 info:
-  title: GraphHopper Routing API
-  description: The GraphHopper Routing API allows to calculate routes
+  title: GraphHopper Directions API
+  description: |
+    With the GraphHopper Directions API you get reliable and fast web services for routing and more with world wide coverage. We offer A-to-B routing via the Routing API optionally with turn instructions and elevation data as well as route optimization with various constraints like time window and capacity restrictions. Also it is possible to get all distances between all locations with our fast Matrix API.
   version: "1.0.0"
 # the domain of the service
 host: graphhopper.com
@@ -24,7 +25,7 @@ paths:
     get:
       summary: Routing Request
       description: |
-        The regular routing request
+        The GraphHopper Routing API allows to calculate routes.
       parameters:
         - name: point
           in: query
@@ -132,22 +133,74 @@ paths:
         200:
           description: Routing Result
           schema:
-            $ref: '#/definitions/GHResponse'
+            $ref: '#/definitions/GHRouteResponse'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /isochrone:
+    get:
+      summary: Isochrone Request
+      description: |
+       The GraphHopper Isochrone API allows calculating an isochrone of a locations means to calculate
+       'a line connecting points at which a vehicle arrives at the same time,'
+       see [Wikipedia](http://en.wikipedia.org/wiki/Isochrone_map).
+       It is also called **reachability** or **walkability**.
+      parameters:
+        - name: point
+          in: query
+          description: Specify the start coordinate
+          required: true
+          type: string
+        - name: time_limit
+          in: query
+          description: TSpecify which time the vehicle should travel. In seconds. The maximum depends on the subscribed package.
+          default: 600
+          type: integer
+          format: int32
+        - name: vehicle
+          in: query
+          description: Possible vehicles are bike, car, foot and [more](https://graphhopper.com/api/1/docs/supported-vehicle-profiles/)
+          default: car
+          type: string
+        - name: buckets
+          in: query
+          description: For how many sub intervals an additional polygon should be calculated.
+          default: 1
+          type: integer
+          format: int32
+        - name: reverse_flow
+          in: query
+          description: If `false` the flow goes from point to the polygon, if `true` the flow goes from the polygon "inside" to the point. Example usage for `false`&#58; *How many potential customer can be reached within 30min travel time from your store* vs. `true`&#58; *How many customers can reach your store within 30min travel time.*
+          default: false
+          type: boolean
+        - name: key
+          in: query
+          description: Get your key at graphhopper.com
+          required: true
+          type: string
+      tags:
+        - Isochrone
+      responses:
+        200:
+          description: Isochrone Result
+          schema:
+            $ref: '#/definitions/GHIsochroneResponse'
         default:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
 definitions:
-  GHResponse:
+  GHRouteResponse:
     type: object
     properties:
       paths:
         type: array
         items:
-          $ref: '#/definitions/GHResponsePath'
+          $ref: '#/definitions/GHRouteResponsePath'
       info:
         $ref: '#/definitions/GHResponseInfo'
-  GHResponsePath:
+  GHRouteResponsePath:
     type: object
     description: A found path
     properties:
@@ -249,6 +302,36 @@ definitions:
       took:
         type: integer
         format: int32
+  GHIsochroneResponse:
+    type: object
+    properties:
+      polygons:
+        type: array
+        items:
+          $ref: '#/definitions/GHIsochroneResponsePolygon'
+      copyrights:
+        type: array
+        items:
+          type: string
+  GHIsochroneResponsePolygon:
+    type: object
+    description: A found path
+    properties:
+      properties:
+        type: object
+        properties:
+          bucket:
+            type: integer
+            format: int32
+      type:
+        type: string
+      geometry:
+        type: object
+        properties:
+          type:
+            type: string
+          coordinates:
+            $ref: '#/definitions/GHResponseCoordinatesArray'
   Error:
     type: object
     properties:
