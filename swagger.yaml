@@ -33,7 +33,7 @@ paths:
           required: true
           type: array
           items:
-            format: string
+            type: string
           collectionFormat: multi
         - name: locale
           in: query
@@ -65,7 +65,7 @@ paths:
           description: Optional parameter. Specifies a hint for each `point` parameter to prefer a certain street for the closest location lookup. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up.
           type: array
           items:
-            format: string
+            type: string
           collectionFormat: multi
         - name: ch.disable
           in: query
@@ -135,9 +135,9 @@ paths:
           schema:
             $ref: '#/definitions/GHRouteResponse'
         default:
-          description: Unexpected error
+          description: Unexpected Error
           schema:
-            $ref: '#/definitions/Error'
+            $ref: '#/definitions/GHError'
   /isochrone:
     get:
       summary: Isochrone Request
@@ -154,7 +154,7 @@ paths:
           type: string
         - name: time_limit
           in: query
-          description: TSpecify which time the vehicle should travel. In seconds. The maximum depends on the subscribed package.
+          description: Specify which time the vehicle should travel. In seconds. The maximum depends on the subscribed package.
           default: 600
           type: integer
           format: int32
@@ -187,10 +187,138 @@ paths:
           schema:
             $ref: '#/definitions/GHIsochroneResponse'
         default:
-          description: Unexpected error
+          description: Unexpected Error
           schema:
-            $ref: '#/definitions/Error'
+            $ref: '#/definitions/GHError'
+  /matrix:
+    get:
+      summary: Matrix API
+      description: |
+        The Matrix API is part of the GraphHopper Directions API and with this API you can calculate many-to-many distances, times or routes a lot more efficient than calling the Routing API multiple times.
+        In the Routing API we support multiple points, so called 'via points', which results in one route being calculated. The Matrix API results in NxM routes or more precise NxM weights, distances or times being calculated but is a lot faster compared to NxM single requests. The most simple example is a tourist trying to decide which pizza is close to him instead of using beeline distance she can calculate a 1x4 matrix. Or a delivery service in the need of often big NxN matrices to solve vehicle routing problems. E.g. the GraphHopper Route Optimization API uses the Matrix API under the hood to achieve this.
+      parameters:
+        - name: point
+          in: query
+          description: Specifiy multiple points for which the weight-, route-, time- or distance-matrix should be calculated. In this case the starts are identical to the destinations. If there are N points, then NxN entries will be calculated. The order of the point parameter is important. Specify at least three points. Cannot be used together with from_point or to_point. Is a string with the format latitude,longitude.
+          required: false
+          type: array
+          items:
+            type: string
+          collectionFormat: multi
+        - name: from_point
+          in: query
+          description: The starting points for the routes. E.g. if you want to calculate the three routes A->1, A->2, A->3 then you have one from_point parameter and three to_point parameters. Is a string with the format latitude,longitude.
+          type: string
+        - name: to_point
+          in: query
+          description: The destination points for the routes. Is a string with the format latitude,longitude.
+          type: string
+        - name: out_array
+          in: query
+          description: pecifies which arrays should be included in the response. Specify one or more of the following options 'weights', 'times', 'distances'. To specify more than one array use e.g. out_array=times&out_array=distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API.
+          required: false
+          type: array
+          items:
+            type: string
+          collectionFormat: multi
+        - name: vehicle
+          in: query
+          description: The vehicle for which the route should be calculated. Other vehicles are foot, bike, mtb, racingbike, motorcycle, small_truck, bus and truck. See here for the details.
+          default: car
+          type: string
+        - name: key
+          in: query
+          description: Get your key at graphhopper.com
+          required: true
+          type: string
+      tags:
+        - Matrix
+      responses:
+        200:
+          description: Isochrone Result
+          schema:
+            $ref: '#/definitions/GHMatrixResponse'
+        default:
+          description: Unexpected Error
+          schema:
+            $ref: '#/definitions/GHError'
+    post:
+      summary: Matrix API Post
+      description: |
+        The GET request has an URL length limitation, which hurts for many locations per request. In those cases use a HTTP POST request with JSON data as input. The only parameter in the URL will be the key which stays in the URL. Both request scenarios are identically except that all singular parameter names are named as their plural for a POST request.
+      parameters:
+        - name: body
+          in: body
+          schema:
+            $ref: '#/definitions/GHMatrixRequest'
+        - name: key
+          in: query
+          description: Get your key at graphhopper.com
+          required: true
+          type: string
+      tags:
+        - Matrix
+      responses:
+        200:
+          description: Isochrone Result
+          schema:
+            $ref: '#/definitions/GHMatrixResponse'
+        default:
+          description: Unexpected Error
+          schema:
+            $ref: '#/definitions/GHError'
 definitions:
+  GHMatrixRequest:
+    type: object
+    properties:
+      points:
+        description: Specifiy multiple points for which the weight-, route-, time- or distance-matrix should be calculated. In this case the starts are identical to the destinations. If there are N points, then NxN entries will be calculated. The order of the point parameter is important. Specify at least three points. Cannot be used together with from_point or to_point. Is a string with the format longitude,latitude.
+        type: array
+        items:
+          type: array
+          items:
+            type: number
+            format: double
+      from_points:
+        description: The starting points for the routes. E.g. if you want to calculate the three routes A->1, A->2, A->3 then you have one from_point parameter and three to_point parameters. Is a string with the format longitude,latitude.
+        type: string
+      to_points:
+        description: The destination points for the routes. Is a string with the format longitude,latitude.
+        type: string
+      out_arrays:
+        description: pecifies which arrays should be included in the response. Specify one or more of the following options 'weights', 'times', 'distances'. To specify more than one array use e.g. out_array=times&out_array=distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API.
+        type: array
+        items:
+          type: string
+      vehicle:
+        description: The vehicle for which the route should be calculated. Other vehicles are foot, bike, mtb, racingbike, motorcycle, small_truck, bus and truck. See here for the details.
+        type: string
+  GHMatrixResponse:
+    type: object
+    properties:
+      distances:
+        type: array
+        items:
+          type: array
+          items:
+            type: number
+            format: int64
+      times:
+        type: array
+        items:
+          type: array
+          items:
+            type: number
+            format: int64
+      weights:
+        type: array
+        items:
+          type: array
+          items:
+            type: number
+            format: double
+      info:
+        $ref: '#/definitions/GHResponseInfo'
   GHRouteResponse:
     type: object
     properties:
@@ -332,7 +460,7 @@ definitions:
             type: string
           coordinates:
             $ref: '#/definitions/GHResponseCoordinatesArray'
-  Error:
+  GHError:
     type: object
     properties:
       code:
@@ -340,5 +468,10 @@ definitions:
         format: int32
       message:
         type: string
-      fields:
-        type: string
+      hints:
+        type: array
+        items:
+          type: object
+          properties:
+            message:
+              type: string
