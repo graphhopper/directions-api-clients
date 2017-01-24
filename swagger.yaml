@@ -13,6 +13,10 @@ schemes:
   - https
 # will be prefixed to all paths
 basePath: /api/1
+# If you want to test a local implementation comment host, schemes, and basePath. Uncomment the following lines
+#host: 127.0.0.1:8989
+#schemes:
+#  - http
 produces:
   - application/json
 securityDefinitions:
