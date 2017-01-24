@@ -4,7 +4,7 @@ SPEC=swagger.yaml
 DIR=.
 
 VERSION=0.9-SNAPSHOT
-SW_VERSION=2.2.1
+SW_VERSION=master
 FILE=swagger-codegen-cli-$SW_VERSION.jar
 
 NAME=directions-api-client
@@ -28,14 +28,14 @@ function create {
 		CONFIG="--artifact-version $VERSION --api-package $PKG.api --invoker-package $PKG --model-package $PKG.model --artifact-id $NAME --group-id $GROUP --library okhttp-gson"
 		;;
 	ruby)
-		CONFIG="--gemName $NAME --moduelName graphhopper_directions_api_client --gemVersion $VERSION"
+		CONFIG="-DgemName=$NAME -DmoduelName=graphhopper_directions_api_client -DgemVersion=$VERSION"
 		;;
 	go)
 		# CONFIG="-t modules/swagger-codegen/src/main/resources/go"
 		ADD_PARAMS="-DpackageName=graphhopper"
 		;;
 	swift)
-		CONFIG="--projectName $NAME"
+		CONFIG="-DprojectName=GraphHopper"
 		;;
 	javascript)
 		CONFIG="-t modules/swagger-codegen/src/main/resources/Javascript"
