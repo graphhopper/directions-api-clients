@@ -1,0 +1,1287 @@
+---
+swagger: "2.0"
+info:
+  description: "With the GraphHopper Directions API you get reliable and fast web\
+    \ services for routing and more with world wide coverage. We offer A-to-B routing\
+    \ via the Routing API optionally with turn instructions and elevation data as\
+    \ well as route optimization with various constraints like time window and capacity\
+    \ restrictions. Also it is possible to get all distances between all locations\
+    \ with our fast Matrix API.\n"
+  version: "1.0.0"
+  title: "GraphHopper Directions API"
+host: "graphhopper.com"
+basePath: "/api/1"
+schemes:
+- "https"
+produces:
+- "application/json"
+paths:
+  /route:
+    get:
+      tags:
+      - "Routing"
+      summary: "Routing Request"
+      description: "The GraphHopper Routing API allows to calculate routes.\n"
+      operationId: "routeGET"
+      parameters:
+      - name: "point"
+        in: "query"
+        description: "Specify multiple points for which the route should be calculated.\
+          \ The order is important. Specify at least two points."
+        required: true
+        type: "array"
+        items:
+          type: "string"
+        collectionFormat: "multi"
+      - name: "locale"
+        in: "query"
+        description: "The locale of the resulting turn instructions. E.g. `pt_PT`\
+          \ for Portuguese or `de` for German"
+        required: false
+        type: "string"
+      - name: "instructions"
+        in: "query"
+        description: "If instruction should be calculated and returned"
+        required: false
+        type: "boolean"
+      - name: "vehicle"
+        in: "query"
+        description: "The vehicle for which the route should be calculated. Other\
+          \ vehicles are foot, bike, motorcycle, hike, ..."
+        required: false
+        type: "string"
+      - name: "elevation"
+        in: "query"
+        description: "If `true` a third dimension - the elevation - is included in\
+          \ the polyline or in the GeoJson. If enabled you have to use a modified\
+          \ version of the decoding method or set points_encoded to `false`. See the\
+          \ points_encoded attribute for more details. Additionally a request can\
+          \ fail if the vehicle does not support elevation. See the features object\
+          \ for every vehicle."
+        required: false
+        type: "boolean"
+      - name: "points_encoded"
+        in: "query"
+        description: "IMPORTANT- TODO - currently you have to pass false for the swagger\
+          \ client - Have not found a way to force add a parameter. If `false` the\
+          \ coordinates in `point` and `snapped_waypoints` are returned as array using\
+          \ the order [lon,lat,elevation] for every point. If `true` the coordinates\
+          \ will be encoded as string leading to less bandwith usage. You'll need\
+          \ a special handling for the decoding of this string on the client-side.\
+          \ We provide open source code in [Java](https://github.com/graphhopper/graphhopper/blob/d70b63660ac5200b03c38ba3406b8f93976628a6/web/src/main/java/com/graphhopper/http/WebHelper.java#L43)\
+          \ and [JavaScript](https://github.com/graphhopper/graphhopper/blob/d70b63660ac5200b03c38ba3406b8f93976628a6/web/src/main/webapp/js/ghrequest.js#L139).\
+          \ It is especially important to use no 3rd party client if you set `elevation=true`!"
+        required: true
+        type: "boolean"
+      - name: "calc_points"
+        in: "query"
+        description: "If the points for the route should be calculated at all printing\
+          \ out only distance and time."
+        required: false
+        type: "boolean"
+      - name: "point_hint"
+        in: "query"
+        description: "Optional parameter. Specifies a hint for each `point` parameter\
+          \ to prefer a certain street for the closest location lookup. E.g. if there\
+          \ is an address or house with two or more neighboring streets you can control\
+          \ for which street the closest location is looked up."
+        required: false
+        type: "array"
+        items:
+          type: "string"
+        collectionFormat: "multi"
+      - name: "ch.disable"
+        in: "query"
+        description: "Use this parameter in combination with one or more parameters\
+          \ of this table"
+        required: false
+        type: "boolean"
+      - name: "weighting"
+        in: "query"
+        description: "Which kind of 'best' route calculation you need. Other option\
+          \ is `shortest` (e.g. for `vehicle=foot` or `bike`), `short_fastest` if\
+          \ time and distance is expensive (e.g. for `vehicle=truck`) and `curvature`\
+          \ (only for `vehicle=motorcycle`)"
+        required: false
+        type: "string"
+      - name: "edge_traversal"
+        in: "query"
+        description: "Use `true` if you want to consider turn restrictions for bike\
+          \ and motor vehicles. Keep in mind that the response time is roughly 2 times\
+          \ slower."
+        required: false
+        type: "boolean"
+      - name: "algorithm"
+        in: "query"
+        description: "The algorithm to calculate the route. Other options are `dijkstra`,\
+          \ `astar`, `astarbi`, `alternative_route` and `round_trip`"
+        required: false
+        type: "string"
+      - name: "heading"
+        in: "query"
+        description: "Favour a heading direction for a certain point. Specify either\
+          \ one heading for the start point or as many as there are points. In this\
+          \ case headings are associated by their order to the specific points. Headings\
+          \ are given as north based clockwise angle between 0 and 360 degree. This\
+          \ parameter also influences the tour generated with `algorithm=round_trip`\
+          \ and force the initial direction."
+        required: false
+        type: "integer"
+        format: "int32"
+      - name: "heading_penalty"
+        in: "query"
+        description: "Penalty for omitting a specified heading. The penalty corresponds\
+          \ to the accepted time delay in seconds in comparison to the route without\
+          \ a heading."
+        required: false
+        type: "integer"
+        format: "int32"
+      - name: "pass_through"
+        in: "query"
+        description: "If `true` u-turns are avoided at via-points with regard to the\
+          \ `heading_penalty`."
+        required: false
+        type: "boolean"
+      - name: "round_trip.distance"
+        in: "query"
+        description: "If `algorithm=round_trip` this parameter configures approximative\
+          \ length of the resulting round trip"
+        required: false
+        type: "integer"
+        format: "int32"
+      - name: "round_trip.seed"
+        in: "query"
+        description: "If `algorithm=round_trip` this parameter introduces randomness\
+          \ if e.g. the first try wasn't good."
+        required: false
+        type: "integer"
+        format: "int64"
+      - name: "alternative_route.max_paths"
+        in: "query"
+        description: "If `algorithm=alternative_route` this parameter sets the number\
+          \ of maximum paths which should be calculated. Increasing can lead to worse\
+          \ alternatives."
+        required: false
+        type: "integer"
+        format: "int32"
+      - name: "alternative_route.max_weight_factor"
+        in: "query"
+        description: "If `algorithm=alternative_route` this parameter sets the factor\
+          \ by which the alternatives routes can be longer than the optimal route.\
+          \ Increasing can lead to worse alternatives."
+        required: false
+        type: "integer"
+        format: "int32"
+      - name: "alternative_route.max_share_factor"
+        in: "query"
+        description: "If `algorithm=alternative_route` this parameter specifies how\
+          \ much alternatives routes can have maximum in common with the optimal route.\
+          \ Increasing can lead to worse alternatives."
+        required: false
+        type: "integer"
+        format: "int32"
+      - name: "key"
+        in: "query"
+        description: "Get your key at graphhopper.com"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "Routing Result"
+          schema:
+            $ref: "#/definitions/GHRouteResponse"
+        default:
+          description: "Unexpected Error"
+          schema:
+            $ref: "#/definitions/GHError"
+      x-swagger-router-controller: "Routing"
+  /isochrone:
+    get:
+      tags:
+      - "Isochrone"
+      summary: "Isochrone Request"
+      description: "The GraphHopper Isochrone API allows calculating an isochrone\
+        \ of a locations means to calculate\n'a line connecting points at which a\
+        \ vehicle arrives at the same time,'\nsee [Wikipedia](http://en.wikipedia.org/wiki/Isochrone_map).\n\
+        It is also called **reachability** or **walkability**.\n"
+      operationId: "isochroneGET"
+      parameters:
+      - name: "point"
+        in: "query"
+        description: "Specify the start coordinate"
+        required: true
+        type: "string"
+      - name: "time_limit"
+        in: "query"
+        description: "Specify which time the vehicle should travel. In seconds. The\
+          \ maximum depends on the subscribed package."
+        required: false
+        type: "integer"
+        default: 600
+        format: "int32"
+      - name: "vehicle"
+        in: "query"
+        description: "Possible vehicles are bike, car, foot and [more](https://graphhopper.com/api/1/docs/supported-vehicle-profiles/)"
+        required: false
+        type: "string"
+        default: "car"
+      - name: "buckets"
+        in: "query"
+        description: "For how many sub intervals an additional polygon should be calculated."
+        required: false
+        type: "integer"
+        default: 1
+        format: "int32"
+      - name: "reverse_flow"
+        in: "query"
+        description: "If `false` the flow goes from point to the polygon, if `true`\
+          \ the flow goes from the polygon \"inside\" to the point. Example usage\
+          \ for `false`&#58; *How many potential customer can be reached within 30min\
+          \ travel time from your store* vs. `true`&#58; *How many customers can reach\
+          \ your store within 30min travel time.*"
+        required: false
+        type: "boolean"
+        default: false
+      - name: "key"
+        in: "query"
+        description: "Get your key at graphhopper.com"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "Isochrone Result"
+          schema:
+            $ref: "#/definitions/GHIsochroneResponse"
+        default:
+          description: "Unexpected Error"
+          schema:
+            $ref: "#/definitions/GHError"
+      x-swagger-router-controller: "Isochrone"
+  /matrix:
+    get:
+      tags:
+      - "Matrix"
+      summary: "Matrix API"
+      description: "The Matrix API is part of the GraphHopper Directions API and with\
+        \ this API you can calculate many-to-many distances, times or routes a lot\
+        \ more efficient than calling the Routing API multiple times.\nIn the Routing\
+        \ API we support multiple points, so called 'via points', which results in\
+        \ one route being calculated. The Matrix API results in NxM routes or more\
+        \ precise NxM weights, distances or times being calculated but is a lot faster\
+        \ compared to NxM single requests. The most simple example is a tourist trying\
+        \ to decide which pizza is close to him instead of using beeline distance\
+        \ she can calculate a 1x4 matrix. Or a delivery service in the need of often\
+        \ big NxN matrices to solve vehicle routing problems. E.g. the GraphHopper\
+        \ Route Optimization API uses the Matrix API under the hood to achieve this.\n"
+      operationId: "matrixGET"
+      parameters:
+      - name: "point"
+        in: "query"
+        description: "Specifiy multiple points for which the weight-, route-, time-\
+          \ or distance-matrix should be calculated. In this case the starts are identical\
+          \ to the destinations. If there are N points, then NxN entries will be calculated.\
+          \ The order of the point parameter is important. Specify at least three\
+          \ points. Cannot be used together with from_point or to_point. Is a string\
+          \ with the format latitude,longitude."
+        required: false
+        type: "array"
+        items:
+          type: "string"
+        collectionFormat: "multi"
+      - name: "from_point"
+        in: "query"
+        description: "The starting points for the routes. E.g. if you want to calculate\
+          \ the three routes A->1, A->2, A->3 then you have one from_point parameter\
+          \ and three to_point parameters. Is a string with the format latitude,longitude."
+        required: false
+        type: "string"
+      - name: "to_point"
+        in: "query"
+        description: "The destination points for the routes. Is a string with the\
+          \ format latitude,longitude."
+        required: false
+        type: "string"
+      - name: "out_array"
+        in: "query"
+        description: "pecifies which arrays should be included in the response. Specify\
+          \ one or more of the following options 'weights', 'times', 'distances'.\
+          \ To specify more than one array use e.g. out_array=times&out_array=distances.\
+          \ The units of the entries of distances are meters, of times are seconds\
+          \ and of weights is arbitrary and it can differ for different vehicles or\
+          \ versions of this API."
+        required: false
+        type: "array"
+        items:
+          type: "string"
+        collectionFormat: "multi"
+      - name: "vehicle"
+        in: "query"
+        description: "The vehicle for which the route should be calculated. Other\
+          \ vehicles are foot, bike, mtb, racingbike, motorcycle, small_truck, bus\
+          \ and truck. See here for the details."
+        required: false
+        type: "string"
+        default: "car"
+      - name: "key"
+        in: "query"
+        description: "Get your key at graphhopper.com"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "Isochrone Result"
+          schema:
+            $ref: "#/definitions/GHMatrixResponse"
+        default:
+          description: "Unexpected Error"
+          schema:
+            $ref: "#/definitions/GHError"
+      x-swagger-router-controller: "Matrix"
+    post:
+      tags:
+      - "Matrix"
+      summary: "Matrix API Post"
+      description: "The GET request has an URL length limitation, which hurts for\
+        \ many locations per request. In those cases use a HTTP POST request with\
+        \ JSON data as input. The only parameter in the URL will be the key which\
+        \ stays in the URL. Both request scenarios are identically except that all\
+        \ singular parameter names are named as their plural for a POST request.\n"
+      operationId: "matrixPOST"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          $ref: "#/definitions/GHMatrixRequest"
+      - name: "key"
+        in: "query"
+        description: "Get your key at graphhopper.com"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "Isochrone Result"
+          schema:
+            $ref: "#/definitions/GHMatrixResponse"
+        default:
+          description: "Unexpected Error"
+          schema:
+            $ref: "#/definitions/GHError"
+      x-swagger-router-controller: "Matrix"
+  /geocode:
+    get:
+      tags:
+      - "Geocoding"
+      summary: "Execute a Geocoding request"
+      description: "This endpoint provides forward and reverse geocoding. For more\
+        \ details, review the official documentation at: https://graphhopper.com/api/1/docs/geocoding/\n"
+      operationId: "geocodeGET"
+      parameters:
+      - name: "q"
+        in: "query"
+        description: "If you do forward geocoding, then this would be a textual description\
+          \ of the adress you are looking for. If you do reverse geocoding this would\
+          \ be in lat,lon."
+        required: false
+        type: "string"
+      - name: "locale"
+        in: "query"
+        description: "Display the search results for the specified locale. Currently\
+          \ French (fr), English (en), German (de) and Italian (it) are supported.\
+          \ If the locale wasn't found the default (en) is used."
+        required: false
+        type: "string"
+      - name: "limit"
+        in: "query"
+        description: "Specify the maximum number of returned results"
+        required: false
+        type: "integer"
+        format: "int32"
+      - name: "reverse"
+        in: "query"
+        description: "Set to true to do a reverse Geocoding request"
+        required: false
+        type: "boolean"
+      - name: "point"
+        in: "query"
+        description: "The location bias in the format 'latitude,longitude' e.g. point=45.93272,11.58803"
+        required: false
+        type: "string"
+      - name: "provider"
+        in: "query"
+        description: "Can be either, default, nominatim, opencagedata"
+        required: false
+        type: "string"
+      - name: "key"
+        in: "query"
+        description: "Get your key at graphhopper.com"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "An array found locations"
+          schema:
+            $ref: "#/definitions/GHGeocodingResponse"
+        default:
+          description: "Unexpected error"
+          schema:
+            $ref: "#/definitions/GHError"
+      x-swagger-router-controller: "Geocoding"
+  /vrp/optimize:
+    post:
+      tags:
+      - "RouteOptimization"
+      summary: "Solves vehicle routing problems"
+      description: "This endpoint for solving vehicle routing problems, i.e. traveling\
+        \ salesman or vehicle routing problems, and returns the solution.\n"
+      operationId: "postVrp"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "key"
+        in: "query"
+        description: "your API key"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "body"
+        description: "Request object that contains the problem to be solved"
+        required: true
+        schema:
+          $ref: "#/definitions/Request"
+      responses:
+        200:
+          description: "A jobId you can use to retrieve your solution from server\
+            \ - see solution endpoint."
+          schema:
+            $ref: "#/definitions/JobId"
+        400:
+          description: "Error occurred when reading client request. Request is invalid."
+        500:
+          description: "Error occurred on server side."
+      x-swagger-router-controller: "RouteOptimization"
+  /vrp/solution/{jobId}:
+    get:
+      tags:
+      - "RouteOptimization"
+      summary: "Return the solution associated to the jobId"
+      description: "This endpoint returns the solution of a large problems. You can\
+        \ fetch it with the job_id, you have been sent.\n"
+      operationId: "getSolution"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "key"
+        in: "query"
+        description: "your API key"
+        required: true
+        type: "string"
+      - name: "jobId"
+        in: "path"
+        description: "Request solution with jobId"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "A response containing the solution"
+          schema:
+            $ref: "#/definitions/Response"
+        400:
+          description: "Error occurred on client side such as invalid input."
+        500:
+          description: "Error occurred on server side."
+      x-swagger-router-controller: "RouteOptimization"
+securityDefinitions:
+  api_key:
+    type: "apiKey"
+    name: "key"
+    in: "query"
+definitions:
+  GHGeocodingResponse:
+    properties:
+      hits:
+        type: "array"
+        items:
+          $ref: "#/definitions/GHGeocodingLocation"
+      locale:
+        type: "string"
+  GHGeocodingLocation:
+    type: "object"
+    properties:
+      point:
+        $ref: "#/definitions/GHGeocodingPoint"
+      osm_id:
+        type: "string"
+        description: "OSM Id"
+      osm_type:
+        type: "string"
+        description: "N = node, R = relation, W = way"
+      name:
+        type: "string"
+      country:
+        type: "string"
+      city:
+        type: "string"
+      state:
+        type: "string"
+      street:
+        type: "string"
+      housenumber:
+        type: "string"
+      postcode:
+        type: "string"
+  GHGeocodingPoint:
+    type: "object"
+    properties:
+      lat:
+        type: "number"
+        format: "double"
+        description: "Latitude"
+      lng:
+        type: "number"
+        format: "double"
+        description: "Longitude"
+  GHMatrixRequest:
+    type: "object"
+    properties:
+      points:
+        type: "array"
+        description: "Specifiy multiple points for which the weight-, route-, time-\
+          \ or distance-matrix should be calculated. In this case the starts are identical\
+          \ to the destinations. If there are N points, then NxN entries will be calculated.\
+          \ The order of the point parameter is important. Specify at least three\
+          \ points. Cannot be used together with from_point or to_point. Is a string\
+          \ with the format longitude,latitude."
+        items:
+          type: "array"
+          items:
+            type: "number"
+            format: "double"
+      from_points:
+        type: "string"
+        description: "The starting points for the routes. E.g. if you want to calculate\
+          \ the three routes A->1, A->2, A->3 then you have one from_point parameter\
+          \ and three to_point parameters. Is a string with the format longitude,latitude."
+      to_points:
+        type: "string"
+        description: "The destination points for the routes. Is a string with the\
+          \ format longitude,latitude."
+      out_arrays:
+        type: "array"
+        description: "pecifies which arrays should be included in the response. Specify\
+          \ one or more of the following options 'weights', 'times', 'distances'.\
+          \ To specify more than one array use e.g. out_array=times&out_array=distances.\
+          \ The units of the entries of distances are meters, of times are seconds\
+          \ and of weights is arbitrary and it can differ for different vehicles or\
+          \ versions of this API."
+        items:
+          type: "string"
+      vehicle:
+        type: "string"
+        description: "The vehicle for which the route should be calculated. Other\
+          \ vehicles are foot, bike, mtb, racingbike, motorcycle, small_truck, bus\
+          \ and truck. See here for the details."
+  GHMatrixResponse:
+    type: "object"
+    properties:
+      distances:
+        type: "array"
+        items:
+          type: "array"
+          items:
+            type: "number"
+            format: "int64"
+      times:
+        type: "array"
+        items:
+          type: "array"
+          items:
+            type: "number"
+            format: "int64"
+      weights:
+        type: "array"
+        items:
+          type: "array"
+          items:
+            type: "number"
+            format: "double"
+      info:
+        $ref: "#/definitions/GHResponseInfo"
+  GHRouteResponse:
+    type: "object"
+    properties:
+      paths:
+        type: "array"
+        items:
+          $ref: "#/definitions/GHRouteResponsePath"
+      info:
+        $ref: "#/definitions/GHResponseInfo"
+  GHRouteResponsePath:
+    type: "object"
+    properties:
+      distance:
+        type: "number"
+        format: "double"
+        description: "The total distance of the route, in meter"
+      time:
+        type: "integer"
+        format: "int64"
+        description: "The total time of the route, in ms"
+      ascend:
+        type: "number"
+        format: "double"
+      descend:
+        type: "number"
+        format: "double"
+        description: "The total descend (downhill) of the route, in meter"
+      points:
+        $ref: "#/definitions/GHResponseCoordinates"
+      points_encoded:
+        type: "boolean"
+        description: "Is true if the points are encoded, if not paths[0].points contains\
+          \ the geo json of the path (then order is lon,lat,elevation), which is easier\
+          \ to handle but consumes more bandwidth compared to encoded version"
+      bbox:
+        type: "array"
+        description: "The bounding box of the route, format <br> minLon, minLat, maxLon,\
+          \ maxLat"
+        items:
+          type: "number"
+          format: "double"
+      snapped_waypoints:
+        $ref: "#/definitions/GHResponseCoordinates"
+      instructions:
+        $ref: "#/definitions/GHResponseInstructions"
+    description: "A found path"
+  GHResponseCoordinates:
+    type: "object"
+    properties:
+      coordinates:
+        $ref: "#/definitions/GHResponseCoordinatesArray"
+  GHResponseCoordinatesArray:
+    type: "array"
+    description: "An array containing coordinates"
+    items:
+      type: "array"
+      items:
+        type: "number"
+        format: "double"
+  GHResponseInstructions:
+    type: "array"
+    description: "Contains information about the instructions for this route. The\
+      \ last instruction is always the Finish instruction and takes 0ms and 0meter.\
+      \ Keep in mind that instructions are currently under active development and\
+      \ can sometimes contain misleading information, so, make sure you always show\
+      \ an image of the map at the same time when navigating your users!"
+    items:
+      $ref: "#/definitions/GHResponseInstruction"
+  GHResponseInstruction:
+    type: "object"
+    properties:
+      text:
+        type: "string"
+        description: "A description what the user has to do in order to follow the\
+          \ route. The language depends on the locale parameter."
+      distance:
+        type: "number"
+        format: "double"
+        description: "The distance for this instruction, in meter"
+      time:
+        type: "integer"
+        format: "int32"
+        description: "The duration for this instruction, in ms"
+      interval:
+        type: "array"
+        description: "An array containing the first and the last index (relative to\
+          \ paths[0].points) of the points for this instruction. This is useful to\
+          \ know for which part of the route the instructions are valid."
+        items:
+          type: "integer"
+          format: "int32"
+      sign:
+        type: "integer"
+        format: "int32"
+        description: "A number which specifies the sign to show e.g. for right turn\
+          \ etc <br>TURN_SHARP_LEFT = -3<br>TURN_LEFT = -2<br>TURN_SLIGHT_LEFT = -1<br>CONTINUE_ON_STREET\
+          \ = 0<br>TURN_SLIGHT_RIGHT = 1<br>TURN_RIGHT = 2<br>TURN_SHARP_RIGHT = 3<br>FINISH\
+          \ = 4<br>VIA_REACHED = 5<br>USE_ROUNDABOUT = 6"
+      annotation_text:
+        type: "string"
+        description: "optional - A text describing the instruction in more detail,\
+          \ e.g. like surface of the way, warnings or involved costs."
+      annotation_importance:
+        type: "integer"
+        format: "int32"
+        description: "optional - 0 stands for INFO, 1 for warning, 2 for costs, 3\
+          \ for costs and warning"
+      exit_number:
+        type: "integer"
+        format: "int32"
+        description: "optional - Only available for USE_ROUNDABOUT instructions. The\
+          \ count of exits at which the route leaves the roundabout."
+      turn_angle:
+        type: "number"
+        format: "double"
+        description: "optional - Only available for USE_ROUNDABOUT instructions. The\
+          \ radian of the route within the roundabout - 0<r<2*PI for clockwise and\
+          \ -2PI<r<0 for counterclockwise transit. Null if the direction of rotation\
+          \ is undefined."
+  GHResponseInfo:
+    type: "object"
+    properties:
+      copyrights:
+        type: "array"
+        items:
+          type: "string"
+      took:
+        type: "integer"
+        format: "int32"
+    description: "Additional information for your request"
+  GHIsochroneResponse:
+    type: "object"
+    properties:
+      polygons:
+        type: "array"
+        items:
+          $ref: "#/definitions/GHIsochroneResponsePolygon"
+      copyrights:
+        type: "array"
+        items:
+          type: "string"
+  GHIsochroneResponsePolygon:
+    type: "object"
+    properties:
+      properties:
+        $ref: "#/definitions/GHIsochroneResponsePolygon_properties"
+      type:
+        type: "string"
+      geometry:
+        $ref: "#/definitions/GHIsochroneResponsePolygon_geometry"
+    description: "A found path"
+  GHError:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        format: "int32"
+      message:
+        type: "string"
+      hints:
+        type: "array"
+        items:
+          $ref: "#/definitions/GHError_hints"
+  JobId:
+    type: "object"
+    properties:
+      job_id:
+        type: "string"
+        description: "unique id for your job/request with which you can fetch your\
+          \ solution"
+  Request:
+    type: "object"
+    properties:
+      vehicles:
+        type: "array"
+        description: "An array of vehicles that can be employed"
+        items:
+          $ref: "#/definitions/Vehicle"
+      vehicle_types:
+        type: "array"
+        description: "An array of vehicle types"
+        items:
+          $ref: "#/definitions/VehicleType"
+      services:
+        type: "array"
+        description: "An array of services"
+        items:
+          $ref: "#/definitions/Service"
+      shipments:
+        type: "array"
+        description: "An array of shipments"
+        items:
+          $ref: "#/definitions/Shipment"
+      relations:
+        type: "array"
+        description: "An array of relations"
+        items:
+          $ref: "#/definitions/Relation"
+      algorithm:
+        $ref: "#/definitions/Algorithm"
+      objectives:
+        type: "array"
+        description: "An array of objectives"
+        items:
+          $ref: "#/definitions/Objective"
+      cost_matrices:
+        type: "array"
+        description: "An array of cost matrices"
+        items:
+          $ref: "#/definitions/CostMatrix"
+  Vehicle:
+    type: "object"
+    properties:
+      vehicle_id:
+        type: "string"
+        description: "Unique identifier of vehicle"
+      type_id:
+        type: "string"
+        description: "Unique identifier referring to the available vehicle types"
+      start_address:
+        $ref: "#/definitions/Address"
+      end_address:
+        $ref: "#/definitions/Address"
+      break:
+        $ref: "#/definitions/Break"
+      return_to_depot:
+        type: "boolean"
+        description: "Indicates whether vehicle should return to start address or\
+          \ not. If not, it can end at any service activity."
+      earliest_start:
+        type: "integer"
+        format: "int64"
+        description: "earliest start of vehicle at its start location"
+      latest_end:
+        type: "integer"
+        format: "int64"
+        description: "latest end of vehicle at its end location"
+      skills:
+        type: "array"
+        description: "array of skills"
+        items:
+          type: "string"
+  Algorithm:
+    type: "object"
+    properties:
+      problem_type:
+        type: "string"
+        enum:
+        - "min"
+        - "min-max"
+      objective:
+        type: "string"
+        enum:
+        - "transport_time"
+        - "completion_time"
+  Address:
+    type: "object"
+    properties:
+      location_id:
+        type: "string"
+        description: "Unique identifier of location"
+      lon:
+        type: "number"
+        format: "double"
+        description: "longitude"
+      lat:
+        type: "number"
+        format: "double"
+        description: "latitude"
+  Break:
+    type: "object"
+    properties:
+      earliest:
+        type: "integer"
+        format: "int64"
+        description: "earliest start of break"
+      latest:
+        type: "integer"
+        format: "int64"
+        description: "latest start of break"
+      duration:
+        type: "integer"
+        format: "int64"
+        description: "duration of break"
+      max_driving_time:
+        type: "integer"
+        format: "int64"
+        description: "max driving time without break"
+      initial_driving_time:
+        type: "integer"
+        format: "int64"
+        description: "initial driving time, i.e. the time your driver has already\
+          \ spent for driving"
+      possible_split:
+        type: "array"
+        description: "array of splits"
+        items:
+          type: "integer"
+          format: "int64"
+  VehicleType:
+    type: "object"
+    properties:
+      type_id:
+        type: "string"
+        description: "Unique identifier for the vehicle type"
+      profile:
+        type: "string"
+        example: "car"
+        description: "Profile of vehicle type"
+        enum:
+        - "car"
+        - "bike"
+        - "foot"
+        - "mtb"
+        - "motorcycle"
+        - "racingbike"
+        - "truck"
+        - "small_truck"
+        - "bus"
+      capacity:
+        type: "array"
+        description: "array of capacity dimensions"
+        items:
+          type: "integer"
+          format: "int32"
+      speed_factor:
+        type: "number"
+        format: "double"
+        description: "speed_factor of vehicle type"
+      service_time_factor:
+        type: "number"
+        format: "double"
+        description: "service time factor of vehicle type"
+  Service:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+        description: "Unique identifier of service"
+      type:
+        type: "string"
+        description: "type of service"
+        enum:
+        - "service"
+        - "pickup"
+        - "delivery"
+      priority:
+        type: "integer"
+        format: "int32"
+        description: "priority of service, i.e. 1 = high, 2 = normal, 3 = low. default\
+          \ is 2."
+      name:
+        type: "string"
+        description: "name of service"
+      address:
+        $ref: "#/definitions/Address"
+      duration:
+        type: "integer"
+        format: "int64"
+        description: "duration of service, i.e. time in ms the corresponding activity\
+          \ takes"
+      time_windows:
+        type: "array"
+        description: "array of time windows. currently, only a single time window\
+          \ is allowed"
+        items:
+          $ref: "#/definitions/TimeWindow"
+      size:
+        type: "array"
+        description: "array of capacity dimensions"
+        items:
+          type: "integer"
+          format: "int32"
+      required_skills:
+        type: "array"
+        description: "array of required skills"
+        items:
+          type: "string"
+      allowed_vehicles:
+        type: "array"
+        description: "array of allowed vehicle ids"
+        items:
+          type: "string"
+  Shipment:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+        description: "Unique identifier of service"
+      name:
+        type: "string"
+        description: "name of shipment"
+      priority:
+        type: "integer"
+        format: "int32"
+        description: "priority of service, i.e. 1 = high, 2 = normal, 3 = low. default\
+          \ is 2."
+      pickup:
+        $ref: "#/definitions/Stop"
+      delivery:
+        $ref: "#/definitions/Stop"
+      size:
+        type: "array"
+        description: "array of capacity dimensions"
+        items:
+          type: "integer"
+          format: "int32"
+      required_skills:
+        type: "array"
+        description: "array of required skills"
+        items:
+          type: "string"
+      allowed_vehicles:
+        type: "array"
+        description: "array of allowed vehicle ids"
+        items:
+          type: "string"
+  Stop:
+    type: "object"
+    properties:
+      address:
+        $ref: "#/definitions/Address"
+      duration:
+        type: "integer"
+        format: "int64"
+        description: "duration of stop, i.e. time in ms the corresponding activity\
+          \ takes"
+      time_windows:
+        type: "array"
+        description: "array of time windows. currently, only a single time window\
+          \ is allowed"
+        items:
+          $ref: "#/definitions/TimeWindow"
+  TimeWindow:
+    type: "object"
+    properties:
+      earliest:
+        type: "integer"
+        format: "int64"
+        description: "earliest start time of corresponding activity"
+      latest:
+        type: "integer"
+        format: "int64"
+        description: "latest start time of corresponding activity"
+  Objective:
+    type: "object"
+    properties:
+      type:
+        type: "string"
+        description: "type of objective function, i.e. min or min-max "
+        enum:
+        - "min"
+        - "min-max"
+      value:
+        type: "string"
+        description: "objective function value"
+        enum:
+        - "completion_time"
+        - "transport_time"
+        - "vehicles"
+  CostMatrix:
+    type: "object"
+    properties:
+      type:
+        type: "string"
+        description: "type of cost matrix, currently default or google are supported"
+        enum:
+        - "default"
+        - "google"
+      url:
+        type: "string"
+        description: "URL of matrix service"
+      profile:
+        type: "string"
+        description: "vehicle profile or empty if catch all fallback"
+  Relation:
+    type: "object"
+    properties:
+      type:
+        type: "string"
+        description: "identifier of relation"
+      ids:
+        type: "array"
+        description: "An array of ids that should be related"
+        items:
+          type: "string"
+          description: "id of services or special ids of shipments"
+      vehicle_id:
+        type: "string"
+        description: "vehicle id"
+  Response:
+    type: "object"
+    properties:
+      copyrights:
+        type: "array"
+        items:
+          type: "string"
+          description: "attribution"
+      job_id:
+        type: "string"
+        description: "unique identify of job - which you get when posting your request\
+          \ to the large problem solver"
+      status:
+        type: "string"
+        description: "indicates the current status of the job"
+        enum:
+        - "waiting_in_queue"
+        - "processing"
+        - "finished"
+      waiting_in_queue:
+        type: "integer"
+        format: "int64"
+        description: "waiting time in ms"
+      processing_time:
+        type: "integer"
+        format: "int64"
+        description: "processing time in ms. if job is still waiting in queue, processing_time\
+          \ is 0"
+      solution:
+        description: "the solution. only available if status field indicates finished"
+        $ref: "#/definitions/Solution"
+  Solution:
+    type: "object"
+    properties:
+      costs:
+        type: "integer"
+        format: "int32"
+        description: "overall costs of solution"
+      distance:
+        type: "integer"
+        format: "int32"
+        description: "overall travel distance in meters"
+      time:
+        type: "integer"
+        format: "int64"
+        description: "overall transport time in ms"
+      transport_time:
+        type: "integer"
+        format: "int64"
+        description: "overall transport time in ms"
+      max_operation_time:
+        type: "integer"
+        format: "int64"
+        description: "operation time of the longest route in ms"
+      waiting_time:
+        type: "integer"
+        format: "int64"
+        description: "total waiting time in ms"
+      no_vehicles:
+        type: "integer"
+        format: "int32"
+        description: "number of employed vehicles"
+      no_unassigned:
+        type: "integer"
+        format: "int32"
+        description: "number of jobs that could not be assigned to final solution"
+      routes:
+        type: "array"
+        description: "An array of routes"
+        items:
+          $ref: "#/definitions/Route"
+      unassigned:
+        $ref: "#/definitions/Solution_unassigned"
+  Route:
+    type: "object"
+    properties:
+      vehicle_id:
+        type: "string"
+        description: "id of vehicle that operates route"
+      distance:
+        type: "integer"
+        format: "int64"
+        description: "distance of route in meter"
+      transport_time:
+        type: "integer"
+        format: "int64"
+        description: "transport time of route in ms"
+      completion_time:
+        type: "integer"
+        format: "int64"
+        description: "completion time of route in ms"
+      waiting_time:
+        type: "integer"
+        format: "int64"
+        description: "waiting time of route in ms"
+      activities:
+        type: "array"
+        description: "array of activities"
+        items:
+          $ref: "#/definitions/Activity"
+  Activity:
+    type: "object"
+    properties:
+      type:
+        type: "string"
+        description: "type of activity"
+        enum:
+        - "start"
+        - "end"
+        - "service"
+        - "pickupShipment"
+        - "deliverShipment"
+        - "pickup"
+        - "delivery"
+      id:
+        type: "string"
+        description: "id referring to the underlying service or shipment, i.e. the\
+          \ shipment or service this activity belongs to"
+      location_id:
+        type: "string"
+        description: "id that refers to address"
+      arr_time:
+        type: "integer"
+        format: "int64"
+        description: "arrival time at this activity in ms"
+      end_time:
+        type: "integer"
+        format: "int64"
+        description: "end time of and thus departure time at this activity"
+      waiting_time:
+        type: "integer"
+        format: "int64"
+        description: "waiting time at this activity in ms"
+      distance:
+        type: "integer"
+        format: "int64"
+        description: "cumulated distance from start to this activity in m"
+      driving_time:
+        type: "integer"
+        format: "int64"
+        description: "driving time of driver in ms"
+      load_before:
+        type: "array"
+        description: "Array with size/capacity dimensions before this activity"
+        items:
+          type: "integer"
+          format: "int32"
+          description: "dimension value"
+      load_after:
+        type: "array"
+        description: "Array with size/capacity dimensions after this activity"
+        items:
+          type: "integer"
+          format: "int32"
+          description: "dimension value"
+  GHIsochroneResponsePolygon_properties:
+    properties:
+      bucket:
+        type: "integer"
+        format: "int32"
+  GHIsochroneResponsePolygon_geometry:
+    properties:
+      type:
+        type: "string"
+      coordinates:
+        $ref: "#/definitions/GHResponseCoordinatesArray"
+  GHError_hints:
+    properties:
+      message:
+        type: "string"
+  Solution_unassigned:
+    properties:
+      services:
+        type: "array"
+        description: "An array of ids of unassigned services"
+        items:
+          type: "string"
+          description: "id of unassigned service"
+      shipments:
+        type: "array"
+        description: "An array of ids of unassigned shipments"
+        items:
+          type: "string"
+          description: "id of unassigned shipments"
