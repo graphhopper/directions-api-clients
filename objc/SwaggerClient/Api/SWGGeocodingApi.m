@@ -1,12 +1,13 @@
 #import "SWGGeocodingApi.h"
 #import "SWGQueryParamCollection.h"
+#import "SWGApiClient.h"
 #import "SWGGHError.h"
 #import "SWGGHGeocodingResponse.h"
 
 
 @interface SWGGeocodingApi ()
 
-@property (nonatomic, strong) NSMutableDictionary *defaultHeaders;
+@property (nonatomic, strong, readwrite) NSMutableDictionary *mutableDefaultHeaders;
 
 @end
 
@@ -20,52 +21,31 @@ NSInteger kSWGGeocodingApiMissingParamErrorCode = 234513;
 #pragma mark - Initialize methods
 
 - (instancetype) init {
-    self = [super init];
-    if (self) {
-        SWGConfiguration *config = [SWGConfiguration sharedConfig];
-        if (config.apiClient == nil) {
-            config.apiClient = [[SWGApiClient alloc] init];
-        }
-        _apiClient = config.apiClient;
-        _defaultHeaders = [NSMutableDictionary dictionary];
-    }
-    return self;
+    return [self initWithApiClient:[SWGApiClient sharedClient]];
 }
 
-- (id) initWithApiClient:(SWGApiClient *)apiClient {
+
+-(instancetype) initWithApiClient:(SWGApiClient *)apiClient {
     self = [super init];
     if (self) {
         _apiClient = apiClient;
-        _defaultHeaders = [NSMutableDictionary dictionary];
+        _mutableDefaultHeaders = [NSMutableDictionary dictionary];
     }
     return self;
 }
 
 #pragma mark -
 
-+ (instancetype)sharedAPI {
-    static SWGGeocodingApi *sharedAPI;
-    static dispatch_once_t once;
-    dispatch_once(&once, ^{
-        sharedAPI = [[self alloc] init];
-    });
-    return sharedAPI;
-}
-
 -(NSString*) defaultHeaderForKey:(NSString*)key {
-    return self.defaultHeaders[key];
-}
-
--(void) addHeader:(NSString*)value forKey:(NSString*)key {
-    [self setDefaultHeaderValue:value forKey:key];
+    return self.mutableDefaultHeaders[key];
 }
 
 -(void) setDefaultHeaderValue:(NSString*) value forKey:(NSString*)key {
-    [self.defaultHeaders setValue:value forKey:key];
+    [self.mutableDefaultHeaders setValue:value forKey:key];
 }
 
--(NSUInteger) requestQueueSize {
-    return [SWGApiClient requestQueueSize];
+-(NSDictionary *)defaultHeaders {
+    return self.mutableDefaultHeaders;
 }
 
 #pragma mark - Api Methods
@@ -73,24 +53,23 @@ NSInteger kSWGGeocodingApiMissingParamErrorCode = 234513;
 ///
 /// Execute a Geocoding request
 /// This endpoint provides forward and reverse geocoding. For more details, review the official documentation at: https://graphhopper.com/api/1/docs/geocoding/ 
-/// @param key Get your key at graphhopper.com 
+///  @param key Get your key at graphhopper.com 
 ///
-/// @param q If you do forward geocoding, then this would be a textual description of the adress you are looking for. If you do reverse geocoding this would be in lat,lon. (optional)
+///  @param q If you do forward geocoding, then this would be a textual description of the adress you are looking for. If you do reverse geocoding this would be in lat,lon. (optional)
 ///
-/// @param locale Display the search results for the specified locale. Currently French (fr), English (en), German (de) and Italian (it) are supported. If the locale wasn't found the default (en) is used. (optional)
+///  @param locale Display the search results for the specified locale. Currently French (fr), English (en), German (de) and Italian (it) are supported. If the locale wasn't found the default (en) is used. (optional)
 ///
-/// @param limit Specify the maximum number of returned results (optional)
+///  @param limit Specify the maximum number of returned results (optional)
 ///
-/// @param reverse Set to true to do a reverse Geocoding request (optional)
+///  @param reverse Set to true to do a reverse Geocoding request (optional)
 ///
-/// @param point The location bias in the format 'latitude,longitude' e.g. point=45.93272,11.58803 (optional)
+///  @param point The location bias in the format 'latitude,longitude' e.g. point=45.93272,11.58803 (optional)
 ///
-/// @param provider Can be either, default, nominatim, opencagedata (optional)
+///  @param provider Can be either, default, nominatim, opencagedata (optional)
 ///
-///  code:200 message:"An array found locations",
-///  code:0 message:"Unexpected error"
-/// @return SWGGHGeocodingResponse*
--(NSNumber*) geocodeGetWithKey: (NSString*) key
+///  @returns SWGGHGeocodingResponse*
+///
+-(NSURLSessionTask*) geocodeGetWithKey: (NSString*) key
     q: (NSString*) q
     locale: (NSString*) locale
     limit: (NSNumber*) limit
@@ -175,9 +154,9 @@ NSInteger kSWGGeocodingApiMissingParamErrorCode = 234513;
                                 if(handler) {
                                     handler((SWGGHGeocodingResponse*)data, error);
                                 }
-                           }
-          ];
+                            }];
 }
+
 
 
 @end

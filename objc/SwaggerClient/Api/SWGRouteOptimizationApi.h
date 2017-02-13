@@ -23,33 +23,39 @@
 extern NSString* kSWGRouteOptimizationApiErrorDomain;
 extern NSInteger kSWGRouteOptimizationApiMissingParamErrorCode;
 
-+(instancetype) sharedAPI;
+-(instancetype) initWithApiClient:(SWGApiClient *)apiClient NS_DESIGNATED_INITIALIZER;
 
 /// Return the solution associated to the jobId
 /// This endpoint returns the solution of a large problems. You can fetch it with the job_id, you have been sent. 
 ///
 /// @param key your API key
 /// @param jobId Request solution with jobId
+/// 
 ///  code:200 message:"A response containing the solution",
 ///  code:400 message:"Error occurred on client side such as invalid input.",
 ///  code:500 message:"Error occurred on server side."
+///
 /// @return SWGResponse*
--(NSNumber*) getSolutionWithKey: (NSString*) key
+-(NSURLSessionTask*) getSolutionWithKey: (NSString*) key
     jobId: (NSString*) jobId
     completionHandler: (void (^)(SWGResponse* output, NSError* error)) handler;
+
 
 /// Solves vehicle routing problems
 /// This endpoint for solving vehicle routing problems, i.e. traveling salesman or vehicle routing problems, and returns the solution. 
 ///
 /// @param key your API key
 /// @param body Request object that contains the problem to be solved
+/// 
 ///  code:200 message:"A jobId you can use to retrieve your solution from server - see solution endpoint.",
 ///  code:400 message:"Error occurred when reading client request. Request is invalid.",
 ///  code:500 message:"Error occurred on server side."
+///
 /// @return SWGJobId*
--(NSNumber*) postVrpWithKey: (NSString*) key
+-(NSURLSessionTask*) postVrpWithKey: (NSString*) key
     body: (SWGRequest*) body
     completionHandler: (void (^)(SWGJobId* output, NSError* error)) handler;
+
 
 
 @end

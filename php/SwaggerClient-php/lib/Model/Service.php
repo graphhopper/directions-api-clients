@@ -191,9 +191,10 @@ class Service implements ArrayAccess
     public function listInvalidProperties()
     {
         $invalid_properties = [];
+
         $allowed_values = ["service", "pickup", "delivery"];
         if (!in_array($this->container['type'], $allowed_values)) {
-            $invalid_properties[] = "invalid value for 'type', must be one of #{allowed_values}.";
+            $invalid_properties[] = "invalid value for 'type', must be one of 'service', 'pickup', 'delivery'.";
         }
 
         return $invalid_properties;
@@ -203,10 +204,11 @@ class Service implements ArrayAccess
      * validate all the properties in the model
      * return true if all passed
      *
-     * @return bool True if all properteis are valid
+     * @return bool True if all properties are valid
      */
     public function valid()
     {
+
         $allowed_values = ["service", "pickup", "delivery"];
         if (!in_array($this->container['type'], $allowed_values)) {
             return false;

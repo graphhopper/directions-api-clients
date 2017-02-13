@@ -170,6 +170,7 @@ class GHResponseInstruction implements ArrayAccess
     public function listInvalidProperties()
     {
         $invalid_properties = [];
+
         return $invalid_properties;
     }
 
@@ -177,10 +178,11 @@ class GHResponseInstruction implements ArrayAccess
      * validate all the properties in the model
      * return true if all passed
      *
-     * @return bool True if all properteis are valid
+     * @return bool True if all properties are valid
      */
     public function valid()
     {
+
         return true;
     }
 
@@ -364,7 +366,7 @@ class GHResponseInstruction implements ArrayAccess
 
     /**
      * Sets turn_angle
-     * @param double $turn_angle optional - Only available for USE_ROUNDABOUT instructions. The radian of the route within the roundabout - 0<r<2*PI for clockwise and -2PI<r<0 for counterclockwise transit. Null if the direction of rotation is undefined.
+     * @param double $turn_angle optional - Only available for USE_ROUNDABOUT instructions. The radian of the route within the roundabout - 0&lt;r&lt;2*PI for clockwise and -2PI&lt;r&lt;0 for counterclockwise transit. Null if the direction of rotation is undefined.
      * @return $this
      */
     public function setTurnAngle($turn_angle)

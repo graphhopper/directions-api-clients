@@ -178,9 +178,10 @@ class VehicleType implements ArrayAccess
     public function listInvalidProperties()
     {
         $invalid_properties = [];
+
         $allowed_values = ["car", "bike", "foot", "mtb", "motorcycle", "racingbike", "truck", "small_truck", "bus"];
         if (!in_array($this->container['profile'], $allowed_values)) {
-            $invalid_properties[] = "invalid value for 'profile', must be one of #{allowed_values}.";
+            $invalid_properties[] = "invalid value for 'profile', must be one of 'car', 'bike', 'foot', 'mtb', 'motorcycle', 'racingbike', 'truck', 'small_truck', 'bus'.";
         }
 
         return $invalid_properties;
@@ -190,10 +191,11 @@ class VehicleType implements ArrayAccess
      * validate all the properties in the model
      * return true if all passed
      *
-     * @return bool True if all properteis are valid
+     * @return bool True if all properties are valid
      */
     public function valid()
     {
+
         $allowed_values = ["car", "bike", "foot", "mtb", "motorcycle", "racingbike", "truck", "small_truck", "bus"];
         if (!in_array($this->container['profile'], $allowed_values)) {
             return false;

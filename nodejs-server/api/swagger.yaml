@@ -291,8 +291,8 @@ paths:
       - name: "from_point"
         in: "query"
         description: "The starting points for the routes. E.g. if you want to calculate\
-          \ the three routes A->1, A->2, A->3 then you have one from_point parameter\
-          \ and three to_point parameters. Is a string with the format latitude,longitude."
+          \ the three routes A-&gt;1, A-&gt;2, A-&gt;3 then you have one from_point\
+          \ parameter and three to_point parameters. Is a string with the format latitude,longitude."
         required: false
         type: "string"
       - name: "to_point"
@@ -303,7 +303,7 @@ paths:
         type: "string"
       - name: "out_array"
         in: "query"
-        description: "pecifies which arrays should be included in the response. Specify\
+        description: "Specifies which arrays should be included in the response. Specify\
           \ one or more of the following options 'weights', 'times', 'distances'.\
           \ To specify more than one array use e.g. out_array=times&out_array=distances.\
           \ The units of the entries of distances are meters, of times are seconds\
@@ -564,17 +564,17 @@ definitions:
       from_points:
         type: "string"
         description: "The starting points for the routes. E.g. if you want to calculate\
-          \ the three routes A->1, A->2, A->3 then you have one from_point parameter\
-          \ and three to_point parameters. Is a string with the format longitude,latitude."
+          \ the three routes A-&gt;1, A-&gt;2, A-&gt;3 then you have one from_point\
+          \ parameter and three to_point parameters. Is a string with the format longitude,latitude."
       to_points:
         type: "string"
         description: "The destination points for the routes. Is a string with the\
           \ format longitude,latitude."
       out_arrays:
         type: "array"
-        description: "pecifies which arrays should be included in the response. Specify\
+        description: "Specifies which arrays should be included in the response. Specify\
           \ one or more of the following options 'weights', 'times', 'distances'.\
-          \ To specify more than one array use e.g. out_array=times&out_array=distances.\
+          \ To specify more than one array use e.g. out_array=times&amp;out_array=distances.\
           \ The units of the entries of distances are meters, of times are seconds\
           \ and of weights is arbitrary and it can differ for different vehicles or\
           \ versions of this API."
@@ -727,9 +727,9 @@ definitions:
         type: "number"
         format: "double"
         description: "optional - Only available for USE_ROUNDABOUT instructions. The\
-          \ radian of the route within the roundabout - 0<r<2*PI for clockwise and\
-          \ -2PI<r<0 for counterclockwise transit. Null if the direction of rotation\
-          \ is undefined."
+          \ radian of the route within the roundabout - 0&lt;r&lt;2*PI for clockwise\
+          \ and -2PI&lt;r&lt;0 for counterclockwise transit. Null if the direction\
+          \ of rotation is undefined."
   GHResponseInfo:
     type: "object"
     properties:

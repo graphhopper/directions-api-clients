@@ -1,5 +1,6 @@
 #import "SWGRouteOptimizationApi.h"
 #import "SWGQueryParamCollection.h"
+#import "SWGApiClient.h"
 #import "SWGJobId.h"
 #import "SWGRequest.h"
 #import "SWGResponse.h"
@@ -7,7 +8,7 @@
 
 @interface SWGRouteOptimizationApi ()
 
-@property (nonatomic, strong) NSMutableDictionary *defaultHeaders;
+@property (nonatomic, strong, readwrite) NSMutableDictionary *mutableDefaultHeaders;
 
 @end
 
@@ -21,52 +22,31 @@ NSInteger kSWGRouteOptimizationApiMissingParamErrorCode = 234513;
 #pragma mark - Initialize methods
 
 - (instancetype) init {
-    self = [super init];
-    if (self) {
-        SWGConfiguration *config = [SWGConfiguration sharedConfig];
-        if (config.apiClient == nil) {
-            config.apiClient = [[SWGApiClient alloc] init];
-        }
-        _apiClient = config.apiClient;
-        _defaultHeaders = [NSMutableDictionary dictionary];
-    }
-    return self;
+    return [self initWithApiClient:[SWGApiClient sharedClient]];
 }
 
-- (id) initWithApiClient:(SWGApiClient *)apiClient {
+
+-(instancetype) initWithApiClient:(SWGApiClient *)apiClient {
     self = [super init];
     if (self) {
         _apiClient = apiClient;
-        _defaultHeaders = [NSMutableDictionary dictionary];
+        _mutableDefaultHeaders = [NSMutableDictionary dictionary];
     }
     return self;
 }
 
 #pragma mark -
 
-+ (instancetype)sharedAPI {
-    static SWGRouteOptimizationApi *sharedAPI;
-    static dispatch_once_t once;
-    dispatch_once(&once, ^{
-        sharedAPI = [[self alloc] init];
-    });
-    return sharedAPI;
-}
-
 -(NSString*) defaultHeaderForKey:(NSString*)key {
-    return self.defaultHeaders[key];
-}
-
--(void) addHeader:(NSString*)value forKey:(NSString*)key {
-    [self setDefaultHeaderValue:value forKey:key];
+    return self.mutableDefaultHeaders[key];
 }
 
 -(void) setDefaultHeaderValue:(NSString*) value forKey:(NSString*)key {
-    [self.defaultHeaders setValue:value forKey:key];
+    [self.mutableDefaultHeaders setValue:value forKey:key];
 }
 
--(NSUInteger) requestQueueSize {
-    return [SWGApiClient requestQueueSize];
+-(NSDictionary *)defaultHeaders {
+    return self.mutableDefaultHeaders;
 }
 
 #pragma mark - Api Methods
@@ -74,15 +54,13 @@ NSInteger kSWGRouteOptimizationApiMissingParamErrorCode = 234513;
 ///
 /// Return the solution associated to the jobId
 /// This endpoint returns the solution of a large problems. You can fetch it with the job_id, you have been sent. 
-/// @param key your API key 
+///  @param key your API key 
 ///
-/// @param jobId Request solution with jobId 
+///  @param jobId Request solution with jobId 
 ///
-///  code:200 message:"A response containing the solution",
-///  code:400 message:"Error occurred on client side such as invalid input.",
-///  code:500 message:"Error occurred on server side."
-/// @return SWGResponse*
--(NSNumber*) getSolutionWithKey: (NSString*) key
+///  @returns SWGResponse*
+///
+-(NSURLSessionTask*) getSolutionWithKey: (NSString*) key
     jobId: (NSString*) jobId
     completionHandler: (void (^)(SWGResponse* output, NSError* error)) handler {
     // verify the required parameter 'key' is set
@@ -158,22 +136,19 @@ NSInteger kSWGRouteOptimizationApiMissingParamErrorCode = 234513;
                                 if(handler) {
                                     handler((SWGResponse*)data, error);
                                 }
-                           }
-          ];
+                            }];
 }
 
 ///
 /// Solves vehicle routing problems
 /// This endpoint for solving vehicle routing problems, i.e. traveling salesman or vehicle routing problems, and returns the solution. 
-/// @param key your API key 
+///  @param key your API key 
 ///
-/// @param body Request object that contains the problem to be solved 
+///  @param body Request object that contains the problem to be solved 
 ///
-///  code:200 message:"A jobId you can use to retrieve your solution from server - see solution endpoint.",
-///  code:400 message:"Error occurred when reading client request. Request is invalid.",
-///  code:500 message:"Error occurred on server side."
-/// @return SWGJobId*
--(NSNumber*) postVrpWithKey: (NSString*) key
+///  @returns SWGJobId*
+///
+-(NSURLSessionTask*) postVrpWithKey: (NSString*) key
     body: (SWGRequest*) body
     completionHandler: (void (^)(SWGJobId* output, NSError* error)) handler {
     // verify the required parameter 'key' is set
@@ -247,9 +222,9 @@ NSInteger kSWGRouteOptimizationApiMissingParamErrorCode = 234513;
                                 if(handler) {
                                     handler((SWGJobId*)data, error);
                                 }
-                           }
-          ];
+                            }];
 }
+
 
 
 @end

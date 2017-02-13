@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace directions-api-client;
+namespace Swagger\Client\directions-api-client;
 
 use \Swagger\Client\ApiClient;
 use \Swagger\Client\ApiException;
@@ -196,7 +196,7 @@ class IsochroneApi
                     $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\GHIsochroneResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
-                default:
+                case 0:
                     $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\GHError', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;

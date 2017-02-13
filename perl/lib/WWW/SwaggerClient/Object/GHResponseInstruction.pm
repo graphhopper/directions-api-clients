@@ -201,7 +201,7 @@ __PACKAGE__->method_documentation({
     'turn_angle' => {
     	datatype => 'double',
     	base_name => 'turn_angle',
-    	description => 'optional - Only available for USE_ROUNDABOUT instructions. The radian of the route within the roundabout - 0&lt;r&lt;2*PI for clockwise and -2PI&lt;r&lt;0 for counterclockwise transit. Null if the direction of rotation is undefined.',
+    	description => 'optional - Only available for USE_ROUNDABOUT instructions. The radian of the route within the roundabout - 0&amp;lt;r&amp;lt;2*PI for clockwise and -2PI&amp;lt;r&amp;lt;0 for counterclockwise transit. Null if the direction of rotation is undefined.',
     	format => '',
     	read_only => '',
     		},

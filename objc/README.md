@@ -39,7 +39,7 @@ Import the following:
 
 ```objc
 #import <SwaggerClient/SWGApiClient.h>
-#import <SwaggerClient/SWGConfiguration.h>
+#import <SwaggerClient/SWGDefaultConfiguration.h>
 // load models
 #import <SwaggerClient/SWGActivity.h>
 #import <SwaggerClient/SWGAddress.h>

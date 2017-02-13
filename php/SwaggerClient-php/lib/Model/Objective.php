@@ -165,14 +165,15 @@ class Objective implements ArrayAccess
     public function listInvalidProperties()
     {
         $invalid_properties = [];
+
         $allowed_values = ["min", "min-max"];
         if (!in_array($this->container['type'], $allowed_values)) {
-            $invalid_properties[] = "invalid value for 'type', must be one of #{allowed_values}.";
+            $invalid_properties[] = "invalid value for 'type', must be one of 'min', 'min-max'.";
         }
 
         $allowed_values = ["completion_time", "transport_time", "vehicles"];
         if (!in_array($this->container['value'], $allowed_values)) {
-            $invalid_properties[] = "invalid value for 'value', must be one of #{allowed_values}.";
+            $invalid_properties[] = "invalid value for 'value', must be one of 'completion_time', 'transport_time', 'vehicles'.";
         }
 
         return $invalid_properties;
@@ -182,10 +183,11 @@ class Objective implements ArrayAccess
      * validate all the properties in the model
      * return true if all passed
      *
-     * @return bool True if all properteis are valid
+     * @return bool True if all properties are valid
      */
     public function valid()
     {
+
         $allowed_values = ["min", "min-max"];
         if (!in_array($this->container['type'], $allowed_values)) {
             return false;

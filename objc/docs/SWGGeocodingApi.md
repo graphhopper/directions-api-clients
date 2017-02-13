@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 # **geocodeGet**
 ```objc
--(NSNumber*) geocodeGetWithKey: (NSString*) key
+-(NSURLSessionTask*) geocodeGetWithKey: (NSString*) key
     q: (NSString*) q
     locale: (NSString*) locale
     limit: (NSNumber*) limit

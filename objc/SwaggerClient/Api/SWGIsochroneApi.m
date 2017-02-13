@@ -1,12 +1,13 @@
 #import "SWGIsochroneApi.h"
 #import "SWGQueryParamCollection.h"
+#import "SWGApiClient.h"
 #import "SWGGHError.h"
 #import "SWGGHIsochroneResponse.h"
 
 
 @interface SWGIsochroneApi ()
 
-@property (nonatomic, strong) NSMutableDictionary *defaultHeaders;
+@property (nonatomic, strong, readwrite) NSMutableDictionary *mutableDefaultHeaders;
 
 @end
 
@@ -20,52 +21,31 @@ NSInteger kSWGIsochroneApiMissingParamErrorCode = 234513;
 #pragma mark - Initialize methods
 
 - (instancetype) init {
-    self = [super init];
-    if (self) {
-        SWGConfiguration *config = [SWGConfiguration sharedConfig];
-        if (config.apiClient == nil) {
-            config.apiClient = [[SWGApiClient alloc] init];
-        }
-        _apiClient = config.apiClient;
-        _defaultHeaders = [NSMutableDictionary dictionary];
-    }
-    return self;
+    return [self initWithApiClient:[SWGApiClient sharedClient]];
 }
 
-- (id) initWithApiClient:(SWGApiClient *)apiClient {
+
+-(instancetype) initWithApiClient:(SWGApiClient *)apiClient {
     self = [super init];
     if (self) {
         _apiClient = apiClient;
-        _defaultHeaders = [NSMutableDictionary dictionary];
+        _mutableDefaultHeaders = [NSMutableDictionary dictionary];
     }
     return self;
 }
 
 #pragma mark -
 
-+ (instancetype)sharedAPI {
-    static SWGIsochroneApi *sharedAPI;
-    static dispatch_once_t once;
-    dispatch_once(&once, ^{
-        sharedAPI = [[self alloc] init];
-    });
-    return sharedAPI;
-}
-
 -(NSString*) defaultHeaderForKey:(NSString*)key {
-    return self.defaultHeaders[key];
-}
-
--(void) addHeader:(NSString*)value forKey:(NSString*)key {
-    [self setDefaultHeaderValue:value forKey:key];
+    return self.mutableDefaultHeaders[key];
 }
 
 -(void) setDefaultHeaderValue:(NSString*) value forKey:(NSString*)key {
-    [self.defaultHeaders setValue:value forKey:key];
+    [self.mutableDefaultHeaders setValue:value forKey:key];
 }
 
--(NSUInteger) requestQueueSize {
-    return [SWGApiClient requestQueueSize];
+-(NSDictionary *)defaultHeaders {
+    return self.mutableDefaultHeaders;
 }
 
 #pragma mark - Api Methods
@@ -73,22 +53,21 @@ NSInteger kSWGIsochroneApiMissingParamErrorCode = 234513;
 ///
 /// Isochrone Request
 /// The GraphHopper Isochrone API allows calculating an isochrone of a locations means to calculate 'a line connecting points at which a vehicle arrives at the same time,' see [Wikipedia](http://en.wikipedia.org/wiki/Isochrone_map). It is also called **reachability** or **walkability**. 
-/// @param point Specify the start coordinate 
+///  @param point Specify the start coordinate 
 ///
-/// @param key Get your key at graphhopper.com 
+///  @param key Get your key at graphhopper.com 
 ///
-/// @param timeLimit Specify which time the vehicle should travel. In seconds. The maximum depends on the subscribed package. (optional, default to 600)
+///  @param timeLimit Specify which time the vehicle should travel. In seconds. The maximum depends on the subscribed package. (optional, default to 600)
 ///
-/// @param vehicle Possible vehicles are bike, car, foot and [more](https://graphhopper.com/api/1/docs/supported-vehicle-profiles/) (optional, default to car)
+///  @param vehicle Possible vehicles are bike, car, foot and [more](https://graphhopper.com/api/1/docs/supported-vehicle-profiles/) (optional, default to car)
 ///
-/// @param buckets For how many sub intervals an additional polygon should be calculated. (optional, default to 1)
+///  @param buckets For how many sub intervals an additional polygon should be calculated. (optional, default to 1)
 ///
-/// @param reverseFlow If `false` the flow goes from point to the polygon, if `true` the flow goes from the polygon \"inside\" to the point. Example usage for `false`&#58; *How many potential customer can be reached within 30min travel time from your store* vs. `true`&#58; *How many customers can reach your store within 30min travel time.* (optional, default to false)
+///  @param reverseFlow If `false` the flow goes from point to the polygon, if `true` the flow goes from the polygon \"inside\" to the point. Example usage for `false`&#58; *How many potential customer can be reached within 30min travel time from your store* vs. `true`&#58; *How many customers can reach your store within 30min travel time.* (optional, default to false)
 ///
-///  code:200 message:"Isochrone Result",
-///  code:0 message:"Unexpected Error"
-/// @return SWGGHIsochroneResponse*
--(NSNumber*) isochroneGetWithPoint: (NSString*) point
+///  @returns SWGGHIsochroneResponse*
+///
+-(NSURLSessionTask*) isochroneGetWithPoint: (NSString*) point
     key: (NSString*) key
     timeLimit: (NSNumber*) timeLimit
     vehicle: (NSString*) vehicle
@@ -180,9 +159,9 @@ NSInteger kSWGIsochroneApiMissingParamErrorCode = 234513;
                                 if(handler) {
                                     handler((SWGGHIsochroneResponse*)data, error);
                                 }
-                           }
-          ];
+                            }];
 }
+
 
 
 @end

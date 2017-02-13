@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace directions-api-client;
+namespace Swagger\Client\directions-api-client;
 
 use \Swagger\Client\ApiClient;
 use \Swagger\Client\ApiException;

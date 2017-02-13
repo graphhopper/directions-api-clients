@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 # **isochroneGet**
 ```objc
--(NSNumber*) isochroneGetWithPoint: (NSString*) point
+-(NSURLSessionTask*) isochroneGetWithPoint: (NSString*) point
     key: (NSString*) key
     timeLimit: (NSNumber*) timeLimit
     vehicle: (NSString*) vehicle

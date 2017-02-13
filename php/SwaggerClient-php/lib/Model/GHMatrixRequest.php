@@ -150,6 +150,7 @@ class GHMatrixRequest implements ArrayAccess
     public function listInvalidProperties()
     {
         $invalid_properties = [];
+
         return $invalid_properties;
     }
 
@@ -157,10 +158,11 @@ class GHMatrixRequest implements ArrayAccess
      * validate all the properties in the model
      * return true if all passed
      *
-     * @return bool True if all properteis are valid
+     * @return bool True if all properties are valid
      */
     public function valid()
     {
+
         return true;
     }
 
@@ -197,7 +199,7 @@ class GHMatrixRequest implements ArrayAccess
 
     /**
      * Sets from_points
-     * @param string $from_points The starting points for the routes. E.g. if you want to calculate the three routes A->1, A->2, A->3 then you have one from_point parameter and three to_point parameters. Is a string with the format longitude,latitude.
+     * @param string $from_points The starting points for the routes. E.g. if you want to calculate the three routes A-&gt;1, A-&gt;2, A-&gt;3 then you have one from_point parameter and three to_point parameters. Is a string with the format longitude,latitude.
      * @return $this
      */
     public function setFromPoints($from_points)
@@ -239,7 +241,7 @@ class GHMatrixRequest implements ArrayAccess
 
     /**
      * Sets out_arrays
-     * @param string[] $out_arrays pecifies which arrays should be included in the response. Specify one or more of the following options 'weights', 'times', 'distances'. To specify more than one array use e.g. out_array=times&out_array=distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API.
+     * @param string[] $out_arrays Specifies which arrays should be included in the response. Specify one or more of the following options 'weights', 'times', 'distances'. To specify more than one array use e.g. out_array=times&amp;out_array=distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API.
      * @return $this
      */
     public function setOutArrays($out_arrays)

@@ -26,7 +26,7 @@ import java.util.List;
  * A found path
  */
 @ApiModel(description = "A found path")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-01-25T10:05:28.496+11:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-02-14T10:29:08.470+11:00")
 public class GHRouteResponsePath {
   @SerializedName("distance")
   private Double distance = null;

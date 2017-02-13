@@ -11,6 +11,6 @@ Name | Type | Description | Notes
 **annotation_text** | **String** | optional - A text describing the instruction in more detail, e.g. like surface of the way, warnings or involved costs. | [optional] 
 **annotation_importance** | **Integer** | optional - 0 stands for INFO, 1 for warning, 2 for costs, 3 for costs and warning | [optional] 
 **exit_number** | **Integer** | optional - Only available for USE_ROUNDABOUT instructions. The count of exits at which the route leaves the roundabout. | [optional] 
-**turn_angle** | **Float** | optional - Only available for USE_ROUNDABOUT instructions. The radian of the route within the roundabout - 0&lt;r&lt;2*PI for clockwise and -2PI&lt;r&lt;0 for counterclockwise transit. Null if the direction of rotation is undefined. | [optional] 
+**turn_angle** | **Float** | optional - Only available for USE_ROUNDABOUT instructions. The radian of the route within the roundabout - 0&amp;lt;r&amp;lt;2*PI for clockwise and -2PI&amp;lt;r&amp;lt;0 for counterclockwise transit. Null if the direction of rotation is undefined. | [optional] 
 
 

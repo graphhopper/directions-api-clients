@@ -22,7 +22,7 @@
 extern NSString* kSWGIsochroneApiErrorDomain;
 extern NSInteger kSWGIsochroneApiMissingParamErrorCode;
 
-+(instancetype) sharedAPI;
+-(instancetype) initWithApiClient:(SWGApiClient *)apiClient NS_DESIGNATED_INITIALIZER;
 
 /// Isochrone Request
 /// The GraphHopper Isochrone API allows calculating an isochrone of a locations means to calculate 'a line connecting points at which a vehicle arrives at the same time,' see [Wikipedia](http://en.wikipedia.org/wiki/Isochrone_map). It is also called **reachability** or **walkability**. 
@@ -32,17 +32,20 @@ extern NSInteger kSWGIsochroneApiMissingParamErrorCode;
 /// @param timeLimit Specify which time the vehicle should travel. In seconds. The maximum depends on the subscribed package. (optional) (default to 600)
 /// @param vehicle Possible vehicles are bike, car, foot and [more](https://graphhopper.com/api/1/docs/supported-vehicle-profiles/) (optional) (default to car)
 /// @param buckets For how many sub intervals an additional polygon should be calculated. (optional) (default to 1)
-/// @param reverseFlow If `false` the flow goes from point to the polygon, if `true` the flow goes from the polygon \"inside\" to the point. Example usage for `false`&#58; *How many potential customer can be reached within 30min travel time from your store* vs. `true`&#58; *How many customers can reach your store within 30min travel time.* (optional) (default to false)
+/// @param reverseFlow If &#x60;false&#x60; the flow goes from point to the polygon, if &#x60;true&#x60; the flow goes from the polygon \&quot;inside\&quot; to the point. Example usage for &#x60;false&#x60;&amp;#58; *How many potential customer can be reached within 30min travel time from your store* vs. &#x60;true&#x60;&amp;#58; *How many customers can reach your store within 30min travel time.* (optional) (default to false)
+/// 
 ///  code:200 message:"Isochrone Result",
 ///  code:0 message:"Unexpected Error"
+///
 /// @return SWGGHIsochroneResponse*
--(NSNumber*) isochroneGetWithPoint: (NSString*) point
+-(NSURLSessionTask*) isochroneGetWithPoint: (NSString*) point
     key: (NSString*) key
     timeLimit: (NSNumber*) timeLimit
     vehicle: (NSString*) vehicle
     buckets: (NSNumber*) buckets
     reverseFlow: (NSNumber*) reverseFlow
     completionHandler: (void (^)(SWGGHIsochroneResponse* output, NSError* error)) handler;
+
 
 
 @end

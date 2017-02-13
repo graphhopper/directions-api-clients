@@ -23,7 +23,7 @@ import java.util.List;
 /**
  * GHResponseInstruction
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-01-25T10:05:28.496+11:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-02-14T10:29:08.470+11:00")
 public class GHResponseInstruction {
   @SerializedName("text")
   private String text = null;
@@ -207,10 +207,10 @@ public class GHResponseInstruction {
   }
 
    /**
-   * optional - Only available for USE_ROUNDABOUT instructions. The radian of the route within the roundabout - 0<r<2*PI for clockwise and -2PI<r<0 for counterclockwise transit. Null if the direction of rotation is undefined.
+   * optional - Only available for USE_ROUNDABOUT instructions. The radian of the route within the roundabout - 0&lt;r&lt;2*PI for clockwise and -2PI&lt;r&lt;0 for counterclockwise transit. Null if the direction of rotation is undefined.
    * @return turnAngle
   **/
-  @ApiModelProperty(example = "null", value = "optional - Only available for USE_ROUNDABOUT instructions. The radian of the route within the roundabout - 0<r<2*PI for clockwise and -2PI<r<0 for counterclockwise transit. Null if the direction of rotation is undefined.")
+  @ApiModelProperty(example = "null", value = "optional - Only available for USE_ROUNDABOUT instructions. The radian of the route within the roundabout - 0&lt;r&lt;2*PI for clockwise and -2PI&lt;r&lt;0 for counterclockwise transit. Null if the direction of rotation is undefined.")
   public Double getTurnAngle() {
     return turnAngle;
   }

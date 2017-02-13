@@ -152,7 +152,7 @@ __PACKAGE__->method_documentation({
     'from_points' => {
     	datatype => 'string',
     	base_name => 'from_points',
-    	description => 'The starting points for the routes. E.g. if you want to calculate the three routes A-&gt;1, A-&gt;2, A-&gt;3 then you have one from_point parameter and three to_point parameters. Is a string with the format longitude,latitude.',
+    	description => 'The starting points for the routes. E.g. if you want to calculate the three routes A-&amp;gt;1, A-&amp;gt;2, A-&amp;gt;3 then you have one from_point parameter and three to_point parameters. Is a string with the format longitude,latitude.',
     	format => '',
     	read_only => '',
     		},
@@ -166,7 +166,7 @@ __PACKAGE__->method_documentation({
     'out_arrays' => {
     	datatype => 'ARRAY[string]',
     	base_name => 'out_arrays',
-    	description => 'pecifies which arrays should be included in the response. Specify one or more of the following options &#39;weights&#39;, &#39;times&#39;, &#39;distances&#39;. To specify more than one array use e.g. out_array&#x3D;times&amp;out_array&#x3D;distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API.',
+    	description => 'Specifies which arrays should be included in the response. Specify one or more of the following options &#39;weights&#39;, &#39;times&#39;, &#39;distances&#39;. To specify more than one array use e.g. out_array&#x3D;times&amp;amp;out_array&#x3D;distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API.',
     	format => '',
     	read_only => '',
     		},

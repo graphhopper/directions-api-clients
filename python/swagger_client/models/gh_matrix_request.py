@@ -79,7 +79,7 @@ class GHMatrixRequest(object):
     def from_points(self):
         """
         Gets the from_points of this GHMatrixRequest.
-        The starting points for the routes. E.g. if you want to calculate the three routes A->1, A->2, A->3 then you have one from_point parameter and three to_point parameters. Is a string with the format longitude,latitude.
+        The starting points for the routes. E.g. if you want to calculate the three routes A-&gt;1, A-&gt;2, A-&gt;3 then you have one from_point parameter and three to_point parameters. Is a string with the format longitude,latitude.
 
         :return: The from_points of this GHMatrixRequest.
         :rtype: str
@@ -90,7 +90,7 @@ class GHMatrixRequest(object):
     def from_points(self, from_points):
         """
         Sets the from_points of this GHMatrixRequest.
-        The starting points for the routes. E.g. if you want to calculate the three routes A->1, A->2, A->3 then you have one from_point parameter and three to_point parameters. Is a string with the format longitude,latitude.
+        The starting points for the routes. E.g. if you want to calculate the three routes A-&gt;1, A-&gt;2, A-&gt;3 then you have one from_point parameter and three to_point parameters. Is a string with the format longitude,latitude.
 
         :param from_points: The from_points of this GHMatrixRequest.
         :type: str
@@ -125,7 +125,7 @@ class GHMatrixRequest(object):
     def out_arrays(self):
         """
         Gets the out_arrays of this GHMatrixRequest.
-        pecifies which arrays should be included in the response. Specify one or more of the following options 'weights', 'times', 'distances'. To specify more than one array use e.g. out_array=times&out_array=distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API.
+        Specifies which arrays should be included in the response. Specify one or more of the following options 'weights', 'times', 'distances'. To specify more than one array use e.g. out_array=times&amp;out_array=distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API.
 
         :return: The out_arrays of this GHMatrixRequest.
         :rtype: list[str]
@@ -136,7 +136,7 @@ class GHMatrixRequest(object):
     def out_arrays(self, out_arrays):
         """
         Sets the out_arrays of this GHMatrixRequest.
-        pecifies which arrays should be included in the response. Specify one or more of the following options 'weights', 'times', 'distances'. To specify more than one array use e.g. out_array=times&out_array=distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API.
+        Specifies which arrays should be included in the response. Specify one or more of the following options 'weights', 'times', 'distances'. To specify more than one array use e.g. out_array=times&amp;out_array=distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API.
 
         :param out_arrays: The out_arrays of this GHMatrixRequest.
         :type: list[str]
@@ -209,6 +209,9 @@ class GHMatrixRequest(object):
         """
         Returns true if both objects are equal
         """
+        if not isinstance(other, GHMatrixRequest):
+            return False
+
         return self.__dict__ == other.__dict__
 
     def __ne__(self, other):

@@ -38,7 +38,7 @@ module SwaggerClient
     # optional - Only available for USE_ROUNDABOUT instructions. The count of exits at which the route leaves the roundabout.
     attr_accessor :exit_number
 
-    # optional - Only available for USE_ROUNDABOUT instructions. The radian of the route within the roundabout - 0<r<2*PI for clockwise and -2PI<r<0 for counterclockwise transit. Null if the direction of rotation is undefined.
+    # optional - Only available for USE_ROUNDABOUT instructions. The radian of the route within the roundabout - 0&lt;r&lt;2*PI for clockwise and -2PI&lt;r&lt;0 for counterclockwise transit. Null if the direction of rotation is undefined.
     attr_accessor :turn_angle
 
 

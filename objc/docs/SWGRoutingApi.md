@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 # **routeGet**
 ```objc
--(NSNumber*) routeGetWithPoint: (NSArray<NSString*>*) point
+-(NSURLSessionTask*) routeGetWithPoint: (NSArray<NSString*>*) point
     pointsEncoded: (NSNumber*) pointsEncoded
     key: (NSString*) key
     locale: (NSString*) locale

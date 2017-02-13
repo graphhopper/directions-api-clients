@@ -40,7 +40,7 @@ namespace IO.Swagger.Model
         /// <param name="AnnotationText">optional - A text describing the instruction in more detail, e.g. like surface of the way, warnings or involved costs..</param>
         /// <param name="AnnotationImportance">optional - 0 stands for INFO, 1 for warning, 2 for costs, 3 for costs and warning.</param>
         /// <param name="ExitNumber">optional - Only available for USE_ROUNDABOUT instructions. The count of exits at which the route leaves the roundabout..</param>
-        /// <param name="TurnAngle">optional - Only available for USE_ROUNDABOUT instructions. The radian of the route within the roundabout - 0&lt;r&lt;2*PI for clockwise and -2PI&lt;r&lt;0 for counterclockwise transit. Null if the direction of rotation is undefined..</param>
+        /// <param name="TurnAngle">optional - Only available for USE_ROUNDABOUT instructions. The radian of the route within the roundabout - 0&amp;lt;r&amp;lt;2*PI for clockwise and -2PI&amp;lt;r&amp;lt;0 for counterclockwise transit. Null if the direction of rotation is undefined..</param>
         public GHResponseInstruction(string Text = default(string), double? Distance = default(double?), int? Time = default(int?), List<int?> Interval = default(List<int?>), int? Sign = default(int?), string AnnotationText = default(string), int? AnnotationImportance = default(int?), int? ExitNumber = default(int?), double? TurnAngle = default(double?))
         {
             this.Text = Text;
@@ -103,9 +103,9 @@ namespace IO.Swagger.Model
         [DataMember(Name="exit_number", EmitDefaultValue=false)]
         public int? ExitNumber { get; set; }
         /// <summary>
-        /// optional - Only available for USE_ROUNDABOUT instructions. The radian of the route within the roundabout - 0&lt;r&lt;2*PI for clockwise and -2PI&lt;r&lt;0 for counterclockwise transit. Null if the direction of rotation is undefined.
+        /// optional - Only available for USE_ROUNDABOUT instructions. The radian of the route within the roundabout - 0&amp;lt;r&amp;lt;2*PI for clockwise and -2PI&amp;lt;r&amp;lt;0 for counterclockwise transit. Null if the direction of rotation is undefined.
         /// </summary>
-        /// <value>optional - Only available for USE_ROUNDABOUT instructions. The radian of the route within the roundabout - 0&lt;r&lt;2*PI for clockwise and -2PI&lt;r&lt;0 for counterclockwise transit. Null if the direction of rotation is undefined.</value>
+        /// <value>optional - Only available for USE_ROUNDABOUT instructions. The radian of the route within the roundabout - 0&amp;lt;r&amp;lt;2*PI for clockwise and -2PI&amp;lt;r&amp;lt;0 for counterclockwise transit. Null if the direction of rotation is undefined.</value>
         [DataMember(Name="turn_angle", EmitDefaultValue=false)]
         public double? TurnAngle { get; set; }
         /// <summary>

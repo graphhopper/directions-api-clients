@@ -79,8 +79,8 @@ func (a RoutingApi) RouteGet(point []string, pointsEncoded bool, key string, loc
 	for key := range a.Configuration.DefaultHeader {
 		localVarHeaderParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	var collectionFormat = "multi"
-	localVarQueryParams.Add("point", a.Configuration.APIClient.ParameterToString(point, collectionFormat))
+	var pointCollectionFormat = "multi"
+	localVarQueryParams.Add("point", a.Configuration.APIClient.ParameterToString(point, pointCollectionFormat))
 
 	localVarQueryParams.Add("locale", a.Configuration.APIClient.ParameterToString(locale, ""))
 	localVarQueryParams.Add("instructions", a.Configuration.APIClient.ParameterToString(instructions, ""))
@@ -88,8 +88,8 @@ func (a RoutingApi) RouteGet(point []string, pointsEncoded bool, key string, loc
 	localVarQueryParams.Add("elevation", a.Configuration.APIClient.ParameterToString(elevation, ""))
 	localVarQueryParams.Add("points_encoded", a.Configuration.APIClient.ParameterToString(pointsEncoded, ""))
 	localVarQueryParams.Add("calc_points", a.Configuration.APIClient.ParameterToString(calcPoints, ""))
-	var collectionFormat = "multi"
-	localVarQueryParams.Add("point_hint", a.Configuration.APIClient.ParameterToString(pointHint, collectionFormat))
+	var pointHintCollectionFormat = "multi"
+	localVarQueryParams.Add("point_hint", a.Configuration.APIClient.ParameterToString(pointHint, pointHintCollectionFormat))
 
 	localVarQueryParams.Add("ch.disable", a.Configuration.APIClient.ParameterToString(chDisable, ""))
 	localVarQueryParams.Add("weighting", a.Configuration.APIClient.ParameterToString(weighting, ""))

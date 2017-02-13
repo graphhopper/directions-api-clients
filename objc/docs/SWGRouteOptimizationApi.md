@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 # **getSolution**
 ```objc
--(NSNumber*) getSolutionWithKey: (NSString*) key
+-(NSURLSessionTask*) getSolutionWithKey: (NSString*) key
     jobId: (NSString*) jobId
         completionHandler: (void (^)(SWGResponse* output, NSError* error)) handler;
 ```
@@ -64,7 +64,7 @@ No authorization required
 
 # **postVrp**
 ```objc
--(NSNumber*) postVrpWithKey: (NSString*) key
+-(NSURLSessionTask*) postVrpWithKey: (NSString*) key
     body: (SWGRequest*) body
         completionHandler: (void (^)(SWGJobId* output, NSError* error)) handler;
 ```

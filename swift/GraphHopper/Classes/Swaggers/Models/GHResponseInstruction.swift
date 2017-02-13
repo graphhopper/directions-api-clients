@@ -25,7 +25,7 @@ public class GHResponseInstruction: JSONEncodable {
     public var annotationImportance: Int32?
     /** optional - Only available for USE_ROUNDABOUT instructions. The count of exits at which the route leaves the roundabout. */
     public var exitNumber: Int32?
-    /** optional - Only available for USE_ROUNDABOUT instructions. The radian of the route within the roundabout - 0&lt;r&lt;2*PI for clockwise and -2PI&lt;r&lt;0 for counterclockwise transit. Null if the direction of rotation is undefined. */
+    /** optional - Only available for USE_ROUNDABOUT instructions. The radian of the route within the roundabout - 0&amp;lt;r&amp;lt;2*PI for clockwise and -2PI&amp;lt;r&amp;lt;0 for counterclockwise transit. Null if the direction of rotation is undefined. */
     public var turnAngle: Double?
 
     public init() {}
