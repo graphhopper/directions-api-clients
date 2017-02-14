@@ -23,7 +23,7 @@ import java.util.List;
 /**
  * GHMatrixRequest
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-02-14T10:29:08.470+11:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-02-14T12:21:02.048+11:00")
 public class GHMatrixRequest {
   @SerializedName("points")
   private List<List<Double>> points = new ArrayList<List<Double>>();

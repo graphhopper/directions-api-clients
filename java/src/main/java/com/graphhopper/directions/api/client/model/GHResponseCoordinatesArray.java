@@ -22,7 +22,7 @@ import java.util.List;
  * An array containing coordinates
  */
 @ApiModel(description = "An array containing coordinates")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-02-14T10:29:08.470+11:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-02-14T12:21:02.048+11:00")
 public class GHResponseCoordinatesArray extends ArrayList<List> {
 
   @Override

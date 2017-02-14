@@ -556,6 +556,9 @@ definitions:
       text:
         type: string
         description: A description what the user has to do in order to follow the route. The language depends on the locale parameter.
+      street_name:
+        type: string
+        description: The name of the street to turn onto in order to follow the route.
       distance:
         type: number
         format: double

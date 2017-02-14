@@ -23,10 +23,13 @@ import java.util.List;
 /**
  * GHResponseInstruction
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-02-14T10:29:08.470+11:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-02-14T12:21:02.048+11:00")
 public class GHResponseInstruction {
   @SerializedName("text")
   private String text = null;
+
+  @SerializedName("street_name")
+  private String streetName = null;
 
   @SerializedName("distance")
   private Double distance = null;
@@ -68,6 +71,24 @@ public class GHResponseInstruction {
 
   public void setText(String text) {
     this.text = text;
+  }
+
+  public GHResponseInstruction streetName(String streetName) {
+    this.streetName = streetName;
+    return this;
+  }
+
+   /**
+   * The name of the street to turn onto in order to follow the route.
+   * @return streetName
+  **/
+  @ApiModelProperty(example = "null", value = "The name of the street to turn onto in order to follow the route.")
+  public String getStreetName() {
+    return streetName;
+  }
+
+  public void setStreetName(String streetName) {
+    this.streetName = streetName;
   }
 
   public GHResponseInstruction distance(Double distance) {
@@ -230,6 +251,7 @@ public class GHResponseInstruction {
     }
     GHResponseInstruction ghResponseInstruction = (GHResponseInstruction) o;
     return Objects.equals(this.text, ghResponseInstruction.text) &&
+        Objects.equals(this.streetName, ghResponseInstruction.streetName) &&
         Objects.equals(this.distance, ghResponseInstruction.distance) &&
         Objects.equals(this.time, ghResponseInstruction.time) &&
         Objects.equals(this.interval, ghResponseInstruction.interval) &&
@@ -242,7 +264,7 @@ public class GHResponseInstruction {
 
   @Override
   public int hashCode() {
-    return Objects.hash(text, distance, time, interval, sign, annotationText, annotationImportance, exitNumber, turnAngle);
+    return Objects.hash(text, streetName, distance, time, interval, sign, annotationText, annotationImportance, exitNumber, turnAngle);
   }
 
 
@@ -252,6 +274,7 @@ public class GHResponseInstruction {
     sb.append("class GHResponseInstruction {\n");
     
     sb.append("    text: ").append(toIndentedString(text)).append("\n");
+    sb.append("    streetName: ").append(toIndentedString(streetName)).append("\n");
     sb.append("    distance: ").append(toIndentedString(distance)).append("\n");
     sb.append("    time: ").append(toIndentedString(time)).append("\n");
     sb.append("    interval: ").append(toIndentedString(interval)).append("\n");

@@ -17,6 +17,9 @@ module SwaggerClient
     # A description what the user has to do in order to follow the route. The language depends on the locale parameter.
     attr_accessor :text
 
+    # The name of the street to turn onto in order to follow the route.
+    attr_accessor :street_name
+
     # The distance for this instruction, in meter
     attr_accessor :distance
 
@@ -46,6 +49,7 @@ module SwaggerClient
     def self.attribute_map
       {
         :'text' => :'text',
+        :'street_name' => :'street_name',
         :'distance' => :'distance',
         :'time' => :'time',
         :'interval' => :'interval',
@@ -61,6 +65,7 @@ module SwaggerClient
     def self.swagger_types
       {
         :'text' => :'String',
+        :'street_name' => :'String',
         :'distance' => :'Float',
         :'time' => :'Integer',
         :'interval' => :'Array<Integer>',
@@ -82,6 +87,10 @@ module SwaggerClient
 
       if attributes.has_key?(:'text')
         self.text = attributes[:'text']
+      end
+
+      if attributes.has_key?(:'street_name')
+        self.street_name = attributes[:'street_name']
       end
 
       if attributes.has_key?(:'distance')
@@ -139,6 +148,7 @@ module SwaggerClient
       return true if self.equal?(o)
       self.class == o.class &&
           text == o.text &&
+          street_name == o.street_name &&
           distance == o.distance &&
           time == o.time &&
           interval == o.interval &&
@@ -158,7 +168,7 @@ module SwaggerClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [text, distance, time, interval, sign, annotation_text, annotation_importance, exit_number, turn_angle].hash
+      [text, street_name, distance, time, interval, sign, annotation_text, annotation_importance, exit_number, turn_angle].hash
     end
 
     # Builds the object from hash

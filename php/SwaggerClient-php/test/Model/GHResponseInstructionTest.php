@@ -91,6 +91,14 @@ class GHResponseInstructionTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test attribute "street_name"
+     */
+    public function testPropertyStreetName()
+    {
+
+    }
+
+    /**
      * Test attribute "distance"
      */
     public function testPropertyDistance()

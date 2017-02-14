@@ -55,6 +55,7 @@ class GHResponseInstruction implements ArrayAccess
       */
     protected static $swaggerTypes = [
         'text' => 'string',
+        'street_name' => 'string',
         'distance' => 'double',
         'time' => 'int',
         'interval' => 'int[]',
@@ -76,6 +77,7 @@ class GHResponseInstruction implements ArrayAccess
      */
     protected static $attributeMap = [
         'text' => 'text',
+        'street_name' => 'street_name',
         'distance' => 'distance',
         'time' => 'time',
         'interval' => 'interval',
@@ -93,6 +95,7 @@ class GHResponseInstruction implements ArrayAccess
      */
     protected static $setters = [
         'text' => 'setText',
+        'street_name' => 'setStreetName',
         'distance' => 'setDistance',
         'time' => 'setTime',
         'interval' => 'setInterval',
@@ -110,6 +113,7 @@ class GHResponseInstruction implements ArrayAccess
      */
     protected static $getters = [
         'text' => 'getText',
+        'street_name' => 'getStreetName',
         'distance' => 'getDistance',
         'time' => 'getTime',
         'interval' => 'getInterval',
@@ -152,6 +156,7 @@ class GHResponseInstruction implements ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['text'] = isset($data['text']) ? $data['text'] : null;
+        $this->container['street_name'] = isset($data['street_name']) ? $data['street_name'] : null;
         $this->container['distance'] = isset($data['distance']) ? $data['distance'] : null;
         $this->container['time'] = isset($data['time']) ? $data['time'] : null;
         $this->container['interval'] = isset($data['interval']) ? $data['interval'] : null;
@@ -204,6 +209,27 @@ class GHResponseInstruction implements ArrayAccess
     public function setText($text)
     {
         $this->container['text'] = $text;
+
+        return $this;
+    }
+
+    /**
+     * Gets street_name
+     * @return string
+     */
+    public function getStreetName()
+    {
+        return $this->container['street_name'];
+    }
+
+    /**
+     * Sets street_name
+     * @param string $street_name The name of the street to turn onto in order to follow the route.
+     * @return $this
+     */
+    public function setStreetName($street_name)
+    {
+        $this->container['street_name'] = $street_name;
 
         return $this;
     }
