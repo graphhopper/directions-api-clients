@@ -4,7 +4,8 @@ SPEC=swagger.yaml
 DIR=.
 
 VERSION=0.9-SNAPSHOT
-SW_VERSION=master
+# SW_VERSION=master
+SW_VERSION=2.2.2
 FILE=swagger-codegen-cli-$SW_VERSION.jar
 
 NAME=directions-api-client
