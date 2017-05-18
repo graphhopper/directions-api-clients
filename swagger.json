@@ -1,0 +1,776 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Route Optimization API",
+        "description": "Our Route Optimization API solves the so called vehicle routing problem fast. It calculates an optimal tour for a set of vehicles, services and constraints",
+        "version": "1.0"
+    },
+    "host": "graphhopper.com",
+    "basePath": "/api/1/vrp",
+    "schemes": [
+        "https"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "security": [{
+            "api_key": []
+        }],
+    "securityDefinitions": {
+        "api_key": {
+            "type": "apiKey",
+            "name": "key",
+            "in": "query"
+        }
+    },
+    "paths": {
+        "/optimize": {
+            "post": {
+                "summary": "Solves vehicle routing problems",
+                "description": "This endpoint for solving vehicle routing problems, i.e. traveling salesman or vehicle routing problems, and returns the solution.\n",
+                "operationId": "postVrp",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                        "in": "query",
+                        "name": "key",
+                        "description": "your API key",
+                        "required": true,
+                        "type": "string"
+                    }, {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Request object that contains the problem to be solved",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Request"
+                        }
+                    }
+                ],
+                "tags": [
+                    "vrp"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A jobId you can use to retrieve your solution from server - see solution endpoint.",
+                        "schema": {
+                            "$ref": "#/definitions/JobId"
+                        }
+                    },
+                    "400": {
+                        "description": "Error occurred when reading client request. Request is invalid."
+                    },
+                    "500": {
+                        "description": "Error occurred on server side."
+                    }
+                }
+            }
+        },
+        "/solution/{jobId}": {
+            "get": {
+                "summary": "Return the solution associated to the jobId",
+                "description": "This endpoint returns the solution of a large problems. You can fetch it with the job_id, you have been sent.\n",
+                "operationId": "getSolution",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                        "in": "query",
+                        "name": "key",
+                        "description": "your API key",
+                        "required": true,
+                        "type": "string"
+                    }, {
+                        "in": "path",
+                        "name": "jobId",
+                        "description": "Request solution with jobId",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "tags": [
+                    "solution"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A response containing the solution",
+                        "schema": {
+                            "$ref": "#/definitions/Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Error occurred on client side such as invalid input."
+                    },
+                    "500": {
+                        "description": "Error occurred on server side."
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "JobId": {
+            "type": "object",
+            "properties": {
+                "job_id": {
+                    "type": "string",
+                    "description": "unique id for your job/request with which you can fetch your solution"
+                }
+            }
+        },
+        "Request": {
+            "type": "object",
+            "properties": {
+                "vehicles": {
+                    "type": "array",
+                    "description": "An array of vehicles that can be employed",
+                    "items": {
+                        "$ref": "#/definitions/Vehicle"
+                    }
+                },
+                "vehicle_types": {
+                    "type": "array",
+                    "description": "An array of vehicle types",
+                    "items": {
+                        "$ref": "#/definitions/VehicleType"
+                    }
+                },
+                "services": {
+                    "type": "array",
+                    "description": "An array of services",
+                    "items": {
+                        "$ref": "#/definitions/Service"
+                    }
+                },
+                "shipments": {
+                    "type": "array",
+                    "description": "An array of shipments",
+                    "items": {
+                        "$ref": "#/definitions/Shipment"
+                    }
+                },
+                "relations": {
+                    "type": "array",
+                    "description": "An array of relations",
+                    "items": {
+                        "$ref": "#/definitions/Relation"
+                    }
+                },
+                "algorithm": {
+                    "$ref": "#/definitions/Algorithm"
+                },
+                "objectives": {
+                    "type": "array",
+                    "description": "An array of objectives",
+                    "items": {
+                        "$ref": "#/definitions/Objective"
+                    }
+                },
+                "cost_matrices": {
+                    "type": "array",
+                    "description": "An array of cost matrices",
+                    "items": {
+                        "$ref": "#/definitions/CostMatrix"
+                    }
+                }
+            }
+        },
+        "Vehicle": {
+            "type": "object",
+            "properties": {
+                "vehicle_id": {
+                    "type": "string",
+                    "description": "Unique identifier of vehicle"
+                },
+                "type_id": {
+                    "type": "string",
+                    "description": "Unique identifier referring to the available vehicle types"
+                },
+                "start_address": {
+                    "$ref": "#/definitions/Address"
+                },
+                "end_address": {
+                    "$ref": "#/definitions/Address"
+                },
+                "break": {
+                    "$ref": "#/definitions/Break"
+                },
+                "return_to_depot": {
+                    "type": "boolean",
+                    "description": "Indicates whether vehicle should return to start address or not. If not, it can end at any service activity."
+                },
+                "earliest_start": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "earliest start of vehicle at its start location"
+                },
+                "latest_end": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "latest end of vehicle at its end location"
+                },
+                "skills": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "array of skills"
+                }
+            }
+        },
+        "Algorithm": {
+            "type": "object",
+            "properties": {
+                "problem_type": {
+                    "type": "string",
+                    "enum": [
+                        "min",
+                        "min-max"
+                    ]
+                },
+                "objective": {
+                    "type": "string",
+                    "enum": [
+                        "transport_time",
+                        "completion_time"
+                    ]
+                }
+            }
+        },
+        "Address": {
+            "type": "object",
+            "properties": {
+                "location_id": {
+                    "type": "string",
+                    "description": "Unique identifier of location"
+                },
+                "lon": {
+                    "format": "double",
+                    "type": "number",
+                    "description": "longitude"
+                },
+                "lat": {
+                    "format": "double",
+                    "type": "number",
+                    "description": "latitude"
+                }
+            }
+        },
+        "Break": {
+            "type": "object",
+            "properties": {
+                "earliest": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "earliest start of break"
+                },
+                "latest": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "latest start of break"
+                },
+                "duration": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "duration of break"
+                },
+                "max_driving_time": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "max driving time without break"
+                },
+                "initial_driving_time": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "initial driving time, i.e. the time your driver has already spent for driving"
+                },
+                "possible_split": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "description": "array of splits"
+                }
+            }
+        },
+        "VehicleType": {
+            "type": "object",
+            "properties": {
+                "type_id": {
+                    "type": "string",
+                    "description": "Unique identifier for the vehicle type"
+                },
+                "profile": {
+                    "type": "string",
+                    "description": "Profile of vehicle type",
+                    "example": "car",
+                    "enum": [
+                        "car",
+                        "bike",
+                        "foot",
+                        "mtb",
+                        "motorcycle",
+                        "racingbike",
+                        "truck",
+                        "small_truck",
+                        "bus"
+                    ]
+                },
+                "capacity": {
+                    "type": "array",
+                    "description": "array of capacity dimensions",
+                    "items": {
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                },
+                "speed_factor": {
+                    "format": "double",
+                    "type": "number",
+                    "description": "speed_factor of vehicle type"
+                },
+                "service_time_factor": {
+                    "format": "double",
+                    "type": "number",
+                    "description": "service time factor of vehicle type"
+                }
+            }
+        },
+        "Service": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of service"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "type of service",
+                    "enum": [
+                        "service",
+                        "pickup",
+                        "delivery"
+                    ]
+                },
+                "priority": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "priority of service, i.e. 1 = high, 2 = normal, 3 = low. default is 2."
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of service"
+                },
+                "address": {
+                    "$ref": "#/definitions/Address"
+                },
+                "duration": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "duration of service, i.e. time in ms the corresponding activity takes"
+                },
+                "time_windows": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/TimeWindow"
+                    },
+                    "description": "array of time windows. currently, only a single time window is allowed"
+                },
+                "size": {
+                    "type": "array",
+                    "description": "array of capacity dimensions",
+                    "items": {
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                },
+                "required_skills": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "array of required skills"
+                },
+                "allowed_vehicles": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "array of allowed vehicle ids"
+                }
+
+            }
+        },
+        "Shipment": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of service"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of shipment"
+                },
+                "priority": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "priority of service, i.e. 1 = high, 2 = normal, 3 = low. default is 2."
+                },
+                "pickup": {
+                    "$ref": "#/definitions/Stop"
+                },
+                "delivery": {
+                    "$ref": "#/definitions/Stop"
+                },
+                "size": {
+                    "type": "array",
+                    "description": "array of capacity dimensions",
+                    "items": {
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                },
+                "required_skills": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "array of required skills"
+                },
+                "allowed_vehicles": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "array of allowed vehicle ids"
+                }
+            }
+        },
+        "Stop": {
+            "type": "object",
+            "properties": {
+                "address": {
+                    "$ref": "#/definitions/Address"
+                },
+                "duration": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "duration of stop, i.e. time in ms the corresponding activity takes"
+                },
+                "time_windows": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/TimeWindow"
+                    },
+                    "description": "array of time windows. currently, only a single time window is allowed"
+                }
+            }
+        },
+        "TimeWindow": {
+            "type": "object",
+            "properties": {
+                "earliest": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "earliest start time of corresponding activity"
+                },
+                "latest": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "latest start time of corresponding activity"
+                }
+            }
+        },
+        "Objective": {
+            "type": "object",
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "description": "type of objective function, i.e. min or min-max ",
+                    "enum": [
+                        "min",
+                        "min-max"
+                    ]
+                },
+                "value": {
+                    "type": "string",
+                    "description": "objective function value",
+                    "enum": [
+                        "completion_time",
+                        "transport_time",
+                        "vehicles"
+                    ]
+                }
+            }
+        },
+        "CostMatrix": {
+            "type": "object",
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "description": "type of cost matrix, currently default or google are supported",
+                    "enum": [
+                        "default",
+                        "google"
+                    ]
+                },
+                "url": {
+                    "type": "string",
+                    "description": "URL of matrix service"
+                },
+                "profile": {
+                    "type": "string",
+                    "description": "vehicle profile or empty if catch all fallback"
+                }
+            }
+        },
+        "Relation": {
+            "type": "object",
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "description": "identifier of relation"
+                },
+                "ids": {
+                    "type": "array",
+                    "description": "An array of ids that should be related",
+                    "items": {
+                        "type": "string",
+                        "description": "id of services or special ids of shipments"
+                    }
+                },
+                "vehicle_id": {
+                    "type": "string",
+                    "description": "vehicle id"
+                }
+            }
+        },
+        "Response": {
+            "type": "object",
+            "properties": {
+                "copyrights": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "description": "attribution"
+                    }
+                },
+                "job_id": {
+                    "type": "string",
+                    "description": "unique identify of job - which you get when posting your request to the large problem solver"
+                },
+                "status": {
+                    "type": "string",
+                    "enum": [
+                        "waiting_in_queue",
+                        "processing",
+                        "finished"
+                    ],
+                    "description": "indicates the current status of the job"
+                },
+                "waiting_in_queue": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "waiting time in ms"
+                },
+                "processing_time": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "processing time in ms. if job is still waiting in queue, processing_time is 0"
+                },
+                "solution": {
+                    "$ref": "#/definitions/Solution",
+                    "description": "the solution. only available if status field indicates finished"
+                }
+            }
+        },
+        "Solution": {
+            "type": "object",
+            "properties": {
+                "costs": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "overall costs of solution"
+                },
+                "distance": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "overall travel distance in meters"
+                },
+                "time": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "overall transport time in ms"
+                },
+                "transport_time": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "overall transport time in ms"
+                },
+                "max_operation_time": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "operation time of the longest route in ms"
+                },
+                "waiting_time": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "total waiting time in ms"
+                },
+                "no_vehicles": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "number of employed vehicles"
+                },
+                "no_unassigned": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "number of jobs that could not be assigned to final solution"
+                },
+                "routes": {
+                    "type": "array",
+                    "description": "An array of routes",
+                    "items": {
+                        "$ref": "#/definitions/Route"
+                    }
+                },
+                "unassigned": {
+                    "type": "object",
+                    "properties": {
+                        "services": {
+                            "type": "array",
+                            "description": "An array of ids of unassigned services",
+                            "items": {
+                                "type": "string",
+                                "description": "id of unassigned service"
+                            }
+                        },
+                        "shipments": {
+                            "type": "array",
+                            "description": "An array of ids of unassigned shipments",
+                            "items": {
+                                "type": "string",
+                                "description": "id of unassigned shipments"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "Route": {
+            "type": "object",
+            "properties": {
+                "vehicle_id": {
+                    "type": "string",
+                    "description": "id of vehicle that operates route"
+                },
+                "distance": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "distance of route in meter"
+                },
+                "transport_time" : {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "transport time of route in ms"
+                },
+                "completion_time": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "completion time of route in ms"
+                },
+                "waiting_time": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "waiting time of route in ms"
+                },
+                "activities": {
+                    "type": "array",
+                    "description": "array of activities",
+                    "items": {
+                        "$ref": "#/definitions/Activity"
+                    }
+                }
+            }
+        },
+        "Activity": {
+            "type": "object",
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "description": "type of activity",
+                    "enum": [
+                        "start",
+                        "end",
+                        "service",
+                        "pickupShipment",
+                        "deliverShipment",
+                        "pickup",
+                        "delivery"
+                    ]
+                },
+                "id": {
+                    "type": "string",
+                    "description": "id referring to the underlying service or shipment, i.e. the shipment or service this activity belongs to"
+                },
+                "location_id": {
+                    "type": "string",
+                    "description": "id that refers to address"
+                },
+                "arr_time": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "arrival time at this activity in ms"
+                },
+                "end_time": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "end time of and thus departure time at this activity"
+                },
+                "waiting_time":{
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "waiting time at this activity in ms"
+                },
+                "distance":{
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "cumulated distance from start to this activity in m"
+                },
+                "driving_time":{
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "driving time of driver in ms"
+                },
+                "load_before":{
+                    "type": "array",
+                    "description": "Array with size/capacity dimensions before this activity",
+                    "items": {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "dimension value"
+                    }
+                },
+                "load_after": {
+                    "type": "array",
+                    "description": "Array with size/capacity dimensions after this activity",
+                    "items": {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "dimension value"
+                    }
+                }
+
+            }
+        }
+    }
+}
