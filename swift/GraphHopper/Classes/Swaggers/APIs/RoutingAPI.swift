@@ -46,7 +46,7 @@ public class RoutingAPI: APIBase {
     /**
      Routing Request
      - GET /route
-     - The GraphHopper Routing API allows to calculate routes. 
+     - The GraphHopper Routing API allows to calculate route and implement navigation via the turn instructions
      - examples: [{contentType=application/json, example={
   "paths" : [ {
     "descend" : 1.3579000000000001069366817318950779736042022705078125,

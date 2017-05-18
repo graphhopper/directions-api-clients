@@ -4,6 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **LocationId** | **string** | Unique identifier of location | [optional] [default to null]
+**Name** | **string** | name of location, e.g. street name plus house number | [optional] [default to null]
 **Lon** | **float64** | longitude | [optional] [default to null]
 **Lat** | **float64** | latitude | [optional] [default to null]
 

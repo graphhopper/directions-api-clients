@@ -9,6 +9,7 @@ use WWW::SwaggerClient::Object::Address;
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **location_id** | **string** | Unique identifier of location | [optional] 
+**name** | **string** | name of location, e.g. street name plus house number | [optional] 
 **lon** | **double** | longitude | [optional] 
 **lat** | **double** | latitude | [optional] 
 

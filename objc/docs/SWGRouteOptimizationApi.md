@@ -71,7 +71,7 @@ No authorization required
 
 Solves vehicle routing problems
 
-This endpoint for solving vehicle routing problems, i.e. traveling salesman or vehicle routing problems, and returns the solution. 
+This endpoint for solving vehicle routing problems, i.e. traveling salesman or vehicle routing problems, and returns the solution.
 
 ### Example 
 ```objc

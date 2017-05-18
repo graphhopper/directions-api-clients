@@ -18,13 +18,15 @@ public class Service: JSONEncodable {
     public var id: String?
     /** type of service */
     public var type: ModelType?
-    /** priority of service, i.e. 1 &#x3D; high, 2 &#x3D; normal, 3 &#x3D; low. default is 2. */
+    /** priority of service */
     public var priority: Int32?
     /** name of service */
     public var name: String?
     public var address: Address?
     /** duration of service, i.e. time in ms the corresponding activity takes */
     public var duration: Int64?
+    /** preparation time of service, e.g. search for a parking space. it only falls due if the location of previous activity differs from this location */
+    public var preparationTime: Int64?
     /** array of time windows. currently, only a single time window is allowed */
     public var timeWindows: [TimeWindow]?
     /** array of capacity dimensions */
@@ -45,6 +47,7 @@ public class Service: JSONEncodable {
         nillableDictionary["name"] = self.name
         nillableDictionary["address"] = self.address?.encodeToJSON()
         nillableDictionary["duration"] = self.duration?.encodeToJSON()
+        nillableDictionary["preparation_time"] = self.preparationTime?.encodeToJSON()
         nillableDictionary["time_windows"] = self.timeWindows?.encodeToJSON()
         nillableDictionary["size"] = self.size?.encodeToJSON()
         nillableDictionary["required_skills"] = self.requiredSkills?.encodeToJSON()

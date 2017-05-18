@@ -4,6 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Text** | **string** | A description what the user has to do in order to follow the route. The language depends on the locale parameter. | [optional] 
+**StreetName** | **string** | The name of the street to turn onto in order to follow the route. | [optional] 
 **Distance** | **double?** | The distance for this instruction, in meter | [optional] 
 **Time** | **int?** | The duration for this instruction, in ms | [optional] 
 **Interval** | **List&lt;int?&gt;** | An array containing the first and the last index (relative to paths[0].points) of the points for this instruction. This is useful to know for which part of the route the instructions are valid. | [optional] 

@@ -1,7 +1,7 @@
 /* 
  * GraphHopper Directions API
  *
- * With the GraphHopper Directions API you get reliable and fast web services for routing and more with world wide coverage. We offer A-to-B routing via the Routing API optionally with turn instructions and elevation data as well as route optimization with various constraints like time window and capacity restrictions. Also it is possible to get all distances between all locations with our fast Matrix API. 
+ * You use the GraphHopper Directions API to add route planning, navigation and route optimization to your software. E.g. the Routing API has turn instructions and elevation data and the Route Optimization API solves your logistic problems and supports various constraints like time window and capacity restrictions. Also it is possible to get all distances between all locations with our fast Matrix API.
  *
  * OpenAPI spec version: 1.0.0
  * 
@@ -33,6 +33,7 @@ namespace IO.Swagger.Model
         /// Initializes a new instance of the <see cref="GHResponseInstruction" /> class.
         /// </summary>
         /// <param name="Text">A description what the user has to do in order to follow the route. The language depends on the locale parameter..</param>
+        /// <param name="StreetName">The name of the street to turn onto in order to follow the route..</param>
         /// <param name="Distance">The distance for this instruction, in meter.</param>
         /// <param name="Time">The duration for this instruction, in ms.</param>
         /// <param name="Interval">An array containing the first and the last index (relative to paths[0].points) of the points for this instruction. This is useful to know for which part of the route the instructions are valid..</param>
@@ -41,9 +42,10 @@ namespace IO.Swagger.Model
         /// <param name="AnnotationImportance">optional - 0 stands for INFO, 1 for warning, 2 for costs, 3 for costs and warning.</param>
         /// <param name="ExitNumber">optional - Only available for USE_ROUNDABOUT instructions. The count of exits at which the route leaves the roundabout..</param>
         /// <param name="TurnAngle">optional - Only available for USE_ROUNDABOUT instructions. The radian of the route within the roundabout - 0&amp;lt;r&amp;lt;2*PI for clockwise and -2PI&amp;lt;r&amp;lt;0 for counterclockwise transit. Null if the direction of rotation is undefined..</param>
-        public GHResponseInstruction(string Text = default(string), double? Distance = default(double?), int? Time = default(int?), List<int?> Interval = default(List<int?>), int? Sign = default(int?), string AnnotationText = default(string), int? AnnotationImportance = default(int?), int? ExitNumber = default(int?), double? TurnAngle = default(double?))
+        public GHResponseInstruction(string Text = default(string), string StreetName = default(string), double? Distance = default(double?), int? Time = default(int?), List<int?> Interval = default(List<int?>), int? Sign = default(int?), string AnnotationText = default(string), int? AnnotationImportance = default(int?), int? ExitNumber = default(int?), double? TurnAngle = default(double?))
         {
             this.Text = Text;
+            this.StreetName = StreetName;
             this.Distance = Distance;
             this.Time = Time;
             this.Interval = Interval;
@@ -60,6 +62,12 @@ namespace IO.Swagger.Model
         /// <value>A description what the user has to do in order to follow the route. The language depends on the locale parameter.</value>
         [DataMember(Name="text", EmitDefaultValue=false)]
         public string Text { get; set; }
+        /// <summary>
+        /// The name of the street to turn onto in order to follow the route.
+        /// </summary>
+        /// <value>The name of the street to turn onto in order to follow the route.</value>
+        [DataMember(Name="street_name", EmitDefaultValue=false)]
+        public string StreetName { get; set; }
         /// <summary>
         /// The distance for this instruction, in meter
         /// </summary>
@@ -117,6 +125,7 @@ namespace IO.Swagger.Model
             var sb = new StringBuilder();
             sb.Append("class GHResponseInstruction {\n");
             sb.Append("  Text: ").Append(Text).Append("\n");
+            sb.Append("  StreetName: ").Append(StreetName).Append("\n");
             sb.Append("  Distance: ").Append(Distance).Append("\n");
             sb.Append("  Time: ").Append(Time).Append("\n");
             sb.Append("  Interval: ").Append(Interval).Append("\n");
@@ -165,6 +174,11 @@ namespace IO.Swagger.Model
                     this.Text == other.Text ||
                     this.Text != null &&
                     this.Text.Equals(other.Text)
+                ) && 
+                (
+                    this.StreetName == other.StreetName ||
+                    this.StreetName != null &&
+                    this.StreetName.Equals(other.StreetName)
                 ) && 
                 (
                     this.Distance == other.Distance ||
@@ -221,6 +235,8 @@ namespace IO.Swagger.Model
                 // Suitable nullity checks etc, of course :)
                 if (this.Text != null)
                     hash = hash * 59 + this.Text.GetHashCode();
+                if (this.StreetName != null)
+                    hash = hash * 59 + this.StreetName.GetHashCode();
                 if (this.Distance != null)
                     hash = hash * 59 + this.Distance.GetHashCode();
                 if (this.Time != null)

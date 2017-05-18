@@ -24,6 +24,7 @@ void
 SamiStop::init() {
     pAddress = null;
 pDuration = null;
+pPreparation_time = null;
 pTime_windows = null;
 }
 
@@ -38,6 +39,11 @@ if(pDuration != null) {
         
         delete pDuration;
         pDuration = null;
+    }
+if(pPreparation_time != null) {
+        
+        delete pPreparation_time;
+        pPreparation_time = null;
     }
 if(pTime_windows != null) {
         pTime_windows->RemoveAll(true);
@@ -99,6 +105,15 @@ JsonString* pDurationKey = new JsonString(L"duration");
             jsonToValue(pDuration, pDurationVal, L"Long", L"Long");
         }
         delete pDurationKey;
+JsonString* pPreparation_timeKey = new JsonString(L"preparation_time");
+        IJsonValue* pPreparation_timeVal = null;
+        pJsonObject->GetValue(pPreparation_timeKey, pPreparation_timeVal);
+        if(pPreparation_timeVal != null) {
+            
+            pPreparation_time = new Long();
+            jsonToValue(pPreparation_time, pPreparation_timeVal, L"Long", L"Long");
+        }
+        delete pPreparation_timeKey;
 JsonString* pTime_windowsKey = new JsonString(L"time_windows");
         IJsonValue* pTime_windowsVal = null;
         pJsonObject->GetValue(pTime_windowsKey, pTime_windowsVal);
@@ -164,6 +179,9 @@ SamiStop::asJsonObject() {
     JsonString *pDurationKey = new JsonString(L"duration");
     pJsonObject->Add(pDurationKey, toJson(getPDuration(), "Long", ""));
 
+    JsonString *pPreparation_timeKey = new JsonString(L"preparation_time");
+    pJsonObject->Add(pPreparation_timeKey, toJson(getPPreparationTime(), "Long", ""));
+
     JsonString *pTime_windowsKey = new JsonString(L"time_windows");
     pJsonObject->Add(pTime_windowsKey, toJson(getPTimeWindows(), "SamiTimeWindow", "array"));
 
@@ -186,6 +204,15 @@ SamiStop::getPDuration() {
 void
 SamiStop::setPDuration(Long* pDuration) {
     this->pDuration = pDuration;
+}
+
+Long*
+SamiStop::getPPreparationTime() {
+    return pPreparation_time;
+}
+void
+SamiStop::setPPreparationTime(Long* pPreparation_time) {
+    this->pPreparation_time = pPreparation_time;
 }
 
 IList*

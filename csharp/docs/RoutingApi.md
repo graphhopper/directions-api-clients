@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 Routing Request
 
-The GraphHopper Routing API allows to calculate routes. 
+The GraphHopper Routing API allows to calculate route and implement navigation via the turn instructions
 
 ### Example
 ```csharp

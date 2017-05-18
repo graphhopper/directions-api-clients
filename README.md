@@ -42,8 +42,8 @@ Currently the following APIs are supported
 
 ## Build it yourself
 
- 
-Currently we use swagger codegen 2.2.1 to create the projects and e.g. java uses swagger-core 1.5.9
+Currently we use swagger codegen 2.2.2 to create the clients but you can
+easily edit the create.sh script.
 
 ### Update all clients
 

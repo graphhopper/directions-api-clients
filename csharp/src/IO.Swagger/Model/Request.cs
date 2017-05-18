@@ -1,7 +1,7 @@
 /* 
  * GraphHopper Directions API
  *
- * With the GraphHopper Directions API you get reliable and fast web services for routing and more with world wide coverage. We offer A-to-B routing via the Routing API optionally with turn instructions and elevation data as well as route optimization with various constraints like time window and capacity restrictions. Also it is possible to get all distances between all locations with our fast Matrix API. 
+ * You use the GraphHopper Directions API to add route planning, navigation and route optimization to your software. E.g. the Routing API has turn instructions and elevation data and the Route Optimization API solves your logistic problems and supports various constraints like time window and capacity restrictions. Also it is possible to get all distances between all locations with our fast Matrix API.
  *
  * OpenAPI spec version: 1.0.0
  * 
@@ -40,7 +40,8 @@ namespace IO.Swagger.Model
         /// <param name="Algorithm">Algorithm.</param>
         /// <param name="Objectives">An array of objectives.</param>
         /// <param name="CostMatrices">An array of cost matrices.</param>
-        public Request(List<Vehicle> Vehicles = default(List<Vehicle>), List<VehicleType> VehicleTypes = default(List<VehicleType>), List<Service> Services = default(List<Service>), List<Shipment> Shipments = default(List<Shipment>), List<Relation> Relations = default(List<Relation>), Algorithm Algorithm = default(Algorithm), List<Objective> Objectives = default(List<Objective>), List<CostMatrix> CostMatrices = default(List<CostMatrix>))
+        /// <param name="Configuration">Configuration.</param>
+        public Request(List<Vehicle> Vehicles = default(List<Vehicle>), List<VehicleType> VehicleTypes = default(List<VehicleType>), List<Service> Services = default(List<Service>), List<Shipment> Shipments = default(List<Shipment>), List<Relation> Relations = default(List<Relation>), Algorithm Algorithm = default(Algorithm), List<Objective> Objectives = default(List<Objective>), List<CostMatrix> CostMatrices = default(List<CostMatrix>), Configuration Configuration = default(Configuration))
         {
             this.Vehicles = Vehicles;
             this.VehicleTypes = VehicleTypes;
@@ -50,6 +51,7 @@ namespace IO.Swagger.Model
             this.Algorithm = Algorithm;
             this.Objectives = Objectives;
             this.CostMatrices = CostMatrices;
+            this.Configuration = Configuration;
         }
         
         /// <summary>
@@ -100,6 +102,11 @@ namespace IO.Swagger.Model
         [DataMember(Name="cost_matrices", EmitDefaultValue=false)]
         public List<CostMatrix> CostMatrices { get; set; }
         /// <summary>
+        /// Gets or Sets Configuration
+        /// </summary>
+        [DataMember(Name="configuration", EmitDefaultValue=false)]
+        public Configuration Configuration { get; set; }
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -115,6 +122,7 @@ namespace IO.Swagger.Model
             sb.Append("  Algorithm: ").Append(Algorithm).Append("\n");
             sb.Append("  Objectives: ").Append(Objectives).Append("\n");
             sb.Append("  CostMatrices: ").Append(CostMatrices).Append("\n");
+            sb.Append("  Configuration: ").Append(Configuration).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -190,6 +198,11 @@ namespace IO.Swagger.Model
                     this.CostMatrices == other.CostMatrices ||
                     this.CostMatrices != null &&
                     this.CostMatrices.SequenceEqual(other.CostMatrices)
+                ) && 
+                (
+                    this.Configuration == other.Configuration ||
+                    this.Configuration != null &&
+                    this.Configuration.Equals(other.Configuration)
                 );
         }
 
@@ -220,6 +233,8 @@ namespace IO.Swagger.Model
                     hash = hash * 59 + this.Objectives.GetHashCode();
                 if (this.CostMatrices != null)
                     hash = hash * 59 + this.CostMatrices.GetHashCode();
+                if (this.Configuration != null)
+                    hash = hash * 59 + this.Configuration.GetHashCode();
                 return hash;
             }
         }

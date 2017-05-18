@@ -24,6 +24,7 @@ public class Request: JSONEncodable {
     public var objectives: [Objective]?
     /** An array of cost matrices */
     public var costMatrices: [CostMatrix]?
+    public var configuration: Configuration?
 
     public init() {}
 
@@ -38,6 +39,7 @@ public class Request: JSONEncodable {
         nillableDictionary["algorithm"] = self.algorithm?.encodeToJSON()
         nillableDictionary["objectives"] = self.objectives?.encodeToJSON()
         nillableDictionary["cost_matrices"] = self.costMatrices?.encodeToJSON()
+        nillableDictionary["configuration"] = self.configuration?.encodeToJSON()
         let dictionary: [String:AnyObject] = APIHelper.rejectNil(nillableDictionary) ?? [:]
         return dictionary
     }

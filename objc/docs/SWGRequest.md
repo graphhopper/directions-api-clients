@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **algorithm** | [**SWGAlgorithm***](SWGAlgorithm.md) |  | [optional] 
 **objectives** | [**NSArray&lt;SWGObjective&gt;***](SWGObjective.md) | An array of objectives | [optional] 
 **costMatrices** | [**NSArray&lt;SWGCostMatrix&gt;***](SWGCostMatrix.md) | An array of cost matrices | [optional] 
+**configuration** | [**SWGConfiguration***](SWGConfiguration.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

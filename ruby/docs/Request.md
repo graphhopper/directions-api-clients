@@ -11,5 +11,6 @@ Name | Type | Description | Notes
 **algorithm** | [**Algorithm**](Algorithm.md) |  | [optional] 
 **objectives** | [**Array&lt;Objective&gt;**](Objective.md) | An array of objectives | [optional] 
 **cost_matrices** | [**Array&lt;CostMatrix&gt;**](CostMatrix.md) | An array of cost matrices | [optional] 
+**configuration** | [**Configuration**](Configuration.md) |  | [optional] 
 
 

@@ -172,6 +172,7 @@ class Decoders {
                 let sourceDictionary = source as! [NSObject:AnyObject]
                 let instance = Address()
                 instance.locationId = Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["location_id"])
+                instance.name = Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["name"])
                 instance.lon = Decoders.decodeOptional(clazz: Double.self, source: sourceDictionary["lon"])
                 instance.lat = Decoders.decodeOptional(clazz: Double.self, source: sourceDictionary["lat"])
                 return instance
@@ -210,6 +211,19 @@ class Decoders {
             }
 
 
+            // Decoder for [Configuration]
+            Decoders.addDecoder(clazz: [Configuration].self) { (source: AnyObject) -> [Configuration] in
+                return Decoders.decode(clazz: [Configuration].self, source: source)
+            }
+            // Decoder for Configuration
+            Decoders.addDecoder(clazz: Configuration.self) { (source: AnyObject) -> Configuration in
+                let sourceDictionary = source as! [NSObject:AnyObject]
+                let instance = Configuration()
+                instance.routing = Decoders.decodeOptional(clazz: Routing.self, source: sourceDictionary["routing"])
+                return instance
+            }
+
+
             // Decoder for [CostMatrix]
             Decoders.addDecoder(clazz: [CostMatrix].self) { (source: AnyObject) -> [CostMatrix] in
                 return Decoders.decode(clazz: [CostMatrix].self, source: source)
@@ -220,7 +234,38 @@ class Decoders {
                 let instance = CostMatrix()
                 instance.type = CostMatrix.ModelType(rawValue: (sourceDictionary["type"] as? String) ?? "") 
                 instance.url = Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["url"])
+                instance.locationIds = Decoders.decodeOptional(clazz: Array.self, source: sourceDictionary["location_ids"])
+                instance.data = Decoders.decodeOptional(clazz: CostMatrixData.self, source: sourceDictionary["data"])
                 instance.profile = Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["profile"])
+                return instance
+            }
+
+
+            // Decoder for [CostMatrixData]
+            Decoders.addDecoder(clazz: [CostMatrixData].self) { (source: AnyObject) -> [CostMatrixData] in
+                return Decoders.decode(clazz: [CostMatrixData].self, source: source)
+            }
+            // Decoder for CostMatrixData
+            Decoders.addDecoder(clazz: CostMatrixData.self) { (source: AnyObject) -> CostMatrixData in
+                let sourceDictionary = source as! [NSObject:AnyObject]
+                let instance = CostMatrixData()
+                instance.times = Decoders.decodeOptional(clazz: Array.self, source: sourceDictionary["times"])
+                instance.distances = Decoders.decodeOptional(clazz: Array.self, source: sourceDictionary["distances"])
+                instance.info = Decoders.decodeOptional(clazz: CostMatrixDataInfo.self, source: sourceDictionary["info"])
+                return instance
+            }
+
+
+            // Decoder for [CostMatrixDataInfo]
+            Decoders.addDecoder(clazz: [CostMatrixDataInfo].self) { (source: AnyObject) -> [CostMatrixDataInfo] in
+                return Decoders.decode(clazz: [CostMatrixDataInfo].self, source: source)
+            }
+            // Decoder for CostMatrixDataInfo
+            Decoders.addDecoder(clazz: CostMatrixDataInfo.self) { (source: AnyObject) -> CostMatrixDataInfo in
+                let sourceDictionary = source as! [NSObject:AnyObject]
+                let instance = CostMatrixDataInfo()
+                instance.copyrights = Decoders.decodeOptional(clazz: Array.self, source: sourceDictionary["copyrights"])
+                instance.took = Decoders.decodeOptional(clazz: Double.self, source: sourceDictionary["took"])
                 return instance
             }
 
@@ -440,6 +485,7 @@ class Decoders {
                 let sourceDictionary = source as! [NSObject:AnyObject]
                 let instance = GHResponseInstruction()
                 instance.text = Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["text"])
+                instance.streetName = Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["street_name"])
                 instance.distance = Decoders.decodeOptional(clazz: Double.self, source: sourceDictionary["distance"])
                 instance.time = Decoders.decodeOptional(clazz: Int32.self, source: sourceDictionary["time"])
                 instance.interval = Decoders.decodeOptional(clazz: Array.self, source: sourceDictionary["interval"])
@@ -512,6 +558,20 @@ class Decoders {
             }
 
 
+            // Decoder for [Location]
+            Decoders.addDecoder(clazz: [Location].self) { (source: AnyObject) -> [Location] in
+                return Decoders.decode(clazz: [Location].self, source: source)
+            }
+            // Decoder for Location
+            Decoders.addDecoder(clazz: Location.self) { (source: AnyObject) -> Location in
+                let sourceDictionary = source as! [NSObject:AnyObject]
+                let instance = Location()
+                instance.lon = Decoders.decodeOptional(clazz: Double.self, source: sourceDictionary["lon"])
+                instance.lat = Decoders.decodeOptional(clazz: Double.self, source: sourceDictionary["lat"])
+                return instance
+            }
+
+
             // Decoder for [Objective]
             Decoders.addDecoder(clazz: [Objective].self) { (source: AnyObject) -> [Objective] in
                 return Decoders.decode(clazz: [Objective].self, source: source)
@@ -557,6 +617,7 @@ class Decoders {
                 instance.algorithm = Decoders.decodeOptional(clazz: Algorithm.self, source: sourceDictionary["algorithm"])
                 instance.objectives = Decoders.decodeOptional(clazz: Array.self, source: sourceDictionary["objectives"])
                 instance.costMatrices = Decoders.decodeOptional(clazz: Array.self, source: sourceDictionary["cost_matrices"])
+                instance.configuration = Decoders.decodeOptional(clazz: Configuration.self, source: sourceDictionary["configuration"])
                 return instance
             }
 
@@ -597,6 +658,19 @@ class Decoders {
             }
 
 
+            // Decoder for [Routing]
+            Decoders.addDecoder(clazz: [Routing].self) { (source: AnyObject) -> [Routing] in
+                return Decoders.decode(clazz: [Routing].self, source: source)
+            }
+            // Decoder for Routing
+            Decoders.addDecoder(clazz: Routing.self) { (source: AnyObject) -> Routing in
+                let sourceDictionary = source as! [NSObject:AnyObject]
+                let instance = Routing()
+                instance.calcPoints = Decoders.decodeOptional(clazz: Bool.self, source: sourceDictionary["calc_points"])
+                return instance
+            }
+
+
             // Decoder for [Service]
             Decoders.addDecoder(clazz: [Service].self) { (source: AnyObject) -> [Service] in
                 return Decoders.decode(clazz: [Service].self, source: source)
@@ -611,6 +685,7 @@ class Decoders {
                 instance.name = Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["name"])
                 instance.address = Decoders.decodeOptional(clazz: Address.self, source: sourceDictionary["address"])
                 instance.duration = Decoders.decodeOptional(clazz: Int64.self, source: sourceDictionary["duration"])
+                instance.preparationTime = Decoders.decodeOptional(clazz: Int64.self, source: sourceDictionary["preparation_time"])
                 instance.timeWindows = Decoders.decodeOptional(clazz: Array.self, source: sourceDictionary["time_windows"])
                 instance.size = Decoders.decodeOptional(clazz: Array.self, source: sourceDictionary["size"])
                 instance.requiredSkills = Decoders.decodeOptional(clazz: Array.self, source: sourceDictionary["required_skills"])
@@ -685,6 +760,7 @@ class Decoders {
                 let instance = Stop()
                 instance.address = Decoders.decodeOptional(clazz: Address.self, source: sourceDictionary["address"])
                 instance.duration = Decoders.decodeOptional(clazz: Int64.self, source: sourceDictionary["duration"])
+                instance.preparationTime = Decoders.decodeOptional(clazz: Int64.self, source: sourceDictionary["preparation_time"])
                 instance.timeWindows = Decoders.decodeOptional(clazz: Array.self, source: sourceDictionary["time_windows"])
                 return instance
             }
@@ -721,6 +797,7 @@ class Decoders {
                 instance.earliestStart = Decoders.decodeOptional(clazz: Int64.self, source: sourceDictionary["earliest_start"])
                 instance.latestEnd = Decoders.decodeOptional(clazz: Int64.self, source: sourceDictionary["latest_end"])
                 instance.skills = Decoders.decodeOptional(clazz: Array.self, source: sourceDictionary["skills"])
+                instance.maxDistance = Decoders.decodeOptional(clazz: Int64.self, source: sourceDictionary["max_distance"])
                 return instance
             }
 

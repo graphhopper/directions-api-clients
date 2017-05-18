@@ -13,7 +13,7 @@
 /**
  * GraphHopper Directions API
  *
- * With the GraphHopper Directions API you get reliable and fast web services for routing and more with world wide coverage. We offer A-to-B routing via the Routing API optionally with turn instructions and elevation data as well as route optimization with various constraints like time window and capacity restrictions. Also it is possible to get all distances between all locations with our fast Matrix API.
+ * You use the GraphHopper Directions API to add route planning, navigation and route optimization to your software. E.g. the Routing API has turn instructions and elevation data and the Route Optimization API solves your logistic problems and supports various constraints like time window and capacity restrictions. Also it is possible to get all distances between all locations with our fast Matrix API.
  *
  * OpenAPI spec version: 1.0.0
  * 
@@ -56,6 +56,7 @@ class Stop implements ArrayAccess
     protected static $swaggerTypes = [
         'address' => '\Swagger\Client\Model\Address',
         'duration' => 'int',
+        'preparation_time' => 'int',
         'time_windows' => '\Swagger\Client\Model\TimeWindow[]'
     ];
 
@@ -71,6 +72,7 @@ class Stop implements ArrayAccess
     protected static $attributeMap = [
         'address' => 'address',
         'duration' => 'duration',
+        'preparation_time' => 'preparation_time',
         'time_windows' => 'time_windows'
     ];
 
@@ -82,6 +84,7 @@ class Stop implements ArrayAccess
     protected static $setters = [
         'address' => 'setAddress',
         'duration' => 'setDuration',
+        'preparation_time' => 'setPreparationTime',
         'time_windows' => 'setTimeWindows'
     ];
 
@@ -93,6 +96,7 @@ class Stop implements ArrayAccess
     protected static $getters = [
         'address' => 'getAddress',
         'duration' => 'getDuration',
+        'preparation_time' => 'getPreparationTime',
         'time_windows' => 'getTimeWindows'
     ];
 
@@ -129,6 +133,7 @@ class Stop implements ArrayAccess
     {
         $this->container['address'] = isset($data['address']) ? $data['address'] : null;
         $this->container['duration'] = isset($data['duration']) ? $data['duration'] : null;
+        $this->container['preparation_time'] = isset($data['preparation_time']) ? $data['preparation_time'] : null;
         $this->container['time_windows'] = isset($data['time_windows']) ? $data['time_windows'] : null;
     }
 
@@ -195,6 +200,27 @@ class Stop implements ArrayAccess
     public function setDuration($duration)
     {
         $this->container['duration'] = $duration;
+
+        return $this;
+    }
+
+    /**
+     * Gets preparation_time
+     * @return int
+     */
+    public function getPreparationTime()
+    {
+        return $this->container['preparation_time'];
+    }
+
+    /**
+     * Sets preparation_time
+     * @param int $preparation_time preparation time of service, e.g. search for a parking space. it only falls due if the location of previous activity differs from this location
+     * @return $this
+     */
+    public function setPreparationTime($preparation_time)
+    {
+        $this->container['preparation_time'] = $preparation_time;
 
         return $this;
     }

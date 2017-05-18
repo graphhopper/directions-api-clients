@@ -1,7 +1,7 @@
 =begin
 #GraphHopper Directions API
 
-#With the GraphHopper Directions API you get reliable and fast web services for routing and more with world wide coverage. We offer A-to-B routing via the Routing API optionally with turn instructions and elevation data as well as route optimization with various constraints like time window and capacity restrictions. Also it is possible to get all distances between all locations with our fast Matrix API. 
+#You use the GraphHopper Directions API to add route planning, navigation and route optimization to your software. E.g. the Routing API has turn instructions and elevation data and the Route Optimization API solves your logistic problems and supports various constraints like time window and capacity restrictions. Also it is possible to get all distances between all locations with our fast Matrix API.
 
 OpenAPI spec version: 1.0.0
 
@@ -37,6 +37,8 @@ module SwaggerClient
     # An array of cost matrices
     attr_accessor :cost_matrices
 
+    attr_accessor :configuration
+
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -48,7 +50,8 @@ module SwaggerClient
         :'relations' => :'relations',
         :'algorithm' => :'algorithm',
         :'objectives' => :'objectives',
-        :'cost_matrices' => :'cost_matrices'
+        :'cost_matrices' => :'cost_matrices',
+        :'configuration' => :'configuration'
       }
     end
 
@@ -62,7 +65,8 @@ module SwaggerClient
         :'relations' => :'Array<Relation>',
         :'algorithm' => :'Algorithm',
         :'objectives' => :'Array<Objective>',
-        :'cost_matrices' => :'Array<CostMatrix>'
+        :'cost_matrices' => :'Array<CostMatrix>',
+        :'configuration' => :'Configuration'
       }
     end
 
@@ -120,6 +124,10 @@ module SwaggerClient
         end
       end
 
+      if attributes.has_key?(:'configuration')
+        self.configuration = attributes[:'configuration']
+      end
+
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -147,7 +155,8 @@ module SwaggerClient
           relations == o.relations &&
           algorithm == o.algorithm &&
           objectives == o.objectives &&
-          cost_matrices == o.cost_matrices
+          cost_matrices == o.cost_matrices &&
+          configuration == o.configuration
     end
 
     # @see the `==` method
@@ -159,7 +168,7 @@ module SwaggerClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [vehicles, vehicle_types, services, shipments, relations, algorithm, objectives, cost_matrices].hash
+      [vehicles, vehicle_types, services, shipments, relations, algorithm, objectives, cost_matrices, configuration].hash
     end
 
     # Builds the object from hash

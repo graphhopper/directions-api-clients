@@ -1,6 +1,6 @@
 /**
  * GraphHopper Directions API
- * With the GraphHopper Directions API you get reliable and fast web services for routing and more with world wide coverage. We offer A-to-B routing via the Routing API optionally with turn instructions and elevation data as well as route optimization with various constraints like time window and capacity restrictions. Also it is possible to get all distances between all locations with our fast Matrix API. 
+ * You use the GraphHopper Directions API to add route planning, navigation and route optimization to your software. E.g. the Routing API has turn instructions and elevation data and the Route Optimization API solves your logistic problems and supports various constraints like time window and capacity restrictions. Also it is possible to get all distances between all locations with our fast Matrix API.
  *
  * OpenAPI spec version: 1.0.0
  * 
@@ -40,6 +40,8 @@ void
 SWGCostMatrix::init() {
     type = new QString("");
     url = new QString("");
+    location_ids = new QList<QString*>();
+    data = new SWGCostMatrix_data();
     profile = new QString("");
 }
 
@@ -52,6 +54,18 @@ SWGCostMatrix::cleanup() {
 
     if(url != nullptr) {
         delete url;
+    }
+
+    if(location_ids != nullptr) {
+        QList<QString*>* arr = location_ids;
+        foreach(QString* o, *arr) {
+            delete o;
+        }
+        delete location_ids;
+    }
+
+    if(data != nullptr) {
+        delete data;
     }
 
     if(profile != nullptr) {
@@ -72,6 +86,10 @@ void
 SWGCostMatrix::fromJsonObject(QJsonObject &pJson) {
     ::Swagger::setValue(&type, pJson["type"], "QString", "QString");
     ::Swagger::setValue(&url, pJson["url"], "QString", "QString");
+    
+    ::Swagger::setValue(&location_ids, pJson["location_ids"], "QList", "QString");
+    
+    ::Swagger::setValue(&data, pJson["data"], "SWGCostMatrix_data", "SWGCostMatrix_data");
     ::Swagger::setValue(&profile, pJson["profile"], "QString", "QString");
 }
 
@@ -92,6 +110,12 @@ SWGCostMatrix::asJsonObject() {
     toJsonValue(QString("type"), type, obj, QString("QString"));
 
     toJsonValue(QString("url"), url, obj, QString("QString"));
+
+    QJsonArray location_idsJsonArray;
+    toJsonArray((QList<void*>*)location_ids, &location_idsJsonArray, "location_ids", "QString");
+    obj->insert("location_ids", location_idsJsonArray);
+
+    toJsonValue(QString("data"), data, obj, QString("SWGCostMatrix_data"));
 
     toJsonValue(QString("profile"), profile, obj, QString("QString"));
 
@@ -114,6 +138,24 @@ SWGCostMatrix::getUrl() {
 void
 SWGCostMatrix::setUrl(QString* url) {
     this->url = url;
+}
+
+QList<QString*>*
+SWGCostMatrix::getLocationIds() {
+    return location_ids;
+}
+void
+SWGCostMatrix::setLocationIds(QList<QString*>* location_ids) {
+    this->location_ids = location_ids;
+}
+
+SWGCostMatrix_data*
+SWGCostMatrix::getData() {
+    return data;
+}
+void
+SWGCostMatrix::setData(SWGCostMatrix_data* data) {
+    this->data = data;
 }
 
 QString*

@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **EarliestStart** | **long?** | earliest start of vehicle at its start location | [optional] 
 **LatestEnd** | **long?** | latest end of vehicle at its end location | [optional] 
 **Skills** | **List&lt;string&gt;** | array of skills | [optional] 
+**MaxDistance** | **long?** | max distance of vehicle | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

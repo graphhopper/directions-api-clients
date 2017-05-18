@@ -1,7 +1,7 @@
 =begin
 #GraphHopper Directions API
 
-#With the GraphHopper Directions API you get reliable and fast web services for routing and more with world wide coverage. We offer A-to-B routing via the Routing API optionally with turn instructions and elevation data as well as route optimization with various constraints like time window and capacity restrictions. Also it is possible to get all distances between all locations with our fast Matrix API. 
+#You use the GraphHopper Directions API to add route planning, navigation and route optimization to your software. E.g. the Routing API has turn instructions and elevation data and the Route Optimization API solves your logistic problems and supports various constraints like time window and capacity restrictions. Also it is possible to get all distances between all locations with our fast Matrix API.
 
 OpenAPI spec version: 1.0.0
 
@@ -38,6 +38,9 @@ module SwaggerClient
     # array of skills
     attr_accessor :skills
 
+    # max distance of vehicle
+    attr_accessor :max_distance
+
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -50,7 +53,8 @@ module SwaggerClient
         :'return_to_depot' => :'return_to_depot',
         :'earliest_start' => :'earliest_start',
         :'latest_end' => :'latest_end',
-        :'skills' => :'skills'
+        :'skills' => :'skills',
+        :'max_distance' => :'max_distance'
       }
     end
 
@@ -65,7 +69,8 @@ module SwaggerClient
         :'return_to_depot' => :'BOOLEAN',
         :'earliest_start' => :'Integer',
         :'latest_end' => :'Integer',
-        :'skills' => :'Array<String>'
+        :'skills' => :'Array<String>',
+        :'max_distance' => :'Integer'
       }
     end
 
@@ -115,6 +120,10 @@ module SwaggerClient
         end
       end
 
+      if attributes.has_key?(:'max_distance')
+        self.max_distance = attributes[:'max_distance']
+      end
+
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -143,7 +152,8 @@ module SwaggerClient
           return_to_depot == o.return_to_depot &&
           earliest_start == o.earliest_start &&
           latest_end == o.latest_end &&
-          skills == o.skills
+          skills == o.skills &&
+          max_distance == o.max_distance
     end
 
     # @see the `==` method
@@ -155,7 +165,7 @@ module SwaggerClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [vehicle_id, type_id, start_address, end_address, _break, return_to_depot, earliest_start, latest_end, skills].hash
+      [vehicle_id, type_id, start_address, end_address, _break, return_to_depot, earliest_start, latest_end, skills, max_distance].hash
     end
 
     # Builds the object from hash

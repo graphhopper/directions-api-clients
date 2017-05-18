@@ -23,6 +23,7 @@ SamiGHResponseInstruction::~SamiGHResponseInstruction() {
 void
 SamiGHResponseInstruction::init() {
     pText = null;
+pStreet_name = null;
 pDistance = null;
 pTime = null;
 pInterval = null;
@@ -39,6 +40,11 @@ SamiGHResponseInstruction::cleanup() {
         
         delete pText;
         pText = null;
+    }
+if(pStreet_name != null) {
+        
+        delete pStreet_name;
+        pStreet_name = null;
     }
 if(pDistance != null) {
         
@@ -126,6 +132,15 @@ SamiGHResponseInstruction::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pText, pTextVal, L"String", L"String");
         }
         delete pTextKey;
+JsonString* pStreet_nameKey = new JsonString(L"street_name");
+        IJsonValue* pStreet_nameVal = null;
+        pJsonObject->GetValue(pStreet_nameKey, pStreet_nameVal);
+        if(pStreet_nameVal != null) {
+            
+            pStreet_name = new String();
+            jsonToValue(pStreet_name, pStreet_nameVal, L"String", L"String");
+        }
+        delete pStreet_nameKey;
 JsonString* pDistanceKey = new JsonString(L"distance");
         IJsonValue* pDistanceVal = null;
         pJsonObject->GetValue(pDistanceKey, pDistanceVal);
@@ -251,6 +266,9 @@ SamiGHResponseInstruction::asJsonObject() {
     JsonString *pTextKey = new JsonString(L"text");
     pJsonObject->Add(pTextKey, toJson(getPText(), "String", ""));
 
+    JsonString *pStreet_nameKey = new JsonString(L"street_name");
+    pJsonObject->Add(pStreet_nameKey, toJson(getPStreetName(), "String", ""));
+
     JsonString *pDistanceKey = new JsonString(L"distance");
     pJsonObject->Add(pDistanceKey, toJson(getPDistance(), "Double", ""));
 
@@ -285,6 +303,15 @@ SamiGHResponseInstruction::getPText() {
 void
 SamiGHResponseInstruction::setPText(String* pText) {
     this->pText = pText;
+}
+
+String*
+SamiGHResponseInstruction::getPStreetName() {
+    return pStreet_name;
+}
+void
+SamiGHResponseInstruction::setPStreetName(String* pStreet_name) {
+    this->pStreet_name = pStreet_name;
 }
 
 Double*

@@ -3,7 +3,7 @@
 """
     GraphHopper Directions API
 
-    With the GraphHopper Directions API you get reliable and fast web services for routing and more with world wide coverage. We offer A-to-B routing via the Routing API optionally with turn instructions and elevation data as well as route optimization with various constraints like time window and capacity restrictions. Also it is possible to get all distances between all locations with our fast Matrix API. 
+    You use the GraphHopper Directions API to add route planning, navigation and route optimization to your software. E.g. the Routing API has turn instructions and elevation data and the Route Optimization API solves your logistic problems and supports various constraints like time window and capacity restrictions. Also it is possible to get all distances between all locations with our fast Matrix API.
 
     OpenAPI spec version: 1.0.0
     
@@ -17,7 +17,10 @@ from __future__ import absolute_import
 from .models.activity import Activity
 from .models.address import Address
 from .models.algorithm import Algorithm
+from .models.configuration import Configuration
 from .models.cost_matrix import CostMatrix
+from .models.cost_matrix_data import CostMatrixData
+from .models.cost_matrix_data_info import CostMatrixDataInfo
 from .models.gh_error import GHError
 from .models.gh_error_hints import GHErrorHints
 from .models.gh_geocoding_location import GHGeocodingLocation
@@ -37,12 +40,14 @@ from .models.gh_response_instructions import GHResponseInstructions
 from .models.gh_route_response import GHRouteResponse
 from .models.gh_route_response_path import GHRouteResponsePath
 from .models.job_id import JobId
+from .models.location import Location
 from .models.model_break import ModelBreak
 from .models.objective import Objective
 from .models.relation import Relation
 from .models.request import Request
 from .models.response import Response
 from .models.route import Route
+from .models.routing import Routing
 from .models.service import Service
 from .models.shipment import Shipment
 from .models.solution import Solution

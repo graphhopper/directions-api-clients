@@ -2,7 +2,7 @@
 
 GraphHopper Directions API
 
-With the GraphHopper Directions API you get reliable and fast web services for routing and more with world wide coverage. We offer A-to-B routing via the Routing API optionally with turn instructions and elevation data as well as route optimization with various constraints like time window and capacity restrictions. Also it is possible to get all distances between all locations with our fast Matrix API. 
+You use the GraphHopper Directions API to add route planning, navigation and route optimization to your software. E.g. the Routing API has turn instructions and elevation data and the Route Optimization API solves your logistic problems and supports various constraints like time window and capacity restrictions. Also it is possible to get all distances between all locations with our fast Matrix API.
 
 OpenAPI spec version: 1.0.0
 
@@ -44,7 +44,7 @@ use base ("Class::Accessor", "Class::Data::Inheritable");
 
 GraphHopper Directions API
 
-With the GraphHopper Directions API you get reliable and fast web services for routing and more with world wide coverage. We offer A-to-B routing via the Routing API optionally with turn instructions and elevation data as well as route optimization with various constraints like time window and capacity restrictions. Also it is possible to get all distances between all locations with our fast Matrix API. 
+You use the GraphHopper Directions API to add route planning, navigation and route optimization to your software. E.g. the Routing API has turn instructions and elevation data and the Route Optimization API solves your logistic problems and supports various constraints like time window and capacity restrictions. Also it is possible to get all distances between all locations with our fast Matrix API.
 
 OpenAPI spec version: 1.0.0
 
@@ -205,6 +205,13 @@ __PACKAGE__->method_documentation({
     	format => '',
     	read_only => '',
     		},
+    'max_distance' => {
+    	datatype => 'int',
+    	base_name => 'max_distance',
+    	description => 'max distance of vehicle',
+    	format => '',
+    	read_only => '',
+    		},
 });
 
 __PACKAGE__->swagger_types( {
@@ -216,7 +223,8 @@ __PACKAGE__->swagger_types( {
     'return_to_depot' => 'boolean',
     'earliest_start' => 'int',
     'latest_end' => 'int',
-    'skills' => 'ARRAY[string]'
+    'skills' => 'ARRAY[string]',
+    'max_distance' => 'int'
 } );
 
 __PACKAGE__->attribute_map( {
@@ -228,7 +236,8 @@ __PACKAGE__->attribute_map( {
     'return_to_depot' => 'return_to_depot',
     'earliest_start' => 'earliest_start',
     'latest_end' => 'latest_end',
-    'skills' => 'skills'
+    'skills' => 'skills',
+    'max_distance' => 'max_distance'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

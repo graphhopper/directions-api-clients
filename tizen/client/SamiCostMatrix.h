@@ -17,6 +17,8 @@
 using namespace Tizen::Web::Json;
 
 
+#include "SamiCostMatrix_data.h"
+using Tizen::Base::Collection::IList;
 using Tizen::Base::String;
 
 
@@ -44,12 +46,18 @@ public:
     void setPType(String* pType);
     String* getPUrl();
     void setPUrl(String* pUrl);
+    IList* getPLocationIds();
+    void setPLocationIds(IList* pLocation_ids);
+    SamiCostMatrix_data* getPData();
+    void setPData(SamiCostMatrix_data* pData);
     String* getPProfile();
     void setPProfile(String* pProfile);
 
 private:
     String* pType;
 String* pUrl;
+IList* pLocation_ids;
+SamiCostMatrix_data* pData;
 String* pProfile;
 };
 

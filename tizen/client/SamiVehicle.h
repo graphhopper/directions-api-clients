@@ -63,6 +63,8 @@ public:
     void setPLatestEnd(Long* pLatest_end);
     IList* getPSkills();
     void setPSkills(IList* pSkills);
+    Long* getPMaxDistance();
+    void setPMaxDistance(Long* pMax_distance);
 
 private:
     String* pVehicle_id;
@@ -74,6 +76,7 @@ Boolean* pReturn_to_depot;
 Long* pEarliest_start;
 Long* pLatest_end;
 IList* pSkills;
+Long* pMax_distance;
 };
 
 } /* namespace Swagger */

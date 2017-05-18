@@ -1,7 +1,7 @@
 /* 
  * GraphHopper Directions API
  *
- * With the GraphHopper Directions API you get reliable and fast web services for routing and more with world wide coverage. We offer A-to-B routing via the Routing API optionally with turn instructions and elevation data as well as route optimization with various constraints like time window and capacity restrictions. Also it is possible to get all distances between all locations with our fast Matrix API. 
+ * You use the GraphHopper Directions API to add route planning, navigation and route optimization to your software. E.g. the Routing API has turn instructions and elevation data and the Route Optimization API solves your logistic problems and supports various constraints like time window and capacity restrictions. Also it is possible to get all distances between all locations with our fast Matrix API.
  *
  * OpenAPI spec version: 1.0.0
  * 
@@ -33,11 +33,13 @@ namespace IO.Swagger.Model
         /// Initializes a new instance of the <see cref="Address" /> class.
         /// </summary>
         /// <param name="LocationId">Unique identifier of location.</param>
+        /// <param name="Name">name of location, e.g. street name plus house number.</param>
         /// <param name="Lon">longitude.</param>
         /// <param name="Lat">latitude.</param>
-        public Address(string LocationId = default(string), double? Lon = default(double?), double? Lat = default(double?))
+        public Address(string LocationId = default(string), string Name = default(string), double? Lon = default(double?), double? Lat = default(double?))
         {
             this.LocationId = LocationId;
+            this.Name = Name;
             this.Lon = Lon;
             this.Lat = Lat;
         }
@@ -48,6 +50,12 @@ namespace IO.Swagger.Model
         /// <value>Unique identifier of location</value>
         [DataMember(Name="location_id", EmitDefaultValue=false)]
         public string LocationId { get; set; }
+        /// <summary>
+        /// name of location, e.g. street name plus house number
+        /// </summary>
+        /// <value>name of location, e.g. street name plus house number</value>
+        [DataMember(Name="name", EmitDefaultValue=false)]
+        public string Name { get; set; }
         /// <summary>
         /// longitude
         /// </summary>
@@ -69,6 +77,7 @@ namespace IO.Swagger.Model
             var sb = new StringBuilder();
             sb.Append("class Address {\n");
             sb.Append("  LocationId: ").Append(LocationId).Append("\n");
+            sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Lon: ").Append(Lon).Append("\n");
             sb.Append("  Lat: ").Append(Lat).Append("\n");
             sb.Append("}\n");
@@ -113,6 +122,11 @@ namespace IO.Swagger.Model
                     this.LocationId.Equals(other.LocationId)
                 ) && 
                 (
+                    this.Name == other.Name ||
+                    this.Name != null &&
+                    this.Name.Equals(other.Name)
+                ) && 
+                (
                     this.Lon == other.Lon ||
                     this.Lon != null &&
                     this.Lon.Equals(other.Lon)
@@ -137,6 +151,8 @@ namespace IO.Swagger.Model
                 // Suitable nullity checks etc, of course :)
                 if (this.LocationId != null)
                     hash = hash * 59 + this.LocationId.GetHashCode();
+                if (this.Name != null)
+                    hash = hash * 59 + this.Name.GetHashCode();
                 if (this.Lon != null)
                     hash = hash * 59 + this.Lon.GetHashCode();
                 if (this.Lat != null)

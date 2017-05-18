@@ -2,7 +2,7 @@
 
 WWW::SwaggerClient::Role - a Moose role for the GraphHopper Directions API
 
-With the GraphHopper Directions API you get reliable and fast web services for routing and more with world wide coverage. We offer A-to-B routing via the Routing API optionally with turn instructions and elevation data as well as route optimization with various constraints like time window and capacity restrictions. Also it is possible to get all distances between all locations with our fast Matrix API. 
+You use the GraphHopper Directions API to add route planning, navigation and route optimization to your software. E.g. the Routing API has turn instructions and elevation data and the Route Optimization API solves your logistic problems and supports various constraints like time window and capacity restrictions. Also it is possible to get all distances between all locations with our fast Matrix API.
 
 # VERSION
 
@@ -236,7 +236,10 @@ use WWW::SwaggerClient::Object::Activity;
 use WWW::SwaggerClient::Object::Address;
 use WWW::SwaggerClient::Object::Algorithm;
 use WWW::SwaggerClient::Object::Break;
+use WWW::SwaggerClient::Object::Configuration;
 use WWW::SwaggerClient::Object::CostMatrix;
+use WWW::SwaggerClient::Object::CostMatrixData;
+use WWW::SwaggerClient::Object::CostMatrixDataInfo;
 use WWW::SwaggerClient::Object::GHError;
 use WWW::SwaggerClient::Object::GHErrorHints;
 use WWW::SwaggerClient::Object::GHGeocodingLocation;
@@ -256,11 +259,13 @@ use WWW::SwaggerClient::Object::GHResponseInstructions;
 use WWW::SwaggerClient::Object::GHRouteResponse;
 use WWW::SwaggerClient::Object::GHRouteResponsePath;
 use WWW::SwaggerClient::Object::JobId;
+use WWW::SwaggerClient::Object::Location;
 use WWW::SwaggerClient::Object::Objective;
 use WWW::SwaggerClient::Object::Relation;
 use WWW::SwaggerClient::Object::Request;
 use WWW::SwaggerClient::Object::Response;
 use WWW::SwaggerClient::Object::Route;
+use WWW::SwaggerClient::Object::Routing;
 use WWW::SwaggerClient::Object::Service;
 use WWW::SwaggerClient::Object::Shipment;
 use WWW::SwaggerClient::Object::Solution;
@@ -291,7 +296,10 @@ use WWW::SwaggerClient::Object::Activity;
 use WWW::SwaggerClient::Object::Address;
 use WWW::SwaggerClient::Object::Algorithm;
 use WWW::SwaggerClient::Object::Break;
+use WWW::SwaggerClient::Object::Configuration;
 use WWW::SwaggerClient::Object::CostMatrix;
+use WWW::SwaggerClient::Object::CostMatrixData;
+use WWW::SwaggerClient::Object::CostMatrixDataInfo;
 use WWW::SwaggerClient::Object::GHError;
 use WWW::SwaggerClient::Object::GHErrorHints;
 use WWW::SwaggerClient::Object::GHGeocodingLocation;
@@ -311,11 +319,13 @@ use WWW::SwaggerClient::Object::GHResponseInstructions;
 use WWW::SwaggerClient::Object::GHRouteResponse;
 use WWW::SwaggerClient::Object::GHRouteResponsePath;
 use WWW::SwaggerClient::Object::JobId;
+use WWW::SwaggerClient::Object::Location;
 use WWW::SwaggerClient::Object::Objective;
 use WWW::SwaggerClient::Object::Relation;
 use WWW::SwaggerClient::Object::Request;
 use WWW::SwaggerClient::Object::Response;
 use WWW::SwaggerClient::Object::Route;
+use WWW::SwaggerClient::Object::Routing;
 use WWW::SwaggerClient::Object::Service;
 use WWW::SwaggerClient::Object::Shipment;
 use WWW::SwaggerClient::Object::Solution;
@@ -369,7 +379,10 @@ Class | Method | HTTP request | Description
  - [WWW::SwaggerClient::Object::Address](docs/Address.md)
  - [WWW::SwaggerClient::Object::Algorithm](docs/Algorithm.md)
  - [WWW::SwaggerClient::Object::Break](docs/Break.md)
+ - [WWW::SwaggerClient::Object::Configuration](docs/Configuration.md)
  - [WWW::SwaggerClient::Object::CostMatrix](docs/CostMatrix.md)
+ - [WWW::SwaggerClient::Object::CostMatrixData](docs/CostMatrixData.md)
+ - [WWW::SwaggerClient::Object::CostMatrixDataInfo](docs/CostMatrixDataInfo.md)
  - [WWW::SwaggerClient::Object::GHError](docs/GHError.md)
  - [WWW::SwaggerClient::Object::GHErrorHints](docs/GHErrorHints.md)
  - [WWW::SwaggerClient::Object::GHGeocodingLocation](docs/GHGeocodingLocation.md)
@@ -389,11 +402,13 @@ Class | Method | HTTP request | Description
  - [WWW::SwaggerClient::Object::GHRouteResponse](docs/GHRouteResponse.md)
  - [WWW::SwaggerClient::Object::GHRouteResponsePath](docs/GHRouteResponsePath.md)
  - [WWW::SwaggerClient::Object::JobId](docs/JobId.md)
+ - [WWW::SwaggerClient::Object::Location](docs/Location.md)
  - [WWW::SwaggerClient::Object::Objective](docs/Objective.md)
  - [WWW::SwaggerClient::Object::Relation](docs/Relation.md)
  - [WWW::SwaggerClient::Object::Request](docs/Request.md)
  - [WWW::SwaggerClient::Object::Response](docs/Response.md)
  - [WWW::SwaggerClient::Object::Route](docs/Route.md)
+ - [WWW::SwaggerClient::Object::Routing](docs/Routing.md)
  - [WWW::SwaggerClient::Object::Service](docs/Service.md)
  - [WWW::SwaggerClient::Object::Shipment](docs/Shipment.md)
  - [WWW::SwaggerClient::Object::Solution](docs/Solution.md)

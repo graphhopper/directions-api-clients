@@ -12,5 +12,6 @@ Name | Type | Description | Notes
 **earliest_start** | **Integer** | earliest start of vehicle at its start location | [optional] 
 **latest_end** | **Integer** | latest end of vehicle at its end location | [optional] 
 **skills** | **Array&lt;String&gt;** | array of skills | [optional] 
+**max_distance** | **Integer** | max distance of vehicle | [optional] 
 
 

@@ -4,6 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **text** | **NSString*** | A description what the user has to do in order to follow the route. The language depends on the locale parameter. | [optional] 
+**streetName** | **NSString*** | The name of the street to turn onto in order to follow the route. | [optional] 
 **distance** | **NSNumber*** | The distance for this instruction, in meter | [optional] 
 **time** | **NSNumber*** | The duration for this instruction, in ms | [optional] 
 **interval** | **NSArray&lt;NSNumber*&gt;*** | An array containing the first and the last index (relative to paths[0].points) of the points for this instruction. This is useful to know for which part of the route the instructions are valid. | [optional] 

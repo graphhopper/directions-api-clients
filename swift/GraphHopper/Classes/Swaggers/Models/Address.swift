@@ -11,6 +11,8 @@ import Foundation
 public class Address: JSONEncodable {
     /** Unique identifier of location */
     public var locationId: String?
+    /** name of location, e.g. street name plus house number */
+    public var name: String?
     /** longitude */
     public var lon: Double?
     /** latitude */
@@ -22,6 +24,7 @@ public class Address: JSONEncodable {
     func encodeToJSON() -> AnyObject {
         var nillableDictionary = [String:AnyObject?]()
         nillableDictionary["location_id"] = self.locationId
+        nillableDictionary["name"] = self.name
         nillableDictionary["lon"] = self.lon
         nillableDictionary["lat"] = self.lat
         let dictionary: [String:AnyObject] = APIHelper.rejectNil(nillableDictionary) ?? [:]

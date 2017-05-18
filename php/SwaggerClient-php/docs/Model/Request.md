@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **algorithm** | [**\Swagger\Client\Model\Algorithm**](Algorithm.md) |  | [optional] 
 **objectives** | [**\Swagger\Client\Model\Objective[]**](Objective.md) | An array of objectives | [optional] 
 **cost_matrices** | [**\Swagger\Client\Model\CostMatrix[]**](CostMatrix.md) | An array of cost matrices | [optional] 
+**configuration** | [**\Swagger\Client\Model\Configuration**](Configuration.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

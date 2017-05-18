@@ -4,6 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **locationId** | **NSString*** | Unique identifier of location | [optional] 
+**name** | **NSString*** | name of location, e.g. street name plus house number | [optional] 
 **lon** | **NSNumber*** | longitude | [optional] 
 **lat** | **NSNumber*** | latitude | [optional] 
 

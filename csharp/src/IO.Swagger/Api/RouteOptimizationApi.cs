@@ -1,7 +1,7 @@
 /* 
  * GraphHopper Directions API
  *
- * With the GraphHopper Directions API you get reliable and fast web services for routing and more with world wide coverage. We offer A-to-B routing via the Routing API optionally with turn instructions and elevation data as well as route optimization with various constraints like time window and capacity restrictions. Also it is possible to get all distances between all locations with our fast Matrix API. 
+ * You use the GraphHopper Directions API to add route planning, navigation and route optimization to your software. E.g. the Routing API has turn instructions and elevation data and the Route Optimization API solves your logistic problems and supports various constraints like time window and capacity restrictions. Also it is possible to get all distances between all locations with our fast Matrix API.
  *
  * OpenAPI spec version: 1.0.0
  * 
@@ -51,7 +51,7 @@ namespace IO.Swagger.Api
         /// Solves vehicle routing problems
         /// </summary>
         /// <remarks>
-        /// This endpoint for solving vehicle routing problems, i.e. traveling salesman or vehicle routing problems, and returns the solution. 
+        /// This endpoint for solving vehicle routing problems, i.e. traveling salesman or vehicle routing problems, and returns the solution.
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="key">your API key</param>
@@ -63,7 +63,7 @@ namespace IO.Swagger.Api
         /// Solves vehicle routing problems
         /// </summary>
         /// <remarks>
-        /// This endpoint for solving vehicle routing problems, i.e. traveling salesman or vehicle routing problems, and returns the solution. 
+        /// This endpoint for solving vehicle routing problems, i.e. traveling salesman or vehicle routing problems, and returns the solution.
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="key">your API key</param>
@@ -99,7 +99,7 @@ namespace IO.Swagger.Api
         /// Solves vehicle routing problems
         /// </summary>
         /// <remarks>
-        /// This endpoint for solving vehicle routing problems, i.e. traveling salesman or vehicle routing problems, and returns the solution. 
+        /// This endpoint for solving vehicle routing problems, i.e. traveling salesman or vehicle routing problems, and returns the solution.
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="key">your API key</param>
@@ -111,7 +111,7 @@ namespace IO.Swagger.Api
         /// Solves vehicle routing problems
         /// </summary>
         /// <remarks>
-        /// This endpoint for solving vehicle routing problems, i.e. traveling salesman or vehicle routing problems, and returns the solution. 
+        /// This endpoint for solving vehicle routing problems, i.e. traveling salesman or vehicle routing problems, and returns the solution.
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="key">your API key</param>
@@ -386,7 +386,7 @@ namespace IO.Swagger.Api
         }
 
         /// <summary>
-        /// Solves vehicle routing problems This endpoint for solving vehicle routing problems, i.e. traveling salesman or vehicle routing problems, and returns the solution. 
+        /// Solves vehicle routing problems This endpoint for solving vehicle routing problems, i.e. traveling salesman or vehicle routing problems, and returns the solution.
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="key">your API key</param>
@@ -399,7 +399,7 @@ namespace IO.Swagger.Api
         }
 
         /// <summary>
-        /// Solves vehicle routing problems This endpoint for solving vehicle routing problems, i.e. traveling salesman or vehicle routing problems, and returns the solution. 
+        /// Solves vehicle routing problems This endpoint for solving vehicle routing problems, i.e. traveling salesman or vehicle routing problems, and returns the solution.
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="key">your API key</param>
@@ -470,7 +470,7 @@ namespace IO.Swagger.Api
         }
 
         /// <summary>
-        /// Solves vehicle routing problems This endpoint for solving vehicle routing problems, i.e. traveling salesman or vehicle routing problems, and returns the solution. 
+        /// Solves vehicle routing problems This endpoint for solving vehicle routing problems, i.e. traveling salesman or vehicle routing problems, and returns the solution.
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="key">your API key</param>
@@ -484,7 +484,7 @@ namespace IO.Swagger.Api
         }
 
         /// <summary>
-        /// Solves vehicle routing problems This endpoint for solving vehicle routing problems, i.e. traveling salesman or vehicle routing problems, and returns the solution. 
+        /// Solves vehicle routing problems This endpoint for solving vehicle routing problems, i.e. traveling salesman or vehicle routing problems, and returns the solution.
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="key">your API key</param>

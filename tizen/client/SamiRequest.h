@@ -18,6 +18,7 @@ using namespace Tizen::Web::Json;
 
 
 #include "SamiAlgorithm.h"
+#include "SamiConfiguration.h"
 #include "SamiCostMatrix.h"
 #include "SamiObjective.h"
 #include "SamiRelation.h"
@@ -64,6 +65,8 @@ public:
     void setPObjectives(IList* pObjectives);
     IList* getPCostMatrices();
     void setPCostMatrices(IList* pCost_matrices);
+    SamiConfiguration* getPConfiguration();
+    void setPConfiguration(SamiConfiguration* pConfiguration);
 
 private:
     IList* pVehicles;
@@ -74,6 +77,7 @@ IList* pRelations;
 SamiAlgorithm* pAlgorithm;
 IList* pObjectives;
 IList* pCost_matrices;
+SamiConfiguration* pConfiguration;
 };
 
 } /* namespace Swagger */

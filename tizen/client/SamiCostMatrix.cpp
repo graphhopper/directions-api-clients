@@ -24,6 +24,8 @@ void
 SamiCostMatrix::init() {
     pType = null;
 pUrl = null;
+pLocation_ids = null;
+pData = null;
 pProfile = null;
 }
 
@@ -38,6 +40,16 @@ if(pUrl != null) {
         
         delete pUrl;
         pUrl = null;
+    }
+if(pLocation_ids != null) {
+        pLocation_ids->RemoveAll(true);
+        delete pLocation_ids;
+        pLocation_ids = null;
+    }
+if(pData != null) {
+        
+        delete pData;
+        pData = null;
     }
 if(pProfile != null) {
         
@@ -99,6 +111,24 @@ JsonString* pUrlKey = new JsonString(L"url");
             jsonToValue(pUrl, pUrlVal, L"String", L"String");
         }
         delete pUrlKey;
+JsonString* pLocation_idsKey = new JsonString(L"location_ids");
+        IJsonValue* pLocation_idsVal = null;
+        pJsonObject->GetValue(pLocation_idsKey, pLocation_idsVal);
+        if(pLocation_idsVal != null) {
+            pLocation_ids = new ArrayList();
+            
+            jsonToValue(pLocation_ids, pLocation_idsVal, L"IList", L"String");
+        }
+        delete pLocation_idsKey;
+JsonString* pDataKey = new JsonString(L"data");
+        IJsonValue* pDataVal = null;
+        pJsonObject->GetValue(pDataKey, pDataVal);
+        if(pDataVal != null) {
+            
+            pData = new SamiCostMatrix_data();
+            jsonToValue(pData, pDataVal, L"SamiCostMatrix_data", L"SamiCostMatrix_data");
+        }
+        delete pDataKey;
 JsonString* pProfileKey = new JsonString(L"profile");
         IJsonValue* pProfileVal = null;
         pJsonObject->GetValue(pProfileKey, pProfileVal);
@@ -164,6 +194,12 @@ SamiCostMatrix::asJsonObject() {
     JsonString *pUrlKey = new JsonString(L"url");
     pJsonObject->Add(pUrlKey, toJson(getPUrl(), "String", ""));
 
+    JsonString *pLocation_idsKey = new JsonString(L"location_ids");
+    pJsonObject->Add(pLocation_idsKey, toJson(getPLocationIds(), "String", "array"));
+
+    JsonString *pDataKey = new JsonString(L"data");
+    pJsonObject->Add(pDataKey, toJson(getPData(), "SamiCostMatrix_data", ""));
+
     JsonString *pProfileKey = new JsonString(L"profile");
     pJsonObject->Add(pProfileKey, toJson(getPProfile(), "String", ""));
 
@@ -186,6 +222,24 @@ SamiCostMatrix::getPUrl() {
 void
 SamiCostMatrix::setPUrl(String* pUrl) {
     this->pUrl = pUrl;
+}
+
+IList*
+SamiCostMatrix::getPLocationIds() {
+    return pLocation_ids;
+}
+void
+SamiCostMatrix::setPLocationIds(IList* pLocation_ids) {
+    this->pLocation_ids = pLocation_ids;
+}
+
+SamiCostMatrix_data*
+SamiCostMatrix::getPData() {
+    return pData;
+}
+void
+SamiCostMatrix::setPData(SamiCostMatrix_data* pData) {
+    this->pData = pData;
 }
 
 String*

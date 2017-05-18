@@ -31,6 +31,7 @@ pReturn_to_depot = null;
 pEarliest_start = null;
 pLatest_end = null;
 pSkills = null;
+pMax_distance = null;
 }
 
 void
@@ -79,6 +80,11 @@ if(pSkills != null) {
         pSkills->RemoveAll(true);
         delete pSkills;
         pSkills = null;
+    }
+if(pMax_distance != null) {
+        
+        delete pMax_distance;
+        pMax_distance = null;
     }
 }
 
@@ -198,6 +204,15 @@ JsonString* pSkillsKey = new JsonString(L"skills");
             jsonToValue(pSkills, pSkillsVal, L"IList", L"String");
         }
         delete pSkillsKey;
+JsonString* pMax_distanceKey = new JsonString(L"max_distance");
+        IJsonValue* pMax_distanceVal = null;
+        pJsonObject->GetValue(pMax_distanceKey, pMax_distanceVal);
+        if(pMax_distanceVal != null) {
+            
+            pMax_distance = new Long();
+            jsonToValue(pMax_distance, pMax_distanceVal, L"Long", L"Long");
+        }
+        delete pMax_distanceKey;
     }
 }
 
@@ -274,6 +289,9 @@ SamiVehicle::asJsonObject() {
 
     JsonString *pSkillsKey = new JsonString(L"skills");
     pJsonObject->Add(pSkillsKey, toJson(getPSkills(), "String", "array"));
+
+    JsonString *pMax_distanceKey = new JsonString(L"max_distance");
+    pJsonObject->Add(pMax_distanceKey, toJson(getPMaxDistance(), "Long", ""));
 
     return pJsonObject;
 }
@@ -357,6 +375,15 @@ SamiVehicle::getPSkills() {
 void
 SamiVehicle::setPSkills(IList* pSkills) {
     this->pSkills = pSkills;
+}
+
+Long*
+SamiVehicle::getPMaxDistance() {
+    return pMax_distance;
+}
+void
+SamiVehicle::setPMaxDistance(Long* pMax_distance) {
+    this->pMax_distance = pMax_distance;
 }
 
 

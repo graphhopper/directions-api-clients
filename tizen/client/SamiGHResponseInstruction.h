@@ -45,6 +45,8 @@ public:
 
     String* getPText();
     void setPText(String* pText);
+    String* getPStreetName();
+    void setPStreetName(String* pStreet_name);
     Double* getPDistance();
     void setPDistance(Double* pDistance);
     Integer* getPTime();
@@ -64,6 +66,7 @@ public:
 
 private:
     String* pText;
+String* pStreet_name;
 Double* pDistance;
 Integer* pTime;
 IList* pInterval;

@@ -7,7 +7,10 @@
 #include "SamiAddress.h"
 #include "SamiAlgorithm.h"
 #include "SamiBreak.h"
+#include "SamiConfiguration.h"
 #include "SamiCostMatrix.h"
+#include "SamiCostMatrix_data.h"
+#include "SamiCostMatrix_data_info.h"
 #include "SamiGHError.h"
 #include "SamiGHError_hints.h"
 #include "SamiGHGeocodingLocation.h"
@@ -27,11 +30,13 @@
 #include "SamiGHRouteResponse.h"
 #include "SamiGHRouteResponsePath.h"
 #include "SamiJobId.h"
+#include "SamiLocation.h"
 #include "SamiObjective.h"
 #include "SamiRelation.h"
 #include "SamiRequest.h"
 #include "SamiResponse.h"
 #include "SamiRoute.h"
+#include "SamiRouting.h"
 #include "SamiService.h"
 #include "SamiShipment.h"
 #include "SamiSolution.h"
@@ -56,8 +61,17 @@ namespace Swagger {
     if(type.Equals(L"SamiBreak", true)) {
       return new SamiBreak();
     }
+    if(type.Equals(L"SamiConfiguration", true)) {
+      return new SamiConfiguration();
+    }
     if(type.Equals(L"SamiCostMatrix", true)) {
       return new SamiCostMatrix();
+    }
+    if(type.Equals(L"SamiCostMatrix_data", true)) {
+      return new SamiCostMatrix_data();
+    }
+    if(type.Equals(L"SamiCostMatrix_data_info", true)) {
+      return new SamiCostMatrix_data_info();
     }
     if(type.Equals(L"SamiGHError", true)) {
       return new SamiGHError();
@@ -116,6 +130,9 @@ namespace Swagger {
     if(type.Equals(L"SamiJobId", true)) {
       return new SamiJobId();
     }
+    if(type.Equals(L"SamiLocation", true)) {
+      return new SamiLocation();
+    }
     if(type.Equals(L"SamiObjective", true)) {
       return new SamiObjective();
     }
@@ -130,6 +147,9 @@ namespace Swagger {
     }
     if(type.Equals(L"SamiRoute", true)) {
       return new SamiRoute();
+    }
+    if(type.Equals(L"SamiRouting", true)) {
+      return new SamiRouting();
     }
     if(type.Equals(L"SamiService", true)) {
       return new SamiService();

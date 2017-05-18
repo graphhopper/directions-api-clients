@@ -109,7 +109,7 @@ public class RouteOptimizationAPI: APIBase {
     /**
      Solves vehicle routing problems
      - POST /vrp/optimize
-     - This endpoint for solving vehicle routing problems, i.e. traveling salesman or vehicle routing problems, and returns the solution. 
+     - This endpoint for solving vehicle routing problems, i.e. traveling salesman or vehicle routing problems, and returns the solution.
      - examples: [{contentType=application/json, example={
   "job_id" : "aeiou"
 }}]

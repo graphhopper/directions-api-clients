@@ -13,7 +13,7 @@
 /**
  * GraphHopper Directions API
  *
- * With the GraphHopper Directions API you get reliable and fast web services for routing and more with world wide coverage. We offer A-to-B routing via the Routing API optionally with turn instructions and elevation data as well as route optimization with various constraints like time window and capacity restrictions. Also it is possible to get all distances between all locations with our fast Matrix API.
+ * You use the GraphHopper Directions API to add route planning, navigation and route optimization to your software. E.g. the Routing API has turn instructions and elevation data and the Route Optimization API solves your logistic problems and supports various constraints like time window and capacity restrictions. Also it is possible to get all distances between all locations with our fast Matrix API.
  *
  * OpenAPI spec version: 1.0.0
  * 
@@ -56,6 +56,8 @@ class CostMatrix implements ArrayAccess
     protected static $swaggerTypes = [
         'type' => 'string',
         'url' => 'string',
+        'location_ids' => 'string[]',
+        'data' => '\Swagger\Client\Model\CostMatrixData',
         'profile' => 'string'
     ];
 
@@ -71,6 +73,8 @@ class CostMatrix implements ArrayAccess
     protected static $attributeMap = [
         'type' => 'type',
         'url' => 'url',
+        'location_ids' => 'location_ids',
+        'data' => 'data',
         'profile' => 'profile'
     ];
 
@@ -82,6 +86,8 @@ class CostMatrix implements ArrayAccess
     protected static $setters = [
         'type' => 'setType',
         'url' => 'setUrl',
+        'location_ids' => 'setLocationIds',
+        'data' => 'setData',
         'profile' => 'setProfile'
     ];
 
@@ -93,6 +99,8 @@ class CostMatrix implements ArrayAccess
     protected static $getters = [
         'type' => 'getType',
         'url' => 'getUrl',
+        'location_ids' => 'getLocationIds',
+        'data' => 'getData',
         'profile' => 'getProfile'
     ];
 
@@ -143,6 +151,8 @@ class CostMatrix implements ArrayAccess
     {
         $this->container['type'] = isset($data['type']) ? $data['type'] : null;
         $this->container['url'] = isset($data['url']) ? $data['url'] : null;
+        $this->container['location_ids'] = isset($data['location_ids']) ? $data['location_ids'] : null;
+        $this->container['data'] = isset($data['data']) ? $data['data'] : null;
         $this->container['profile'] = isset($data['profile']) ? $data['profile'] : null;
     }
 
@@ -222,6 +232,48 @@ class CostMatrix implements ArrayAccess
     public function setUrl($url)
     {
         $this->container['url'] = $url;
+
+        return $this;
+    }
+
+    /**
+     * Gets location_ids
+     * @return string[]
+     */
+    public function getLocationIds()
+    {
+        return $this->container['location_ids'];
+    }
+
+    /**
+     * Sets location_ids
+     * @param string[] $location_ids
+     * @return $this
+     */
+    public function setLocationIds($location_ids)
+    {
+        $this->container['location_ids'] = $location_ids;
+
+        return $this;
+    }
+
+    /**
+     * Gets data
+     * @return \Swagger\Client\Model\CostMatrixData
+     */
+    public function getData()
+    {
+        return $this->container['data'];
+    }
+
+    /**
+     * Sets data
+     * @param \Swagger\Client\Model\CostMatrixData $data
+     * @return $this
+     */
+    public function setData($data)
+    {
+        $this->container['data'] = $data;
 
         return $this;
     }

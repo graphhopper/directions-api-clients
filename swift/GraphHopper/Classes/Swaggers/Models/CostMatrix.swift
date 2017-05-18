@@ -17,6 +17,8 @@ public class CostMatrix: JSONEncodable {
     public var type: ModelType?
     /** URL of matrix service */
     public var url: String?
+    public var locationIds: [String]?
+    public var data: CostMatrixData?
     /** vehicle profile or empty if catch all fallback */
     public var profile: String?
 
@@ -27,6 +29,8 @@ public class CostMatrix: JSONEncodable {
         var nillableDictionary = [String:AnyObject?]()
         nillableDictionary["type"] = self.type?.rawValue
         nillableDictionary["url"] = self.url
+        nillableDictionary["location_ids"] = self.locationIds?.encodeToJSON()
+        nillableDictionary["data"] = self.data?.encodeToJSON()
         nillableDictionary["profile"] = self.profile
         let dictionary: [String:AnyObject] = APIHelper.rejectNil(nillableDictionary) ?? [:]
         return dictionary

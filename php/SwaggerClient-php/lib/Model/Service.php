@@ -13,7 +13,7 @@
 /**
  * GraphHopper Directions API
  *
- * With the GraphHopper Directions API you get reliable and fast web services for routing and more with world wide coverage. We offer A-to-B routing via the Routing API optionally with turn instructions and elevation data as well as route optimization with various constraints like time window and capacity restrictions. Also it is possible to get all distances between all locations with our fast Matrix API.
+ * You use the GraphHopper Directions API to add route planning, navigation and route optimization to your software. E.g. the Routing API has turn instructions and elevation data and the Route Optimization API solves your logistic problems and supports various constraints like time window and capacity restrictions. Also it is possible to get all distances between all locations with our fast Matrix API.
  *
  * OpenAPI spec version: 1.0.0
  * 
@@ -60,6 +60,7 @@ class Service implements ArrayAccess
         'name' => 'string',
         'address' => '\Swagger\Client\Model\Address',
         'duration' => 'int',
+        'preparation_time' => 'int',
         'time_windows' => '\Swagger\Client\Model\TimeWindow[]',
         'size' => 'int[]',
         'required_skills' => 'string[]',
@@ -82,6 +83,7 @@ class Service implements ArrayAccess
         'name' => 'name',
         'address' => 'address',
         'duration' => 'duration',
+        'preparation_time' => 'preparation_time',
         'time_windows' => 'time_windows',
         'size' => 'size',
         'required_skills' => 'required_skills',
@@ -100,6 +102,7 @@ class Service implements ArrayAccess
         'name' => 'setName',
         'address' => 'setAddress',
         'duration' => 'setDuration',
+        'preparation_time' => 'setPreparationTime',
         'time_windows' => 'setTimeWindows',
         'size' => 'setSize',
         'required_skills' => 'setRequiredSkills',
@@ -118,6 +121,7 @@ class Service implements ArrayAccess
         'name' => 'getName',
         'address' => 'getAddress',
         'duration' => 'getDuration',
+        'preparation_time' => 'getPreparationTime',
         'time_windows' => 'getTimeWindows',
         'size' => 'getSize',
         'required_skills' => 'getRequiredSkills',
@@ -177,6 +181,7 @@ class Service implements ArrayAccess
         $this->container['name'] = isset($data['name']) ? $data['name'] : null;
         $this->container['address'] = isset($data['address']) ? $data['address'] : null;
         $this->container['duration'] = isset($data['duration']) ? $data['duration'] : null;
+        $this->container['preparation_time'] = isset($data['preparation_time']) ? $data['preparation_time'] : null;
         $this->container['time_windows'] = isset($data['time_windows']) ? $data['time_windows'] : null;
         $this->container['size'] = isset($data['size']) ? $data['size'] : null;
         $this->container['required_skills'] = isset($data['required_skills']) ? $data['required_skills'] : null;
@@ -274,7 +279,7 @@ class Service implements ArrayAccess
 
     /**
      * Sets priority
-     * @param int $priority priority of service, i.e. 1 = high, 2 = normal, 3 = low. default is 2.
+     * @param int $priority priority of service
      * @return $this
      */
     public function setPriority($priority)
@@ -343,6 +348,27 @@ class Service implements ArrayAccess
     public function setDuration($duration)
     {
         $this->container['duration'] = $duration;
+
+        return $this;
+    }
+
+    /**
+     * Gets preparation_time
+     * @return int
+     */
+    public function getPreparationTime()
+    {
+        return $this->container['preparation_time'];
+    }
+
+    /**
+     * Sets preparation_time
+     * @param int $preparation_time preparation time of service, e.g. search for a parking space. it only falls due if the location of previous activity differs from this location
+     * @return $this
+     */
+    public function setPreparationTime($preparation_time)
+    {
+        $this->container['preparation_time'] = $preparation_time;
 
         return $this;
     }

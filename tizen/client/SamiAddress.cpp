@@ -23,6 +23,7 @@ SamiAddress::~SamiAddress() {
 void
 SamiAddress::init() {
     pLocation_id = null;
+pName = null;
 pLon = null;
 pLat = null;
 }
@@ -33,6 +34,11 @@ SamiAddress::cleanup() {
         
         delete pLocation_id;
         pLocation_id = null;
+    }
+if(pName != null) {
+        
+        delete pName;
+        pName = null;
     }
 if(pLon != null) {
         
@@ -90,6 +96,15 @@ SamiAddress::fromJsonObject(IJsonValue* pJson) {
             jsonToValue(pLocation_id, pLocation_idVal, L"String", L"String");
         }
         delete pLocation_idKey;
+JsonString* pNameKey = new JsonString(L"name");
+        IJsonValue* pNameVal = null;
+        pJsonObject->GetValue(pNameKey, pNameVal);
+        if(pNameVal != null) {
+            
+            pName = new String();
+            jsonToValue(pName, pNameVal, L"String", L"String");
+        }
+        delete pNameKey;
 JsonString* pLonKey = new JsonString(L"lon");
         IJsonValue* pLonVal = null;
         pJsonObject->GetValue(pLonKey, pLonVal);
@@ -161,6 +176,9 @@ SamiAddress::asJsonObject() {
     JsonString *pLocation_idKey = new JsonString(L"location_id");
     pJsonObject->Add(pLocation_idKey, toJson(getPLocationId(), "String", ""));
 
+    JsonString *pNameKey = new JsonString(L"name");
+    pJsonObject->Add(pNameKey, toJson(getPName(), "String", ""));
+
     JsonString *pLonKey = new JsonString(L"lon");
     pJsonObject->Add(pLonKey, toJson(getPLon(), "Double", ""));
 
@@ -177,6 +195,15 @@ SamiAddress::getPLocationId() {
 void
 SamiAddress::setPLocationId(String* pLocation_id) {
     this->pLocation_id = pLocation_id;
+}
+
+String*
+SamiAddress::getPName() {
+    return pName;
+}
+void
+SamiAddress::setPName(String* pName) {
+    this->pName = pName;
 }
 
 Double*

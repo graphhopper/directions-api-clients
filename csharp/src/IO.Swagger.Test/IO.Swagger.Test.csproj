@@ -2,7 +2,7 @@
 <!--
 GraphHopper Directions API
 
-With the GraphHopper Directions API you get reliable and fast web services for routing and more with world wide coverage. We offer A-to-B routing via the Routing API optionally with turn instructions and elevation data as well as route optimization with various constraints like time window and capacity restrictions. Also it is possible to get all distances between all locations with our fast Matrix API. 
+You use the GraphHopper Directions API to add route planning, navigation and route optimization to your software. E.g. the Routing API has turn instructions and elevation data and the Route Optimization API solves your logistic problems and supports various constraints like time window and capacity restrictions. Also it is possible to get all distances between all locations with our fast Matrix API.
 
 OpenAPI spec version: 1.0.0
 
@@ -74,7 +74,7 @@ OpenAPI spec version: 1.0.0
   <Import Project="$(MsBuildToolsPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
       <ProjectReference Include="..\IO.Swagger\IO.Swagger.csproj">
-          <Project>{BDB8BAE4-6F40-4473-BC7A-04FD09ABCDD5}</Project>
+          <Project>{B5B6BC00-1098-4E87-840F-70C5F7181B5C}</Project>
           <Name>IO.Swagger</Name>
       </ProjectReference>
   </ItemGroup>

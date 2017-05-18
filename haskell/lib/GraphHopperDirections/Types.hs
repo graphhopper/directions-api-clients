@@ -7,7 +7,10 @@ module GraphHopperDirections.Types (
     Address (..),
     Algorithm (..),
     Break (..),
+    Configuration (..),
     CostMatrix (..),
+    CostMatrix_data (..),
+    CostMatrix_data_info (..),
     GHError (..),
     GHError_hints (..),
     GHGeocodingLocation (..),
@@ -27,11 +30,13 @@ module GraphHopperDirections.Types (
     GHRouteResponse (..),
     GHRouteResponsePath (..),
     JobId (..),
+    Location (..),
     Objective (..),
     Relation (..),
     Request (..),
     Response (..),
     Route (..),
+    Routing (..),
     Service (..),
     Shipment (..),
     Solution (..),
@@ -75,6 +80,7 @@ instance ToJSON Activity where
 -- | 
 data Address = Address
     { addressLocationId :: Text -- ^ Unique identifier of location
+    , addressName :: Text -- ^ name of location, e.g. street name plus house number
     , addressLon :: Double -- ^ longitude
     , addressLat :: Double -- ^ latitude
     } deriving (Show, Eq, Generic)
@@ -111,9 +117,21 @@ instance ToJSON Break where
   toJSON     = genericToJSON     (removeFieldLabelPrefix False "break")
 
 -- | 
+data Configuration = Configuration
+    { configurationRouting :: Routing -- ^ 
+    } deriving (Show, Eq, Generic)
+
+instance FromJSON Configuration where
+  parseJSON  = genericParseJSON  (removeFieldLabelPrefix True "configuration")
+instance ToJSON Configuration where
+  toJSON     = genericToJSON     (removeFieldLabelPrefix False "configuration")
+
+-- | 
 data CostMatrix = CostMatrix
     { costMatrixType :: Text -- ^ type of cost matrix, currently default or google are supported
     , costMatrixUrl :: Text -- ^ URL of matrix service
+    , costMatrixLocationIds :: [Text] -- ^ 
+    , costMatrixData :: CostMatrix_data -- ^ 
     , costMatrixProfile :: Text -- ^ vehicle profile or empty if catch all fallback
     } deriving (Show, Eq, Generic)
 
@@ -121,6 +139,29 @@ instance FromJSON CostMatrix where
   parseJSON  = genericParseJSON  (removeFieldLabelPrefix True "costMatrix")
 instance ToJSON CostMatrix where
   toJSON     = genericToJSON     (removeFieldLabelPrefix False "costMatrix")
+
+-- | JSON data of matrix response
+data CostMatrix_data = CostMatrix_data
+    { costMatrixDataTimes :: [[Integer]] -- ^ 
+    , costMatrixDataDistances :: [[Double]] -- ^ 
+    , costMatrixDataInfo :: CostMatrix_data_info -- ^ 
+    } deriving (Show, Eq, Generic)
+
+instance FromJSON CostMatrix_data where
+  parseJSON  = genericParseJSON  (removeFieldLabelPrefix True "costMatrixData")
+instance ToJSON CostMatrix_data where
+  toJSON     = genericToJSON     (removeFieldLabelPrefix False "costMatrixData")
+
+-- | Additional information for your request
+data CostMatrix_data_info = CostMatrix_data_info
+    { costMatrixDataInfoCopyrights :: [Text] -- ^ 
+    , costMatrixDataInfoTook :: Double -- ^ 
+    } deriving (Show, Eq, Generic)
+
+instance FromJSON CostMatrix_data_info where
+  parseJSON  = genericParseJSON  (removeFieldLabelPrefix True "costMatrixDataInfo")
+instance ToJSON CostMatrix_data_info where
+  toJSON     = genericToJSON     (removeFieldLabelPrefix False "costMatrixDataInfo")
 
 -- | 
 data GHError = GHError
@@ -284,6 +325,7 @@ instance ToJSON GHResponseInfo where
 -- | 
 data GHResponseInstruction = GHResponseInstruction
     { gHResponseInstructionText :: Text -- ^ A description what the user has to do in order to follow the route. The language depends on the locale parameter.
+    , gHResponseInstructionStreetName :: Text -- ^ The name of the street to turn onto in order to follow the route.
     , gHResponseInstructionDistance :: Double -- ^ The distance for this instruction, in meter
     , gHResponseInstructionTime :: Int -- ^ The duration for this instruction, in ms
     , gHResponseInstructionInterval :: [Int] -- ^ An array containing the first and the last index (relative to paths[0].points) of the points for this instruction. This is useful to know for which part of the route the instructions are valid.
@@ -343,6 +385,17 @@ instance ToJSON JobId where
   toJSON     = genericToJSON     (removeFieldLabelPrefix False "jobId")
 
 -- | 
+data Location = Location
+    { locationLon :: Double -- ^ longitude
+    , locationLat :: Double -- ^ latitude
+    } deriving (Show, Eq, Generic)
+
+instance FromJSON Location where
+  parseJSON  = genericParseJSON  (removeFieldLabelPrefix True "location")
+instance ToJSON Location where
+  toJSON     = genericToJSON     (removeFieldLabelPrefix False "location")
+
+-- | 
 data Objective = Objective
     { objectiveType :: Text -- ^ type of objective function, i.e. min or min-max 
     , objectiveValue :: Text -- ^ objective function value
@@ -375,6 +428,7 @@ data Request = Request
     , requestAlgorithm :: Algorithm -- ^ 
     , requestObjectives :: [Objective] -- ^ An array of objectives
     , requestCostMatrices :: [CostMatrix] -- ^ An array of cost matrices
+    , requestConfiguration :: Configuration -- ^ 
     } deriving (Show, Eq, Generic)
 
 instance FromJSON Request where
@@ -413,13 +467,24 @@ instance ToJSON Route where
   toJSON     = genericToJSON     (removeFieldLabelPrefix False "route")
 
 -- | 
+data Routing = Routing
+    { routingCalcPoints :: Bool -- ^ indicates whether solution should come with route geometries
+    } deriving (Show, Eq, Generic)
+
+instance FromJSON Routing where
+  parseJSON  = genericParseJSON  (removeFieldLabelPrefix True "routing")
+instance ToJSON Routing where
+  toJSON     = genericToJSON     (removeFieldLabelPrefix False "routing")
+
+-- | 
 data Service = Service
     { serviceId :: Text -- ^ Unique identifier of service
     , serviceType :: Text -- ^ type of service
-    , servicePriority :: Int -- ^ priority of service, i.e. 1 = high, 2 = normal, 3 = low. default is 2.
+    , servicePriority :: Int -- ^ priority of service
     , serviceName :: Text -- ^ name of service
     , serviceAddress :: Address -- ^ 
     , serviceDuration :: Integer -- ^ duration of service, i.e. time in ms the corresponding activity takes
+    , servicePreparationTime :: Integer -- ^ preparation time of service, e.g. search for a parking space. it only falls due if the location of previous activity differs from this location
     , serviceTimeWindows :: [TimeWindow] -- ^ array of time windows. currently, only a single time window is allowed
     , serviceSize :: [Int] -- ^ array of capacity dimensions
     , serviceRequiredSkills :: [Text] -- ^ array of required skills
@@ -482,6 +547,7 @@ instance ToJSON Solution_unassigned where
 data Stop = Stop
     { stopAddress :: Address -- ^ 
     , stopDuration :: Integer -- ^ duration of stop, i.e. time in ms the corresponding activity takes
+    , stopPreparationTime :: Integer -- ^ preparation time of service, e.g. search for a parking space. it only falls due if the location of previous activity differs from this location
     , stopTimeWindows :: [TimeWindow] -- ^ array of time windows. currently, only a single time window is allowed
     } deriving (Show, Eq, Generic)
 
@@ -512,6 +578,7 @@ data Vehicle = Vehicle
     , vehicleEarliestStart :: Integer -- ^ earliest start of vehicle at its start location
     , vehicleLatestEnd :: Integer -- ^ latest end of vehicle at its end location
     , vehicleSkills :: [Text] -- ^ array of skills
+    , vehicleMaxDistance :: Integer -- ^ max distance of vehicle
     } deriving (Show, Eq, Generic)
 
 instance FromJSON Vehicle where

@@ -18,7 +18,6 @@ public class VehicleType: JSONEncodable {
         case Racingbike = "racingbike"
         case Truck = "truck"
         case SmallTruck = "small_truck"
-        case Bus = "bus"
     }
     /** Unique identifier for the vehicle type */
     public var typeId: String?

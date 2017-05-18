@@ -1,6 +1,6 @@
 /**
  * GraphHopper Directions API
- * With the GraphHopper Directions API you get reliable and fast web services for routing and more with world wide coverage. We offer A-to-B routing via the Routing API optionally with turn instructions and elevation data as well as route optimization with various constraints like time window and capacity restrictions. Also it is possible to get all distances between all locations with our fast Matrix API. 
+ * You use the GraphHopper Directions API to add route planning, navigation and route optimization to your software. E.g. the Routing API has turn instructions and elevation data and the Route Optimization API solves your logistic problems and supports various constraints like time window and capacity restrictions. Also it is possible to get all distances between all locations with our fast Matrix API.
  *
  * OpenAPI spec version: 1.0.0
  * 
@@ -18,7 +18,10 @@
 #include "SWGAddress.h"
 #include "SWGAlgorithm.h"
 #include "SWGBreak.h"
+#include "SWGConfiguration.h"
 #include "SWGCostMatrix.h"
+#include "SWGCostMatrix_data.h"
+#include "SWGCostMatrix_data_info.h"
 #include "SWGGHError.h"
 #include "SWGGHError_hints.h"
 #include "SWGGHGeocodingLocation.h"
@@ -38,11 +41,13 @@
 #include "SWGGHRouteResponse.h"
 #include "SWGGHRouteResponsePath.h"
 #include "SWGJobId.h"
+#include "SWGLocation.h"
 #include "SWGObjective.h"
 #include "SWGRelation.h"
 #include "SWGRequest.h"
 #include "SWGResponse.h"
 #include "SWGRoute.h"
+#include "SWGRouting.h"
 #include "SWGService.h"
 #include "SWGShipment.h"
 #include "SWGSolution.h"
@@ -66,8 +71,17 @@ namespace Swagger {
     if(QString("SWGBreak").compare(type) == 0) {
       return new SWGBreak();
     }
+    if(QString("SWGConfiguration").compare(type) == 0) {
+      return new SWGConfiguration();
+    }
     if(QString("SWGCostMatrix").compare(type) == 0) {
       return new SWGCostMatrix();
+    }
+    if(QString("SWGCostMatrix_data").compare(type) == 0) {
+      return new SWGCostMatrix_data();
+    }
+    if(QString("SWGCostMatrix_data_info").compare(type) == 0) {
+      return new SWGCostMatrix_data_info();
     }
     if(QString("SWGGHError").compare(type) == 0) {
       return new SWGGHError();
@@ -126,6 +140,9 @@ namespace Swagger {
     if(QString("SWGJobId").compare(type) == 0) {
       return new SWGJobId();
     }
+    if(QString("SWGLocation").compare(type) == 0) {
+      return new SWGLocation();
+    }
     if(QString("SWGObjective").compare(type) == 0) {
       return new SWGObjective();
     }
@@ -140,6 +157,9 @@ namespace Swagger {
     }
     if(QString("SWGRoute").compare(type) == 0) {
       return new SWGRoute();
+    }
+    if(QString("SWGRouting").compare(type) == 0) {
+      return new SWGRouting();
     }
     if(QString("SWGService").compare(type) == 0) {
       return new SWGService();

@@ -1,7 +1,7 @@
 =begin
 #GraphHopper Directions API
 
-#With the GraphHopper Directions API you get reliable and fast web services for routing and more with world wide coverage. We offer A-to-B routing via the Routing API optionally with turn instructions and elevation data as well as route optimization with various constraints like time window and capacity restrictions. Also it is possible to get all distances between all locations with our fast Matrix API. 
+#You use the GraphHopper Directions API to add route planning, navigation and route optimization to your software. E.g. the Routing API has turn instructions and elevation data and the Route Optimization API solves your logistic problems and supports various constraints like time window and capacity restrictions. Also it is possible to get all distances between all locations with our fast Matrix API.
 
 OpenAPI spec version: 1.0.0
 
@@ -19,6 +19,10 @@ module SwaggerClient
 
     # URL of matrix service
     attr_accessor :url
+
+    attr_accessor :location_ids
+
+    attr_accessor :data
 
     # vehicle profile or empty if catch all fallback
     attr_accessor :profile
@@ -50,6 +54,8 @@ module SwaggerClient
       {
         :'type' => :'type',
         :'url' => :'url',
+        :'location_ids' => :'location_ids',
+        :'data' => :'data',
         :'profile' => :'profile'
       }
     end
@@ -59,6 +65,8 @@ module SwaggerClient
       {
         :'type' => :'String',
         :'url' => :'String',
+        :'location_ids' => :'Array<String>',
+        :'data' => :'CostMatrixData',
         :'profile' => :'String'
       }
     end
@@ -77,6 +85,16 @@ module SwaggerClient
 
       if attributes.has_key?(:'url')
         self.url = attributes[:'url']
+      end
+
+      if attributes.has_key?(:'location_ids')
+        if (value = attributes[:'location_ids']).is_a?(Array)
+          self.location_ids = value
+        end
+      end
+
+      if attributes.has_key?(:'data')
+        self.data = attributes[:'data']
       end
 
       if attributes.has_key?(:'profile')
@@ -117,6 +135,8 @@ module SwaggerClient
       self.class == o.class &&
           type == o.type &&
           url == o.url &&
+          location_ids == o.location_ids &&
+          data == o.data &&
           profile == o.profile
     end
 
@@ -129,7 +149,7 @@ module SwaggerClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [type, url, profile].hash
+      [type, url, location_ids, data, profile].hash
     end
 
     # Builds the object from hash

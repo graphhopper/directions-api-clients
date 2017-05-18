@@ -11,6 +11,8 @@ import Foundation
 public class GHResponseInstruction: JSONEncodable {
     /** A description what the user has to do in order to follow the route. The language depends on the locale parameter. */
     public var text: String?
+    /** The name of the street to turn onto in order to follow the route. */
+    public var streetName: String?
     /** The distance for this instruction, in meter */
     public var distance: Double?
     /** The duration for this instruction, in ms */
@@ -34,6 +36,7 @@ public class GHResponseInstruction: JSONEncodable {
     func encodeToJSON() -> AnyObject {
         var nillableDictionary = [String:AnyObject?]()
         nillableDictionary["text"] = self.text
+        nillableDictionary["street_name"] = self.streetName
         nillableDictionary["distance"] = self.distance
         nillableDictionary["time"] = self.time?.encodeToJSON()
         nillableDictionary["interval"] = self.interval?.encodeToJSON()

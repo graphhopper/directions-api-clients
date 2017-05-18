@@ -2,7 +2,7 @@
 
 GraphHopper Directions API
 
-With the GraphHopper Directions API you get reliable and fast web services for routing and more with world wide coverage. We offer A-to-B routing via the Routing API optionally with turn instructions and elevation data as well as route optimization with various constraints like time window and capacity restrictions. Also it is possible to get all distances between all locations with our fast Matrix API. 
+You use the GraphHopper Directions API to add route planning, navigation and route optimization to your software. E.g. the Routing API has turn instructions and elevation data and the Route Optimization API solves your logistic problems and supports various constraints like time window and capacity restrictions. Also it is possible to get all distances between all locations with our fast Matrix API.
 
 OpenAPI spec version: 1.0.0
 
@@ -44,7 +44,7 @@ use base ("Class::Accessor", "Class::Data::Inheritable");
 
 GraphHopper Directions API
 
-With the GraphHopper Directions API you get reliable and fast web services for routing and more with world wide coverage. We offer A-to-B routing via the Routing API optionally with turn instructions and elevation data as well as route optimization with various constraints like time window and capacity restrictions. Also it is possible to get all distances between all locations with our fast Matrix API. 
+You use the GraphHopper Directions API to add route planning, navigation and route optimization to your software. E.g. the Routing API has turn instructions and elevation data and the Route Optimization API solves your logistic problems and supports various constraints like time window and capacity restrictions. Also it is possible to get all distances between all locations with our fast Matrix API.
 
 OpenAPI spec version: 1.0.0
 
@@ -159,7 +159,7 @@ __PACKAGE__->method_documentation({
     'priority' => {
     	datatype => 'int',
     	base_name => 'priority',
-    	description => 'priority of service, i.e. 1 &#x3D; high, 2 &#x3D; normal, 3 &#x3D; low. default is 2.',
+    	description => 'priority of service',
     	format => '',
     	read_only => '',
     		},
@@ -181,6 +181,13 @@ __PACKAGE__->method_documentation({
     	datatype => 'int',
     	base_name => 'duration',
     	description => 'duration of service, i.e. time in ms the corresponding activity takes',
+    	format => '',
+    	read_only => '',
+    		},
+    'preparation_time' => {
+    	datatype => 'int',
+    	base_name => 'preparation_time',
+    	description => 'preparation time of service, e.g. search for a parking space. it only falls due if the location of previous activity differs from this location',
     	format => '',
     	read_only => '',
     		},
@@ -221,6 +228,7 @@ __PACKAGE__->swagger_types( {
     'name' => 'string',
     'address' => 'Address',
     'duration' => 'int',
+    'preparation_time' => 'int',
     'time_windows' => 'ARRAY[TimeWindow]',
     'size' => 'ARRAY[int]',
     'required_skills' => 'ARRAY[string]',
@@ -234,6 +242,7 @@ __PACKAGE__->attribute_map( {
     'name' => 'name',
     'address' => 'address',
     'duration' => 'duration',
+    'preparation_time' => 'preparation_time',
     'time_windows' => 'time_windows',
     'size' => 'size',
     'required_skills' => 'required_skills',

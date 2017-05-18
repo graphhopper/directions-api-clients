@@ -1,6 +1,6 @@
 /**
  * GraphHopper Directions API
- * With the GraphHopper Directions API you get reliable and fast web services for routing and more with world wide coverage. We offer A-to-B routing via the Routing API optionally with turn instructions and elevation data as well as route optimization with various constraints like time window and capacity restrictions. Also it is possible to get all distances between all locations with our fast Matrix API. 
+ * You use the GraphHopper Directions API to add route planning, navigation and route optimization to your software. E.g. the Routing API has turn instructions and elevation data and the Route Optimization API solves your logistic problems and supports various constraints like time window and capacity restrictions. Also it is possible to get all distances between all locations with our fast Matrix API.
  *
  * OpenAPI spec version: 1.0.0
  * 
@@ -39,6 +39,7 @@ SWGGHResponseInstruction::~SWGGHResponseInstruction() {
 void
 SWGGHResponseInstruction::init() {
     text = new QString("");
+    street_name = new QString("");
     distance = 0.0;
     time = 0;
     interval = new QList<qint32>();
@@ -54,6 +55,10 @@ SWGGHResponseInstruction::cleanup() {
     
     if(text != nullptr) {
         delete text;
+    }
+
+    if(street_name != nullptr) {
+        delete street_name;
     }
 
 
@@ -80,6 +85,7 @@ SWGGHResponseInstruction::fromJson(QString &json) {
 void
 SWGGHResponseInstruction::fromJsonObject(QJsonObject &pJson) {
     ::Swagger::setValue(&text, pJson["text"], "QString", "QString");
+    ::Swagger::setValue(&street_name, pJson["street_name"], "QString", "QString");
     ::Swagger::setValue(&distance, pJson["distance"], "double", "");
     ::Swagger::setValue(&time, pJson["time"], "qint32", "");
     
@@ -107,6 +113,8 @@ SWGGHResponseInstruction::asJsonObject() {
     QJsonObject* obj = new QJsonObject();
     
     toJsonValue(QString("text"), text, obj, QString("QString"));
+
+    toJsonValue(QString("street_name"), street_name, obj, QString("QString"));
 
     obj->insert("distance", QJsonValue(distance));
 
@@ -136,6 +144,15 @@ SWGGHResponseInstruction::getText() {
 void
 SWGGHResponseInstruction::setText(QString* text) {
     this->text = text;
+}
+
+QString*
+SWGGHResponseInstruction::getStreetName() {
+    return street_name;
+}
+void
+SWGGHResponseInstruction::setStreetName(QString* street_name) {
+    this->street_name = street_name;
 }
 
 double

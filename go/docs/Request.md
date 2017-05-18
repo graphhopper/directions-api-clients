@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **Algorithm** | [**Algorithm**](Algorithm.md) |  | [optional] [default to null]
 **Objectives** | [**[]Objective**](Objective.md) | An array of objectives | [optional] [default to null]
 **CostMatrices** | [**[]CostMatrix**](CostMatrix.md) | An array of cost matrices | [optional] [default to null]
+**Configuration** | [**Configuration**](Configuration.md) |  | [optional] [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

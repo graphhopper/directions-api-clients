@@ -9,6 +9,7 @@ use WWW::SwaggerClient::Object::GHResponseInstruction;
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **text** | **string** | A description what the user has to do in order to follow the route. The language depends on the locale parameter. | [optional] 
+**street_name** | **string** | The name of the street to turn onto in order to follow the route. | [optional] 
 **distance** | **double** | The distance for this instruction, in meter | [optional] 
 **time** | **int** | The duration for this instruction, in ms | [optional] 
 **interval** | **ARRAY[int]** | An array containing the first and the last index (relative to paths[0].points) of the points for this instruction. This is useful to know for which part of the route the instructions are valid. | [optional] 

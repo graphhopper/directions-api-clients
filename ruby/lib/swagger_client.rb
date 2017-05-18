@@ -1,7 +1,7 @@
 =begin
 #GraphHopper Directions API
 
-#With the GraphHopper Directions API you get reliable and fast web services for routing and more with world wide coverage. We offer A-to-B routing via the Routing API optionally with turn instructions and elevation data as well as route optimization with various constraints like time window and capacity restrictions. Also it is possible to get all distances between all locations with our fast Matrix API. 
+#You use the GraphHopper Directions API to add route planning, navigation and route optimization to your software. E.g. the Routing API has turn instructions and elevation data and the Route Optimization API solves your logistic problems and supports various constraints like time window and capacity restrictions. Also it is possible to get all distances between all locations with our fast Matrix API.
 
 OpenAPI spec version: 1.0.0
 
@@ -19,7 +19,10 @@ require 'swagger_client/configuration'
 require 'swagger_client/models/activity'
 require 'swagger_client/models/address'
 require 'swagger_client/models/algorithm'
+require 'swagger_client/models/configuration'
 require 'swagger_client/models/cost_matrix'
+require 'swagger_client/models/cost_matrix_data'
+require 'swagger_client/models/cost_matrix_data_info'
 require 'swagger_client/models/gh_error'
 require 'swagger_client/models/gh_error_hints'
 require 'swagger_client/models/gh_geocoding_location'
@@ -39,12 +42,14 @@ require 'swagger_client/models/gh_response_instructions'
 require 'swagger_client/models/gh_route_response'
 require 'swagger_client/models/gh_route_response_path'
 require 'swagger_client/models/job_id'
+require 'swagger_client/models/location'
 require 'swagger_client/models/model_break'
 require 'swagger_client/models/objective'
 require 'swagger_client/models/relation'
 require 'swagger_client/models/request'
 require 'swagger_client/models/response'
 require 'swagger_client/models/route'
+require 'swagger_client/models/routing'
 require 'swagger_client/models/service'
 require 'swagger_client/models/shipment'
 require 'swagger_client/models/solution'

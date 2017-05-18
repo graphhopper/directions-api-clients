@@ -1,7 +1,7 @@
 /* 
  * GraphHopper Directions API
  *
- * With the GraphHopper Directions API you get reliable and fast web services for routing and more with world wide coverage. We offer A-to-B routing via the Routing API optionally with turn instructions and elevation data as well as route optimization with various constraints like time window and capacity restrictions. Also it is possible to get all distances between all locations with our fast Matrix API. 
+ * You use the GraphHopper Directions API to add route planning, navigation and route optimization to your software. E.g. the Routing API has turn instructions and elevation data and the Route Optimization API solves your logistic problems and supports various constraints like time window and capacity restrictions. Also it is possible to get all distances between all locations with our fast Matrix API.
  *
  * OpenAPI spec version: 1.0.0
  * 
@@ -61,11 +61,15 @@ namespace IO.Swagger.Model
         /// </summary>
         /// <param name="Type">type of cost matrix, currently default or google are supported.</param>
         /// <param name="Url">URL of matrix service.</param>
+        /// <param name="LocationIds">LocationIds.</param>
+        /// <param name="Data">Data.</param>
         /// <param name="Profile">vehicle profile or empty if catch all fallback.</param>
-        public CostMatrix(TypeEnum? Type = default(TypeEnum?), string Url = default(string), string Profile = default(string))
+        public CostMatrix(TypeEnum? Type = default(TypeEnum?), string Url = default(string), List<string> LocationIds = default(List<string>), CostMatrixData Data = default(CostMatrixData), string Profile = default(string))
         {
             this.Type = Type;
             this.Url = Url;
+            this.LocationIds = LocationIds;
+            this.Data = Data;
             this.Profile = Profile;
         }
         
@@ -75,6 +79,16 @@ namespace IO.Swagger.Model
         /// <value>URL of matrix service</value>
         [DataMember(Name="url", EmitDefaultValue=false)]
         public string Url { get; set; }
+        /// <summary>
+        /// Gets or Sets LocationIds
+        /// </summary>
+        [DataMember(Name="location_ids", EmitDefaultValue=false)]
+        public List<string> LocationIds { get; set; }
+        /// <summary>
+        /// Gets or Sets Data
+        /// </summary>
+        [DataMember(Name="data", EmitDefaultValue=false)]
+        public CostMatrixData Data { get; set; }
         /// <summary>
         /// vehicle profile or empty if catch all fallback
         /// </summary>
@@ -91,6 +105,8 @@ namespace IO.Swagger.Model
             sb.Append("class CostMatrix {\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  Url: ").Append(Url).Append("\n");
+            sb.Append("  LocationIds: ").Append(LocationIds).Append("\n");
+            sb.Append("  Data: ").Append(Data).Append("\n");
             sb.Append("  Profile: ").Append(Profile).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -139,6 +155,16 @@ namespace IO.Swagger.Model
                     this.Url.Equals(other.Url)
                 ) && 
                 (
+                    this.LocationIds == other.LocationIds ||
+                    this.LocationIds != null &&
+                    this.LocationIds.SequenceEqual(other.LocationIds)
+                ) && 
+                (
+                    this.Data == other.Data ||
+                    this.Data != null &&
+                    this.Data.Equals(other.Data)
+                ) && 
+                (
                     this.Profile == other.Profile ||
                     this.Profile != null &&
                     this.Profile.Equals(other.Profile)
@@ -160,6 +186,10 @@ namespace IO.Swagger.Model
                     hash = hash * 59 + this.Type.GetHashCode();
                 if (this.Url != null)
                     hash = hash * 59 + this.Url.GetHashCode();
+                if (this.LocationIds != null)
+                    hash = hash * 59 + this.LocationIds.GetHashCode();
+                if (this.Data != null)
+                    hash = hash * 59 + this.Data.GetHashCode();
                 if (this.Profile != null)
                     hash = hash * 59 + this.Profile.GetHashCode();
                 return hash;

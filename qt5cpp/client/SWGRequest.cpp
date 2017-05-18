@@ -1,6 +1,6 @@
 /**
  * GraphHopper Directions API
- * With the GraphHopper Directions API you get reliable and fast web services for routing and more with world wide coverage. We offer A-to-B routing via the Routing API optionally with turn instructions and elevation data as well as route optimization with various constraints like time window and capacity restrictions. Also it is possible to get all distances between all locations with our fast Matrix API. 
+ * You use the GraphHopper Directions API to add route planning, navigation and route optimization to your software. E.g. the Routing API has turn instructions and elevation data and the Route Optimization API solves your logistic problems and supports various constraints like time window and capacity restrictions. Also it is possible to get all distances between all locations with our fast Matrix API.
  *
  * OpenAPI spec version: 1.0.0
  * 
@@ -46,6 +46,7 @@ SWGRequest::init() {
     algorithm = new SWGAlgorithm();
     objectives = new QList<SWGObjective*>();
     cost_matrices = new QList<SWGCostMatrix*>();
+    configuration = new SWGConfiguration();
 }
 
 void
@@ -110,6 +111,10 @@ SWGRequest::cleanup() {
         }
         delete cost_matrices;
     }
+
+    if(configuration != nullptr) {
+        delete configuration;
+    }
 }
 
 SWGRequest*
@@ -145,6 +150,7 @@ SWGRequest::fromJsonObject(QJsonObject &pJson) {
     
     ::Swagger::setValue(&cost_matrices, pJson["cost_matrices"], "QList", "SWGCostMatrix");
     
+    ::Swagger::setValue(&configuration, pJson["configuration"], "SWGConfiguration", "SWGConfiguration");
 }
 
 QString
@@ -190,6 +196,8 @@ SWGRequest::asJsonObject() {
     QJsonArray cost_matricesJsonArray;
     toJsonArray((QList<void*>*)cost_matrices, &cost_matricesJsonArray, "cost_matrices", "SWGCostMatrix");
     obj->insert("cost_matrices", cost_matricesJsonArray);
+
+    toJsonValue(QString("configuration"), configuration, obj, QString("SWGConfiguration"));
 
     return obj;
 }
@@ -264,6 +272,15 @@ SWGRequest::getCostMatrices() {
 void
 SWGRequest::setCostMatrices(QList<SWGCostMatrix*>* cost_matrices) {
     this->cost_matrices = cost_matrices;
+}
+
+SWGConfiguration*
+SWGRequest::getConfiguration() {
+    return configuration;
+}
+void
+SWGRequest::setConfiguration(SWGConfiguration* configuration) {
+    this->configuration = configuration;
 }
 
 

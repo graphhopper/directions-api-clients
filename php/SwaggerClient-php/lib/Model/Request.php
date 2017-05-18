@@ -13,7 +13,7 @@
 /**
  * GraphHopper Directions API
  *
- * With the GraphHopper Directions API you get reliable and fast web services for routing and more with world wide coverage. We offer A-to-B routing via the Routing API optionally with turn instructions and elevation data as well as route optimization with various constraints like time window and capacity restrictions. Also it is possible to get all distances between all locations with our fast Matrix API.
+ * You use the GraphHopper Directions API to add route planning, navigation and route optimization to your software. E.g. the Routing API has turn instructions and elevation data and the Route Optimization API solves your logistic problems and supports various constraints like time window and capacity restrictions. Also it is possible to get all distances between all locations with our fast Matrix API.
  *
  * OpenAPI spec version: 1.0.0
  * 
@@ -61,7 +61,8 @@ class Request implements ArrayAccess
         'relations' => '\Swagger\Client\Model\Relation[]',
         'algorithm' => '\Swagger\Client\Model\Algorithm',
         'objectives' => '\Swagger\Client\Model\Objective[]',
-        'cost_matrices' => '\Swagger\Client\Model\CostMatrix[]'
+        'cost_matrices' => '\Swagger\Client\Model\CostMatrix[]',
+        'configuration' => '\Swagger\Client\Model\Configuration'
     ];
 
     public static function swaggerTypes()
@@ -81,7 +82,8 @@ class Request implements ArrayAccess
         'relations' => 'relations',
         'algorithm' => 'algorithm',
         'objectives' => 'objectives',
-        'cost_matrices' => 'cost_matrices'
+        'cost_matrices' => 'cost_matrices',
+        'configuration' => 'configuration'
     ];
 
 
@@ -97,7 +99,8 @@ class Request implements ArrayAccess
         'relations' => 'setRelations',
         'algorithm' => 'setAlgorithm',
         'objectives' => 'setObjectives',
-        'cost_matrices' => 'setCostMatrices'
+        'cost_matrices' => 'setCostMatrices',
+        'configuration' => 'setConfiguration'
     ];
 
 
@@ -113,7 +116,8 @@ class Request implements ArrayAccess
         'relations' => 'getRelations',
         'algorithm' => 'getAlgorithm',
         'objectives' => 'getObjectives',
-        'cost_matrices' => 'getCostMatrices'
+        'cost_matrices' => 'getCostMatrices',
+        'configuration' => 'getConfiguration'
     ];
 
     public static function attributeMap()
@@ -155,6 +159,7 @@ class Request implements ArrayAccess
         $this->container['algorithm'] = isset($data['algorithm']) ? $data['algorithm'] : null;
         $this->container['objectives'] = isset($data['objectives']) ? $data['objectives'] : null;
         $this->container['cost_matrices'] = isset($data['cost_matrices']) ? $data['cost_matrices'] : null;
+        $this->container['configuration'] = isset($data['configuration']) ? $data['configuration'] : null;
     }
 
     /**
@@ -346,6 +351,27 @@ class Request implements ArrayAccess
     public function setCostMatrices($cost_matrices)
     {
         $this->container['cost_matrices'] = $cost_matrices;
+
+        return $this;
+    }
+
+    /**
+     * Gets configuration
+     * @return \Swagger\Client\Model\Configuration
+     */
+    public function getConfiguration()
+    {
+        return $this->container['configuration'];
+    }
+
+    /**
+     * Sets configuration
+     * @param \Swagger\Client\Model\Configuration $configuration
+     * @return $this
+     */
+    public function setConfiguration($configuration)
+    {
+        $this->container['configuration'] = $configuration;
 
         return $this;
     }

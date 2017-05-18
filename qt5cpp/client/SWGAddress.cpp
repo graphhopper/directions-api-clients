@@ -1,6 +1,6 @@
 /**
  * GraphHopper Directions API
- * With the GraphHopper Directions API you get reliable and fast web services for routing and more with world wide coverage. We offer A-to-B routing via the Routing API optionally with turn instructions and elevation data as well as route optimization with various constraints like time window and capacity restrictions. Also it is possible to get all distances between all locations with our fast Matrix API. 
+ * You use the GraphHopper Directions API to add route planning, navigation and route optimization to your software. E.g. the Routing API has turn instructions and elevation data and the Route Optimization API solves your logistic problems and supports various constraints like time window and capacity restrictions. Also it is possible to get all distances between all locations with our fast Matrix API.
  *
  * OpenAPI spec version: 1.0.0
  * 
@@ -39,6 +39,7 @@ SWGAddress::~SWGAddress() {
 void
 SWGAddress::init() {
     location_id = new QString("");
+    name = new QString("");
     lon = 0.0;
     lat = 0.0;
 }
@@ -48,6 +49,10 @@ SWGAddress::cleanup() {
     
     if(location_id != nullptr) {
         delete location_id;
+    }
+
+    if(name != nullptr) {
+        delete name;
     }
 
 
@@ -65,6 +70,7 @@ SWGAddress::fromJson(QString &json) {
 void
 SWGAddress::fromJsonObject(QJsonObject &pJson) {
     ::Swagger::setValue(&location_id, pJson["location_id"], "QString", "QString");
+    ::Swagger::setValue(&name, pJson["name"], "QString", "QString");
     ::Swagger::setValue(&lon, pJson["lon"], "double", "");
     ::Swagger::setValue(&lat, pJson["lat"], "double", "");
 }
@@ -85,6 +91,8 @@ SWGAddress::asJsonObject() {
     
     toJsonValue(QString("location_id"), location_id, obj, QString("QString"));
 
+    toJsonValue(QString("name"), name, obj, QString("QString"));
+
     obj->insert("lon", QJsonValue(lon));
 
     obj->insert("lat", QJsonValue(lat));
@@ -99,6 +107,15 @@ SWGAddress::getLocationId() {
 void
 SWGAddress::setLocationId(QString* location_id) {
     this->location_id = location_id;
+}
+
+QString*
+SWGAddress::getName() {
+    return name;
+}
+void
+SWGAddress::setName(QString* name) {
+    this->name = name;
 }
 
 double

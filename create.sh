@@ -1,6 +1,6 @@
 #!/bin/bash
 
-SPEC=swagger.yaml
+SPEC=swagger.json
 DIR=.
 
 VERSION=0.9-SNAPSHOT

@@ -1,7 +1,7 @@
 /* 
  * GraphHopper Directions API
  *
- * With the GraphHopper Directions API you get reliable and fast web services for routing and more with world wide coverage. We offer A-to-B routing via the Routing API optionally with turn instructions and elevation data as well as route optimization with various constraints like time window and capacity restrictions. Also it is possible to get all distances between all locations with our fast Matrix API. 
+ * You use the GraphHopper Directions API to add route planning, navigation and route optimization to your software. E.g. the Routing API has turn instructions and elevation data and the Route Optimization API solves your logistic problems and supports various constraints like time window and capacity restrictions. Also it is possible to get all distances between all locations with our fast Matrix API.
  *
  * OpenAPI spec version: 1.0.0
  * 
@@ -41,7 +41,8 @@ namespace IO.Swagger.Model
         /// <param name="EarliestStart">earliest start of vehicle at its start location.</param>
         /// <param name="LatestEnd">latest end of vehicle at its end location.</param>
         /// <param name="Skills">array of skills.</param>
-        public Vehicle(string VehicleId = default(string), string TypeId = default(string), Address StartAddress = default(Address), Address EndAddress = default(Address), ModelBreak _Break = default(ModelBreak), bool? ReturnToDepot = default(bool?), long? EarliestStart = default(long?), long? LatestEnd = default(long?), List<string> Skills = default(List<string>))
+        /// <param name="MaxDistance">max distance of vehicle.</param>
+        public Vehicle(string VehicleId = default(string), string TypeId = default(string), Address StartAddress = default(Address), Address EndAddress = default(Address), ModelBreak _Break = default(ModelBreak), bool? ReturnToDepot = default(bool?), long? EarliestStart = default(long?), long? LatestEnd = default(long?), List<string> Skills = default(List<string>), long? MaxDistance = default(long?))
         {
             this.VehicleId = VehicleId;
             this.TypeId = TypeId;
@@ -52,6 +53,7 @@ namespace IO.Swagger.Model
             this.EarliestStart = EarliestStart;
             this.LatestEnd = LatestEnd;
             this.Skills = Skills;
+            this.MaxDistance = MaxDistance;
         }
         
         /// <summary>
@@ -106,6 +108,12 @@ namespace IO.Swagger.Model
         [DataMember(Name="skills", EmitDefaultValue=false)]
         public List<string> Skills { get; set; }
         /// <summary>
+        /// max distance of vehicle
+        /// </summary>
+        /// <value>max distance of vehicle</value>
+        [DataMember(Name="max_distance", EmitDefaultValue=false)]
+        public long? MaxDistance { get; set; }
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -122,6 +130,7 @@ namespace IO.Swagger.Model
             sb.Append("  EarliestStart: ").Append(EarliestStart).Append("\n");
             sb.Append("  LatestEnd: ").Append(LatestEnd).Append("\n");
             sb.Append("  Skills: ").Append(Skills).Append("\n");
+            sb.Append("  MaxDistance: ").Append(MaxDistance).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -202,6 +211,11 @@ namespace IO.Swagger.Model
                     this.Skills == other.Skills ||
                     this.Skills != null &&
                     this.Skills.SequenceEqual(other.Skills)
+                ) && 
+                (
+                    this.MaxDistance == other.MaxDistance ||
+                    this.MaxDistance != null &&
+                    this.MaxDistance.Equals(other.MaxDistance)
                 );
         }
 
@@ -234,6 +248,8 @@ namespace IO.Swagger.Model
                     hash = hash * 59 + this.LatestEnd.GetHashCode();
                 if (this.Skills != null)
                     hash = hash * 59 + this.Skills.GetHashCode();
+                if (this.MaxDistance != null)
+                    hash = hash * 59 + this.MaxDistance.GetHashCode();
                 return hash;
             }
         }

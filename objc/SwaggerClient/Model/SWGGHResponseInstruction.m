@@ -17,7 +17,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"text": @"text", @"distance": @"distance", @"time": @"time", @"interval": @"interval", @"sign": @"sign", @"annotationText": @"annotation_text", @"annotationImportance": @"annotation_importance", @"exitNumber": @"exit_number", @"turnAngle": @"turn_angle" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"text": @"text", @"streetName": @"street_name", @"distance": @"distance", @"time": @"time", @"interval": @"interval", @"sign": @"sign", @"annotationText": @"annotation_text", @"annotationImportance": @"annotation_importance", @"exitNumber": @"exit_number", @"turnAngle": @"turn_angle" }];
 }
 
 /**
@@ -27,7 +27,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"text", @"distance", @"time", @"interval", @"sign", @"annotationText", @"annotationImportance", @"exitNumber", @"turnAngle"];
+  NSArray *optionalProperties = @[@"text", @"streetName", @"distance", @"time", @"interval", @"sign", @"annotationText", @"annotationImportance", @"exitNumber", @"turnAngle"];
   return [optionalProperties containsObject:propertyName];
 }
 

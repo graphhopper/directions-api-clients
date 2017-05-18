@@ -47,12 +47,15 @@ public:
     void setPAddress(SamiAddress* pAddress);
     Long* getPDuration();
     void setPDuration(Long* pDuration);
+    Long* getPPreparationTime();
+    void setPPreparationTime(Long* pPreparation_time);
     IList* getPTimeWindows();
     void setPTimeWindows(IList* pTime_windows);
 
 private:
     SamiAddress* pAddress;
 Long* pDuration;
+Long* pPreparation_time;
 IList* pTime_windows;
 };
 

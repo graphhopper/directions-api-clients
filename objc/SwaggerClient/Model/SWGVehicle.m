@@ -17,7 +17,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"vehicleId": @"vehicle_id", @"typeId": @"type_id", @"startAddress": @"start_address", @"endAddress": @"end_address", @"_break": @"break", @"returnToDepot": @"return_to_depot", @"earliestStart": @"earliest_start", @"latestEnd": @"latest_end", @"skills": @"skills" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"vehicleId": @"vehicle_id", @"typeId": @"type_id", @"startAddress": @"start_address", @"endAddress": @"end_address", @"_break": @"break", @"returnToDepot": @"return_to_depot", @"earliestStart": @"earliest_start", @"latestEnd": @"latest_end", @"skills": @"skills", @"maxDistance": @"max_distance" }];
 }
 
 /**
@@ -27,7 +27,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"vehicleId", @"typeId", @"startAddress", @"endAddress", @"_break", @"returnToDepot", @"earliestStart", @"latestEnd", @"skills"];
+  NSArray *optionalProperties = @[@"vehicleId", @"typeId", @"startAddress", @"endAddress", @"_break", @"returnToDepot", @"earliestStart", @"latestEnd", @"skills", @"maxDistance"];
   return [optionalProperties containsObject:propertyName];
 }
 

@@ -1,7 +1,7 @@
 /* 
  * GraphHopper Directions API
  *
- * With the GraphHopper Directions API you get reliable and fast web services for routing and more with world wide coverage. We offer A-to-B routing via the Routing API optionally with turn instructions and elevation data as well as route optimization with various constraints like time window and capacity restrictions. Also it is possible to get all distances between all locations with our fast Matrix API. 
+ * You use the GraphHopper Directions API to add route planning, navigation and route optimization to your software. E.g. the Routing API has turn instructions and elevation data and the Route Optimization API solves your logistic problems and supports various constraints like time window and capacity restrictions. Also it is possible to get all distances between all locations with our fast Matrix API.
  *
  * OpenAPI spec version: 1.0.0
  * 
@@ -34,11 +34,13 @@ namespace IO.Swagger.Model
         /// </summary>
         /// <param name="Address">Address.</param>
         /// <param name="Duration">duration of stop, i.e. time in ms the corresponding activity takes.</param>
+        /// <param name="PreparationTime">preparation time of service, e.g. search for a parking space. it only falls due if the location of previous activity differs from this location.</param>
         /// <param name="TimeWindows">array of time windows. currently, only a single time window is allowed.</param>
-        public Stop(Address Address = default(Address), long? Duration = default(long?), List<TimeWindow> TimeWindows = default(List<TimeWindow>))
+        public Stop(Address Address = default(Address), long? Duration = default(long?), long? PreparationTime = default(long?), List<TimeWindow> TimeWindows = default(List<TimeWindow>))
         {
             this.Address = Address;
             this.Duration = Duration;
+            this.PreparationTime = PreparationTime;
             this.TimeWindows = TimeWindows;
         }
         
@@ -53,6 +55,12 @@ namespace IO.Swagger.Model
         /// <value>duration of stop, i.e. time in ms the corresponding activity takes</value>
         [DataMember(Name="duration", EmitDefaultValue=false)]
         public long? Duration { get; set; }
+        /// <summary>
+        /// preparation time of service, e.g. search for a parking space. it only falls due if the location of previous activity differs from this location
+        /// </summary>
+        /// <value>preparation time of service, e.g. search for a parking space. it only falls due if the location of previous activity differs from this location</value>
+        [DataMember(Name="preparation_time", EmitDefaultValue=false)]
+        public long? PreparationTime { get; set; }
         /// <summary>
         /// array of time windows. currently, only a single time window is allowed
         /// </summary>
@@ -69,6 +77,7 @@ namespace IO.Swagger.Model
             sb.Append("class Stop {\n");
             sb.Append("  Address: ").Append(Address).Append("\n");
             sb.Append("  Duration: ").Append(Duration).Append("\n");
+            sb.Append("  PreparationTime: ").Append(PreparationTime).Append("\n");
             sb.Append("  TimeWindows: ").Append(TimeWindows).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -117,6 +126,11 @@ namespace IO.Swagger.Model
                     this.Duration.Equals(other.Duration)
                 ) && 
                 (
+                    this.PreparationTime == other.PreparationTime ||
+                    this.PreparationTime != null &&
+                    this.PreparationTime.Equals(other.PreparationTime)
+                ) && 
+                (
                     this.TimeWindows == other.TimeWindows ||
                     this.TimeWindows != null &&
                     this.TimeWindows.SequenceEqual(other.TimeWindows)
@@ -138,6 +152,8 @@ namespace IO.Swagger.Model
                     hash = hash * 59 + this.Address.GetHashCode();
                 if (this.Duration != null)
                     hash = hash * 59 + this.Duration.GetHashCode();
+                if (this.PreparationTime != null)
+                    hash = hash * 59 + this.PreparationTime.GetHashCode();
                 if (this.TimeWindows != null)
                     hash = hash * 59 + this.TimeWindows.GetHashCode();
                 return hash;

@@ -24,6 +24,8 @@ public class Vehicle: JSONEncodable {
     public var latestEnd: Int64?
     /** array of skills */
     public var skills: [String]?
+    /** max distance of vehicle */
+    public var maxDistance: Int64?
 
     public init() {}
 
@@ -39,6 +41,7 @@ public class Vehicle: JSONEncodable {
         nillableDictionary["earliest_start"] = self.earliestStart?.encodeToJSON()
         nillableDictionary["latest_end"] = self.latestEnd?.encodeToJSON()
         nillableDictionary["skills"] = self.skills?.encodeToJSON()
+        nillableDictionary["max_distance"] = self.maxDistance?.encodeToJSON()
         let dictionary: [String:AnyObject] = APIHelper.rejectNil(nillableDictionary) ?? [:]
         return dictionary
     }

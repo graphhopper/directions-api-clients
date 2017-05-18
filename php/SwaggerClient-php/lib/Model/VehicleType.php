@@ -13,7 +13,7 @@
 /**
  * GraphHopper Directions API
  *
- * With the GraphHopper Directions API you get reliable and fast web services for routing and more with world wide coverage. We offer A-to-B routing via the Routing API optionally with turn instructions and elevation data as well as route optimization with various constraints like time window and capacity restrictions. Also it is possible to get all distances between all locations with our fast Matrix API.
+ * You use the GraphHopper Directions API to add route planning, navigation and route optimization to your software. E.g. the Routing API has turn instructions and elevation data and the Route Optimization API solves your logistic problems and supports various constraints like time window and capacity restrictions. Also it is possible to get all distances between all locations with our fast Matrix API.
  *
  * OpenAPI spec version: 1.0.0
  * 
@@ -127,7 +127,6 @@ class VehicleType implements ArrayAccess
     const PROFILE_RACINGBIKE = 'racingbike';
     const PROFILE_TRUCK = 'truck';
     const PROFILE_SMALL_TRUCK = 'small_truck';
-    const PROFILE_BUS = 'bus';
     
 
     
@@ -146,7 +145,6 @@ class VehicleType implements ArrayAccess
             self::PROFILE_RACINGBIKE,
             self::PROFILE_TRUCK,
             self::PROFILE_SMALL_TRUCK,
-            self::PROFILE_BUS,
         ];
     }
     
@@ -179,9 +177,9 @@ class VehicleType implements ArrayAccess
     {
         $invalid_properties = [];
 
-        $allowed_values = ["car", "bike", "foot", "mtb", "motorcycle", "racingbike", "truck", "small_truck", "bus"];
+        $allowed_values = ["car", "bike", "foot", "mtb", "motorcycle", "racingbike", "truck", "small_truck"];
         if (!in_array($this->container['profile'], $allowed_values)) {
-            $invalid_properties[] = "invalid value for 'profile', must be one of 'car', 'bike', 'foot', 'mtb', 'motorcycle', 'racingbike', 'truck', 'small_truck', 'bus'.";
+            $invalid_properties[] = "invalid value for 'profile', must be one of 'car', 'bike', 'foot', 'mtb', 'motorcycle', 'racingbike', 'truck', 'small_truck'.";
         }
 
         return $invalid_properties;
@@ -196,7 +194,7 @@ class VehicleType implements ArrayAccess
     public function valid()
     {
 
-        $allowed_values = ["car", "bike", "foot", "mtb", "motorcycle", "racingbike", "truck", "small_truck", "bus"];
+        $allowed_values = ["car", "bike", "foot", "mtb", "motorcycle", "racingbike", "truck", "small_truck"];
         if (!in_array($this->container['profile'], $allowed_values)) {
             return false;
         }
@@ -241,9 +239,9 @@ class VehicleType implements ArrayAccess
      */
     public function setProfile($profile)
     {
-        $allowed_values = array('car', 'bike', 'foot', 'mtb', 'motorcycle', 'racingbike', 'truck', 'small_truck', 'bus');
+        $allowed_values = array('car', 'bike', 'foot', 'mtb', 'motorcycle', 'racingbike', 'truck', 'small_truck');
         if (!is_null($profile) && (!in_array($profile, $allowed_values))) {
-            throw new \InvalidArgumentException("Invalid value for 'profile', must be one of 'car', 'bike', 'foot', 'mtb', 'motorcycle', 'racingbike', 'truck', 'small_truck', 'bus'");
+            throw new \InvalidArgumentException("Invalid value for 'profile', must be one of 'car', 'bike', 'foot', 'mtb', 'motorcycle', 'racingbike', 'truck', 'small_truck'");
         }
         $this->container['profile'] = $profile;
 

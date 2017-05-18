@@ -13,7 +13,7 @@
 /**
  * GraphHopper Directions API
  *
- * With the GraphHopper Directions API you get reliable and fast web services for routing and more with world wide coverage. We offer A-to-B routing via the Routing API optionally with turn instructions and elevation data as well as route optimization with various constraints like time window and capacity restrictions. Also it is possible to get all distances between all locations with our fast Matrix API.
+ * You use the GraphHopper Directions API to add route planning, navigation and route optimization to your software. E.g. the Routing API has turn instructions and elevation data and the Route Optimization API solves your logistic problems and supports various constraints like time window and capacity restrictions. Also it is possible to get all distances between all locations with our fast Matrix API.
  *
  * OpenAPI spec version: 1.0.0
  * 
@@ -62,7 +62,8 @@ class Vehicle implements ArrayAccess
         'return_to_depot' => 'bool',
         'earliest_start' => 'int',
         'latest_end' => 'int',
-        'skills' => 'string[]'
+        'skills' => 'string[]',
+        'max_distance' => 'int'
     ];
 
     public static function swaggerTypes()
@@ -83,7 +84,8 @@ class Vehicle implements ArrayAccess
         'return_to_depot' => 'return_to_depot',
         'earliest_start' => 'earliest_start',
         'latest_end' => 'latest_end',
-        'skills' => 'skills'
+        'skills' => 'skills',
+        'max_distance' => 'max_distance'
     ];
 
 
@@ -100,7 +102,8 @@ class Vehicle implements ArrayAccess
         'return_to_depot' => 'setReturnToDepot',
         'earliest_start' => 'setEarliestStart',
         'latest_end' => 'setLatestEnd',
-        'skills' => 'setSkills'
+        'skills' => 'setSkills',
+        'max_distance' => 'setMaxDistance'
     ];
 
 
@@ -117,7 +120,8 @@ class Vehicle implements ArrayAccess
         'return_to_depot' => 'getReturnToDepot',
         'earliest_start' => 'getEarliestStart',
         'latest_end' => 'getLatestEnd',
-        'skills' => 'getSkills'
+        'skills' => 'getSkills',
+        'max_distance' => 'getMaxDistance'
     ];
 
     public static function attributeMap()
@@ -160,6 +164,7 @@ class Vehicle implements ArrayAccess
         $this->container['earliest_start'] = isset($data['earliest_start']) ? $data['earliest_start'] : null;
         $this->container['latest_end'] = isset($data['latest_end']) ? $data['latest_end'] : null;
         $this->container['skills'] = isset($data['skills']) ? $data['skills'] : null;
+        $this->container['max_distance'] = isset($data['max_distance']) ? $data['max_distance'] : null;
     }
 
     /**
@@ -372,6 +377,27 @@ class Vehicle implements ArrayAccess
     public function setSkills($skills)
     {
         $this->container['skills'] = $skills;
+
+        return $this;
+    }
+
+    /**
+     * Gets max_distance
+     * @return int
+     */
+    public function getMaxDistance()
+    {
+        return $this->container['max_distance'];
+    }
+
+    /**
+     * Sets max_distance
+     * @param int $max_distance max distance of vehicle
+     * @return $this
+     */
+    public function setMaxDistance($max_distance)
+    {
+        $this->container['max_distance'] = $max_distance;
 
         return $this;
     }

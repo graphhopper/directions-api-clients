@@ -30,6 +30,7 @@ pRelations = null;
 pAlgorithm = null;
 pObjectives = null;
 pCost_matrices = null;
+pConfiguration = null;
 }
 
 void
@@ -73,6 +74,11 @@ if(pCost_matrices != null) {
         pCost_matrices->RemoveAll(true);
         delete pCost_matrices;
         pCost_matrices = null;
+    }
+if(pConfiguration != null) {
+        
+        delete pConfiguration;
+        pConfiguration = null;
     }
 }
 
@@ -183,6 +189,15 @@ JsonString* pCost_matricesKey = new JsonString(L"cost_matrices");
             jsonToValue(pCost_matrices, pCost_matricesVal, L"IList", L"SamiCostMatrix");
         }
         delete pCost_matricesKey;
+JsonString* pConfigurationKey = new JsonString(L"configuration");
+        IJsonValue* pConfigurationVal = null;
+        pJsonObject->GetValue(pConfigurationKey, pConfigurationVal);
+        if(pConfigurationVal != null) {
+            
+            pConfiguration = new SamiConfiguration();
+            jsonToValue(pConfiguration, pConfigurationVal, L"SamiConfiguration", L"SamiConfiguration");
+        }
+        delete pConfigurationKey;
     }
 }
 
@@ -257,6 +272,9 @@ SamiRequest::asJsonObject() {
     JsonString *pCost_matricesKey = new JsonString(L"cost_matrices");
     pJsonObject->Add(pCost_matricesKey, toJson(getPCostMatrices(), "SamiCostMatrix", "array"));
 
+    JsonString *pConfigurationKey = new JsonString(L"configuration");
+    pJsonObject->Add(pConfigurationKey, toJson(getPConfiguration(), "SamiConfiguration", ""));
+
     return pJsonObject;
 }
 
@@ -330,6 +348,15 @@ SamiRequest::getPCostMatrices() {
 void
 SamiRequest::setPCostMatrices(IList* pCost_matrices) {
     this->pCost_matrices = pCost_matrices;
+}
+
+SamiConfiguration*
+SamiRequest::getPConfiguration() {
+    return pConfiguration;
+}
+void
+SamiRequest::setPConfiguration(SamiConfiguration* pConfiguration) {
+    this->pConfiguration = pConfiguration;
 }
 
 

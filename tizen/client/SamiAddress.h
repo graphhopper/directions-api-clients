@@ -43,6 +43,8 @@ public:
 
     String* getPLocationId();
     void setPLocationId(String* pLocation_id);
+    String* getPName();
+    void setPName(String* pName);
     Double* getPLon();
     void setPLon(Double* pLon);
     Double* getPLat();
@@ -50,6 +52,7 @@ public:
 
 private:
     String* pLocation_id;
+String* pName;
 Double* pLon;
 Double* pLat;
 };

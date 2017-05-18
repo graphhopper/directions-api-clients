@@ -1,7 +1,7 @@
 =begin
 #GraphHopper Directions API
 
-#With the GraphHopper Directions API you get reliable and fast web services for routing and more with world wide coverage. We offer A-to-B routing via the Routing API optionally with turn instructions and elevation data as well as route optimization with various constraints like time window and capacity restrictions. Also it is possible to get all distances between all locations with our fast Matrix API. 
+#You use the GraphHopper Directions API to add route planning, navigation and route optimization to your software. E.g. the Routing API has turn instructions and elevation data and the Route Optimization API solves your logistic problems and supports various constraints like time window and capacity restrictions. Also it is possible to get all distances between all locations with our fast Matrix API.
 
 OpenAPI spec version: 1.0.0
 
@@ -17,6 +17,9 @@ module SwaggerClient
     # Unique identifier of location
     attr_accessor :location_id
 
+    # name of location, e.g. street name plus house number
+    attr_accessor :name
+
     # longitude
     attr_accessor :lon
 
@@ -28,6 +31,7 @@ module SwaggerClient
     def self.attribute_map
       {
         :'location_id' => :'location_id',
+        :'name' => :'name',
         :'lon' => :'lon',
         :'lat' => :'lat'
       }
@@ -37,6 +41,7 @@ module SwaggerClient
     def self.swagger_types
       {
         :'location_id' => :'String',
+        :'name' => :'String',
         :'lon' => :'Float',
         :'lat' => :'Float'
       }
@@ -52,6 +57,10 @@ module SwaggerClient
 
       if attributes.has_key?(:'location_id')
         self.location_id = attributes[:'location_id']
+      end
+
+      if attributes.has_key?(:'name')
+        self.name = attributes[:'name']
       end
 
       if attributes.has_key?(:'lon')
@@ -83,6 +92,7 @@ module SwaggerClient
       return true if self.equal?(o)
       self.class == o.class &&
           location_id == o.location_id &&
+          name == o.name &&
           lon == o.lon &&
           lat == o.lat
     end
@@ -96,7 +106,7 @@ module SwaggerClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [location_id, lon, lat].hash
+      [location_id, name, lon, lat].hash
     end
 
     # Builds the object from hash
