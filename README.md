@@ -1,7 +1,16 @@
-# graphhopper-routing-api-swagger
-Swagger definition for the GraphHopper Routing Api
+# API clients for the GraphHopper Directions API
 
-## Getting Started
+## Supported APIs
+
+Currently the following APIs are supported
+
+ * Routing API (with unencoded polylines only)
+ * Geocoding API
+ * Matrix API 
+ * Isochrone API
+ * Route Optimization API
+
+## Build it yourself
 
 Install Swagger Codegen, for example:
 ```
