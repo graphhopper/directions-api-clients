@@ -205,8 +205,16 @@
           {
             "name": "time_limit",
             "in": "query",
-            "description": "Specify which time the vehicle should travel. In seconds. The maximum depends on the subscribed package.",
+            "description": "Specify which time the vehicle should travel. In seconds.",
             "default": 600,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "distance_limit",
+            "in": "query",
+            "description": "Specify which distance the vehicle should travel. In meter.",
+            "default": -1,
             "type": "integer",
             "format": "int32"
           },

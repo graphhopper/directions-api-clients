@@ -7,7 +7,7 @@ Please see the successfully created one in the subfolders.
 language  |  tested?| alternative
 :---------|:--------|:------------
 java      |  yes    | Use the [official client](https://github.com/graphhopper/directions-api-java-client)
-javascript|  yes    | Use the [official client](https://github.com/graphhopper/directions-api-js-client) or nodejs-server
+javascript|  yes    | Use the [official client](https://github.com/graphhopper/directions-api-js-client)
 python    |  no     |
 csharp    |  no     |
 ruby      |  [yes](https://github.com/graphhopper/directions-api-clients-route-optimization/issues/3)   |
@@ -24,8 +24,10 @@ clojure   |  no     |
 qt5cpp    |  no     |
 haskell   |  no     |
 
-tested=yes means we or one of our customers has successfully used the
-library. The Java and JavaScript clients are either handcrafted or the
+tested=yes means we or one of our customers have successfully used the
+client for this programming language. 
+
+The Java and JavaScript clients are either handcrafted or the
 created versions were further optimized and can be found in the separate,
 linked repository.
 
