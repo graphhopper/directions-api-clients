@@ -1595,6 +1595,13 @@
           "items": {
             "$ref": "#/definitions/Activity"
           }
+        },
+        "points": {
+          "type": "array",
+          "description": "array of route planning points",
+          "items": {
+      	    "$ref": "#/definitions/RoutePoint"
+          }
         }
       }
     },
