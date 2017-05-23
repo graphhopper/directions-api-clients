@@ -1605,6 +1605,20 @@
         }
       }
     },
+    "RoutePoint": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "coordinates": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+     	}
+      }
+    },
     "Activity": {
       "type": "object",
       "properties": {
