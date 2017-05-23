@@ -3,7 +3,7 @@
 SPEC=swagger.json
 DIR=.
 
-VERSION=0.9-SNAPSHOT
+VERSION=0.10-SNAPSHOT
 # SW_VERSION=master
 SW_VERSION=2.2.2
 FILE=swagger-codegen-cli-$SW_VERSION.jar
