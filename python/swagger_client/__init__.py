@@ -47,6 +47,7 @@ from .models.relation import Relation
 from .models.request import Request
 from .models.response import Response
 from .models.route import Route
+from .models.route_point import RoutePoint
 from .models.routing import Routing
 from .models.service import Service
 from .models.shipment import Shipment

@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 
 # **IsochroneGet**
-> GhIsochroneResponse IsochroneGet($point, $key, $timeLimit, $vehicle, $buckets, $reverseFlow)
+> GhIsochroneResponse IsochroneGet($point, $key, $timeLimit, $distanceLimit, $vehicle, $buckets, $reverseFlow)
 
 Isochrone Request
 
@@ -21,7 +21,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **point** | **string**| Specify the start coordinate | 
  **key** | **string**| Get your key at graphhopper.com | 
- **timeLimit** | **int32**| Specify which time the vehicle should travel. In seconds. The maximum depends on the subscribed package. | [optional] [default to 600]
+ **timeLimit** | **int32**| Specify which time the vehicle should travel. In seconds. | [optional] [default to 600]
+ **distanceLimit** | **int32**| Specify which distance the vehicle should travel. In meter. | [optional] [default to -1]
  **vehicle** | **string**| Possible vehicles are bike, car, foot and [more](https://graphhopper.com/api/1/docs/supported-vehicle-profiles/) | [optional] [default to car]
  **buckets** | **int32**| For how many sub intervals an additional polygon should be calculated. | [optional] [default to 1]
  **reverseFlow** | **bool**| If &#x60;false&#x60; the flow goes from point to the polygon, if &#x60;true&#x60; the flow goes from the polygon \&quot;inside\&quot; to the point. Example usage for &#x60;false&#x60;&amp;#58; *How many potential customer can be reached within 30min travel time from your store* vs. &#x60;true&#x60;&amp;#58; *How many customers can reach your store within 30min travel time.* | [optional] [default to false]

@@ -59,7 +59,8 @@ class Route implements ArrayAccess
         'transport_time' => 'int',
         'completion_time' => 'int',
         'waiting_time' => 'int',
-        'activities' => '\Swagger\Client\Model\Activity[]'
+        'activities' => '\Swagger\Client\Model\Activity[]',
+        'points' => '\Swagger\Client\Model\RoutePoint[]'
     ];
 
     public static function swaggerTypes()
@@ -77,7 +78,8 @@ class Route implements ArrayAccess
         'transport_time' => 'transport_time',
         'completion_time' => 'completion_time',
         'waiting_time' => 'waiting_time',
-        'activities' => 'activities'
+        'activities' => 'activities',
+        'points' => 'points'
     ];
 
 
@@ -91,7 +93,8 @@ class Route implements ArrayAccess
         'transport_time' => 'setTransportTime',
         'completion_time' => 'setCompletionTime',
         'waiting_time' => 'setWaitingTime',
-        'activities' => 'setActivities'
+        'activities' => 'setActivities',
+        'points' => 'setPoints'
     ];
 
 
@@ -105,7 +108,8 @@ class Route implements ArrayAccess
         'transport_time' => 'getTransportTime',
         'completion_time' => 'getCompletionTime',
         'waiting_time' => 'getWaitingTime',
-        'activities' => 'getActivities'
+        'activities' => 'getActivities',
+        'points' => 'getPoints'
     ];
 
     public static function attributeMap()
@@ -145,6 +149,7 @@ class Route implements ArrayAccess
         $this->container['completion_time'] = isset($data['completion_time']) ? $data['completion_time'] : null;
         $this->container['waiting_time'] = isset($data['waiting_time']) ? $data['waiting_time'] : null;
         $this->container['activities'] = isset($data['activities']) ? $data['activities'] : null;
+        $this->container['points'] = isset($data['points']) ? $data['points'] : null;
     }
 
     /**
@@ -294,6 +299,27 @@ class Route implements ArrayAccess
     public function setActivities($activities)
     {
         $this->container['activities'] = $activities;
+
+        return $this;
+    }
+
+    /**
+     * Gets points
+     * @return \Swagger\Client\Model\RoutePoint[]
+     */
+    public function getPoints()
+    {
+        return $this->container['points'];
+    }
+
+    /**
+     * Sets points
+     * @param \Swagger\Client\Model\RoutePoint[] $points array of route planning points
+     * @return $this
+     */
+    public function setPoints($points)
+    {
+        $this->container['points'] = $points;
 
         return $this;
     }

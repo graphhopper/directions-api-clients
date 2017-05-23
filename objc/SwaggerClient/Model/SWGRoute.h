@@ -15,6 +15,7 @@
 
 
 #import "SWGActivity.h"
+#import "SWGRoutePoint.h"
 
 
 @protocol SWGRoute
@@ -40,5 +41,8 @@
 /* array of activities [optional]
  */
 @property(nonatomic) NSArray<SWGActivity>* activities;
+/* array of route planning points [optional]
+ */
+@property(nonatomic) NSArray<SWGRoutePoint>* points;
 
 @end

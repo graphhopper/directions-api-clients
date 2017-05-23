@@ -36,10 +36,11 @@ isa_ok($api, 'WWW::SwaggerClient::IsochroneApi');
     my $point = undef; # replace NULL with a proper value
     my $key = undef; # replace NULL with a proper value
     my $time_limit = undef; # replace NULL with a proper value
+    my $distance_limit = undef; # replace NULL with a proper value
     my $vehicle = undef; # replace NULL with a proper value
     my $buckets = undef; # replace NULL with a proper value
     my $reverse_flow = undef; # replace NULL with a proper value
-    my $result = $api->isochrone_get(point => $point, key => $key, time_limit => $time_limit, vehicle => $vehicle, buckets => $buckets, reverse_flow => $reverse_flow);
+    my $result = $api->isochrone_get(point => $point, key => $key, time_limit => $time_limit, distance_limit => $distance_limit, vehicle => $vehicle, buckets => $buckets, reverse_flow => $reverse_flow);
 }
 
 

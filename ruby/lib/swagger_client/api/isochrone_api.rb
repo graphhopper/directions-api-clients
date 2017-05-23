@@ -24,7 +24,8 @@ module SwaggerClient
     # @param point Specify the start coordinate
     # @param key Get your key at graphhopper.com
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :time_limit Specify which time the vehicle should travel. In seconds. The maximum depends on the subscribed package. (default to 600)
+    # @option opts [Integer] :time_limit Specify which time the vehicle should travel. In seconds. (default to 600)
+    # @option opts [Integer] :distance_limit Specify which distance the vehicle should travel. In meter. (default to -1)
     # @option opts [String] :vehicle Possible vehicles are bike, car, foot and [more](https://graphhopper.com/api/1/docs/supported-vehicle-profiles/) (default to car)
     # @option opts [Integer] :buckets For how many sub intervals an additional polygon should be calculated. (default to 1)
     # @option opts [BOOLEAN] :reverse_flow If &#x60;false&#x60; the flow goes from point to the polygon, if &#x60;true&#x60; the flow goes from the polygon \&quot;inside\&quot; to the point. Example usage for &#x60;false&#x60;&amp;#58; *How many potential customer can be reached within 30min travel time from your store* vs. &#x60;true&#x60;&amp;#58; *How many customers can reach your store within 30min travel time.* (default to false)
@@ -39,7 +40,8 @@ module SwaggerClient
     # @param point Specify the start coordinate
     # @param key Get your key at graphhopper.com
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :time_limit Specify which time the vehicle should travel. In seconds. The maximum depends on the subscribed package.
+    # @option opts [Integer] :time_limit Specify which time the vehicle should travel. In seconds.
+    # @option opts [Integer] :distance_limit Specify which distance the vehicle should travel. In meter.
     # @option opts [String] :vehicle Possible vehicles are bike, car, foot and [more](https://graphhopper.com/api/1/docs/supported-vehicle-profiles/)
     # @option opts [Integer] :buckets For how many sub intervals an additional polygon should be calculated.
     # @option opts [BOOLEAN] :reverse_flow If &#x60;false&#x60; the flow goes from point to the polygon, if &#x60;true&#x60; the flow goes from the polygon \&quot;inside\&quot; to the point. Example usage for &#x60;false&#x60;&amp;#58; *How many potential customer can be reached within 30min travel time from your store* vs. &#x60;true&#x60;&amp;#58; *How many customers can reach your store within 30min travel time.*
@@ -60,6 +62,7 @@ module SwaggerClient
       query_params[:'point'] = point
       query_params[:'key'] = key
       query_params[:'time_limit'] = opts[:'time_limit'] if !opts[:'time_limit'].nil?
+      query_params[:'distance_limit'] = opts[:'distance_limit'] if !opts[:'distance_limit'].nil?
       query_params[:'vehicle'] = opts[:'vehicle'] if !opts[:'vehicle'].nil?
       query_params[:'buckets'] = opts[:'buckets'] if !opts[:'buckets'].nil?
       query_params[:'reverse_flow'] = opts[:'reverse_flow'] if !opts[:'reverse_flow'].nil?

@@ -52,7 +52,7 @@ isochroneGetProcessor(HttpResponse* pHttpResponse, void (* handler)(void*, SamiE
 }
 
 SamiGHIsochroneResponse* 
-SamiIsochroneApi::isochroneGetWithCompletion(String* point, String* key, Integer* timeLimit, String* vehicle, Integer* buckets, Boolean* reverseFlow, void (* success)(SamiGHIsochroneResponse*, SamiError*)) {
+SamiIsochroneApi::isochroneGetWithCompletion(String* point, String* key, Integer* timeLimit, Integer* distanceLimit, String* vehicle, Integer* buckets, Boolean* reverseFlow, void (* success)(SamiGHIsochroneResponse*, SamiError*)) {
   client = new SamiApiClient();
 
   client->success(&isochroneGetProcessor, (void(*)(void*, SamiError*))success);
@@ -67,6 +67,8 @@ SamiIsochroneApi::isochroneGetWithCompletion(String* point, String* key, Integer
     queryParams->Add(new String("point"), point);
 
     queryParams->Add(new String("time_limit"), timeLimit);
+
+    queryParams->Add(new String("distance_limit"), distanceLimit);
 
     queryParams->Add(new String("vehicle"), vehicle);
 

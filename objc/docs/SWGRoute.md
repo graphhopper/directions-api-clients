@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **completionTime** | **NSNumber*** | completion time of route in ms | [optional] 
 **waitingTime** | **NSNumber*** | waiting time of route in ms | [optional] 
 **activities** | [**NSArray&lt;SWGActivity&gt;***](SWGActivity.md) | array of activities | [optional] 
+**points** | [**NSArray&lt;SWGRoutePoint&gt;***](SWGRoutePoint.md) | array of route planning points | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -18,6 +18,7 @@ using namespace Tizen::Web::Json;
 
 
 #include "SamiActivity.h"
+#include "SamiRoutePoint.h"
 using Tizen::Base::Collection::IList;
 using Tizen::Base::Long;
 using Tizen::Base::String;
@@ -55,6 +56,8 @@ public:
     void setPWaitingTime(Long* pWaiting_time);
     IList* getPActivities();
     void setPActivities(IList* pActivities);
+    IList* getPPoints();
+    void setPPoints(IList* pPoints);
 
 private:
     String* pVehicle_id;
@@ -63,6 +66,7 @@ Long* pTransport_time;
 Long* pCompletion_time;
 Long* pWaiting_time;
 IList* pActivities;
+IList* pPoints;
 };
 
 } /* namespace Swagger */

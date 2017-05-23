@@ -36,6 +36,7 @@
 #include "SamiRequest.h"
 #include "SamiResponse.h"
 #include "SamiRoute.h"
+#include "SamiRoutePoint.h"
 #include "SamiRouting.h"
 #include "SamiService.h"
 #include "SamiShipment.h"
@@ -147,6 +148,9 @@ namespace Swagger {
     }
     if(type.Equals(L"SamiRoute", true)) {
       return new SamiRoute();
+    }
+    if(type.Equals(L"SamiRoutePoint", true)) {
+      return new SamiRoutePoint();
     }
     if(type.Equals(L"SamiRouting", true)) {
       return new SamiRouting();

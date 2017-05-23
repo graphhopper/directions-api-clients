@@ -28,7 +28,7 @@ SWGIsochroneApi::SWGIsochroneApi(QString host, QString basePath) {
 }
 
 void
-SWGIsochroneApi::isochroneGet(QString* point, QString* key, qint32 time_limit, QString* vehicle, qint32 buckets, bool reverse_flow) {
+SWGIsochroneApi::isochroneGet(QString* point, QString* key, qint32 time_limit, qint32 distance_limit, QString* vehicle, qint32 buckets, bool reverse_flow) {
     QString fullPath;
     fullPath.append(this->host).append(this->basePath).append("/isochrone");
 
@@ -48,6 +48,14 @@ SWGIsochroneApi::isochroneGet(QString* point, QString* key, qint32 time_limit, Q
     fullPath.append(QUrl::toPercentEncoding("time_limit"))
         .append("=")
         .append(QUrl::toPercentEncoding(stringValue(time_limit)));
+
+    if (fullPath.indexOf("?") > 0) 
+      fullPath.append("&");
+    else 
+      fullPath.append("?");
+    fullPath.append(QUrl::toPercentEncoding("distance_limit"))
+        .append("=")
+        .append(QUrl::toPercentEncoding(stringValue(distance_limit)));
 
     if (fullPath.indexOf("?") > 0) 
       fullPath.append("&");

@@ -23,6 +23,7 @@
 
 
 #include "SWGActivity.h"
+#include "SWGRoutePoint.h"
 #include <QList>
 #include <QString>
 
@@ -62,6 +63,9 @@ public:
     QList<SWGActivity*>* getActivities();
     void setActivities(QList<SWGActivity*>* activities);
 
+    QList<SWGRoutePoint*>* getPoints();
+    void setPoints(QList<SWGRoutePoint*>* points);
+
 
 private:
     QString* vehicle_id;
@@ -70,6 +74,7 @@ private:
     qint64 completion_time;
     qint64 waiting_time;
     QList<SWGActivity*>* activities;
+    QList<SWGRoutePoint*>* points;
 };
 
 } /* namespace Swagger */

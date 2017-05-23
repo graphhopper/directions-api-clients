@@ -29,7 +29,8 @@ extern NSInteger kSWGIsochroneApiMissingParamErrorCode;
 ///
 /// @param point Specify the start coordinate
 /// @param key Get your key at graphhopper.com
-/// @param timeLimit Specify which time the vehicle should travel. In seconds. The maximum depends on the subscribed package. (optional) (default to 600)
+/// @param timeLimit Specify which time the vehicle should travel. In seconds. (optional) (default to 600)
+/// @param distanceLimit Specify which distance the vehicle should travel. In meter. (optional) (default to -1)
 /// @param vehicle Possible vehicles are bike, car, foot and [more](https://graphhopper.com/api/1/docs/supported-vehicle-profiles/) (optional) (default to car)
 /// @param buckets For how many sub intervals an additional polygon should be calculated. (optional) (default to 1)
 /// @param reverseFlow If &#x60;false&#x60; the flow goes from point to the polygon, if &#x60;true&#x60; the flow goes from the polygon \&quot;inside\&quot; to the point. Example usage for &#x60;false&#x60;&amp;#58; *How many potential customer can be reached within 30min travel time from your store* vs. &#x60;true&#x60;&amp;#58; *How many customers can reach your store within 30min travel time.* (optional) (default to false)
@@ -41,6 +42,7 @@ extern NSInteger kSWGIsochroneApiMissingParamErrorCode;
 -(NSURLSessionTask*) isochroneGetWithPoint: (NSString*) point
     key: (NSString*) key
     timeLimit: (NSNumber*) timeLimit
+    distanceLimit: (NSNumber*) distanceLimit
     vehicle: (NSString*) vehicle
     buckets: (NSNumber*) buckets
     reverseFlow: (NSNumber*) reverseFlow

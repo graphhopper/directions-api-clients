@@ -37,7 +37,8 @@ describe 'IsochroneApi' do
   # @param point Specify the start coordinate
   # @param key Get your key at graphhopper.com
   # @param [Hash] opts the optional parameters
-  # @option opts [Integer] :time_limit Specify which time the vehicle should travel. In seconds. The maximum depends on the subscribed package.
+  # @option opts [Integer] :time_limit Specify which time the vehicle should travel. In seconds.
+  # @option opts [Integer] :distance_limit Specify which distance the vehicle should travel. In meter.
   # @option opts [String] :vehicle Possible vehicles are bike, car, foot and [more](https://graphhopper.com/api/1/docs/supported-vehicle-profiles/)
   # @option opts [Integer] :buckets For how many sub intervals an additional polygon should be calculated.
   # @option opts [BOOLEAN] :reverse_flow If &#x60;false&#x60; the flow goes from point to the polygon, if &#x60;true&#x60; the flow goes from the polygon \&quot;inside\&quot; to the point. Example usage for &#x60;false&#x60;&amp;#58; *How many potential customer can be reached within 30min travel time from your store* vs. &#x60;true&#x60;&amp;#58; *How many customers can reach your store within 30min travel time.*

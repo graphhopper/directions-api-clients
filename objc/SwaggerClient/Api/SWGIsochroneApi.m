@@ -57,7 +57,9 @@ NSInteger kSWGIsochroneApiMissingParamErrorCode = 234513;
 ///
 ///  @param key Get your key at graphhopper.com 
 ///
-///  @param timeLimit Specify which time the vehicle should travel. In seconds. The maximum depends on the subscribed package. (optional, default to 600)
+///  @param timeLimit Specify which time the vehicle should travel. In seconds. (optional, default to 600)
+///
+///  @param distanceLimit Specify which distance the vehicle should travel. In meter. (optional, default to -1)
 ///
 ///  @param vehicle Possible vehicles are bike, car, foot and [more](https://graphhopper.com/api/1/docs/supported-vehicle-profiles/) (optional, default to car)
 ///
@@ -70,6 +72,7 @@ NSInteger kSWGIsochroneApiMissingParamErrorCode = 234513;
 -(NSURLSessionTask*) isochroneGetWithPoint: (NSString*) point
     key: (NSString*) key
     timeLimit: (NSNumber*) timeLimit
+    distanceLimit: (NSNumber*) distanceLimit
     vehicle: (NSString*) vehicle
     buckets: (NSNumber*) buckets
     reverseFlow: (NSNumber*) reverseFlow
@@ -109,6 +112,9 @@ NSInteger kSWGIsochroneApiMissingParamErrorCode = 234513;
     }
     if (timeLimit != nil) {
         queryParams[@"time_limit"] = timeLimit;
+    }
+    if (distanceLimit != nil) {
+        queryParams[@"distance_limit"] = distanceLimit;
     }
     if (vehicle != nil) {
         queryParams[@"vehicle"] = vehicle;

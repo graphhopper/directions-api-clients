@@ -9,5 +9,6 @@ Name | Type | Description | Notes
 **completion_time** | **Integer** | completion time of route in ms | [optional] 
 **waiting_time** | **Integer** | waiting time of route in ms | [optional] 
 **activities** | [**Array&lt;Activity&gt;**](Activity.md) | array of activities | [optional] 
+**points** | [**Array&lt;RoutePoint&gt;**](RoutePoint.md) | array of route planning points | [optional] 
 
 

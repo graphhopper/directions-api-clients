@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 <a name="isochroneget"></a>
 # **IsochroneGet**
-> GHIsochroneResponse IsochroneGet (string point, string key, int? timeLimit = null, string vehicle = null, int? buckets = null, bool? reverseFlow = null)
+> GHIsochroneResponse IsochroneGet (string point, string key, int? timeLimit = null, int? distanceLimit = null, string vehicle = null, int? buckets = null, bool? reverseFlow = null)
 
 Isochrone Request
 
@@ -33,7 +33,8 @@ namespace Example
             var apiInstance = new IsochroneApi();
             var point = point_example;  // string | Specify the start coordinate
             var key = key_example;  // string | Get your key at graphhopper.com
-            var timeLimit = 56;  // int? | Specify which time the vehicle should travel. In seconds. The maximum depends on the subscribed package. (optional)  (default to 600)
+            var timeLimit = 56;  // int? | Specify which time the vehicle should travel. In seconds. (optional)  (default to 600)
+            var distanceLimit = 56;  // int? | Specify which distance the vehicle should travel. In meter. (optional)  (default to -1)
             var vehicle = vehicle_example;  // string | Possible vehicles are bike, car, foot and [more](https://graphhopper.com/api/1/docs/supported-vehicle-profiles/) (optional)  (default to car)
             var buckets = 56;  // int? | For how many sub intervals an additional polygon should be calculated. (optional)  (default to 1)
             var reverseFlow = true;  // bool? | If `false` the flow goes from point to the polygon, if `true` the flow goes from the polygon \"inside\" to the point. Example usage for `false`&#58; *How many potential customer can be reached within 30min travel time from your store* vs. `true`&#58; *How many customers can reach your store within 30min travel time.* (optional)  (default to false)
@@ -41,7 +42,7 @@ namespace Example
             try
             {
                 // Isochrone Request
-                GHIsochroneResponse result = apiInstance.IsochroneGet(point, key, timeLimit, vehicle, buckets, reverseFlow);
+                GHIsochroneResponse result = apiInstance.IsochroneGet(point, key, timeLimit, distanceLimit, vehicle, buckets, reverseFlow);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -59,7 +60,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **point** | **string**| Specify the start coordinate | 
  **key** | **string**| Get your key at graphhopper.com | 
- **timeLimit** | **int?**| Specify which time the vehicle should travel. In seconds. The maximum depends on the subscribed package. | [optional] [default to 600]
+ **timeLimit** | **int?**| Specify which time the vehicle should travel. In seconds. | [optional] [default to 600]
+ **distanceLimit** | **int?**| Specify which distance the vehicle should travel. In meter. | [optional] [default to -1]
  **vehicle** | **string**| Possible vehicles are bike, car, foot and [more](https://graphhopper.com/api/1/docs/supported-vehicle-profiles/) | [optional] [default to car]
  **buckets** | **int?**| For how many sub intervals an additional polygon should be calculated. | [optional] [default to 1]
  **reverseFlow** | **bool?**| If &#x60;false&#x60; the flow goes from point to the polygon, if &#x60;true&#x60; the flow goes from the polygon \&quot;inside\&quot; to the point. Example usage for &#x60;false&#x60;&amp;#58; *How many potential customer can be reached within 30min travel time from your store* vs. &#x60;true&#x60;&amp;#58; *How many customers can reach your store within 30min travel time.* | [optional] [default to false]

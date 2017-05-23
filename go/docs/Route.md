@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **CompletionTime** | **int64** | completion time of route in ms | [optional] [default to null]
 **WaitingTime** | **int64** | waiting time of route in ms | [optional] [default to null]
 **Activities** | [**[]Activity**](Activity.md) | array of activities | [optional] [default to null]
+**Points** | [**[]RoutePoint**](RoutePoint.md) | array of route planning points | [optional] [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

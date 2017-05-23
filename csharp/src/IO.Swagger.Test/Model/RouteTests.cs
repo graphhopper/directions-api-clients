@@ -112,6 +112,14 @@ namespace IO.Swagger.Test
         {
             // TODO unit test for the property 'Activities'
         }
+        /// <summary>
+        /// Test the property 'Points'
+        /// </summary>
+        [Test]
+        public void PointsTest()
+        {
+            // TODO unit test for the property 'Points'
+        }
 
     }
 

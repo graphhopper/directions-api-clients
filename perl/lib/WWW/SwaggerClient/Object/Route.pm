@@ -184,6 +184,13 @@ __PACKAGE__->method_documentation({
     	format => '',
     	read_only => '',
     		},
+    'points' => {
+    	datatype => 'ARRAY[RoutePoint]',
+    	base_name => 'points',
+    	description => 'array of route planning points',
+    	format => '',
+    	read_only => '',
+    		},
 });
 
 __PACKAGE__->swagger_types( {
@@ -192,7 +199,8 @@ __PACKAGE__->swagger_types( {
     'transport_time' => 'int',
     'completion_time' => 'int',
     'waiting_time' => 'int',
-    'activities' => 'ARRAY[Activity]'
+    'activities' => 'ARRAY[Activity]',
+    'points' => 'ARRAY[RoutePoint]'
 } );
 
 __PACKAGE__->attribute_map( {
@@ -201,7 +209,8 @@ __PACKAGE__->attribute_map( {
     'transport_time' => 'transport_time',
     'completion_time' => 'completion_time',
     'waiting_time' => 'waiting_time',
-    'activities' => 'activities'
+    'activities' => 'activities',
+    'points' => 'points'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

@@ -47,6 +47,7 @@ from .relation import Relation
 from .request import Request
 from .response import Response
 from .route import Route
+from .route_point import RoutePoint
 from .routing import Routing
 from .service import Service
 from .shipment import Shipment

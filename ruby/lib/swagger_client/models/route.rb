@@ -32,6 +32,9 @@ module SwaggerClient
     # array of activities
     attr_accessor :activities
 
+    # array of route planning points
+    attr_accessor :points
+
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -41,7 +44,8 @@ module SwaggerClient
         :'transport_time' => :'transport_time',
         :'completion_time' => :'completion_time',
         :'waiting_time' => :'waiting_time',
-        :'activities' => :'activities'
+        :'activities' => :'activities',
+        :'points' => :'points'
       }
     end
 
@@ -53,7 +57,8 @@ module SwaggerClient
         :'transport_time' => :'Integer',
         :'completion_time' => :'Integer',
         :'waiting_time' => :'Integer',
-        :'activities' => :'Array<Activity>'
+        :'activities' => :'Array<Activity>',
+        :'points' => :'Array<RoutePoint>'
       }
     end
 
@@ -91,6 +96,12 @@ module SwaggerClient
         end
       end
 
+      if attributes.has_key?(:'points')
+        if (value = attributes[:'points']).is_a?(Array)
+          self.points = value
+        end
+      end
+
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -116,7 +127,8 @@ module SwaggerClient
           transport_time == o.transport_time &&
           completion_time == o.completion_time &&
           waiting_time == o.waiting_time &&
-          activities == o.activities
+          activities == o.activities &&
+          points == o.points
     end
 
     # @see the `==` method
@@ -128,7 +140,7 @@ module SwaggerClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [vehicle_id, distance, transport_time, completion_time, waiting_time, activities].hash
+      [vehicle_id, distance, transport_time, completion_time, waiting_time, activities, points].hash
     end
 
     # Builds the object from hash

@@ -654,6 +654,21 @@ class Decoders {
                 instance.completionTime = Decoders.decodeOptional(clazz: Int64.self, source: sourceDictionary["completion_time"])
                 instance.waitingTime = Decoders.decodeOptional(clazz: Int64.self, source: sourceDictionary["waiting_time"])
                 instance.activities = Decoders.decodeOptional(clazz: Array.self, source: sourceDictionary["activities"])
+                instance.points = Decoders.decodeOptional(clazz: Array.self, source: sourceDictionary["points"])
+                return instance
+            }
+
+
+            // Decoder for [RoutePoint]
+            Decoders.addDecoder(clazz: [RoutePoint].self) { (source: AnyObject) -> [RoutePoint] in
+                return Decoders.decode(clazz: [RoutePoint].self, source: source)
+            }
+            // Decoder for RoutePoint
+            Decoders.addDecoder(clazz: RoutePoint.self) { (source: AnyObject) -> RoutePoint in
+                let sourceDictionary = source as! [NSObject:AnyObject]
+                let instance = RoutePoint()
+                instance.type = Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["type"])
+                instance.coordinates = Decoders.decodeOptional(clazz: Array.self, source: sourceDictionary["coordinates"])
                 return instance
             }
 

@@ -265,6 +265,7 @@ use WWW::SwaggerClient::Object::Relation;
 use WWW::SwaggerClient::Object::Request;
 use WWW::SwaggerClient::Object::Response;
 use WWW::SwaggerClient::Object::Route;
+use WWW::SwaggerClient::Object::RoutePoint;
 use WWW::SwaggerClient::Object::Routing;
 use WWW::SwaggerClient::Object::Service;
 use WWW::SwaggerClient::Object::Shipment;
@@ -325,6 +326,7 @@ use WWW::SwaggerClient::Object::Relation;
 use WWW::SwaggerClient::Object::Request;
 use WWW::SwaggerClient::Object::Response;
 use WWW::SwaggerClient::Object::Route;
+use WWW::SwaggerClient::Object::RoutePoint;
 use WWW::SwaggerClient::Object::Routing;
 use WWW::SwaggerClient::Object::Service;
 use WWW::SwaggerClient::Object::Shipment;
@@ -408,6 +410,7 @@ Class | Method | HTTP request | Description
  - [WWW::SwaggerClient::Object::Request](docs/Request.md)
  - [WWW::SwaggerClient::Object::Response](docs/Response.md)
  - [WWW::SwaggerClient::Object::Route](docs/Route.md)
+ - [WWW::SwaggerClient::Object::RoutePoint](docs/RoutePoint.md)
  - [WWW::SwaggerClient::Object::Routing](docs/Routing.md)
  - [WWW::SwaggerClient::Object::Service](docs/Service.md)
  - [WWW::SwaggerClient::Object::Shipment](docs/Shipment.md)

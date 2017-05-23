@@ -74,6 +74,7 @@ Import the following:
 #import <SwaggerClient/SWGRequest.h>
 #import <SwaggerClient/SWGResponse.h>
 #import <SwaggerClient/SWGRoute.h>
+#import <SwaggerClient/SWGRoutePoint.h>
 #import <SwaggerClient/SWGRouting.h>
 #import <SwaggerClient/SWGService.h>
 #import <SwaggerClient/SWGShipment.h>
@@ -182,6 +183,7 @@ Class | Method | HTTP request | Description
  - [SWGRequest](docs/SWGRequest.md)
  - [SWGResponse](docs/SWGResponse.md)
  - [SWGRoute](docs/SWGRoute.md)
+ - [SWGRoutePoint](docs/SWGRoutePoint.md)
  - [SWGRouting](docs/SWGRouting.md)
  - [SWGService](docs/SWGService.md)
  - [SWGShipment](docs/SWGShipment.md)

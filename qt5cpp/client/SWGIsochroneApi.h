@@ -34,7 +34,7 @@ public:
     QString host;
     QString basePath;
 
-    void isochroneGet(QString* point, QString* key, qint32 time_limit, QString* vehicle, qint32 buckets, bool reverse_flow);
+    void isochroneGet(QString* point, QString* key, qint32 time_limit, qint32 distance_limit, QString* vehicle, qint32 buckets, bool reverse_flow);
     
 private:
     void isochroneGetCallback (HttpRequestWorker * worker);

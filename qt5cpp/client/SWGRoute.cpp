@@ -44,6 +44,7 @@ SWGRoute::init() {
     completion_time = 0L;
     waiting_time = 0L;
     activities = new QList<SWGActivity*>();
+    points = new QList<SWGRoutePoint*>();
 }
 
 void
@@ -63,6 +64,14 @@ SWGRoute::cleanup() {
             delete o;
         }
         delete activities;
+    }
+
+    if(points != nullptr) {
+        QList<SWGRoutePoint*>* arr = points;
+        foreach(SWGRoutePoint* o, *arr) {
+            delete o;
+        }
+        delete points;
     }
 }
 
@@ -84,6 +93,9 @@ SWGRoute::fromJsonObject(QJsonObject &pJson) {
     ::Swagger::setValue(&waiting_time, pJson["waiting_time"], "qint64", "");
     
     ::Swagger::setValue(&activities, pJson["activities"], "QList", "SWGActivity");
+    
+    
+    ::Swagger::setValue(&points, pJson["points"], "QList", "SWGRoutePoint");
     
 }
 
@@ -114,6 +126,10 @@ SWGRoute::asJsonObject() {
     QJsonArray activitiesJsonArray;
     toJsonArray((QList<void*>*)activities, &activitiesJsonArray, "activities", "SWGActivity");
     obj->insert("activities", activitiesJsonArray);
+
+    QJsonArray pointsJsonArray;
+    toJsonArray((QList<void*>*)points, &pointsJsonArray, "points", "SWGRoutePoint");
+    obj->insert("points", pointsJsonArray);
 
     return obj;
 }
@@ -170,6 +186,15 @@ SWGRoute::getActivities() {
 void
 SWGRoute::setActivities(QList<SWGActivity*>* activities) {
     this->activities = activities;
+}
+
+QList<SWGRoutePoint*>*
+SWGRoute::getPoints() {
+    return points;
+}
+void
+SWGRoute::setPoints(QList<SWGRoutePoint*>* points) {
+    this->points = points;
 }
 
 

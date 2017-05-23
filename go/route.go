@@ -29,4 +29,7 @@ type Route struct {
 
 	// array of activities
 	Activities []Activity `json:"activities,omitempty"`
+
+	// array of route planning points
+	Points []RoutePoint `json:"points,omitempty"`
 }

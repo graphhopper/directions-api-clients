@@ -38,7 +38,8 @@ namespace IO.Swagger.Model
         /// <param name="CompletionTime">completion time of route in ms.</param>
         /// <param name="WaitingTime">waiting time of route in ms.</param>
         /// <param name="Activities">array of activities.</param>
-        public Route(string VehicleId = default(string), long? Distance = default(long?), long? TransportTime = default(long?), long? CompletionTime = default(long?), long? WaitingTime = default(long?), List<Activity> Activities = default(List<Activity>))
+        /// <param name="Points">array of route planning points.</param>
+        public Route(string VehicleId = default(string), long? Distance = default(long?), long? TransportTime = default(long?), long? CompletionTime = default(long?), long? WaitingTime = default(long?), List<Activity> Activities = default(List<Activity>), List<RoutePoint> Points = default(List<RoutePoint>))
         {
             this.VehicleId = VehicleId;
             this.Distance = Distance;
@@ -46,6 +47,7 @@ namespace IO.Swagger.Model
             this.CompletionTime = CompletionTime;
             this.WaitingTime = WaitingTime;
             this.Activities = Activities;
+            this.Points = Points;
         }
         
         /// <summary>
@@ -85,6 +87,12 @@ namespace IO.Swagger.Model
         [DataMember(Name="activities", EmitDefaultValue=false)]
         public List<Activity> Activities { get; set; }
         /// <summary>
+        /// array of route planning points
+        /// </summary>
+        /// <value>array of route planning points</value>
+        [DataMember(Name="points", EmitDefaultValue=false)]
+        public List<RoutePoint> Points { get; set; }
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -98,6 +106,7 @@ namespace IO.Swagger.Model
             sb.Append("  CompletionTime: ").Append(CompletionTime).Append("\n");
             sb.Append("  WaitingTime: ").Append(WaitingTime).Append("\n");
             sb.Append("  Activities: ").Append(Activities).Append("\n");
+            sb.Append("  Points: ").Append(Points).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -163,6 +172,11 @@ namespace IO.Swagger.Model
                     this.Activities == other.Activities ||
                     this.Activities != null &&
                     this.Activities.SequenceEqual(other.Activities)
+                ) && 
+                (
+                    this.Points == other.Points ||
+                    this.Points != null &&
+                    this.Points.SequenceEqual(other.Points)
                 );
         }
 
@@ -189,6 +203,8 @@ namespace IO.Swagger.Model
                     hash = hash * 59 + this.WaitingTime.GetHashCode();
                 if (this.Activities != null)
                     hash = hash * 59 + this.Activities.GetHashCode();
+                if (this.Points != null)
+                    hash = hash * 59 + this.Points.GetHashCode();
                 return hash;
             }
         }

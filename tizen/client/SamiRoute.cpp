@@ -28,6 +28,7 @@ pTransport_time = null;
 pCompletion_time = null;
 pWaiting_time = null;
 pActivities = null;
+pPoints = null;
 }
 
 void
@@ -61,6 +62,11 @@ if(pActivities != null) {
         pActivities->RemoveAll(true);
         delete pActivities;
         pActivities = null;
+    }
+if(pPoints != null) {
+        pPoints->RemoveAll(true);
+        delete pPoints;
+        pPoints = null;
     }
 }
 
@@ -153,6 +159,15 @@ JsonString* pActivitiesKey = new JsonString(L"activities");
             jsonToValue(pActivities, pActivitiesVal, L"IList", L"SamiActivity");
         }
         delete pActivitiesKey;
+JsonString* pPointsKey = new JsonString(L"points");
+        IJsonValue* pPointsVal = null;
+        pJsonObject->GetValue(pPointsKey, pPointsVal);
+        if(pPointsVal != null) {
+            pPoints = new ArrayList();
+            
+            jsonToValue(pPoints, pPointsVal, L"IList", L"SamiRoutePoint");
+        }
+        delete pPointsKey;
     }
 }
 
@@ -221,6 +236,9 @@ SamiRoute::asJsonObject() {
     JsonString *pActivitiesKey = new JsonString(L"activities");
     pJsonObject->Add(pActivitiesKey, toJson(getPActivities(), "SamiActivity", "array"));
 
+    JsonString *pPointsKey = new JsonString(L"points");
+    pJsonObject->Add(pPointsKey, toJson(getPPoints(), "SamiRoutePoint", "array"));
+
     return pJsonObject;
 }
 
@@ -276,6 +294,15 @@ SamiRoute::getPActivities() {
 void
 SamiRoute::setPActivities(IList* pActivities) {
     this->pActivities = pActivities;
+}
+
+IList*
+SamiRoute::getPPoints() {
+    return pPoints;
+}
+void
+SamiRoute::setPPoints(IList* pPoints) {
+    this->pPoints = pPoints;
 }
 
 

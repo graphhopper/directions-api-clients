@@ -25,5 +25,7 @@ case class Route (
   /* waiting time of route in ms */
   waitingTime: Long,
   /* array of activities */
-  activities: List[Activity]
+  activities: List[Activity],
+  /* array of route planning points */
+  points: List[RoutePoint]
 )

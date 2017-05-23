@@ -21,6 +21,8 @@ public class Route: JSONEncodable {
     public var waitingTime: Int64?
     /** array of activities */
     public var activities: [Activity]?
+    /** array of route planning points */
+    public var points: [RoutePoint]?
 
     public init() {}
 
@@ -33,6 +35,7 @@ public class Route: JSONEncodable {
         nillableDictionary["completion_time"] = self.completionTime?.encodeToJSON()
         nillableDictionary["waiting_time"] = self.waitingTime?.encodeToJSON()
         nillableDictionary["activities"] = self.activities?.encodeToJSON()
+        nillableDictionary["points"] = self.points?.encodeToJSON()
         let dictionary: [String:AnyObject] = APIHelper.rejectNil(nillableDictionary) ?? [:]
         return dictionary
     }

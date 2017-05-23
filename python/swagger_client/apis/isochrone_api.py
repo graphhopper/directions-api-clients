@@ -56,7 +56,8 @@ class IsochroneApi(object):
             for asynchronous request. (optional)
         :param str point: Specify the start coordinate (required)
         :param str key: Get your key at graphhopper.com (required)
-        :param int time_limit: Specify which time the vehicle should travel. In seconds. The maximum depends on the subscribed package.
+        :param int time_limit: Specify which time the vehicle should travel. In seconds.
+        :param int distance_limit: Specify which distance the vehicle should travel. In meter.
         :param str vehicle: Possible vehicles are bike, car, foot and [more](https://graphhopper.com/api/1/docs/supported-vehicle-profiles/)
         :param int buckets: For how many sub intervals an additional polygon should be calculated.
         :param bool reverse_flow: If `false` the flow goes from point to the polygon, if `true` the flow goes from the polygon \"inside\" to the point. Example usage for `false`&#58; *How many potential customer can be reached within 30min travel time from your store* vs. `true`&#58; *How many customers can reach your store within 30min travel time.*
@@ -87,7 +88,8 @@ class IsochroneApi(object):
             for asynchronous request. (optional)
         :param str point: Specify the start coordinate (required)
         :param str key: Get your key at graphhopper.com (required)
-        :param int time_limit: Specify which time the vehicle should travel. In seconds. The maximum depends on the subscribed package.
+        :param int time_limit: Specify which time the vehicle should travel. In seconds.
+        :param int distance_limit: Specify which distance the vehicle should travel. In meter.
         :param str vehicle: Possible vehicles are bike, car, foot and [more](https://graphhopper.com/api/1/docs/supported-vehicle-profiles/)
         :param int buckets: For how many sub intervals an additional polygon should be calculated.
         :param bool reverse_flow: If `false` the flow goes from point to the polygon, if `true` the flow goes from the polygon \"inside\" to the point. Example usage for `false`&#58; *How many potential customer can be reached within 30min travel time from your store* vs. `true`&#58; *How many customers can reach your store within 30min travel time.*
@@ -96,7 +98,7 @@ class IsochroneApi(object):
                  returns the request thread.
         """
 
-        all_params = ['point', 'key', 'time_limit', 'vehicle', 'buckets', 'reverse_flow']
+        all_params = ['point', 'key', 'time_limit', 'distance_limit', 'vehicle', 'buckets', 'reverse_flow']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -129,6 +131,8 @@ class IsochroneApi(object):
             query_params['point'] = params['point']
         if 'time_limit' in params:
             query_params['time_limit'] = params['time_limit']
+        if 'distance_limit' in params:
+            query_params['distance_limit'] = params['distance_limit']
         if 'vehicle' in params:
             query_params['vehicle'] = params['vehicle']
         if 'buckets' in params:

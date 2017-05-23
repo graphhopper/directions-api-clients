@@ -21,7 +21,7 @@ public:
   virtual ~SamiIsochroneApi();
 
   SamiGHIsochroneResponse* 
-  isochroneGetWithCompletion(String* point, String* key, Integer* timeLimit, String* vehicle, Integer* buckets, Boolean* reverseFlow, void (* handler)(SamiGHIsochroneResponse*, SamiError*));
+  isochroneGetWithCompletion(String* point, String* key, Integer* timeLimit, Integer* distanceLimit, String* vehicle, Integer* buckets, Boolean* reverseFlow, void (* handler)(SamiGHIsochroneResponse*, SamiError*));
   static String getBasePath() {
     return L"https://graphhopper.com/api/1";
   }

@@ -65,6 +65,7 @@ Class | Method | HTTP request | Description
  - [Request](docs/Request.md)
  - [Response](docs/Response.md)
  - [Route](docs/Route.md)
+ - [RoutePoint](docs/RoutePoint.md)
  - [Routing](docs/Routing.md)
  - [Service](docs/Service.md)
  - [Shipment](docs/Shipment.md)

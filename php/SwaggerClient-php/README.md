@@ -126,6 +126,7 @@ Class | Method | HTTP request | Description
  - [Request](docs/Model/Request.md)
  - [Response](docs/Model/Response.md)
  - [Route](docs/Model/Route.md)
+ - [RoutePoint](docs/Model/RoutePoint.md)
  - [Routing](docs/Model/Routing.md)
  - [Service](docs/Model/Service.md)
  - [Shipment](docs/Model/Shipment.md)

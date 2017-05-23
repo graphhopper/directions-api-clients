@@ -130,4 +130,12 @@ class RouteTest extends \PHPUnit_Framework_TestCase
 
     }
 
+    /**
+     * Test attribute "points"
+     */
+    public function testPropertyPoints()
+    {
+
+    }
+
 }

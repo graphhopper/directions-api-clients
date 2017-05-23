@@ -127,6 +127,7 @@ Class | Method | HTTP request | Description
  - [SwaggerClient::Request](docs/Request.md)
  - [SwaggerClient::Response](docs/Response.md)
  - [SwaggerClient::Route](docs/Route.md)
+ - [SwaggerClient::RoutePoint](docs/RoutePoint.md)
  - [SwaggerClient::Routing](docs/Routing.md)
  - [SwaggerClient::Service](docs/Service.md)
  - [SwaggerClient::Shipment](docs/Shipment.md)

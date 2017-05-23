@@ -58,7 +58,8 @@ sub new {
 # 
 # @param string $point Specify the start coordinate (required)
 # @param string $key Get your key at graphhopper.com (required)
-# @param int $time_limit Specify which time the vehicle should travel. In seconds. The maximum depends on the subscribed package. (optional, default to 600)
+# @param int $time_limit Specify which time the vehicle should travel. In seconds. (optional, default to 600)
+# @param int $distance_limit Specify which distance the vehicle should travel. In meter. (optional, default to -1)
 # @param string $vehicle Possible vehicles are bike, car, foot and [more](https://graphhopper.com/api/1/docs/supported-vehicle-profiles/) (optional, default to car)
 # @param int $buckets For how many sub intervals an additional polygon should be calculated. (optional, default to 1)
 # @param boolean $reverse_flow If &#x60;false&#x60; the flow goes from point to the polygon, if &#x60;true&#x60; the flow goes from the polygon \&quot;inside\&quot; to the point. Example usage for &#x60;false&#x60;&amp;#58; *How many potential customer can be reached within 30min travel time from your store* vs. &#x60;true&#x60;&amp;#58; *How many customers can reach your store within 30min travel time.* (optional, default to false)
@@ -76,7 +77,12 @@ sub new {
     },
     'time_limit' => {
         data_type => 'int',
-        description => 'Specify which time the vehicle should travel. In seconds. The maximum depends on the subscribed package.',
+        description => 'Specify which time the vehicle should travel. In seconds.',
+        required => '0',
+    },
+    'distance_limit' => {
+        data_type => 'int',
+        description => 'Specify which distance the vehicle should travel. In meter.',
         required => '0',
     },
     'vehicle' => {
@@ -140,6 +146,11 @@ sub isochrone_get {
     # query params
     if ( exists $args{'time_limit'}) {
         $query_params->{'time_limit'} = $self->{api_client}->to_query_value($args{'time_limit'});
+    }
+
+    # query params
+    if ( exists $args{'distance_limit'}) {
+        $query_params->{'distance_limit'} = $self->{api_client}->to_query_value($args{'distance_limit'});
     }
 
     # query params

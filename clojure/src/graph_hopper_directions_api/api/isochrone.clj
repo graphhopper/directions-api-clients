@@ -9,11 +9,11 @@
 see [Wikipedia](http://en.wikipedia.org/wiki/Isochrone_map).
 It is also called **reachability** or **walkability**."
   ([point key ] (isochrone-get-with-http-info point key nil))
-  ([point key {:keys [time-limit vehicle buckets reverse-flow ]}]
+  ([point key {:keys [time-limit distance-limit vehicle buckets reverse-flow ]}]
    (call-api "/isochrone" :get
              {:path-params   {}
               :header-params {}
-              :query-params  {"point" point "time_limit" time-limit "vehicle" vehicle "buckets" buckets "reverse_flow" reverse-flow "key" key }
+              :query-params  {"point" point "time_limit" time-limit "distance_limit" distance-limit "vehicle" vehicle "buckets" buckets "reverse_flow" reverse-flow "key" key }
               :form-params   {}
               :content-types []
               :accepts       ["application/json"]

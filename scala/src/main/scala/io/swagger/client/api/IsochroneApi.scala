@@ -39,13 +39,14 @@ class IsochroneApi(val defBasePath: String = "https://graphhopper.com/api/1",
    * The GraphHopper Isochrone API allows calculating an isochrone of a locations means to calculate &#39;a line connecting points at which a vehicle arrives at the same time,&#39; see [Wikipedia](http://en.wikipedia.org/wiki/Isochrone_map). It is also called **reachability** or **walkability**. 
    * @param point Specify the start coordinate 
    * @param key Get your key at graphhopper.com 
-   * @param timeLimit Specify which time the vehicle should travel. In seconds. The maximum depends on the subscribed package. (optional, default to 600)
+   * @param timeLimit Specify which time the vehicle should travel. In seconds. (optional, default to 600)
+   * @param distanceLimit Specify which distance the vehicle should travel. In meter. (optional, default to -1)
    * @param vehicle Possible vehicles are bike, car, foot and [more](https://graphhopper.com/api/1/docs/supported-vehicle-profiles/) (optional, default to car)
    * @param buckets For how many sub intervals an additional polygon should be calculated. (optional, default to 1)
    * @param reverseFlow If &#x60;false&#x60; the flow goes from point to the polygon, if &#x60;true&#x60; the flow goes from the polygon \&quot;inside\&quot; to the point. Example usage for &#x60;false&#x60;&amp;#58; *How many potential customer can be reached within 30min travel time from your store* vs. &#x60;true&#x60;&amp;#58; *How many customers can reach your store within 30min travel time.* (optional, default to false)
    * @return GHIsochroneResponse
    */
-  def isochroneGet(point: String, key: String, timeLimit: Option[Integer] /* = 600*/, vehicle: Option[String] /* = car*/, buckets: Option[Integer] /* = 1*/, reverseFlow: Option[Boolean] /* = false*/): Option[GHIsochroneResponse] = {
+  def isochroneGet(point: String, key: String, timeLimit: Option[Integer] /* = 600*/, distanceLimit: Option[Integer] /* = -1*/, vehicle: Option[String] /* = car*/, buckets: Option[Integer] /* = 1*/, reverseFlow: Option[Boolean] /* = false*/): Option[GHIsochroneResponse] = {
     // create path and map variables
     val path = "/isochrone".replaceAll("\\{format\\}", "json")
 
@@ -62,6 +63,7 @@ class IsochroneApi(val defBasePath: String = "https://graphhopper.com/api/1",
 
     queryParams += "point" -> point.toString
     timeLimit.map(paramVal => queryParams += "time_limit" -> paramVal.toString)
+    distanceLimit.map(paramVal => queryParams += "distance_limit" -> paramVal.toString)
     vehicle.map(paramVal => queryParams += "vehicle" -> paramVal.toString)
     buckets.map(paramVal => queryParams += "buckets" -> paramVal.toString)
     reverseFlow.map(paramVal => queryParams += "reverse_flow" -> paramVal.toString)

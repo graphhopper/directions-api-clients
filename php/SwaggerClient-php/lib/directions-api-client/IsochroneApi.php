@@ -94,16 +94,17 @@ class IsochroneApi
      *
      * @param string $point Specify the start coordinate (required)
      * @param string $key Get your key at graphhopper.com (required)
-     * @param int $time_limit Specify which time the vehicle should travel. In seconds. The maximum depends on the subscribed package. (optional, default to 600)
+     * @param int $time_limit Specify which time the vehicle should travel. In seconds. (optional, default to 600)
+     * @param int $distance_limit Specify which distance the vehicle should travel. In meter. (optional, default to -1)
      * @param string $vehicle Possible vehicles are bike, car, foot and [more](https://graphhopper.com/api/1/docs/supported-vehicle-profiles/) (optional, default to car)
      * @param int $buckets For how many sub intervals an additional polygon should be calculated. (optional, default to 1)
      * @param bool $reverse_flow If &#x60;false&#x60; the flow goes from point to the polygon, if &#x60;true&#x60; the flow goes from the polygon \&quot;inside\&quot; to the point. Example usage for &#x60;false&#x60;&amp;#58; *How many potential customer can be reached within 30min travel time from your store* vs. &#x60;true&#x60;&amp;#58; *How many customers can reach your store within 30min travel time.* (optional, default to false)
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @return \Swagger\Client\Model\GHIsochroneResponse
      */
-    public function isochroneGet($point, $key, $time_limit = null, $vehicle = null, $buckets = null, $reverse_flow = null)
+    public function isochroneGet($point, $key, $time_limit = null, $distance_limit = null, $vehicle = null, $buckets = null, $reverse_flow = null)
     {
-        list($response) = $this->isochroneGetWithHttpInfo($point, $key, $time_limit, $vehicle, $buckets, $reverse_flow);
+        list($response) = $this->isochroneGetWithHttpInfo($point, $key, $time_limit, $distance_limit, $vehicle, $buckets, $reverse_flow);
         return $response;
     }
 
@@ -114,14 +115,15 @@ class IsochroneApi
      *
      * @param string $point Specify the start coordinate (required)
      * @param string $key Get your key at graphhopper.com (required)
-     * @param int $time_limit Specify which time the vehicle should travel. In seconds. The maximum depends on the subscribed package. (optional, default to 600)
+     * @param int $time_limit Specify which time the vehicle should travel. In seconds. (optional, default to 600)
+     * @param int $distance_limit Specify which distance the vehicle should travel. In meter. (optional, default to -1)
      * @param string $vehicle Possible vehicles are bike, car, foot and [more](https://graphhopper.com/api/1/docs/supported-vehicle-profiles/) (optional, default to car)
      * @param int $buckets For how many sub intervals an additional polygon should be calculated. (optional, default to 1)
      * @param bool $reverse_flow If &#x60;false&#x60; the flow goes from point to the polygon, if &#x60;true&#x60; the flow goes from the polygon \&quot;inside\&quot; to the point. Example usage for &#x60;false&#x60;&amp;#58; *How many potential customer can be reached within 30min travel time from your store* vs. &#x60;true&#x60;&amp;#58; *How many customers can reach your store within 30min travel time.* (optional, default to false)
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @return array of \Swagger\Client\Model\GHIsochroneResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function isochroneGetWithHttpInfo($point, $key, $time_limit = null, $vehicle = null, $buckets = null, $reverse_flow = null)
+    public function isochroneGetWithHttpInfo($point, $key, $time_limit = null, $distance_limit = null, $vehicle = null, $buckets = null, $reverse_flow = null)
     {
         // verify the required parameter 'point' is set
         if ($point === null) {
@@ -150,6 +152,10 @@ class IsochroneApi
         // query params
         if ($time_limit !== null) {
             $queryParams['time_limit'] = $this->apiClient->getSerializer()->toQueryValue($time_limit);
+        }
+        // query params
+        if ($distance_limit !== null) {
+            $queryParams['distance_limit'] = $this->apiClient->getSerializer()->toQueryValue($distance_limit);
         }
         // query params
         if ($vehicle !== null) {

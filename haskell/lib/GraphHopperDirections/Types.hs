@@ -36,6 +36,7 @@ module GraphHopperDirections.Types (
     Request (..),
     Response (..),
     Route (..),
+    RoutePoint (..),
     Routing (..),
     Service (..),
     Shipment (..),
@@ -459,12 +460,24 @@ data Route = Route
     , routeCompletionTime :: Integer -- ^ completion time of route in ms
     , routeWaitingTime :: Integer -- ^ waiting time of route in ms
     , routeActivities :: [Activity] -- ^ array of activities
+    , routePoints :: [RoutePoint] -- ^ array of route planning points
     } deriving (Show, Eq, Generic)
 
 instance FromJSON Route where
   parseJSON  = genericParseJSON  (removeFieldLabelPrefix True "route")
 instance ToJSON Route where
   toJSON     = genericToJSON     (removeFieldLabelPrefix False "route")
+
+-- | 
+data RoutePoint = RoutePoint
+    { routePointType :: Text -- ^ 
+    , routePointCoordinates :: [Value] -- ^ 
+    } deriving (Show, Eq, Generic)
+
+instance FromJSON RoutePoint where
+  parseJSON  = genericParseJSON  (removeFieldLabelPrefix True "routePoint")
+instance ToJSON RoutePoint where
+  toJSON     = genericToJSON     (removeFieldLabelPrefix False "routePoint")
 
 -- | 
 data Routing = Routing

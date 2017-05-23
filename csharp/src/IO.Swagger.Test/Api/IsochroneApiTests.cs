@@ -74,10 +74,11 @@ namespace IO.Swagger.Test
             //string point = null;
             //string key = null;
             //int? timeLimit = null;
+            //int? distanceLimit = null;
             //string vehicle = null;
             //int? buckets = null;
             //bool? reverseFlow = null;
-            //var response = instance.IsochroneGet(point, key, timeLimit, vehicle, buckets, reverseFlow);
+            //var response = instance.IsochroneGet(point, key, timeLimit, distanceLimit, vehicle, buckets, reverseFlow);
             //Assert.IsInstanceOf<GHIsochroneResponse> (response, "response is GHIsochroneResponse");
         }
         

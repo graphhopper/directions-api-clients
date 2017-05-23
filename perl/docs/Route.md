@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **completion_time** | **int** | completion time of route in ms | [optional] 
 **waiting_time** | **int** | waiting time of route in ms | [optional] 
 **activities** | [**ARRAY[Activity]**](Activity.md) | array of activities | [optional] 
+**points** | [**ARRAY[RoutePoint]**](RoutePoint.md) | array of route planning points | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

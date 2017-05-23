@@ -49,7 +49,11 @@ public class RouteOptimizationAPI: APIBase {
         "location_id" : "aeiou",
         "load_after" : [ 123 ]
       } ],
-      "vehicle_id" : "aeiou"
+      "vehicle_id" : "aeiou",
+      "points" : [ {
+        "coordinates" : [ "{}" ],
+        "type" : "aeiou"
+      } ]
     } ],
     "distance" : 123,
     "transport_time" : 123456789,

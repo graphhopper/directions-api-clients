@@ -47,6 +47,7 @@
 #include "SWGRequest.h"
 #include "SWGResponse.h"
 #include "SWGRoute.h"
+#include "SWGRoutePoint.h"
 #include "SWGRouting.h"
 #include "SWGService.h"
 #include "SWGShipment.h"
@@ -157,6 +158,9 @@ namespace Swagger {
     }
     if(QString("SWGRoute").compare(type) == 0) {
       return new SWGRoute();
+    }
+    if(QString("SWGRoutePoint").compare(type) == 0) {
+      return new SWGRoutePoint();
     }
     if(QString("SWGRouting").compare(type) == 0) {
       return new SWGRouting();
