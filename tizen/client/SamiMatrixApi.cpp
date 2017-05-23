@@ -24,8 +24,8 @@ matrixGetProcessor(HttpResponse* pHttpResponse, void (* handler)(void*, SamiErro
     ByteBuffer* pBuffer = pHttpResponse->ReadBodyN();
     IJsonValue* pJson = JsonParser::ParseN(*pBuffer);
 
-    SamiGHMatrixResponse* out = new SamiGHMatrixResponse();
-    jsonToValue(out, pJson, L"SamiGHMatrixResponse*", L"SamiGHMatrixResponse");
+    SamiMatrixResponse* out = new SamiMatrixResponse();
+    jsonToValue(out, pJson, L"SamiMatrixResponse*", L"SamiMatrixResponse");
 
     if (pJson) {
       if (pJson->GetType() == JSON_TYPE_OBJECT) {
@@ -51,8 +51,8 @@ matrixGetProcessor(HttpResponse* pHttpResponse, void (* handler)(void*, SamiErro
   }
 }
 
-SamiGHMatrixResponse* 
-SamiMatrixApi::matrixGetWithCompletion(String* key, IList* point, String* fromPoint, String* toPoint, IList* outArray, String* vehicle, void (* success)(SamiGHMatrixResponse*, SamiError*)) {
+SamiMatrixResponse* 
+SamiMatrixApi::matrixGetWithCompletion(String* key, IList* point, String* fromPoint, String* toPoint, IList* outArray, String* vehicle, void (* success)(SamiMatrixResponse*, SamiError*)) {
   client = new SamiApiClient();
 
   client->success(&matrixGetProcessor, (void(*)(void*, SamiError*))success);
@@ -102,8 +102,8 @@ matrixPostProcessor(HttpResponse* pHttpResponse, void (* handler)(void*, SamiErr
     ByteBuffer* pBuffer = pHttpResponse->ReadBodyN();
     IJsonValue* pJson = JsonParser::ParseN(*pBuffer);
 
-    SamiGHMatrixResponse* out = new SamiGHMatrixResponse();
-    jsonToValue(out, pJson, L"SamiGHMatrixResponse*", L"SamiGHMatrixResponse");
+    SamiMatrixResponse* out = new SamiMatrixResponse();
+    jsonToValue(out, pJson, L"SamiMatrixResponse*", L"SamiMatrixResponse");
 
     if (pJson) {
       if (pJson->GetType() == JSON_TYPE_OBJECT) {
@@ -129,8 +129,8 @@ matrixPostProcessor(HttpResponse* pHttpResponse, void (* handler)(void*, SamiErr
   }
 }
 
-SamiGHMatrixResponse* 
-SamiMatrixApi::matrixPostWithCompletion(String* key, SamiGHMatrixRequest* body, void (* success)(SamiGHMatrixResponse*, SamiError*)) {
+SamiMatrixResponse* 
+SamiMatrixApi::matrixPostWithCompletion(String* key, SamiMatrixRequest* body, void (* success)(SamiMatrixResponse*, SamiError*)) {
   client = new SamiApiClient();
 
   client->success(&matrixPostProcessor, (void(*)(void*, SamiError*))success);

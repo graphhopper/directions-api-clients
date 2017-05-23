@@ -47,9 +47,9 @@ func NewIsochroneApiWithBasePath(basePath string) *IsochroneApi {
  * @param vehicle Possible vehicles are bike, car, foot and [more](https://graphhopper.com/api/1/docs/supported-vehicle-profiles/)
  * @param buckets For how many sub intervals an additional polygon should be calculated.
  * @param reverseFlow If &#x60;false&#x60; the flow goes from point to the polygon, if &#x60;true&#x60; the flow goes from the polygon \&quot;inside\&quot; to the point. Example usage for &#x60;false&#x60;&amp;#58; *How many potential customer can be reached within 30min travel time from your store* vs. &#x60;true&#x60;&amp;#58; *How many customers can reach your store within 30min travel time.*
- * @return *GhIsochroneResponse
+ * @return *IsochroneResponse
  */
-func (a IsochroneApi) IsochroneGet(point string, key string, timeLimit int32, distanceLimit int32, vehicle string, buckets int32, reverseFlow bool) (*GhIsochroneResponse, *APIResponse, error) {
+func (a IsochroneApi) IsochroneGet(point string, key string, timeLimit int32, distanceLimit int32, vehicle string, buckets int32, reverseFlow bool) (*IsochroneResponse, *APIResponse, error) {
 
 	var localVarHttpMethod = strings.ToUpper("Get")
 	// create path and map variables
@@ -91,7 +91,7 @@ func (a IsochroneApi) IsochroneGet(point string, key string, timeLimit int32, di
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload = new(GhIsochroneResponse)
+	var successPayload = new(IsochroneResponse)
 	localVarHttpResponse, err := a.Configuration.APIClient.CallAPI(localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 
 	var localVarURL, _ = url.Parse(localVarPath)

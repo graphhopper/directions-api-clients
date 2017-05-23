@@ -51,30 +51,30 @@ Import the following:
 #import <SwaggerClient/SWGCostMatrixDataInfo.h>
 #import <SwaggerClient/SWGGHError.h>
 #import <SwaggerClient/SWGGHErrorHints.h>
-#import <SwaggerClient/SWGGHGeocodingLocation.h>
-#import <SwaggerClient/SWGGHGeocodingPoint.h>
-#import <SwaggerClient/SWGGHGeocodingResponse.h>
-#import <SwaggerClient/SWGGHIsochroneResponse.h>
-#import <SwaggerClient/SWGGHIsochroneResponsePolygon.h>
-#import <SwaggerClient/SWGGHIsochroneResponsePolygonGeometry.h>
-#import <SwaggerClient/SWGGHIsochroneResponsePolygonProperties.h>
-#import <SwaggerClient/SWGGHMatrixRequest.h>
-#import <SwaggerClient/SWGGHMatrixResponse.h>
-#import <SwaggerClient/SWGGHResponseCoordinates.h>
-#import <SwaggerClient/SWGGHResponseCoordinatesArray.h>
-#import <SwaggerClient/SWGGHResponseInfo.h>
-#import <SwaggerClient/SWGGHResponseInstruction.h>
-#import <SwaggerClient/SWGGHResponseInstructions.h>
-#import <SwaggerClient/SWGGHRouteResponse.h>
-#import <SwaggerClient/SWGGHRouteResponsePath.h>
+#import <SwaggerClient/SWGGeocodingLocation.h>
+#import <SwaggerClient/SWGGeocodingPoint.h>
+#import <SwaggerClient/SWGGeocodingResponse.h>
+#import <SwaggerClient/SWGIsochroneResponse.h>
+#import <SwaggerClient/SWGIsochroneResponsePolygon.h>
+#import <SwaggerClient/SWGIsochroneResponsePolygonGeometry.h>
+#import <SwaggerClient/SWGIsochroneResponsePolygonProperties.h>
 #import <SwaggerClient/SWGJobId.h>
 #import <SwaggerClient/SWGLocation.h>
+#import <SwaggerClient/SWGMatrixRequest.h>
+#import <SwaggerClient/SWGMatrixResponse.h>
 #import <SwaggerClient/SWGObjective.h>
 #import <SwaggerClient/SWGRelation.h>
 #import <SwaggerClient/SWGRequest.h>
 #import <SwaggerClient/SWGResponse.h>
+#import <SwaggerClient/SWGResponseCoordinates.h>
+#import <SwaggerClient/SWGResponseCoordinatesArray.h>
+#import <SwaggerClient/SWGResponseInfo.h>
+#import <SwaggerClient/SWGResponseInstruction.h>
+#import <SwaggerClient/SWGResponseInstructions.h>
 #import <SwaggerClient/SWGRoute.h>
 #import <SwaggerClient/SWGRoutePoint.h>
+#import <SwaggerClient/SWGRouteResponse.h>
+#import <SwaggerClient/SWGRouteResponsePath.h>
 #import <SwaggerClient/SWGRouting.h>
 #import <SwaggerClient/SWGService.h>
 #import <SwaggerClient/SWGShipment.h>
@@ -88,8 +88,9 @@ Import the following:
 #import <SwaggerClient/SWGGeocodingApi.h>
 #import <SwaggerClient/SWGIsochroneApi.h>
 #import <SwaggerClient/SWGMatrixApi.h>
-#import <SwaggerClient/SWGRouteOptimizationApi.h>
 #import <SwaggerClient/SWGRoutingApi.h>
+#import <SwaggerClient/SWGSolutionApi.h>
+#import <SwaggerClient/SWGVrpApi.h>
 
 ```
 
@@ -122,7 +123,7 @@ SWGGeocodingApi *apiInstance = [[SWGGeocodingApi alloc] init];
     reverse:reverse
     point:point
     provider:provider
-              completionHandler: ^(SWGGHGeocodingResponse* output, NSError* error) {
+              completionHandler: ^(SWGGeocodingResponse* output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
                             }
@@ -143,9 +144,9 @@ Class | Method | HTTP request | Description
 *SWGIsochroneApi* | [**isochroneGet**](docs/SWGIsochroneApi.md#isochroneget) | **GET** /isochrone | Isochrone Request
 *SWGMatrixApi* | [**matrixGet**](docs/SWGMatrixApi.md#matrixget) | **GET** /matrix | Matrix API
 *SWGMatrixApi* | [**matrixPost**](docs/SWGMatrixApi.md#matrixpost) | **POST** /matrix | Matrix API Post
-*SWGRouteOptimizationApi* | [**getSolution**](docs/SWGRouteOptimizationApi.md#getsolution) | **GET** /vrp/solution/{jobId} | Return the solution associated to the jobId
-*SWGRouteOptimizationApi* | [**postVrp**](docs/SWGRouteOptimizationApi.md#postvrp) | **POST** /vrp/optimize | Solves vehicle routing problems
 *SWGRoutingApi* | [**routeGet**](docs/SWGRoutingApi.md#routeget) | **GET** /route | Routing Request
+*SWGSolutionApi* | [**getSolution**](docs/SWGSolutionApi.md#getsolution) | **GET** /vrp/solution/{jobId} | Return the solution associated to the jobId
+*SWGVrpApi* | [**postVrp**](docs/SWGVrpApi.md#postvrp) | **POST** /vrp/optimize | Solves vehicle routing problems
 
 
 ## Documentation For Models
@@ -160,30 +161,30 @@ Class | Method | HTTP request | Description
  - [SWGCostMatrixDataInfo](docs/SWGCostMatrixDataInfo.md)
  - [SWGGHError](docs/SWGGHError.md)
  - [SWGGHErrorHints](docs/SWGGHErrorHints.md)
- - [SWGGHGeocodingLocation](docs/SWGGHGeocodingLocation.md)
- - [SWGGHGeocodingPoint](docs/SWGGHGeocodingPoint.md)
- - [SWGGHGeocodingResponse](docs/SWGGHGeocodingResponse.md)
- - [SWGGHIsochroneResponse](docs/SWGGHIsochroneResponse.md)
- - [SWGGHIsochroneResponsePolygon](docs/SWGGHIsochroneResponsePolygon.md)
- - [SWGGHIsochroneResponsePolygonGeometry](docs/SWGGHIsochroneResponsePolygonGeometry.md)
- - [SWGGHIsochroneResponsePolygonProperties](docs/SWGGHIsochroneResponsePolygonProperties.md)
- - [SWGGHMatrixRequest](docs/SWGGHMatrixRequest.md)
- - [SWGGHMatrixResponse](docs/SWGGHMatrixResponse.md)
- - [SWGGHResponseCoordinates](docs/SWGGHResponseCoordinates.md)
- - [SWGGHResponseCoordinatesArray](docs/SWGGHResponseCoordinatesArray.md)
- - [SWGGHResponseInfo](docs/SWGGHResponseInfo.md)
- - [SWGGHResponseInstruction](docs/SWGGHResponseInstruction.md)
- - [SWGGHResponseInstructions](docs/SWGGHResponseInstructions.md)
- - [SWGGHRouteResponse](docs/SWGGHRouteResponse.md)
- - [SWGGHRouteResponsePath](docs/SWGGHRouteResponsePath.md)
+ - [SWGGeocodingLocation](docs/SWGGeocodingLocation.md)
+ - [SWGGeocodingPoint](docs/SWGGeocodingPoint.md)
+ - [SWGGeocodingResponse](docs/SWGGeocodingResponse.md)
+ - [SWGIsochroneResponse](docs/SWGIsochroneResponse.md)
+ - [SWGIsochroneResponsePolygon](docs/SWGIsochroneResponsePolygon.md)
+ - [SWGIsochroneResponsePolygonGeometry](docs/SWGIsochroneResponsePolygonGeometry.md)
+ - [SWGIsochroneResponsePolygonProperties](docs/SWGIsochroneResponsePolygonProperties.md)
  - [SWGJobId](docs/SWGJobId.md)
  - [SWGLocation](docs/SWGLocation.md)
+ - [SWGMatrixRequest](docs/SWGMatrixRequest.md)
+ - [SWGMatrixResponse](docs/SWGMatrixResponse.md)
  - [SWGObjective](docs/SWGObjective.md)
  - [SWGRelation](docs/SWGRelation.md)
  - [SWGRequest](docs/SWGRequest.md)
  - [SWGResponse](docs/SWGResponse.md)
+ - [SWGResponseCoordinates](docs/SWGResponseCoordinates.md)
+ - [SWGResponseCoordinatesArray](docs/SWGResponseCoordinatesArray.md)
+ - [SWGResponseInfo](docs/SWGResponseInfo.md)
+ - [SWGResponseInstruction](docs/SWGResponseInstruction.md)
+ - [SWGResponseInstructions](docs/SWGResponseInstructions.md)
  - [SWGRoute](docs/SWGRoute.md)
  - [SWGRoutePoint](docs/SWGRoutePoint.md)
+ - [SWGRouteResponse](docs/SWGRouteResponse.md)
+ - [SWGRouteResponsePath](docs/SWGRouteResponsePath.md)
  - [SWGRouting](docs/SWGRouting.md)
  - [SWGService](docs/SWGService.md)
  - [SWGShipment](docs/SWGShipment.md)

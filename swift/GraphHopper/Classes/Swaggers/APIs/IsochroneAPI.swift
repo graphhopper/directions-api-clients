@@ -22,7 +22,7 @@ public class IsochroneAPI: APIBase {
      - parameter reverseFlow: (query) If &#x60;false&#x60; the flow goes from point to the polygon, if &#x60;true&#x60; the flow goes from the polygon \&quot;inside\&quot; to the point. Example usage for &#x60;false&#x60;&amp;#58; *How many potential customer can be reached within 30min travel time from your store* vs. &#x60;true&#x60;&amp;#58; *How many customers can reach your store within 30min travel time.* (optional, default to false)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    public class func isochroneGet(point point: String, key: String, timeLimit: Int32? = nil, distanceLimit: Int32? = nil, vehicle: String? = nil, buckets: Int32? = nil, reverseFlow: Bool? = nil, completion: ((data: GHIsochroneResponse?, error: ErrorType?) -> Void)) {
+    public class func isochroneGet(point point: String, key: String, timeLimit: Int32? = nil, distanceLimit: Int32? = nil, vehicle: String? = nil, buckets: Int32? = nil, reverseFlow: Bool? = nil, completion: ((data: IsochroneResponse?, error: ErrorType?) -> Void)) {
         isochroneGetWithRequestBuilder(point: point, key: key, timeLimit: timeLimit, distanceLimit: distanceLimit, vehicle: vehicle, buckets: buckets, reverseFlow: reverseFlow).execute { (response, error) -> Void in
             completion(data: response?.body, error: error);
         }
@@ -55,9 +55,9 @@ public class IsochroneAPI: APIBase {
      - parameter buckets: (query) For how many sub intervals an additional polygon should be calculated. (optional, default to 1)
      - parameter reverseFlow: (query) If &#x60;false&#x60; the flow goes from point to the polygon, if &#x60;true&#x60; the flow goes from the polygon \&quot;inside\&quot; to the point. Example usage for &#x60;false&#x60;&amp;#58; *How many potential customer can be reached within 30min travel time from your store* vs. &#x60;true&#x60;&amp;#58; *How many customers can reach your store within 30min travel time.* (optional, default to false)
 
-     - returns: RequestBuilder<GHIsochroneResponse> 
+     - returns: RequestBuilder<IsochroneResponse> 
      */
-    public class func isochroneGetWithRequestBuilder(point point: String, key: String, timeLimit: Int32? = nil, distanceLimit: Int32? = nil, vehicle: String? = nil, buckets: Int32? = nil, reverseFlow: Bool? = nil) -> RequestBuilder<GHIsochroneResponse> {
+    public class func isochroneGetWithRequestBuilder(point point: String, key: String, timeLimit: Int32? = nil, distanceLimit: Int32? = nil, vehicle: String? = nil, buckets: Int32? = nil, reverseFlow: Bool? = nil) -> RequestBuilder<IsochroneResponse> {
         let path = "/isochrone"
         let URLString = GraphHopperAPI.basePath + path
 
@@ -75,7 +75,7 @@ public class IsochroneAPI: APIBase {
  
         let convertedParameters = APIHelper.convertBoolToString(parameters)
  
-        let requestBuilder: RequestBuilder<GHIsochroneResponse>.Type = GraphHopperAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<IsochroneResponse>.Type = GraphHopperAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: URLString, parameters: convertedParameters, isBody: false)
     }

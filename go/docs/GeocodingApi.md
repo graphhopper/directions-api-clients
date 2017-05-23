@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 
 # **GeocodeGet**
-> GhGeocodingResponse GeocodeGet($key, $q, $locale, $limit, $reverse, $point, $provider)
+> GeocodingResponse GeocodeGet($key, $q, $locale, $limit, $reverse, $point, $provider)
 
 Execute a Geocoding request
 
@@ -29,7 +29,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GhGeocodingResponse**](GHGeocodingResponse.md)
+[**GeocodingResponse**](GeocodingResponse.md)
 
 ### Authorization
 

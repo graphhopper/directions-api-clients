@@ -177,7 +177,7 @@ SWGMatrixApi::matrixGetCallback(HttpRequestWorker * worker) {
 
     
         QString json(worker->response);
-    SWGGHMatrixResponse* output = static_cast<SWGGHMatrixResponse*>(create(json, QString("SWGGHMatrixResponse")));
+    SWGMatrixResponse* output = static_cast<SWGMatrixResponse*>(create(json, QString("SWGMatrixResponse")));
     
 
     worker->deleteLater();
@@ -186,7 +186,7 @@ SWGMatrixApi::matrixGetCallback(HttpRequestWorker * worker) {
     
 }
 void
-SWGMatrixApi::matrixPost(QString* key, SWGGHMatrixRequest body) {
+SWGMatrixApi::matrixPost(QString* key, SWGMatrixRequest body) {
     QString fullPath;
     fullPath.append(this->host).append(this->basePath).append("/matrix");
 
@@ -229,7 +229,7 @@ SWGMatrixApi::matrixPostCallback(HttpRequestWorker * worker) {
 
     
         QString json(worker->response);
-    SWGGHMatrixResponse* output = static_cast<SWGGHMatrixResponse*>(create(json, QString("SWGGHMatrixResponse")));
+    SWGMatrixResponse* output = static_cast<SWGMatrixResponse*>(create(json, QString("SWGMatrixResponse")));
     
 
     worker->deleteLater();

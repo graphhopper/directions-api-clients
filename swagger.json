@@ -178,7 +178,7 @@
           "200": {
             "description": "Routing Result",
             "schema": {
-              "$ref": "#/definitions/GHRouteResponse"
+              "$ref": "#/definitions/RouteResponse"
             }
           },
           "default": {
@@ -255,7 +255,7 @@
           "200": {
             "description": "Isochrone Result",
             "schema": {
-              "$ref": "#/definitions/GHIsochroneResponse"
+              "$ref": "#/definitions/IsochroneResponse"
             }
           },
           "default": {
@@ -328,7 +328,7 @@
           "200": {
             "description": "Isochrone Result",
             "schema": {
-              "$ref": "#/definitions/GHMatrixResponse"
+              "$ref": "#/definitions/MatrixResponse"
             }
           },
           "default": {
@@ -347,7 +347,7 @@
             "name": "body",
             "in": "body",
             "schema": {
-              "$ref": "#/definitions/GHMatrixRequest"
+              "$ref": "#/definitions/MatrixRequest"
             }
           },
           {
@@ -365,7 +365,7 @@
           "200": {
             "description": "Isochrone Result",
             "schema": {
-              "$ref": "#/definitions/GHMatrixResponse"
+              "$ref": "#/definitions/MatrixResponse"
             }
           },
           "default": {
@@ -440,7 +440,7 @@
           "200": {
             "description": "An array found locations",
             "schema": {
-              "$ref": "#/definitions/GHGeocodingResponse"
+              "$ref": "#/definitions/GeocodingResponse"
             }
           },
           "default": {
@@ -482,7 +482,7 @@
           }
         ],
         "tags": [
-          "RouteOptimization"
+          "vrp"
         ],
         "responses": {
           "200": {
@@ -528,7 +528,7 @@
           }
         ],
         "tags": [
-          "RouteOptimization"
+          "solution"
         ],
         "responses": {
           "200": {
@@ -548,12 +548,12 @@
     }
   },
   "definitions": {
-    "GHGeocodingResponse": {
+    "GeocodingResponse": {
       "properties": {
         "hits": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/GHGeocodingLocation"
+            "$ref": "#/definitions/GeocodingLocation"
           }
         },
         "locale": {
@@ -561,11 +561,11 @@
         }
       }
     },
-    "GHGeocodingLocation": {
+    "GeocodingLocation": {
       "type": "object",
       "properties": {
         "point": {
-          "$ref": "#/definitions/GHGeocodingPoint"
+          "$ref": "#/definitions/GeocodingPoint"
         },
         "osm_id": {
           "type": "string",
@@ -598,7 +598,7 @@
         }
       }
     },
-    "GHGeocodingPoint": {
+    "GeocodingPoint": {
       "type": "object",
       "properties": {
         "lat": {
@@ -613,7 +613,7 @@
         }
       }
     },
-    "GHMatrixRequest": {
+    "MatrixRequest": {
       "type": "object",
       "properties": {
         "points": {
@@ -648,7 +648,7 @@
         }
       }
     },
-    "GHMatrixResponse": {
+    "MatrixResponse": {
       "type": "object",
       "properties": {
         "distances": {
@@ -682,25 +682,25 @@
           }
         },
         "info": {
-          "$ref": "#/definitions/GHResponseInfo"
+          "$ref": "#/definitions/ResponseInfo"
         }
       }
     },
-    "GHRouteResponse": {
+    "RouteResponse": {
       "type": "object",
       "properties": {
         "paths": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/GHRouteResponsePath"
+            "$ref": "#/definitions/RouteResponsePath"
           }
         },
         "info": {
-          "$ref": "#/definitions/GHResponseInfo"
+          "$ref": "#/definitions/ResponseInfo"
         }
       }
     },
-    "GHRouteResponsePath": {
+    "RouteResponsePath": {
       "type": "object",
       "description": "A found path",
       "properties": {
@@ -724,7 +724,7 @@
           "format": "double"
         },
         "points": {
-          "$ref": "#/definitions/GHResponseCoordinates"
+          "$ref": "#/definitions/ResponseCoordinates"
         },
         "points_encoded": {
           "description": "Is true if the points are encoded, if not paths[0].points contains the geo json of the path (then order is lon,lat,elevation), which is easier to handle but consumes more bandwidth compared to encoded version",
@@ -739,22 +739,22 @@
           }
         },
         "snapped_waypoints": {
-          "$ref": "#/definitions/GHResponseCoordinates"
+          "$ref": "#/definitions/ResponseCoordinates"
         },
         "instructions": {
-          "$ref": "#/definitions/GHResponseInstructions"
+          "$ref": "#/definitions/ResponseInstructions"
         }
       }
     },
-    "GHResponseCoordinates": {
+    "ResponseCoordinates": {
       "type": "object",
       "properties": {
         "coordinates": {
-          "$ref": "#/definitions/GHResponseCoordinatesArray"
+          "$ref": "#/definitions/ResponseCoordinatesArray"
         }
       }
     },
-    "GHResponseCoordinatesArray": {
+    "ResponseCoordinatesArray": {
       "type": "array",
       "description": "An array containing coordinates",
       "items": {
@@ -765,14 +765,14 @@
         }
       }
     },
-    "GHResponseInstructions": {
+    "ResponseInstructions": {
       "type": "array",
       "description": "Contains information about the instructions for this route. The last instruction is always the Finish instruction and takes 0ms and 0meter. Keep in mind that instructions are currently under active development and can sometimes contain misleading information, so, make sure you always show an image of the map at the same time when navigating your users!",
       "items": {
-        "$ref": "#/definitions/GHResponseInstruction"
+        "$ref": "#/definitions/ResponseInstruction"
       }
     },
-    "GHResponseInstruction": {
+    "ResponseInstruction": {
       "type": "object",
       "properties": {
         "text": {
@@ -827,7 +827,7 @@
         }
       }
     },
-    "GHResponseInfo": {
+    "ResponseInfo": {
       "type": "object",
       "description": "Additional information for your request",
       "properties": {
@@ -843,13 +843,13 @@
         }
       }
     },
-    "GHIsochroneResponse": {
+    "IsochroneResponse": {
       "type": "object",
       "properties": {
         "polygons": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/GHIsochroneResponsePolygon"
+            "$ref": "#/definitions/IsochroneResponsePolygon"
           }
         },
         "copyrights": {
@@ -860,7 +860,7 @@
         }
       }
     },
-    "GHIsochroneResponsePolygon": {
+    "IsochroneResponsePolygon": {
       "type": "object",
       "description": "A found path",
       "properties": {
@@ -883,7 +883,7 @@
               "type": "string"
             },
             "coordinates": {
-              "$ref": "#/definitions/GHResponseCoordinatesArray"
+              "$ref": "#/definitions/ResponseCoordinatesArray"
             }
           }
         }

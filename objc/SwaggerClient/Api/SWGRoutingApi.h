@@ -1,6 +1,6 @@
 #import <Foundation/Foundation.h>
 #import "SWGGHError.h"
-#import "SWGGHRouteResponse.h"
+#import "SWGRouteResponse.h"
 #import "SWGApi.h"
 
 /**
@@ -52,7 +52,7 @@ extern NSInteger kSWGRoutingApiMissingParamErrorCode;
 ///  code:200 message:"Routing Result",
 ///  code:0 message:"Unexpected Error"
 ///
-/// @return SWGGHRouteResponse*
+/// @return SWGRouteResponse*
 -(NSURLSessionTask*) routeGetWithPoint: (NSArray<NSString*>*) point
     pointsEncoded: (NSNumber*) pointsEncoded
     key: (NSString*) key
@@ -74,7 +74,7 @@ extern NSInteger kSWGRoutingApiMissingParamErrorCode;
     alternativeRouteMaxPaths: (NSNumber*) alternativeRouteMaxPaths
     alternativeRouteMaxWeightFactor: (NSNumber*) alternativeRouteMaxWeightFactor
     alternativeRouteMaxShareFactor: (NSNumber*) alternativeRouteMaxShareFactor
-    completionHandler: (void (^)(SWGGHRouteResponse* output, NSError* error)) handler;
+    completionHandler: (void (^)(SWGRouteResponse* output, NSError* error)) handler;
 
 
 

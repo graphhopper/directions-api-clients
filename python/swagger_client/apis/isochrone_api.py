@@ -61,7 +61,7 @@ class IsochroneApi(object):
         :param str vehicle: Possible vehicles are bike, car, foot and [more](https://graphhopper.com/api/1/docs/supported-vehicle-profiles/)
         :param int buckets: For how many sub intervals an additional polygon should be calculated.
         :param bool reverse_flow: If `false` the flow goes from point to the polygon, if `true` the flow goes from the polygon \"inside\" to the point. Example usage for `false`&#58; *How many potential customer can be reached within 30min travel time from your store* vs. `true`&#58; *How many customers can reach your store within 30min travel time.*
-        :return: GHIsochroneResponse
+        :return: IsochroneResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -93,7 +93,7 @@ class IsochroneApi(object):
         :param str vehicle: Possible vehicles are bike, car, foot and [more](https://graphhopper.com/api/1/docs/supported-vehicle-profiles/)
         :param int buckets: For how many sub intervals an additional polygon should be calculated.
         :param bool reverse_flow: If `false` the flow goes from point to the polygon, if `true` the flow goes from the polygon \"inside\" to the point. Example usage for `false`&#58; *How many potential customer can be reached within 30min travel time from your store* vs. `true`&#58; *How many customers can reach your store within 30min travel time.*
-        :return: GHIsochroneResponse
+        :return: IsochroneResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -162,7 +162,7 @@ class IsochroneApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='GHIsochroneResponse',
+                                        response_type='IsochroneResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),

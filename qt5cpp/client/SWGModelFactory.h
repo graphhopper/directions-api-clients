@@ -24,30 +24,30 @@
 #include "SWGCostMatrix_data_info.h"
 #include "SWGGHError.h"
 #include "SWGGHError_hints.h"
-#include "SWGGHGeocodingLocation.h"
-#include "SWGGHGeocodingPoint.h"
-#include "SWGGHGeocodingResponse.h"
-#include "SWGGHIsochroneResponse.h"
-#include "SWGGHIsochroneResponsePolygon.h"
-#include "SWGGHIsochroneResponsePolygon_geometry.h"
-#include "SWGGHIsochroneResponsePolygon_properties.h"
-#include "SWGGHMatrixRequest.h"
-#include "SWGGHMatrixResponse.h"
-#include "SWGGHResponseCoordinates.h"
-#include "SWGGHResponseCoordinatesArray.h"
-#include "SWGGHResponseInfo.h"
-#include "SWGGHResponseInstruction.h"
-#include "SWGGHResponseInstructions.h"
-#include "SWGGHRouteResponse.h"
-#include "SWGGHRouteResponsePath.h"
+#include "SWGGeocodingLocation.h"
+#include "SWGGeocodingPoint.h"
+#include "SWGGeocodingResponse.h"
+#include "SWGIsochroneResponse.h"
+#include "SWGIsochroneResponsePolygon.h"
+#include "SWGIsochroneResponsePolygon_geometry.h"
+#include "SWGIsochroneResponsePolygon_properties.h"
 #include "SWGJobId.h"
 #include "SWGLocation.h"
+#include "SWGMatrixRequest.h"
+#include "SWGMatrixResponse.h"
 #include "SWGObjective.h"
 #include "SWGRelation.h"
 #include "SWGRequest.h"
 #include "SWGResponse.h"
+#include "SWGResponseCoordinates.h"
+#include "SWGResponseCoordinatesArray.h"
+#include "SWGResponseInfo.h"
+#include "SWGResponseInstruction.h"
+#include "SWGResponseInstructions.h"
 #include "SWGRoute.h"
 #include "SWGRoutePoint.h"
+#include "SWGRouteResponse.h"
+#include "SWGRouteResponsePath.h"
 #include "SWGRouting.h"
 #include "SWGService.h"
 #include "SWGShipment.h"
@@ -90,59 +90,38 @@ namespace Swagger {
     if(QString("SWGGHError_hints").compare(type) == 0) {
       return new SWGGHError_hints();
     }
-    if(QString("SWGGHGeocodingLocation").compare(type) == 0) {
-      return new SWGGHGeocodingLocation();
+    if(QString("SWGGeocodingLocation").compare(type) == 0) {
+      return new SWGGeocodingLocation();
     }
-    if(QString("SWGGHGeocodingPoint").compare(type) == 0) {
-      return new SWGGHGeocodingPoint();
+    if(QString("SWGGeocodingPoint").compare(type) == 0) {
+      return new SWGGeocodingPoint();
     }
-    if(QString("SWGGHGeocodingResponse").compare(type) == 0) {
-      return new SWGGHGeocodingResponse();
+    if(QString("SWGGeocodingResponse").compare(type) == 0) {
+      return new SWGGeocodingResponse();
     }
-    if(QString("SWGGHIsochroneResponse").compare(type) == 0) {
-      return new SWGGHIsochroneResponse();
+    if(QString("SWGIsochroneResponse").compare(type) == 0) {
+      return new SWGIsochroneResponse();
     }
-    if(QString("SWGGHIsochroneResponsePolygon").compare(type) == 0) {
-      return new SWGGHIsochroneResponsePolygon();
+    if(QString("SWGIsochroneResponsePolygon").compare(type) == 0) {
+      return new SWGIsochroneResponsePolygon();
     }
-    if(QString("SWGGHIsochroneResponsePolygon_geometry").compare(type) == 0) {
-      return new SWGGHIsochroneResponsePolygon_geometry();
+    if(QString("SWGIsochroneResponsePolygon_geometry").compare(type) == 0) {
+      return new SWGIsochroneResponsePolygon_geometry();
     }
-    if(QString("SWGGHIsochroneResponsePolygon_properties").compare(type) == 0) {
-      return new SWGGHIsochroneResponsePolygon_properties();
-    }
-    if(QString("SWGGHMatrixRequest").compare(type) == 0) {
-      return new SWGGHMatrixRequest();
-    }
-    if(QString("SWGGHMatrixResponse").compare(type) == 0) {
-      return new SWGGHMatrixResponse();
-    }
-    if(QString("SWGGHResponseCoordinates").compare(type) == 0) {
-      return new SWGGHResponseCoordinates();
-    }
-    if(QString("SWGGHResponseCoordinatesArray").compare(type) == 0) {
-      return new SWGGHResponseCoordinatesArray();
-    }
-    if(QString("SWGGHResponseInfo").compare(type) == 0) {
-      return new SWGGHResponseInfo();
-    }
-    if(QString("SWGGHResponseInstruction").compare(type) == 0) {
-      return new SWGGHResponseInstruction();
-    }
-    if(QString("SWGGHResponseInstructions").compare(type) == 0) {
-      return new SWGGHResponseInstructions();
-    }
-    if(QString("SWGGHRouteResponse").compare(type) == 0) {
-      return new SWGGHRouteResponse();
-    }
-    if(QString("SWGGHRouteResponsePath").compare(type) == 0) {
-      return new SWGGHRouteResponsePath();
+    if(QString("SWGIsochroneResponsePolygon_properties").compare(type) == 0) {
+      return new SWGIsochroneResponsePolygon_properties();
     }
     if(QString("SWGJobId").compare(type) == 0) {
       return new SWGJobId();
     }
     if(QString("SWGLocation").compare(type) == 0) {
       return new SWGLocation();
+    }
+    if(QString("SWGMatrixRequest").compare(type) == 0) {
+      return new SWGMatrixRequest();
+    }
+    if(QString("SWGMatrixResponse").compare(type) == 0) {
+      return new SWGMatrixResponse();
     }
     if(QString("SWGObjective").compare(type) == 0) {
       return new SWGObjective();
@@ -156,11 +135,32 @@ namespace Swagger {
     if(QString("SWGResponse").compare(type) == 0) {
       return new SWGResponse();
     }
+    if(QString("SWGResponseCoordinates").compare(type) == 0) {
+      return new SWGResponseCoordinates();
+    }
+    if(QString("SWGResponseCoordinatesArray").compare(type) == 0) {
+      return new SWGResponseCoordinatesArray();
+    }
+    if(QString("SWGResponseInfo").compare(type) == 0) {
+      return new SWGResponseInfo();
+    }
+    if(QString("SWGResponseInstruction").compare(type) == 0) {
+      return new SWGResponseInstruction();
+    }
+    if(QString("SWGResponseInstructions").compare(type) == 0) {
+      return new SWGResponseInstructions();
+    }
     if(QString("SWGRoute").compare(type) == 0) {
       return new SWGRoute();
     }
     if(QString("SWGRoutePoint").compare(type) == 0) {
       return new SWGRoutePoint();
+    }
+    if(QString("SWGRouteResponse").compare(type) == 0) {
+      return new SWGRouteResponse();
+    }
+    if(QString("SWGRouteResponsePath").compare(type) == 0) {
+      return new SWGRouteResponsePath();
     }
     if(QString("SWGRouting").compare(type) == 0) {
       return new SWGRouting();

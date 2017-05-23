@@ -8,7 +8,7 @@
 using Tizen::Base::Boolean;
 using Tizen::Base::Integer;
 #include "SamiGHError.h"
-#include "SamiGHGeocodingResponse.h"
+#include "SamiGeocodingResponse.h"
 using Tizen::Base::String;
 
 using namespace Tizen::Net::Http;
@@ -20,8 +20,8 @@ public:
   SamiGeocodingApi();
   virtual ~SamiGeocodingApi();
 
-  SamiGHGeocodingResponse* 
-  geocodeGetWithCompletion(String* key, String* q, String* locale, Integer* limit, Boolean* reverse, String* point, String* provider, void (* handler)(SamiGHGeocodingResponse*, SamiError*));
+  SamiGeocodingResponse* 
+  geocodeGetWithCompletion(String* key, String* q, String* locale, Integer* limit, Boolean* reverse, String* point, String* provider, void (* handler)(SamiGeocodingResponse*, SamiError*));
   static String getBasePath() {
     return L"https://graphhopper.com/api/1";
   }

@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 
 # **matrix_get**
-> GHMatrixResponse matrix_get(key, opts)
+> MatrixResponse matrix_get(key, opts)
 
 Matrix API
 
@@ -54,7 +54,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GHMatrixResponse**](GHMatrixResponse.md)
+[**MatrixResponse**](MatrixResponse.md)
 
 ### Authorization
 
@@ -68,7 +68,7 @@ No authorization required
 
 
 # **matrix_post**
-> GHMatrixResponse matrix_post(key, opts)
+> MatrixResponse matrix_post(key, opts)
 
 Matrix API Post
 
@@ -84,7 +84,7 @@ api_instance = SwaggerClient::MatrixApi.new
 key = "key_example" # String | Get your key at graphhopper.com
 
 opts = { 
-  body: SwaggerClient::GHMatrixRequest.new # GHMatrixRequest | 
+  body: SwaggerClient::MatrixRequest.new # MatrixRequest | 
 }
 
 begin
@@ -101,11 +101,11 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **key** | **String**| Get your key at graphhopper.com | 
- **body** | [**GHMatrixRequest**](GHMatrixRequest.md)|  | [optional] 
+ **body** | [**MatrixRequest**](MatrixRequest.md)|  | [optional] 
 
 ### Return type
 
-[**GHMatrixResponse**](GHMatrixResponse.md)
+[**MatrixResponse**](MatrixResponse.md)
 
 ### Authorization
 

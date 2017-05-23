@@ -16,7 +16,7 @@ Method | HTTP request | Description
     reverse: (NSNumber*) reverse
     point: (NSString*) point
     provider: (NSString*) provider
-        completionHandler: (void (^)(SWGGHGeocodingResponse* output, NSError* error)) handler;
+        completionHandler: (void (^)(SWGGeocodingResponse* output, NSError* error)) handler;
 ```
 
 Execute a Geocoding request
@@ -44,7 +44,7 @@ SWGGeocodingApi*apiInstance = [[SWGGeocodingApi alloc] init];
               reverse:reverse
               point:point
               provider:provider
-          completionHandler: ^(SWGGHGeocodingResponse* output, NSError* error) {
+          completionHandler: ^(SWGGeocodingResponse* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -68,7 +68,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SWGGHGeocodingResponse***](SWGGHGeocodingResponse.md)
+[**SWGGeocodingResponse***](SWGGeocodingResponse.md)
 
 ### Authorization
 

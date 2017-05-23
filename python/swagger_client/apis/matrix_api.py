@@ -60,7 +60,7 @@ class MatrixApi(object):
         :param str to_point: The destination points for the routes. Is a string with the format latitude,longitude.
         :param list[str] out_array: Specifies which arrays should be included in the response. Specify one or more of the following options 'weights', 'times', 'distances'. To specify more than one array use e.g. out_array=times&out_array=distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API.
         :param str vehicle: The vehicle for which the route should be calculated. Other vehicles are foot, bike, mtb, racingbike, motorcycle, small_truck, bus and truck. See here for the details.
-        :return: GHMatrixResponse
+        :return: MatrixResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -91,7 +91,7 @@ class MatrixApi(object):
         :param str to_point: The destination points for the routes. Is a string with the format latitude,longitude.
         :param list[str] out_array: Specifies which arrays should be included in the response. Specify one or more of the following options 'weights', 'times', 'distances'. To specify more than one array use e.g. out_array=times&out_array=distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API.
         :param str vehicle: The vehicle for which the route should be calculated. Other vehicles are foot, bike, mtb, racingbike, motorcycle, small_truck, bus and truck. See here for the details.
-        :return: GHMatrixResponse
+        :return: MatrixResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -157,7 +157,7 @@ class MatrixApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='GHMatrixResponse',
+                                        response_type='MatrixResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -180,8 +180,8 @@ class MatrixApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str key: Get your key at graphhopper.com (required)
-        :param GHMatrixRequest body:
-        :return: GHMatrixResponse
+        :param MatrixRequest body:
+        :return: MatrixResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -207,8 +207,8 @@ class MatrixApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str key: Get your key at graphhopper.com (required)
-        :param GHMatrixRequest body:
-        :return: GHMatrixResponse
+        :param MatrixRequest body:
+        :return: MatrixResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -264,7 +264,7 @@ class MatrixApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='GHMatrixResponse',
+                                        response_type='MatrixResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),

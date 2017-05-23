@@ -104,10 +104,10 @@ sub new {
     __PACKAGE__->method_documentation->{ 'isochrone_get' } = { 
     	summary => 'Isochrone Request',
         params => $params,
-        returns => 'GHIsochroneResponse',
+        returns => 'IsochroneResponse',
         };
 }
-# @return GHIsochroneResponse
+# @return IsochroneResponse
 #
 sub isochrone_get {
     my ($self, %args) = @_;
@@ -184,7 +184,7 @@ sub isochrone_get {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('GHIsochroneResponse', $response);
+    my $_response_object = $self->{api_client}->deserialize('IsochroneResponse', $response);
     return $_response_object;
 }
 

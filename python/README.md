@@ -79,9 +79,9 @@ Class | Method | HTTP request | Description
 *IsochroneApi* | [**isochrone_get**](docs/IsochroneApi.md#isochrone_get) | **GET** /isochrone | Isochrone Request
 *MatrixApi* | [**matrix_get**](docs/MatrixApi.md#matrix_get) | **GET** /matrix | Matrix API
 *MatrixApi* | [**matrix_post**](docs/MatrixApi.md#matrix_post) | **POST** /matrix | Matrix API Post
-*RouteOptimizationApi* | [**get_solution**](docs/RouteOptimizationApi.md#get_solution) | **GET** /vrp/solution/{jobId} | Return the solution associated to the jobId
-*RouteOptimizationApi* | [**post_vrp**](docs/RouteOptimizationApi.md#post_vrp) | **POST** /vrp/optimize | Solves vehicle routing problems
 *RoutingApi* | [**route_get**](docs/RoutingApi.md#route_get) | **GET** /route | Routing Request
+*SolutionApi* | [**get_solution**](docs/SolutionApi.md#get_solution) | **GET** /vrp/solution/{jobId} | Return the solution associated to the jobId
+*VrpApi* | [**post_vrp**](docs/VrpApi.md#post_vrp) | **POST** /vrp/optimize | Solves vehicle routing problems
 
 
 ## Documentation For Models
@@ -95,31 +95,31 @@ Class | Method | HTTP request | Description
  - [CostMatrixDataInfo](docs/CostMatrixDataInfo.md)
  - [GHError](docs/GHError.md)
  - [GHErrorHints](docs/GHErrorHints.md)
- - [GHGeocodingLocation](docs/GHGeocodingLocation.md)
- - [GHGeocodingPoint](docs/GHGeocodingPoint.md)
- - [GHGeocodingResponse](docs/GHGeocodingResponse.md)
- - [GHIsochroneResponse](docs/GHIsochroneResponse.md)
- - [GHIsochroneResponsePolygon](docs/GHIsochroneResponsePolygon.md)
- - [GHIsochroneResponsePolygonGeometry](docs/GHIsochroneResponsePolygonGeometry.md)
- - [GHIsochroneResponsePolygonProperties](docs/GHIsochroneResponsePolygonProperties.md)
- - [GHMatrixRequest](docs/GHMatrixRequest.md)
- - [GHMatrixResponse](docs/GHMatrixResponse.md)
- - [GHResponseCoordinates](docs/GHResponseCoordinates.md)
- - [GHResponseCoordinatesArray](docs/GHResponseCoordinatesArray.md)
- - [GHResponseInfo](docs/GHResponseInfo.md)
- - [GHResponseInstruction](docs/GHResponseInstruction.md)
- - [GHResponseInstructions](docs/GHResponseInstructions.md)
- - [GHRouteResponse](docs/GHRouteResponse.md)
- - [GHRouteResponsePath](docs/GHRouteResponsePath.md)
+ - [GeocodingLocation](docs/GeocodingLocation.md)
+ - [GeocodingPoint](docs/GeocodingPoint.md)
+ - [GeocodingResponse](docs/GeocodingResponse.md)
+ - [IsochroneResponse](docs/IsochroneResponse.md)
+ - [IsochroneResponsePolygon](docs/IsochroneResponsePolygon.md)
+ - [IsochroneResponsePolygonGeometry](docs/IsochroneResponsePolygonGeometry.md)
+ - [IsochroneResponsePolygonProperties](docs/IsochroneResponsePolygonProperties.md)
  - [JobId](docs/JobId.md)
  - [Location](docs/Location.md)
+ - [MatrixRequest](docs/MatrixRequest.md)
+ - [MatrixResponse](docs/MatrixResponse.md)
  - [ModelBreak](docs/ModelBreak.md)
  - [Objective](docs/Objective.md)
  - [Relation](docs/Relation.md)
  - [Request](docs/Request.md)
  - [Response](docs/Response.md)
+ - [ResponseCoordinates](docs/ResponseCoordinates.md)
+ - [ResponseCoordinatesArray](docs/ResponseCoordinatesArray.md)
+ - [ResponseInfo](docs/ResponseInfo.md)
+ - [ResponseInstruction](docs/ResponseInstruction.md)
+ - [ResponseInstructions](docs/ResponseInstructions.md)
  - [Route](docs/Route.md)
  - [RoutePoint](docs/RoutePoint.md)
+ - [RouteResponse](docs/RouteResponse.md)
+ - [RouteResponsePath](docs/RouteResponsePath.md)
  - [Routing](docs/Routing.md)
  - [Service](docs/Service.md)
  - [Shipment](docs/Shipment.md)

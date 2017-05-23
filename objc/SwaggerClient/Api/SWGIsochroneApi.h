@@ -1,6 +1,6 @@
 #import <Foundation/Foundation.h>
 #import "SWGGHError.h"
-#import "SWGGHIsochroneResponse.h"
+#import "SWGIsochroneResponse.h"
 #import "SWGApi.h"
 
 /**
@@ -38,7 +38,7 @@ extern NSInteger kSWGIsochroneApiMissingParamErrorCode;
 ///  code:200 message:"Isochrone Result",
 ///  code:0 message:"Unexpected Error"
 ///
-/// @return SWGGHIsochroneResponse*
+/// @return SWGIsochroneResponse*
 -(NSURLSessionTask*) isochroneGetWithPoint: (NSString*) point
     key: (NSString*) key
     timeLimit: (NSNumber*) timeLimit
@@ -46,7 +46,7 @@ extern NSInteger kSWGIsochroneApiMissingParamErrorCode;
     vehicle: (NSString*) vehicle
     buckets: (NSNumber*) buckets
     reverseFlow: (NSNumber*) reverseFlow
-    completionHandler: (void (^)(SWGGHIsochroneResponse* output, NSError* error)) handler;
+    completionHandler: (void (^)(SWGIsochroneResponse* output, NSError* error)) handler;
 
 
 

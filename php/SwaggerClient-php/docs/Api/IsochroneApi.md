@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 
 # **isochroneGet**
-> \Swagger\Client\Model\GHIsochroneResponse isochroneGet($point, $key, $time_limit, $distance_limit, $vehicle, $buckets, $reverse_flow)
+> \Swagger\Client\Model\IsochroneResponse isochroneGet($point, $key, $time_limit, $distance_limit, $vehicle, $buckets, $reverse_flow)
 
 Isochrone Request
 
@@ -51,7 +51,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\GHIsochroneResponse**](../Model/GHIsochroneResponse.md)
+[**\Swagger\Client\Model\IsochroneResponse**](../Model/IsochroneResponse.md)
 
 ### Authorization
 

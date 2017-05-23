@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 
 # **RouteGet**
-> GhRouteResponse RouteGet($point, $pointsEncoded, $key, $locale, $instructions, $vehicle, $elevation, $calcPoints, $pointHint, $chDisable, $weighting, $edgeTraversal, $algorithm, $heading, $headingPenalty, $passThrough, $roundTripDistance, $roundTripSeed, $alternativeRouteMaxPaths, $alternativeRouteMaxWeightFactor, $alternativeRouteMaxShareFactor)
+> RouteResponse RouteGet($point, $pointsEncoded, $key, $locale, $instructions, $vehicle, $elevation, $calcPoints, $pointHint, $chDisable, $weighting, $edgeTraversal, $algorithm, $heading, $headingPenalty, $passThrough, $roundTripDistance, $roundTripSeed, $alternativeRouteMaxPaths, $alternativeRouteMaxWeightFactor, $alternativeRouteMaxShareFactor)
 
 Routing Request
 
@@ -43,7 +43,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GhRouteResponse**](GHRouteResponse.md)
+[**RouteResponse**](RouteResponse.md)
 
 ### Authorization
 

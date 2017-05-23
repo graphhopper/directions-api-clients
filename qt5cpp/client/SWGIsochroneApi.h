@@ -17,7 +17,7 @@
 
 #include <QString>
 #include "SWGGHError.h"
-#include "SWGGHIsochroneResponse.h"
+#include "SWGIsochroneResponse.h"
 
 #include <QObject>
 
@@ -40,7 +40,7 @@ private:
     void isochroneGetCallback (HttpRequestWorker * worker);
     
 signals:
-    void isochroneGetSignal(SWGGHIsochroneResponse* summary);
+    void isochroneGetSignal(SWGIsochroneResponse* summary);
     
 };
 }

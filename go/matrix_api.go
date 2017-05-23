@@ -46,9 +46,9 @@ func NewMatrixApiWithBasePath(basePath string) *MatrixApi {
  * @param toPoint The destination points for the routes. Is a string with the format latitude,longitude.
  * @param outArray Specifies which arrays should be included in the response. Specify one or more of the following options &#39;weights&#39;, &#39;times&#39;, &#39;distances&#39;. To specify more than one array use e.g. out_array&#x3D;times&amp;out_array&#x3D;distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API.
  * @param vehicle The vehicle for which the route should be calculated. Other vehicles are foot, bike, mtb, racingbike, motorcycle, small_truck, bus and truck. See here for the details.
- * @return *GhMatrixResponse
+ * @return *MatrixResponse
  */
-func (a MatrixApi) MatrixGet(key string, point []string, fromPoint string, toPoint string, outArray []string, vehicle string) (*GhMatrixResponse, *APIResponse, error) {
+func (a MatrixApi) MatrixGet(key string, point []string, fromPoint string, toPoint string, outArray []string, vehicle string) (*MatrixResponse, *APIResponse, error) {
 
 	var localVarHttpMethod = strings.ToUpper("Get")
 	// create path and map variables
@@ -93,7 +93,7 @@ func (a MatrixApi) MatrixGet(key string, point []string, fromPoint string, toPoi
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload = new(GhMatrixResponse)
+	var successPayload = new(MatrixResponse)
 	localVarHttpResponse, err := a.Configuration.APIClient.CallAPI(localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 
 	var localVarURL, _ = url.Parse(localVarPath)
@@ -117,9 +117,9 @@ func (a MatrixApi) MatrixGet(key string, point []string, fromPoint string, toPoi
  *
  * @param key Get your key at graphhopper.com
  * @param body 
- * @return *GhMatrixResponse
+ * @return *MatrixResponse
  */
-func (a MatrixApi) MatrixPost(key string, body GhMatrixRequest) (*GhMatrixResponse, *APIResponse, error) {
+func (a MatrixApi) MatrixPost(key string, body MatrixRequest) (*MatrixResponse, *APIResponse, error) {
 
 	var localVarHttpMethod = strings.ToUpper("Post")
 	// create path and map variables
@@ -157,7 +157,7 @@ func (a MatrixApi) MatrixPost(key string, body GhMatrixRequest) (*GhMatrixRespon
 	}
 	// body params
 	localVarPostBody = &body
-	var successPayload = new(GhMatrixResponse)
+	var successPayload = new(MatrixResponse)
 	localVarHttpResponse, err := a.Configuration.APIClient.CallAPI(localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 
 	var localVarURL, _ = url.Parse(localVarPath)

@@ -43,7 +43,7 @@ module SwaggerClient
     # @option opts [Integer] :alternative_route_max_paths If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the number of maximum paths which should be calculated. Increasing can lead to worse alternatives.
     # @option opts [Integer] :alternative_route_max_weight_factor If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the factor by which the alternatives routes can be longer than the optimal route. Increasing can lead to worse alternatives.
     # @option opts [Integer] :alternative_route_max_share_factor If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter specifies how much alternatives routes can have maximum in common with the optimal route. Increasing can lead to worse alternatives.
-    # @return [GHRouteResponse]
+    # @return [RouteResponse]
     def route_get(point, points_encoded, key, opts = {})
       data, _status_code, _headers = route_get_with_http_info(point, points_encoded, key, opts)
       return data
@@ -73,7 +73,7 @@ module SwaggerClient
     # @option opts [Integer] :alternative_route_max_paths If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the number of maximum paths which should be calculated. Increasing can lead to worse alternatives.
     # @option opts [Integer] :alternative_route_max_weight_factor If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the factor by which the alternatives routes can be longer than the optimal route. Increasing can lead to worse alternatives.
     # @option opts [Integer] :alternative_route_max_share_factor If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter specifies how much alternatives routes can have maximum in common with the optimal route. Increasing can lead to worse alternatives.
-    # @return [Array<(GHRouteResponse, Fixnum, Hash)>] GHRouteResponse data, response status code and response headers
+    # @return [Array<(RouteResponse, Fixnum, Hash)>] RouteResponse data, response status code and response headers
     def route_get_with_http_info(point, points_encoded, key, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: RoutingApi.route_get ..."
@@ -128,7 +128,7 @@ module SwaggerClient
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'GHRouteResponse')
+        :return_type => 'RouteResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: RoutingApi#route_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end

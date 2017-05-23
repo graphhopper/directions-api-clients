@@ -30,7 +30,7 @@ Method | HTTP request | Description
     alternativeRouteMaxPaths: (NSNumber*) alternativeRouteMaxPaths
     alternativeRouteMaxWeightFactor: (NSNumber*) alternativeRouteMaxWeightFactor
     alternativeRouteMaxShareFactor: (NSNumber*) alternativeRouteMaxShareFactor
-        completionHandler: (void (^)(SWGGHRouteResponse* output, NSError* error)) handler;
+        completionHandler: (void (^)(SWGRouteResponse* output, NSError* error)) handler;
 ```
 
 Routing Request
@@ -86,7 +86,7 @@ SWGRoutingApi*apiInstance = [[SWGRoutingApi alloc] init];
               alternativeRouteMaxPaths:alternativeRouteMaxPaths
               alternativeRouteMaxWeightFactor:alternativeRouteMaxWeightFactor
               alternativeRouteMaxShareFactor:alternativeRouteMaxShareFactor
-          completionHandler: ^(SWGGHRouteResponse* output, NSError* error) {
+          completionHandler: ^(SWGRouteResponse* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -124,7 +124,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SWGGHRouteResponse***](SWGGHRouteResponse.md)
+[**SWGRouteResponse***](SWGRouteResponse.md)
 
 ### Authorization
 

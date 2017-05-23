@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 
 # **route_get**
-> GHRouteResponse route_get(point, points_encoded, key, opts)
+> RouteResponse route_get(point, points_encoded, key, opts)
 
 Routing Request
 
@@ -85,7 +85,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GHRouteResponse**](GHRouteResponse.md)
+[**RouteResponse**](RouteResponse.md)
 
 ### Authorization
 

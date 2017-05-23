@@ -297,7 +297,7 @@ SWGRoutingApi::routeGetCallback(HttpRequestWorker * worker) {
 
     
         QString json(worker->response);
-    SWGGHRouteResponse* output = static_cast<SWGGHRouteResponse*>(create(json, QString("SWGGHRouteResponse")));
+    SWGRouteResponse* output = static_cast<SWGRouteResponse*>(create(json, QString("SWGRouteResponse")));
     
 
     worker->deleteLater();

@@ -47,9 +47,9 @@ func NewGeocodingApiWithBasePath(basePath string) *GeocodingApi {
  * @param reverse Set to true to do a reverse Geocoding request
  * @param point The location bias in the format &#39;latitude,longitude&#39; e.g. point&#x3D;45.93272,11.58803
  * @param provider Can be either, default, nominatim, opencagedata
- * @return *GhGeocodingResponse
+ * @return *GeocodingResponse
  */
-func (a GeocodingApi) GeocodeGet(key string, q string, locale string, limit int32, reverse bool, point string, provider string) (*GhGeocodingResponse, *APIResponse, error) {
+func (a GeocodingApi) GeocodeGet(key string, q string, locale string, limit int32, reverse bool, point string, provider string) (*GeocodingResponse, *APIResponse, error) {
 
 	var localVarHttpMethod = strings.ToUpper("Get")
 	// create path and map variables
@@ -91,7 +91,7 @@ func (a GeocodingApi) GeocodeGet(key string, q string, locale string, limit int3
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload = new(GhGeocodingResponse)
+	var successPayload = new(GeocodingResponse)
 	localVarHttpResponse, err := a.Configuration.APIClient.CallAPI(localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 
 	var localVarURL, _ = url.Parse(localVarPath)

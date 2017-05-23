@@ -41,7 +41,7 @@ describe 'MatrixApi' do
   # @option opts [String] :to_point The destination points for the routes. Is a string with the format latitude,longitude.
   # @option opts [Array<String>] :out_array Specifies which arrays should be included in the response. Specify one or more of the following options &#39;weights&#39;, &#39;times&#39;, &#39;distances&#39;. To specify more than one array use e.g. out_array&#x3D;times&amp;out_array&#x3D;distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API.
   # @option opts [String] :vehicle The vehicle for which the route should be calculated. Other vehicles are foot, bike, mtb, racingbike, motorcycle, small_truck, bus and truck. See here for the details.
-  # @return [GHMatrixResponse]
+  # @return [MatrixResponse]
   describe 'matrix_get test' do
     it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -53,8 +53,8 @@ describe 'MatrixApi' do
   # The GET request has an URL length limitation, which hurts for many locations per request. In those cases use a HTTP POST request with JSON data as input. The only parameter in the URL will be the key which stays in the URL. Both request scenarios are identically except that all singular parameter names are named as their plural for a POST request. 
   # @param key Get your key at graphhopper.com
   # @param [Hash] opts the optional parameters
-  # @option opts [GHMatrixRequest] :body 
-  # @return [GHMatrixResponse]
+  # @option opts [MatrixRequest] :body 
+  # @return [MatrixResponse]
   describe 'matrix_post test' do
     it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers

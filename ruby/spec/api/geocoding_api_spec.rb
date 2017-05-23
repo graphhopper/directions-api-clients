@@ -42,7 +42,7 @@ describe 'GeocodingApi' do
   # @option opts [BOOLEAN] :reverse Set to true to do a reverse Geocoding request
   # @option opts [String] :point The location bias in the format &#39;latitude,longitude&#39; e.g. point&#x3D;45.93272,11.58803
   # @option opts [String] :provider Can be either, default, nominatim, opencagedata
-  # @return [GHGeocodingResponse]
+  # @return [GeocodingResponse]
   describe 'geocode_get test' do
     it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers

@@ -36,7 +36,7 @@ public class RoutingAPI: APIBase {
      - parameter alternativeRouteMaxShareFactor: (query) If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter specifies how much alternatives routes can have maximum in common with the optimal route. Increasing can lead to worse alternatives. (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    public class func routeGet(point point: [String], pointsEncoded: Bool, key: String, locale: String? = nil, instructions: Bool? = nil, vehicle: String? = nil, elevation: Bool? = nil, calcPoints: Bool? = nil, pointHint: [String]? = nil, chDisable: Bool? = nil, weighting: String? = nil, edgeTraversal: Bool? = nil, algorithm: String? = nil, heading: Int32? = nil, headingPenalty: Int32? = nil, passThrough: Bool? = nil, roundTripDistance: Int32? = nil, roundTripSeed: Int64? = nil, alternativeRouteMaxPaths: Int32? = nil, alternativeRouteMaxWeightFactor: Int32? = nil, alternativeRouteMaxShareFactor: Int32? = nil, completion: ((data: GHRouteResponse?, error: ErrorType?) -> Void)) {
+    public class func routeGet(point point: [String], pointsEncoded: Bool, key: String, locale: String? = nil, instructions: Bool? = nil, vehicle: String? = nil, elevation: Bool? = nil, calcPoints: Bool? = nil, pointHint: [String]? = nil, chDisable: Bool? = nil, weighting: String? = nil, edgeTraversal: Bool? = nil, algorithm: String? = nil, heading: Int32? = nil, headingPenalty: Int32? = nil, passThrough: Bool? = nil, roundTripDistance: Int32? = nil, roundTripSeed: Int64? = nil, alternativeRouteMaxPaths: Int32? = nil, alternativeRouteMaxWeightFactor: Int32? = nil, alternativeRouteMaxShareFactor: Int32? = nil, completion: ((data: RouteResponse?, error: ErrorType?) -> Void)) {
         routeGetWithRequestBuilder(point: point, pointsEncoded: pointsEncoded, key: key, locale: locale, instructions: instructions, vehicle: vehicle, elevation: elevation, calcPoints: calcPoints, pointHint: pointHint, chDisable: chDisable, weighting: weighting, edgeTraversal: edgeTraversal, algorithm: algorithm, heading: heading, headingPenalty: headingPenalty, passThrough: passThrough, roundTripDistance: roundTripDistance, roundTripSeed: roundTripSeed, alternativeRouteMaxPaths: alternativeRouteMaxPaths, alternativeRouteMaxWeightFactor: alternativeRouteMaxWeightFactor, alternativeRouteMaxShareFactor: alternativeRouteMaxShareFactor).execute { (response, error) -> Void in
             completion(data: response?.body, error: error);
         }
@@ -89,9 +89,9 @@ public class RoutingAPI: APIBase {
      - parameter alternativeRouteMaxWeightFactor: (query) If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the factor by which the alternatives routes can be longer than the optimal route. Increasing can lead to worse alternatives. (optional)
      - parameter alternativeRouteMaxShareFactor: (query) If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter specifies how much alternatives routes can have maximum in common with the optimal route. Increasing can lead to worse alternatives. (optional)
 
-     - returns: RequestBuilder<GHRouteResponse> 
+     - returns: RequestBuilder<RouteResponse> 
      */
-    public class func routeGetWithRequestBuilder(point point: [String], pointsEncoded: Bool, key: String, locale: String? = nil, instructions: Bool? = nil, vehicle: String? = nil, elevation: Bool? = nil, calcPoints: Bool? = nil, pointHint: [String]? = nil, chDisable: Bool? = nil, weighting: String? = nil, edgeTraversal: Bool? = nil, algorithm: String? = nil, heading: Int32? = nil, headingPenalty: Int32? = nil, passThrough: Bool? = nil, roundTripDistance: Int32? = nil, roundTripSeed: Int64? = nil, alternativeRouteMaxPaths: Int32? = nil, alternativeRouteMaxWeightFactor: Int32? = nil, alternativeRouteMaxShareFactor: Int32? = nil) -> RequestBuilder<GHRouteResponse> {
+    public class func routeGetWithRequestBuilder(point point: [String], pointsEncoded: Bool, key: String, locale: String? = nil, instructions: Bool? = nil, vehicle: String? = nil, elevation: Bool? = nil, calcPoints: Bool? = nil, pointHint: [String]? = nil, chDisable: Bool? = nil, weighting: String? = nil, edgeTraversal: Bool? = nil, algorithm: String? = nil, heading: Int32? = nil, headingPenalty: Int32? = nil, passThrough: Bool? = nil, roundTripDistance: Int32? = nil, roundTripSeed: Int64? = nil, alternativeRouteMaxPaths: Int32? = nil, alternativeRouteMaxWeightFactor: Int32? = nil, alternativeRouteMaxShareFactor: Int32? = nil) -> RequestBuilder<RouteResponse> {
         let path = "/route"
         let URLString = GraphHopperAPI.basePath + path
 
@@ -123,7 +123,7 @@ public class RoutingAPI: APIBase {
  
         let convertedParameters = APIHelper.convertBoolToString(parameters)
  
-        let requestBuilder: RequestBuilder<GHRouteResponse>.Type = GraphHopperAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<RouteResponse>.Type = GraphHopperAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: URLString, parameters: convertedParameters, isBody: false)
     }

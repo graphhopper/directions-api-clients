@@ -24,8 +24,8 @@ geocodeGetProcessor(HttpResponse* pHttpResponse, void (* handler)(void*, SamiErr
     ByteBuffer* pBuffer = pHttpResponse->ReadBodyN();
     IJsonValue* pJson = JsonParser::ParseN(*pBuffer);
 
-    SamiGHGeocodingResponse* out = new SamiGHGeocodingResponse();
-    jsonToValue(out, pJson, L"SamiGHGeocodingResponse*", L"SamiGHGeocodingResponse");
+    SamiGeocodingResponse* out = new SamiGeocodingResponse();
+    jsonToValue(out, pJson, L"SamiGeocodingResponse*", L"SamiGeocodingResponse");
 
     if (pJson) {
       if (pJson->GetType() == JSON_TYPE_OBJECT) {
@@ -51,8 +51,8 @@ geocodeGetProcessor(HttpResponse* pHttpResponse, void (* handler)(void*, SamiErr
   }
 }
 
-SamiGHGeocodingResponse* 
-SamiGeocodingApi::geocodeGetWithCompletion(String* key, String* q, String* locale, Integer* limit, Boolean* reverse, String* point, String* provider, void (* success)(SamiGHGeocodingResponse*, SamiError*)) {
+SamiGeocodingResponse* 
+SamiGeocodingApi::geocodeGetWithCompletion(String* key, String* q, String* locale, Integer* limit, Boolean* reverse, String* point, String* provider, void (* success)(SamiGeocodingResponse*, SamiError*)) {
   client = new SamiApiClient();
 
   client->success(&geocodeGetProcessor, (void(*)(void*, SamiError*))success);

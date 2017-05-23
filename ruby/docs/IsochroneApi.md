@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 
 # **isochrone_get**
-> GHIsochroneResponse isochrone_get(point, key, opts)
+> IsochroneResponse isochrone_get(point, key, opts)
 
 Isochrone Request
 
@@ -56,7 +56,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GHIsochroneResponse**](GHIsochroneResponse.md)
+[**IsochroneResponse**](IsochroneResponse.md)
 
 ### Authorization
 

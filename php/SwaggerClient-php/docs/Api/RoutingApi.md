@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 
 # **routeGet**
-> \Swagger\Client\Model\GHRouteResponse routeGet($point, $points_encoded, $key, $locale, $instructions, $vehicle, $elevation, $calc_points, $point_hint, $ch_disable, $weighting, $edge_traversal, $algorithm, $heading, $heading_penalty, $pass_through, $round_trip_distance, $round_trip_seed, $alternative_route_max_paths, $alternative_route_max_weight_factor, $alternative_route_max_share_factor)
+> \Swagger\Client\Model\RouteResponse routeGet($point, $points_encoded, $key, $locale, $instructions, $vehicle, $elevation, $calc_points, $point_hint, $ch_disable, $weighting, $edge_traversal, $algorithm, $heading, $heading_penalty, $pass_through, $round_trip_distance, $round_trip_seed, $alternative_route_max_paths, $alternative_route_max_weight_factor, $alternative_route_max_share_factor)
 
 Routing Request
 
@@ -79,7 +79,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\GHRouteResponse**](../Model/GHRouteResponse.md)
+[**\Swagger\Client\Model\RouteResponse**](../Model/RouteResponse.md)
 
 ### Authorization
 

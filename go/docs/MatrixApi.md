@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 
 # **MatrixGet**
-> GhMatrixResponse MatrixGet($key, $point, $fromPoint, $toPoint, $outArray, $vehicle)
+> MatrixResponse MatrixGet($key, $point, $fromPoint, $toPoint, $outArray, $vehicle)
 
 Matrix API
 
@@ -29,7 +29,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GhMatrixResponse**](GHMatrixResponse.md)
+[**MatrixResponse**](MatrixResponse.md)
 
 ### Authorization
 
@@ -43,7 +43,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **MatrixPost**
-> GhMatrixResponse MatrixPost($key, $body)
+> MatrixResponse MatrixPost($key, $body)
 
 Matrix API Post
 
@@ -55,11 +55,11 @@ The GET request has an URL length limitation, which hurts for many locations per
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **key** | **string**| Get your key at graphhopper.com | 
- **body** | [**GhMatrixRequest**](GhMatrixRequest.md)|  | [optional] 
+ **body** | [**MatrixRequest**](MatrixRequest.md)|  | [optional] 
 
 ### Return type
 
-[**GhMatrixResponse**](GHMatrixResponse.md)
+[**MatrixResponse**](MatrixResponse.md)
 
 ### Authorization
 

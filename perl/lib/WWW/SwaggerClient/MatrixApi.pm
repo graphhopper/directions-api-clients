@@ -98,10 +98,10 @@ sub new {
     __PACKAGE__->method_documentation->{ 'matrix_get' } = { 
     	summary => 'Matrix API',
         params => $params,
-        returns => 'GHMatrixResponse',
+        returns => 'MatrixResponse',
         };
 }
-# @return GHMatrixResponse
+# @return MatrixResponse
 #
 sub matrix_get {
     my ($self, %args) = @_;
@@ -168,7 +168,7 @@ sub matrix_get {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('GHMatrixResponse', $response);
+    my $_response_object = $self->{api_client}->deserialize('MatrixResponse', $response);
     return $_response_object;
 }
 
@@ -178,7 +178,7 @@ sub matrix_get {
 # Matrix API Post
 # 
 # @param string $key Get your key at graphhopper.com (required)
-# @param GHMatrixRequest $body  (optional)
+# @param MatrixRequest $body  (optional)
 {
     my $params = {
     'key' => {
@@ -187,7 +187,7 @@ sub matrix_get {
         required => '1',
     },
     'body' => {
-        data_type => 'GHMatrixRequest',
+        data_type => 'MatrixRequest',
         description => '',
         required => '0',
     },
@@ -195,10 +195,10 @@ sub matrix_get {
     __PACKAGE__->method_documentation->{ 'matrix_post' } = { 
     	summary => 'Matrix API Post',
         params => $params,
-        returns => 'GHMatrixResponse',
+        returns => 'MatrixResponse',
         };
 }
-# @return GHMatrixResponse
+# @return MatrixResponse
 #
 sub matrix_post {
     my ($self, %args) = @_;
@@ -245,7 +245,7 @@ sub matrix_post {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('GHMatrixResponse', $response);
+    my $_response_object = $self->{api_client}->deserialize('MatrixResponse', $response);
     return $_response_object;
 }
 

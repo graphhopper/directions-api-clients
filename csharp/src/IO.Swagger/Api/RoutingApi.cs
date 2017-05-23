@@ -52,8 +52,8 @@ namespace IO.Swagger.Api
         /// <param name="alternativeRouteMaxPaths">If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the number of maximum paths which should be calculated. Increasing can lead to worse alternatives. (optional)</param>
         /// <param name="alternativeRouteMaxWeightFactor">If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the factor by which the alternatives routes can be longer than the optimal route. Increasing can lead to worse alternatives. (optional)</param>
         /// <param name="alternativeRouteMaxShareFactor">If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter specifies how much alternatives routes can have maximum in common with the optimal route. Increasing can lead to worse alternatives. (optional)</param>
-        /// <returns>GHRouteResponse</returns>
-        GHRouteResponse RouteGet (List<string> point, bool? pointsEncoded, string key, string locale = null, bool? instructions = null, string vehicle = null, bool? elevation = null, bool? calcPoints = null, List<string> pointHint = null, bool? chDisable = null, string weighting = null, bool? edgeTraversal = null, string algorithm = null, int? heading = null, int? headingPenalty = null, bool? passThrough = null, int? roundTripDistance = null, long? roundTripSeed = null, int? alternativeRouteMaxPaths = null, int? alternativeRouteMaxWeightFactor = null, int? alternativeRouteMaxShareFactor = null);
+        /// <returns>RouteResponse</returns>
+        RouteResponse RouteGet (List<string> point, bool? pointsEncoded, string key, string locale = null, bool? instructions = null, string vehicle = null, bool? elevation = null, bool? calcPoints = null, List<string> pointHint = null, bool? chDisable = null, string weighting = null, bool? edgeTraversal = null, string algorithm = null, int? heading = null, int? headingPenalty = null, bool? passThrough = null, int? roundTripDistance = null, long? roundTripSeed = null, int? alternativeRouteMaxPaths = null, int? alternativeRouteMaxWeightFactor = null, int? alternativeRouteMaxShareFactor = null);
 
         /// <summary>
         /// Routing Request
@@ -83,8 +83,8 @@ namespace IO.Swagger.Api
         /// <param name="alternativeRouteMaxPaths">If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the number of maximum paths which should be calculated. Increasing can lead to worse alternatives. (optional)</param>
         /// <param name="alternativeRouteMaxWeightFactor">If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the factor by which the alternatives routes can be longer than the optimal route. Increasing can lead to worse alternatives. (optional)</param>
         /// <param name="alternativeRouteMaxShareFactor">If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter specifies how much alternatives routes can have maximum in common with the optimal route. Increasing can lead to worse alternatives. (optional)</param>
-        /// <returns>ApiResponse of GHRouteResponse</returns>
-        ApiResponse<GHRouteResponse> RouteGetWithHttpInfo (List<string> point, bool? pointsEncoded, string key, string locale = null, bool? instructions = null, string vehicle = null, bool? elevation = null, bool? calcPoints = null, List<string> pointHint = null, bool? chDisable = null, string weighting = null, bool? edgeTraversal = null, string algorithm = null, int? heading = null, int? headingPenalty = null, bool? passThrough = null, int? roundTripDistance = null, long? roundTripSeed = null, int? alternativeRouteMaxPaths = null, int? alternativeRouteMaxWeightFactor = null, int? alternativeRouteMaxShareFactor = null);
+        /// <returns>ApiResponse of RouteResponse</returns>
+        ApiResponse<RouteResponse> RouteGetWithHttpInfo (List<string> point, bool? pointsEncoded, string key, string locale = null, bool? instructions = null, string vehicle = null, bool? elevation = null, bool? calcPoints = null, List<string> pointHint = null, bool? chDisable = null, string weighting = null, bool? edgeTraversal = null, string algorithm = null, int? heading = null, int? headingPenalty = null, bool? passThrough = null, int? roundTripDistance = null, long? roundTripSeed = null, int? alternativeRouteMaxPaths = null, int? alternativeRouteMaxWeightFactor = null, int? alternativeRouteMaxShareFactor = null);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -115,8 +115,8 @@ namespace IO.Swagger.Api
         /// <param name="alternativeRouteMaxPaths">If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the number of maximum paths which should be calculated. Increasing can lead to worse alternatives. (optional)</param>
         /// <param name="alternativeRouteMaxWeightFactor">If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the factor by which the alternatives routes can be longer than the optimal route. Increasing can lead to worse alternatives. (optional)</param>
         /// <param name="alternativeRouteMaxShareFactor">If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter specifies how much alternatives routes can have maximum in common with the optimal route. Increasing can lead to worse alternatives. (optional)</param>
-        /// <returns>Task of GHRouteResponse</returns>
-        System.Threading.Tasks.Task<GHRouteResponse> RouteGetAsync (List<string> point, bool? pointsEncoded, string key, string locale = null, bool? instructions = null, string vehicle = null, bool? elevation = null, bool? calcPoints = null, List<string> pointHint = null, bool? chDisable = null, string weighting = null, bool? edgeTraversal = null, string algorithm = null, int? heading = null, int? headingPenalty = null, bool? passThrough = null, int? roundTripDistance = null, long? roundTripSeed = null, int? alternativeRouteMaxPaths = null, int? alternativeRouteMaxWeightFactor = null, int? alternativeRouteMaxShareFactor = null);
+        /// <returns>Task of RouteResponse</returns>
+        System.Threading.Tasks.Task<RouteResponse> RouteGetAsync (List<string> point, bool? pointsEncoded, string key, string locale = null, bool? instructions = null, string vehicle = null, bool? elevation = null, bool? calcPoints = null, List<string> pointHint = null, bool? chDisable = null, string weighting = null, bool? edgeTraversal = null, string algorithm = null, int? heading = null, int? headingPenalty = null, bool? passThrough = null, int? roundTripDistance = null, long? roundTripSeed = null, int? alternativeRouteMaxPaths = null, int? alternativeRouteMaxWeightFactor = null, int? alternativeRouteMaxShareFactor = null);
 
         /// <summary>
         /// Routing Request
@@ -146,8 +146,8 @@ namespace IO.Swagger.Api
         /// <param name="alternativeRouteMaxPaths">If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the number of maximum paths which should be calculated. Increasing can lead to worse alternatives. (optional)</param>
         /// <param name="alternativeRouteMaxWeightFactor">If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the factor by which the alternatives routes can be longer than the optimal route. Increasing can lead to worse alternatives. (optional)</param>
         /// <param name="alternativeRouteMaxShareFactor">If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter specifies how much alternatives routes can have maximum in common with the optimal route. Increasing can lead to worse alternatives. (optional)</param>
-        /// <returns>Task of ApiResponse (GHRouteResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GHRouteResponse>> RouteGetAsyncWithHttpInfo (List<string> point, bool? pointsEncoded, string key, string locale = null, bool? instructions = null, string vehicle = null, bool? elevation = null, bool? calcPoints = null, List<string> pointHint = null, bool? chDisable = null, string weighting = null, bool? edgeTraversal = null, string algorithm = null, int? heading = null, int? headingPenalty = null, bool? passThrough = null, int? roundTripDistance = null, long? roundTripSeed = null, int? alternativeRouteMaxPaths = null, int? alternativeRouteMaxWeightFactor = null, int? alternativeRouteMaxShareFactor = null);
+        /// <returns>Task of ApiResponse (RouteResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<RouteResponse>> RouteGetAsyncWithHttpInfo (List<string> point, bool? pointsEncoded, string key, string locale = null, bool? instructions = null, string vehicle = null, bool? elevation = null, bool? calcPoints = null, List<string> pointHint = null, bool? chDisable = null, string weighting = null, bool? edgeTraversal = null, string algorithm = null, int? heading = null, int? headingPenalty = null, bool? passThrough = null, int? roundTripDistance = null, long? roundTripSeed = null, int? alternativeRouteMaxPaths = null, int? alternativeRouteMaxWeightFactor = null, int? alternativeRouteMaxShareFactor = null);
         #endregion Asynchronous Operations
     }
 
@@ -285,10 +285,10 @@ namespace IO.Swagger.Api
         /// <param name="alternativeRouteMaxPaths">If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the number of maximum paths which should be calculated. Increasing can lead to worse alternatives. (optional)</param>
         /// <param name="alternativeRouteMaxWeightFactor">If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the factor by which the alternatives routes can be longer than the optimal route. Increasing can lead to worse alternatives. (optional)</param>
         /// <param name="alternativeRouteMaxShareFactor">If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter specifies how much alternatives routes can have maximum in common with the optimal route. Increasing can lead to worse alternatives. (optional)</param>
-        /// <returns>GHRouteResponse</returns>
-        public GHRouteResponse RouteGet (List<string> point, bool? pointsEncoded, string key, string locale = null, bool? instructions = null, string vehicle = null, bool? elevation = null, bool? calcPoints = null, List<string> pointHint = null, bool? chDisable = null, string weighting = null, bool? edgeTraversal = null, string algorithm = null, int? heading = null, int? headingPenalty = null, bool? passThrough = null, int? roundTripDistance = null, long? roundTripSeed = null, int? alternativeRouteMaxPaths = null, int? alternativeRouteMaxWeightFactor = null, int? alternativeRouteMaxShareFactor = null)
+        /// <returns>RouteResponse</returns>
+        public RouteResponse RouteGet (List<string> point, bool? pointsEncoded, string key, string locale = null, bool? instructions = null, string vehicle = null, bool? elevation = null, bool? calcPoints = null, List<string> pointHint = null, bool? chDisable = null, string weighting = null, bool? edgeTraversal = null, string algorithm = null, int? heading = null, int? headingPenalty = null, bool? passThrough = null, int? roundTripDistance = null, long? roundTripSeed = null, int? alternativeRouteMaxPaths = null, int? alternativeRouteMaxWeightFactor = null, int? alternativeRouteMaxShareFactor = null)
         {
-             ApiResponse<GHRouteResponse> localVarResponse = RouteGetWithHttpInfo(point, pointsEncoded, key, locale, instructions, vehicle, elevation, calcPoints, pointHint, chDisable, weighting, edgeTraversal, algorithm, heading, headingPenalty, passThrough, roundTripDistance, roundTripSeed, alternativeRouteMaxPaths, alternativeRouteMaxWeightFactor, alternativeRouteMaxShareFactor);
+             ApiResponse<RouteResponse> localVarResponse = RouteGetWithHttpInfo(point, pointsEncoded, key, locale, instructions, vehicle, elevation, calcPoints, pointHint, chDisable, weighting, edgeTraversal, algorithm, heading, headingPenalty, passThrough, roundTripDistance, roundTripSeed, alternativeRouteMaxPaths, alternativeRouteMaxWeightFactor, alternativeRouteMaxShareFactor);
              return localVarResponse.Data;
         }
 
@@ -317,8 +317,8 @@ namespace IO.Swagger.Api
         /// <param name="alternativeRouteMaxPaths">If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the number of maximum paths which should be calculated. Increasing can lead to worse alternatives. (optional)</param>
         /// <param name="alternativeRouteMaxWeightFactor">If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the factor by which the alternatives routes can be longer than the optimal route. Increasing can lead to worse alternatives. (optional)</param>
         /// <param name="alternativeRouteMaxShareFactor">If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter specifies how much alternatives routes can have maximum in common with the optimal route. Increasing can lead to worse alternatives. (optional)</param>
-        /// <returns>ApiResponse of GHRouteResponse</returns>
-        public ApiResponse< GHRouteResponse > RouteGetWithHttpInfo (List<string> point, bool? pointsEncoded, string key, string locale = null, bool? instructions = null, string vehicle = null, bool? elevation = null, bool? calcPoints = null, List<string> pointHint = null, bool? chDisable = null, string weighting = null, bool? edgeTraversal = null, string algorithm = null, int? heading = null, int? headingPenalty = null, bool? passThrough = null, int? roundTripDistance = null, long? roundTripSeed = null, int? alternativeRouteMaxPaths = null, int? alternativeRouteMaxWeightFactor = null, int? alternativeRouteMaxShareFactor = null)
+        /// <returns>ApiResponse of RouteResponse</returns>
+        public ApiResponse< RouteResponse > RouteGetWithHttpInfo (List<string> point, bool? pointsEncoded, string key, string locale = null, bool? instructions = null, string vehicle = null, bool? elevation = null, bool? calcPoints = null, List<string> pointHint = null, bool? chDisable = null, string weighting = null, bool? edgeTraversal = null, string algorithm = null, int? heading = null, int? headingPenalty = null, bool? passThrough = null, int? roundTripDistance = null, long? roundTripSeed = null, int? alternativeRouteMaxPaths = null, int? alternativeRouteMaxWeightFactor = null, int? alternativeRouteMaxShareFactor = null)
         {
             // verify the required parameter 'point' is set
             if (point == null)
@@ -390,9 +390,9 @@ namespace IO.Swagger.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<GHRouteResponse>(localVarStatusCode,
+            return new ApiResponse<RouteResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (GHRouteResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(GHRouteResponse)));
+                (RouteResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(RouteResponse)));
             
         }
 
@@ -421,10 +421,10 @@ namespace IO.Swagger.Api
         /// <param name="alternativeRouteMaxPaths">If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the number of maximum paths which should be calculated. Increasing can lead to worse alternatives. (optional)</param>
         /// <param name="alternativeRouteMaxWeightFactor">If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the factor by which the alternatives routes can be longer than the optimal route. Increasing can lead to worse alternatives. (optional)</param>
         /// <param name="alternativeRouteMaxShareFactor">If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter specifies how much alternatives routes can have maximum in common with the optimal route. Increasing can lead to worse alternatives. (optional)</param>
-        /// <returns>Task of GHRouteResponse</returns>
-        public async System.Threading.Tasks.Task<GHRouteResponse> RouteGetAsync (List<string> point, bool? pointsEncoded, string key, string locale = null, bool? instructions = null, string vehicle = null, bool? elevation = null, bool? calcPoints = null, List<string> pointHint = null, bool? chDisable = null, string weighting = null, bool? edgeTraversal = null, string algorithm = null, int? heading = null, int? headingPenalty = null, bool? passThrough = null, int? roundTripDistance = null, long? roundTripSeed = null, int? alternativeRouteMaxPaths = null, int? alternativeRouteMaxWeightFactor = null, int? alternativeRouteMaxShareFactor = null)
+        /// <returns>Task of RouteResponse</returns>
+        public async System.Threading.Tasks.Task<RouteResponse> RouteGetAsync (List<string> point, bool? pointsEncoded, string key, string locale = null, bool? instructions = null, string vehicle = null, bool? elevation = null, bool? calcPoints = null, List<string> pointHint = null, bool? chDisable = null, string weighting = null, bool? edgeTraversal = null, string algorithm = null, int? heading = null, int? headingPenalty = null, bool? passThrough = null, int? roundTripDistance = null, long? roundTripSeed = null, int? alternativeRouteMaxPaths = null, int? alternativeRouteMaxWeightFactor = null, int? alternativeRouteMaxShareFactor = null)
         {
-             ApiResponse<GHRouteResponse> localVarResponse = await RouteGetAsyncWithHttpInfo(point, pointsEncoded, key, locale, instructions, vehicle, elevation, calcPoints, pointHint, chDisable, weighting, edgeTraversal, algorithm, heading, headingPenalty, passThrough, roundTripDistance, roundTripSeed, alternativeRouteMaxPaths, alternativeRouteMaxWeightFactor, alternativeRouteMaxShareFactor);
+             ApiResponse<RouteResponse> localVarResponse = await RouteGetAsyncWithHttpInfo(point, pointsEncoded, key, locale, instructions, vehicle, elevation, calcPoints, pointHint, chDisable, weighting, edgeTraversal, algorithm, heading, headingPenalty, passThrough, roundTripDistance, roundTripSeed, alternativeRouteMaxPaths, alternativeRouteMaxWeightFactor, alternativeRouteMaxShareFactor);
              return localVarResponse.Data;
 
         }
@@ -454,8 +454,8 @@ namespace IO.Swagger.Api
         /// <param name="alternativeRouteMaxPaths">If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the number of maximum paths which should be calculated. Increasing can lead to worse alternatives. (optional)</param>
         /// <param name="alternativeRouteMaxWeightFactor">If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the factor by which the alternatives routes can be longer than the optimal route. Increasing can lead to worse alternatives. (optional)</param>
         /// <param name="alternativeRouteMaxShareFactor">If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter specifies how much alternatives routes can have maximum in common with the optimal route. Increasing can lead to worse alternatives. (optional)</param>
-        /// <returns>Task of ApiResponse (GHRouteResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<GHRouteResponse>> RouteGetAsyncWithHttpInfo (List<string> point, bool? pointsEncoded, string key, string locale = null, bool? instructions = null, string vehicle = null, bool? elevation = null, bool? calcPoints = null, List<string> pointHint = null, bool? chDisable = null, string weighting = null, bool? edgeTraversal = null, string algorithm = null, int? heading = null, int? headingPenalty = null, bool? passThrough = null, int? roundTripDistance = null, long? roundTripSeed = null, int? alternativeRouteMaxPaths = null, int? alternativeRouteMaxWeightFactor = null, int? alternativeRouteMaxShareFactor = null)
+        /// <returns>Task of ApiResponse (RouteResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<RouteResponse>> RouteGetAsyncWithHttpInfo (List<string> point, bool? pointsEncoded, string key, string locale = null, bool? instructions = null, string vehicle = null, bool? elevation = null, bool? calcPoints = null, List<string> pointHint = null, bool? chDisable = null, string weighting = null, bool? edgeTraversal = null, string algorithm = null, int? heading = null, int? headingPenalty = null, bool? passThrough = null, int? roundTripDistance = null, long? roundTripSeed = null, int? alternativeRouteMaxPaths = null, int? alternativeRouteMaxWeightFactor = null, int? alternativeRouteMaxShareFactor = null)
         {
             // verify the required parameter 'point' is set
             if (point == null)
@@ -527,9 +527,9 @@ namespace IO.Swagger.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<GHRouteResponse>(localVarStatusCode,
+            return new ApiResponse<RouteResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (GHRouteResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(GHRouteResponse)));
+                (RouteResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(RouteResponse)));
             
         }
 

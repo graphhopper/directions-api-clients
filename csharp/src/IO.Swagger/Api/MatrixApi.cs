@@ -37,8 +37,8 @@ namespace IO.Swagger.Api
         /// <param name="toPoint">The destination points for the routes. Is a string with the format latitude,longitude. (optional)</param>
         /// <param name="outArray">Specifies which arrays should be included in the response. Specify one or more of the following options &#39;weights&#39;, &#39;times&#39;, &#39;distances&#39;. To specify more than one array use e.g. out_array&#x3D;times&amp;out_array&#x3D;distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API. (optional)</param>
         /// <param name="vehicle">The vehicle for which the route should be calculated. Other vehicles are foot, bike, mtb, racingbike, motorcycle, small_truck, bus and truck. See here for the details. (optional, default to car)</param>
-        /// <returns>GHMatrixResponse</returns>
-        GHMatrixResponse MatrixGet (string key, List<string> point = null, string fromPoint = null, string toPoint = null, List<string> outArray = null, string vehicle = null);
+        /// <returns>MatrixResponse</returns>
+        MatrixResponse MatrixGet (string key, List<string> point = null, string fromPoint = null, string toPoint = null, List<string> outArray = null, string vehicle = null);
 
         /// <summary>
         /// Matrix API
@@ -53,8 +53,8 @@ namespace IO.Swagger.Api
         /// <param name="toPoint">The destination points for the routes. Is a string with the format latitude,longitude. (optional)</param>
         /// <param name="outArray">Specifies which arrays should be included in the response. Specify one or more of the following options &#39;weights&#39;, &#39;times&#39;, &#39;distances&#39;. To specify more than one array use e.g. out_array&#x3D;times&amp;out_array&#x3D;distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API. (optional)</param>
         /// <param name="vehicle">The vehicle for which the route should be calculated. Other vehicles are foot, bike, mtb, racingbike, motorcycle, small_truck, bus and truck. See here for the details. (optional, default to car)</param>
-        /// <returns>ApiResponse of GHMatrixResponse</returns>
-        ApiResponse<GHMatrixResponse> MatrixGetWithHttpInfo (string key, List<string> point = null, string fromPoint = null, string toPoint = null, List<string> outArray = null, string vehicle = null);
+        /// <returns>ApiResponse of MatrixResponse</returns>
+        ApiResponse<MatrixResponse> MatrixGetWithHttpInfo (string key, List<string> point = null, string fromPoint = null, string toPoint = null, List<string> outArray = null, string vehicle = null);
         /// <summary>
         /// Matrix API Post
         /// </summary>
@@ -64,8 +64,8 @@ namespace IO.Swagger.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="key">Get your key at graphhopper.com</param>
         /// <param name="body"> (optional)</param>
-        /// <returns>GHMatrixResponse</returns>
-        GHMatrixResponse MatrixPost (string key, GHMatrixRequest body = null);
+        /// <returns>MatrixResponse</returns>
+        MatrixResponse MatrixPost (string key, MatrixRequest body = null);
 
         /// <summary>
         /// Matrix API Post
@@ -76,8 +76,8 @@ namespace IO.Swagger.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="key">Get your key at graphhopper.com</param>
         /// <param name="body"> (optional)</param>
-        /// <returns>ApiResponse of GHMatrixResponse</returns>
-        ApiResponse<GHMatrixResponse> MatrixPostWithHttpInfo (string key, GHMatrixRequest body = null);
+        /// <returns>ApiResponse of MatrixResponse</returns>
+        ApiResponse<MatrixResponse> MatrixPostWithHttpInfo (string key, MatrixRequest body = null);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -93,8 +93,8 @@ namespace IO.Swagger.Api
         /// <param name="toPoint">The destination points for the routes. Is a string with the format latitude,longitude. (optional)</param>
         /// <param name="outArray">Specifies which arrays should be included in the response. Specify one or more of the following options &#39;weights&#39;, &#39;times&#39;, &#39;distances&#39;. To specify more than one array use e.g. out_array&#x3D;times&amp;out_array&#x3D;distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API. (optional)</param>
         /// <param name="vehicle">The vehicle for which the route should be calculated. Other vehicles are foot, bike, mtb, racingbike, motorcycle, small_truck, bus and truck. See here for the details. (optional, default to car)</param>
-        /// <returns>Task of GHMatrixResponse</returns>
-        System.Threading.Tasks.Task<GHMatrixResponse> MatrixGetAsync (string key, List<string> point = null, string fromPoint = null, string toPoint = null, List<string> outArray = null, string vehicle = null);
+        /// <returns>Task of MatrixResponse</returns>
+        System.Threading.Tasks.Task<MatrixResponse> MatrixGetAsync (string key, List<string> point = null, string fromPoint = null, string toPoint = null, List<string> outArray = null, string vehicle = null);
 
         /// <summary>
         /// Matrix API
@@ -109,8 +109,8 @@ namespace IO.Swagger.Api
         /// <param name="toPoint">The destination points for the routes. Is a string with the format latitude,longitude. (optional)</param>
         /// <param name="outArray">Specifies which arrays should be included in the response. Specify one or more of the following options &#39;weights&#39;, &#39;times&#39;, &#39;distances&#39;. To specify more than one array use e.g. out_array&#x3D;times&amp;out_array&#x3D;distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API. (optional)</param>
         /// <param name="vehicle">The vehicle for which the route should be calculated. Other vehicles are foot, bike, mtb, racingbike, motorcycle, small_truck, bus and truck. See here for the details. (optional, default to car)</param>
-        /// <returns>Task of ApiResponse (GHMatrixResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GHMatrixResponse>> MatrixGetAsyncWithHttpInfo (string key, List<string> point = null, string fromPoint = null, string toPoint = null, List<string> outArray = null, string vehicle = null);
+        /// <returns>Task of ApiResponse (MatrixResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<MatrixResponse>> MatrixGetAsyncWithHttpInfo (string key, List<string> point = null, string fromPoint = null, string toPoint = null, List<string> outArray = null, string vehicle = null);
         /// <summary>
         /// Matrix API Post
         /// </summary>
@@ -120,8 +120,8 @@ namespace IO.Swagger.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="key">Get your key at graphhopper.com</param>
         /// <param name="body"> (optional)</param>
-        /// <returns>Task of GHMatrixResponse</returns>
-        System.Threading.Tasks.Task<GHMatrixResponse> MatrixPostAsync (string key, GHMatrixRequest body = null);
+        /// <returns>Task of MatrixResponse</returns>
+        System.Threading.Tasks.Task<MatrixResponse> MatrixPostAsync (string key, MatrixRequest body = null);
 
         /// <summary>
         /// Matrix API Post
@@ -132,8 +132,8 @@ namespace IO.Swagger.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="key">Get your key at graphhopper.com</param>
         /// <param name="body"> (optional)</param>
-        /// <returns>Task of ApiResponse (GHMatrixResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GHMatrixResponse>> MatrixPostAsyncWithHttpInfo (string key, GHMatrixRequest body = null);
+        /// <returns>Task of ApiResponse (MatrixResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<MatrixResponse>> MatrixPostAsyncWithHttpInfo (string key, MatrixRequest body = null);
         #endregion Asynchronous Operations
     }
 
@@ -256,10 +256,10 @@ namespace IO.Swagger.Api
         /// <param name="toPoint">The destination points for the routes. Is a string with the format latitude,longitude. (optional)</param>
         /// <param name="outArray">Specifies which arrays should be included in the response. Specify one or more of the following options &#39;weights&#39;, &#39;times&#39;, &#39;distances&#39;. To specify more than one array use e.g. out_array&#x3D;times&amp;out_array&#x3D;distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API. (optional)</param>
         /// <param name="vehicle">The vehicle for which the route should be calculated. Other vehicles are foot, bike, mtb, racingbike, motorcycle, small_truck, bus and truck. See here for the details. (optional, default to car)</param>
-        /// <returns>GHMatrixResponse</returns>
-        public GHMatrixResponse MatrixGet (string key, List<string> point = null, string fromPoint = null, string toPoint = null, List<string> outArray = null, string vehicle = null)
+        /// <returns>MatrixResponse</returns>
+        public MatrixResponse MatrixGet (string key, List<string> point = null, string fromPoint = null, string toPoint = null, List<string> outArray = null, string vehicle = null)
         {
-             ApiResponse<GHMatrixResponse> localVarResponse = MatrixGetWithHttpInfo(key, point, fromPoint, toPoint, outArray, vehicle);
+             ApiResponse<MatrixResponse> localVarResponse = MatrixGetWithHttpInfo(key, point, fromPoint, toPoint, outArray, vehicle);
              return localVarResponse.Data;
         }
 
@@ -273,8 +273,8 @@ namespace IO.Swagger.Api
         /// <param name="toPoint">The destination points for the routes. Is a string with the format latitude,longitude. (optional)</param>
         /// <param name="outArray">Specifies which arrays should be included in the response. Specify one or more of the following options &#39;weights&#39;, &#39;times&#39;, &#39;distances&#39;. To specify more than one array use e.g. out_array&#x3D;times&amp;out_array&#x3D;distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API. (optional)</param>
         /// <param name="vehicle">The vehicle for which the route should be calculated. Other vehicles are foot, bike, mtb, racingbike, motorcycle, small_truck, bus and truck. See here for the details. (optional, default to car)</param>
-        /// <returns>ApiResponse of GHMatrixResponse</returns>
-        public ApiResponse< GHMatrixResponse > MatrixGetWithHttpInfo (string key, List<string> point = null, string fromPoint = null, string toPoint = null, List<string> outArray = null, string vehicle = null)
+        /// <returns>ApiResponse of MatrixResponse</returns>
+        public ApiResponse< MatrixResponse > MatrixGetWithHttpInfo (string key, List<string> point = null, string fromPoint = null, string toPoint = null, List<string> outArray = null, string vehicle = null)
         {
             // verify the required parameter 'key' is set
             if (key == null)
@@ -325,9 +325,9 @@ namespace IO.Swagger.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<GHMatrixResponse>(localVarStatusCode,
+            return new ApiResponse<MatrixResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (GHMatrixResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(GHMatrixResponse)));
+                (MatrixResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(MatrixResponse)));
             
         }
 
@@ -341,10 +341,10 @@ namespace IO.Swagger.Api
         /// <param name="toPoint">The destination points for the routes. Is a string with the format latitude,longitude. (optional)</param>
         /// <param name="outArray">Specifies which arrays should be included in the response. Specify one or more of the following options &#39;weights&#39;, &#39;times&#39;, &#39;distances&#39;. To specify more than one array use e.g. out_array&#x3D;times&amp;out_array&#x3D;distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API. (optional)</param>
         /// <param name="vehicle">The vehicle for which the route should be calculated. Other vehicles are foot, bike, mtb, racingbike, motorcycle, small_truck, bus and truck. See here for the details. (optional, default to car)</param>
-        /// <returns>Task of GHMatrixResponse</returns>
-        public async System.Threading.Tasks.Task<GHMatrixResponse> MatrixGetAsync (string key, List<string> point = null, string fromPoint = null, string toPoint = null, List<string> outArray = null, string vehicle = null)
+        /// <returns>Task of MatrixResponse</returns>
+        public async System.Threading.Tasks.Task<MatrixResponse> MatrixGetAsync (string key, List<string> point = null, string fromPoint = null, string toPoint = null, List<string> outArray = null, string vehicle = null)
         {
-             ApiResponse<GHMatrixResponse> localVarResponse = await MatrixGetAsyncWithHttpInfo(key, point, fromPoint, toPoint, outArray, vehicle);
+             ApiResponse<MatrixResponse> localVarResponse = await MatrixGetAsyncWithHttpInfo(key, point, fromPoint, toPoint, outArray, vehicle);
              return localVarResponse.Data;
 
         }
@@ -359,8 +359,8 @@ namespace IO.Swagger.Api
         /// <param name="toPoint">The destination points for the routes. Is a string with the format latitude,longitude. (optional)</param>
         /// <param name="outArray">Specifies which arrays should be included in the response. Specify one or more of the following options &#39;weights&#39;, &#39;times&#39;, &#39;distances&#39;. To specify more than one array use e.g. out_array&#x3D;times&amp;out_array&#x3D;distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API. (optional)</param>
         /// <param name="vehicle">The vehicle for which the route should be calculated. Other vehicles are foot, bike, mtb, racingbike, motorcycle, small_truck, bus and truck. See here for the details. (optional, default to car)</param>
-        /// <returns>Task of ApiResponse (GHMatrixResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<GHMatrixResponse>> MatrixGetAsyncWithHttpInfo (string key, List<string> point = null, string fromPoint = null, string toPoint = null, List<string> outArray = null, string vehicle = null)
+        /// <returns>Task of ApiResponse (MatrixResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<MatrixResponse>> MatrixGetAsyncWithHttpInfo (string key, List<string> point = null, string fromPoint = null, string toPoint = null, List<string> outArray = null, string vehicle = null)
         {
             // verify the required parameter 'key' is set
             if (key == null)
@@ -411,9 +411,9 @@ namespace IO.Swagger.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<GHMatrixResponse>(localVarStatusCode,
+            return new ApiResponse<MatrixResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (GHMatrixResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(GHMatrixResponse)));
+                (MatrixResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(MatrixResponse)));
             
         }
 
@@ -423,10 +423,10 @@ namespace IO.Swagger.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="key">Get your key at graphhopper.com</param>
         /// <param name="body"> (optional)</param>
-        /// <returns>GHMatrixResponse</returns>
-        public GHMatrixResponse MatrixPost (string key, GHMatrixRequest body = null)
+        /// <returns>MatrixResponse</returns>
+        public MatrixResponse MatrixPost (string key, MatrixRequest body = null)
         {
-             ApiResponse<GHMatrixResponse> localVarResponse = MatrixPostWithHttpInfo(key, body);
+             ApiResponse<MatrixResponse> localVarResponse = MatrixPostWithHttpInfo(key, body);
              return localVarResponse.Data;
         }
 
@@ -436,8 +436,8 @@ namespace IO.Swagger.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="key">Get your key at graphhopper.com</param>
         /// <param name="body"> (optional)</param>
-        /// <returns>ApiResponse of GHMatrixResponse</returns>
-        public ApiResponse< GHMatrixResponse > MatrixPostWithHttpInfo (string key, GHMatrixRequest body = null)
+        /// <returns>ApiResponse of MatrixResponse</returns>
+        public ApiResponse< MatrixResponse > MatrixPostWithHttpInfo (string key, MatrixRequest body = null)
         {
             // verify the required parameter 'key' is set
             if (key == null)
@@ -491,9 +491,9 @@ namespace IO.Swagger.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<GHMatrixResponse>(localVarStatusCode,
+            return new ApiResponse<MatrixResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (GHMatrixResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(GHMatrixResponse)));
+                (MatrixResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(MatrixResponse)));
             
         }
 
@@ -503,10 +503,10 @@ namespace IO.Swagger.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="key">Get your key at graphhopper.com</param>
         /// <param name="body"> (optional)</param>
-        /// <returns>Task of GHMatrixResponse</returns>
-        public async System.Threading.Tasks.Task<GHMatrixResponse> MatrixPostAsync (string key, GHMatrixRequest body = null)
+        /// <returns>Task of MatrixResponse</returns>
+        public async System.Threading.Tasks.Task<MatrixResponse> MatrixPostAsync (string key, MatrixRequest body = null)
         {
-             ApiResponse<GHMatrixResponse> localVarResponse = await MatrixPostAsyncWithHttpInfo(key, body);
+             ApiResponse<MatrixResponse> localVarResponse = await MatrixPostAsyncWithHttpInfo(key, body);
              return localVarResponse.Data;
 
         }
@@ -517,8 +517,8 @@ namespace IO.Swagger.Api
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="key">Get your key at graphhopper.com</param>
         /// <param name="body"> (optional)</param>
-        /// <returns>Task of ApiResponse (GHMatrixResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<GHMatrixResponse>> MatrixPostAsyncWithHttpInfo (string key, GHMatrixRequest body = null)
+        /// <returns>Task of ApiResponse (MatrixResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<MatrixResponse>> MatrixPostAsyncWithHttpInfo (string key, MatrixRequest body = null)
         {
             // verify the required parameter 'key' is set
             if (key == null)
@@ -572,9 +572,9 @@ namespace IO.Swagger.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<GHMatrixResponse>(localVarStatusCode,
+            return new ApiResponse<MatrixResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (GHMatrixResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(GHMatrixResponse)));
+                (MatrixResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(MatrixResponse)));
             
         }
 

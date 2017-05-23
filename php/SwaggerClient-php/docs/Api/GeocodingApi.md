@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 
 # **geocodeGet**
-> \Swagger\Client\Model\GHGeocodingResponse geocodeGet($key, $q, $locale, $limit, $reverse, $point, $provider)
+> \Swagger\Client\Model\GeocodingResponse geocodeGet($key, $q, $locale, $limit, $reverse, $point, $provider)
 
 Execute a Geocoding request
 
@@ -51,7 +51,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\GHGeocodingResponse**](../Model/GHGeocodingResponse.md)
+[**\Swagger\Client\Model\GeocodingResponse**](../Model/GeocodingResponse.md)
 
 ### Authorization
 

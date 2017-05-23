@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 <a name="matrixget"></a>
 # **MatrixGet**
-> GHMatrixResponse MatrixGet (string key, List<string> point = null, string fromPoint = null, string toPoint = null, List<string> outArray = null, string vehicle = null)
+> MatrixResponse MatrixGet (string key, List<string> point = null, string fromPoint = null, string toPoint = null, List<string> outArray = null, string vehicle = null)
 
 Matrix API
 
@@ -42,7 +42,7 @@ namespace Example
             try
             {
                 // Matrix API
-                GHMatrixResponse result = apiInstance.MatrixGet(key, point, fromPoint, toPoint, outArray, vehicle);
+                MatrixResponse result = apiInstance.MatrixGet(key, point, fromPoint, toPoint, outArray, vehicle);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -67,7 +67,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GHMatrixResponse**](GHMatrixResponse.md)
+[**MatrixResponse**](MatrixResponse.md)
 
 ### Authorization
 
@@ -82,7 +82,7 @@ No authorization required
 
 <a name="matrixpost"></a>
 # **MatrixPost**
-> GHMatrixResponse MatrixPost (string key, GHMatrixRequest body = null)
+> MatrixResponse MatrixPost (string key, MatrixRequest body = null)
 
 Matrix API Post
 
@@ -105,12 +105,12 @@ namespace Example
             
             var apiInstance = new MatrixApi();
             var key = key_example;  // string | Get your key at graphhopper.com
-            var body = new GHMatrixRequest(); // GHMatrixRequest |  (optional) 
+            var body = new MatrixRequest(); // MatrixRequest |  (optional) 
 
             try
             {
                 // Matrix API Post
-                GHMatrixResponse result = apiInstance.MatrixPost(key, body);
+                MatrixResponse result = apiInstance.MatrixPost(key, body);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -127,11 +127,11 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **key** | **string**| Get your key at graphhopper.com | 
- **body** | [**GHMatrixRequest**](GHMatrixRequest.md)|  | [optional] 
+ **body** | [**MatrixRequest**](MatrixRequest.md)|  | [optional] 
 
 ### Return type
 
-[**GHMatrixResponse**](GHMatrixResponse.md)
+[**MatrixResponse**](MatrixResponse.md)
 
 ### Authorization
 

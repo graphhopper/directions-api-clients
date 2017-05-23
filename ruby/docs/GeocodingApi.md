@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 
 # **geocode_get**
-> GHGeocodingResponse geocode_get(key, opts)
+> GeocodingResponse geocode_get(key, opts)
 
 Execute a Geocoding request
 
@@ -55,7 +55,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GHGeocodingResponse**](GHGeocodingResponse.md)
+[**GeocodingResponse**](GeocodingResponse.md)
 
 ### Authorization
 

@@ -100,7 +100,7 @@ class IsochroneApi
      * @param int $buckets For how many sub intervals an additional polygon should be calculated. (optional, default to 1)
      * @param bool $reverse_flow If &#x60;false&#x60; the flow goes from point to the polygon, if &#x60;true&#x60; the flow goes from the polygon \&quot;inside\&quot; to the point. Example usage for &#x60;false&#x60;&amp;#58; *How many potential customer can be reached within 30min travel time from your store* vs. &#x60;true&#x60;&amp;#58; *How many customers can reach your store within 30min travel time.* (optional, default to false)
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return \Swagger\Client\Model\GHIsochroneResponse
+     * @return \Swagger\Client\Model\IsochroneResponse
      */
     public function isochroneGet($point, $key, $time_limit = null, $distance_limit = null, $vehicle = null, $buckets = null, $reverse_flow = null)
     {
@@ -121,7 +121,7 @@ class IsochroneApi
      * @param int $buckets For how many sub intervals an additional polygon should be calculated. (optional, default to 1)
      * @param bool $reverse_flow If &#x60;false&#x60; the flow goes from point to the polygon, if &#x60;true&#x60; the flow goes from the polygon \&quot;inside\&quot; to the point. Example usage for &#x60;false&#x60;&amp;#58; *How many potential customer can be reached within 30min travel time from your store* vs. &#x60;true&#x60;&amp;#58; *How many customers can reach your store within 30min travel time.* (optional, default to false)
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return array of \Swagger\Client\Model\GHIsochroneResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\IsochroneResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function isochroneGetWithHttpInfo($point, $key, $time_limit = null, $distance_limit = null, $vehicle = null, $buckets = null, $reverse_flow = null)
     {
@@ -191,15 +191,15 @@ class IsochroneApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\Swagger\Client\Model\GHIsochroneResponse',
+                '\Swagger\Client\Model\IsochroneResponse',
                 '/isochrone'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\GHIsochroneResponse', $httpHeader), $statusCode, $httpHeader];
+            return [$this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\IsochroneResponse', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\GHIsochroneResponse', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\IsochroneResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 0:

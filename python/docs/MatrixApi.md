@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 
 # **matrix_get**
-> GHMatrixResponse matrix_get(key, point=point, from_point=from_point, to_point=to_point, out_array=out_array, vehicle=vehicle)
+> MatrixResponse matrix_get(key, point=point, from_point=from_point, to_point=to_point, out_array=out_array, vehicle=vehicle)
 
 Matrix API
 
@@ -53,7 +53,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GHMatrixResponse**](GHMatrixResponse.md)
+[**MatrixResponse**](MatrixResponse.md)
 
 ### Authorization
 
@@ -67,7 +67,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **matrix_post**
-> GHMatrixResponse matrix_post(key, body=body)
+> MatrixResponse matrix_post(key, body=body)
 
 Matrix API Post
 
@@ -84,7 +84,7 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = swagger_client.MatrixApi()
 key = 'key_example' # str | Get your key at graphhopper.com
-body = swagger_client.GHMatrixRequest() # GHMatrixRequest |  (optional)
+body = swagger_client.MatrixRequest() # MatrixRequest |  (optional)
 
 try: 
     # Matrix API Post
@@ -99,11 +99,11 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **key** | **str**| Get your key at graphhopper.com | 
- **body** | [**GHMatrixRequest**](GHMatrixRequest.md)|  | [optional] 
+ **body** | [**MatrixRequest**](MatrixRequest.md)|  | [optional] 
 
 ### Return type
 
-[**GHMatrixResponse**](GHMatrixResponse.md)
+[**MatrixResponse**](MatrixResponse.md)
 
 ### Authorization
 

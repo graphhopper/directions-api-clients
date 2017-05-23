@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 <a name="isochroneget"></a>
 # **IsochroneGet**
-> GHIsochroneResponse IsochroneGet (string point, string key, int? timeLimit = null, int? distanceLimit = null, string vehicle = null, int? buckets = null, bool? reverseFlow = null)
+> IsochroneResponse IsochroneGet (string point, string key, int? timeLimit = null, int? distanceLimit = null, string vehicle = null, int? buckets = null, bool? reverseFlow = null)
 
 Isochrone Request
 
@@ -42,7 +42,7 @@ namespace Example
             try
             {
                 // Isochrone Request
-                GHIsochroneResponse result = apiInstance.IsochroneGet(point, key, timeLimit, distanceLimit, vehicle, buckets, reverseFlow);
+                IsochroneResponse result = apiInstance.IsochroneGet(point, key, timeLimit, distanceLimit, vehicle, buckets, reverseFlow);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -68,7 +68,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GHIsochroneResponse**](GHIsochroneResponse.md)
+[**IsochroneResponse**](IsochroneResponse.md)
 
 ### Authorization
 

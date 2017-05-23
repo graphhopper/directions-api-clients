@@ -16,7 +16,7 @@ Method | HTTP request | Description
     toPoint: (NSString*) toPoint
     outArray: (NSArray<NSString*>*) outArray
     vehicle: (NSString*) vehicle
-        completionHandler: (void (^)(SWGGHMatrixResponse* output, NSError* error)) handler;
+        completionHandler: (void (^)(SWGMatrixResponse* output, NSError* error)) handler;
 ```
 
 Matrix API
@@ -42,7 +42,7 @@ SWGMatrixApi*apiInstance = [[SWGMatrixApi alloc] init];
               toPoint:toPoint
               outArray:outArray
               vehicle:vehicle
-          completionHandler: ^(SWGGHMatrixResponse* output, NSError* error) {
+          completionHandler: ^(SWGMatrixResponse* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -65,7 +65,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SWGGHMatrixResponse***](SWGGHMatrixResponse.md)
+[**SWGMatrixResponse***](SWGMatrixResponse.md)
 
 ### Authorization
 
@@ -81,8 +81,8 @@ No authorization required
 # **matrixPost**
 ```objc
 -(NSURLSessionTask*) matrixPostWithKey: (NSString*) key
-    body: (SWGGHMatrixRequest*) body
-        completionHandler: (void (^)(SWGGHMatrixResponse* output, NSError* error)) handler;
+    body: (SWGMatrixRequest*) body
+        completionHandler: (void (^)(SWGMatrixResponse* output, NSError* error)) handler;
 ```
 
 Matrix API Post
@@ -93,14 +93,14 @@ The GET request has an URL length limitation, which hurts for many locations per
 ```objc
 
 NSString* key = @"key_example"; // Get your key at graphhopper.com
-SWGGHMatrixRequest* body = [[SWGGHMatrixRequest alloc] init]; //  (optional)
+SWGMatrixRequest* body = [[SWGMatrixRequest alloc] init]; //  (optional)
 
 SWGMatrixApi*apiInstance = [[SWGMatrixApi alloc] init];
 
 // Matrix API Post
 [apiInstance matrixPostWithKey:key
               body:body
-          completionHandler: ^(SWGGHMatrixResponse* output, NSError* error) {
+          completionHandler: ^(SWGMatrixResponse* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -115,11 +115,11 @@ SWGMatrixApi*apiInstance = [[SWGMatrixApi alloc] init];
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **key** | **NSString***| Get your key at graphhopper.com | 
- **body** | [**SWGGHMatrixRequest***](SWGGHMatrixRequest*.md)|  | [optional] 
+ **body** | [**SWGMatrixRequest***](SWGMatrixRequest*.md)|  | [optional] 
 
 ### Return type
 
-[**SWGGHMatrixResponse***](SWGGHMatrixResponse.md)
+[**SWGMatrixResponse***](SWGMatrixResponse.md)
 
 ### Authorization
 

@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 
 # **matrix_get**
-> GHMatrixResponse matrix_get(key => $key, point => $point, from_point => $from_point, to_point => $to_point, out_array => $out_array, vehicle => $vehicle)
+> MatrixResponse matrix_get(key => $key, point => $point, from_point => $from_point, to_point => $to_point, out_array => $out_array, vehicle => $vehicle)
 
 Matrix API
 
@@ -56,7 +56,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GHMatrixResponse**](GHMatrixResponse.md)
+[**MatrixResponse**](MatrixResponse.md)
 
 ### Authorization
 
@@ -70,7 +70,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **matrix_post**
-> GHMatrixResponse matrix_post(key => $key, body => $body)
+> MatrixResponse matrix_post(key => $key, body => $body)
 
 Matrix API Post
 
@@ -84,7 +84,7 @@ use WWW::SwaggerClient::MatrixApi;
 
 my $api_instance = WWW::SwaggerClient::MatrixApi->new();
 my $key = 'key_example'; # string | Get your key at graphhopper.com
-my $body = WWW::SwaggerClient::Object::GHMatrixRequest->new(); # GHMatrixRequest | 
+my $body = WWW::SwaggerClient::Object::MatrixRequest->new(); # MatrixRequest | 
 
 eval { 
     my $result = $api_instance->matrix_post(key => $key, body => $body);
@@ -100,11 +100,11 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **key** | **string**| Get your key at graphhopper.com | 
- **body** | [**GHMatrixRequest**](GHMatrixRequest.md)|  | [optional] 
+ **body** | [**MatrixRequest**](MatrixRequest.md)|  | [optional] 
 
 ### Return type
 
-[**GHMatrixResponse**](GHMatrixResponse.md)
+[**MatrixResponse**](MatrixResponse.md)
 
 ### Authorization
 

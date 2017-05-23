@@ -38,8 +38,8 @@ namespace IO.Swagger.Api
         /// <param name="reverse">Set to true to do a reverse Geocoding request (optional)</param>
         /// <param name="point">The location bias in the format &#39;latitude,longitude&#39; e.g. point&#x3D;45.93272,11.58803 (optional)</param>
         /// <param name="provider">Can be either, default, nominatim, opencagedata (optional)</param>
-        /// <returns>GHGeocodingResponse</returns>
-        GHGeocodingResponse GeocodeGet (string key, string q = null, string locale = null, int? limit = null, bool? reverse = null, string point = null, string provider = null);
+        /// <returns>GeocodingResponse</returns>
+        GeocodingResponse GeocodeGet (string key, string q = null, string locale = null, int? limit = null, bool? reverse = null, string point = null, string provider = null);
 
         /// <summary>
         /// Execute a Geocoding request
@@ -55,8 +55,8 @@ namespace IO.Swagger.Api
         /// <param name="reverse">Set to true to do a reverse Geocoding request (optional)</param>
         /// <param name="point">The location bias in the format &#39;latitude,longitude&#39; e.g. point&#x3D;45.93272,11.58803 (optional)</param>
         /// <param name="provider">Can be either, default, nominatim, opencagedata (optional)</param>
-        /// <returns>ApiResponse of GHGeocodingResponse</returns>
-        ApiResponse<GHGeocodingResponse> GeocodeGetWithHttpInfo (string key, string q = null, string locale = null, int? limit = null, bool? reverse = null, string point = null, string provider = null);
+        /// <returns>ApiResponse of GeocodingResponse</returns>
+        ApiResponse<GeocodingResponse> GeocodeGetWithHttpInfo (string key, string q = null, string locale = null, int? limit = null, bool? reverse = null, string point = null, string provider = null);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -73,8 +73,8 @@ namespace IO.Swagger.Api
         /// <param name="reverse">Set to true to do a reverse Geocoding request (optional)</param>
         /// <param name="point">The location bias in the format &#39;latitude,longitude&#39; e.g. point&#x3D;45.93272,11.58803 (optional)</param>
         /// <param name="provider">Can be either, default, nominatim, opencagedata (optional)</param>
-        /// <returns>Task of GHGeocodingResponse</returns>
-        System.Threading.Tasks.Task<GHGeocodingResponse> GeocodeGetAsync (string key, string q = null, string locale = null, int? limit = null, bool? reverse = null, string point = null, string provider = null);
+        /// <returns>Task of GeocodingResponse</returns>
+        System.Threading.Tasks.Task<GeocodingResponse> GeocodeGetAsync (string key, string q = null, string locale = null, int? limit = null, bool? reverse = null, string point = null, string provider = null);
 
         /// <summary>
         /// Execute a Geocoding request
@@ -90,8 +90,8 @@ namespace IO.Swagger.Api
         /// <param name="reverse">Set to true to do a reverse Geocoding request (optional)</param>
         /// <param name="point">The location bias in the format &#39;latitude,longitude&#39; e.g. point&#x3D;45.93272,11.58803 (optional)</param>
         /// <param name="provider">Can be either, default, nominatim, opencagedata (optional)</param>
-        /// <returns>Task of ApiResponse (GHGeocodingResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GHGeocodingResponse>> GeocodeGetAsyncWithHttpInfo (string key, string q = null, string locale = null, int? limit = null, bool? reverse = null, string point = null, string provider = null);
+        /// <returns>Task of ApiResponse (GeocodingResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GeocodingResponse>> GeocodeGetAsyncWithHttpInfo (string key, string q = null, string locale = null, int? limit = null, bool? reverse = null, string point = null, string provider = null);
         #endregion Asynchronous Operations
     }
 
@@ -215,10 +215,10 @@ namespace IO.Swagger.Api
         /// <param name="reverse">Set to true to do a reverse Geocoding request (optional)</param>
         /// <param name="point">The location bias in the format &#39;latitude,longitude&#39; e.g. point&#x3D;45.93272,11.58803 (optional)</param>
         /// <param name="provider">Can be either, default, nominatim, opencagedata (optional)</param>
-        /// <returns>GHGeocodingResponse</returns>
-        public GHGeocodingResponse GeocodeGet (string key, string q = null, string locale = null, int? limit = null, bool? reverse = null, string point = null, string provider = null)
+        /// <returns>GeocodingResponse</returns>
+        public GeocodingResponse GeocodeGet (string key, string q = null, string locale = null, int? limit = null, bool? reverse = null, string point = null, string provider = null)
         {
-             ApiResponse<GHGeocodingResponse> localVarResponse = GeocodeGetWithHttpInfo(key, q, locale, limit, reverse, point, provider);
+             ApiResponse<GeocodingResponse> localVarResponse = GeocodeGetWithHttpInfo(key, q, locale, limit, reverse, point, provider);
              return localVarResponse.Data;
         }
 
@@ -233,8 +233,8 @@ namespace IO.Swagger.Api
         /// <param name="reverse">Set to true to do a reverse Geocoding request (optional)</param>
         /// <param name="point">The location bias in the format &#39;latitude,longitude&#39; e.g. point&#x3D;45.93272,11.58803 (optional)</param>
         /// <param name="provider">Can be either, default, nominatim, opencagedata (optional)</param>
-        /// <returns>ApiResponse of GHGeocodingResponse</returns>
-        public ApiResponse< GHGeocodingResponse > GeocodeGetWithHttpInfo (string key, string q = null, string locale = null, int? limit = null, bool? reverse = null, string point = null, string provider = null)
+        /// <returns>ApiResponse of GeocodingResponse</returns>
+        public ApiResponse< GeocodingResponse > GeocodeGetWithHttpInfo (string key, string q = null, string locale = null, int? limit = null, bool? reverse = null, string point = null, string provider = null)
         {
             // verify the required parameter 'key' is set
             if (key == null)
@@ -286,9 +286,9 @@ namespace IO.Swagger.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<GHGeocodingResponse>(localVarStatusCode,
+            return new ApiResponse<GeocodingResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (GHGeocodingResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(GHGeocodingResponse)));
+                (GeocodingResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(GeocodingResponse)));
             
         }
 
@@ -303,10 +303,10 @@ namespace IO.Swagger.Api
         /// <param name="reverse">Set to true to do a reverse Geocoding request (optional)</param>
         /// <param name="point">The location bias in the format &#39;latitude,longitude&#39; e.g. point&#x3D;45.93272,11.58803 (optional)</param>
         /// <param name="provider">Can be either, default, nominatim, opencagedata (optional)</param>
-        /// <returns>Task of GHGeocodingResponse</returns>
-        public async System.Threading.Tasks.Task<GHGeocodingResponse> GeocodeGetAsync (string key, string q = null, string locale = null, int? limit = null, bool? reverse = null, string point = null, string provider = null)
+        /// <returns>Task of GeocodingResponse</returns>
+        public async System.Threading.Tasks.Task<GeocodingResponse> GeocodeGetAsync (string key, string q = null, string locale = null, int? limit = null, bool? reverse = null, string point = null, string provider = null)
         {
-             ApiResponse<GHGeocodingResponse> localVarResponse = await GeocodeGetAsyncWithHttpInfo(key, q, locale, limit, reverse, point, provider);
+             ApiResponse<GeocodingResponse> localVarResponse = await GeocodeGetAsyncWithHttpInfo(key, q, locale, limit, reverse, point, provider);
              return localVarResponse.Data;
 
         }
@@ -322,8 +322,8 @@ namespace IO.Swagger.Api
         /// <param name="reverse">Set to true to do a reverse Geocoding request (optional)</param>
         /// <param name="point">The location bias in the format &#39;latitude,longitude&#39; e.g. point&#x3D;45.93272,11.58803 (optional)</param>
         /// <param name="provider">Can be either, default, nominatim, opencagedata (optional)</param>
-        /// <returns>Task of ApiResponse (GHGeocodingResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<GHGeocodingResponse>> GeocodeGetAsyncWithHttpInfo (string key, string q = null, string locale = null, int? limit = null, bool? reverse = null, string point = null, string provider = null)
+        /// <returns>Task of ApiResponse (GeocodingResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<GeocodingResponse>> GeocodeGetAsyncWithHttpInfo (string key, string q = null, string locale = null, int? limit = null, bool? reverse = null, string point = null, string provider = null)
         {
             // verify the required parameter 'key' is set
             if (key == null)
@@ -375,9 +375,9 @@ namespace IO.Swagger.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<GHGeocodingResponse>(localVarStatusCode,
+            return new ApiResponse<GeocodingResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (GHGeocodingResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(GHGeocodingResponse)));
+                (GeocodingResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(GeocodingResponse)));
             
         }
 

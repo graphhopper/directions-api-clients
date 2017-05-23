@@ -13,30 +13,30 @@
 #include "SamiCostMatrix_data_info.h"
 #include "SamiGHError.h"
 #include "SamiGHError_hints.h"
-#include "SamiGHGeocodingLocation.h"
-#include "SamiGHGeocodingPoint.h"
-#include "SamiGHGeocodingResponse.h"
-#include "SamiGHIsochroneResponse.h"
-#include "SamiGHIsochroneResponsePolygon.h"
-#include "SamiGHIsochroneResponsePolygon_geometry.h"
-#include "SamiGHIsochroneResponsePolygon_properties.h"
-#include "SamiGHMatrixRequest.h"
-#include "SamiGHMatrixResponse.h"
-#include "SamiGHResponseCoordinates.h"
-#include "SamiGHResponseCoordinatesArray.h"
-#include "SamiGHResponseInfo.h"
-#include "SamiGHResponseInstruction.h"
-#include "SamiGHResponseInstructions.h"
-#include "SamiGHRouteResponse.h"
-#include "SamiGHRouteResponsePath.h"
+#include "SamiGeocodingLocation.h"
+#include "SamiGeocodingPoint.h"
+#include "SamiGeocodingResponse.h"
+#include "SamiIsochroneResponse.h"
+#include "SamiIsochroneResponsePolygon.h"
+#include "SamiIsochroneResponsePolygon_geometry.h"
+#include "SamiIsochroneResponsePolygon_properties.h"
 #include "SamiJobId.h"
 #include "SamiLocation.h"
+#include "SamiMatrixRequest.h"
+#include "SamiMatrixResponse.h"
 #include "SamiObjective.h"
 #include "SamiRelation.h"
 #include "SamiRequest.h"
 #include "SamiResponse.h"
+#include "SamiResponseCoordinates.h"
+#include "SamiResponseCoordinatesArray.h"
+#include "SamiResponseInfo.h"
+#include "SamiResponseInstruction.h"
+#include "SamiResponseInstructions.h"
 #include "SamiRoute.h"
 #include "SamiRoutePoint.h"
+#include "SamiRouteResponse.h"
+#include "SamiRouteResponsePath.h"
 #include "SamiRouting.h"
 #include "SamiService.h"
 #include "SamiShipment.h"
@@ -80,59 +80,38 @@ namespace Swagger {
     if(type.Equals(L"SamiGHError_hints", true)) {
       return new SamiGHError_hints();
     }
-    if(type.Equals(L"SamiGHGeocodingLocation", true)) {
-      return new SamiGHGeocodingLocation();
+    if(type.Equals(L"SamiGeocodingLocation", true)) {
+      return new SamiGeocodingLocation();
     }
-    if(type.Equals(L"SamiGHGeocodingPoint", true)) {
-      return new SamiGHGeocodingPoint();
+    if(type.Equals(L"SamiGeocodingPoint", true)) {
+      return new SamiGeocodingPoint();
     }
-    if(type.Equals(L"SamiGHGeocodingResponse", true)) {
-      return new SamiGHGeocodingResponse();
+    if(type.Equals(L"SamiGeocodingResponse", true)) {
+      return new SamiGeocodingResponse();
     }
-    if(type.Equals(L"SamiGHIsochroneResponse", true)) {
-      return new SamiGHIsochroneResponse();
+    if(type.Equals(L"SamiIsochroneResponse", true)) {
+      return new SamiIsochroneResponse();
     }
-    if(type.Equals(L"SamiGHIsochroneResponsePolygon", true)) {
-      return new SamiGHIsochroneResponsePolygon();
+    if(type.Equals(L"SamiIsochroneResponsePolygon", true)) {
+      return new SamiIsochroneResponsePolygon();
     }
-    if(type.Equals(L"SamiGHIsochroneResponsePolygon_geometry", true)) {
-      return new SamiGHIsochroneResponsePolygon_geometry();
+    if(type.Equals(L"SamiIsochroneResponsePolygon_geometry", true)) {
+      return new SamiIsochroneResponsePolygon_geometry();
     }
-    if(type.Equals(L"SamiGHIsochroneResponsePolygon_properties", true)) {
-      return new SamiGHIsochroneResponsePolygon_properties();
-    }
-    if(type.Equals(L"SamiGHMatrixRequest", true)) {
-      return new SamiGHMatrixRequest();
-    }
-    if(type.Equals(L"SamiGHMatrixResponse", true)) {
-      return new SamiGHMatrixResponse();
-    }
-    if(type.Equals(L"SamiGHResponseCoordinates", true)) {
-      return new SamiGHResponseCoordinates();
-    }
-    if(type.Equals(L"SamiGHResponseCoordinatesArray", true)) {
-      return new SamiGHResponseCoordinatesArray();
-    }
-    if(type.Equals(L"SamiGHResponseInfo", true)) {
-      return new SamiGHResponseInfo();
-    }
-    if(type.Equals(L"SamiGHResponseInstruction", true)) {
-      return new SamiGHResponseInstruction();
-    }
-    if(type.Equals(L"SamiGHResponseInstructions", true)) {
-      return new SamiGHResponseInstructions();
-    }
-    if(type.Equals(L"SamiGHRouteResponse", true)) {
-      return new SamiGHRouteResponse();
-    }
-    if(type.Equals(L"SamiGHRouteResponsePath", true)) {
-      return new SamiGHRouteResponsePath();
+    if(type.Equals(L"SamiIsochroneResponsePolygon_properties", true)) {
+      return new SamiIsochroneResponsePolygon_properties();
     }
     if(type.Equals(L"SamiJobId", true)) {
       return new SamiJobId();
     }
     if(type.Equals(L"SamiLocation", true)) {
       return new SamiLocation();
+    }
+    if(type.Equals(L"SamiMatrixRequest", true)) {
+      return new SamiMatrixRequest();
+    }
+    if(type.Equals(L"SamiMatrixResponse", true)) {
+      return new SamiMatrixResponse();
     }
     if(type.Equals(L"SamiObjective", true)) {
       return new SamiObjective();
@@ -146,11 +125,32 @@ namespace Swagger {
     if(type.Equals(L"SamiResponse", true)) {
       return new SamiResponse();
     }
+    if(type.Equals(L"SamiResponseCoordinates", true)) {
+      return new SamiResponseCoordinates();
+    }
+    if(type.Equals(L"SamiResponseCoordinatesArray", true)) {
+      return new SamiResponseCoordinatesArray();
+    }
+    if(type.Equals(L"SamiResponseInfo", true)) {
+      return new SamiResponseInfo();
+    }
+    if(type.Equals(L"SamiResponseInstruction", true)) {
+      return new SamiResponseInstruction();
+    }
+    if(type.Equals(L"SamiResponseInstructions", true)) {
+      return new SamiResponseInstructions();
+    }
     if(type.Equals(L"SamiRoute", true)) {
       return new SamiRoute();
     }
     if(type.Equals(L"SamiRoutePoint", true)) {
       return new SamiRoutePoint();
+    }
+    if(type.Equals(L"SamiRouteResponse", true)) {
+      return new SamiRouteResponse();
+    }
+    if(type.Equals(L"SamiRouteResponsePath", true)) {
+      return new SamiRouteResponsePath();
     }
     if(type.Equals(L"SamiRouting", true)) {
       return new SamiRouting();

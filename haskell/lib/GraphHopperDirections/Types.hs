@@ -13,30 +13,30 @@ module GraphHopperDirections.Types (
     CostMatrix_data_info (..),
     GHError (..),
     GHError_hints (..),
-    GHGeocodingLocation (..),
-    GHGeocodingPoint (..),
-    GHGeocodingResponse (..),
-    GHIsochroneResponse (..),
-    GHIsochroneResponsePolygon (..),
-    GHIsochroneResponsePolygon_geometry (..),
-    GHIsochroneResponsePolygon_properties (..),
-    GHMatrixRequest (..),
-    GHMatrixResponse (..),
-    GHResponseCoordinates (..),
-    GHResponseCoordinatesArray (..),
-    GHResponseInfo (..),
-    GHResponseInstruction (..),
-    GHResponseInstructions (..),
-    GHRouteResponse (..),
-    GHRouteResponsePath (..),
+    GeocodingLocation (..),
+    GeocodingPoint (..),
+    GeocodingResponse (..),
+    IsochroneResponse (..),
+    IsochroneResponsePolygon (..),
+    IsochroneResponsePolygon_geometry (..),
+    IsochroneResponsePolygon_properties (..),
     JobId (..),
     Location (..),
+    MatrixRequest (..),
+    MatrixResponse (..),
     Objective (..),
     Relation (..),
     Request (..),
     Response (..),
+    ResponseCoordinates (..),
+    ResponseCoordinatesArray (..),
+    ResponseInfo (..),
+    ResponseInstruction (..),
+    ResponseInstructions (..),
     Route (..),
     RoutePoint (..),
+    RouteResponse (..),
+    RouteResponsePath (..),
     Routing (..),
     Service (..),
     Shipment (..),
@@ -187,193 +187,89 @@ instance ToJSON GHError_hints where
   toJSON     = genericToJSON     (removeFieldLabelPrefix False "gHErrorHints")
 
 -- | 
-data GHGeocodingLocation = GHGeocodingLocation
-    { gHGeocodingLocationPoint :: GHGeocodingPoint -- ^ 
-    , gHGeocodingLocationOsmId :: Text -- ^ OSM Id
-    , gHGeocodingLocationOsmType :: Text -- ^ N = node, R = relation, W = way
-    , gHGeocodingLocationName :: Text -- ^ 
-    , gHGeocodingLocationCountry :: Text -- ^ 
-    , gHGeocodingLocationCity :: Text -- ^ 
-    , gHGeocodingLocationState :: Text -- ^ 
-    , gHGeocodingLocationStreet :: Text -- ^ 
-    , gHGeocodingLocationHousenumber :: Text -- ^ 
-    , gHGeocodingLocationPostcode :: Text -- ^ 
+data GeocodingLocation = GeocodingLocation
+    { geocodingLocationPoint :: GeocodingPoint -- ^ 
+    , geocodingLocationOsmId :: Text -- ^ OSM Id
+    , geocodingLocationOsmType :: Text -- ^ N = node, R = relation, W = way
+    , geocodingLocationName :: Text -- ^ 
+    , geocodingLocationCountry :: Text -- ^ 
+    , geocodingLocationCity :: Text -- ^ 
+    , geocodingLocationState :: Text -- ^ 
+    , geocodingLocationStreet :: Text -- ^ 
+    , geocodingLocationHousenumber :: Text -- ^ 
+    , geocodingLocationPostcode :: Text -- ^ 
     } deriving (Show, Eq, Generic)
 
-instance FromJSON GHGeocodingLocation where
-  parseJSON  = genericParseJSON  (removeFieldLabelPrefix True "gHGeocodingLocation")
-instance ToJSON GHGeocodingLocation where
-  toJSON     = genericToJSON     (removeFieldLabelPrefix False "gHGeocodingLocation")
+instance FromJSON GeocodingLocation where
+  parseJSON  = genericParseJSON  (removeFieldLabelPrefix True "geocodingLocation")
+instance ToJSON GeocodingLocation where
+  toJSON     = genericToJSON     (removeFieldLabelPrefix False "geocodingLocation")
 
 -- | 
-data GHGeocodingPoint = GHGeocodingPoint
-    { gHGeocodingPointLat :: Double -- ^ Latitude
-    , gHGeocodingPointLng :: Double -- ^ Longitude
+data GeocodingPoint = GeocodingPoint
+    { geocodingPointLat :: Double -- ^ Latitude
+    , geocodingPointLng :: Double -- ^ Longitude
     } deriving (Show, Eq, Generic)
 
-instance FromJSON GHGeocodingPoint where
-  parseJSON  = genericParseJSON  (removeFieldLabelPrefix True "gHGeocodingPoint")
-instance ToJSON GHGeocodingPoint where
-  toJSON     = genericToJSON     (removeFieldLabelPrefix False "gHGeocodingPoint")
+instance FromJSON GeocodingPoint where
+  parseJSON  = genericParseJSON  (removeFieldLabelPrefix True "geocodingPoint")
+instance ToJSON GeocodingPoint where
+  toJSON     = genericToJSON     (removeFieldLabelPrefix False "geocodingPoint")
 
 -- | 
-data GHGeocodingResponse = GHGeocodingResponse
-    { gHGeocodingResponseHits :: [GHGeocodingLocation] -- ^ 
-    , gHGeocodingResponseLocale :: Text -- ^ 
+data GeocodingResponse = GeocodingResponse
+    { geocodingResponseHits :: [GeocodingLocation] -- ^ 
+    , geocodingResponseLocale :: Text -- ^ 
     } deriving (Show, Eq, Generic)
 
-instance FromJSON GHGeocodingResponse where
-  parseJSON  = genericParseJSON  (removeFieldLabelPrefix True "gHGeocodingResponse")
-instance ToJSON GHGeocodingResponse where
-  toJSON     = genericToJSON     (removeFieldLabelPrefix False "gHGeocodingResponse")
+instance FromJSON GeocodingResponse where
+  parseJSON  = genericParseJSON  (removeFieldLabelPrefix True "geocodingResponse")
+instance ToJSON GeocodingResponse where
+  toJSON     = genericToJSON     (removeFieldLabelPrefix False "geocodingResponse")
 
 -- | 
-data GHIsochroneResponse = GHIsochroneResponse
-    { gHIsochroneResponsePolygons :: [GHIsochroneResponsePolygon] -- ^ 
-    , gHIsochroneResponseCopyrights :: [Text] -- ^ 
+data IsochroneResponse = IsochroneResponse
+    { isochroneResponsePolygons :: [IsochroneResponsePolygon] -- ^ 
+    , isochroneResponseCopyrights :: [Text] -- ^ 
     } deriving (Show, Eq, Generic)
 
-instance FromJSON GHIsochroneResponse where
-  parseJSON  = genericParseJSON  (removeFieldLabelPrefix True "gHIsochroneResponse")
-instance ToJSON GHIsochroneResponse where
-  toJSON     = genericToJSON     (removeFieldLabelPrefix False "gHIsochroneResponse")
+instance FromJSON IsochroneResponse where
+  parseJSON  = genericParseJSON  (removeFieldLabelPrefix True "isochroneResponse")
+instance ToJSON IsochroneResponse where
+  toJSON     = genericToJSON     (removeFieldLabelPrefix False "isochroneResponse")
 
 -- | A found path
-data GHIsochroneResponsePolygon = GHIsochroneResponsePolygon
-    { gHIsochroneResponsePolygonProperties :: GHIsochroneResponsePolygon_properties -- ^ 
-    , gHIsochroneResponsePolygonType :: Text -- ^ 
-    , gHIsochroneResponsePolygonGeometry :: GHIsochroneResponsePolygon_geometry -- ^ 
+data IsochroneResponsePolygon = IsochroneResponsePolygon
+    { isochroneResponsePolygonProperties :: IsochroneResponsePolygon_properties -- ^ 
+    , isochroneResponsePolygonType :: Text -- ^ 
+    , isochroneResponsePolygonGeometry :: IsochroneResponsePolygon_geometry -- ^ 
     } deriving (Show, Eq, Generic)
 
-instance FromJSON GHIsochroneResponsePolygon where
-  parseJSON  = genericParseJSON  (removeFieldLabelPrefix True "gHIsochroneResponsePolygon")
-instance ToJSON GHIsochroneResponsePolygon where
-  toJSON     = genericToJSON     (removeFieldLabelPrefix False "gHIsochroneResponsePolygon")
+instance FromJSON IsochroneResponsePolygon where
+  parseJSON  = genericParseJSON  (removeFieldLabelPrefix True "isochroneResponsePolygon")
+instance ToJSON IsochroneResponsePolygon where
+  toJSON     = genericToJSON     (removeFieldLabelPrefix False "isochroneResponsePolygon")
 
 -- | 
-data GHIsochroneResponsePolygon_geometry = GHIsochroneResponsePolygon_geometry
-    { gHIsochroneResponsePolygonGeometryType :: Text -- ^ 
-    , gHIsochroneResponsePolygonGeometryCoordinates :: GHResponseCoordinatesArray -- ^ 
+data IsochroneResponsePolygon_geometry = IsochroneResponsePolygon_geometry
+    { isochroneResponsePolygonGeometryType :: Text -- ^ 
+    , isochroneResponsePolygonGeometryCoordinates :: ResponseCoordinatesArray -- ^ 
     } deriving (Show, Eq, Generic)
 
-instance FromJSON GHIsochroneResponsePolygon_geometry where
-  parseJSON  = genericParseJSON  (removeFieldLabelPrefix True "gHIsochroneResponsePolygonGeometry")
-instance ToJSON GHIsochroneResponsePolygon_geometry where
-  toJSON     = genericToJSON     (removeFieldLabelPrefix False "gHIsochroneResponsePolygonGeometry")
+instance FromJSON IsochroneResponsePolygon_geometry where
+  parseJSON  = genericParseJSON  (removeFieldLabelPrefix True "isochroneResponsePolygonGeometry")
+instance ToJSON IsochroneResponsePolygon_geometry where
+  toJSON     = genericToJSON     (removeFieldLabelPrefix False "isochroneResponsePolygonGeometry")
 
 -- | 
-data GHIsochroneResponsePolygon_properties = GHIsochroneResponsePolygon_properties
-    { gHIsochroneResponsePolygonPropertiesBucket :: Int -- ^ 
+data IsochroneResponsePolygon_properties = IsochroneResponsePolygon_properties
+    { isochroneResponsePolygonPropertiesBucket :: Int -- ^ 
     } deriving (Show, Eq, Generic)
 
-instance FromJSON GHIsochroneResponsePolygon_properties where
-  parseJSON  = genericParseJSON  (removeFieldLabelPrefix True "gHIsochroneResponsePolygonProperties")
-instance ToJSON GHIsochroneResponsePolygon_properties where
-  toJSON     = genericToJSON     (removeFieldLabelPrefix False "gHIsochroneResponsePolygonProperties")
-
--- | 
-data GHMatrixRequest = GHMatrixRequest
-    { gHMatrixRequestPoints :: [[Double]] -- ^ Specifiy multiple points for which the weight-, route-, time- or distance-matrix should be calculated. In this case the starts are identical to the destinations. If there are N points, then NxN entries will be calculated. The order of the point parameter is important. Specify at least three points. Cannot be used together with from_point or to_point. Is a string with the format longitude,latitude.
-    , gHMatrixRequestFromPoints :: Text -- ^ The starting points for the routes. E.g. if you want to calculate the three routes A-&gt;1, A-&gt;2, A-&gt;3 then you have one from_point parameter and three to_point parameters. Is a string with the format longitude,latitude.
-    , gHMatrixRequestToPoints :: Text -- ^ The destination points for the routes. Is a string with the format longitude,latitude.
-    , gHMatrixRequestOutArrays :: [Text] -- ^ Specifies which arrays should be included in the response. Specify one or more of the following options 'weights', 'times', 'distances'. To specify more than one array use e.g. out_array=times&amp;out_array=distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API.
-    , gHMatrixRequestVehicle :: Text -- ^ The vehicle for which the route should be calculated. Other vehicles are foot, bike, mtb, racingbike, motorcycle, small_truck, bus and truck. See here for the details.
-    } deriving (Show, Eq, Generic)
-
-instance FromJSON GHMatrixRequest where
-  parseJSON  = genericParseJSON  (removeFieldLabelPrefix True "gHMatrixRequest")
-instance ToJSON GHMatrixRequest where
-  toJSON     = genericToJSON     (removeFieldLabelPrefix False "gHMatrixRequest")
-
--- | 
-data GHMatrixResponse = GHMatrixResponse
-    { gHMatrixResponseDistances :: [[Double]] -- ^ 
-    , gHMatrixResponseTimes :: [[Double]] -- ^ 
-    , gHMatrixResponseWeights :: [[Double]] -- ^ 
-    , gHMatrixResponseInfo :: GHResponseInfo -- ^ 
-    } deriving (Show, Eq, Generic)
-
-instance FromJSON GHMatrixResponse where
-  parseJSON  = genericParseJSON  (removeFieldLabelPrefix True "gHMatrixResponse")
-instance ToJSON GHMatrixResponse where
-  toJSON     = genericToJSON     (removeFieldLabelPrefix False "gHMatrixResponse")
-
--- | 
-data GHResponseCoordinates = GHResponseCoordinates
-    { gHResponseCoordinatesCoordinates :: GHResponseCoordinatesArray -- ^ 
-    } deriving (Show, Eq, Generic)
-
-instance FromJSON GHResponseCoordinates where
-  parseJSON  = genericParseJSON  (removeFieldLabelPrefix True "gHResponseCoordinates")
-instance ToJSON GHResponseCoordinates where
-  toJSON     = genericToJSON     (removeFieldLabelPrefix False "gHResponseCoordinates")
-
--- | An array containing coordinates
-newtype GHResponseCoordinatesArray = GHResponseCoordinatesArray { unGHResponseCoordinatesArray :: List }
-  deriving (Show, Eq, FromJSON, ToJSON, Generic)
-
--- | Additional information for your request
-data GHResponseInfo = GHResponseInfo
-    { gHResponseInfoCopyrights :: [Text] -- ^ 
-    , gHResponseInfoTook :: Int -- ^ 
-    } deriving (Show, Eq, Generic)
-
-instance FromJSON GHResponseInfo where
-  parseJSON  = genericParseJSON  (removeFieldLabelPrefix True "gHResponseInfo")
-instance ToJSON GHResponseInfo where
-  toJSON     = genericToJSON     (removeFieldLabelPrefix False "gHResponseInfo")
-
--- | 
-data GHResponseInstruction = GHResponseInstruction
-    { gHResponseInstructionText :: Text -- ^ A description what the user has to do in order to follow the route. The language depends on the locale parameter.
-    , gHResponseInstructionStreetName :: Text -- ^ The name of the street to turn onto in order to follow the route.
-    , gHResponseInstructionDistance :: Double -- ^ The distance for this instruction, in meter
-    , gHResponseInstructionTime :: Int -- ^ The duration for this instruction, in ms
-    , gHResponseInstructionInterval :: [Int] -- ^ An array containing the first and the last index (relative to paths[0].points) of the points for this instruction. This is useful to know for which part of the route the instructions are valid.
-    , gHResponseInstructionSign :: Int -- ^ A number which specifies the sign to show e.g. for right turn etc <br>TURN_SHARP_LEFT = -3<br>TURN_LEFT = -2<br>TURN_SLIGHT_LEFT = -1<br>CONTINUE_ON_STREET = 0<br>TURN_SLIGHT_RIGHT = 1<br>TURN_RIGHT = 2<br>TURN_SHARP_RIGHT = 3<br>FINISH = 4<br>VIA_REACHED = 5<br>USE_ROUNDABOUT = 6
-    , gHResponseInstructionAnnotationText :: Text -- ^ optional - A text describing the instruction in more detail, e.g. like surface of the way, warnings or involved costs.
-    , gHResponseInstructionAnnotationImportance :: Int -- ^ optional - 0 stands for INFO, 1 for warning, 2 for costs, 3 for costs and warning
-    , gHResponseInstructionExitNumber :: Int -- ^ optional - Only available for USE_ROUNDABOUT instructions. The count of exits at which the route leaves the roundabout.
-    , gHResponseInstructionTurnAngle :: Double -- ^ optional - Only available for USE_ROUNDABOUT instructions. The radian of the route within the roundabout - 0&lt;r&lt;2*PI for clockwise and -2PI&lt;r&lt;0 for counterclockwise transit. Null if the direction of rotation is undefined.
-    } deriving (Show, Eq, Generic)
-
-instance FromJSON GHResponseInstruction where
-  parseJSON  = genericParseJSON  (removeFieldLabelPrefix True "gHResponseInstruction")
-instance ToJSON GHResponseInstruction where
-  toJSON     = genericToJSON     (removeFieldLabelPrefix False "gHResponseInstruction")
-
--- | Contains information about the instructions for this route. The last instruction is always the Finish instruction and takes 0ms and 0meter. Keep in mind that instructions are currently under active development and can sometimes contain misleading information, so, make sure you always show an image of the map at the same time when navigating your users!
-newtype GHResponseInstructions = GHResponseInstructions { unGHResponseInstructions :: GHResponseInstruction }
-  deriving (Show, Eq, FromJSON, ToJSON, Generic)
-
--- | 
-data GHRouteResponse = GHRouteResponse
-    { gHRouteResponsePaths :: [GHRouteResponsePath] -- ^ 
-    , gHRouteResponseInfo :: GHResponseInfo -- ^ 
-    } deriving (Show, Eq, Generic)
-
-instance FromJSON GHRouteResponse where
-  parseJSON  = genericParseJSON  (removeFieldLabelPrefix True "gHRouteResponse")
-instance ToJSON GHRouteResponse where
-  toJSON     = genericToJSON     (removeFieldLabelPrefix False "gHRouteResponse")
-
--- | A found path
-data GHRouteResponsePath = GHRouteResponsePath
-    { gHRouteResponsePathDistance :: Double -- ^ The total distance of the route, in meter
-    , gHRouteResponsePathTime :: Integer -- ^ The total time of the route, in ms
-    , gHRouteResponsePathAscend :: Double -- ^ 
-    , gHRouteResponsePathDescend :: Double -- ^ The total descend (downhill) of the route, in meter
-    , gHRouteResponsePathPoints :: GHResponseCoordinates -- ^ 
-    , gHRouteResponsePathPointsEncoded :: Bool -- ^ Is true if the points are encoded, if not paths[0].points contains the geo json of the path (then order is lon,lat,elevation), which is easier to handle but consumes more bandwidth compared to encoded version
-    , gHRouteResponsePathBbox :: [Double] -- ^ The bounding box of the route, format <br> minLon, minLat, maxLon, maxLat
-    , gHRouteResponsePathSnappedWaypoints :: GHResponseCoordinates -- ^ 
-    , gHRouteResponsePathInstructions :: GHResponseInstructions -- ^ 
-    } deriving (Show, Eq, Generic)
-
-instance FromJSON GHRouteResponsePath where
-  parseJSON  = genericParseJSON  (removeFieldLabelPrefix True "gHRouteResponsePath")
-instance ToJSON GHRouteResponsePath where
-  toJSON     = genericToJSON     (removeFieldLabelPrefix False "gHRouteResponsePath")
+instance FromJSON IsochroneResponsePolygon_properties where
+  parseJSON  = genericParseJSON  (removeFieldLabelPrefix True "isochroneResponsePolygonProperties")
+instance ToJSON IsochroneResponsePolygon_properties where
+  toJSON     = genericToJSON     (removeFieldLabelPrefix False "isochroneResponsePolygonProperties")
 
 -- | 
 data JobId = JobId
@@ -395,6 +291,33 @@ instance FromJSON Location where
   parseJSON  = genericParseJSON  (removeFieldLabelPrefix True "location")
 instance ToJSON Location where
   toJSON     = genericToJSON     (removeFieldLabelPrefix False "location")
+
+-- | 
+data MatrixRequest = MatrixRequest
+    { matrixRequestPoints :: [[Double]] -- ^ Specifiy multiple points for which the weight-, route-, time- or distance-matrix should be calculated. In this case the starts are identical to the destinations. If there are N points, then NxN entries will be calculated. The order of the point parameter is important. Specify at least three points. Cannot be used together with from_point or to_point. Is a string with the format longitude,latitude.
+    , matrixRequestFromPoints :: Text -- ^ The starting points for the routes. E.g. if you want to calculate the three routes A-&gt;1, A-&gt;2, A-&gt;3 then you have one from_point parameter and three to_point parameters. Is a string with the format longitude,latitude.
+    , matrixRequestToPoints :: Text -- ^ The destination points for the routes. Is a string with the format longitude,latitude.
+    , matrixRequestOutArrays :: [Text] -- ^ Specifies which arrays should be included in the response. Specify one or more of the following options 'weights', 'times', 'distances'. To specify more than one array use e.g. out_array=times&amp;out_array=distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API.
+    , matrixRequestVehicle :: Text -- ^ The vehicle for which the route should be calculated. Other vehicles are foot, bike, mtb, racingbike, motorcycle, small_truck, bus and truck. See here for the details.
+    } deriving (Show, Eq, Generic)
+
+instance FromJSON MatrixRequest where
+  parseJSON  = genericParseJSON  (removeFieldLabelPrefix True "matrixRequest")
+instance ToJSON MatrixRequest where
+  toJSON     = genericToJSON     (removeFieldLabelPrefix False "matrixRequest")
+
+-- | 
+data MatrixResponse = MatrixResponse
+    { matrixResponseDistances :: [[Double]] -- ^ 
+    , matrixResponseTimes :: [[Double]] -- ^ 
+    , matrixResponseWeights :: [[Double]] -- ^ 
+    , matrixResponseInfo :: ResponseInfo -- ^ 
+    } deriving (Show, Eq, Generic)
+
+instance FromJSON MatrixResponse where
+  parseJSON  = genericParseJSON  (removeFieldLabelPrefix True "matrixResponse")
+instance ToJSON MatrixResponse where
+  toJSON     = genericToJSON     (removeFieldLabelPrefix False "matrixResponse")
 
 -- | 
 data Objective = Objective
@@ -453,6 +376,54 @@ instance ToJSON Response where
   toJSON     = genericToJSON     (removeFieldLabelPrefix False "response")
 
 -- | 
+data ResponseCoordinates = ResponseCoordinates
+    { responseCoordinatesCoordinates :: ResponseCoordinatesArray -- ^ 
+    } deriving (Show, Eq, Generic)
+
+instance FromJSON ResponseCoordinates where
+  parseJSON  = genericParseJSON  (removeFieldLabelPrefix True "responseCoordinates")
+instance ToJSON ResponseCoordinates where
+  toJSON     = genericToJSON     (removeFieldLabelPrefix False "responseCoordinates")
+
+-- | An array containing coordinates
+newtype ResponseCoordinatesArray = ResponseCoordinatesArray { unResponseCoordinatesArray :: List }
+  deriving (Show, Eq, FromJSON, ToJSON, Generic)
+
+-- | Additional information for your request
+data ResponseInfo = ResponseInfo
+    { responseInfoCopyrights :: [Text] -- ^ 
+    , responseInfoTook :: Int -- ^ 
+    } deriving (Show, Eq, Generic)
+
+instance FromJSON ResponseInfo where
+  parseJSON  = genericParseJSON  (removeFieldLabelPrefix True "responseInfo")
+instance ToJSON ResponseInfo where
+  toJSON     = genericToJSON     (removeFieldLabelPrefix False "responseInfo")
+
+-- | 
+data ResponseInstruction = ResponseInstruction
+    { responseInstructionText :: Text -- ^ A description what the user has to do in order to follow the route. The language depends on the locale parameter.
+    , responseInstructionStreetName :: Text -- ^ The name of the street to turn onto in order to follow the route.
+    , responseInstructionDistance :: Double -- ^ The distance for this instruction, in meter
+    , responseInstructionTime :: Int -- ^ The duration for this instruction, in ms
+    , responseInstructionInterval :: [Int] -- ^ An array containing the first and the last index (relative to paths[0].points) of the points for this instruction. This is useful to know for which part of the route the instructions are valid.
+    , responseInstructionSign :: Int -- ^ A number which specifies the sign to show e.g. for right turn etc <br>TURN_SHARP_LEFT = -3<br>TURN_LEFT = -2<br>TURN_SLIGHT_LEFT = -1<br>CONTINUE_ON_STREET = 0<br>TURN_SLIGHT_RIGHT = 1<br>TURN_RIGHT = 2<br>TURN_SHARP_RIGHT = 3<br>FINISH = 4<br>VIA_REACHED = 5<br>USE_ROUNDABOUT = 6
+    , responseInstructionAnnotationText :: Text -- ^ optional - A text describing the instruction in more detail, e.g. like surface of the way, warnings or involved costs.
+    , responseInstructionAnnotationImportance :: Int -- ^ optional - 0 stands for INFO, 1 for warning, 2 for costs, 3 for costs and warning
+    , responseInstructionExitNumber :: Int -- ^ optional - Only available for USE_ROUNDABOUT instructions. The count of exits at which the route leaves the roundabout.
+    , responseInstructionTurnAngle :: Double -- ^ optional - Only available for USE_ROUNDABOUT instructions. The radian of the route within the roundabout - 0&lt;r&lt;2*PI for clockwise and -2PI&lt;r&lt;0 for counterclockwise transit. Null if the direction of rotation is undefined.
+    } deriving (Show, Eq, Generic)
+
+instance FromJSON ResponseInstruction where
+  parseJSON  = genericParseJSON  (removeFieldLabelPrefix True "responseInstruction")
+instance ToJSON ResponseInstruction where
+  toJSON     = genericToJSON     (removeFieldLabelPrefix False "responseInstruction")
+
+-- | Contains information about the instructions for this route. The last instruction is always the Finish instruction and takes 0ms and 0meter. Keep in mind that instructions are currently under active development and can sometimes contain misleading information, so, make sure you always show an image of the map at the same time when navigating your users!
+newtype ResponseInstructions = ResponseInstructions { unResponseInstructions :: ResponseInstruction }
+  deriving (Show, Eq, FromJSON, ToJSON, Generic)
+
+-- | 
 data Route = Route
     { routeVehicleId :: Text -- ^ id of vehicle that operates route
     , routeDistance :: Integer -- ^ distance of route in meter
@@ -478,6 +449,35 @@ instance FromJSON RoutePoint where
   parseJSON  = genericParseJSON  (removeFieldLabelPrefix True "routePoint")
 instance ToJSON RoutePoint where
   toJSON     = genericToJSON     (removeFieldLabelPrefix False "routePoint")
+
+-- | 
+data RouteResponse = RouteResponse
+    { routeResponsePaths :: [RouteResponsePath] -- ^ 
+    , routeResponseInfo :: ResponseInfo -- ^ 
+    } deriving (Show, Eq, Generic)
+
+instance FromJSON RouteResponse where
+  parseJSON  = genericParseJSON  (removeFieldLabelPrefix True "routeResponse")
+instance ToJSON RouteResponse where
+  toJSON     = genericToJSON     (removeFieldLabelPrefix False "routeResponse")
+
+-- | A found path
+data RouteResponsePath = RouteResponsePath
+    { routeResponsePathDistance :: Double -- ^ The total distance of the route, in meter
+    , routeResponsePathTime :: Integer -- ^ The total time of the route, in ms
+    , routeResponsePathAscend :: Double -- ^ 
+    , routeResponsePathDescend :: Double -- ^ The total descend (downhill) of the route, in meter
+    , routeResponsePathPoints :: ResponseCoordinates -- ^ 
+    , routeResponsePathPointsEncoded :: Bool -- ^ Is true if the points are encoded, if not paths[0].points contains the geo json of the path (then order is lon,lat,elevation), which is easier to handle but consumes more bandwidth compared to encoded version
+    , routeResponsePathBbox :: [Double] -- ^ The bounding box of the route, format <br> minLon, minLat, maxLon, maxLat
+    , routeResponsePathSnappedWaypoints :: ResponseCoordinates -- ^ 
+    , routeResponsePathInstructions :: ResponseInstructions -- ^ 
+    } deriving (Show, Eq, Generic)
+
+instance FromJSON RouteResponsePath where
+  parseJSON  = genericParseJSON  (removeFieldLabelPrefix True "routeResponsePath")
+instance ToJSON RouteResponsePath where
+  toJSON     = genericToJSON     (removeFieldLabelPrefix False "routeResponsePath")
 
 -- | 
 data Routing = Routing

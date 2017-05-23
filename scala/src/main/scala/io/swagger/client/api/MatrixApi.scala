@@ -13,8 +13,8 @@
 package io.swagger.client.api
 
 import io.swagger.client.model.GHError
-import io.swagger.client.model.GHMatrixRequest
-import io.swagger.client.model.GHMatrixResponse
+import io.swagger.client.model.MatrixRequest
+import io.swagger.client.model.MatrixResponse
 import io.swagger.client.ApiInvoker
 import io.swagger.client.ApiException
 
@@ -44,9 +44,9 @@ class MatrixApi(val defBasePath: String = "https://graphhopper.com/api/1",
    * @param toPoint The destination points for the routes. Is a string with the format latitude,longitude. (optional)
    * @param outArray Specifies which arrays should be included in the response. Specify one or more of the following options &#39;weights&#39;, &#39;times&#39;, &#39;distances&#39;. To specify more than one array use e.g. out_array&#x3D;times&amp;out_array&#x3D;distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API. (optional)
    * @param vehicle The vehicle for which the route should be calculated. Other vehicles are foot, bike, mtb, racingbike, motorcycle, small_truck, bus and truck. See here for the details. (optional, default to car)
-   * @return GHMatrixResponse
+   * @return MatrixResponse
    */
-  def matrixGet(key: String, point: Option[List[String]] = None, fromPoint: Option[String] = None, toPoint: Option[String] = None, outArray: Option[List[String]] = None, vehicle: Option[String] /* = car*/): Option[GHMatrixResponse] = {
+  def matrixGet(key: String, point: Option[List[String]] = None, fromPoint: Option[String] = None, toPoint: Option[String] = None, outArray: Option[List[String]] = None, vehicle: Option[String] /* = car*/): Option[MatrixResponse] = {
     // create path and map variables
     val path = "/matrix".replaceAll("\\{format\\}", "json")
 
@@ -78,7 +78,7 @@ class MatrixApi(val defBasePath: String = "https://graphhopper.com/api/1",
     try {
       apiInvoker.invokeApi(basePath, path, "GET", queryParams.toMap, formParams.toMap, postBody, headerParams.toMap, contentType) match {
         case s: String =>
-           Some(apiInvoker.deserialize(s, "", classOf[GHMatrixResponse]).asInstanceOf[GHMatrixResponse])
+           Some(apiInvoker.deserialize(s, "", classOf[MatrixResponse]).asInstanceOf[MatrixResponse])
         case _ => None
       }
     } catch {
@@ -92,9 +92,9 @@ class MatrixApi(val defBasePath: String = "https://graphhopper.com/api/1",
    * The GET request has an URL length limitation, which hurts for many locations per request. In those cases use a HTTP POST request with JSON data as input. The only parameter in the URL will be the key which stays in the URL. Both request scenarios are identically except that all singular parameter names are named as their plural for a POST request. 
    * @param key Get your key at graphhopper.com 
    * @param body  (optional)
-   * @return GHMatrixResponse
+   * @return MatrixResponse
    */
-  def matrixPost(key: String, body: Option[GHMatrixRequest] = None): Option[GHMatrixResponse] = {
+  def matrixPost(key: String, body: Option[MatrixRequest] = None): Option[MatrixResponse] = {
     // create path and map variables
     val path = "/matrix".replaceAll("\\{format\\}", "json")
 
@@ -121,7 +121,7 @@ class MatrixApi(val defBasePath: String = "https://graphhopper.com/api/1",
     try {
       apiInvoker.invokeApi(basePath, path, "POST", queryParams.toMap, formParams.toMap, postBody, headerParams.toMap, contentType) match {
         case s: String =>
-           Some(apiInvoker.deserialize(s, "", classOf[GHMatrixResponse]).asInstanceOf[GHMatrixResponse])
+           Some(apiInvoker.deserialize(s, "", classOf[MatrixResponse]).asInstanceOf[MatrixResponse])
         case _ => None
       }
     } catch {

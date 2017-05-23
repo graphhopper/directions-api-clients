@@ -8,7 +8,7 @@
 using Tizen::Base::Boolean;
 using Tizen::Base::Integer;
 #include "SamiGHError.h"
-#include "SamiGHIsochroneResponse.h"
+#include "SamiIsochroneResponse.h"
 using Tizen::Base::String;
 
 using namespace Tizen::Net::Http;
@@ -20,8 +20,8 @@ public:
   SamiIsochroneApi();
   virtual ~SamiIsochroneApi();
 
-  SamiGHIsochroneResponse* 
-  isochroneGetWithCompletion(String* point, String* key, Integer* timeLimit, Integer* distanceLimit, String* vehicle, Integer* buckets, Boolean* reverseFlow, void (* handler)(SamiGHIsochroneResponse*, SamiError*));
+  SamiIsochroneResponse* 
+  isochroneGetWithCompletion(String* point, String* key, Integer* timeLimit, Integer* distanceLimit, String* vehicle, Integer* buckets, Boolean* reverseFlow, void (* handler)(SamiIsochroneResponse*, SamiError*));
   static String getBasePath() {
     return L"https://graphhopper.com/api/1";
   }

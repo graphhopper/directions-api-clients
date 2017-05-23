@@ -2,7 +2,7 @@
 #import "SWGQueryParamCollection.h"
 #import "SWGApiClient.h"
 #import "SWGGHError.h"
-#import "SWGGHGeocodingResponse.h"
+#import "SWGGeocodingResponse.h"
 
 
 @interface SWGGeocodingApi ()
@@ -67,7 +67,7 @@ NSInteger kSWGGeocodingApiMissingParamErrorCode = 234513;
 ///
 ///  @param provider Can be either, default, nominatim, opencagedata (optional)
 ///
-///  @returns SWGGHGeocodingResponse*
+///  @returns SWGGeocodingResponse*
 ///
 -(NSURLSessionTask*) geocodeGetWithKey: (NSString*) key
     q: (NSString*) q
@@ -76,7 +76,7 @@ NSInteger kSWGGeocodingApiMissingParamErrorCode = 234513;
     reverse: (NSNumber*) reverse
     point: (NSString*) point
     provider: (NSString*) provider
-    completionHandler: (void (^)(SWGGHGeocodingResponse* output, NSError* error)) handler {
+    completionHandler: (void (^)(SWGGeocodingResponse* output, NSError* error)) handler {
     // verify the required parameter 'key' is set
     if (key == nil) {
         NSParameterAssert(key);
@@ -149,10 +149,10 @@ NSInteger kSWGGeocodingApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"SWGGHGeocodingResponse*"
+                              responseType: @"SWGGeocodingResponse*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((SWGGHGeocodingResponse*)data, error);
+                                    handler((SWGGeocodingResponse*)data, error);
                                 }
                             }];
 }

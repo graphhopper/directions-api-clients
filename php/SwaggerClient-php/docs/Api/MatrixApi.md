@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 
 # **matrixGet**
-> \Swagger\Client\Model\GHMatrixResponse matrixGet($key, $point, $from_point, $to_point, $out_array, $vehicle)
+> \Swagger\Client\Model\MatrixResponse matrixGet($key, $point, $from_point, $to_point, $out_array, $vehicle)
 
 Matrix API
 
@@ -50,7 +50,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\GHMatrixResponse**](../Model/GHMatrixResponse.md)
+[**\Swagger\Client\Model\MatrixResponse**](../Model/MatrixResponse.md)
 
 ### Authorization
 
@@ -64,7 +64,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **matrixPost**
-> \Swagger\Client\Model\GHMatrixResponse matrixPost($key, $body)
+> \Swagger\Client\Model\MatrixResponse matrixPost($key, $body)
 
 Matrix API Post
 
@@ -77,7 +77,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 $api_instance = new Swagger\Client\Api\MatrixApi();
 $key = "key_example"; // string | Get your key at graphhopper.com
-$body = new \Swagger\Client\Model\GHMatrixRequest(); // \Swagger\Client\Model\GHMatrixRequest | 
+$body = new \Swagger\Client\Model\MatrixRequest(); // \Swagger\Client\Model\MatrixRequest | 
 
 try {
     $result = $api_instance->matrixPost($key, $body);
@@ -93,11 +93,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **key** | **string**| Get your key at graphhopper.com |
- **body** | [**\Swagger\Client\Model\GHMatrixRequest**](../Model/\Swagger\Client\Model\GHMatrixRequest.md)|  | [optional]
+ **body** | [**\Swagger\Client\Model\MatrixRequest**](../Model/\Swagger\Client\Model\MatrixRequest.md)|  | [optional]
 
 ### Return type
 
-[**\Swagger\Client\Model\GHMatrixResponse**](../Model/GHMatrixResponse.md)
+[**\Swagger\Client\Model\MatrixResponse**](../Model/MatrixResponse.md)
 
 ### Authorization
 

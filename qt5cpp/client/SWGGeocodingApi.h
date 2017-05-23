@@ -17,7 +17,7 @@
 
 #include <QString>
 #include "SWGGHError.h"
-#include "SWGGHGeocodingResponse.h"
+#include "SWGGeocodingResponse.h"
 
 #include <QObject>
 
@@ -40,7 +40,7 @@ private:
     void geocodeGetCallback (HttpRequestWorker * worker);
     
 signals:
-    void geocodeGetSignal(SWGGHGeocodingResponse* summary);
+    void geocodeGetSignal(SWGGeocodingResponse* summary);
     
 };
 }

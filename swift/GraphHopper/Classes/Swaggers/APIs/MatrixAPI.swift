@@ -21,7 +21,7 @@ public class MatrixAPI: APIBase {
      - parameter vehicle: (query) The vehicle for which the route should be calculated. Other vehicles are foot, bike, mtb, racingbike, motorcycle, small_truck, bus and truck. See here for the details. (optional, default to car)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    public class func matrixGet(key key: String, point: [String]? = nil, fromPoint: String? = nil, toPoint: String? = nil, outArray: [String]? = nil, vehicle: String? = nil, completion: ((data: GHMatrixResponse?, error: ErrorType?) -> Void)) {
+    public class func matrixGet(key key: String, point: [String]? = nil, fromPoint: String? = nil, toPoint: String? = nil, outArray: [String]? = nil, vehicle: String? = nil, completion: ((data: MatrixResponse?, error: ErrorType?) -> Void)) {
         matrixGetWithRequestBuilder(key: key, point: point, fromPoint: fromPoint, toPoint: toPoint, outArray: outArray, vehicle: vehicle).execute { (response, error) -> Void in
             completion(data: response?.body, error: error);
         }
@@ -49,9 +49,9 @@ public class MatrixAPI: APIBase {
      - parameter outArray: (query) Specifies which arrays should be included in the response. Specify one or more of the following options &#39;weights&#39;, &#39;times&#39;, &#39;distances&#39;. To specify more than one array use e.g. out_array&#x3D;times&amp;out_array&#x3D;distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API. (optional)
      - parameter vehicle: (query) The vehicle for which the route should be calculated. Other vehicles are foot, bike, mtb, racingbike, motorcycle, small_truck, bus and truck. See here for the details. (optional, default to car)
 
-     - returns: RequestBuilder<GHMatrixResponse> 
+     - returns: RequestBuilder<MatrixResponse> 
      */
-    public class func matrixGetWithRequestBuilder(key key: String, point: [String]? = nil, fromPoint: String? = nil, toPoint: String? = nil, outArray: [String]? = nil, vehicle: String? = nil) -> RequestBuilder<GHMatrixResponse> {
+    public class func matrixGetWithRequestBuilder(key key: String, point: [String]? = nil, fromPoint: String? = nil, toPoint: String? = nil, outArray: [String]? = nil, vehicle: String? = nil) -> RequestBuilder<MatrixResponse> {
         let path = "/matrix"
         let URLString = GraphHopperAPI.basePath + path
 
@@ -68,7 +68,7 @@ public class MatrixAPI: APIBase {
  
         let convertedParameters = APIHelper.convertBoolToString(parameters)
  
-        let requestBuilder: RequestBuilder<GHMatrixResponse>.Type = GraphHopperAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<MatrixResponse>.Type = GraphHopperAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: URLString, parameters: convertedParameters, isBody: false)
     }
@@ -80,7 +80,7 @@ public class MatrixAPI: APIBase {
      - parameter body: (body)  (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    public class func matrixPost(key key: String, body: GHMatrixRequest? = nil, completion: ((data: GHMatrixResponse?, error: ErrorType?) -> Void)) {
+    public class func matrixPost(key key: String, body: MatrixRequest? = nil, completion: ((data: MatrixResponse?, error: ErrorType?) -> Void)) {
         matrixPostWithRequestBuilder(key: key, body: body).execute { (response, error) -> Void in
             completion(data: response?.body, error: error);
         }
@@ -104,16 +104,16 @@ public class MatrixAPI: APIBase {
      - parameter key: (query) Get your key at graphhopper.com 
      - parameter body: (body)  (optional)
 
-     - returns: RequestBuilder<GHMatrixResponse> 
+     - returns: RequestBuilder<MatrixResponse> 
      */
-    public class func matrixPostWithRequestBuilder(key key: String, body: GHMatrixRequest? = nil) -> RequestBuilder<GHMatrixResponse> {
+    public class func matrixPostWithRequestBuilder(key key: String, body: MatrixRequest? = nil) -> RequestBuilder<MatrixResponse> {
         let path = "/matrix"
         let URLString = GraphHopperAPI.basePath + path
         let parameters = body?.encodeToJSON() as? [String:AnyObject]
  
         let convertedParameters = APIHelper.convertBoolToString(parameters)
  
-        let requestBuilder: RequestBuilder<GHMatrixResponse>.Type = GraphHopperAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<MatrixResponse>.Type = GraphHopperAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "POST", URLString: URLString, parameters: convertedParameters, isBody: false)
     }

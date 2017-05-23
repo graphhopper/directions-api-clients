@@ -29,7 +29,7 @@ module SwaggerClient
     # @option opts [String] :vehicle Possible vehicles are bike, car, foot and [more](https://graphhopper.com/api/1/docs/supported-vehicle-profiles/) (default to car)
     # @option opts [Integer] :buckets For how many sub intervals an additional polygon should be calculated. (default to 1)
     # @option opts [BOOLEAN] :reverse_flow If &#x60;false&#x60; the flow goes from point to the polygon, if &#x60;true&#x60; the flow goes from the polygon \&quot;inside\&quot; to the point. Example usage for &#x60;false&#x60;&amp;#58; *How many potential customer can be reached within 30min travel time from your store* vs. &#x60;true&#x60;&amp;#58; *How many customers can reach your store within 30min travel time.* (default to false)
-    # @return [GHIsochroneResponse]
+    # @return [IsochroneResponse]
     def isochrone_get(point, key, opts = {})
       data, _status_code, _headers = isochrone_get_with_http_info(point, key, opts)
       return data
@@ -45,7 +45,7 @@ module SwaggerClient
     # @option opts [String] :vehicle Possible vehicles are bike, car, foot and [more](https://graphhopper.com/api/1/docs/supported-vehicle-profiles/)
     # @option opts [Integer] :buckets For how many sub intervals an additional polygon should be calculated.
     # @option opts [BOOLEAN] :reverse_flow If &#x60;false&#x60; the flow goes from point to the polygon, if &#x60;true&#x60; the flow goes from the polygon \&quot;inside\&quot; to the point. Example usage for &#x60;false&#x60;&amp;#58; *How many potential customer can be reached within 30min travel time from your store* vs. &#x60;true&#x60;&amp;#58; *How many customers can reach your store within 30min travel time.*
-    # @return [Array<(GHIsochroneResponse, Fixnum, Hash)>] GHIsochroneResponse data, response status code and response headers
+    # @return [Array<(IsochroneResponse, Fixnum, Hash)>] IsochroneResponse data, response status code and response headers
     def isochrone_get_with_http_info(point, key, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: IsochroneApi.isochrone_get ..."
@@ -84,7 +84,7 @@ module SwaggerClient
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'GHIsochroneResponse')
+        :return_type => 'IsochroneResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: IsochroneApi#isochrone_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end

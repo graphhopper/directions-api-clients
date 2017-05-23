@@ -2,8 +2,8 @@
 #import "SWGQueryParamCollection.h"
 #import "SWGApiClient.h"
 #import "SWGGHError.h"
-#import "SWGGHMatrixRequest.h"
-#import "SWGGHMatrixResponse.h"
+#import "SWGMatrixRequest.h"
+#import "SWGMatrixResponse.h"
 
 
 @interface SWGMatrixApi ()
@@ -66,7 +66,7 @@ NSInteger kSWGMatrixApiMissingParamErrorCode = 234513;
 ///
 ///  @param vehicle The vehicle for which the route should be calculated. Other vehicles are foot, bike, mtb, racingbike, motorcycle, small_truck, bus and truck. See here for the details. (optional, default to car)
 ///
-///  @returns SWGGHMatrixResponse*
+///  @returns SWGMatrixResponse*
 ///
 -(NSURLSessionTask*) matrixGetWithKey: (NSString*) key
     point: (NSArray<NSString*>*) point
@@ -74,7 +74,7 @@ NSInteger kSWGMatrixApiMissingParamErrorCode = 234513;
     toPoint: (NSString*) toPoint
     outArray: (NSArray<NSString*>*) outArray
     vehicle: (NSString*) vehicle
-    completionHandler: (void (^)(SWGGHMatrixResponse* output, NSError* error)) handler {
+    completionHandler: (void (^)(SWGMatrixResponse* output, NSError* error)) handler {
     // verify the required parameter 'key' is set
     if (key == nil) {
         NSParameterAssert(key);
@@ -146,10 +146,10 @@ NSInteger kSWGMatrixApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"SWGGHMatrixResponse*"
+                              responseType: @"SWGMatrixResponse*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((SWGGHMatrixResponse*)data, error);
+                                    handler((SWGMatrixResponse*)data, error);
                                 }
                             }];
 }
@@ -161,11 +161,11 @@ NSInteger kSWGMatrixApiMissingParamErrorCode = 234513;
 ///
 ///  @param body  (optional)
 ///
-///  @returns SWGGHMatrixResponse*
+///  @returns SWGMatrixResponse*
 ///
 -(NSURLSessionTask*) matrixPostWithKey: (NSString*) key
-    body: (SWGGHMatrixRequest*) body
-    completionHandler: (void (^)(SWGGHMatrixResponse* output, NSError* error)) handler {
+    body: (SWGMatrixRequest*) body
+    completionHandler: (void (^)(SWGMatrixResponse* output, NSError* error)) handler {
     // verify the required parameter 'key' is set
     if (key == nil) {
         NSParameterAssert(key);
@@ -221,10 +221,10 @@ NSInteger kSWGMatrixApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"SWGGHMatrixResponse*"
+                              responseType: @"SWGMatrixResponse*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((SWGGHMatrixResponse*)data, error);
+                                    handler((SWGMatrixResponse*)data, error);
                                 }
                             }];
 }

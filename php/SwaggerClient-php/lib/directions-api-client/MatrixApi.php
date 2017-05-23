@@ -99,7 +99,7 @@ class MatrixApi
      * @param string[] $out_array Specifies which arrays should be included in the response. Specify one or more of the following options &#39;weights&#39;, &#39;times&#39;, &#39;distances&#39;. To specify more than one array use e.g. out_array&#x3D;times&amp;out_array&#x3D;distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API. (optional)
      * @param string $vehicle The vehicle for which the route should be calculated. Other vehicles are foot, bike, mtb, racingbike, motorcycle, small_truck, bus and truck. See here for the details. (optional, default to car)
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return \Swagger\Client\Model\GHMatrixResponse
+     * @return \Swagger\Client\Model\MatrixResponse
      */
     public function matrixGet($key, $point = null, $from_point = null, $to_point = null, $out_array = null, $vehicle = null)
     {
@@ -119,7 +119,7 @@ class MatrixApi
      * @param string[] $out_array Specifies which arrays should be included in the response. Specify one or more of the following options &#39;weights&#39;, &#39;times&#39;, &#39;distances&#39;. To specify more than one array use e.g. out_array&#x3D;times&amp;out_array&#x3D;distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API. (optional)
      * @param string $vehicle The vehicle for which the route should be calculated. Other vehicles are foot, bike, mtb, racingbike, motorcycle, small_truck, bus and truck. See here for the details. (optional, default to car)
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return array of \Swagger\Client\Model\GHMatrixResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\MatrixResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function matrixGetWithHttpInfo($key, $point = null, $from_point = null, $to_point = null, $out_array = null, $vehicle = null)
     {
@@ -187,15 +187,15 @@ class MatrixApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\Swagger\Client\Model\GHMatrixResponse',
+                '\Swagger\Client\Model\MatrixResponse',
                 '/matrix'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\GHMatrixResponse', $httpHeader), $statusCode, $httpHeader];
+            return [$this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\MatrixResponse', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\GHMatrixResponse', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\MatrixResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 0:
@@ -214,9 +214,9 @@ class MatrixApi
      * Matrix API Post
      *
      * @param string $key Get your key at graphhopper.com (required)
-     * @param \Swagger\Client\Model\GHMatrixRequest $body  (optional)
+     * @param \Swagger\Client\Model\MatrixRequest $body  (optional)
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return \Swagger\Client\Model\GHMatrixResponse
+     * @return \Swagger\Client\Model\MatrixResponse
      */
     public function matrixPost($key, $body = null)
     {
@@ -230,9 +230,9 @@ class MatrixApi
      * Matrix API Post
      *
      * @param string $key Get your key at graphhopper.com (required)
-     * @param \Swagger\Client\Model\GHMatrixRequest $body  (optional)
+     * @param \Swagger\Client\Model\MatrixRequest $body  (optional)
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return array of \Swagger\Client\Model\GHMatrixResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\MatrixResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function matrixPostWithHttpInfo($key, $body = null)
     {
@@ -279,15 +279,15 @@ class MatrixApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\Swagger\Client\Model\GHMatrixResponse',
+                '\Swagger\Client\Model\MatrixResponse',
                 '/matrix'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\GHMatrixResponse', $httpHeader), $statusCode, $httpHeader];
+            return [$this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\MatrixResponse', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\GHMatrixResponse', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\MatrixResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 0:

@@ -79,7 +79,7 @@ namespace IO.Swagger.Test
             //string point = null;
             //string provider = null;
             //var response = instance.GeocodeGet(key, q, locale, limit, reverse, point, provider);
-            //Assert.IsInstanceOf<GHGeocodingResponse> (response, "response is GHGeocodingResponse");
+            //Assert.IsInstanceOf<GeocodingResponse> (response, "response is GeocodingResponse");
         }
         
     }

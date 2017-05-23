@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 
 # **isochrone_get**
-> GHIsochroneResponse isochrone_get(point => $point, key => $key, time_limit => $time_limit, distance_limit => $distance_limit, vehicle => $vehicle, buckets => $buckets, reverse_flow => $reverse_flow)
+> IsochroneResponse isochrone_get(point => $point, key => $key, time_limit => $time_limit, distance_limit => $distance_limit, vehicle => $vehicle, buckets => $buckets, reverse_flow => $reverse_flow)
 
 Isochrone Request
 
@@ -57,7 +57,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GHIsochroneResponse**](GHIsochroneResponse.md)
+[**IsochroneResponse**](IsochroneResponse.md)
 
 ### Authorization
 

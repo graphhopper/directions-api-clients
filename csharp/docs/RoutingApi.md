@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 <a name="routeget"></a>
 # **RouteGet**
-> GHRouteResponse RouteGet (List<string> point, bool? pointsEncoded, string key, string locale = null, bool? instructions = null, string vehicle = null, bool? elevation = null, bool? calcPoints = null, List<string> pointHint = null, bool? chDisable = null, string weighting = null, bool? edgeTraversal = null, string algorithm = null, int? heading = null, int? headingPenalty = null, bool? passThrough = null, int? roundTripDistance = null, long? roundTripSeed = null, int? alternativeRouteMaxPaths = null, int? alternativeRouteMaxWeightFactor = null, int? alternativeRouteMaxShareFactor = null)
+> RouteResponse RouteGet (List<string> point, bool? pointsEncoded, string key, string locale = null, bool? instructions = null, string vehicle = null, bool? elevation = null, bool? calcPoints = null, List<string> pointHint = null, bool? chDisable = null, string weighting = null, bool? edgeTraversal = null, string algorithm = null, int? heading = null, int? headingPenalty = null, bool? passThrough = null, int? roundTripDistance = null, long? roundTripSeed = null, int? alternativeRouteMaxPaths = null, int? alternativeRouteMaxWeightFactor = null, int? alternativeRouteMaxShareFactor = null)
 
 Routing Request
 
@@ -56,7 +56,7 @@ namespace Example
             try
             {
                 // Routing Request
-                GHRouteResponse result = apiInstance.RouteGet(point, pointsEncoded, key, locale, instructions, vehicle, elevation, calcPoints, pointHint, chDisable, weighting, edgeTraversal, algorithm, heading, headingPenalty, passThrough, roundTripDistance, roundTripSeed, alternativeRouteMaxPaths, alternativeRouteMaxWeightFactor, alternativeRouteMaxShareFactor);
+                RouteResponse result = apiInstance.RouteGet(point, pointsEncoded, key, locale, instructions, vehicle, elevation, calcPoints, pointHint, chDisable, weighting, edgeTraversal, algorithm, heading, headingPenalty, passThrough, roundTripDistance, roundTripSeed, alternativeRouteMaxPaths, alternativeRouteMaxWeightFactor, alternativeRouteMaxShareFactor);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -96,7 +96,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GHRouteResponse**](GHRouteResponse.md)
+[**RouteResponse**](RouteResponse.md)
 
 ### Authorization
 

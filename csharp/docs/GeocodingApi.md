@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 <a name="geocodeget"></a>
 # **GeocodeGet**
-> GHGeocodingResponse GeocodeGet (string key, string q = null, string locale = null, int? limit = null, bool? reverse = null, string point = null, string provider = null)
+> GeocodingResponse GeocodeGet (string key, string q = null, string locale = null, int? limit = null, bool? reverse = null, string point = null, string provider = null)
 
 Execute a Geocoding request
 
@@ -42,7 +42,7 @@ namespace Example
             try
             {
                 // Execute a Geocoding request
-                GHGeocodingResponse result = apiInstance.GeocodeGet(key, q, locale, limit, reverse, point, provider);
+                GeocodingResponse result = apiInstance.GeocodeGet(key, q, locale, limit, reverse, point, provider);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -68,7 +68,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GHGeocodingResponse**](GHGeocodingResponse.md)
+[**GeocodingResponse**](GeocodingResponse.md)
 
 ### Authorization
 

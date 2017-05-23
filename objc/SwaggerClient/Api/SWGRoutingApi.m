@@ -2,7 +2,7 @@
 #import "SWGQueryParamCollection.h"
 #import "SWGApiClient.h"
 #import "SWGGHError.h"
-#import "SWGGHRouteResponse.h"
+#import "SWGRouteResponse.h"
 
 
 @interface SWGRoutingApi ()
@@ -95,7 +95,7 @@ NSInteger kSWGRoutingApiMissingParamErrorCode = 234513;
 ///
 ///  @param alternativeRouteMaxShareFactor If `algorithm=alternative_route` this parameter specifies how much alternatives routes can have maximum in common with the optimal route. Increasing can lead to worse alternatives. (optional)
 ///
-///  @returns SWGGHRouteResponse*
+///  @returns SWGRouteResponse*
 ///
 -(NSURLSessionTask*) routeGetWithPoint: (NSArray<NSString*>*) point
     pointsEncoded: (NSNumber*) pointsEncoded
@@ -118,7 +118,7 @@ NSInteger kSWGRoutingApiMissingParamErrorCode = 234513;
     alternativeRouteMaxPaths: (NSNumber*) alternativeRouteMaxPaths
     alternativeRouteMaxWeightFactor: (NSNumber*) alternativeRouteMaxWeightFactor
     alternativeRouteMaxShareFactor: (NSNumber*) alternativeRouteMaxShareFactor
-    completionHandler: (void (^)(SWGGHRouteResponse* output, NSError* error)) handler {
+    completionHandler: (void (^)(SWGRouteResponse* output, NSError* error)) handler {
     // verify the required parameter 'point' is set
     if (point == nil) {
         NSParameterAssert(point);
@@ -257,10 +257,10 @@ NSInteger kSWGRoutingApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"SWGGHRouteResponse*"
+                              responseType: @"SWGRouteResponse*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((SWGGHRouteResponse*)data, error);
+                                    handler((SWGRouteResponse*)data, error);
                                 }
                             }];
 }

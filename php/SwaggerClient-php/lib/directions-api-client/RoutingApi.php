@@ -114,7 +114,7 @@ class RoutingApi
      * @param int $alternative_route_max_weight_factor If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the factor by which the alternatives routes can be longer than the optimal route. Increasing can lead to worse alternatives. (optional)
      * @param int $alternative_route_max_share_factor If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter specifies how much alternatives routes can have maximum in common with the optimal route. Increasing can lead to worse alternatives. (optional)
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return \Swagger\Client\Model\GHRouteResponse
+     * @return \Swagger\Client\Model\RouteResponse
      */
     public function routeGet($point, $points_encoded, $key, $locale = null, $instructions = null, $vehicle = null, $elevation = null, $calc_points = null, $point_hint = null, $ch_disable = null, $weighting = null, $edge_traversal = null, $algorithm = null, $heading = null, $heading_penalty = null, $pass_through = null, $round_trip_distance = null, $round_trip_seed = null, $alternative_route_max_paths = null, $alternative_route_max_weight_factor = null, $alternative_route_max_share_factor = null)
     {
@@ -149,7 +149,7 @@ class RoutingApi
      * @param int $alternative_route_max_weight_factor If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the factor by which the alternatives routes can be longer than the optimal route. Increasing can lead to worse alternatives. (optional)
      * @param int $alternative_route_max_share_factor If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter specifies how much alternatives routes can have maximum in common with the optimal route. Increasing can lead to worse alternatives. (optional)
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return array of \Swagger\Client\Model\GHRouteResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\RouteResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function routeGetWithHttpInfo($point, $points_encoded, $key, $locale = null, $instructions = null, $vehicle = null, $elevation = null, $calc_points = null, $point_hint = null, $ch_disable = null, $weighting = null, $edge_traversal = null, $algorithm = null, $heading = null, $heading_penalty = null, $pass_through = null, $round_trip_distance = null, $round_trip_seed = null, $alternative_route_max_paths = null, $alternative_route_max_weight_factor = null, $alternative_route_max_share_factor = null)
     {
@@ -285,15 +285,15 @@ class RoutingApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\Swagger\Client\Model\GHRouteResponse',
+                '\Swagger\Client\Model\RouteResponse',
                 '/route'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\GHRouteResponse', $httpHeader), $statusCode, $httpHeader];
+            return [$this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\RouteResponse', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\GHRouteResponse', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\RouteResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 0:

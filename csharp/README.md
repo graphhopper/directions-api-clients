@@ -81,7 +81,7 @@ namespace Example
             try
             {
                 // Execute a Geocoding request
-                GHGeocodingResponse result = apiInstance.GeocodeGet(key, q, locale, limit, reverse, point, provider);
+                GeocodingResponse result = apiInstance.GeocodeGet(key, q, locale, limit, reverse, point, provider);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -104,9 +104,9 @@ Class | Method | HTTP request | Description
 *IsochroneApi* | [**IsochroneGet**](docs/IsochroneApi.md#isochroneget) | **GET** /isochrone | Isochrone Request
 *MatrixApi* | [**MatrixGet**](docs/MatrixApi.md#matrixget) | **GET** /matrix | Matrix API
 *MatrixApi* | [**MatrixPost**](docs/MatrixApi.md#matrixpost) | **POST** /matrix | Matrix API Post
-*RouteOptimizationApi* | [**GetSolution**](docs/RouteOptimizationApi.md#getsolution) | **GET** /vrp/solution/{jobId} | Return the solution associated to the jobId
-*RouteOptimizationApi* | [**PostVrp**](docs/RouteOptimizationApi.md#postvrp) | **POST** /vrp/optimize | Solves vehicle routing problems
 *RoutingApi* | [**RouteGet**](docs/RoutingApi.md#routeget) | **GET** /route | Routing Request
+*SolutionApi* | [**GetSolution**](docs/SolutionApi.md#getsolution) | **GET** /vrp/solution/{jobId} | Return the solution associated to the jobId
+*VrpApi* | [**PostVrp**](docs/VrpApi.md#postvrp) | **POST** /vrp/optimize | Solves vehicle routing problems
 
 
 <a name="documentation-for-models"></a>
@@ -121,31 +121,31 @@ Class | Method | HTTP request | Description
  - [Model.CostMatrixDataInfo](docs/CostMatrixDataInfo.md)
  - [Model.GHError](docs/GHError.md)
  - [Model.GHErrorHints](docs/GHErrorHints.md)
- - [Model.GHGeocodingLocation](docs/GHGeocodingLocation.md)
- - [Model.GHGeocodingPoint](docs/GHGeocodingPoint.md)
- - [Model.GHGeocodingResponse](docs/GHGeocodingResponse.md)
- - [Model.GHIsochroneResponse](docs/GHIsochroneResponse.md)
- - [Model.GHIsochroneResponsePolygon](docs/GHIsochroneResponsePolygon.md)
- - [Model.GHIsochroneResponsePolygonGeometry](docs/GHIsochroneResponsePolygonGeometry.md)
- - [Model.GHIsochroneResponsePolygonProperties](docs/GHIsochroneResponsePolygonProperties.md)
- - [Model.GHMatrixRequest](docs/GHMatrixRequest.md)
- - [Model.GHMatrixResponse](docs/GHMatrixResponse.md)
- - [Model.GHResponseCoordinates](docs/GHResponseCoordinates.md)
- - [Model.GHResponseCoordinatesArray](docs/GHResponseCoordinatesArray.md)
- - [Model.GHResponseInfo](docs/GHResponseInfo.md)
- - [Model.GHResponseInstruction](docs/GHResponseInstruction.md)
- - [Model.GHResponseInstructions](docs/GHResponseInstructions.md)
- - [Model.GHRouteResponse](docs/GHRouteResponse.md)
- - [Model.GHRouteResponsePath](docs/GHRouteResponsePath.md)
+ - [Model.GeocodingLocation](docs/GeocodingLocation.md)
+ - [Model.GeocodingPoint](docs/GeocodingPoint.md)
+ - [Model.GeocodingResponse](docs/GeocodingResponse.md)
+ - [Model.IsochroneResponse](docs/IsochroneResponse.md)
+ - [Model.IsochroneResponsePolygon](docs/IsochroneResponsePolygon.md)
+ - [Model.IsochroneResponsePolygonGeometry](docs/IsochroneResponsePolygonGeometry.md)
+ - [Model.IsochroneResponsePolygonProperties](docs/IsochroneResponsePolygonProperties.md)
  - [Model.JobId](docs/JobId.md)
  - [Model.Location](docs/Location.md)
+ - [Model.MatrixRequest](docs/MatrixRequest.md)
+ - [Model.MatrixResponse](docs/MatrixResponse.md)
  - [Model.ModelBreak](docs/ModelBreak.md)
  - [Model.Objective](docs/Objective.md)
  - [Model.Relation](docs/Relation.md)
  - [Model.Request](docs/Request.md)
  - [Model.Response](docs/Response.md)
+ - [Model.ResponseCoordinates](docs/ResponseCoordinates.md)
+ - [Model.ResponseCoordinatesArray](docs/ResponseCoordinatesArray.md)
+ - [Model.ResponseInfo](docs/ResponseInfo.md)
+ - [Model.ResponseInstruction](docs/ResponseInstruction.md)
+ - [Model.ResponseInstructions](docs/ResponseInstructions.md)
  - [Model.Route](docs/Route.md)
  - [Model.RoutePoint](docs/RoutePoint.md)
+ - [Model.RouteResponse](docs/RouteResponse.md)
+ - [Model.RouteResponsePath](docs/RouteResponsePath.md)
  - [Model.Routing](docs/Routing.md)
  - [Model.Service](docs/Service.md)
  - [Model.Shipment](docs/Shipment.md)

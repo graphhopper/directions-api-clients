@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 
 # **IsochroneGet**
-> GhIsochroneResponse IsochroneGet($point, $key, $timeLimit, $distanceLimit, $vehicle, $buckets, $reverseFlow)
+> IsochroneResponse IsochroneGet($point, $key, $timeLimit, $distanceLimit, $vehicle, $buckets, $reverseFlow)
 
 Isochrone Request
 
@@ -29,7 +29,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GhIsochroneResponse**](GHIsochroneResponse.md)
+[**IsochroneResponse**](IsochroneResponse.md)
 
 ### Authorization
 

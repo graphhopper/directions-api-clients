@@ -87,9 +87,9 @@ Class | Method | HTTP request | Description
 *SwaggerClient::IsochroneApi* | [**isochrone_get**](docs/IsochroneApi.md#isochrone_get) | **GET** /isochrone | Isochrone Request
 *SwaggerClient::MatrixApi* | [**matrix_get**](docs/MatrixApi.md#matrix_get) | **GET** /matrix | Matrix API
 *SwaggerClient::MatrixApi* | [**matrix_post**](docs/MatrixApi.md#matrix_post) | **POST** /matrix | Matrix API Post
-*SwaggerClient::RouteOptimizationApi* | [**get_solution**](docs/RouteOptimizationApi.md#get_solution) | **GET** /vrp/solution/{jobId} | Return the solution associated to the jobId
-*SwaggerClient::RouteOptimizationApi* | [**post_vrp**](docs/RouteOptimizationApi.md#post_vrp) | **POST** /vrp/optimize | Solves vehicle routing problems
 *SwaggerClient::RoutingApi* | [**route_get**](docs/RoutingApi.md#route_get) | **GET** /route | Routing Request
+*SwaggerClient::SolutionApi* | [**get_solution**](docs/SolutionApi.md#get_solution) | **GET** /vrp/solution/{jobId} | Return the solution associated to the jobId
+*SwaggerClient::VrpApi* | [**post_vrp**](docs/VrpApi.md#post_vrp) | **POST** /vrp/optimize | Solves vehicle routing problems
 
 
 ## Documentation for Models
@@ -103,31 +103,31 @@ Class | Method | HTTP request | Description
  - [SwaggerClient::CostMatrixDataInfo](docs/CostMatrixDataInfo.md)
  - [SwaggerClient::GHError](docs/GHError.md)
  - [SwaggerClient::GHErrorHints](docs/GHErrorHints.md)
- - [SwaggerClient::GHGeocodingLocation](docs/GHGeocodingLocation.md)
- - [SwaggerClient::GHGeocodingPoint](docs/GHGeocodingPoint.md)
- - [SwaggerClient::GHGeocodingResponse](docs/GHGeocodingResponse.md)
- - [SwaggerClient::GHIsochroneResponse](docs/GHIsochroneResponse.md)
- - [SwaggerClient::GHIsochroneResponsePolygon](docs/GHIsochroneResponsePolygon.md)
- - [SwaggerClient::GHIsochroneResponsePolygonGeometry](docs/GHIsochroneResponsePolygonGeometry.md)
- - [SwaggerClient::GHIsochroneResponsePolygonProperties](docs/GHIsochroneResponsePolygonProperties.md)
- - [SwaggerClient::GHMatrixRequest](docs/GHMatrixRequest.md)
- - [SwaggerClient::GHMatrixResponse](docs/GHMatrixResponse.md)
- - [SwaggerClient::GHResponseCoordinates](docs/GHResponseCoordinates.md)
- - [SwaggerClient::GHResponseCoordinatesArray](docs/GHResponseCoordinatesArray.md)
- - [SwaggerClient::GHResponseInfo](docs/GHResponseInfo.md)
- - [SwaggerClient::GHResponseInstruction](docs/GHResponseInstruction.md)
- - [SwaggerClient::GHResponseInstructions](docs/GHResponseInstructions.md)
- - [SwaggerClient::GHRouteResponse](docs/GHRouteResponse.md)
- - [SwaggerClient::GHRouteResponsePath](docs/GHRouteResponsePath.md)
+ - [SwaggerClient::GeocodingLocation](docs/GeocodingLocation.md)
+ - [SwaggerClient::GeocodingPoint](docs/GeocodingPoint.md)
+ - [SwaggerClient::GeocodingResponse](docs/GeocodingResponse.md)
+ - [SwaggerClient::IsochroneResponse](docs/IsochroneResponse.md)
+ - [SwaggerClient::IsochroneResponsePolygon](docs/IsochroneResponsePolygon.md)
+ - [SwaggerClient::IsochroneResponsePolygonGeometry](docs/IsochroneResponsePolygonGeometry.md)
+ - [SwaggerClient::IsochroneResponsePolygonProperties](docs/IsochroneResponsePolygonProperties.md)
  - [SwaggerClient::JobId](docs/JobId.md)
  - [SwaggerClient::Location](docs/Location.md)
+ - [SwaggerClient::MatrixRequest](docs/MatrixRequest.md)
+ - [SwaggerClient::MatrixResponse](docs/MatrixResponse.md)
  - [SwaggerClient::ModelBreak](docs/ModelBreak.md)
  - [SwaggerClient::Objective](docs/Objective.md)
  - [SwaggerClient::Relation](docs/Relation.md)
  - [SwaggerClient::Request](docs/Request.md)
  - [SwaggerClient::Response](docs/Response.md)
+ - [SwaggerClient::ResponseCoordinates](docs/ResponseCoordinates.md)
+ - [SwaggerClient::ResponseCoordinatesArray](docs/ResponseCoordinatesArray.md)
+ - [SwaggerClient::ResponseInfo](docs/ResponseInfo.md)
+ - [SwaggerClient::ResponseInstruction](docs/ResponseInstruction.md)
+ - [SwaggerClient::ResponseInstructions](docs/ResponseInstructions.md)
  - [SwaggerClient::Route](docs/Route.md)
  - [SwaggerClient::RoutePoint](docs/RoutePoint.md)
+ - [SwaggerClient::RouteResponse](docs/RouteResponse.md)
+ - [SwaggerClient::RouteResponsePath](docs/RouteResponsePath.md)
  - [SwaggerClient::Routing](docs/Routing.md)
  - [SwaggerClient::Service](docs/Service.md)
  - [SwaggerClient::Shipment](docs/Shipment.md)

@@ -22,7 +22,7 @@ public class GeocodingAPI: APIBase {
      - parameter provider: (query) Can be either, default, nominatim, opencagedata (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    public class func geocodeGet(key key: String, q: String? = nil, locale: String? = nil, limit: Int32? = nil, reverse: Bool? = nil, point: String? = nil, provider: String? = nil, completion: ((data: GHGeocodingResponse?, error: ErrorType?) -> Void)) {
+    public class func geocodeGet(key key: String, q: String? = nil, locale: String? = nil, limit: Int32? = nil, reverse: Bool? = nil, point: String? = nil, provider: String? = nil, completion: ((data: GeocodingResponse?, error: ErrorType?) -> Void)) {
         geocodeGetWithRequestBuilder(key: key, q: q, locale: locale, limit: limit, reverse: reverse, point: point, provider: provider).execute { (response, error) -> Void in
             completion(data: response?.body, error: error);
         }
@@ -60,9 +60,9 @@ public class GeocodingAPI: APIBase {
      - parameter point: (query) The location bias in the format &#39;latitude,longitude&#39; e.g. point&#x3D;45.93272,11.58803 (optional)
      - parameter provider: (query) Can be either, default, nominatim, opencagedata (optional)
 
-     - returns: RequestBuilder<GHGeocodingResponse> 
+     - returns: RequestBuilder<GeocodingResponse> 
      */
-    public class func geocodeGetWithRequestBuilder(key key: String, q: String? = nil, locale: String? = nil, limit: Int32? = nil, reverse: Bool? = nil, point: String? = nil, provider: String? = nil) -> RequestBuilder<GHGeocodingResponse> {
+    public class func geocodeGetWithRequestBuilder(key key: String, q: String? = nil, locale: String? = nil, limit: Int32? = nil, reverse: Bool? = nil, point: String? = nil, provider: String? = nil) -> RequestBuilder<GeocodingResponse> {
         let path = "/geocode"
         let URLString = GraphHopperAPI.basePath + path
 
@@ -80,7 +80,7 @@ public class GeocodingAPI: APIBase {
  
         let convertedParameters = APIHelper.convertBoolToString(parameters)
  
-        let requestBuilder: RequestBuilder<GHGeocodingResponse>.Type = GraphHopperAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<GeocodingResponse>.Type = GraphHopperAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: URLString, parameters: convertedParameters, isBody: false)
     }

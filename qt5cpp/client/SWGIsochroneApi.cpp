@@ -117,7 +117,7 @@ SWGIsochroneApi::isochroneGetCallback(HttpRequestWorker * worker) {
 
     
         QString json(worker->response);
-    SWGGHIsochroneResponse* output = static_cast<SWGGHIsochroneResponse*>(create(json, QString("SWGGHIsochroneResponse")));
+    SWGIsochroneResponse* output = static_cast<SWGIsochroneResponse*>(create(json, QString("SWGIsochroneResponse")));
     
 
     worker->deleteLater();

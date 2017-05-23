@@ -38,8 +38,8 @@ namespace IO.Swagger.Api
         /// <param name="vehicle">Possible vehicles are bike, car, foot and [more](https://graphhopper.com/api/1/docs/supported-vehicle-profiles/) (optional, default to car)</param>
         /// <param name="buckets">For how many sub intervals an additional polygon should be calculated. (optional, default to 1)</param>
         /// <param name="reverseFlow">If &#x60;false&#x60; the flow goes from point to the polygon, if &#x60;true&#x60; the flow goes from the polygon \&quot;inside\&quot; to the point. Example usage for &#x60;false&#x60;&amp;#58; *How many potential customer can be reached within 30min travel time from your store* vs. &#x60;true&#x60;&amp;#58; *How many customers can reach your store within 30min travel time.* (optional, default to false)</param>
-        /// <returns>GHIsochroneResponse</returns>
-        GHIsochroneResponse IsochroneGet (string point, string key, int? timeLimit = null, int? distanceLimit = null, string vehicle = null, int? buckets = null, bool? reverseFlow = null);
+        /// <returns>IsochroneResponse</returns>
+        IsochroneResponse IsochroneGet (string point, string key, int? timeLimit = null, int? distanceLimit = null, string vehicle = null, int? buckets = null, bool? reverseFlow = null);
 
         /// <summary>
         /// Isochrone Request
@@ -55,8 +55,8 @@ namespace IO.Swagger.Api
         /// <param name="vehicle">Possible vehicles are bike, car, foot and [more](https://graphhopper.com/api/1/docs/supported-vehicle-profiles/) (optional, default to car)</param>
         /// <param name="buckets">For how many sub intervals an additional polygon should be calculated. (optional, default to 1)</param>
         /// <param name="reverseFlow">If &#x60;false&#x60; the flow goes from point to the polygon, if &#x60;true&#x60; the flow goes from the polygon \&quot;inside\&quot; to the point. Example usage for &#x60;false&#x60;&amp;#58; *How many potential customer can be reached within 30min travel time from your store* vs. &#x60;true&#x60;&amp;#58; *How many customers can reach your store within 30min travel time.* (optional, default to false)</param>
-        /// <returns>ApiResponse of GHIsochroneResponse</returns>
-        ApiResponse<GHIsochroneResponse> IsochroneGetWithHttpInfo (string point, string key, int? timeLimit = null, int? distanceLimit = null, string vehicle = null, int? buckets = null, bool? reverseFlow = null);
+        /// <returns>ApiResponse of IsochroneResponse</returns>
+        ApiResponse<IsochroneResponse> IsochroneGetWithHttpInfo (string point, string key, int? timeLimit = null, int? distanceLimit = null, string vehicle = null, int? buckets = null, bool? reverseFlow = null);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -73,8 +73,8 @@ namespace IO.Swagger.Api
         /// <param name="vehicle">Possible vehicles are bike, car, foot and [more](https://graphhopper.com/api/1/docs/supported-vehicle-profiles/) (optional, default to car)</param>
         /// <param name="buckets">For how many sub intervals an additional polygon should be calculated. (optional, default to 1)</param>
         /// <param name="reverseFlow">If &#x60;false&#x60; the flow goes from point to the polygon, if &#x60;true&#x60; the flow goes from the polygon \&quot;inside\&quot; to the point. Example usage for &#x60;false&#x60;&amp;#58; *How many potential customer can be reached within 30min travel time from your store* vs. &#x60;true&#x60;&amp;#58; *How many customers can reach your store within 30min travel time.* (optional, default to false)</param>
-        /// <returns>Task of GHIsochroneResponse</returns>
-        System.Threading.Tasks.Task<GHIsochroneResponse> IsochroneGetAsync (string point, string key, int? timeLimit = null, int? distanceLimit = null, string vehicle = null, int? buckets = null, bool? reverseFlow = null);
+        /// <returns>Task of IsochroneResponse</returns>
+        System.Threading.Tasks.Task<IsochroneResponse> IsochroneGetAsync (string point, string key, int? timeLimit = null, int? distanceLimit = null, string vehicle = null, int? buckets = null, bool? reverseFlow = null);
 
         /// <summary>
         /// Isochrone Request
@@ -90,8 +90,8 @@ namespace IO.Swagger.Api
         /// <param name="vehicle">Possible vehicles are bike, car, foot and [more](https://graphhopper.com/api/1/docs/supported-vehicle-profiles/) (optional, default to car)</param>
         /// <param name="buckets">For how many sub intervals an additional polygon should be calculated. (optional, default to 1)</param>
         /// <param name="reverseFlow">If &#x60;false&#x60; the flow goes from point to the polygon, if &#x60;true&#x60; the flow goes from the polygon \&quot;inside\&quot; to the point. Example usage for &#x60;false&#x60;&amp;#58; *How many potential customer can be reached within 30min travel time from your store* vs. &#x60;true&#x60;&amp;#58; *How many customers can reach your store within 30min travel time.* (optional, default to false)</param>
-        /// <returns>Task of ApiResponse (GHIsochroneResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GHIsochroneResponse>> IsochroneGetAsyncWithHttpInfo (string point, string key, int? timeLimit = null, int? distanceLimit = null, string vehicle = null, int? buckets = null, bool? reverseFlow = null);
+        /// <returns>Task of ApiResponse (IsochroneResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<IsochroneResponse>> IsochroneGetAsyncWithHttpInfo (string point, string key, int? timeLimit = null, int? distanceLimit = null, string vehicle = null, int? buckets = null, bool? reverseFlow = null);
         #endregion Asynchronous Operations
     }
 
@@ -215,10 +215,10 @@ namespace IO.Swagger.Api
         /// <param name="vehicle">Possible vehicles are bike, car, foot and [more](https://graphhopper.com/api/1/docs/supported-vehicle-profiles/) (optional, default to car)</param>
         /// <param name="buckets">For how many sub intervals an additional polygon should be calculated. (optional, default to 1)</param>
         /// <param name="reverseFlow">If &#x60;false&#x60; the flow goes from point to the polygon, if &#x60;true&#x60; the flow goes from the polygon \&quot;inside\&quot; to the point. Example usage for &#x60;false&#x60;&amp;#58; *How many potential customer can be reached within 30min travel time from your store* vs. &#x60;true&#x60;&amp;#58; *How many customers can reach your store within 30min travel time.* (optional, default to false)</param>
-        /// <returns>GHIsochroneResponse</returns>
-        public GHIsochroneResponse IsochroneGet (string point, string key, int? timeLimit = null, int? distanceLimit = null, string vehicle = null, int? buckets = null, bool? reverseFlow = null)
+        /// <returns>IsochroneResponse</returns>
+        public IsochroneResponse IsochroneGet (string point, string key, int? timeLimit = null, int? distanceLimit = null, string vehicle = null, int? buckets = null, bool? reverseFlow = null)
         {
-             ApiResponse<GHIsochroneResponse> localVarResponse = IsochroneGetWithHttpInfo(point, key, timeLimit, distanceLimit, vehicle, buckets, reverseFlow);
+             ApiResponse<IsochroneResponse> localVarResponse = IsochroneGetWithHttpInfo(point, key, timeLimit, distanceLimit, vehicle, buckets, reverseFlow);
              return localVarResponse.Data;
         }
 
@@ -233,8 +233,8 @@ namespace IO.Swagger.Api
         /// <param name="vehicle">Possible vehicles are bike, car, foot and [more](https://graphhopper.com/api/1/docs/supported-vehicle-profiles/) (optional, default to car)</param>
         /// <param name="buckets">For how many sub intervals an additional polygon should be calculated. (optional, default to 1)</param>
         /// <param name="reverseFlow">If &#x60;false&#x60; the flow goes from point to the polygon, if &#x60;true&#x60; the flow goes from the polygon \&quot;inside\&quot; to the point. Example usage for &#x60;false&#x60;&amp;#58; *How many potential customer can be reached within 30min travel time from your store* vs. &#x60;true&#x60;&amp;#58; *How many customers can reach your store within 30min travel time.* (optional, default to false)</param>
-        /// <returns>ApiResponse of GHIsochroneResponse</returns>
-        public ApiResponse< GHIsochroneResponse > IsochroneGetWithHttpInfo (string point, string key, int? timeLimit = null, int? distanceLimit = null, string vehicle = null, int? buckets = null, bool? reverseFlow = null)
+        /// <returns>ApiResponse of IsochroneResponse</returns>
+        public ApiResponse< IsochroneResponse > IsochroneGetWithHttpInfo (string point, string key, int? timeLimit = null, int? distanceLimit = null, string vehicle = null, int? buckets = null, bool? reverseFlow = null)
         {
             // verify the required parameter 'point' is set
             if (point == null)
@@ -289,9 +289,9 @@ namespace IO.Swagger.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<GHIsochroneResponse>(localVarStatusCode,
+            return new ApiResponse<IsochroneResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (GHIsochroneResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(GHIsochroneResponse)));
+                (IsochroneResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(IsochroneResponse)));
             
         }
 
@@ -306,10 +306,10 @@ namespace IO.Swagger.Api
         /// <param name="vehicle">Possible vehicles are bike, car, foot and [more](https://graphhopper.com/api/1/docs/supported-vehicle-profiles/) (optional, default to car)</param>
         /// <param name="buckets">For how many sub intervals an additional polygon should be calculated. (optional, default to 1)</param>
         /// <param name="reverseFlow">If &#x60;false&#x60; the flow goes from point to the polygon, if &#x60;true&#x60; the flow goes from the polygon \&quot;inside\&quot; to the point. Example usage for &#x60;false&#x60;&amp;#58; *How many potential customer can be reached within 30min travel time from your store* vs. &#x60;true&#x60;&amp;#58; *How many customers can reach your store within 30min travel time.* (optional, default to false)</param>
-        /// <returns>Task of GHIsochroneResponse</returns>
-        public async System.Threading.Tasks.Task<GHIsochroneResponse> IsochroneGetAsync (string point, string key, int? timeLimit = null, int? distanceLimit = null, string vehicle = null, int? buckets = null, bool? reverseFlow = null)
+        /// <returns>Task of IsochroneResponse</returns>
+        public async System.Threading.Tasks.Task<IsochroneResponse> IsochroneGetAsync (string point, string key, int? timeLimit = null, int? distanceLimit = null, string vehicle = null, int? buckets = null, bool? reverseFlow = null)
         {
-             ApiResponse<GHIsochroneResponse> localVarResponse = await IsochroneGetAsyncWithHttpInfo(point, key, timeLimit, distanceLimit, vehicle, buckets, reverseFlow);
+             ApiResponse<IsochroneResponse> localVarResponse = await IsochroneGetAsyncWithHttpInfo(point, key, timeLimit, distanceLimit, vehicle, buckets, reverseFlow);
              return localVarResponse.Data;
 
         }
@@ -325,8 +325,8 @@ namespace IO.Swagger.Api
         /// <param name="vehicle">Possible vehicles are bike, car, foot and [more](https://graphhopper.com/api/1/docs/supported-vehicle-profiles/) (optional, default to car)</param>
         /// <param name="buckets">For how many sub intervals an additional polygon should be calculated. (optional, default to 1)</param>
         /// <param name="reverseFlow">If &#x60;false&#x60; the flow goes from point to the polygon, if &#x60;true&#x60; the flow goes from the polygon \&quot;inside\&quot; to the point. Example usage for &#x60;false&#x60;&amp;#58; *How many potential customer can be reached within 30min travel time from your store* vs. &#x60;true&#x60;&amp;#58; *How many customers can reach your store within 30min travel time.* (optional, default to false)</param>
-        /// <returns>Task of ApiResponse (GHIsochroneResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<GHIsochroneResponse>> IsochroneGetAsyncWithHttpInfo (string point, string key, int? timeLimit = null, int? distanceLimit = null, string vehicle = null, int? buckets = null, bool? reverseFlow = null)
+        /// <returns>Task of ApiResponse (IsochroneResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<IsochroneResponse>> IsochroneGetAsyncWithHttpInfo (string point, string key, int? timeLimit = null, int? distanceLimit = null, string vehicle = null, int? buckets = null, bool? reverseFlow = null)
         {
             // verify the required parameter 'point' is set
             if (point == null)
@@ -381,9 +381,9 @@ namespace IO.Swagger.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<GHIsochroneResponse>(localVarStatusCode,
+            return new ApiResponse<IsochroneResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (GHIsochroneResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(GHIsochroneResponse)));
+                (IsochroneResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(IsochroneResponse)));
             
         }
 

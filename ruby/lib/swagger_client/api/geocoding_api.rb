@@ -29,7 +29,7 @@ module SwaggerClient
     # @option opts [BOOLEAN] :reverse Set to true to do a reverse Geocoding request
     # @option opts [String] :point The location bias in the format &#39;latitude,longitude&#39; e.g. point&#x3D;45.93272,11.58803
     # @option opts [String] :provider Can be either, default, nominatim, opencagedata
-    # @return [GHGeocodingResponse]
+    # @return [GeocodingResponse]
     def geocode_get(key, opts = {})
       data, _status_code, _headers = geocode_get_with_http_info(key, opts)
       return data
@@ -45,7 +45,7 @@ module SwaggerClient
     # @option opts [BOOLEAN] :reverse Set to true to do a reverse Geocoding request
     # @option opts [String] :point The location bias in the format &#39;latitude,longitude&#39; e.g. point&#x3D;45.93272,11.58803
     # @option opts [String] :provider Can be either, default, nominatim, opencagedata
-    # @return [Array<(GHGeocodingResponse, Fixnum, Hash)>] GHGeocodingResponse data, response status code and response headers
+    # @return [Array<(GeocodingResponse, Fixnum, Hash)>] GeocodingResponse data, response status code and response headers
     def geocode_get_with_http_info(key, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: GeocodingApi.geocode_get ..."
@@ -82,7 +82,7 @@ module SwaggerClient
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'GHGeocodingResponse')
+        :return_type => 'GeocodingResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: GeocodingApi#geocode_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end

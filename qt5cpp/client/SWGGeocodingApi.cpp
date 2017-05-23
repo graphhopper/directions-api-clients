@@ -117,7 +117,7 @@ SWGGeocodingApi::geocodeGetCallback(HttpRequestWorker * worker) {
 
     
         QString json(worker->response);
-    SWGGHGeocodingResponse* output = static_cast<SWGGHGeocodingResponse*>(create(json, QString("SWGGHGeocodingResponse")));
+    SWGGeocodingResponse* output = static_cast<SWGGeocodingResponse*>(create(json, QString("SWGGeocodingResponse")));
     
 
     worker->deleteLater();

@@ -16,7 +16,7 @@ Method | HTTP request | Description
     vehicle: (NSString*) vehicle
     buckets: (NSNumber*) buckets
     reverseFlow: (NSNumber*) reverseFlow
-        completionHandler: (void (^)(SWGGHIsochroneResponse* output, NSError* error)) handler;
+        completionHandler: (void (^)(SWGIsochroneResponse* output, NSError* error)) handler;
 ```
 
 Isochrone Request
@@ -44,7 +44,7 @@ SWGIsochroneApi*apiInstance = [[SWGIsochroneApi alloc] init];
               vehicle:vehicle
               buckets:buckets
               reverseFlow:reverseFlow
-          completionHandler: ^(SWGGHIsochroneResponse* output, NSError* error) {
+          completionHandler: ^(SWGIsochroneResponse* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
                         }
@@ -68,7 +68,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SWGGHIsochroneResponse***](SWGGHIsochroneResponse.md)
+[**SWGIsochroneResponse***](SWGIsochroneResponse.md)
 
 ### Authorization
 

@@ -1,6 +1,6 @@
 #import <Foundation/Foundation.h>
 #import "SWGGHError.h"
-#import "SWGGHGeocodingResponse.h"
+#import "SWGGeocodingResponse.h"
 #import "SWGApi.h"
 
 /**
@@ -38,7 +38,7 @@ extern NSInteger kSWGGeocodingApiMissingParamErrorCode;
 ///  code:200 message:"An array found locations",
 ///  code:0 message:"Unexpected error"
 ///
-/// @return SWGGHGeocodingResponse*
+/// @return SWGGeocodingResponse*
 -(NSURLSessionTask*) geocodeGetWithKey: (NSString*) key
     q: (NSString*) q
     locale: (NSString*) locale
@@ -46,7 +46,7 @@ extern NSInteger kSWGGeocodingApiMissingParamErrorCode;
     reverse: (NSNumber*) reverse
     point: (NSString*) point
     provider: (NSString*) provider
-    completionHandler: (void (^)(SWGGHGeocodingResponse* output, NSError* error)) handler;
+    completionHandler: (void (^)(SWGGeocodingResponse* output, NSError* error)) handler;
 
 
 

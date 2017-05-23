@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 
 # **route_get**
-> GHRouteResponse route_get(point, points_encoded, key, locale=locale, instructions=instructions, vehicle=vehicle, elevation=elevation, calc_points=calc_points, point_hint=point_hint, ch_disable=ch_disable, weighting=weighting, edge_traversal=edge_traversal, algorithm=algorithm, heading=heading, heading_penalty=heading_penalty, pass_through=pass_through, round_trip_distance=round_trip_distance, round_trip_seed=round_trip_seed, alternative_route_max_paths=alternative_route_max_paths, alternative_route_max_weight_factor=alternative_route_max_weight_factor, alternative_route_max_share_factor=alternative_route_max_share_factor)
+> RouteResponse route_get(point, points_encoded, key, locale=locale, instructions=instructions, vehicle=vehicle, elevation=elevation, calc_points=calc_points, point_hint=point_hint, ch_disable=ch_disable, weighting=weighting, edge_traversal=edge_traversal, algorithm=algorithm, heading=heading, heading_penalty=heading_penalty, pass_through=pass_through, round_trip_distance=round_trip_distance, round_trip_seed=round_trip_seed, alternative_route_max_paths=alternative_route_max_paths, alternative_route_max_weight_factor=alternative_route_max_weight_factor, alternative_route_max_share_factor=alternative_route_max_share_factor)
 
 Routing Request
 
@@ -82,7 +82,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GHRouteResponse**](GHRouteResponse.md)
+[**RouteResponse**](RouteResponse.md)
 
 ### Authorization
 

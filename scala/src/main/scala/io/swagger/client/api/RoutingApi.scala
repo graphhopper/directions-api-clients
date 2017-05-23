@@ -13,7 +13,7 @@
 package io.swagger.client.api
 
 import io.swagger.client.model.GHError
-import io.swagger.client.model.GHRouteResponse
+import io.swagger.client.model.RouteResponse
 import io.swagger.client.ApiInvoker
 import io.swagger.client.ApiException
 
@@ -58,9 +58,9 @@ class RoutingApi(val defBasePath: String = "https://graphhopper.com/api/1",
    * @param alternativeRouteMaxPaths If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the number of maximum paths which should be calculated. Increasing can lead to worse alternatives. (optional)
    * @param alternativeRouteMaxWeightFactor If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the factor by which the alternatives routes can be longer than the optimal route. Increasing can lead to worse alternatives. (optional)
    * @param alternativeRouteMaxShareFactor If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter specifies how much alternatives routes can have maximum in common with the optimal route. Increasing can lead to worse alternatives. (optional)
-   * @return GHRouteResponse
+   * @return RouteResponse
    */
-  def routeGet(point: List[String], pointsEncoded: Boolean, key: String, locale: Option[String] = None, instructions: Option[Boolean] = None, vehicle: Option[String] = None, elevation: Option[Boolean] = None, calcPoints: Option[Boolean] = None, pointHint: Option[List[String]] = None, chDisable: Option[Boolean] = None, weighting: Option[String] = None, edgeTraversal: Option[Boolean] = None, algorithm: Option[String] = None, heading: Option[Integer] = None, headingPenalty: Option[Integer] = None, passThrough: Option[Boolean] = None, roundTripDistance: Option[Integer] = None, roundTripSeed: Option[Long] = None, alternativeRouteMaxPaths: Option[Integer] = None, alternativeRouteMaxWeightFactor: Option[Integer] = None, alternativeRouteMaxShareFactor: Option[Integer] = None): Option[GHRouteResponse] = {
+  def routeGet(point: List[String], pointsEncoded: Boolean, key: String, locale: Option[String] = None, instructions: Option[Boolean] = None, vehicle: Option[String] = None, elevation: Option[Boolean] = None, calcPoints: Option[Boolean] = None, pointHint: Option[List[String]] = None, chDisable: Option[Boolean] = None, weighting: Option[String] = None, edgeTraversal: Option[Boolean] = None, algorithm: Option[String] = None, heading: Option[Integer] = None, headingPenalty: Option[Integer] = None, passThrough: Option[Boolean] = None, roundTripDistance: Option[Integer] = None, roundTripSeed: Option[Long] = None, alternativeRouteMaxPaths: Option[Integer] = None, alternativeRouteMaxWeightFactor: Option[Integer] = None, alternativeRouteMaxShareFactor: Option[Integer] = None): Option[RouteResponse] = {
     // create path and map variables
     val path = "/route".replaceAll("\\{format\\}", "json")
 
@@ -109,7 +109,7 @@ class RoutingApi(val defBasePath: String = "https://graphhopper.com/api/1",
     try {
       apiInvoker.invokeApi(basePath, path, "GET", queryParams.toMap, formParams.toMap, postBody, headerParams.toMap, contentType) match {
         case s: String =>
-           Some(apiInvoker.deserialize(s, "", classOf[GHRouteResponse]).asInstanceOf[GHRouteResponse])
+           Some(apiInvoker.deserialize(s, "", classOf[RouteResponse]).asInstanceOf[RouteResponse])
         case _ => None
       }
     } catch {

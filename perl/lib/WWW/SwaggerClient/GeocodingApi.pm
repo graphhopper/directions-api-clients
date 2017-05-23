@@ -104,10 +104,10 @@ sub new {
     __PACKAGE__->method_documentation->{ 'geocode_get' } = { 
     	summary => 'Execute a Geocoding request',
         params => $params,
-        returns => 'GHGeocodingResponse',
+        returns => 'GeocodingResponse',
         };
 }
-# @return GHGeocodingResponse
+# @return GeocodingResponse
 #
 sub geocode_get {
     my ($self, %args) = @_;
@@ -179,7 +179,7 @@ sub geocode_get {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('GHGeocodingResponse', $response);
+    my $_response_object = $self->{api_client}->deserialize('GeocodingResponse', $response);
     return $_response_object;
 }
 

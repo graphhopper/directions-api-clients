@@ -93,7 +93,7 @@ namespace IO.Swagger.Test
             //int? alternativeRouteMaxWeightFactor = null;
             //int? alternativeRouteMaxShareFactor = null;
             //var response = instance.RouteGet(point, pointsEncoded, key, locale, instructions, vehicle, elevation, calcPoints, pointHint, chDisable, weighting, edgeTraversal, algorithm, heading, headingPenalty, passThrough, roundTripDistance, roundTripSeed, alternativeRouteMaxPaths, alternativeRouteMaxWeightFactor, alternativeRouteMaxShareFactor);
-            //Assert.IsInstanceOf<GHRouteResponse> (response, "response is GHRouteResponse");
+            //Assert.IsInstanceOf<RouteResponse> (response, "response is RouteResponse");
         }
         
     }

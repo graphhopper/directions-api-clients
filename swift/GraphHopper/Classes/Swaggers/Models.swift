@@ -298,15 +298,15 @@ class Decoders {
             }
 
 
-            // Decoder for [GHGeocodingLocation]
-            Decoders.addDecoder(clazz: [GHGeocodingLocation].self) { (source: AnyObject) -> [GHGeocodingLocation] in
-                return Decoders.decode(clazz: [GHGeocodingLocation].self, source: source)
+            // Decoder for [GeocodingLocation]
+            Decoders.addDecoder(clazz: [GeocodingLocation].self) { (source: AnyObject) -> [GeocodingLocation] in
+                return Decoders.decode(clazz: [GeocodingLocation].self, source: source)
             }
-            // Decoder for GHGeocodingLocation
-            Decoders.addDecoder(clazz: GHGeocodingLocation.self) { (source: AnyObject) -> GHGeocodingLocation in
+            // Decoder for GeocodingLocation
+            Decoders.addDecoder(clazz: GeocodingLocation.self) { (source: AnyObject) -> GeocodingLocation in
                 let sourceDictionary = source as! [NSObject:AnyObject]
-                let instance = GHGeocodingLocation()
-                instance.point = Decoders.decodeOptional(clazz: GHGeocodingPoint.self, source: sourceDictionary["point"])
+                let instance = GeocodingLocation()
+                instance.point = Decoders.decodeOptional(clazz: GeocodingPoint.self, source: sourceDictionary["point"])
                 instance.osmId = Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["osm_id"])
                 instance.osmType = Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["osm_type"])
                 instance.name = Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["name"])
@@ -320,227 +320,86 @@ class Decoders {
             }
 
 
-            // Decoder for [GHGeocodingPoint]
-            Decoders.addDecoder(clazz: [GHGeocodingPoint].self) { (source: AnyObject) -> [GHGeocodingPoint] in
-                return Decoders.decode(clazz: [GHGeocodingPoint].self, source: source)
+            // Decoder for [GeocodingPoint]
+            Decoders.addDecoder(clazz: [GeocodingPoint].self) { (source: AnyObject) -> [GeocodingPoint] in
+                return Decoders.decode(clazz: [GeocodingPoint].self, source: source)
             }
-            // Decoder for GHGeocodingPoint
-            Decoders.addDecoder(clazz: GHGeocodingPoint.self) { (source: AnyObject) -> GHGeocodingPoint in
+            // Decoder for GeocodingPoint
+            Decoders.addDecoder(clazz: GeocodingPoint.self) { (source: AnyObject) -> GeocodingPoint in
                 let sourceDictionary = source as! [NSObject:AnyObject]
-                let instance = GHGeocodingPoint()
+                let instance = GeocodingPoint()
                 instance.lat = Decoders.decodeOptional(clazz: Double.self, source: sourceDictionary["lat"])
                 instance.lng = Decoders.decodeOptional(clazz: Double.self, source: sourceDictionary["lng"])
                 return instance
             }
 
 
-            // Decoder for [GHGeocodingResponse]
-            Decoders.addDecoder(clazz: [GHGeocodingResponse].self) { (source: AnyObject) -> [GHGeocodingResponse] in
-                return Decoders.decode(clazz: [GHGeocodingResponse].self, source: source)
+            // Decoder for [GeocodingResponse]
+            Decoders.addDecoder(clazz: [GeocodingResponse].self) { (source: AnyObject) -> [GeocodingResponse] in
+                return Decoders.decode(clazz: [GeocodingResponse].self, source: source)
             }
-            // Decoder for GHGeocodingResponse
-            Decoders.addDecoder(clazz: GHGeocodingResponse.self) { (source: AnyObject) -> GHGeocodingResponse in
+            // Decoder for GeocodingResponse
+            Decoders.addDecoder(clazz: GeocodingResponse.self) { (source: AnyObject) -> GeocodingResponse in
                 let sourceDictionary = source as! [NSObject:AnyObject]
-                let instance = GHGeocodingResponse()
+                let instance = GeocodingResponse()
                 instance.hits = Decoders.decodeOptional(clazz: Array.self, source: sourceDictionary["hits"])
                 instance.locale = Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["locale"])
                 return instance
             }
 
 
-            // Decoder for [GHIsochroneResponse]
-            Decoders.addDecoder(clazz: [GHIsochroneResponse].self) { (source: AnyObject) -> [GHIsochroneResponse] in
-                return Decoders.decode(clazz: [GHIsochroneResponse].self, source: source)
+            // Decoder for [IsochroneResponse]
+            Decoders.addDecoder(clazz: [IsochroneResponse].self) { (source: AnyObject) -> [IsochroneResponse] in
+                return Decoders.decode(clazz: [IsochroneResponse].self, source: source)
             }
-            // Decoder for GHIsochroneResponse
-            Decoders.addDecoder(clazz: GHIsochroneResponse.self) { (source: AnyObject) -> GHIsochroneResponse in
+            // Decoder for IsochroneResponse
+            Decoders.addDecoder(clazz: IsochroneResponse.self) { (source: AnyObject) -> IsochroneResponse in
                 let sourceDictionary = source as! [NSObject:AnyObject]
-                let instance = GHIsochroneResponse()
+                let instance = IsochroneResponse()
                 instance.polygons = Decoders.decodeOptional(clazz: Array.self, source: sourceDictionary["polygons"])
                 instance.copyrights = Decoders.decodeOptional(clazz: Array.self, source: sourceDictionary["copyrights"])
                 return instance
             }
 
 
-            // Decoder for [GHIsochroneResponsePolygon]
-            Decoders.addDecoder(clazz: [GHIsochroneResponsePolygon].self) { (source: AnyObject) -> [GHIsochroneResponsePolygon] in
-                return Decoders.decode(clazz: [GHIsochroneResponsePolygon].self, source: source)
+            // Decoder for [IsochroneResponsePolygon]
+            Decoders.addDecoder(clazz: [IsochroneResponsePolygon].self) { (source: AnyObject) -> [IsochroneResponsePolygon] in
+                return Decoders.decode(clazz: [IsochroneResponsePolygon].self, source: source)
             }
-            // Decoder for GHIsochroneResponsePolygon
-            Decoders.addDecoder(clazz: GHIsochroneResponsePolygon.self) { (source: AnyObject) -> GHIsochroneResponsePolygon in
+            // Decoder for IsochroneResponsePolygon
+            Decoders.addDecoder(clazz: IsochroneResponsePolygon.self) { (source: AnyObject) -> IsochroneResponsePolygon in
                 let sourceDictionary = source as! [NSObject:AnyObject]
-                let instance = GHIsochroneResponsePolygon()
-                instance.properties = Decoders.decodeOptional(clazz: GHIsochroneResponsePolygonProperties.self, source: sourceDictionary["properties"])
+                let instance = IsochroneResponsePolygon()
+                instance.properties = Decoders.decodeOptional(clazz: IsochroneResponsePolygonProperties.self, source: sourceDictionary["properties"])
                 instance.type = Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["type"])
-                instance.geometry = Decoders.decodeOptional(clazz: GHIsochroneResponsePolygonGeometry.self, source: sourceDictionary["geometry"])
+                instance.geometry = Decoders.decodeOptional(clazz: IsochroneResponsePolygonGeometry.self, source: sourceDictionary["geometry"])
                 return instance
             }
 
 
-            // Decoder for [GHIsochroneResponsePolygonGeometry]
-            Decoders.addDecoder(clazz: [GHIsochroneResponsePolygonGeometry].self) { (source: AnyObject) -> [GHIsochroneResponsePolygonGeometry] in
-                return Decoders.decode(clazz: [GHIsochroneResponsePolygonGeometry].self, source: source)
+            // Decoder for [IsochroneResponsePolygonGeometry]
+            Decoders.addDecoder(clazz: [IsochroneResponsePolygonGeometry].self) { (source: AnyObject) -> [IsochroneResponsePolygonGeometry] in
+                return Decoders.decode(clazz: [IsochroneResponsePolygonGeometry].self, source: source)
             }
-            // Decoder for GHIsochroneResponsePolygonGeometry
-            Decoders.addDecoder(clazz: GHIsochroneResponsePolygonGeometry.self) { (source: AnyObject) -> GHIsochroneResponsePolygonGeometry in
+            // Decoder for IsochroneResponsePolygonGeometry
+            Decoders.addDecoder(clazz: IsochroneResponsePolygonGeometry.self) { (source: AnyObject) -> IsochroneResponsePolygonGeometry in
                 let sourceDictionary = source as! [NSObject:AnyObject]
-                let instance = GHIsochroneResponsePolygonGeometry()
+                let instance = IsochroneResponsePolygonGeometry()
                 instance.type = Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["type"])
-                instance.coordinates = Decoders.decodeOptional(clazz: GHResponseCoordinatesArray.self, source: sourceDictionary["coordinates"])
+                instance.coordinates = Decoders.decodeOptional(clazz: ResponseCoordinatesArray.self, source: sourceDictionary["coordinates"])
                 return instance
             }
 
 
-            // Decoder for [GHIsochroneResponsePolygonProperties]
-            Decoders.addDecoder(clazz: [GHIsochroneResponsePolygonProperties].self) { (source: AnyObject) -> [GHIsochroneResponsePolygonProperties] in
-                return Decoders.decode(clazz: [GHIsochroneResponsePolygonProperties].self, source: source)
+            // Decoder for [IsochroneResponsePolygonProperties]
+            Decoders.addDecoder(clazz: [IsochroneResponsePolygonProperties].self) { (source: AnyObject) -> [IsochroneResponsePolygonProperties] in
+                return Decoders.decode(clazz: [IsochroneResponsePolygonProperties].self, source: source)
             }
-            // Decoder for GHIsochroneResponsePolygonProperties
-            Decoders.addDecoder(clazz: GHIsochroneResponsePolygonProperties.self) { (source: AnyObject) -> GHIsochroneResponsePolygonProperties in
+            // Decoder for IsochroneResponsePolygonProperties
+            Decoders.addDecoder(clazz: IsochroneResponsePolygonProperties.self) { (source: AnyObject) -> IsochroneResponsePolygonProperties in
                 let sourceDictionary = source as! [NSObject:AnyObject]
-                let instance = GHIsochroneResponsePolygonProperties()
+                let instance = IsochroneResponsePolygonProperties()
                 instance.bucket = Decoders.decodeOptional(clazz: Int32.self, source: sourceDictionary["bucket"])
-                return instance
-            }
-
-
-            // Decoder for [GHMatrixRequest]
-            Decoders.addDecoder(clazz: [GHMatrixRequest].self) { (source: AnyObject) -> [GHMatrixRequest] in
-                return Decoders.decode(clazz: [GHMatrixRequest].self, source: source)
-            }
-            // Decoder for GHMatrixRequest
-            Decoders.addDecoder(clazz: GHMatrixRequest.self) { (source: AnyObject) -> GHMatrixRequest in
-                let sourceDictionary = source as! [NSObject:AnyObject]
-                let instance = GHMatrixRequest()
-                instance.points = Decoders.decodeOptional(clazz: Array.self, source: sourceDictionary["points"])
-                instance.fromPoints = Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["from_points"])
-                instance.toPoints = Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["to_points"])
-                instance.outArrays = Decoders.decodeOptional(clazz: Array.self, source: sourceDictionary["out_arrays"])
-                instance.vehicle = Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["vehicle"])
-                return instance
-            }
-
-
-            // Decoder for [GHMatrixResponse]
-            Decoders.addDecoder(clazz: [GHMatrixResponse].self) { (source: AnyObject) -> [GHMatrixResponse] in
-                return Decoders.decode(clazz: [GHMatrixResponse].self, source: source)
-            }
-            // Decoder for GHMatrixResponse
-            Decoders.addDecoder(clazz: GHMatrixResponse.self) { (source: AnyObject) -> GHMatrixResponse in
-                let sourceDictionary = source as! [NSObject:AnyObject]
-                let instance = GHMatrixResponse()
-                instance.distances = Decoders.decodeOptional(clazz: Array.self, source: sourceDictionary["distances"])
-                instance.times = Decoders.decodeOptional(clazz: Array.self, source: sourceDictionary["times"])
-                instance.weights = Decoders.decodeOptional(clazz: Array.self, source: sourceDictionary["weights"])
-                instance.info = Decoders.decodeOptional(clazz: GHResponseInfo.self, source: sourceDictionary["info"])
-                return instance
-            }
-
-
-            // Decoder for [GHResponseCoordinates]
-            Decoders.addDecoder(clazz: [GHResponseCoordinates].self) { (source: AnyObject) -> [GHResponseCoordinates] in
-                return Decoders.decode(clazz: [GHResponseCoordinates].self, source: source)
-            }
-            // Decoder for GHResponseCoordinates
-            Decoders.addDecoder(clazz: GHResponseCoordinates.self) { (source: AnyObject) -> GHResponseCoordinates in
-                let sourceDictionary = source as! [NSObject:AnyObject]
-                let instance = GHResponseCoordinates()
-                instance.coordinates = Decoders.decodeOptional(clazz: GHResponseCoordinatesArray.self, source: sourceDictionary["coordinates"])
-                return instance
-            }
-
-
-            // Decoder for [GHResponseCoordinatesArray]
-            Decoders.addDecoder(clazz: [GHResponseCoordinatesArray].self) { (source: AnyObject) -> [GHResponseCoordinatesArray] in
-                return Decoders.decode(clazz: [GHResponseCoordinatesArray].self, source: source)
-            }
-            // Decoder for GHResponseCoordinatesArray
-            Decoders.addDecoder(clazz: GHResponseCoordinatesArray.self) { (source: AnyObject) -> GHResponseCoordinatesArray in
-                let sourceDictionary = source as! [NSObject:AnyObject]
-                let instance = GHResponseCoordinatesArray()
-                return instance
-            }
-
-
-            // Decoder for [GHResponseInfo]
-            Decoders.addDecoder(clazz: [GHResponseInfo].self) { (source: AnyObject) -> [GHResponseInfo] in
-                return Decoders.decode(clazz: [GHResponseInfo].self, source: source)
-            }
-            // Decoder for GHResponseInfo
-            Decoders.addDecoder(clazz: GHResponseInfo.self) { (source: AnyObject) -> GHResponseInfo in
-                let sourceDictionary = source as! [NSObject:AnyObject]
-                let instance = GHResponseInfo()
-                instance.copyrights = Decoders.decodeOptional(clazz: Array.self, source: sourceDictionary["copyrights"])
-                instance.took = Decoders.decodeOptional(clazz: Int32.self, source: sourceDictionary["took"])
-                return instance
-            }
-
-
-            // Decoder for [GHResponseInstruction]
-            Decoders.addDecoder(clazz: [GHResponseInstruction].self) { (source: AnyObject) -> [GHResponseInstruction] in
-                return Decoders.decode(clazz: [GHResponseInstruction].self, source: source)
-            }
-            // Decoder for GHResponseInstruction
-            Decoders.addDecoder(clazz: GHResponseInstruction.self) { (source: AnyObject) -> GHResponseInstruction in
-                let sourceDictionary = source as! [NSObject:AnyObject]
-                let instance = GHResponseInstruction()
-                instance.text = Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["text"])
-                instance.streetName = Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["street_name"])
-                instance.distance = Decoders.decodeOptional(clazz: Double.self, source: sourceDictionary["distance"])
-                instance.time = Decoders.decodeOptional(clazz: Int32.self, source: sourceDictionary["time"])
-                instance.interval = Decoders.decodeOptional(clazz: Array.self, source: sourceDictionary["interval"])
-                instance.sign = Decoders.decodeOptional(clazz: Int32.self, source: sourceDictionary["sign"])
-                instance.annotationText = Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["annotation_text"])
-                instance.annotationImportance = Decoders.decodeOptional(clazz: Int32.self, source: sourceDictionary["annotation_importance"])
-                instance.exitNumber = Decoders.decodeOptional(clazz: Int32.self, source: sourceDictionary["exit_number"])
-                instance.turnAngle = Decoders.decodeOptional(clazz: Double.self, source: sourceDictionary["turn_angle"])
-                return instance
-            }
-
-
-            // Decoder for [GHResponseInstructions]
-            Decoders.addDecoder(clazz: [GHResponseInstructions].self) { (source: AnyObject) -> [GHResponseInstructions] in
-                return Decoders.decode(clazz: [GHResponseInstructions].self, source: source)
-            }
-            // Decoder for GHResponseInstructions
-            Decoders.addDecoder(clazz: GHResponseInstructions.self) { (source: AnyObject) -> GHResponseInstructions in
-                let sourceDictionary = source as! [NSObject:AnyObject]
-                let instance = GHResponseInstructions()
-                return instance
-            }
-
-
-            // Decoder for [GHRouteResponse]
-            Decoders.addDecoder(clazz: [GHRouteResponse].self) { (source: AnyObject) -> [GHRouteResponse] in
-                return Decoders.decode(clazz: [GHRouteResponse].self, source: source)
-            }
-            // Decoder for GHRouteResponse
-            Decoders.addDecoder(clazz: GHRouteResponse.self) { (source: AnyObject) -> GHRouteResponse in
-                let sourceDictionary = source as! [NSObject:AnyObject]
-                let instance = GHRouteResponse()
-                instance.paths = Decoders.decodeOptional(clazz: Array.self, source: sourceDictionary["paths"])
-                instance.info = Decoders.decodeOptional(clazz: GHResponseInfo.self, source: sourceDictionary["info"])
-                return instance
-            }
-
-
-            // Decoder for [GHRouteResponsePath]
-            Decoders.addDecoder(clazz: [GHRouteResponsePath].self) { (source: AnyObject) -> [GHRouteResponsePath] in
-                return Decoders.decode(clazz: [GHRouteResponsePath].self, source: source)
-            }
-            // Decoder for GHRouteResponsePath
-            Decoders.addDecoder(clazz: GHRouteResponsePath.self) { (source: AnyObject) -> GHRouteResponsePath in
-                let sourceDictionary = source as! [NSObject:AnyObject]
-                let instance = GHRouteResponsePath()
-                instance.distance = Decoders.decodeOptional(clazz: Double.self, source: sourceDictionary["distance"])
-                instance.time = Decoders.decodeOptional(clazz: Int64.self, source: sourceDictionary["time"])
-                instance.ascend = Decoders.decodeOptional(clazz: Double.self, source: sourceDictionary["ascend"])
-                instance.descend = Decoders.decodeOptional(clazz: Double.self, source: sourceDictionary["descend"])
-                instance.points = Decoders.decodeOptional(clazz: GHResponseCoordinates.self, source: sourceDictionary["points"])
-                instance.pointsEncoded = Decoders.decodeOptional(clazz: Bool.self, source: sourceDictionary["points_encoded"])
-                instance.bbox = Decoders.decodeOptional(clazz: Array.self, source: sourceDictionary["bbox"])
-                instance.snappedWaypoints = Decoders.decodeOptional(clazz: GHResponseCoordinates.self, source: sourceDictionary["snapped_waypoints"])
-                instance.instructions = Decoders.decodeOptional(clazz: GHResponseInstructions.self, source: sourceDictionary["instructions"])
                 return instance
             }
 
@@ -568,6 +427,39 @@ class Decoders {
                 let instance = Location()
                 instance.lon = Decoders.decodeOptional(clazz: Double.self, source: sourceDictionary["lon"])
                 instance.lat = Decoders.decodeOptional(clazz: Double.self, source: sourceDictionary["lat"])
+                return instance
+            }
+
+
+            // Decoder for [MatrixRequest]
+            Decoders.addDecoder(clazz: [MatrixRequest].self) { (source: AnyObject) -> [MatrixRequest] in
+                return Decoders.decode(clazz: [MatrixRequest].self, source: source)
+            }
+            // Decoder for MatrixRequest
+            Decoders.addDecoder(clazz: MatrixRequest.self) { (source: AnyObject) -> MatrixRequest in
+                let sourceDictionary = source as! [NSObject:AnyObject]
+                let instance = MatrixRequest()
+                instance.points = Decoders.decodeOptional(clazz: Array.self, source: sourceDictionary["points"])
+                instance.fromPoints = Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["from_points"])
+                instance.toPoints = Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["to_points"])
+                instance.outArrays = Decoders.decodeOptional(clazz: Array.self, source: sourceDictionary["out_arrays"])
+                instance.vehicle = Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["vehicle"])
+                return instance
+            }
+
+
+            // Decoder for [MatrixResponse]
+            Decoders.addDecoder(clazz: [MatrixResponse].self) { (source: AnyObject) -> [MatrixResponse] in
+                return Decoders.decode(clazz: [MatrixResponse].self, source: source)
+            }
+            // Decoder for MatrixResponse
+            Decoders.addDecoder(clazz: MatrixResponse.self) { (source: AnyObject) -> MatrixResponse in
+                let sourceDictionary = source as! [NSObject:AnyObject]
+                let instance = MatrixResponse()
+                instance.distances = Decoders.decodeOptional(clazz: Array.self, source: sourceDictionary["distances"])
+                instance.times = Decoders.decodeOptional(clazz: Array.self, source: sourceDictionary["times"])
+                instance.weights = Decoders.decodeOptional(clazz: Array.self, source: sourceDictionary["weights"])
+                instance.info = Decoders.decodeOptional(clazz: ResponseInfo.self, source: sourceDictionary["info"])
                 return instance
             }
 
@@ -640,6 +532,79 @@ class Decoders {
             }
 
 
+            // Decoder for [ResponseCoordinates]
+            Decoders.addDecoder(clazz: [ResponseCoordinates].self) { (source: AnyObject) -> [ResponseCoordinates] in
+                return Decoders.decode(clazz: [ResponseCoordinates].self, source: source)
+            }
+            // Decoder for ResponseCoordinates
+            Decoders.addDecoder(clazz: ResponseCoordinates.self) { (source: AnyObject) -> ResponseCoordinates in
+                let sourceDictionary = source as! [NSObject:AnyObject]
+                let instance = ResponseCoordinates()
+                instance.coordinates = Decoders.decodeOptional(clazz: ResponseCoordinatesArray.self, source: sourceDictionary["coordinates"])
+                return instance
+            }
+
+
+            // Decoder for [ResponseCoordinatesArray]
+            Decoders.addDecoder(clazz: [ResponseCoordinatesArray].self) { (source: AnyObject) -> [ResponseCoordinatesArray] in
+                return Decoders.decode(clazz: [ResponseCoordinatesArray].self, source: source)
+            }
+            // Decoder for ResponseCoordinatesArray
+            Decoders.addDecoder(clazz: ResponseCoordinatesArray.self) { (source: AnyObject) -> ResponseCoordinatesArray in
+                let sourceDictionary = source as! [NSObject:AnyObject]
+                let instance = ResponseCoordinatesArray()
+                return instance
+            }
+
+
+            // Decoder for [ResponseInfo]
+            Decoders.addDecoder(clazz: [ResponseInfo].self) { (source: AnyObject) -> [ResponseInfo] in
+                return Decoders.decode(clazz: [ResponseInfo].self, source: source)
+            }
+            // Decoder for ResponseInfo
+            Decoders.addDecoder(clazz: ResponseInfo.self) { (source: AnyObject) -> ResponseInfo in
+                let sourceDictionary = source as! [NSObject:AnyObject]
+                let instance = ResponseInfo()
+                instance.copyrights = Decoders.decodeOptional(clazz: Array.self, source: sourceDictionary["copyrights"])
+                instance.took = Decoders.decodeOptional(clazz: Int32.self, source: sourceDictionary["took"])
+                return instance
+            }
+
+
+            // Decoder for [ResponseInstruction]
+            Decoders.addDecoder(clazz: [ResponseInstruction].self) { (source: AnyObject) -> [ResponseInstruction] in
+                return Decoders.decode(clazz: [ResponseInstruction].self, source: source)
+            }
+            // Decoder for ResponseInstruction
+            Decoders.addDecoder(clazz: ResponseInstruction.self) { (source: AnyObject) -> ResponseInstruction in
+                let sourceDictionary = source as! [NSObject:AnyObject]
+                let instance = ResponseInstruction()
+                instance.text = Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["text"])
+                instance.streetName = Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["street_name"])
+                instance.distance = Decoders.decodeOptional(clazz: Double.self, source: sourceDictionary["distance"])
+                instance.time = Decoders.decodeOptional(clazz: Int32.self, source: sourceDictionary["time"])
+                instance.interval = Decoders.decodeOptional(clazz: Array.self, source: sourceDictionary["interval"])
+                instance.sign = Decoders.decodeOptional(clazz: Int32.self, source: sourceDictionary["sign"])
+                instance.annotationText = Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["annotation_text"])
+                instance.annotationImportance = Decoders.decodeOptional(clazz: Int32.self, source: sourceDictionary["annotation_importance"])
+                instance.exitNumber = Decoders.decodeOptional(clazz: Int32.self, source: sourceDictionary["exit_number"])
+                instance.turnAngle = Decoders.decodeOptional(clazz: Double.self, source: sourceDictionary["turn_angle"])
+                return instance
+            }
+
+
+            // Decoder for [ResponseInstructions]
+            Decoders.addDecoder(clazz: [ResponseInstructions].self) { (source: AnyObject) -> [ResponseInstructions] in
+                return Decoders.decode(clazz: [ResponseInstructions].self, source: source)
+            }
+            // Decoder for ResponseInstructions
+            Decoders.addDecoder(clazz: ResponseInstructions.self) { (source: AnyObject) -> ResponseInstructions in
+                let sourceDictionary = source as! [NSObject:AnyObject]
+                let instance = ResponseInstructions()
+                return instance
+            }
+
+
             // Decoder for [Route]
             Decoders.addDecoder(clazz: [Route].self) { (source: AnyObject) -> [Route] in
                 return Decoders.decode(clazz: [Route].self, source: source)
@@ -669,6 +634,41 @@ class Decoders {
                 let instance = RoutePoint()
                 instance.type = Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["type"])
                 instance.coordinates = Decoders.decodeOptional(clazz: Array.self, source: sourceDictionary["coordinates"])
+                return instance
+            }
+
+
+            // Decoder for [RouteResponse]
+            Decoders.addDecoder(clazz: [RouteResponse].self) { (source: AnyObject) -> [RouteResponse] in
+                return Decoders.decode(clazz: [RouteResponse].self, source: source)
+            }
+            // Decoder for RouteResponse
+            Decoders.addDecoder(clazz: RouteResponse.self) { (source: AnyObject) -> RouteResponse in
+                let sourceDictionary = source as! [NSObject:AnyObject]
+                let instance = RouteResponse()
+                instance.paths = Decoders.decodeOptional(clazz: Array.self, source: sourceDictionary["paths"])
+                instance.info = Decoders.decodeOptional(clazz: ResponseInfo.self, source: sourceDictionary["info"])
+                return instance
+            }
+
+
+            // Decoder for [RouteResponsePath]
+            Decoders.addDecoder(clazz: [RouteResponsePath].self) { (source: AnyObject) -> [RouteResponsePath] in
+                return Decoders.decode(clazz: [RouteResponsePath].self, source: source)
+            }
+            // Decoder for RouteResponsePath
+            Decoders.addDecoder(clazz: RouteResponsePath.self) { (source: AnyObject) -> RouteResponsePath in
+                let sourceDictionary = source as! [NSObject:AnyObject]
+                let instance = RouteResponsePath()
+                instance.distance = Decoders.decodeOptional(clazz: Double.self, source: sourceDictionary["distance"])
+                instance.time = Decoders.decodeOptional(clazz: Int64.self, source: sourceDictionary["time"])
+                instance.ascend = Decoders.decodeOptional(clazz: Double.self, source: sourceDictionary["ascend"])
+                instance.descend = Decoders.decodeOptional(clazz: Double.self, source: sourceDictionary["descend"])
+                instance.points = Decoders.decodeOptional(clazz: ResponseCoordinates.self, source: sourceDictionary["points"])
+                instance.pointsEncoded = Decoders.decodeOptional(clazz: Bool.self, source: sourceDictionary["points_encoded"])
+                instance.bbox = Decoders.decodeOptional(clazz: Array.self, source: sourceDictionary["bbox"])
+                instance.snappedWaypoints = Decoders.decodeOptional(clazz: ResponseCoordinates.self, source: sourceDictionary["snapped_waypoints"])
+                instance.instructions = Decoders.decodeOptional(clazz: ResponseInstructions.self, source: sourceDictionary["instructions"])
                 return instance
             }
 

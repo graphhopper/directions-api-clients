@@ -13,7 +13,7 @@
 package io.swagger.client.api
 
 import io.swagger.client.model.GHError
-import io.swagger.client.model.GHGeocodingResponse
+import io.swagger.client.model.GeocodingResponse
 import io.swagger.client.ApiInvoker
 import io.swagger.client.ApiException
 
@@ -44,9 +44,9 @@ class GeocodingApi(val defBasePath: String = "https://graphhopper.com/api/1",
    * @param reverse Set to true to do a reverse Geocoding request (optional)
    * @param point The location bias in the format &#39;latitude,longitude&#39; e.g. point&#x3D;45.93272,11.58803 (optional)
    * @param provider Can be either, default, nominatim, opencagedata (optional)
-   * @return GHGeocodingResponse
+   * @return GeocodingResponse
    */
-  def geocodeGet(key: String, q: Option[String] = None, locale: Option[String] = None, limit: Option[Integer] = None, reverse: Option[Boolean] = None, point: Option[String] = None, provider: Option[String] = None): Option[GHGeocodingResponse] = {
+  def geocodeGet(key: String, q: Option[String] = None, locale: Option[String] = None, limit: Option[Integer] = None, reverse: Option[Boolean] = None, point: Option[String] = None, provider: Option[String] = None): Option[GeocodingResponse] = {
     // create path and map variables
     val path = "/geocode".replaceAll("\\{format\\}", "json")
 
@@ -79,7 +79,7 @@ class GeocodingApi(val defBasePath: String = "https://graphhopper.com/api/1",
     try {
       apiInvoker.invokeApi(basePath, path, "GET", queryParams.toMap, formParams.toMap, postBody, headerParams.toMap, contentType) match {
         case s: String =>
-           Some(apiInvoker.deserialize(s, "", classOf[GHGeocodingResponse]).asInstanceOf[GHGeocodingResponse])
+           Some(apiInvoker.deserialize(s, "", classOf[GeocodingResponse]).asInstanceOf[GeocodingResponse])
         case _ => None
       }
     } catch {

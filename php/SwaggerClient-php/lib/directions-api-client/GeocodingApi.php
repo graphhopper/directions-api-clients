@@ -100,7 +100,7 @@ class GeocodingApi
      * @param string $point The location bias in the format &#39;latitude,longitude&#39; e.g. point&#x3D;45.93272,11.58803 (optional)
      * @param string $provider Can be either, default, nominatim, opencagedata (optional)
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return \Swagger\Client\Model\GHGeocodingResponse
+     * @return \Swagger\Client\Model\GeocodingResponse
      */
     public function geocodeGet($key, $q = null, $locale = null, $limit = null, $reverse = null, $point = null, $provider = null)
     {
@@ -121,7 +121,7 @@ class GeocodingApi
      * @param string $point The location bias in the format &#39;latitude,longitude&#39; e.g. point&#x3D;45.93272,11.58803 (optional)
      * @param string $provider Can be either, default, nominatim, opencagedata (optional)
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return array of \Swagger\Client\Model\GHGeocodingResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\GeocodingResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function geocodeGetWithHttpInfo($key, $q = null, $locale = null, $limit = null, $reverse = null, $point = null, $provider = null)
     {
@@ -187,15 +187,15 @@ class GeocodingApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\Swagger\Client\Model\GHGeocodingResponse',
+                '\Swagger\Client\Model\GeocodingResponse',
                 '/geocode'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\GHGeocodingResponse', $httpHeader), $statusCode, $httpHeader];
+            return [$this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\GeocodingResponse', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\GHGeocodingResponse', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\GeocodingResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
                 case 0:

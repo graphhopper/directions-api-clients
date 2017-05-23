@@ -17,8 +17,8 @@
 
 #include <QString>
 #include "SWGGHError.h"
-#include "SWGGHMatrixRequest.h"
-#include "SWGGHMatrixResponse.h"
+#include "SWGMatrixRequest.h"
+#include "SWGMatrixResponse.h"
 
 #include <QObject>
 
@@ -36,15 +36,15 @@ public:
     QString basePath;
 
     void matrixGet(QString* key, QList<QString*>* point, QString* from_point, QString* to_point, QList<QString*>* out_array, QString* vehicle);
-    void matrixPost(QString* key, SWGGHMatrixRequest body);
+    void matrixPost(QString* key, SWGMatrixRequest body);
     
 private:
     void matrixGetCallback (HttpRequestWorker * worker);
     void matrixPostCallback (HttpRequestWorker * worker);
     
 signals:
-    void matrixGetSignal(SWGGHMatrixResponse* summary);
-    void matrixPostSignal(SWGGHMatrixResponse* summary);
+    void matrixGetSignal(SWGMatrixResponse* summary);
+    void matrixPostSignal(SWGMatrixResponse* summary);
     
 };
 }

@@ -225,8 +225,9 @@ To load the API packages:
 use WWW::SwaggerClient::GeocodingApi;
 use WWW::SwaggerClient::IsochroneApi;
 use WWW::SwaggerClient::MatrixApi;
-use WWW::SwaggerClient::RouteOptimizationApi;
 use WWW::SwaggerClient::RoutingApi;
+use WWW::SwaggerClient::SolutionApi;
+use WWW::SwaggerClient::VrpApi;
 
 ```
 
@@ -242,30 +243,30 @@ use WWW::SwaggerClient::Object::CostMatrixData;
 use WWW::SwaggerClient::Object::CostMatrixDataInfo;
 use WWW::SwaggerClient::Object::GHError;
 use WWW::SwaggerClient::Object::GHErrorHints;
-use WWW::SwaggerClient::Object::GHGeocodingLocation;
-use WWW::SwaggerClient::Object::GHGeocodingPoint;
-use WWW::SwaggerClient::Object::GHGeocodingResponse;
-use WWW::SwaggerClient::Object::GHIsochroneResponse;
-use WWW::SwaggerClient::Object::GHIsochroneResponsePolygon;
-use WWW::SwaggerClient::Object::GHIsochroneResponsePolygonGeometry;
-use WWW::SwaggerClient::Object::GHIsochroneResponsePolygonProperties;
-use WWW::SwaggerClient::Object::GHMatrixRequest;
-use WWW::SwaggerClient::Object::GHMatrixResponse;
-use WWW::SwaggerClient::Object::GHResponseCoordinates;
-use WWW::SwaggerClient::Object::GHResponseCoordinatesArray;
-use WWW::SwaggerClient::Object::GHResponseInfo;
-use WWW::SwaggerClient::Object::GHResponseInstruction;
-use WWW::SwaggerClient::Object::GHResponseInstructions;
-use WWW::SwaggerClient::Object::GHRouteResponse;
-use WWW::SwaggerClient::Object::GHRouteResponsePath;
+use WWW::SwaggerClient::Object::GeocodingLocation;
+use WWW::SwaggerClient::Object::GeocodingPoint;
+use WWW::SwaggerClient::Object::GeocodingResponse;
+use WWW::SwaggerClient::Object::IsochroneResponse;
+use WWW::SwaggerClient::Object::IsochroneResponsePolygon;
+use WWW::SwaggerClient::Object::IsochroneResponsePolygonGeometry;
+use WWW::SwaggerClient::Object::IsochroneResponsePolygonProperties;
 use WWW::SwaggerClient::Object::JobId;
 use WWW::SwaggerClient::Object::Location;
+use WWW::SwaggerClient::Object::MatrixRequest;
+use WWW::SwaggerClient::Object::MatrixResponse;
 use WWW::SwaggerClient::Object::Objective;
 use WWW::SwaggerClient::Object::Relation;
 use WWW::SwaggerClient::Object::Request;
 use WWW::SwaggerClient::Object::Response;
+use WWW::SwaggerClient::Object::ResponseCoordinates;
+use WWW::SwaggerClient::Object::ResponseCoordinatesArray;
+use WWW::SwaggerClient::Object::ResponseInfo;
+use WWW::SwaggerClient::Object::ResponseInstruction;
+use WWW::SwaggerClient::Object::ResponseInstructions;
 use WWW::SwaggerClient::Object::Route;
 use WWW::SwaggerClient::Object::RoutePoint;
+use WWW::SwaggerClient::Object::RouteResponse;
+use WWW::SwaggerClient::Object::RouteResponsePath;
 use WWW::SwaggerClient::Object::Routing;
 use WWW::SwaggerClient::Object::Service;
 use WWW::SwaggerClient::Object::Shipment;
@@ -289,8 +290,9 @@ use warnings;
 use WWW::SwaggerClient::GeocodingApi;
 use WWW::SwaggerClient::IsochroneApi;
 use WWW::SwaggerClient::MatrixApi;
-use WWW::SwaggerClient::RouteOptimizationApi;
 use WWW::SwaggerClient::RoutingApi;
+use WWW::SwaggerClient::SolutionApi;
+use WWW::SwaggerClient::VrpApi;
 
 # load the models
 use WWW::SwaggerClient::Object::Activity;
@@ -303,30 +305,30 @@ use WWW::SwaggerClient::Object::CostMatrixData;
 use WWW::SwaggerClient::Object::CostMatrixDataInfo;
 use WWW::SwaggerClient::Object::GHError;
 use WWW::SwaggerClient::Object::GHErrorHints;
-use WWW::SwaggerClient::Object::GHGeocodingLocation;
-use WWW::SwaggerClient::Object::GHGeocodingPoint;
-use WWW::SwaggerClient::Object::GHGeocodingResponse;
-use WWW::SwaggerClient::Object::GHIsochroneResponse;
-use WWW::SwaggerClient::Object::GHIsochroneResponsePolygon;
-use WWW::SwaggerClient::Object::GHIsochroneResponsePolygonGeometry;
-use WWW::SwaggerClient::Object::GHIsochroneResponsePolygonProperties;
-use WWW::SwaggerClient::Object::GHMatrixRequest;
-use WWW::SwaggerClient::Object::GHMatrixResponse;
-use WWW::SwaggerClient::Object::GHResponseCoordinates;
-use WWW::SwaggerClient::Object::GHResponseCoordinatesArray;
-use WWW::SwaggerClient::Object::GHResponseInfo;
-use WWW::SwaggerClient::Object::GHResponseInstruction;
-use WWW::SwaggerClient::Object::GHResponseInstructions;
-use WWW::SwaggerClient::Object::GHRouteResponse;
-use WWW::SwaggerClient::Object::GHRouteResponsePath;
+use WWW::SwaggerClient::Object::GeocodingLocation;
+use WWW::SwaggerClient::Object::GeocodingPoint;
+use WWW::SwaggerClient::Object::GeocodingResponse;
+use WWW::SwaggerClient::Object::IsochroneResponse;
+use WWW::SwaggerClient::Object::IsochroneResponsePolygon;
+use WWW::SwaggerClient::Object::IsochroneResponsePolygonGeometry;
+use WWW::SwaggerClient::Object::IsochroneResponsePolygonProperties;
 use WWW::SwaggerClient::Object::JobId;
 use WWW::SwaggerClient::Object::Location;
+use WWW::SwaggerClient::Object::MatrixRequest;
+use WWW::SwaggerClient::Object::MatrixResponse;
 use WWW::SwaggerClient::Object::Objective;
 use WWW::SwaggerClient::Object::Relation;
 use WWW::SwaggerClient::Object::Request;
 use WWW::SwaggerClient::Object::Response;
+use WWW::SwaggerClient::Object::ResponseCoordinates;
+use WWW::SwaggerClient::Object::ResponseCoordinatesArray;
+use WWW::SwaggerClient::Object::ResponseInfo;
+use WWW::SwaggerClient::Object::ResponseInstruction;
+use WWW::SwaggerClient::Object::ResponseInstructions;
 use WWW::SwaggerClient::Object::Route;
 use WWW::SwaggerClient::Object::RoutePoint;
+use WWW::SwaggerClient::Object::RouteResponse;
+use WWW::SwaggerClient::Object::RouteResponsePath;
 use WWW::SwaggerClient::Object::Routing;
 use WWW::SwaggerClient::Object::Service;
 use WWW::SwaggerClient::Object::Shipment;
@@ -371,9 +373,9 @@ Class | Method | HTTP request | Description
 *IsochroneApi* | [**isochrone_get**](docs/IsochroneApi.md#isochrone_get) | **GET** /isochrone | Isochrone Request
 *MatrixApi* | [**matrix_get**](docs/MatrixApi.md#matrix_get) | **GET** /matrix | Matrix API
 *MatrixApi* | [**matrix_post**](docs/MatrixApi.md#matrix_post) | **POST** /matrix | Matrix API Post
-*RouteOptimizationApi* | [**get_solution**](docs/RouteOptimizationApi.md#get_solution) | **GET** /vrp/solution/{jobId} | Return the solution associated to the jobId
-*RouteOptimizationApi* | [**post_vrp**](docs/RouteOptimizationApi.md#post_vrp) | **POST** /vrp/optimize | Solves vehicle routing problems
 *RoutingApi* | [**route_get**](docs/RoutingApi.md#route_get) | **GET** /route | Routing Request
+*SolutionApi* | [**get_solution**](docs/SolutionApi.md#get_solution) | **GET** /vrp/solution/{jobId} | Return the solution associated to the jobId
+*VrpApi* | [**post_vrp**](docs/VrpApi.md#post_vrp) | **POST** /vrp/optimize | Solves vehicle routing problems
 
 
 # DOCUMENTATION FOR MODELS
@@ -387,30 +389,30 @@ Class | Method | HTTP request | Description
  - [WWW::SwaggerClient::Object::CostMatrixDataInfo](docs/CostMatrixDataInfo.md)
  - [WWW::SwaggerClient::Object::GHError](docs/GHError.md)
  - [WWW::SwaggerClient::Object::GHErrorHints](docs/GHErrorHints.md)
- - [WWW::SwaggerClient::Object::GHGeocodingLocation](docs/GHGeocodingLocation.md)
- - [WWW::SwaggerClient::Object::GHGeocodingPoint](docs/GHGeocodingPoint.md)
- - [WWW::SwaggerClient::Object::GHGeocodingResponse](docs/GHGeocodingResponse.md)
- - [WWW::SwaggerClient::Object::GHIsochroneResponse](docs/GHIsochroneResponse.md)
- - [WWW::SwaggerClient::Object::GHIsochroneResponsePolygon](docs/GHIsochroneResponsePolygon.md)
- - [WWW::SwaggerClient::Object::GHIsochroneResponsePolygonGeometry](docs/GHIsochroneResponsePolygonGeometry.md)
- - [WWW::SwaggerClient::Object::GHIsochroneResponsePolygonProperties](docs/GHIsochroneResponsePolygonProperties.md)
- - [WWW::SwaggerClient::Object::GHMatrixRequest](docs/GHMatrixRequest.md)
- - [WWW::SwaggerClient::Object::GHMatrixResponse](docs/GHMatrixResponse.md)
- - [WWW::SwaggerClient::Object::GHResponseCoordinates](docs/GHResponseCoordinates.md)
- - [WWW::SwaggerClient::Object::GHResponseCoordinatesArray](docs/GHResponseCoordinatesArray.md)
- - [WWW::SwaggerClient::Object::GHResponseInfo](docs/GHResponseInfo.md)
- - [WWW::SwaggerClient::Object::GHResponseInstruction](docs/GHResponseInstruction.md)
- - [WWW::SwaggerClient::Object::GHResponseInstructions](docs/GHResponseInstructions.md)
- - [WWW::SwaggerClient::Object::GHRouteResponse](docs/GHRouteResponse.md)
- - [WWW::SwaggerClient::Object::GHRouteResponsePath](docs/GHRouteResponsePath.md)
+ - [WWW::SwaggerClient::Object::GeocodingLocation](docs/GeocodingLocation.md)
+ - [WWW::SwaggerClient::Object::GeocodingPoint](docs/GeocodingPoint.md)
+ - [WWW::SwaggerClient::Object::GeocodingResponse](docs/GeocodingResponse.md)
+ - [WWW::SwaggerClient::Object::IsochroneResponse](docs/IsochroneResponse.md)
+ - [WWW::SwaggerClient::Object::IsochroneResponsePolygon](docs/IsochroneResponsePolygon.md)
+ - [WWW::SwaggerClient::Object::IsochroneResponsePolygonGeometry](docs/IsochroneResponsePolygonGeometry.md)
+ - [WWW::SwaggerClient::Object::IsochroneResponsePolygonProperties](docs/IsochroneResponsePolygonProperties.md)
  - [WWW::SwaggerClient::Object::JobId](docs/JobId.md)
  - [WWW::SwaggerClient::Object::Location](docs/Location.md)
+ - [WWW::SwaggerClient::Object::MatrixRequest](docs/MatrixRequest.md)
+ - [WWW::SwaggerClient::Object::MatrixResponse](docs/MatrixResponse.md)
  - [WWW::SwaggerClient::Object::Objective](docs/Objective.md)
  - [WWW::SwaggerClient::Object::Relation](docs/Relation.md)
  - [WWW::SwaggerClient::Object::Request](docs/Request.md)
  - [WWW::SwaggerClient::Object::Response](docs/Response.md)
+ - [WWW::SwaggerClient::Object::ResponseCoordinates](docs/ResponseCoordinates.md)
+ - [WWW::SwaggerClient::Object::ResponseCoordinatesArray](docs/ResponseCoordinatesArray.md)
+ - [WWW::SwaggerClient::Object::ResponseInfo](docs/ResponseInfo.md)
+ - [WWW::SwaggerClient::Object::ResponseInstruction](docs/ResponseInstruction.md)
+ - [WWW::SwaggerClient::Object::ResponseInstructions](docs/ResponseInstructions.md)
  - [WWW::SwaggerClient::Object::Route](docs/Route.md)
  - [WWW::SwaggerClient::Object::RoutePoint](docs/RoutePoint.md)
+ - [WWW::SwaggerClient::Object::RouteResponse](docs/RouteResponse.md)
+ - [WWW::SwaggerClient::Object::RouteResponsePath](docs/RouteResponsePath.md)
  - [WWW::SwaggerClient::Object::Routing](docs/Routing.md)
  - [WWW::SwaggerClient::Object::Service](docs/Service.md)
  - [WWW::SwaggerClient::Object::Shipment](docs/Shipment.md)

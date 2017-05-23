@@ -28,7 +28,7 @@ module SwaggerClient
     # @option opts [String] :to_point The destination points for the routes. Is a string with the format latitude,longitude.
     # @option opts [Array<String>] :out_array Specifies which arrays should be included in the response. Specify one or more of the following options &#39;weights&#39;, &#39;times&#39;, &#39;distances&#39;. To specify more than one array use e.g. out_array&#x3D;times&amp;out_array&#x3D;distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API.
     # @option opts [String] :vehicle The vehicle for which the route should be calculated. Other vehicles are foot, bike, mtb, racingbike, motorcycle, small_truck, bus and truck. See here for the details. (default to car)
-    # @return [GHMatrixResponse]
+    # @return [MatrixResponse]
     def matrix_get(key, opts = {})
       data, _status_code, _headers = matrix_get_with_http_info(key, opts)
       return data
@@ -43,7 +43,7 @@ module SwaggerClient
     # @option opts [String] :to_point The destination points for the routes. Is a string with the format latitude,longitude.
     # @option opts [Array<String>] :out_array Specifies which arrays should be included in the response. Specify one or more of the following options &#39;weights&#39;, &#39;times&#39;, &#39;distances&#39;. To specify more than one array use e.g. out_array&#x3D;times&amp;out_array&#x3D;distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API.
     # @option opts [String] :vehicle The vehicle for which the route should be calculated. Other vehicles are foot, bike, mtb, racingbike, motorcycle, small_truck, bus and truck. See here for the details.
-    # @return [Array<(GHMatrixResponse, Fixnum, Hash)>] GHMatrixResponse data, response status code and response headers
+    # @return [Array<(MatrixResponse, Fixnum, Hash)>] MatrixResponse data, response status code and response headers
     def matrix_get_with_http_info(key, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: MatrixApi.matrix_get ..."
@@ -79,7 +79,7 @@ module SwaggerClient
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'GHMatrixResponse')
+        :return_type => 'MatrixResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: MatrixApi#matrix_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -90,8 +90,8 @@ module SwaggerClient
     # The GET request has an URL length limitation, which hurts for many locations per request. In those cases use a HTTP POST request with JSON data as input. The only parameter in the URL will be the key which stays in the URL. Both request scenarios are identically except that all singular parameter names are named as their plural for a POST request. 
     # @param key Get your key at graphhopper.com
     # @param [Hash] opts the optional parameters
-    # @option opts [GHMatrixRequest] :body 
-    # @return [GHMatrixResponse]
+    # @option opts [MatrixRequest] :body 
+    # @return [MatrixResponse]
     def matrix_post(key, opts = {})
       data, _status_code, _headers = matrix_post_with_http_info(key, opts)
       return data
@@ -101,8 +101,8 @@ module SwaggerClient
     # The GET request has an URL length limitation, which hurts for many locations per request. In those cases use a HTTP POST request with JSON data as input. The only parameter in the URL will be the key which stays in the URL. Both request scenarios are identically except that all singular parameter names are named as their plural for a POST request. 
     # @param key Get your key at graphhopper.com
     # @param [Hash] opts the optional parameters
-    # @option opts [GHMatrixRequest] :body 
-    # @return [Array<(GHMatrixResponse, Fixnum, Hash)>] GHMatrixResponse data, response status code and response headers
+    # @option opts [MatrixRequest] :body 
+    # @return [Array<(MatrixResponse, Fixnum, Hash)>] MatrixResponse data, response status code and response headers
     def matrix_post_with_http_info(key, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: MatrixApi.matrix_post ..."
@@ -133,7 +133,7 @@ module SwaggerClient
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'GHMatrixResponse')
+        :return_type => 'MatrixResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: MatrixApi#matrix_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end

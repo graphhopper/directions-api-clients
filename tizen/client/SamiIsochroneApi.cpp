@@ -24,8 +24,8 @@ isochroneGetProcessor(HttpResponse* pHttpResponse, void (* handler)(void*, SamiE
     ByteBuffer* pBuffer = pHttpResponse->ReadBodyN();
     IJsonValue* pJson = JsonParser::ParseN(*pBuffer);
 
-    SamiGHIsochroneResponse* out = new SamiGHIsochroneResponse();
-    jsonToValue(out, pJson, L"SamiGHIsochroneResponse*", L"SamiGHIsochroneResponse");
+    SamiIsochroneResponse* out = new SamiIsochroneResponse();
+    jsonToValue(out, pJson, L"SamiIsochroneResponse*", L"SamiIsochroneResponse");
 
     if (pJson) {
       if (pJson->GetType() == JSON_TYPE_OBJECT) {
@@ -51,8 +51,8 @@ isochroneGetProcessor(HttpResponse* pHttpResponse, void (* handler)(void*, SamiE
   }
 }
 
-SamiGHIsochroneResponse* 
-SamiIsochroneApi::isochroneGetWithCompletion(String* point, String* key, Integer* timeLimit, Integer* distanceLimit, String* vehicle, Integer* buckets, Boolean* reverseFlow, void (* success)(SamiGHIsochroneResponse*, SamiError*)) {
+SamiIsochroneResponse* 
+SamiIsochroneApi::isochroneGetWithCompletion(String* point, String* key, Integer* timeLimit, Integer* distanceLimit, String* vehicle, Integer* buckets, Boolean* reverseFlow, void (* success)(SamiIsochroneResponse*, SamiError*)) {
   client = new SamiApiClient();
 
   client->success(&isochroneGetProcessor, (void(*)(void*, SamiError*))success);

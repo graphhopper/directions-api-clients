@@ -1,7 +1,7 @@
 #import <Foundation/Foundation.h>
 #import "SWGGHError.h"
-#import "SWGGHMatrixRequest.h"
-#import "SWGGHMatrixResponse.h"
+#import "SWGMatrixRequest.h"
+#import "SWGMatrixResponse.h"
 #import "SWGApi.h"
 
 /**
@@ -38,14 +38,14 @@ extern NSInteger kSWGMatrixApiMissingParamErrorCode;
 ///  code:200 message:"Isochrone Result",
 ///  code:0 message:"Unexpected Error"
 ///
-/// @return SWGGHMatrixResponse*
+/// @return SWGMatrixResponse*
 -(NSURLSessionTask*) matrixGetWithKey: (NSString*) key
     point: (NSArray<NSString*>*) point
     fromPoint: (NSString*) fromPoint
     toPoint: (NSString*) toPoint
     outArray: (NSArray<NSString*>*) outArray
     vehicle: (NSString*) vehicle
-    completionHandler: (void (^)(SWGGHMatrixResponse* output, NSError* error)) handler;
+    completionHandler: (void (^)(SWGMatrixResponse* output, NSError* error)) handler;
 
 
 /// Matrix API Post
@@ -57,10 +57,10 @@ extern NSInteger kSWGMatrixApiMissingParamErrorCode;
 ///  code:200 message:"Isochrone Result",
 ///  code:0 message:"Unexpected Error"
 ///
-/// @return SWGGHMatrixResponse*
+/// @return SWGMatrixResponse*
 -(NSURLSessionTask*) matrixPostWithKey: (NSString*) key
-    body: (SWGGHMatrixRequest*) body
-    completionHandler: (void (^)(SWGGHMatrixResponse* output, NSError* error)) handler;
+    body: (SWGMatrixRequest*) body
+    completionHandler: (void (^)(SWGMatrixResponse* output, NSError* error)) handler;
 
 
 

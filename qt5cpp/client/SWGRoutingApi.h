@@ -17,7 +17,7 @@
 
 #include <QString>
 #include "SWGGHError.h"
-#include "SWGGHRouteResponse.h"
+#include "SWGRouteResponse.h"
 
 #include <QObject>
 
@@ -40,7 +40,7 @@ private:
     void routeGetCallback (HttpRequestWorker * worker);
     
 signals:
-    void routeGetSignal(SWGGHRouteResponse* summary);
+    void routeGetSignal(SWGRouteResponse* summary);
     
 };
 }

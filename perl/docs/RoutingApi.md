@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 
 # **route_get**
-> GHRouteResponse route_get(point => $point, points_encoded => $points_encoded, key => $key, locale => $locale, instructions => $instructions, vehicle => $vehicle, elevation => $elevation, calc_points => $calc_points, point_hint => $point_hint, ch/disable => $ch/disable, weighting => $weighting, edge_traversal => $edge_traversal, algorithm => $algorithm, heading => $heading, heading_penalty => $heading_penalty, pass_through => $pass_through, round_trip/distance => $round_trip/distance, round_trip/seed => $round_trip/seed, alternative_route/max_paths => $alternative_route/max_paths, alternative_route/max_weight_factor => $alternative_route/max_weight_factor, alternative_route/max_share_factor => $alternative_route/max_share_factor)
+> RouteResponse route_get(point => $point, points_encoded => $points_encoded, key => $key, locale => $locale, instructions => $instructions, vehicle => $vehicle, elevation => $elevation, calc_points => $calc_points, point_hint => $point_hint, ch/disable => $ch/disable, weighting => $weighting, edge_traversal => $edge_traversal, algorithm => $algorithm, heading => $heading, heading_penalty => $heading_penalty, pass_through => $pass_through, round_trip/distance => $round_trip/distance, round_trip/seed => $round_trip/seed, alternative_route/max_paths => $alternative_route/max_paths, alternative_route/max_weight_factor => $alternative_route/max_weight_factor, alternative_route/max_share_factor => $alternative_route/max_share_factor)
 
 Routing Request
 
@@ -85,7 +85,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GHRouteResponse**](GHRouteResponse.md)
+[**RouteResponse**](RouteResponse.md)
 
 ### Authorization
 

@@ -13,7 +13,7 @@
 package io.swagger.client.api
 
 import io.swagger.client.model.GHError
-import io.swagger.client.model.GHIsochroneResponse
+import io.swagger.client.model.IsochroneResponse
 import io.swagger.client.ApiInvoker
 import io.swagger.client.ApiException
 
@@ -44,9 +44,9 @@ class IsochroneApi(val defBasePath: String = "https://graphhopper.com/api/1",
    * @param vehicle Possible vehicles are bike, car, foot and [more](https://graphhopper.com/api/1/docs/supported-vehicle-profiles/) (optional, default to car)
    * @param buckets For how many sub intervals an additional polygon should be calculated. (optional, default to 1)
    * @param reverseFlow If &#x60;false&#x60; the flow goes from point to the polygon, if &#x60;true&#x60; the flow goes from the polygon \&quot;inside\&quot; to the point. Example usage for &#x60;false&#x60;&amp;#58; *How many potential customer can be reached within 30min travel time from your store* vs. &#x60;true&#x60;&amp;#58; *How many customers can reach your store within 30min travel time.* (optional, default to false)
-   * @return GHIsochroneResponse
+   * @return IsochroneResponse
    */
-  def isochroneGet(point: String, key: String, timeLimit: Option[Integer] /* = 600*/, distanceLimit: Option[Integer] /* = -1*/, vehicle: Option[String] /* = car*/, buckets: Option[Integer] /* = 1*/, reverseFlow: Option[Boolean] /* = false*/): Option[GHIsochroneResponse] = {
+  def isochroneGet(point: String, key: String, timeLimit: Option[Integer] /* = 600*/, distanceLimit: Option[Integer] /* = -1*/, vehicle: Option[String] /* = car*/, buckets: Option[Integer] /* = 1*/, reverseFlow: Option[Boolean] /* = false*/): Option[IsochroneResponse] = {
     // create path and map variables
     val path = "/isochrone".replaceAll("\\{format\\}", "json")
 
@@ -81,7 +81,7 @@ class IsochroneApi(val defBasePath: String = "https://graphhopper.com/api/1",
     try {
       apiInvoker.invokeApi(basePath, path, "GET", queryParams.toMap, formParams.toMap, postBody, headerParams.toMap, contentType) match {
         case s: String =>
-           Some(apiInvoker.deserialize(s, "", classOf[GHIsochroneResponse]).asInstanceOf[GHIsochroneResponse])
+           Some(apiInvoker.deserialize(s, "", classOf[IsochroneResponse]).asInstanceOf[IsochroneResponse])
         case _ => None
       }
     } catch {

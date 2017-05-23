@@ -2,7 +2,7 @@
 #import "SWGQueryParamCollection.h"
 #import "SWGApiClient.h"
 #import "SWGGHError.h"
-#import "SWGGHIsochroneResponse.h"
+#import "SWGIsochroneResponse.h"
 
 
 @interface SWGIsochroneApi ()
@@ -67,7 +67,7 @@ NSInteger kSWGIsochroneApiMissingParamErrorCode = 234513;
 ///
 ///  @param reverseFlow If `false` the flow goes from point to the polygon, if `true` the flow goes from the polygon \"inside\" to the point. Example usage for `false`&#58; *How many potential customer can be reached within 30min travel time from your store* vs. `true`&#58; *How many customers can reach your store within 30min travel time.* (optional, default to false)
 ///
-///  @returns SWGGHIsochroneResponse*
+///  @returns SWGIsochroneResponse*
 ///
 -(NSURLSessionTask*) isochroneGetWithPoint: (NSString*) point
     key: (NSString*) key
@@ -76,7 +76,7 @@ NSInteger kSWGIsochroneApiMissingParamErrorCode = 234513;
     vehicle: (NSString*) vehicle
     buckets: (NSNumber*) buckets
     reverseFlow: (NSNumber*) reverseFlow
-    completionHandler: (void (^)(SWGGHIsochroneResponse* output, NSError* error)) handler {
+    completionHandler: (void (^)(SWGIsochroneResponse* output, NSError* error)) handler {
     // verify the required parameter 'point' is set
     if (point == nil) {
         NSParameterAssert(point);
@@ -160,10 +160,10 @@ NSInteger kSWGIsochroneApiMissingParamErrorCode = 234513;
                               authSettings: authSettings
                         requestContentType: requestContentType
                        responseContentType: responseContentType
-                              responseType: @"SWGGHIsochroneResponse*"
+                              responseType: @"SWGIsochroneResponse*"
                            completionBlock: ^(id data, NSError *error) {
                                 if(handler) {
-                                    handler((SWGGHIsochroneResponse*)data, error);
+                                    handler((SWGIsochroneResponse*)data, error);
                                 }
                             }];
 }

@@ -61,7 +61,7 @@ class GeocodingApi(object):
         :param bool reverse: Set to true to do a reverse Geocoding request
         :param str point: The location bias in the format 'latitude,longitude' e.g. point=45.93272,11.58803
         :param str provider: Can be either, default, nominatim, opencagedata
-        :return: GHGeocodingResponse
+        :return: GeocodingResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -93,7 +93,7 @@ class GeocodingApi(object):
         :param bool reverse: Set to true to do a reverse Geocoding request
         :param str point: The location bias in the format 'latitude,longitude' e.g. point=45.93272,11.58803
         :param str provider: Can be either, default, nominatim, opencagedata
-        :return: GHGeocodingResponse
+        :return: GeocodingResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -159,7 +159,7 @@ class GeocodingApi(object):
                                         body=body_params,
                                         post_params=form_params,
                                         files=local_var_files,
-                                        response_type='GHGeocodingResponse',
+                                        response_type='GeocodingResponse',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),

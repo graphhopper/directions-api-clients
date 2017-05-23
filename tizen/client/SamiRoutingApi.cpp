@@ -24,8 +24,8 @@ routeGetProcessor(HttpResponse* pHttpResponse, void (* handler)(void*, SamiError
     ByteBuffer* pBuffer = pHttpResponse->ReadBodyN();
     IJsonValue* pJson = JsonParser::ParseN(*pBuffer);
 
-    SamiGHRouteResponse* out = new SamiGHRouteResponse();
-    jsonToValue(out, pJson, L"SamiGHRouteResponse*", L"SamiGHRouteResponse");
+    SamiRouteResponse* out = new SamiRouteResponse();
+    jsonToValue(out, pJson, L"SamiRouteResponse*", L"SamiRouteResponse");
 
     if (pJson) {
       if (pJson->GetType() == JSON_TYPE_OBJECT) {
@@ -51,8 +51,8 @@ routeGetProcessor(HttpResponse* pHttpResponse, void (* handler)(void*, SamiError
   }
 }
 
-SamiGHRouteResponse* 
-SamiRoutingApi::routeGetWithCompletion(IList* point, Boolean* pointsEncoded, String* key, String* locale, Boolean* instructions, String* vehicle, Boolean* elevation, Boolean* calcPoints, IList* pointHint, Boolean* ch.disable, String* weighting, Boolean* edgeTraversal, String* algorithm, Integer* heading, Integer* headingPenalty, Boolean* passThrough, Integer* roundTrip.distance, Long* roundTrip.seed, Integer* alternativeRoute.maxPaths, Integer* alternativeRoute.maxWeightFactor, Integer* alternativeRoute.maxShareFactor, void (* success)(SamiGHRouteResponse*, SamiError*)) {
+SamiRouteResponse* 
+SamiRoutingApi::routeGetWithCompletion(IList* point, Boolean* pointsEncoded, String* key, String* locale, Boolean* instructions, String* vehicle, Boolean* elevation, Boolean* calcPoints, IList* pointHint, Boolean* ch.disable, String* weighting, Boolean* edgeTraversal, String* algorithm, Integer* heading, Integer* headingPenalty, Boolean* passThrough, Integer* roundTrip.distance, Long* roundTrip.seed, Integer* alternativeRoute.maxPaths, Integer* alternativeRoute.maxWeightFactor, Integer* alternativeRoute.maxShareFactor, void (* success)(SamiRouteResponse*, SamiError*)) {
   client = new SamiApiClient();
 
   client->success(&routeGetProcessor, (void(*)(void*, SamiError*))success);

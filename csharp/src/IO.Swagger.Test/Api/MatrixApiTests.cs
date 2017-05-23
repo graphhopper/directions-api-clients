@@ -78,7 +78,7 @@ namespace IO.Swagger.Test
             //List<string> outArray = null;
             //string vehicle = null;
             //var response = instance.MatrixGet(key, point, fromPoint, toPoint, outArray, vehicle);
-            //Assert.IsInstanceOf<GHMatrixResponse> (response, "response is GHMatrixResponse");
+            //Assert.IsInstanceOf<MatrixResponse> (response, "response is MatrixResponse");
         }
         
         /// <summary>
@@ -89,9 +89,9 @@ namespace IO.Swagger.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string key = null;
-            //GHMatrixRequest body = null;
+            //MatrixRequest body = null;
             //var response = instance.MatrixPost(key, body);
-            //Assert.IsInstanceOf<GHMatrixResponse> (response, "response is GHMatrixResponse");
+            //Assert.IsInstanceOf<MatrixResponse> (response, "response is MatrixResponse");
         }
         
     }

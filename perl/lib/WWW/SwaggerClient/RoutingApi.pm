@@ -188,10 +188,10 @@ sub new {
     __PACKAGE__->method_documentation->{ 'route_get' } = { 
     	summary => 'Routing Request',
         params => $params,
-        returns => 'GHRouteResponse',
+        returns => 'RouteResponse',
         };
 }
-# @return GHRouteResponse
+# @return RouteResponse
 #
 sub route_get {
     my ($self, %args) = @_;
@@ -343,7 +343,7 @@ sub route_get {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('GHRouteResponse', $response);
+    my $_response_object = $self->{api_client}->deserialize('RouteResponse', $response);
     return $_response_object;
 }
 

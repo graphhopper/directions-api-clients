@@ -61,9 +61,9 @@ func NewRoutingApiWithBasePath(basePath string) *RoutingApi {
  * @param alternativeRouteMaxPaths If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the number of maximum paths which should be calculated. Increasing can lead to worse alternatives.
  * @param alternativeRouteMaxWeightFactor If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the factor by which the alternatives routes can be longer than the optimal route. Increasing can lead to worse alternatives.
  * @param alternativeRouteMaxShareFactor If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter specifies how much alternatives routes can have maximum in common with the optimal route. Increasing can lead to worse alternatives.
- * @return *GhRouteResponse
+ * @return *RouteResponse
  */
-func (a RoutingApi) RouteGet(point []string, pointsEncoded bool, key string, locale string, instructions bool, vehicle string, elevation bool, calcPoints bool, pointHint []string, chDisable bool, weighting string, edgeTraversal bool, algorithm string, heading int32, headingPenalty int32, passThrough bool, roundTripDistance int32, roundTripSeed int64, alternativeRouteMaxPaths int32, alternativeRouteMaxWeightFactor int32, alternativeRouteMaxShareFactor int32) (*GhRouteResponse, *APIResponse, error) {
+func (a RoutingApi) RouteGet(point []string, pointsEncoded bool, key string, locale string, instructions bool, vehicle string, elevation bool, calcPoints bool, pointHint []string, chDisable bool, weighting string, edgeTraversal bool, algorithm string, heading int32, headingPenalty int32, passThrough bool, roundTripDistance int32, roundTripSeed int64, alternativeRouteMaxPaths int32, alternativeRouteMaxWeightFactor int32, alternativeRouteMaxShareFactor int32) (*RouteResponse, *APIResponse, error) {
 
 	var localVarHttpMethod = strings.ToUpper("Get")
 	// create path and map variables
@@ -123,7 +123,7 @@ func (a RoutingApi) RouteGet(point []string, pointsEncoded bool, key string, loc
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload = new(GhRouteResponse)
+	var successPayload = new(RouteResponse)
 	localVarHttpResponse, err := a.Configuration.APIClient.CallAPI(localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 
 	var localVarURL, _ = url.Parse(localVarPath)
