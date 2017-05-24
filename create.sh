@@ -1,6 +1,7 @@
 #!/bin/bash
 
-SPEC=swagger.json
+# SPEC=swagger.json
+SPEC=https://graphhopper.com/api/1/swagger.json
 DIR=.
 
 VERSION=0.10-SNAPSHOT
