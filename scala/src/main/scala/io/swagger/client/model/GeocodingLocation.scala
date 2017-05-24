@@ -19,6 +19,8 @@ case class GeocodingLocation (
   osmId: String,
   /* N = node, R = relation, W = way */
   osmType: String,
+  /* The osm key of the result like `place` or `amenity` */
+  osmKey: String,
   name: String,
   country: String,
   city: String,

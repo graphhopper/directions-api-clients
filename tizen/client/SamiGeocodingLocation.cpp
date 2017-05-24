@@ -25,6 +25,7 @@ SamiGeocodingLocation::init() {
     pPoint = null;
 pOsm_id = null;
 pOsm_type = null;
+pOsm_key = null;
 pName = null;
 pCountry = null;
 pCity = null;
@@ -50,6 +51,11 @@ if(pOsm_type != null) {
         
         delete pOsm_type;
         pOsm_type = null;
+    }
+if(pOsm_key != null) {
+        
+        delete pOsm_key;
+        pOsm_key = null;
     }
 if(pName != null) {
         
@@ -150,6 +156,15 @@ JsonString* pOsm_typeKey = new JsonString(L"osm_type");
             jsonToValue(pOsm_type, pOsm_typeVal, L"String", L"String");
         }
         delete pOsm_typeKey;
+JsonString* pOsm_keyKey = new JsonString(L"osm_key");
+        IJsonValue* pOsm_keyVal = null;
+        pJsonObject->GetValue(pOsm_keyKey, pOsm_keyVal);
+        if(pOsm_keyVal != null) {
+            
+            pOsm_key = new String();
+            jsonToValue(pOsm_key, pOsm_keyVal, L"String", L"String");
+        }
+        delete pOsm_keyKey;
 JsonString* pNameKey = new JsonString(L"name");
         IJsonValue* pNameVal = null;
         pJsonObject->GetValue(pNameKey, pNameVal);
@@ -272,6 +287,9 @@ SamiGeocodingLocation::asJsonObject() {
     JsonString *pOsm_typeKey = new JsonString(L"osm_type");
     pJsonObject->Add(pOsm_typeKey, toJson(getPOsmType(), "String", ""));
 
+    JsonString *pOsm_keyKey = new JsonString(L"osm_key");
+    pJsonObject->Add(pOsm_keyKey, toJson(getPOsmKey(), "String", ""));
+
     JsonString *pNameKey = new JsonString(L"name");
     pJsonObject->Add(pNameKey, toJson(getPName(), "String", ""));
 
@@ -321,6 +339,15 @@ SamiGeocodingLocation::getPOsmType() {
 void
 SamiGeocodingLocation::setPOsmType(String* pOsm_type) {
     this->pOsm_type = pOsm_type;
+}
+
+String*
+SamiGeocodingLocation::getPOsmKey() {
+    return pOsm_key;
+}
+void
+SamiGeocodingLocation::setPOsmKey(String* pOsm_key) {
+    this->pOsm_key = pOsm_key;
 }
 
 String*

@@ -17,7 +17,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"point": @"point", @"osmId": @"osm_id", @"osmType": @"osm_type", @"name": @"name", @"country": @"country", @"city": @"city", @"state": @"state", @"street": @"street", @"housenumber": @"housenumber", @"postcode": @"postcode" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"point": @"point", @"osmId": @"osm_id", @"osmType": @"osm_type", @"osmKey": @"osm_key", @"name": @"name", @"country": @"country", @"city": @"city", @"state": @"state", @"street": @"street", @"housenumber": @"housenumber", @"postcode": @"postcode" }];
 }
 
 /**
@@ -27,7 +27,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"point", @"osmId", @"osmType", @"name", @"country", @"city", @"state", @"street", @"housenumber", @"postcode"];
+  NSArray *optionalProperties = @[@"point", @"osmId", @"osmType", @"osmKey", @"name", @"country", @"city", @"state", @"street", @"housenumber", @"postcode"];
   return [optionalProperties containsObject:propertyName];
 }
 

@@ -20,6 +20,9 @@ type GeocodingLocation struct {
 	// N = node, R = relation, W = way
 	OsmType string `json:"osm_type,omitempty"`
 
+	// The osm key of the result like `place` or `amenity`
+	OsmKey string `json:"osm_key,omitempty"`
+
 	Name string `json:"name,omitempty"`
 
 	Country string `json:"country,omitempty"`

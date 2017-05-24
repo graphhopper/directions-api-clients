@@ -47,6 +47,8 @@ public:
     void setPOsmId(String* pOsm_id);
     String* getPOsmType();
     void setPOsmType(String* pOsm_type);
+    String* getPOsmKey();
+    void setPOsmKey(String* pOsm_key);
     String* getPName();
     void setPName(String* pName);
     String* getPCountry();
@@ -66,6 +68,7 @@ private:
     SamiGeocodingPoint* pPoint;
 String* pOsm_id;
 String* pOsm_type;
+String* pOsm_key;
 String* pName;
 String* pCountry;
 String* pCity;

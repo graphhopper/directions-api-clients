@@ -309,6 +309,7 @@ class Decoders {
                 instance.point = Decoders.decodeOptional(clazz: GeocodingPoint.self, source: sourceDictionary["point"])
                 instance.osmId = Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["osm_id"])
                 instance.osmType = Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["osm_type"])
+                instance.osmKey = Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["osm_key"])
                 instance.name = Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["name"])
                 instance.country = Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["country"])
                 instance.city = Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["city"])

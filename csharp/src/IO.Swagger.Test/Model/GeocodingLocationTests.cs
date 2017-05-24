@@ -89,6 +89,14 @@ namespace IO.Swagger.Test
             // TODO unit test for the property 'OsmType'
         }
         /// <summary>
+        /// Test the property 'OsmKey'
+        /// </summary>
+        [Test]
+        public void OsmKeyTest()
+        {
+            // TODO unit test for the property 'OsmKey'
+        }
+        /// <summary>
         /// Test the property 'Name'
         /// </summary>
         [Test]

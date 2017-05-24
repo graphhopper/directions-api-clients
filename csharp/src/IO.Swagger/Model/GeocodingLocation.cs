@@ -35,6 +35,7 @@ namespace IO.Swagger.Model
         /// <param name="Point">Point.</param>
         /// <param name="OsmId">OSM Id.</param>
         /// <param name="OsmType">N &#x3D; node, R &#x3D; relation, W &#x3D; way.</param>
+        /// <param name="OsmKey">The osm key of the result like &#x60;place&#x60; or &#x60;amenity&#x60;.</param>
         /// <param name="Name">Name.</param>
         /// <param name="Country">Country.</param>
         /// <param name="City">City.</param>
@@ -42,11 +43,12 @@ namespace IO.Swagger.Model
         /// <param name="Street">Street.</param>
         /// <param name="Housenumber">Housenumber.</param>
         /// <param name="Postcode">Postcode.</param>
-        public GeocodingLocation(GeocodingPoint Point = default(GeocodingPoint), string OsmId = default(string), string OsmType = default(string), string Name = default(string), string Country = default(string), string City = default(string), string State = default(string), string Street = default(string), string Housenumber = default(string), string Postcode = default(string))
+        public GeocodingLocation(GeocodingPoint Point = default(GeocodingPoint), string OsmId = default(string), string OsmType = default(string), string OsmKey = default(string), string Name = default(string), string Country = default(string), string City = default(string), string State = default(string), string Street = default(string), string Housenumber = default(string), string Postcode = default(string))
         {
             this.Point = Point;
             this.OsmId = OsmId;
             this.OsmType = OsmType;
+            this.OsmKey = OsmKey;
             this.Name = Name;
             this.Country = Country;
             this.City = City;
@@ -73,6 +75,12 @@ namespace IO.Swagger.Model
         /// <value>N &#x3D; node, R &#x3D; relation, W &#x3D; way</value>
         [DataMember(Name="osm_type", EmitDefaultValue=false)]
         public string OsmType { get; set; }
+        /// <summary>
+        /// The osm key of the result like &#x60;place&#x60; or &#x60;amenity&#x60;
+        /// </summary>
+        /// <value>The osm key of the result like &#x60;place&#x60; or &#x60;amenity&#x60;</value>
+        [DataMember(Name="osm_key", EmitDefaultValue=false)]
+        public string OsmKey { get; set; }
         /// <summary>
         /// Gets or Sets Name
         /// </summary>
@@ -119,6 +127,7 @@ namespace IO.Swagger.Model
             sb.Append("  Point: ").Append(Point).Append("\n");
             sb.Append("  OsmId: ").Append(OsmId).Append("\n");
             sb.Append("  OsmType: ").Append(OsmType).Append("\n");
+            sb.Append("  OsmKey: ").Append(OsmKey).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Country: ").Append(Country).Append("\n");
             sb.Append("  City: ").Append(City).Append("\n");
@@ -178,6 +187,11 @@ namespace IO.Swagger.Model
                     this.OsmType.Equals(other.OsmType)
                 ) && 
                 (
+                    this.OsmKey == other.OsmKey ||
+                    this.OsmKey != null &&
+                    this.OsmKey.Equals(other.OsmKey)
+                ) && 
+                (
                     this.Name == other.Name ||
                     this.Name != null &&
                     this.Name.Equals(other.Name)
@@ -231,6 +245,8 @@ namespace IO.Swagger.Model
                     hash = hash * 59 + this.OsmId.GetHashCode();
                 if (this.OsmType != null)
                     hash = hash * 59 + this.OsmType.GetHashCode();
+                if (this.OsmKey != null)
+                    hash = hash * 59 + this.OsmKey.GetHashCode();
                 if (this.Name != null)
                     hash = hash * 59 + this.Name.GetHashCode();
                 if (this.Country != null)
