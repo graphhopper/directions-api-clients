@@ -57,6 +57,7 @@ class GeocodingLocation implements ArrayAccess
         'point' => '\Swagger\Client\Model\GeocodingPoint',
         'osm_id' => 'string',
         'osm_type' => 'string',
+        'osm_key' => 'string',
         'name' => 'string',
         'country' => 'string',
         'city' => 'string',
@@ -79,6 +80,7 @@ class GeocodingLocation implements ArrayAccess
         'point' => 'point',
         'osm_id' => 'osm_id',
         'osm_type' => 'osm_type',
+        'osm_key' => 'osm_key',
         'name' => 'name',
         'country' => 'country',
         'city' => 'city',
@@ -97,6 +99,7 @@ class GeocodingLocation implements ArrayAccess
         'point' => 'setPoint',
         'osm_id' => 'setOsmId',
         'osm_type' => 'setOsmType',
+        'osm_key' => 'setOsmKey',
         'name' => 'setName',
         'country' => 'setCountry',
         'city' => 'setCity',
@@ -115,6 +118,7 @@ class GeocodingLocation implements ArrayAccess
         'point' => 'getPoint',
         'osm_id' => 'getOsmId',
         'osm_type' => 'getOsmType',
+        'osm_key' => 'getOsmKey',
         'name' => 'getName',
         'country' => 'getCountry',
         'city' => 'getCity',
@@ -158,6 +162,7 @@ class GeocodingLocation implements ArrayAccess
         $this->container['point'] = isset($data['point']) ? $data['point'] : null;
         $this->container['osm_id'] = isset($data['osm_id']) ? $data['osm_id'] : null;
         $this->container['osm_type'] = isset($data['osm_type']) ? $data['osm_type'] : null;
+        $this->container['osm_key'] = isset($data['osm_key']) ? $data['osm_key'] : null;
         $this->container['name'] = isset($data['name']) ? $data['name'] : null;
         $this->container['country'] = isset($data['country']) ? $data['country'] : null;
         $this->container['city'] = isset($data['city']) ? $data['city'] : null;
@@ -251,6 +256,27 @@ class GeocodingLocation implements ArrayAccess
     public function setOsmType($osm_type)
     {
         $this->container['osm_type'] = $osm_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets osm_key
+     * @return string
+     */
+    public function getOsmKey()
+    {
+        return $this->container['osm_key'];
+    }
+
+    /**
+     * Sets osm_key
+     * @param string $osm_key The osm key of the result like `place` or `amenity`
+     * @return $this
+     */
+    public function setOsmKey($osm_key)
+    {
+        $this->container['osm_key'] = $osm_key;
 
         return $this;
     }

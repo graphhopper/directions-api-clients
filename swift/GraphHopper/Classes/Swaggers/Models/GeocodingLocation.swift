@@ -14,6 +14,8 @@ public class GeocodingLocation: JSONEncodable {
     public var osmId: String?
     /** N &#x3D; node, R &#x3D; relation, W &#x3D; way */
     public var osmType: String?
+    /** The osm key of the result like &#x60;place&#x60; or &#x60;amenity&#x60; */
+    public var osmKey: String?
     public var name: String?
     public var country: String?
     public var city: String?
@@ -30,6 +32,7 @@ public class GeocodingLocation: JSONEncodable {
         nillableDictionary["point"] = self.point?.encodeToJSON()
         nillableDictionary["osm_id"] = self.osmId
         nillableDictionary["osm_type"] = self.osmType
+        nillableDictionary["osm_key"] = self.osmKey
         nillableDictionary["name"] = self.name
         nillableDictionary["country"] = self.country
         nillableDictionary["city"] = self.city

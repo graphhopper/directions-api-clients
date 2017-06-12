@@ -107,6 +107,14 @@ class GeocodingLocationTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test attribute "osm_key"
+     */
+    public function testPropertyOsmKey()
+    {
+
+    }
+
+    /**
      * Test attribute "name"
      */
     public function testPropertyName()

@@ -41,6 +41,7 @@ SWGGeocodingLocation::init() {
     point = new SWGGeocodingPoint();
     osm_id = new QString("");
     osm_type = new QString("");
+    osm_key = new QString("");
     name = new QString("");
     country = new QString("");
     city = new QString("");
@@ -63,6 +64,10 @@ SWGGeocodingLocation::cleanup() {
 
     if(osm_type != nullptr) {
         delete osm_type;
+    }
+
+    if(osm_key != nullptr) {
+        delete osm_key;
     }
 
     if(name != nullptr) {
@@ -108,6 +113,7 @@ SWGGeocodingLocation::fromJsonObject(QJsonObject &pJson) {
     ::Swagger::setValue(&point, pJson["point"], "SWGGeocodingPoint", "SWGGeocodingPoint");
     ::Swagger::setValue(&osm_id, pJson["osm_id"], "QString", "QString");
     ::Swagger::setValue(&osm_type, pJson["osm_type"], "QString", "QString");
+    ::Swagger::setValue(&osm_key, pJson["osm_key"], "QString", "QString");
     ::Swagger::setValue(&name, pJson["name"], "QString", "QString");
     ::Swagger::setValue(&country, pJson["country"], "QString", "QString");
     ::Swagger::setValue(&city, pJson["city"], "QString", "QString");
@@ -136,6 +142,8 @@ SWGGeocodingLocation::asJsonObject() {
     toJsonValue(QString("osm_id"), osm_id, obj, QString("QString"));
 
     toJsonValue(QString("osm_type"), osm_type, obj, QString("QString"));
+
+    toJsonValue(QString("osm_key"), osm_key, obj, QString("QString"));
 
     toJsonValue(QString("name"), name, obj, QString("QString"));
 
@@ -179,6 +187,15 @@ SWGGeocodingLocation::getOsmType() {
 void
 SWGGeocodingLocation::setOsmType(QString* osm_type) {
     this->osm_type = osm_type;
+}
+
+QString*
+SWGGeocodingLocation::getOsmKey() {
+    return osm_key;
+}
+void
+SWGGeocodingLocation::setOsmKey(QString* osm_key) {
+    this->osm_key = osm_key;
 }
 
 QString*

@@ -191,6 +191,7 @@ data GeocodingLocation = GeocodingLocation
     { geocodingLocationPoint :: GeocodingPoint -- ^ 
     , geocodingLocationOsmId :: Text -- ^ OSM Id
     , geocodingLocationOsmType :: Text -- ^ N = node, R = relation, W = way
+    , geocodingLocationOsmKey :: Text -- ^ The osm key of the result like `place` or `amenity`
     , geocodingLocationName :: Text -- ^ 
     , geocodingLocationCountry :: Text -- ^ 
     , geocodingLocationCity :: Text -- ^ 

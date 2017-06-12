@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 **point** | [**SWGGeocodingPoint***](SWGGeocodingPoint.md) |  | [optional] 
 **osmId** | **NSString*** | OSM Id | [optional] 
 **osmType** | **NSString*** | N &#x3D; node, R &#x3D; relation, W &#x3D; way | [optional] 
+**osmKey** | **NSString*** | The osm key of the result like &#x60;place&#x60; or &#x60;amenity&#x60; | [optional] 
 **name** | **NSString*** |  | [optional] 
 **country** | **NSString*** |  | [optional] 
 **city** | **NSString*** |  | [optional] 

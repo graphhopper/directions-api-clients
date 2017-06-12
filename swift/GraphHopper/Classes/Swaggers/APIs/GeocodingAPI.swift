@@ -38,6 +38,7 @@ public class GeocodingAPI: APIBase {
     "osm_id" : "aeiou",
     "osm_type" : "aeiou",
     "country" : "aeiou",
+    "osm_key" : "aeiou",
     "city" : "aeiou",
     "housenumber" : "aeiou",
     "street" : "aeiou",

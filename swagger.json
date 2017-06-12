@@ -575,6 +575,10 @@
           "type": "string",
           "description": "N = node, R = relation, W = way"
         },
+        "osm_key": {
+          "type": "string",
+          "description": "The osm key of the result like `place` or `amenity`"
+        },
         "name": {
           "type": "string"
         },

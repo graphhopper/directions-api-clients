@@ -22,6 +22,9 @@ module SwaggerClient
     # N = node, R = relation, W = way
     attr_accessor :osm_type
 
+    # The osm key of the result like `place` or `amenity`
+    attr_accessor :osm_key
+
     attr_accessor :name
 
     attr_accessor :country
@@ -43,6 +46,7 @@ module SwaggerClient
         :'point' => :'point',
         :'osm_id' => :'osm_id',
         :'osm_type' => :'osm_type',
+        :'osm_key' => :'osm_key',
         :'name' => :'name',
         :'country' => :'country',
         :'city' => :'city',
@@ -59,6 +63,7 @@ module SwaggerClient
         :'point' => :'GeocodingPoint',
         :'osm_id' => :'String',
         :'osm_type' => :'String',
+        :'osm_key' => :'String',
         :'name' => :'String',
         :'country' => :'String',
         :'city' => :'String',
@@ -87,6 +92,10 @@ module SwaggerClient
 
       if attributes.has_key?(:'osm_type')
         self.osm_type = attributes[:'osm_type']
+      end
+
+      if attributes.has_key?(:'osm_key')
+        self.osm_key = attributes[:'osm_key']
       end
 
       if attributes.has_key?(:'name')
@@ -140,6 +149,7 @@ module SwaggerClient
           point == o.point &&
           osm_id == o.osm_id &&
           osm_type == o.osm_type &&
+          osm_key == o.osm_key &&
           name == o.name &&
           country == o.country &&
           city == o.city &&
@@ -158,7 +168,7 @@ module SwaggerClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [point, osm_id, osm_type, name, country, city, state, street, housenumber, postcode].hash
+      [point, osm_id, osm_type, osm_key, name, country, city, state, street, housenumber, postcode].hash
     end
 
     # Builds the object from hash

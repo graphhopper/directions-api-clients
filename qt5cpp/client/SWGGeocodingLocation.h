@@ -52,6 +52,9 @@ public:
     QString* getOsmType();
     void setOsmType(QString* osm_type);
 
+    QString* getOsmKey();
+    void setOsmKey(QString* osm_key);
+
     QString* getName();
     void setName(QString* name);
 
@@ -78,6 +81,7 @@ private:
     SWGGeocodingPoint* point;
     QString* osm_id;
     QString* osm_type;
+    QString* osm_key;
     QString* name;
     QString* country;
     QString* city;

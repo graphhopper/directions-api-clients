@@ -30,6 +30,9 @@
 /* N = node, R = relation, W = way [optional]
  */
 @property(nonatomic) NSString* osmType;
+/* The osm key of the result like `place` or `amenity` [optional]
+ */
+@property(nonatomic) NSString* osmKey;
 
 @property(nonatomic) NSString* name;
 
