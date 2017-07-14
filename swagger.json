@@ -1381,15 +1381,14 @@
         },
         "location_ids": {
           "type": "array",
-          "items": {
-            "type": "string"
-          }
+          "items": "string"
         },
         "data": {
           "type": "object",
           "description": "JSON data of matrix response",
           "properties": {
             "times": {
+              "required": true,
               "type": "array",
               "items": {
                 "type": "array",
@@ -1400,6 +1399,7 @@
               }
             },
             "distances": {
+              "required": true,
               "type": "array",
               "items": {
                 "type": "array",
@@ -1604,7 +1604,7 @@
           "type": "array",
           "description": "array of route planning points",
           "items": {
-      	    "$ref": "#/definitions/RoutePoint"
+            "$ref": "#/definitions/RoutePoint"
           }
         }
       }
@@ -1620,7 +1620,7 @@
           "items": {
             "type": "object"
           }
-     	}
+        }
       }
     },
     "Activity": {
