@@ -29,6 +29,15 @@ module SwaggerClient
     # service time factor of vehicle type
     attr_accessor :service_time_factor
 
+    # cost parameter per distance unit, here meter is used
+    attr_accessor :cost_per_meter
+
+    # cost parameter per time unit, here second is used
+    attr_accessor :cost_per_second
+
+    # cost parameter vehicle activation, i.e. fixed costs per vehicle
+    attr_accessor :cost_per_activation
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -58,7 +67,10 @@ module SwaggerClient
         :'profile' => :'profile',
         :'capacity' => :'capacity',
         :'speed_factor' => :'speed_factor',
-        :'service_time_factor' => :'service_time_factor'
+        :'service_time_factor' => :'service_time_factor',
+        :'cost_per_meter' => :'cost_per_meter',
+        :'cost_per_second' => :'cost_per_second',
+        :'cost_per_activation' => :'cost_per_activation'
       }
     end
 
@@ -69,7 +81,10 @@ module SwaggerClient
         :'profile' => :'String',
         :'capacity' => :'Array<Integer>',
         :'speed_factor' => :'Float',
-        :'service_time_factor' => :'Float'
+        :'service_time_factor' => :'Float',
+        :'cost_per_meter' => :'Float',
+        :'cost_per_second' => :'Float',
+        :'cost_per_activation' => :'Float'
       }
     end
 
@@ -101,6 +116,18 @@ module SwaggerClient
 
       if attributes.has_key?(:'service_time_factor')
         self.service_time_factor = attributes[:'service_time_factor']
+      end
+
+      if attributes.has_key?(:'cost_per_meter')
+        self.cost_per_meter = attributes[:'cost_per_meter']
+      end
+
+      if attributes.has_key?(:'cost_per_second')
+        self.cost_per_second = attributes[:'cost_per_second']
+      end
+
+      if attributes.has_key?(:'cost_per_activation')
+        self.cost_per_activation = attributes[:'cost_per_activation']
       end
 
     end
@@ -139,7 +166,10 @@ module SwaggerClient
           profile == o.profile &&
           capacity == o.capacity &&
           speed_factor == o.speed_factor &&
-          service_time_factor == o.service_time_factor
+          service_time_factor == o.service_time_factor &&
+          cost_per_meter == o.cost_per_meter &&
+          cost_per_second == o.cost_per_second &&
+          cost_per_activation == o.cost_per_activation
     end
 
     # @see the `==` method
@@ -151,7 +181,7 @@ module SwaggerClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [type_id, profile, capacity, speed_factor, service_time_factor].hash
+      [type_id, profile, capacity, speed_factor, service_time_factor, cost_per_meter, cost_per_second, cost_per_activation].hash
     end
 
     # Builds the object from hash

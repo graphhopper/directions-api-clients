@@ -17,7 +17,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"typeId": @"type_id", @"profile": @"profile", @"capacity": @"capacity", @"speedFactor": @"speed_factor", @"serviceTimeFactor": @"service_time_factor" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"typeId": @"type_id", @"profile": @"profile", @"capacity": @"capacity", @"speedFactor": @"speed_factor", @"serviceTimeFactor": @"service_time_factor", @"costPerMeter": @"cost_per_meter", @"costPerSecond": @"cost_per_second", @"costPerActivation": @"cost_per_activation" }];
 }
 
 /**
@@ -27,7 +27,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"typeId", @"profile", @"capacity", @"speedFactor", @"serviceTimeFactor"];
+  NSArray *optionalProperties = @[@"typeId", @"profile", @"capacity", @"speedFactor", @"serviceTimeFactor", @"costPerMeter", @"costPerSecond", @"costPerActivation"];
   return [optionalProperties containsObject:propertyName];
 }
 

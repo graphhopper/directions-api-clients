@@ -104,6 +104,30 @@ namespace IO.Swagger.Test
         {
             // TODO unit test for the property 'ServiceTimeFactor'
         }
+        /// <summary>
+        /// Test the property 'CostPerMeter'
+        /// </summary>
+        [Test]
+        public void CostPerMeterTest()
+        {
+            // TODO unit test for the property 'CostPerMeter'
+        }
+        /// <summary>
+        /// Test the property 'CostPerSecond'
+        /// </summary>
+        [Test]
+        public void CostPerSecondTest()
+        {
+            // TODO unit test for the property 'CostPerSecond'
+        }
+        /// <summary>
+        /// Test the property 'CostPerActivation'
+        /// </summary>
+        [Test]
+        public void CostPerActivationTest()
+        {
+            // TODO unit test for the property 'CostPerActivation'
+        }
 
     }
 

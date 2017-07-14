@@ -177,6 +177,27 @@ __PACKAGE__->method_documentation({
     	format => '',
     	read_only => '',
     		},
+    'cost_per_meter' => {
+    	datatype => 'double',
+    	base_name => 'cost_per_meter',
+    	description => 'cost parameter per distance unit, here meter is used',
+    	format => '',
+    	read_only => '',
+    		},
+    'cost_per_second' => {
+    	datatype => 'double',
+    	base_name => 'cost_per_second',
+    	description => 'cost parameter per time unit, here second is used',
+    	format => '',
+    	read_only => '',
+    		},
+    'cost_per_activation' => {
+    	datatype => 'double',
+    	base_name => 'cost_per_activation',
+    	description => 'cost parameter vehicle activation, i.e. fixed costs per vehicle',
+    	format => '',
+    	read_only => '',
+    		},
 });
 
 __PACKAGE__->swagger_types( {
@@ -184,7 +205,10 @@ __PACKAGE__->swagger_types( {
     'profile' => 'string',
     'capacity' => 'ARRAY[int]',
     'speed_factor' => 'double',
-    'service_time_factor' => 'double'
+    'service_time_factor' => 'double',
+    'cost_per_meter' => 'double',
+    'cost_per_second' => 'double',
+    'cost_per_activation' => 'double'
 } );
 
 __PACKAGE__->attribute_map( {
@@ -192,7 +216,10 @@ __PACKAGE__->attribute_map( {
     'profile' => 'profile',
     'capacity' => 'capacity',
     'speed_factor' => 'speed_factor',
-    'service_time_factor' => 'service_time_factor'
+    'service_time_factor' => 'service_time_factor',
+    'cost_per_meter' => 'cost_per_meter',
+    'cost_per_second' => 'cost_per_second',
+    'cost_per_activation' => 'cost_per_activation'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

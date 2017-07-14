@@ -36,5 +36,14 @@
 /* service time factor of vehicle type [optional]
  */
 @property(nonatomic) NSNumber* serviceTimeFactor;
+/* cost parameter per distance unit, here meter is used [optional]
+ */
+@property(nonatomic) NSNumber* costPerMeter;
+/* cost parameter per time unit, here second is used [optional]
+ */
+@property(nonatomic) NSNumber* costPerSecond;
+/* cost parameter vehicle activation, i.e. fixed costs per vehicle [optional]
+ */
+@property(nonatomic) NSNumber* costPerActivation;
 
 @end

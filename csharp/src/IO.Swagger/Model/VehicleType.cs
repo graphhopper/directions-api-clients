@@ -100,13 +100,19 @@ namespace IO.Swagger.Model
         /// <param name="Capacity">array of capacity dimensions.</param>
         /// <param name="SpeedFactor">speed_factor of vehicle type.</param>
         /// <param name="ServiceTimeFactor">service time factor of vehicle type.</param>
-        public VehicleType(string TypeId = default(string), ProfileEnum? Profile = default(ProfileEnum?), List<int?> Capacity = default(List<int?>), double? SpeedFactor = default(double?), double? ServiceTimeFactor = default(double?))
+        /// <param name="CostPerMeter">cost parameter per distance unit, here meter is used.</param>
+        /// <param name="CostPerSecond">cost parameter per time unit, here second is used.</param>
+        /// <param name="CostPerActivation">cost parameter vehicle activation, i.e. fixed costs per vehicle.</param>
+        public VehicleType(string TypeId = default(string), ProfileEnum? Profile = default(ProfileEnum?), List<int?> Capacity = default(List<int?>), double? SpeedFactor = default(double?), double? ServiceTimeFactor = default(double?), double? CostPerMeter = default(double?), double? CostPerSecond = default(double?), double? CostPerActivation = default(double?))
         {
             this.TypeId = TypeId;
             this.Profile = Profile;
             this.Capacity = Capacity;
             this.SpeedFactor = SpeedFactor;
             this.ServiceTimeFactor = ServiceTimeFactor;
+            this.CostPerMeter = CostPerMeter;
+            this.CostPerSecond = CostPerSecond;
+            this.CostPerActivation = CostPerActivation;
         }
         
         /// <summary>
@@ -134,6 +140,24 @@ namespace IO.Swagger.Model
         [DataMember(Name="service_time_factor", EmitDefaultValue=false)]
         public double? ServiceTimeFactor { get; set; }
         /// <summary>
+        /// cost parameter per distance unit, here meter is used
+        /// </summary>
+        /// <value>cost parameter per distance unit, here meter is used</value>
+        [DataMember(Name="cost_per_meter", EmitDefaultValue=false)]
+        public double? CostPerMeter { get; set; }
+        /// <summary>
+        /// cost parameter per time unit, here second is used
+        /// </summary>
+        /// <value>cost parameter per time unit, here second is used</value>
+        [DataMember(Name="cost_per_second", EmitDefaultValue=false)]
+        public double? CostPerSecond { get; set; }
+        /// <summary>
+        /// cost parameter vehicle activation, i.e. fixed costs per vehicle
+        /// </summary>
+        /// <value>cost parameter vehicle activation, i.e. fixed costs per vehicle</value>
+        [DataMember(Name="cost_per_activation", EmitDefaultValue=false)]
+        public double? CostPerActivation { get; set; }
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -146,6 +170,9 @@ namespace IO.Swagger.Model
             sb.Append("  Capacity: ").Append(Capacity).Append("\n");
             sb.Append("  SpeedFactor: ").Append(SpeedFactor).Append("\n");
             sb.Append("  ServiceTimeFactor: ").Append(ServiceTimeFactor).Append("\n");
+            sb.Append("  CostPerMeter: ").Append(CostPerMeter).Append("\n");
+            sb.Append("  CostPerSecond: ").Append(CostPerSecond).Append("\n");
+            sb.Append("  CostPerActivation: ").Append(CostPerActivation).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -206,6 +233,21 @@ namespace IO.Swagger.Model
                     this.ServiceTimeFactor == other.ServiceTimeFactor ||
                     this.ServiceTimeFactor != null &&
                     this.ServiceTimeFactor.Equals(other.ServiceTimeFactor)
+                ) && 
+                (
+                    this.CostPerMeter == other.CostPerMeter ||
+                    this.CostPerMeter != null &&
+                    this.CostPerMeter.Equals(other.CostPerMeter)
+                ) && 
+                (
+                    this.CostPerSecond == other.CostPerSecond ||
+                    this.CostPerSecond != null &&
+                    this.CostPerSecond.Equals(other.CostPerSecond)
+                ) && 
+                (
+                    this.CostPerActivation == other.CostPerActivation ||
+                    this.CostPerActivation != null &&
+                    this.CostPerActivation.Equals(other.CostPerActivation)
                 );
         }
 
@@ -230,6 +272,12 @@ namespace IO.Swagger.Model
                     hash = hash * 59 + this.SpeedFactor.GetHashCode();
                 if (this.ServiceTimeFactor != null)
                     hash = hash * 59 + this.ServiceTimeFactor.GetHashCode();
+                if (this.CostPerMeter != null)
+                    hash = hash * 59 + this.CostPerMeter.GetHashCode();
+                if (this.CostPerSecond != null)
+                    hash = hash * 59 + this.CostPerSecond.GetHashCode();
+                if (this.CostPerActivation != null)
+                    hash = hash * 59 + this.CostPerActivation.GetHashCode();
                 return hash;
             }
         }

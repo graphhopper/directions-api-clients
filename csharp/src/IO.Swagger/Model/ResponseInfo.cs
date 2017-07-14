@@ -34,7 +34,7 @@ namespace IO.Swagger.Model
         /// </summary>
         /// <param name="Copyrights">Copyrights.</param>
         /// <param name="Took">Took.</param>
-        public ResponseInfo(List<string> Copyrights = default(List<string>), int? Took = default(int?))
+        public ResponseInfo(List<string> Copyrights = default(List<string>), double? Took = default(double?))
         {
             this.Copyrights = Copyrights;
             this.Took = Took;
@@ -49,7 +49,7 @@ namespace IO.Swagger.Model
         /// Gets or Sets Took
         /// </summary>
         [DataMember(Name="took", EmitDefaultValue=false)]
-        public int? Took { get; set; }
+        public double? Took { get; set; }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

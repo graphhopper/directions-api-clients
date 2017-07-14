@@ -46,13 +46,13 @@ public:
     QList<QString*>* getCopyrights();
     void setCopyrights(QList<QString*>* copyrights);
 
-    qint32 getTook();
-    void setTook(qint32 took);
+    double getTook();
+    void setTook(double took);
 
 
 private:
     QList<QString*>* copyrights;
-    qint32 took;
+    double took;
 };
 
 } /* namespace Swagger */

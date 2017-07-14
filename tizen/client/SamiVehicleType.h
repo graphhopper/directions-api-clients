@@ -53,6 +53,12 @@ public:
     void setPSpeedFactor(Double* pSpeed_factor);
     Double* getPServiceTimeFactor();
     void setPServiceTimeFactor(Double* pService_time_factor);
+    Double* getPCostPerMeter();
+    void setPCostPerMeter(Double* pCost_per_meter);
+    Double* getPCostPerSecond();
+    void setPCostPerSecond(Double* pCost_per_second);
+    Double* getPCostPerActivation();
+    void setPCostPerActivation(Double* pCost_per_activation);
 
 private:
     String* pType_id;
@@ -60,6 +66,9 @@ String* pProfile;
 IList* pCapacity;
 Double* pSpeed_factor;
 Double* pService_time_factor;
+Double* pCost_per_meter;
+Double* pCost_per_second;
+Double* pCost_per_activation;
 };
 
 } /* namespace Swagger */

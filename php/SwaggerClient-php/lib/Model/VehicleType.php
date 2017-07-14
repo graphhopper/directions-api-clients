@@ -58,7 +58,10 @@ class VehicleType implements ArrayAccess
         'profile' => 'string',
         'capacity' => 'int[]',
         'speed_factor' => 'double',
-        'service_time_factor' => 'double'
+        'service_time_factor' => 'double',
+        'cost_per_meter' => 'double',
+        'cost_per_second' => 'double',
+        'cost_per_activation' => 'double'
     ];
 
     public static function swaggerTypes()
@@ -75,7 +78,10 @@ class VehicleType implements ArrayAccess
         'profile' => 'profile',
         'capacity' => 'capacity',
         'speed_factor' => 'speed_factor',
-        'service_time_factor' => 'service_time_factor'
+        'service_time_factor' => 'service_time_factor',
+        'cost_per_meter' => 'cost_per_meter',
+        'cost_per_second' => 'cost_per_second',
+        'cost_per_activation' => 'cost_per_activation'
     ];
 
 
@@ -88,7 +94,10 @@ class VehicleType implements ArrayAccess
         'profile' => 'setProfile',
         'capacity' => 'setCapacity',
         'speed_factor' => 'setSpeedFactor',
-        'service_time_factor' => 'setServiceTimeFactor'
+        'service_time_factor' => 'setServiceTimeFactor',
+        'cost_per_meter' => 'setCostPerMeter',
+        'cost_per_second' => 'setCostPerSecond',
+        'cost_per_activation' => 'setCostPerActivation'
     ];
 
 
@@ -101,7 +110,10 @@ class VehicleType implements ArrayAccess
         'profile' => 'getProfile',
         'capacity' => 'getCapacity',
         'speed_factor' => 'getSpeedFactor',
-        'service_time_factor' => 'getServiceTimeFactor'
+        'service_time_factor' => 'getServiceTimeFactor',
+        'cost_per_meter' => 'getCostPerMeter',
+        'cost_per_second' => 'getCostPerSecond',
+        'cost_per_activation' => 'getCostPerActivation'
     ];
 
     public static function attributeMap()
@@ -166,6 +178,9 @@ class VehicleType implements ArrayAccess
         $this->container['capacity'] = isset($data['capacity']) ? $data['capacity'] : null;
         $this->container['speed_factor'] = isset($data['speed_factor']) ? $data['speed_factor'] : null;
         $this->container['service_time_factor'] = isset($data['service_time_factor']) ? $data['service_time_factor'] : null;
+        $this->container['cost_per_meter'] = isset($data['cost_per_meter']) ? $data['cost_per_meter'] : null;
+        $this->container['cost_per_second'] = isset($data['cost_per_second']) ? $data['cost_per_second'] : null;
+        $this->container['cost_per_activation'] = isset($data['cost_per_activation']) ? $data['cost_per_activation'] : null;
     }
 
     /**
@@ -307,6 +322,69 @@ class VehicleType implements ArrayAccess
     public function setServiceTimeFactor($service_time_factor)
     {
         $this->container['service_time_factor'] = $service_time_factor;
+
+        return $this;
+    }
+
+    /**
+     * Gets cost_per_meter
+     * @return double
+     */
+    public function getCostPerMeter()
+    {
+        return $this->container['cost_per_meter'];
+    }
+
+    /**
+     * Sets cost_per_meter
+     * @param double $cost_per_meter cost parameter per distance unit, here meter is used
+     * @return $this
+     */
+    public function setCostPerMeter($cost_per_meter)
+    {
+        $this->container['cost_per_meter'] = $cost_per_meter;
+
+        return $this;
+    }
+
+    /**
+     * Gets cost_per_second
+     * @return double
+     */
+    public function getCostPerSecond()
+    {
+        return $this->container['cost_per_second'];
+    }
+
+    /**
+     * Sets cost_per_second
+     * @param double $cost_per_second cost parameter per time unit, here second is used
+     * @return $this
+     */
+    public function setCostPerSecond($cost_per_second)
+    {
+        $this->container['cost_per_second'] = $cost_per_second;
+
+        return $this;
+    }
+
+    /**
+     * Gets cost_per_activation
+     * @return double
+     */
+    public function getCostPerActivation()
+    {
+        return $this->container['cost_per_activation'];
+    }
+
+    /**
+     * Sets cost_per_activation
+     * @param double $cost_per_activation cost parameter vehicle activation, i.e. fixed costs per vehicle
+     * @return $this
+     */
+    public function setCostPerActivation($cost_per_activation)
+    {
+        $this->container['cost_per_activation'] = $cost_per_activation;
 
         return $this;
     }

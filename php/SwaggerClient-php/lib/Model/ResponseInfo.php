@@ -56,7 +56,7 @@ class ResponseInfo implements ArrayAccess
       */
     protected static $swaggerTypes = [
         'copyrights' => 'string[]',
-        'took' => 'int'
+        'took' => 'double'
     ];
 
     public static function swaggerTypes()
@@ -176,7 +176,7 @@ class ResponseInfo implements ArrayAccess
 
     /**
      * Gets took
-     * @return int
+     * @return double
      */
     public function getTook()
     {
@@ -185,7 +185,7 @@ class ResponseInfo implements ArrayAccess
 
     /**
      * Sets took
-     * @param int $took
+     * @param double $took
      * @return $this
      */
     public function setTook($took)

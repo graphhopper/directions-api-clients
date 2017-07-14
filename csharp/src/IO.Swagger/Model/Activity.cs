@@ -77,7 +77,13 @@ namespace IO.Swagger.Model
             /// Enum Delivery for "delivery"
             /// </summary>
             [EnumMember(Value = "delivery")]
-            Delivery
+            Delivery,
+            
+            /// <summary>
+            /// Enum Break for "break"
+            /// </summary>
+            [EnumMember(Value = "break")]
+            Break
         }
 
         /// <summary>

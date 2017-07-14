@@ -89,8 +89,8 @@ JsonString* pTookKey = new JsonString(L"took");
         pJsonObject->GetValue(pTookKey, pTookVal);
         if(pTookVal != null) {
             
-            pTook = new Integer();
-            jsonToValue(pTook, pTookVal, L"Integer", L"Integer");
+            pTook = new Double();
+            jsonToValue(pTook, pTookVal, L"Double", L"Double");
         }
         delete pTookKey;
     }
@@ -147,7 +147,7 @@ SamiResponseInfo::asJsonObject() {
     pJsonObject->Add(pCopyrightsKey, toJson(getPCopyrights(), "String", "array"));
 
     JsonString *pTookKey = new JsonString(L"took");
-    pJsonObject->Add(pTookKey, toJson(getPTook(), "Integer", ""));
+    pJsonObject->Add(pTookKey, toJson(getPTook(), "Double", ""));
 
     return pJsonObject;
 }
@@ -161,12 +161,12 @@ SamiResponseInfo::setPCopyrights(IList* pCopyrights) {
     this->pCopyrights = pCopyrights;
 }
 
-Integer*
+Double*
 SamiResponseInfo::getPTook() {
     return pTook;
 }
 void
-SamiResponseInfo::setPTook(Integer* pTook) {
+SamiResponseInfo::setPTook(Double* pTook) {
     this->pTook = pTook;
 }
 

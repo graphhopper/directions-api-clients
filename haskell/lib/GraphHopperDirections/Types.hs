@@ -393,7 +393,7 @@ newtype ResponseCoordinatesArray = ResponseCoordinatesArray { unResponseCoordina
 -- | Additional information for your request
 data ResponseInfo = ResponseInfo
     { responseInfoCopyrights :: [Text] -- ^ 
-    , responseInfoTook :: Int -- ^ 
+    , responseInfoTook :: Double -- ^ 
     } deriving (Show, Eq, Generic)
 
 instance FromJSON ResponseInfo where
@@ -607,6 +607,9 @@ data VehicleType = VehicleType
     , vehicleTypeCapacity :: [Int] -- ^ array of capacity dimensions
     , vehicleTypeSpeedFactor :: Double -- ^ speed_factor of vehicle type
     , vehicleTypeServiceTimeFactor :: Double -- ^ service time factor of vehicle type
+    , vehicleTypeCostPerMeter :: Double -- ^ cost parameter per distance unit, here meter is used
+    , vehicleTypeCostPerSecond :: Double -- ^ cost parameter per time unit, here second is used
+    , vehicleTypeCostPerActivation :: Double -- ^ cost parameter vehicle activation, i.e. fixed costs per vehicle
     } deriving (Show, Eq, Generic)
 
 instance FromJSON VehicleType where

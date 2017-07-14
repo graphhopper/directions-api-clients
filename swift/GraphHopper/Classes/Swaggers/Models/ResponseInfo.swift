@@ -11,7 +11,7 @@ import Foundation
 /** Additional information for your request */
 public class ResponseInfo: JSONEncodable {
     public var copyrights: [String]?
-    public var took: Int32?
+    public var took: Double?
 
     public init() {}
 
@@ -19,7 +19,7 @@ public class ResponseInfo: JSONEncodable {
     func encodeToJSON() -> AnyObject {
         var nillableDictionary = [String:AnyObject?]()
         nillableDictionary["copyrights"] = self.copyrights?.encodeToJSON()
-        nillableDictionary["took"] = self.took?.encodeToJSON()
+        nillableDictionary["took"] = self.took
         let dictionary: [String:AnyObject] = APIHelper.rejectNil(nillableDictionary) ?? [:]
         return dictionary
     }

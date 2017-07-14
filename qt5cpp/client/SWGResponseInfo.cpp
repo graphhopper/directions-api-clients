@@ -39,7 +39,7 @@ SWGResponseInfo::~SWGResponseInfo() {
 void
 SWGResponseInfo::init() {
     copyrights = new QList<QString*>();
-    took = 0;
+    took = 0.0;
 }
 
 void
@@ -69,7 +69,7 @@ SWGResponseInfo::fromJsonObject(QJsonObject &pJson) {
     
     ::Swagger::setValue(&copyrights, pJson["copyrights"], "QList", "QString");
     
-    ::Swagger::setValue(&took, pJson["took"], "qint32", "");
+    ::Swagger::setValue(&took, pJson["took"], "double", "");
 }
 
 QString
@@ -104,12 +104,12 @@ SWGResponseInfo::setCopyrights(QList<QString*>* copyrights) {
     this->copyrights = copyrights;
 }
 
-qint32
+double
 SWGResponseInfo::getTook() {
     return took;
 }
 void
-SWGResponseInfo::setTook(qint32 took) {
+SWGResponseInfo::setTook(double took) {
     this->took = took;
 }
 

@@ -567,7 +567,7 @@ class Decoders {
                 let sourceDictionary = source as! [NSObject:AnyObject]
                 let instance = ResponseInfo()
                 instance.copyrights = Decoders.decodeOptional(clazz: Array.self, source: sourceDictionary["copyrights"])
-                instance.took = Decoders.decodeOptional(clazz: Int32.self, source: sourceDictionary["took"])
+                instance.took = Decoders.decodeOptional(clazz: Double.self, source: sourceDictionary["took"])
                 return instance
             }
 
@@ -831,6 +831,9 @@ class Decoders {
                 instance.capacity = Decoders.decodeOptional(clazz: Array.self, source: sourceDictionary["capacity"])
                 instance.speedFactor = Decoders.decodeOptional(clazz: Double.self, source: sourceDictionary["speed_factor"])
                 instance.serviceTimeFactor = Decoders.decodeOptional(clazz: Double.self, source: sourceDictionary["service_time_factor"])
+                instance.costPerMeter = Decoders.decodeOptional(clazz: Double.self, source: sourceDictionary["cost_per_meter"])
+                instance.costPerSecond = Decoders.decodeOptional(clazz: Double.self, source: sourceDictionary["cost_per_second"])
+                instance.costPerActivation = Decoders.decodeOptional(clazz: Double.self, source: sourceDictionary["cost_per_activation"])
                 return instance
             }
         }

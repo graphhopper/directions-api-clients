@@ -15,5 +15,5 @@ type ResponseInfo struct {
 
 	Copyrights []string `json:"copyrights,omitempty"`
 
-	Took int32 `json:"took,omitempty"`
+	Took float64 `json:"took,omitempty"`
 }

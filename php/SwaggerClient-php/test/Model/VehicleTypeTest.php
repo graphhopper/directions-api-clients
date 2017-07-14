@@ -122,4 +122,28 @@ class VehicleTypeTest extends \PHPUnit_Framework_TestCase
 
     }
 
+    /**
+     * Test attribute "cost_per_meter"
+     */
+    public function testPropertyCostPerMeter()
+    {
+
+    }
+
+    /**
+     * Test attribute "cost_per_second"
+     */
+    public function testPropertyCostPerSecond()
+    {
+
+    }
+
+    /**
+     * Test attribute "cost_per_activation"
+     */
+    public function testPropertyCostPerActivation()
+    {
+
+    }
+
 }

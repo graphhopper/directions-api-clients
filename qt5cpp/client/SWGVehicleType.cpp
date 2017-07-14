@@ -43,6 +43,9 @@ SWGVehicleType::init() {
     capacity = new QList<qint32>();
     speed_factor = 0.0;
     service_time_factor = 0.0;
+    cost_per_meter = 0.0;
+    cost_per_second = 0.0;
+    cost_per_activation = 0.0;
 }
 
 void
@@ -55,6 +58,9 @@ SWGVehicleType::cleanup() {
     if(profile != nullptr) {
         delete profile;
     }
+
+
+
 
 
 
@@ -78,6 +84,9 @@ SWGVehicleType::fromJsonObject(QJsonObject &pJson) {
     ::Swagger::setValue(&capacity, pJson["capacity"], "QList", "qint32");
     ::Swagger::setValue(&speed_factor, pJson["speed_factor"], "double", "");
     ::Swagger::setValue(&service_time_factor, pJson["service_time_factor"], "double", "");
+    ::Swagger::setValue(&cost_per_meter, pJson["cost_per_meter"], "double", "");
+    ::Swagger::setValue(&cost_per_second, pJson["cost_per_second"], "double", "");
+    ::Swagger::setValue(&cost_per_activation, pJson["cost_per_activation"], "double", "");
 }
 
 QString
@@ -105,6 +114,12 @@ SWGVehicleType::asJsonObject() {
     obj->insert("speed_factor", QJsonValue(speed_factor));
 
     obj->insert("service_time_factor", QJsonValue(service_time_factor));
+
+    obj->insert("cost_per_meter", QJsonValue(cost_per_meter));
+
+    obj->insert("cost_per_second", QJsonValue(cost_per_second));
+
+    obj->insert("cost_per_activation", QJsonValue(cost_per_activation));
 
     return obj;
 }
@@ -152,6 +167,33 @@ SWGVehicleType::getServiceTimeFactor() {
 void
 SWGVehicleType::setServiceTimeFactor(double service_time_factor) {
     this->service_time_factor = service_time_factor;
+}
+
+double
+SWGVehicleType::getCostPerMeter() {
+    return cost_per_meter;
+}
+void
+SWGVehicleType::setCostPerMeter(double cost_per_meter) {
+    this->cost_per_meter = cost_per_meter;
+}
+
+double
+SWGVehicleType::getCostPerSecond() {
+    return cost_per_second;
+}
+void
+SWGVehicleType::setCostPerSecond(double cost_per_second) {
+    this->cost_per_second = cost_per_second;
+}
+
+double
+SWGVehicleType::getCostPerActivation() {
+    return cost_per_activation;
+}
+void
+SWGVehicleType::setCostPerActivation(double cost_per_activation) {
+    this->cost_per_activation = cost_per_activation;
 }
 
 

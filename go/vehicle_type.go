@@ -26,4 +26,13 @@ type VehicleType struct {
 
 	// service time factor of vehicle type
 	ServiceTimeFactor float64 `json:"service_time_factor,omitempty"`
+
+	// cost parameter per distance unit, here meter is used
+	CostPerMeter float64 `json:"cost_per_meter,omitempty"`
+
+	// cost parameter per time unit, here second is used
+	CostPerSecond float64 `json:"cost_per_second,omitempty"`
+
+	// cost parameter vehicle activation, i.e. fixed costs per vehicle
+	CostPerActivation float64 `json:"cost_per_activation,omitempty"`
 }

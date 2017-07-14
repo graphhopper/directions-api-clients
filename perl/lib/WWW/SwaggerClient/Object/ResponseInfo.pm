@@ -150,7 +150,7 @@ __PACKAGE__->method_documentation({
     	read_only => '',
     		},
     'took' => {
-    	datatype => 'int',
+    	datatype => 'double',
     	base_name => 'took',
     	description => '',
     	format => '',
@@ -160,7 +160,7 @@ __PACKAGE__->method_documentation({
 
 __PACKAGE__->swagger_types( {
     'copyrights' => 'ARRAY[string]',
-    'took' => 'int'
+    'took' => 'double'
 } );
 
 __PACKAGE__->attribute_map( {

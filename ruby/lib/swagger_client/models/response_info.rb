@@ -31,7 +31,7 @@ module SwaggerClient
     def self.swagger_types
       {
         :'copyrights' => :'Array<String>',
-        :'took' => :'Integer'
+        :'took' => :'Float'
       }
     end
 

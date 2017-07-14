@@ -23,5 +23,11 @@ case class VehicleType (
   /* speed_factor of vehicle type */
   speedFactor: Double,
   /* service time factor of vehicle type */
-  serviceTimeFactor: Double
+  serviceTimeFactor: Double,
+  /* cost parameter per distance unit, here meter is used */
+  costPerMeter: Double,
+  /* cost parameter per time unit, here second is used */
+  costPerSecond: Double,
+  /* cost parameter vehicle activation, i.e. fixed costs per vehicle */
+  costPerActivation: Double
 )

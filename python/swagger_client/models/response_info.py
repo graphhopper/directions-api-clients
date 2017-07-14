@@ -32,7 +32,7 @@ class ResponseInfo(object):
         """
         self.swagger_types = {
             'copyrights': 'list[str]',
-            'took': 'int'
+            'took': 'float'
         }
 
         self.attribute_map = {
@@ -70,7 +70,7 @@ class ResponseInfo(object):
         Gets the took of this ResponseInfo.
 
         :return: The took of this ResponseInfo.
-        :rtype: int
+        :rtype: float
         """
         return self._took
 
@@ -80,7 +80,7 @@ class ResponseInfo(object):
         Sets the took of this ResponseInfo.
 
         :param took: The took of this ResponseInfo.
-        :type: int
+        :type: float
         """
 
         self._took = took

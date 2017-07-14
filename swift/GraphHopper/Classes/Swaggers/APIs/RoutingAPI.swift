@@ -62,7 +62,7 @@ public class RoutingAPI: APIBase {
     "snapped_waypoints" : ""
   } ],
   "info" : {
-    "took" : 123,
+    "took" : 1.3579000000000001069366817318950779736042022705078125,
     "copyrights" : [ "aeiou" ]
   }
 }}]

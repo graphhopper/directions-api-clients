@@ -27,6 +27,9 @@ pProfile = null;
 pCapacity = null;
 pSpeed_factor = null;
 pService_time_factor = null;
+pCost_per_meter = null;
+pCost_per_second = null;
+pCost_per_activation = null;
 }
 
 void
@@ -55,6 +58,21 @@ if(pService_time_factor != null) {
         
         delete pService_time_factor;
         pService_time_factor = null;
+    }
+if(pCost_per_meter != null) {
+        
+        delete pCost_per_meter;
+        pCost_per_meter = null;
+    }
+if(pCost_per_second != null) {
+        
+        delete pCost_per_second;
+        pCost_per_second = null;
+    }
+if(pCost_per_activation != null) {
+        
+        delete pCost_per_activation;
+        pCost_per_activation = null;
     }
 }
 
@@ -138,6 +156,33 @@ JsonString* pService_time_factorKey = new JsonString(L"service_time_factor");
             jsonToValue(pService_time_factor, pService_time_factorVal, L"Double", L"Double");
         }
         delete pService_time_factorKey;
+JsonString* pCost_per_meterKey = new JsonString(L"cost_per_meter");
+        IJsonValue* pCost_per_meterVal = null;
+        pJsonObject->GetValue(pCost_per_meterKey, pCost_per_meterVal);
+        if(pCost_per_meterVal != null) {
+            
+            pCost_per_meter = new Double();
+            jsonToValue(pCost_per_meter, pCost_per_meterVal, L"Double", L"Double");
+        }
+        delete pCost_per_meterKey;
+JsonString* pCost_per_secondKey = new JsonString(L"cost_per_second");
+        IJsonValue* pCost_per_secondVal = null;
+        pJsonObject->GetValue(pCost_per_secondKey, pCost_per_secondVal);
+        if(pCost_per_secondVal != null) {
+            
+            pCost_per_second = new Double();
+            jsonToValue(pCost_per_second, pCost_per_secondVal, L"Double", L"Double");
+        }
+        delete pCost_per_secondKey;
+JsonString* pCost_per_activationKey = new JsonString(L"cost_per_activation");
+        IJsonValue* pCost_per_activationVal = null;
+        pJsonObject->GetValue(pCost_per_activationKey, pCost_per_activationVal);
+        if(pCost_per_activationVal != null) {
+            
+            pCost_per_activation = new Double();
+            jsonToValue(pCost_per_activation, pCost_per_activationVal, L"Double", L"Double");
+        }
+        delete pCost_per_activationKey;
     }
 }
 
@@ -203,6 +248,15 @@ SamiVehicleType::asJsonObject() {
     JsonString *pService_time_factorKey = new JsonString(L"service_time_factor");
     pJsonObject->Add(pService_time_factorKey, toJson(getPServiceTimeFactor(), "Double", ""));
 
+    JsonString *pCost_per_meterKey = new JsonString(L"cost_per_meter");
+    pJsonObject->Add(pCost_per_meterKey, toJson(getPCostPerMeter(), "Double", ""));
+
+    JsonString *pCost_per_secondKey = new JsonString(L"cost_per_second");
+    pJsonObject->Add(pCost_per_secondKey, toJson(getPCostPerSecond(), "Double", ""));
+
+    JsonString *pCost_per_activationKey = new JsonString(L"cost_per_activation");
+    pJsonObject->Add(pCost_per_activationKey, toJson(getPCostPerActivation(), "Double", ""));
+
     return pJsonObject;
 }
 
@@ -249,6 +303,33 @@ SamiVehicleType::getPServiceTimeFactor() {
 void
 SamiVehicleType::setPServiceTimeFactor(Double* pService_time_factor) {
     this->pService_time_factor = pService_time_factor;
+}
+
+Double*
+SamiVehicleType::getPCostPerMeter() {
+    return pCost_per_meter;
+}
+void
+SamiVehicleType::setPCostPerMeter(Double* pCost_per_meter) {
+    this->pCost_per_meter = pCost_per_meter;
+}
+
+Double*
+SamiVehicleType::getPCostPerSecond() {
+    return pCost_per_second;
+}
+void
+SamiVehicleType::setPCostPerSecond(Double* pCost_per_second) {
+    this->pCost_per_second = pCost_per_second;
+}
+
+Double*
+SamiVehicleType::getPCostPerActivation() {
+    return pCost_per_activation;
+}
+void
+SamiVehicleType::setPCostPerActivation(Double* pCost_per_activation) {
+    this->pCost_per_activation = pCost_per_activation;
 }
 
 

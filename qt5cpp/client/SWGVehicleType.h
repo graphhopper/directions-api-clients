@@ -58,6 +58,15 @@ public:
     double getServiceTimeFactor();
     void setServiceTimeFactor(double service_time_factor);
 
+    double getCostPerMeter();
+    void setCostPerMeter(double cost_per_meter);
+
+    double getCostPerSecond();
+    void setCostPerSecond(double cost_per_second);
+
+    double getCostPerActivation();
+    void setCostPerActivation(double cost_per_activation);
+
 
 private:
     QString* type_id;
@@ -65,6 +74,9 @@ private:
     QList<qint32>* capacity;
     double speed_factor;
     double service_time_factor;
+    double cost_per_meter;
+    double cost_per_second;
+    double cost_per_activation;
 };
 
 } /* namespace Swagger */

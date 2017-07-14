@@ -18,7 +18,7 @@ using namespace Tizen::Web::Json;
 
 
 using Tizen::Base::Collection::IList;
-using Tizen::Base::Integer;
+using Tizen::Base::Double;
 using Tizen::Base::String;
 
 
@@ -44,12 +44,12 @@ public:
 
     IList* getPCopyrights();
     void setPCopyrights(IList* pCopyrights);
-    Integer* getPTook();
-    void setPTook(Integer* pTook);
+    Double* getPTook();
+    void setPTook(Double* pTook);
 
 private:
     IList* pCopyrights;
-Integer* pTook;
+Double* pTook;
 };
 
 } /* namespace Swagger */

@@ -29,6 +29,12 @@ public class VehicleType: JSONEncodable {
     public var speedFactor: Double?
     /** service time factor of vehicle type */
     public var serviceTimeFactor: Double?
+    /** cost parameter per distance unit, here meter is used */
+    public var costPerMeter: Double?
+    /** cost parameter per time unit, here second is used */
+    public var costPerSecond: Double?
+    /** cost parameter vehicle activation, i.e. fixed costs per vehicle */
+    public var costPerActivation: Double?
 
     public init() {}
 
@@ -40,6 +46,9 @@ public class VehicleType: JSONEncodable {
         nillableDictionary["capacity"] = self.capacity?.encodeToJSON()
         nillableDictionary["speed_factor"] = self.speedFactor
         nillableDictionary["service_time_factor"] = self.serviceTimeFactor
+        nillableDictionary["cost_per_meter"] = self.costPerMeter
+        nillableDictionary["cost_per_second"] = self.costPerSecond
+        nillableDictionary["cost_per_activation"] = self.costPerActivation
         let dictionary: [String:AnyObject] = APIHelper.rejectNil(nillableDictionary) ?? [:]
         return dictionary
     }
