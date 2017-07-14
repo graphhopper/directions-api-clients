@@ -1636,7 +1636,8 @@
             "pickupShipment",
             "deliverShipment",
             "pickup",
-            "delivery"
+            "delivery",
+            "break"
           ]
         },
         "id": {
