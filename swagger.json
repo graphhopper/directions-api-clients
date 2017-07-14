@@ -842,8 +842,8 @@
           }
         },
         "took": {
-          "type": "integer",
-          "format": "int32"
+          "type": "number",
+          "format": "double"
         }
       }
     },
