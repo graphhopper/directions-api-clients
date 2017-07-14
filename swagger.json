@@ -1381,14 +1381,16 @@
         },
         "location_ids": {
           "type": "array",
-          "items": "string"
+          "items": {
+            "type": "string"
+          }
         },
         "data": {
           "type": "object",
           "description": "JSON data of matrix response",
           "properties": {
             "times": {
-              "required": true,
+              "minItems": 1,
               "type": "array",
               "items": {
                 "type": "array",
@@ -1399,7 +1401,7 @@
               }
             },
             "distances": {
-              "required": true,
+              "minItems": 1,
               "type": "array",
               "items": {
                 "type": "array",
