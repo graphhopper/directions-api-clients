@@ -887,7 +887,10 @@
               "type": "string"
             },
             "coordinates": {
-              "$ref": "#/definitions/ResponseCoordinatesArray"
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ResponseCoordinatesArray"
+              }
             }
           }
         }
