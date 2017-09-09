@@ -6,7 +6,7 @@ Please see the successfully created one in the subfolders.
 
 language  |  tested?| alternative
 :---------|:--------|:------------
-java      |  yes    | Use the [official client](https://github.com/graphhopper/directions-api-java-client)
+java      |  yes    | You can use the optimized [handcoded client](https://github.com/graphhopper/graphhopper/tree/master/client-hc) for some APIs.
 javascript|  yes    | Use the [official client](https://github.com/graphhopper/directions-api-js-client)
 python    |  no     |
 csharp    |  no     |
