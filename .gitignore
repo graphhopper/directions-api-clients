@@ -2,7 +2,6 @@
 swagger-codegen/
 swagger-codegen-cli.jar
 swagger-codegen-cli*.jar
-java/
 nodejs-server/
 .idea/
 *iml
