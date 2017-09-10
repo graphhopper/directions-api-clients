@@ -26,9 +26,10 @@ tizen     |  no     |
 tested=yes means we or one of our customers have successfully used the
 client for this programming language. 
 
-The Java and JavaScript clients are either handcrafted or the
-created versions were further optimized and can be found in the separate,
+The JavaScript client is handcrafted and can be found in the separate,
 linked repository.
+
+The Java client is also available [on maven](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22directions-api-client%22).
 
 
 ## Supported APIs
