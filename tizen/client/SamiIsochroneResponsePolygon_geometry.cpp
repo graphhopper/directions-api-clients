@@ -34,7 +34,7 @@ SamiIsochroneResponsePolygon_geometry::cleanup() {
         pType = null;
     }
 if(pCoordinates != null) {
-        
+        pCoordinates->RemoveAll(true);
         delete pCoordinates;
         pCoordinates = null;
     }
@@ -88,9 +88,9 @@ JsonString* pCoordinatesKey = new JsonString(L"coordinates");
         IJsonValue* pCoordinatesVal = null;
         pJsonObject->GetValue(pCoordinatesKey, pCoordinatesVal);
         if(pCoordinatesVal != null) {
+            pCoordinates = new ArrayList();
             
-            pCoordinates = new SamiResponseCoordinatesArray();
-            jsonToValue(pCoordinates, pCoordinatesVal, L"SamiResponseCoordinatesArray", L"SamiResponseCoordinatesArray");
+            jsonToValue(pCoordinates, pCoordinatesVal, L"IList", L"SamiResponseCoordinatesArray");
         }
         delete pCoordinatesKey;
     }
@@ -147,7 +147,7 @@ SamiIsochroneResponsePolygon_geometry::asJsonObject() {
     pJsonObject->Add(pTypeKey, toJson(getPType(), "String", ""));
 
     JsonString *pCoordinatesKey = new JsonString(L"coordinates");
-    pJsonObject->Add(pCoordinatesKey, toJson(getPCoordinates(), "SamiResponseCoordinatesArray", ""));
+    pJsonObject->Add(pCoordinatesKey, toJson(getPCoordinates(), "SamiResponseCoordinatesArray", "array"));
 
     return pJsonObject;
 }
@@ -161,12 +161,12 @@ SamiIsochroneResponsePolygon_geometry::setPType(String* pType) {
     this->pType = pType;
 }
 
-SamiResponseCoordinatesArray*
+IList*
 SamiIsochroneResponsePolygon_geometry::getPCoordinates() {
     return pCoordinates;
 }
 void
-SamiIsochroneResponsePolygon_geometry::setPCoordinates(SamiResponseCoordinatesArray* pCoordinates) {
+SamiIsochroneResponsePolygon_geometry::setPCoordinates(IList* pCoordinates) {
     this->pCoordinates = pCoordinates;
 }
 

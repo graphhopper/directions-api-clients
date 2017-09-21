@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **String** |  |  [optional]
-**coordinates** | [**ResponseCoordinatesArray**](ResponseCoordinatesArray.md) |  |  [optional]
+**coordinates** | [**List&lt;ResponseCoordinatesArray&gt;**](ResponseCoordinatesArray.md) |  |  [optional]
 
 
 

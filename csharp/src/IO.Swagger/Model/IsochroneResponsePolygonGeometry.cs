@@ -34,7 +34,7 @@ namespace IO.Swagger.Model
         /// </summary>
         /// <param name="Type">Type.</param>
         /// <param name="Coordinates">Coordinates.</param>
-        public IsochroneResponsePolygonGeometry(string Type = default(string), ResponseCoordinatesArray Coordinates = default(ResponseCoordinatesArray))
+        public IsochroneResponsePolygonGeometry(string Type = default(string), List<ResponseCoordinatesArray> Coordinates = default(List<ResponseCoordinatesArray>))
         {
             this.Type = Type;
             this.Coordinates = Coordinates;
@@ -49,7 +49,7 @@ namespace IO.Swagger.Model
         /// Gets or Sets Coordinates
         /// </summary>
         [DataMember(Name="coordinates", EmitDefaultValue=false)]
-        public ResponseCoordinatesArray Coordinates { get; set; }
+        public List<ResponseCoordinatesArray> Coordinates { get; set; }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -104,7 +104,7 @@ namespace IO.Swagger.Model
                 (
                     this.Coordinates == other.Coordinates ||
                     this.Coordinates != null &&
-                    this.Coordinates.Equals(other.Coordinates)
+                    this.Coordinates.SequenceEqual(other.Coordinates)
                 );
         }
 

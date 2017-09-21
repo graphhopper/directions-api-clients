@@ -32,7 +32,7 @@ class IsochroneResponsePolygonGeometry(object):
         """
         self.swagger_types = {
             'type': 'str',
-            'coordinates': 'ResponseCoordinatesArray'
+            'coordinates': 'list[ResponseCoordinatesArray]'
         }
 
         self.attribute_map = {
@@ -70,7 +70,7 @@ class IsochroneResponsePolygonGeometry(object):
         Gets the coordinates of this IsochroneResponsePolygonGeometry.
 
         :return: The coordinates of this IsochroneResponsePolygonGeometry.
-        :rtype: ResponseCoordinatesArray
+        :rtype: list[ResponseCoordinatesArray]
         """
         return self._coordinates
 
@@ -80,7 +80,7 @@ class IsochroneResponsePolygonGeometry(object):
         Sets the coordinates of this IsochroneResponsePolygonGeometry.
 
         :param coordinates: The coordinates of this IsochroneResponsePolygonGeometry.
-        :type: ResponseCoordinatesArray
+        :type: list[ResponseCoordinatesArray]
         """
 
         self._coordinates = coordinates

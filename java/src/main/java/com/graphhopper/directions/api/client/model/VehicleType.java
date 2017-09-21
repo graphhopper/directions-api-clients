@@ -44,9 +44,6 @@ public class VehicleType {
     @SerializedName("mtb")
     MTB("mtb"),
     
-    @SerializedName("motorcycle")
-    MOTORCYCLE("motorcycle"),
-    
     @SerializedName("racingbike")
     RACINGBIKE("racingbike"),
     

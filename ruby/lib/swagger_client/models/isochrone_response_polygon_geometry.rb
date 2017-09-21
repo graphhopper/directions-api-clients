@@ -31,7 +31,7 @@ module SwaggerClient
     def self.swagger_types
       {
         :'type' => :'String',
-        :'coordinates' => :'ResponseCoordinatesArray'
+        :'coordinates' => :'Array<ResponseCoordinatesArray>'
       }
     end
 
@@ -48,7 +48,9 @@ module SwaggerClient
       end
 
       if attributes.has_key?(:'coordinates')
-        self.coordinates = attributes[:'coordinates']
+        if (value = attributes[:'coordinates']).is_a?(Array)
+          self.coordinates = value
+        end
       end
 
     end

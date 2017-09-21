@@ -61,12 +61,12 @@ sub new {
 # @param string $key Get your key at graphhopper.com (required)
 # @param string $locale The locale of the resulting turn instructions. E.g. &#x60;pt_PT&#x60; for Portuguese or &#x60;de&#x60; for German (optional)
 # @param boolean $instructions If instruction should be calculated and returned (optional)
-# @param string $vehicle The vehicle for which the route should be calculated. Other vehicles are foot, bike, motorcycle, hike, ... (optional)
+# @param string $vehicle The vehicle for which the route should be calculated. Other vehicles are foot, small_truck, ... (optional)
 # @param boolean $elevation If &#x60;true&#x60; a third dimension - the elevation - is included in the polyline or in the GeoJson. If enabled you have to use a modified version of the decoding method or set points_encoded to &#x60;false&#x60;. See the points_encoded attribute for more details. Additionally a request can fail if the vehicle does not support elevation. See the features object for every vehicle. (optional)
 # @param boolean $calc_points If the points for the route should be calculated at all printing out only distance and time. (optional)
 # @param ARRAY[string] $point_hint Optional parameter. Specifies a hint for each &#x60;point&#x60; parameter to prefer a certain street for the closest location lookup. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up. (optional)
 # @param boolean $ch/disable Use this parameter in combination with one or more parameters of this table (optional)
-# @param string $weighting Which kind of &#39;best&#39; route calculation you need. Other option is &#x60;shortest&#x60; (e.g. for &#x60;vehicle&#x3D;foot&#x60; or &#x60;bike&#x60;), &#x60;short_fastest&#x60; if time and distance is expensive (e.g. for &#x60;vehicle&#x3D;truck&#x60;) and &#x60;curvature&#x60; (only for &#x60;vehicle&#x3D;motorcycle&#x60;) (optional)
+# @param string $weighting Which kind of &#39;best&#39; route calculation you need. Other option is &#x60;shortest&#x60; (e.g. for &#x60;vehicle&#x3D;foot&#x60; or &#x60;bike&#x60;), &#x60;short_fastest&#x60; if time and distance is expensive e.g. for &#x60;vehicle&#x3D;truck&#x60; (optional)
 # @param boolean $edge_traversal Use &#x60;true&#x60; if you want to consider turn restrictions for bike and motor vehicles. Keep in mind that the response time is roughly 2 times slower. (optional)
 # @param string $algorithm The algorithm to calculate the route. Other options are &#x60;dijkstra&#x60;, &#x60;astar&#x60;, &#x60;astarbi&#x60;, &#x60;alternative_route&#x60; and &#x60;round_trip&#x60; (optional)
 # @param int $heading Favour a heading direction for a certain point. Specify either one heading for the start point or as many as there are points. In this case headings are associated by their order to the specific points. Headings are given as north based clockwise angle between 0 and 360 degree. This parameter also influences the tour generated with &#x60;algorithm&#x3D;round_trip&#x60; and force the initial direction. (optional)
@@ -106,7 +106,7 @@ sub new {
     },
     'vehicle' => {
         data_type => 'string',
-        description => 'The vehicle for which the route should be calculated. Other vehicles are foot, bike, motorcycle, hike, ...',
+        description => 'The vehicle for which the route should be calculated. Other vehicles are foot, small_truck, ...',
         required => '0',
     },
     'elevation' => {
@@ -131,7 +131,7 @@ sub new {
     },
     'weighting' => {
         data_type => 'string',
-        description => 'Which kind of &#39;best&#39; route calculation you need. Other option is &#x60;shortest&#x60; (e.g. for &#x60;vehicle&#x3D;foot&#x60; or &#x60;bike&#x60;), &#x60;short_fastest&#x60; if time and distance is expensive (e.g. for &#x60;vehicle&#x3D;truck&#x60;) and &#x60;curvature&#x60; (only for &#x60;vehicle&#x3D;motorcycle&#x60;)',
+        description => 'Which kind of &#39;best&#39; route calculation you need. Other option is &#x60;shortest&#x60; (e.g. for &#x60;vehicle&#x3D;foot&#x60; or &#x60;bike&#x60;), &#x60;short_fastest&#x60; if time and distance is expensive e.g. for &#x60;vehicle&#x3D;truck&#x60;',
         required => '0',
     },
     'edge_traversal' => {

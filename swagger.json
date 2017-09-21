@@ -52,7 +52,7 @@
           {
             "name": "vehicle",
             "in": "query",
-            "description": "The vehicle for which the route should be calculated. Other vehicles are foot, bike, motorcycle, hike, ...",
+            "description": "The vehicle for which the route should be calculated. Other vehicles are foot, small_truck, ...",
             "type": "string"
           },
           {
@@ -93,7 +93,7 @@
           {
             "name": "weighting",
             "in": "query",
-            "description": "Which kind of 'best' route calculation you need. Other option is `shortest` (e.g. for `vehicle=foot` or `bike`), `short_fastest` if time and distance is expensive (e.g. for `vehicle=truck`) and `curvature` (only for `vehicle=motorcycle`)",
+            "description": "Which kind of 'best' route calculation you need. Other option is `shortest` (e.g. for `vehicle=foot` or `bike`), `short_fastest` if time and distance is expensive e.g. for `vehicle=truck`",
             "type": "string"
           },
           {
@@ -309,7 +309,7 @@
           {
             "name": "vehicle",
             "in": "query",
-            "description": "The vehicle for which the route should be calculated. Other vehicles are foot, bike, mtb, racingbike, motorcycle, small_truck, bus and truck. See here for the details.",
+            "description": "The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc, see here for the details.",
             "default": "car",
             "type": "string"
           },
@@ -647,7 +647,7 @@
           }
         },
         "vehicle": {
-          "description": "The vehicle for which the route should be calculated. Other vehicles are foot, bike, mtb, racingbike, motorcycle, small_truck, bus and truck. See here for the details.",
+          "description": "The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc, see here for the details.",
           "type": "string"
         }
       }
@@ -1132,7 +1132,6 @@
             "bike",
             "foot",
             "mtb",
-            "motorcycle",
             "racingbike",
             "truck",
             "small_truck"

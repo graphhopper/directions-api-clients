@@ -62,12 +62,6 @@ namespace IO.Swagger.Model
             Mtb,
             
             /// <summary>
-            /// Enum Motorcycle for "motorcycle"
-            /// </summary>
-            [EnumMember(Value = "motorcycle")]
-            Motorcycle,
-            
-            /// <summary>
             /// Enum Racingbike for "racingbike"
             /// </summary>
             [EnumMember(Value = "racingbike")]

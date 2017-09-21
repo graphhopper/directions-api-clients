@@ -59,12 +59,12 @@ class RoutingApi(object):
         :param str key: Get your key at graphhopper.com (required)
         :param str locale: The locale of the resulting turn instructions. E.g. `pt_PT` for Portuguese or `de` for German
         :param bool instructions: If instruction should be calculated and returned
-        :param str vehicle: The vehicle for which the route should be calculated. Other vehicles are foot, bike, motorcycle, hike, ...
+        :param str vehicle: The vehicle for which the route should be calculated. Other vehicles are foot, small_truck, ...
         :param bool elevation: If `true` a third dimension - the elevation - is included in the polyline or in the GeoJson. If enabled you have to use a modified version of the decoding method or set points_encoded to `false`. See the points_encoded attribute for more details. Additionally a request can fail if the vehicle does not support elevation. See the features object for every vehicle.
         :param bool calc_points: If the points for the route should be calculated at all printing out only distance and time.
         :param list[str] point_hint: Optional parameter. Specifies a hint for each `point` parameter to prefer a certain street for the closest location lookup. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up.
         :param bool ch_disable: Use this parameter in combination with one or more parameters of this table
-        :param str weighting: Which kind of 'best' route calculation you need. Other option is `shortest` (e.g. for `vehicle=foot` or `bike`), `short_fastest` if time and distance is expensive (e.g. for `vehicle=truck`) and `curvature` (only for `vehicle=motorcycle`)
+        :param str weighting: Which kind of 'best' route calculation you need. Other option is `shortest` (e.g. for `vehicle=foot` or `bike`), `short_fastest` if time and distance is expensive e.g. for `vehicle=truck`
         :param bool edge_traversal: Use `true` if you want to consider turn restrictions for bike and motor vehicles. Keep in mind that the response time is roughly 2 times slower.
         :param str algorithm: The algorithm to calculate the route. Other options are `dijkstra`, `astar`, `astarbi`, `alternative_route` and `round_trip`
         :param int heading: Favour a heading direction for a certain point. Specify either one heading for the start point or as many as there are points. In this case headings are associated by their order to the specific points. Headings are given as north based clockwise angle between 0 and 360 degree. This parameter also influences the tour generated with `algorithm=round_trip` and force the initial direction.
@@ -105,12 +105,12 @@ class RoutingApi(object):
         :param str key: Get your key at graphhopper.com (required)
         :param str locale: The locale of the resulting turn instructions. E.g. `pt_PT` for Portuguese or `de` for German
         :param bool instructions: If instruction should be calculated and returned
-        :param str vehicle: The vehicle for which the route should be calculated. Other vehicles are foot, bike, motorcycle, hike, ...
+        :param str vehicle: The vehicle for which the route should be calculated. Other vehicles are foot, small_truck, ...
         :param bool elevation: If `true` a third dimension - the elevation - is included in the polyline or in the GeoJson. If enabled you have to use a modified version of the decoding method or set points_encoded to `false`. See the points_encoded attribute for more details. Additionally a request can fail if the vehicle does not support elevation. See the features object for every vehicle.
         :param bool calc_points: If the points for the route should be calculated at all printing out only distance and time.
         :param list[str] point_hint: Optional parameter. Specifies a hint for each `point` parameter to prefer a certain street for the closest location lookup. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up.
         :param bool ch_disable: Use this parameter in combination with one or more parameters of this table
-        :param str weighting: Which kind of 'best' route calculation you need. Other option is `shortest` (e.g. for `vehicle=foot` or `bike`), `short_fastest` if time and distance is expensive (e.g. for `vehicle=truck`) and `curvature` (only for `vehicle=motorcycle`)
+        :param str weighting: Which kind of 'best' route calculation you need. Other option is `shortest` (e.g. for `vehicle=foot` or `bike`), `short_fastest` if time and distance is expensive e.g. for `vehicle=truck`
         :param bool edge_traversal: Use `true` if you want to consider turn restrictions for bike and motor vehicles. Keep in mind that the response time is roughly 2 times slower.
         :param str algorithm: The algorithm to calculate the route. Other options are `dijkstra`, `astar`, `astarbi`, `alternative_route` and `round_trip`
         :param int heading: Favour a heading direction for a certain point. Specify either one heading for the start point or as many as there are points. In this case headings are associated by their order to the specific points. Headings are given as north based clockwise angle between 0 and 360 degree. This parameter also influences the tour generated with `algorithm=round_trip` and force the initial direction.

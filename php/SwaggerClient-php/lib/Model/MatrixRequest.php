@@ -262,7 +262,7 @@ class MatrixRequest implements ArrayAccess
 
     /**
      * Sets vehicle
-     * @param string $vehicle The vehicle for which the route should be calculated. Other vehicles are foot, bike, mtb, racingbike, motorcycle, small_truck, bus and truck. See here for the details.
+     * @param string $vehicle The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc, see here for the details.
      * @return $this
      */
     public function setVehicle($vehicle)

@@ -173,7 +173,7 @@ __PACKAGE__->method_documentation({
     'vehicle' => {
     	datatype => 'string',
     	base_name => 'vehicle',
-    	description => 'The vehicle for which the route should be calculated. Other vehicles are foot, bike, mtb, racingbike, motorcycle, small_truck, bus and truck. See here for the details.',
+    	description => 'The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc, see here for the details.',
     	format => '',
     	read_only => '',
     		},

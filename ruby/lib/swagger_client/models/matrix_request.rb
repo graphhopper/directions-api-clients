@@ -26,7 +26,7 @@ module SwaggerClient
     # Specifies which arrays should be included in the response. Specify one or more of the following options 'weights', 'times', 'distances'. To specify more than one array use e.g. out_array=times&amp;out_array=distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API.
     attr_accessor :out_arrays
 
-    # The vehicle for which the route should be calculated. Other vehicles are foot, bike, mtb, racingbike, motorcycle, small_truck, bus and truck. See here for the details.
+    # The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc, see here for the details.
     attr_accessor :vehicle
 
 

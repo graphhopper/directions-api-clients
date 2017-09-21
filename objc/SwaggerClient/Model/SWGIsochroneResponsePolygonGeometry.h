@@ -25,6 +25,6 @@
 
 @property(nonatomic) NSString* type;
 
-@property(nonatomic) SWGResponseCoordinatesArray* coordinates;
+@property(nonatomic) NSArray<SWGResponseCoordinatesArray>* coordinates;
 
 @end

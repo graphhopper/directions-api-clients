@@ -55,7 +55,7 @@ class IsochroneResponsePolygonGeometry implements ArrayAccess
       */
     protected static $swaggerTypes = [
         'type' => 'string',
-        'coordinates' => '\Swagger\Client\Model\ResponseCoordinatesArray'
+        'coordinates' => '\Swagger\Client\Model\ResponseCoordinatesArray[]'
     ];
 
     public static function swaggerTypes()
@@ -175,7 +175,7 @@ class IsochroneResponsePolygonGeometry implements ArrayAccess
 
     /**
      * Gets coordinates
-     * @return \Swagger\Client\Model\ResponseCoordinatesArray
+     * @return \Swagger\Client\Model\ResponseCoordinatesArray[]
      */
     public function getCoordinates()
     {
@@ -184,7 +184,7 @@ class IsochroneResponsePolygonGeometry implements ArrayAccess
 
     /**
      * Sets coordinates
-     * @param \Swagger\Client\Model\ResponseCoordinatesArray $coordinates
+     * @param \Swagger\Client\Model\ResponseCoordinatesArray[] $coordinates
      * @return $this
      */
     public function setCoordinates($coordinates)

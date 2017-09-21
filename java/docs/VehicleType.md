@@ -22,7 +22,6 @@ CAR | &quot;car&quot;
 BIKE | &quot;bike&quot;
 FOOT | &quot;foot&quot;
 MTB | &quot;mtb&quot;
-MOTORCYCLE | &quot;motorcycle&quot;
 RACINGBIKE | &quot;racingbike&quot;
 TRUCK | &quot;truck&quot;
 SMALL_TRUCK | &quot;small_truck&quot;

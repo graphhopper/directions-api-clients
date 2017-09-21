@@ -4,6 +4,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **String** |  | [optional] 
-**coordinates** | [**ResponseCoordinatesArray**](ResponseCoordinatesArray.md) |  | [optional] 
+**coordinates** | [**Array&lt;ResponseCoordinatesArray&gt;**](ResponseCoordinatesArray.md) |  | [optional] 
 
 

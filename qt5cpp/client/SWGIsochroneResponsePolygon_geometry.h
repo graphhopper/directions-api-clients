@@ -23,6 +23,7 @@
 
 
 #include "SWGResponseCoordinatesArray.h"
+#include <QList>
 #include <QString>
 
 #include "SWGObject.h"
@@ -46,13 +47,13 @@ public:
     QString* getType();
     void setType(QString* type);
 
-    SWGResponseCoordinatesArray* getCoordinates();
-    void setCoordinates(SWGResponseCoordinatesArray* coordinates);
+    QList<SWGResponseCoordinatesArray*>* getCoordinates();
+    void setCoordinates(QList<SWGResponseCoordinatesArray*>* coordinates);
 
 
 private:
     QString* type;
-    SWGResponseCoordinatesArray* coordinates;
+    QList<SWGResponseCoordinatesArray*>* coordinates;
 };
 
 } /* namespace Swagger */

@@ -39,7 +39,7 @@ SWGIsochroneResponsePolygon_geometry::~SWGIsochroneResponsePolygon_geometry() {
 void
 SWGIsochroneResponsePolygon_geometry::init() {
     type = new QString("");
-    coordinates = new SWGResponseCoordinatesArray();
+    coordinates = new QList<SWGResponseCoordinatesArray*>();
 }
 
 void
@@ -50,6 +50,10 @@ SWGIsochroneResponsePolygon_geometry::cleanup() {
     }
 
     if(coordinates != nullptr) {
+        QList<SWGResponseCoordinatesArray*>* arr = coordinates;
+        foreach(SWGResponseCoordinatesArray* o, *arr) {
+            delete o;
+        }
         delete coordinates;
     }
 }
@@ -66,7 +70,9 @@ SWGIsochroneResponsePolygon_geometry::fromJson(QString &json) {
 void
 SWGIsochroneResponsePolygon_geometry::fromJsonObject(QJsonObject &pJson) {
     ::Swagger::setValue(&type, pJson["type"], "QString", "QString");
-    ::Swagger::setValue(&coordinates, pJson["coordinates"], "SWGResponseCoordinatesArray", "SWGResponseCoordinatesArray");
+    
+    ::Swagger::setValue(&coordinates, pJson["coordinates"], "QList", "SWGResponseCoordinatesArray");
+    
 }
 
 QString
@@ -85,7 +91,9 @@ SWGIsochroneResponsePolygon_geometry::asJsonObject() {
     
     toJsonValue(QString("type"), type, obj, QString("QString"));
 
-    toJsonValue(QString("coordinates"), coordinates, obj, QString("SWGResponseCoordinatesArray"));
+    QJsonArray coordinatesJsonArray;
+    toJsonArray((QList<void*>*)coordinates, &coordinatesJsonArray, "coordinates", "SWGResponseCoordinatesArray");
+    obj->insert("coordinates", coordinatesJsonArray);
 
     return obj;
 }
@@ -99,12 +107,12 @@ SWGIsochroneResponsePolygon_geometry::setType(QString* type) {
     this->type = type;
 }
 
-SWGResponseCoordinatesArray*
+QList<SWGResponseCoordinatesArray*>*
 SWGIsochroneResponsePolygon_geometry::getCoordinates() {
     return coordinates;
 }
 void
-SWGIsochroneResponsePolygon_geometry::setCoordinates(SWGResponseCoordinatesArray* coordinates) {
+SWGIsochroneResponsePolygon_geometry::setCoordinates(QList<SWGResponseCoordinatesArray*>* coordinates) {
     this->coordinates = coordinates;
 }
 

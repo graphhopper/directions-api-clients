@@ -14,5 +14,5 @@ type IsochroneResponsePolygonGeometry struct {
 
 	Type_ string `json:"type,omitempty"`
 
-	Coordinates ResponseCoordinatesArray `json:"coordinates,omitempty"`
+	Coordinates []ResponseCoordinatesArray `json:"coordinates,omitempty"`
 }

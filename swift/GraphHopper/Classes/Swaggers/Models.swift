@@ -387,7 +387,7 @@ class Decoders {
                 let sourceDictionary = source as! [NSObject:AnyObject]
                 let instance = IsochroneResponsePolygonGeometry()
                 instance.type = Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["type"])
-                instance.coordinates = Decoders.decodeOptional(clazz: ResponseCoordinatesArray.self, source: sourceDictionary["coordinates"])
+                instance.coordinates = Decoders.decodeOptional(clazz: Array.self, source: sourceDictionary["coordinates"])
                 return instance
             }
 

@@ -135,7 +135,6 @@ class VehicleType implements ArrayAccess
     const PROFILE_BIKE = 'bike';
     const PROFILE_FOOT = 'foot';
     const PROFILE_MTB = 'mtb';
-    const PROFILE_MOTORCYCLE = 'motorcycle';
     const PROFILE_RACINGBIKE = 'racingbike';
     const PROFILE_TRUCK = 'truck';
     const PROFILE_SMALL_TRUCK = 'small_truck';
@@ -153,7 +152,6 @@ class VehicleType implements ArrayAccess
             self::PROFILE_BIKE,
             self::PROFILE_FOOT,
             self::PROFILE_MTB,
-            self::PROFILE_MOTORCYCLE,
             self::PROFILE_RACINGBIKE,
             self::PROFILE_TRUCK,
             self::PROFILE_SMALL_TRUCK,
@@ -192,9 +190,9 @@ class VehicleType implements ArrayAccess
     {
         $invalid_properties = [];
 
-        $allowed_values = ["car", "bike", "foot", "mtb", "motorcycle", "racingbike", "truck", "small_truck"];
+        $allowed_values = ["car", "bike", "foot", "mtb", "racingbike", "truck", "small_truck"];
         if (!in_array($this->container['profile'], $allowed_values)) {
-            $invalid_properties[] = "invalid value for 'profile', must be one of 'car', 'bike', 'foot', 'mtb', 'motorcycle', 'racingbike', 'truck', 'small_truck'.";
+            $invalid_properties[] = "invalid value for 'profile', must be one of 'car', 'bike', 'foot', 'mtb', 'racingbike', 'truck', 'small_truck'.";
         }
 
         return $invalid_properties;
@@ -209,7 +207,7 @@ class VehicleType implements ArrayAccess
     public function valid()
     {
 
-        $allowed_values = ["car", "bike", "foot", "mtb", "motorcycle", "racingbike", "truck", "small_truck"];
+        $allowed_values = ["car", "bike", "foot", "mtb", "racingbike", "truck", "small_truck"];
         if (!in_array($this->container['profile'], $allowed_values)) {
             return false;
         }
@@ -254,9 +252,9 @@ class VehicleType implements ArrayAccess
      */
     public function setProfile($profile)
     {
-        $allowed_values = array('car', 'bike', 'foot', 'mtb', 'motorcycle', 'racingbike', 'truck', 'small_truck');
+        $allowed_values = array('car', 'bike', 'foot', 'mtb', 'racingbike', 'truck', 'small_truck');
         if (!is_null($profile) && (!in_array($profile, $allowed_values))) {
-            throw new \InvalidArgumentException("Invalid value for 'profile', must be one of 'car', 'bike', 'foot', 'mtb', 'motorcycle', 'racingbike', 'truck', 'small_truck'");
+            throw new \InvalidArgumentException("Invalid value for 'profile', must be one of 'car', 'bike', 'foot', 'mtb', 'racingbike', 'truck', 'small_truck'");
         }
         $this->container['profile'] = $profile;
 

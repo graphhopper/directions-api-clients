@@ -63,7 +63,7 @@ NSInteger kSWGRoutingApiMissingParamErrorCode = 234513;
 ///
 ///  @param instructions If instruction should be calculated and returned (optional)
 ///
-///  @param vehicle The vehicle for which the route should be calculated. Other vehicles are foot, bike, motorcycle, hike, ... (optional)
+///  @param vehicle The vehicle for which the route should be calculated. Other vehicles are foot, small_truck, ... (optional)
 ///
 ///  @param elevation If `true` a third dimension - the elevation - is included in the polyline or in the GeoJson. If enabled you have to use a modified version of the decoding method or set points_encoded to `false`. See the points_encoded attribute for more details. Additionally a request can fail if the vehicle does not support elevation. See the features object for every vehicle. (optional)
 ///
@@ -73,7 +73,7 @@ NSInteger kSWGRoutingApiMissingParamErrorCode = 234513;
 ///
 ///  @param chDisable Use this parameter in combination with one or more parameters of this table (optional)
 ///
-///  @param weighting Which kind of 'best' route calculation you need. Other option is `shortest` (e.g. for `vehicle=foot` or `bike`), `short_fastest` if time and distance is expensive (e.g. for `vehicle=truck`) and `curvature` (only for `vehicle=motorcycle`) (optional)
+///  @param weighting Which kind of 'best' route calculation you need. Other option is `shortest` (e.g. for `vehicle=foot` or `bike`), `short_fastest` if time and distance is expensive e.g. for `vehicle=truck` (optional)
 ///
 ///  @param edgeTraversal Use `true` if you want to consider turn restrictions for bike and motor vehicles. Keep in mind that the response time is roughly 2 times slower. (optional)
 ///

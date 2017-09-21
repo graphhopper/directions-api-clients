@@ -18,6 +18,7 @@ using namespace Tizen::Web::Json;
 
 
 #include "SamiResponseCoordinatesArray.h"
+using Tizen::Base::Collection::IList;
 using Tizen::Base::String;
 
 
@@ -43,12 +44,12 @@ public:
 
     String* getPType();
     void setPType(String* pType);
-    SamiResponseCoordinatesArray* getPCoordinates();
-    void setPCoordinates(SamiResponseCoordinatesArray* pCoordinates);
+    IList* getPCoordinates();
+    void setPCoordinates(IList* pCoordinates);
 
 private:
     String* pType;
-SamiResponseCoordinatesArray* pCoordinates;
+IList* pCoordinates;
 };
 
 } /* namespace Swagger */

@@ -17,7 +17,7 @@ public class MatrixRequest: JSONEncodable {
     public var toPoints: String?
     /** Specifies which arrays should be included in the response. Specify one or more of the following options &#39;weights&#39;, &#39;times&#39;, &#39;distances&#39;. To specify more than one array use e.g. out_array&#x3D;times&amp;amp;out_array&#x3D;distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API. */
     public var outArrays: [String]?
-    /** The vehicle for which the route should be calculated. Other vehicles are foot, bike, mtb, racingbike, motorcycle, small_truck, bus and truck. See here for the details. */
+    /** The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc, see here for the details. */
     public var vehicle: String?
 
     public init() {}

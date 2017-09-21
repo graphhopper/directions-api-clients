@@ -148,7 +148,7 @@ class MatrixRequest(object):
     def vehicle(self):
         """
         Gets the vehicle of this MatrixRequest.
-        The vehicle for which the route should be calculated. Other vehicles are foot, bike, mtb, racingbike, motorcycle, small_truck, bus and truck. See here for the details.
+        The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc, see here for the details.
 
         :return: The vehicle of this MatrixRequest.
         :rtype: str
@@ -159,7 +159,7 @@ class MatrixRequest(object):
     def vehicle(self, vehicle):
         """
         Sets the vehicle of this MatrixRequest.
-        The vehicle for which the route should be calculated. Other vehicles are foot, bike, mtb, racingbike, motorcycle, small_truck, bus and truck. See here for the details.
+        The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc, see here for the details.
 
         :param vehicle: The vehicle of this MatrixRequest.
         :type: str

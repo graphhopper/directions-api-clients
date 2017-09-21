@@ -150,7 +150,7 @@ __PACKAGE__->method_documentation({
     	read_only => '',
     		},
     'coordinates' => {
-    	datatype => 'ResponseCoordinatesArray',
+    	datatype => 'ARRAY[ResponseCoordinatesArray]',
     	base_name => 'coordinates',
     	description => '',
     	format => '',
@@ -160,7 +160,7 @@ __PACKAGE__->method_documentation({
 
 __PACKAGE__->swagger_types( {
     'type' => 'string',
-    'coordinates' => 'ResponseCoordinatesArray'
+    'coordinates' => 'ARRAY[ResponseCoordinatesArray]'
 } );
 
 __PACKAGE__->attribute_map( {

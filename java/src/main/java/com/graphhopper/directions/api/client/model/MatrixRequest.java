@@ -128,10 +128,10 @@ public class MatrixRequest {
   }
 
    /**
-   * The vehicle for which the route should be calculated. Other vehicles are foot, bike, mtb, racingbike, motorcycle, small_truck, bus and truck. See here for the details.
+   * The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc, see here for the details.
    * @return vehicle
   **/
-  @ApiModelProperty(example = "null", value = "The vehicle for which the route should be calculated. Other vehicles are foot, bike, mtb, racingbike, motorcycle, small_truck, bus and truck. See here for the details.")
+  @ApiModelProperty(example = "null", value = "The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc, see here for the details.")
   public String getVehicle() {
     return vehicle;
   }

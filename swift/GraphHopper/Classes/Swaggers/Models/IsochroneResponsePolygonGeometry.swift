@@ -10,7 +10,7 @@ import Foundation
 
 public class IsochroneResponsePolygonGeometry: JSONEncodable {
     public var type: String?
-    public var coordinates: ResponseCoordinatesArray?
+    public var coordinates: [ResponseCoordinatesArray]?
 
     public init() {}
 

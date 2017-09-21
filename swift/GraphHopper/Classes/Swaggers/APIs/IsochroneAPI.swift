@@ -36,7 +36,7 @@ public class IsochroneAPI: APIBase {
      - examples: [{contentType=application/json, example={
   "polygons" : [ {
     "geometry" : {
-      "coordinates" : "",
+      "coordinates" : [ "" ],
       "type" : "aeiou"
     },
     "type" : "aeiou",
