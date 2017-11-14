@@ -17,6 +17,7 @@ perl      |  no     |
 php       |  [yes](https://github.com/graphhopper/directions-api-clients-route-optimization/issues/4)     |
 python    |  no     |
 qt5cpp    |  no     |
+r         |  no     |
 ruby      |  [yes](https://github.com/graphhopper/directions-api-clients-route-optimization/issues/3)   |
 scala     |  no     |
 swift     |  no     | Community contribution for the [Routing](https://github.com/rmnblm/GraphHopperRouting) and [Geocoding](https://github.com/rmnblm/GraphHopperGeocoder) API
