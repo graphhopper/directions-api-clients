@@ -6,7 +6,7 @@ DIR=.
 
 VERSION=0.10-SNAPSHOT
 # SW_VERSION=master
-SW_VERSION=2.2.2
+SW_VERSION=2.2.3
 FILE=swagger-codegen-cli-$SW_VERSION.jar
 
 NAME=directions-api-client
@@ -44,6 +44,9 @@ function create {
 		;;
 	haskell)
 		;;
+	r)
+		ADD_PARAMS="-DpackageName=GraphHopper"
+		;;
 	php)
 		CONFIG="--artifact-version $VERSION --git-repo-id $NAME --git-user-id graphhopper --api-package $NAME"
 		;;
@@ -64,6 +67,7 @@ if [[ "$LANG" != "" ]]; then
   exit 0
 else
   echo "creating all"
+  create r
   create java
   create php
   create ruby
