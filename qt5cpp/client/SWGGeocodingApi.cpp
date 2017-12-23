@@ -18,6 +18,7 @@
 #include <QJsonDocument>
 
 namespace Swagger {
+
 SWGGeocodingApi::SWGGeocodingApi() {}
 
 SWGGeocodingApi::~SWGGeocodingApi() {}
@@ -93,9 +94,13 @@ SWGGeocodingApi::geocodeGet(QString* key, QString* q, QString* locale, qint32 li
     HttpRequestWorker *worker = new HttpRequestWorker();
     HttpRequestInput input(fullPath, "GET");
 
-    
 
 
+
+
+    foreach(QString key, this->defaultHeaders.keys()) {
+        input.headers.insert(key, this->defaultHeaders.value(key));
+    }
 
     connect(worker,
             &HttpRequestWorker::on_execution_finished,
@@ -108,6 +113,9 @@ SWGGeocodingApi::geocodeGet(QString* key, QString* q, QString* locale, qint32 li
 void
 SWGGeocodingApi::geocodeGetCallback(HttpRequestWorker * worker) {
     QString msg;
+    QString error_str = worker->error_str;
+    QNetworkReply::NetworkError error_type = worker->error_type;
+
     if (worker->error_type == QNetworkReply::NoError) {
         msg = QString("Success! %1 bytes").arg(worker->response.length());
     }
@@ -115,14 +123,14 @@ SWGGeocodingApi::geocodeGetCallback(HttpRequestWorker * worker) {
         msg = "Error: " + worker->error_str;
     }
 
-    
-        QString json(worker->response);
-    SWGGeocodingResponse* output = static_cast<SWGGeocodingResponse*>(create(json, QString("SWGGeocodingResponse")));
-    
 
+    QString json(worker->response);
+    SWGGeocodingResponse* output = static_cast<SWGGeocodingResponse*>(create(json, QString("SWGGeocodingResponse")));
     worker->deleteLater();
 
     emit geocodeGetSignal(output);
-    
+    emit geocodeGetSignalE(output, error_type, error_str);
 }
-} /* namespace Swagger */
+
+
+}

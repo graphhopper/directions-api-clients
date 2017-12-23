@@ -55,12 +55,20 @@ public class VrpApi {
         this.apiClient = apiClient;
     }
 
-    /* Build call for postVrp */
-    private com.squareup.okhttp.Call postVrpCall(String key, Request body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    /**
+     * Build call for postVrp
+     * @param key your API key (required)
+     * @param body Request object that contains the problem to be solved (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call postVrpCall(String key, Request body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = body;
         
         // create path and map variables
-        String localVarPath = "/vrp/optimize".replaceAll("\\{format\\}","json");
+        String localVarPath = "/vrp/optimize";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         if (key != null)

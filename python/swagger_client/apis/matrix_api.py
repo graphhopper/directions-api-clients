@@ -118,24 +118,23 @@ class MatrixApi(object):
 
         collection_formats = {}
 
-        resource_path = '/matrix'.replace('{format}', 'json')
         path_params = {}
 
-        query_params = {}
+        query_params = []
         if 'point' in params:
-            query_params['point'] = params['point']
+            query_params.append(('point', params['point']))
             collection_formats['point'] = 'multi'
         if 'from_point' in params:
-            query_params['from_point'] = params['from_point']
+            query_params.append(('from_point', params['from_point']))
         if 'to_point' in params:
-            query_params['to_point'] = params['to_point']
+            query_params.append(('to_point', params['to_point']))
         if 'out_array' in params:
-            query_params['out_array'] = params['out_array']
+            query_params.append(('out_array', params['out_array']))
             collection_formats['out_array'] = 'multi'
         if 'vehicle' in params:
-            query_params['vehicle'] = params['vehicle']
+            query_params.append(('vehicle', params['vehicle']))
         if 'key' in params:
-            query_params['key'] = params['key']
+            query_params.append(('key', params['key']))
 
         header_params = {}
 
@@ -150,7 +149,7 @@ class MatrixApi(object):
         # Authentication setting
         auth_settings = []
 
-        return self.api_client.call_api(resource_path, 'GET',
+        return self.api_client.call_api('/matrix', 'GET',
                                         path_params,
                                         query_params,
                                         header_params,
@@ -235,12 +234,11 @@ class MatrixApi(object):
 
         collection_formats = {}
 
-        resource_path = '/matrix'.replace('{format}', 'json')
         path_params = {}
 
-        query_params = {}
+        query_params = []
         if 'key' in params:
-            query_params['key'] = params['key']
+            query_params.append(('key', params['key']))
 
         header_params = {}
 
@@ -257,7 +255,7 @@ class MatrixApi(object):
         # Authentication setting
         auth_settings = []
 
-        return self.api_client.call_api(resource_path, 'POST',
+        return self.api_client.call_api('/matrix', 'POST',
                                         path_params,
                                         query_params,
                                         header_params,

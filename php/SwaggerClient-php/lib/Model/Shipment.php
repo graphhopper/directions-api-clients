@@ -64,9 +64,29 @@ class Shipment implements ArrayAccess
         'allowed_vehicles' => 'string[]'
     ];
 
+    /**
+      * Array of property to format mappings. Used for (de)serialization
+      * @var string[]
+      */
+    protected static $swaggerFormats = [
+        'id' => null,
+        'name' => null,
+        'priority' => 'int32',
+        'pickup' => null,
+        'delivery' => null,
+        'size' => 'int32',
+        'required_skills' => null,
+        'allowed_vehicles' => null
+    ];
+
     public static function swaggerTypes()
     {
         return self::$swaggerTypes;
+    }
+
+    public static function swaggerFormats()
+    {
+        return self::$swaggerFormats;
     }
 
     /**

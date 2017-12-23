@@ -20,6 +20,7 @@ using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System.ComponentModel.DataAnnotations;
+using SwaggerDateConverter = IO.Swagger.Client.SwaggerDateConverter;
 
 namespace IO.Swagger.Model
 {
@@ -97,59 +98,70 @@ namespace IO.Swagger.Model
         /// <value>Unique identifier of service</value>
         [DataMember(Name="id", EmitDefaultValue=false)]
         public string Id { get; set; }
+
+
         /// <summary>
         /// priority of service
         /// </summary>
         /// <value>priority of service</value>
         [DataMember(Name="priority", EmitDefaultValue=false)]
         public int? Priority { get; set; }
+
         /// <summary>
         /// name of service
         /// </summary>
         /// <value>name of service</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
         public string Name { get; set; }
+
         /// <summary>
         /// Gets or Sets Address
         /// </summary>
         [DataMember(Name="address", EmitDefaultValue=false)]
         public Address Address { get; set; }
+
         /// <summary>
         /// duration of service, i.e. time in ms the corresponding activity takes
         /// </summary>
         /// <value>duration of service, i.e. time in ms the corresponding activity takes</value>
         [DataMember(Name="duration", EmitDefaultValue=false)]
         public long? Duration { get; set; }
+
         /// <summary>
         /// preparation time of service, e.g. search for a parking space. it only falls due if the location of previous activity differs from this location
         /// </summary>
         /// <value>preparation time of service, e.g. search for a parking space. it only falls due if the location of previous activity differs from this location</value>
         [DataMember(Name="preparation_time", EmitDefaultValue=false)]
         public long? PreparationTime { get; set; }
+
         /// <summary>
         /// array of time windows. currently, only a single time window is allowed
         /// </summary>
         /// <value>array of time windows. currently, only a single time window is allowed</value>
         [DataMember(Name="time_windows", EmitDefaultValue=false)]
         public List<TimeWindow> TimeWindows { get; set; }
+
         /// <summary>
         /// array of capacity dimensions
         /// </summary>
         /// <value>array of capacity dimensions</value>
         [DataMember(Name="size", EmitDefaultValue=false)]
         public List<int?> Size { get; set; }
+
         /// <summary>
         /// array of required skills
         /// </summary>
         /// <value>array of required skills</value>
         [DataMember(Name="required_skills", EmitDefaultValue=false)]
         public List<string> RequiredSkills { get; set; }
+
         /// <summary>
         /// array of allowed vehicle ids
         /// </summary>
         /// <value>array of allowed vehicle ids</value>
         [DataMember(Name="allowed_vehicles", EmitDefaultValue=false)]
         public List<string> AllowedVehicles { get; set; }
+
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -299,8 +311,13 @@ namespace IO.Swagger.Model
             }
         }
 
-        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
-        { 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
             yield break;
         }
     }

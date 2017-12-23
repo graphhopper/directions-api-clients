@@ -53,6 +53,6 @@ private:
     qint64 latest;
 };
 
-} /* namespace Swagger */
+}
 
 #endif /* SWGTimeWindow_H_ */

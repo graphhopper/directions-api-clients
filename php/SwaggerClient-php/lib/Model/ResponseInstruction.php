@@ -66,9 +66,31 @@ class ResponseInstruction implements ArrayAccess
         'turn_angle' => 'double'
     ];
 
+    /**
+      * Array of property to format mappings. Used for (de)serialization
+      * @var string[]
+      */
+    protected static $swaggerFormats = [
+        'text' => null,
+        'street_name' => null,
+        'distance' => 'double',
+        'time' => 'int32',
+        'interval' => 'int32',
+        'sign' => 'int32',
+        'annotation_text' => null,
+        'annotation_importance' => 'int32',
+        'exit_number' => 'int32',
+        'turn_angle' => 'double'
+    ];
+
     public static function swaggerTypes()
     {
         return self::$swaggerTypes;
+    }
+
+    public static function swaggerFormats()
+    {
+        return self::$swaggerFormats;
     }
 
     /**

@@ -22,7 +22,6 @@
 
 namespace Swagger {
 
-
 SWGCostMatrix::SWGCostMatrix(QString* json) {
     init();
     this->fromJson(*json);
@@ -168,6 +167,5 @@ SWGCostMatrix::setProfile(QString* profile) {
 }
 
 
-
-} /* namespace Swagger */
+}
 

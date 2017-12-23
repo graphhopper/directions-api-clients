@@ -22,7 +22,6 @@
 
 namespace Swagger {
 
-
 SWGGeocodingLocation::SWGGeocodingLocation(QString* json) {
     init();
     this->fromJson(*json);
@@ -262,6 +261,5 @@ SWGGeocodingLocation::setPostcode(QString* postcode) {
 }
 
 
-
-} /* namespace Swagger */
+}
 

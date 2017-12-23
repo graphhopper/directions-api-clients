@@ -22,7 +22,6 @@
 
 namespace Swagger {
 
-
 SWGIsochroneResponse::SWGIsochroneResponse(QString* json) {
     init();
     this->fromJson(*json);
@@ -125,6 +124,5 @@ SWGIsochroneResponse::setCopyrights(QList<QString*>* copyrights) {
 }
 
 
-
-} /* namespace Swagger */
+}
 

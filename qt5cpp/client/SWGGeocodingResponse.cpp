@@ -22,7 +22,6 @@
 
 namespace Swagger {
 
-
 SWGGeocodingResponse::SWGGeocodingResponse(QString* json) {
     init();
     this->fromJson(*json);
@@ -117,6 +116,5 @@ SWGGeocodingResponse::setLocale(QString* locale) {
 }
 
 
-
-} /* namespace Swagger */
+}
 

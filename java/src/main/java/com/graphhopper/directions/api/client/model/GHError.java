@@ -14,10 +14,15 @@
 package com.graphhopper.directions.api.client.model;
 
 import java.util.Objects;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import com.graphhopper.directions.api.client.model.GHErrorHints;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,7 +38,7 @@ public class GHError {
   private String message = null;
 
   @SerializedName("hints")
-  private List<GHErrorHints> hints = new ArrayList<GHErrorHints>();
+  private List<GHErrorHints> hints = null;
 
   public GHError code(Integer code) {
     this.code = code;
@@ -44,7 +49,7 @@ public class GHError {
    * Get code
    * @return code
   **/
-  @ApiModelProperty(example = "null", value = "")
+  @ApiModelProperty(value = "")
   public Integer getCode() {
     return code;
   }
@@ -62,7 +67,7 @@ public class GHError {
    * Get message
    * @return message
   **/
-  @ApiModelProperty(example = "null", value = "")
+  @ApiModelProperty(value = "")
   public String getMessage() {
     return message;
   }
@@ -77,6 +82,9 @@ public class GHError {
   }
 
   public GHError addHintsItem(GHErrorHints hintsItem) {
+    if (this.hints == null) {
+      this.hints = new ArrayList<GHErrorHints>();
+    }
     this.hints.add(hintsItem);
     return this;
   }
@@ -85,7 +93,7 @@ public class GHError {
    * Get hints
    * @return hints
   **/
-  @ApiModelProperty(example = "null", value = "")
+  @ApiModelProperty(value = "")
   public List<GHErrorHints> getHints() {
     return hints;
   }

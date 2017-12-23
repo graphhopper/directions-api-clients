@@ -1,4 +1,4 @@
-# SwaggerClient::Route
+# DirectionsApiClient::Route
 
 ## Properties
 Name | Type | Description | Notes

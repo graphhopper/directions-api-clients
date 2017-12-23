@@ -20,6 +20,7 @@ using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System.ComponentModel.DataAnnotations;
+using SwaggerDateConverter = IO.Swagger.Client.SwaggerDateConverter;
 
 namespace IO.Swagger.Model
 {
@@ -62,57 +63,67 @@ namespace IO.Swagger.Model
         /// <value>Unique identifier of vehicle</value>
         [DataMember(Name="vehicle_id", EmitDefaultValue=false)]
         public string VehicleId { get; set; }
+
         /// <summary>
         /// Unique identifier referring to the available vehicle types
         /// </summary>
         /// <value>Unique identifier referring to the available vehicle types</value>
         [DataMember(Name="type_id", EmitDefaultValue=false)]
         public string TypeId { get; set; }
+
         /// <summary>
         /// Gets or Sets StartAddress
         /// </summary>
         [DataMember(Name="start_address", EmitDefaultValue=false)]
         public Address StartAddress { get; set; }
+
         /// <summary>
         /// Gets or Sets EndAddress
         /// </summary>
         [DataMember(Name="end_address", EmitDefaultValue=false)]
         public Address EndAddress { get; set; }
+
         /// <summary>
         /// Gets or Sets _Break
         /// </summary>
         [DataMember(Name="break", EmitDefaultValue=false)]
         public ModelBreak _Break { get; set; }
+
         /// <summary>
         /// Indicates whether vehicle should return to start address or not. If not, it can end at any service activity.
         /// </summary>
         /// <value>Indicates whether vehicle should return to start address or not. If not, it can end at any service activity.</value>
         [DataMember(Name="return_to_depot", EmitDefaultValue=false)]
         public bool? ReturnToDepot { get; set; }
+
         /// <summary>
         /// earliest start of vehicle at its start location
         /// </summary>
         /// <value>earliest start of vehicle at its start location</value>
         [DataMember(Name="earliest_start", EmitDefaultValue=false)]
         public long? EarliestStart { get; set; }
+
         /// <summary>
         /// latest end of vehicle at its end location
         /// </summary>
         /// <value>latest end of vehicle at its end location</value>
         [DataMember(Name="latest_end", EmitDefaultValue=false)]
         public long? LatestEnd { get; set; }
+
         /// <summary>
         /// array of skills
         /// </summary>
         /// <value>array of skills</value>
         [DataMember(Name="skills", EmitDefaultValue=false)]
         public List<string> Skills { get; set; }
+
         /// <summary>
         /// max distance of vehicle
         /// </summary>
         /// <value>max distance of vehicle</value>
         [DataMember(Name="max_distance", EmitDefaultValue=false)]
         public long? MaxDistance { get; set; }
+
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -254,8 +265,13 @@ namespace IO.Swagger.Model
             }
         }
 
-        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
-        { 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
             yield break;
         }
     }

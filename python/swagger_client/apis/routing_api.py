@@ -154,54 +154,53 @@ class RoutingApi(object):
 
         collection_formats = {}
 
-        resource_path = '/route'.replace('{format}', 'json')
         path_params = {}
 
-        query_params = {}
+        query_params = []
         if 'point' in params:
-            query_params['point'] = params['point']
+            query_params.append(('point', params['point']))
             collection_formats['point'] = 'multi'
         if 'locale' in params:
-            query_params['locale'] = params['locale']
+            query_params.append(('locale', params['locale']))
         if 'instructions' in params:
-            query_params['instructions'] = params['instructions']
+            query_params.append(('instructions', params['instructions']))
         if 'vehicle' in params:
-            query_params['vehicle'] = params['vehicle']
+            query_params.append(('vehicle', params['vehicle']))
         if 'elevation' in params:
-            query_params['elevation'] = params['elevation']
+            query_params.append(('elevation', params['elevation']))
         if 'points_encoded' in params:
-            query_params['points_encoded'] = params['points_encoded']
+            query_params.append(('points_encoded', params['points_encoded']))
         if 'calc_points' in params:
-            query_params['calc_points'] = params['calc_points']
+            query_params.append(('calc_points', params['calc_points']))
         if 'point_hint' in params:
-            query_params['point_hint'] = params['point_hint']
+            query_params.append(('point_hint', params['point_hint']))
             collection_formats['point_hint'] = 'multi'
         if 'ch_disable' in params:
-            query_params['ch.disable'] = params['ch_disable']
+            query_params.append(('ch.disable', params['ch_disable']))
         if 'weighting' in params:
-            query_params['weighting'] = params['weighting']
+            query_params.append(('weighting', params['weighting']))
         if 'edge_traversal' in params:
-            query_params['edge_traversal'] = params['edge_traversal']
+            query_params.append(('edge_traversal', params['edge_traversal']))
         if 'algorithm' in params:
-            query_params['algorithm'] = params['algorithm']
+            query_params.append(('algorithm', params['algorithm']))
         if 'heading' in params:
-            query_params['heading'] = params['heading']
+            query_params.append(('heading', params['heading']))
         if 'heading_penalty' in params:
-            query_params['heading_penalty'] = params['heading_penalty']
+            query_params.append(('heading_penalty', params['heading_penalty']))
         if 'pass_through' in params:
-            query_params['pass_through'] = params['pass_through']
+            query_params.append(('pass_through', params['pass_through']))
         if 'round_trip_distance' in params:
-            query_params['round_trip.distance'] = params['round_trip_distance']
+            query_params.append(('round_trip.distance', params['round_trip_distance']))
         if 'round_trip_seed' in params:
-            query_params['round_trip.seed'] = params['round_trip_seed']
+            query_params.append(('round_trip.seed', params['round_trip_seed']))
         if 'alternative_route_max_paths' in params:
-            query_params['alternative_route.max_paths'] = params['alternative_route_max_paths']
+            query_params.append(('alternative_route.max_paths', params['alternative_route_max_paths']))
         if 'alternative_route_max_weight_factor' in params:
-            query_params['alternative_route.max_weight_factor'] = params['alternative_route_max_weight_factor']
+            query_params.append(('alternative_route.max_weight_factor', params['alternative_route_max_weight_factor']))
         if 'alternative_route_max_share_factor' in params:
-            query_params['alternative_route.max_share_factor'] = params['alternative_route_max_share_factor']
+            query_params.append(('alternative_route.max_share_factor', params['alternative_route_max_share_factor']))
         if 'key' in params:
-            query_params['key'] = params['key']
+            query_params.append(('key', params['key']))
 
         header_params = {}
 
@@ -216,7 +215,7 @@ class RoutingApi(object):
         # Authentication setting
         auth_settings = []
 
-        return self.api_client.call_api(resource_path, 'GET',
+        return self.api_client.call_api('/route', 'GET',
                                         path_params,
                                         query_params,
                                         header_params,

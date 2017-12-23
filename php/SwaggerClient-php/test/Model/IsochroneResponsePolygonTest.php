@@ -47,7 +47,6 @@ class IsochroneResponsePolygonTest extends \PHPUnit_Framework_TestCase
      */
     public static function setUpBeforeClass()
     {
-
     }
 
     /**
@@ -55,7 +54,6 @@ class IsochroneResponsePolygonTest extends \PHPUnit_Framework_TestCase
      */
     public function setUp()
     {
-
     }
 
     /**
@@ -63,7 +61,6 @@ class IsochroneResponsePolygonTest extends \PHPUnit_Framework_TestCase
      */
     public function tearDown()
     {
-
     }
 
     /**
@@ -71,7 +68,6 @@ class IsochroneResponsePolygonTest extends \PHPUnit_Framework_TestCase
      */
     public static function tearDownAfterClass()
     {
-
     }
 
     /**
@@ -79,7 +75,6 @@ class IsochroneResponsePolygonTest extends \PHPUnit_Framework_TestCase
      */
     public function testIsochroneResponsePolygon()
     {
-
     }
 
     /**
@@ -87,7 +82,6 @@ class IsochroneResponsePolygonTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyProperties()
     {
-
     }
 
     /**
@@ -95,7 +89,6 @@ class IsochroneResponsePolygonTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyType()
     {
-
     }
 
     /**
@@ -103,7 +96,5 @@ class IsochroneResponsePolygonTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyGeometry()
     {
-
     }
-
 }

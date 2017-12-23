@@ -49,6 +49,6 @@ private:
     bool calc_points;
 };
 
-} /* namespace Swagger */
+}
 
 #endif /* SWGRouting_H_ */

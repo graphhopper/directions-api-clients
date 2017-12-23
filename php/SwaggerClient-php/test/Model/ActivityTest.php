@@ -47,7 +47,6 @@ class ActivityTest extends \PHPUnit_Framework_TestCase
      */
     public static function setUpBeforeClass()
     {
-
     }
 
     /**
@@ -55,7 +54,6 @@ class ActivityTest extends \PHPUnit_Framework_TestCase
      */
     public function setUp()
     {
-
     }
 
     /**
@@ -63,7 +61,6 @@ class ActivityTest extends \PHPUnit_Framework_TestCase
      */
     public function tearDown()
     {
-
     }
 
     /**
@@ -71,7 +68,6 @@ class ActivityTest extends \PHPUnit_Framework_TestCase
      */
     public static function tearDownAfterClass()
     {
-
     }
 
     /**
@@ -79,7 +75,6 @@ class ActivityTest extends \PHPUnit_Framework_TestCase
      */
     public function testActivity()
     {
-
     }
 
     /**
@@ -87,7 +82,6 @@ class ActivityTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyType()
     {
-
     }
 
     /**
@@ -95,7 +89,6 @@ class ActivityTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyId()
     {
-
     }
 
     /**
@@ -103,7 +96,6 @@ class ActivityTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyLocationId()
     {
-
     }
 
     /**
@@ -111,7 +103,6 @@ class ActivityTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyArrTime()
     {
-
     }
 
     /**
@@ -119,7 +110,6 @@ class ActivityTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyEndTime()
     {
-
     }
 
     /**
@@ -127,7 +117,6 @@ class ActivityTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyWaitingTime()
     {
-
     }
 
     /**
@@ -135,7 +124,6 @@ class ActivityTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyDistance()
     {
-
     }
 
     /**
@@ -143,7 +131,6 @@ class ActivityTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyDrivingTime()
     {
-
     }
 
     /**
@@ -151,7 +138,6 @@ class ActivityTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyLoadBefore()
     {
-
     }
 
     /**
@@ -159,7 +145,5 @@ class ActivityTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyLoadAfter()
     {
-
     }
-
 }

@@ -67,9 +67,32 @@ class Service implements ArrayAccess
         'allowed_vehicles' => 'string[]'
     ];
 
+    /**
+      * Array of property to format mappings. Used for (de)serialization
+      * @var string[]
+      */
+    protected static $swaggerFormats = [
+        'id' => null,
+        'type' => null,
+        'priority' => 'int32',
+        'name' => null,
+        'address' => null,
+        'duration' => 'int64',
+        'preparation_time' => 'int64',
+        'time_windows' => null,
+        'size' => 'int32',
+        'required_skills' => null,
+        'allowed_vehicles' => null
+    ];
+
     public static function swaggerTypes()
     {
         return self::$swaggerTypes;
+    }
+
+    public static function swaggerFormats()
+    {
+        return self::$swaggerFormats;
     }
 
     /**
@@ -197,9 +220,12 @@ class Service implements ArrayAccess
     {
         $invalid_properties = [];
 
-        $allowed_values = ["service", "pickup", "delivery"];
+        $allowed_values = $this->getTypeAllowableValues();
         if (!in_array($this->container['type'], $allowed_values)) {
-            $invalid_properties[] = "invalid value for 'type', must be one of 'service', 'pickup', 'delivery'.";
+            $invalid_properties[] = sprintf(
+                "invalid value for 'type', must be one of '%s'",
+                implode("', '", $allowed_values)
+            );
         }
 
         return $invalid_properties;
@@ -214,7 +240,7 @@ class Service implements ArrayAccess
     public function valid()
     {
 
-        $allowed_values = ["service", "pickup", "delivery"];
+        $allowed_values = $this->getTypeAllowableValues();
         if (!in_array($this->container['type'], $allowed_values)) {
             return false;
         }
@@ -259,9 +285,14 @@ class Service implements ArrayAccess
      */
     public function setType($type)
     {
-        $allowed_values = array('service', 'pickup', 'delivery');
-        if (!is_null($type) && (!in_array($type, $allowed_values))) {
-            throw new \InvalidArgumentException("Invalid value for 'type', must be one of 'service', 'pickup', 'delivery'");
+        $allowed_values = $this->getTypeAllowableValues();
+        if (!is_null($type) && !in_array($type, $allowed_values)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'type', must be one of '%s'",
+                    implode("', '", $allowed_values)
+                )
+            );
         }
         $this->container['type'] = $type;
 

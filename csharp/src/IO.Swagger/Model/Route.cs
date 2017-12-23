@@ -20,6 +20,7 @@ using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System.ComponentModel.DataAnnotations;
+using SwaggerDateConverter = IO.Swagger.Client.SwaggerDateConverter;
 
 namespace IO.Swagger.Model
 {
@@ -56,42 +57,49 @@ namespace IO.Swagger.Model
         /// <value>id of vehicle that operates route</value>
         [DataMember(Name="vehicle_id", EmitDefaultValue=false)]
         public string VehicleId { get; set; }
+
         /// <summary>
         /// distance of route in meter
         /// </summary>
         /// <value>distance of route in meter</value>
         [DataMember(Name="distance", EmitDefaultValue=false)]
         public long? Distance { get; set; }
+
         /// <summary>
         /// transport time of route in ms
         /// </summary>
         /// <value>transport time of route in ms</value>
         [DataMember(Name="transport_time", EmitDefaultValue=false)]
         public long? TransportTime { get; set; }
+
         /// <summary>
         /// completion time of route in ms
         /// </summary>
         /// <value>completion time of route in ms</value>
         [DataMember(Name="completion_time", EmitDefaultValue=false)]
         public long? CompletionTime { get; set; }
+
         /// <summary>
         /// waiting time of route in ms
         /// </summary>
         /// <value>waiting time of route in ms</value>
         [DataMember(Name="waiting_time", EmitDefaultValue=false)]
         public long? WaitingTime { get; set; }
+
         /// <summary>
         /// array of activities
         /// </summary>
         /// <value>array of activities</value>
         [DataMember(Name="activities", EmitDefaultValue=false)]
         public List<Activity> Activities { get; set; }
+
         /// <summary>
         /// array of route planning points
         /// </summary>
         /// <value>array of route planning points</value>
         [DataMember(Name="points", EmitDefaultValue=false)]
         public List<RoutePoint> Points { get; set; }
+
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -209,8 +217,13 @@ namespace IO.Swagger.Model
             }
         }
 
-        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
-        { 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
             yield break;
         }
     }

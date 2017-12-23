@@ -18,6 +18,7 @@
 #include <QJsonDocument>
 
 namespace Swagger {
+
 SWGSolutionApi::SWGSolutionApi() {}
 
 SWGSolutionApi::~SWGSolutionApi() {}
@@ -47,9 +48,13 @@ SWGSolutionApi::getSolution(QString* key, QString* job_id) {
     HttpRequestWorker *worker = new HttpRequestWorker();
     HttpRequestInput input(fullPath, "GET");
 
-    
 
 
+
+
+    foreach(QString key, this->defaultHeaders.keys()) {
+        input.headers.insert(key, this->defaultHeaders.value(key));
+    }
 
     connect(worker,
             &HttpRequestWorker::on_execution_finished,
@@ -62,6 +67,9 @@ SWGSolutionApi::getSolution(QString* key, QString* job_id) {
 void
 SWGSolutionApi::getSolutionCallback(HttpRequestWorker * worker) {
     QString msg;
+    QString error_str = worker->error_str;
+    QNetworkReply::NetworkError error_type = worker->error_type;
+
     if (worker->error_type == QNetworkReply::NoError) {
         msg = QString("Success! %1 bytes").arg(worker->response.length());
     }
@@ -69,14 +77,14 @@ SWGSolutionApi::getSolutionCallback(HttpRequestWorker * worker) {
         msg = "Error: " + worker->error_str;
     }
 
-    
-        QString json(worker->response);
-    SWGResponse* output = static_cast<SWGResponse*>(create(json, QString("SWGResponse")));
-    
 
+    QString json(worker->response);
+    SWGResponse* output = static_cast<SWGResponse*>(create(json, QString("SWGResponse")));
     worker->deleteLater();
 
     emit getSolutionSignal(output);
-    
+    emit getSolutionSignalE(output, error_type, error_str);
 }
-} /* namespace Swagger */
+
+
+}

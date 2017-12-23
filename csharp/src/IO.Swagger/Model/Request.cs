@@ -20,6 +20,7 @@ using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System.ComponentModel.DataAnnotations;
+using SwaggerDateConverter = IO.Swagger.Client.SwaggerDateConverter;
 
 namespace IO.Swagger.Model
 {
@@ -60,52 +61,61 @@ namespace IO.Swagger.Model
         /// <value>An array of vehicles that can be employed</value>
         [DataMember(Name="vehicles", EmitDefaultValue=false)]
         public List<Vehicle> Vehicles { get; set; }
+
         /// <summary>
         /// An array of vehicle types
         /// </summary>
         /// <value>An array of vehicle types</value>
         [DataMember(Name="vehicle_types", EmitDefaultValue=false)]
         public List<VehicleType> VehicleTypes { get; set; }
+
         /// <summary>
         /// An array of services
         /// </summary>
         /// <value>An array of services</value>
         [DataMember(Name="services", EmitDefaultValue=false)]
         public List<Service> Services { get; set; }
+
         /// <summary>
         /// An array of shipments
         /// </summary>
         /// <value>An array of shipments</value>
         [DataMember(Name="shipments", EmitDefaultValue=false)]
         public List<Shipment> Shipments { get; set; }
+
         /// <summary>
         /// An array of relations
         /// </summary>
         /// <value>An array of relations</value>
         [DataMember(Name="relations", EmitDefaultValue=false)]
         public List<Relation> Relations { get; set; }
+
         /// <summary>
         /// Gets or Sets Algorithm
         /// </summary>
         [DataMember(Name="algorithm", EmitDefaultValue=false)]
         public Algorithm Algorithm { get; set; }
+
         /// <summary>
         /// An array of objectives
         /// </summary>
         /// <value>An array of objectives</value>
         [DataMember(Name="objectives", EmitDefaultValue=false)]
         public List<Objective> Objectives { get; set; }
+
         /// <summary>
         /// An array of cost matrices
         /// </summary>
         /// <value>An array of cost matrices</value>
         [DataMember(Name="cost_matrices", EmitDefaultValue=false)]
         public List<CostMatrix> CostMatrices { get; set; }
+
         /// <summary>
         /// Gets or Sets Configuration
         /// </summary>
         [DataMember(Name="configuration", EmitDefaultValue=false)]
         public Configuration Configuration { get; set; }
+
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -239,8 +249,13 @@ namespace IO.Swagger.Model
             }
         }
 
-        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
-        { 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
             yield break;
         }
     }

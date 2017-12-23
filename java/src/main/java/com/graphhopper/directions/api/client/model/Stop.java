@@ -14,11 +14,16 @@
 package com.graphhopper.directions.api.client.model;
 
 import java.util.Objects;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import com.graphhopper.directions.api.client.model.Address;
 import com.graphhopper.directions.api.client.model.TimeWindow;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,7 +42,7 @@ public class Stop {
   private Long preparationTime = null;
 
   @SerializedName("time_windows")
-  private List<TimeWindow> timeWindows = new ArrayList<TimeWindow>();
+  private List<TimeWindow> timeWindows = null;
 
   public Stop address(Address address) {
     this.address = address;
@@ -48,7 +53,7 @@ public class Stop {
    * Get address
    * @return address
   **/
-  @ApiModelProperty(example = "null", value = "")
+  @ApiModelProperty(value = "")
   public Address getAddress() {
     return address;
   }
@@ -66,7 +71,7 @@ public class Stop {
    * duration of stop, i.e. time in ms the corresponding activity takes
    * @return duration
   **/
-  @ApiModelProperty(example = "null", value = "duration of stop, i.e. time in ms the corresponding activity takes")
+  @ApiModelProperty(value = "duration of stop, i.e. time in ms the corresponding activity takes")
   public Long getDuration() {
     return duration;
   }
@@ -84,7 +89,7 @@ public class Stop {
    * preparation time of service, e.g. search for a parking space. it only falls due if the location of previous activity differs from this location
    * @return preparationTime
   **/
-  @ApiModelProperty(example = "null", value = "preparation time of service, e.g. search for a parking space. it only falls due if the location of previous activity differs from this location")
+  @ApiModelProperty(value = "preparation time of service, e.g. search for a parking space. it only falls due if the location of previous activity differs from this location")
   public Long getPreparationTime() {
     return preparationTime;
   }
@@ -99,6 +104,9 @@ public class Stop {
   }
 
   public Stop addTimeWindowsItem(TimeWindow timeWindowsItem) {
+    if (this.timeWindows == null) {
+      this.timeWindows = new ArrayList<TimeWindow>();
+    }
     this.timeWindows.add(timeWindowsItem);
     return this;
   }
@@ -107,7 +115,7 @@ public class Stop {
    * array of time windows. currently, only a single time window is allowed
    * @return timeWindows
   **/
-  @ApiModelProperty(example = "null", value = "array of time windows. currently, only a single time window is allowed")
+  @ApiModelProperty(value = "array of time windows. currently, only a single time window is allowed")
   public List<TimeWindow> getTimeWindows() {
     return timeWindows;
   }

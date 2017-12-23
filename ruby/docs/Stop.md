@@ -1,4 +1,4 @@
-# SwaggerClient::Stop
+# DirectionsApiClient::Stop
 
 ## Properties
 Name | Type | Description | Notes

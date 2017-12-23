@@ -14,10 +14,15 @@
 package com.graphhopper.directions.api.client.model;
 
 import java.util.Objects;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import com.graphhopper.directions.api.client.model.Stop;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,13 +47,13 @@ public class Shipment {
   private Stop delivery = null;
 
   @SerializedName("size")
-  private List<Integer> size = new ArrayList<Integer>();
+  private List<Integer> size = null;
 
   @SerializedName("required_skills")
-  private List<String> requiredSkills = new ArrayList<String>();
+  private List<String> requiredSkills = null;
 
   @SerializedName("allowed_vehicles")
-  private List<String> allowedVehicles = new ArrayList<String>();
+  private List<String> allowedVehicles = null;
 
   public Shipment id(String id) {
     this.id = id;
@@ -59,7 +64,7 @@ public class Shipment {
    * Unique identifier of service
    * @return id
   **/
-  @ApiModelProperty(example = "null", value = "Unique identifier of service")
+  @ApiModelProperty(value = "Unique identifier of service")
   public String getId() {
     return id;
   }
@@ -77,7 +82,7 @@ public class Shipment {
    * name of shipment
    * @return name
   **/
-  @ApiModelProperty(example = "null", value = "name of shipment")
+  @ApiModelProperty(value = "name of shipment")
   public String getName() {
     return name;
   }
@@ -92,10 +97,10 @@ public class Shipment {
   }
 
    /**
-   * priority of service, i.e. 1 = high, 2 = normal, 3 = low. default is 2.
+   * priority of service, i.e. 1 &#x3D; high, 2 &#x3D; normal, 3 &#x3D; low. default is 2.
    * @return priority
   **/
-  @ApiModelProperty(example = "null", value = "priority of service, i.e. 1 = high, 2 = normal, 3 = low. default is 2.")
+  @ApiModelProperty(value = "priority of service, i.e. 1 = high, 2 = normal, 3 = low. default is 2.")
   public Integer getPriority() {
     return priority;
   }
@@ -113,7 +118,7 @@ public class Shipment {
    * Get pickup
    * @return pickup
   **/
-  @ApiModelProperty(example = "null", value = "")
+  @ApiModelProperty(value = "")
   public Stop getPickup() {
     return pickup;
   }
@@ -131,7 +136,7 @@ public class Shipment {
    * Get delivery
    * @return delivery
   **/
-  @ApiModelProperty(example = "null", value = "")
+  @ApiModelProperty(value = "")
   public Stop getDelivery() {
     return delivery;
   }
@@ -146,6 +151,9 @@ public class Shipment {
   }
 
   public Shipment addSizeItem(Integer sizeItem) {
+    if (this.size == null) {
+      this.size = new ArrayList<Integer>();
+    }
     this.size.add(sizeItem);
     return this;
   }
@@ -154,7 +162,7 @@ public class Shipment {
    * array of capacity dimensions
    * @return size
   **/
-  @ApiModelProperty(example = "null", value = "array of capacity dimensions")
+  @ApiModelProperty(value = "array of capacity dimensions")
   public List<Integer> getSize() {
     return size;
   }
@@ -169,6 +177,9 @@ public class Shipment {
   }
 
   public Shipment addRequiredSkillsItem(String requiredSkillsItem) {
+    if (this.requiredSkills == null) {
+      this.requiredSkills = new ArrayList<String>();
+    }
     this.requiredSkills.add(requiredSkillsItem);
     return this;
   }
@@ -177,7 +188,7 @@ public class Shipment {
    * array of required skills
    * @return requiredSkills
   **/
-  @ApiModelProperty(example = "null", value = "array of required skills")
+  @ApiModelProperty(value = "array of required skills")
   public List<String> getRequiredSkills() {
     return requiredSkills;
   }
@@ -192,6 +203,9 @@ public class Shipment {
   }
 
   public Shipment addAllowedVehiclesItem(String allowedVehiclesItem) {
+    if (this.allowedVehicles == null) {
+      this.allowedVehicles = new ArrayList<String>();
+    }
     this.allowedVehicles.add(allowedVehiclesItem);
     return this;
   }
@@ -200,7 +214,7 @@ public class Shipment {
    * array of allowed vehicle ids
    * @return allowedVehicles
   **/
-  @ApiModelProperty(example = "null", value = "array of allowed vehicle ids")
+  @ApiModelProperty(value = "array of allowed vehicle ids")
   public List<String> getAllowedVehicles() {
     return allowedVehicles;
   }

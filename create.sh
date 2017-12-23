@@ -67,7 +67,8 @@ if [[ "$LANG" != "" ]]; then
   exit 0
 else
   echo "creating all"
-  create r
+# not yet in 2.3.0
+#  create r
   create java
   create php
   create ruby

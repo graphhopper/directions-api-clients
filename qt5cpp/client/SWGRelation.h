@@ -59,6 +59,6 @@ private:
     QString* vehicle_id;
 };
 
-} /* namespace Swagger */
+}
 
 #endif /* SWGRelation_H_ */

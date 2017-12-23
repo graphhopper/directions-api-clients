@@ -94,7 +94,6 @@ sub post_vrp {
 
     # parse inputs
     my $_resource_path = '/vrp/optimize';
-    $_resource_path =~ s/{format}/json/; # default format to json
 
     my $_method = 'POST';
     my $query_params = {};

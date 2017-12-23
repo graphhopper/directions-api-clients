@@ -15,7 +15,8 @@ package io.swagger.client.model
 
 case class TimeWindow (
   /* earliest start time of corresponding activity */
-  earliest: Long,
+  earliest: Option[Long],
   /* latest start time of corresponding activity */
-  latest: Long
+  latest: Option[Long]
 )
+

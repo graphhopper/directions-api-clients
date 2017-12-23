@@ -15,22 +15,23 @@ package io.swagger.client.model
 
 case class Solution (
   /* overall costs of solution */
-  costs: Integer,
+  costs: Option[Integer],
   /* overall travel distance in meters */
-  distance: Integer,
+  distance: Option[Integer],
   /* overall transport time in ms */
-  time: Long,
+  time: Option[Long],
   /* overall transport time in ms */
-  transportTime: Long,
+  transportTime: Option[Long],
   /* operation time of the longest route in ms */
-  maxOperationTime: Long,
+  maxOperationTime: Option[Long],
   /* total waiting time in ms */
-  waitingTime: Long,
+  waitingTime: Option[Long],
   /* number of employed vehicles */
-  noVehicles: Integer,
+  noVehicles: Option[Integer],
   /* number of jobs that could not be assigned to final solution */
-  noUnassigned: Integer,
+  noUnassigned: Option[Integer],
   /* An array of routes */
-  routes: List[Route],
-  unassigned: SolutionUnassigned
+  routes: Option[List[Route]],
+  unassigned: Option[SolutionUnassigned]
 )
+

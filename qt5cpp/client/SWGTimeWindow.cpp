@@ -22,7 +22,6 @@
 
 namespace Swagger {
 
-
 SWGTimeWindow::SWGTimeWindow(QString* json) {
     init();
     this->fromJson(*json);
@@ -103,6 +102,5 @@ SWGTimeWindow::setLatest(qint64 latest) {
 }
 
 
-
-} /* namespace Swagger */
+}
 

@@ -72,6 +72,6 @@ private:
     SWGSolution* solution;
 };
 
-} /* namespace Swagger */
+}
 
 #endif /* SWGResponse_H_ */

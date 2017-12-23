@@ -1,4 +1,4 @@
-# SwaggerClient::SolutionUnassigned
+# DirectionsApiClient::SolutionUnassigned
 
 ## Properties
 Name | Type | Description | Notes

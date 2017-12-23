@@ -53,6 +53,6 @@ private:
     double lng;
 };
 
-} /* namespace Swagger */
+}
 
 #endif /* SWGGeocodingPoint_H_ */

@@ -88,6 +88,6 @@ private:
     SWGSolution_unassigned* unassigned;
 };
 
-} /* namespace Swagger */
+}
 
 #endif /* SWGSolution_H_ */

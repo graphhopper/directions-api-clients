@@ -61,9 +61,26 @@ class CostMatrix implements ArrayAccess
         'profile' => 'string'
     ];
 
+    /**
+      * Array of property to format mappings. Used for (de)serialization
+      * @var string[]
+      */
+    protected static $swaggerFormats = [
+        'type' => null,
+        'url' => null,
+        'location_ids' => null,
+        'data' => null,
+        'profile' => null
+    ];
+
     public static function swaggerTypes()
     {
         return self::$swaggerTypes;
+    }
+
+    public static function swaggerFormats()
+    {
+        return self::$swaggerFormats;
     }
 
     /**
@@ -119,7 +136,7 @@ class CostMatrix implements ArrayAccess
         return self::$getters;
     }
 
-    const TYPE_DEFAULT = 'default';
+    const TYPE__DEFAULT = 'default';
     const TYPE_GOOGLE = 'google';
     
 
@@ -131,7 +148,7 @@ class CostMatrix implements ArrayAccess
     public function getTypeAllowableValues()
     {
         return [
-            self::TYPE_DEFAULT,
+            self::TYPE__DEFAULT,
             self::TYPE_GOOGLE,
         ];
     }
@@ -165,9 +182,12 @@ class CostMatrix implements ArrayAccess
     {
         $invalid_properties = [];
 
-        $allowed_values = ["default", "google"];
+        $allowed_values = $this->getTypeAllowableValues();
         if (!in_array($this->container['type'], $allowed_values)) {
-            $invalid_properties[] = "invalid value for 'type', must be one of 'default', 'google'.";
+            $invalid_properties[] = sprintf(
+                "invalid value for 'type', must be one of '%s'",
+                implode("', '", $allowed_values)
+            );
         }
 
         return $invalid_properties;
@@ -182,7 +202,7 @@ class CostMatrix implements ArrayAccess
     public function valid()
     {
 
-        $allowed_values = ["default", "google"];
+        $allowed_values = $this->getTypeAllowableValues();
         if (!in_array($this->container['type'], $allowed_values)) {
             return false;
         }
@@ -206,9 +226,14 @@ class CostMatrix implements ArrayAccess
      */
     public function setType($type)
     {
-        $allowed_values = array('default', 'google');
-        if (!is_null($type) && (!in_array($type, $allowed_values))) {
-            throw new \InvalidArgumentException("Invalid value for 'type', must be one of 'default', 'google'");
+        $allowed_values = $this->getTypeAllowableValues();
+        if (!is_null($type) && !in_array($type, $allowed_values)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'type', must be one of '%s'",
+                    implode("', '", $allowed_values)
+                )
+            );
         }
         $this->container['type'] = $type;
 

@@ -22,7 +22,6 @@
 
 namespace Swagger {
 
-
 SWGVehicle::SWGVehicle(QString* json) {
     init();
     this->fromJson(*json);
@@ -241,6 +240,5 @@ SWGVehicle::setMaxDistance(qint64 max_distance) {
 }
 
 
-
-} /* namespace Swagger */
+}
 

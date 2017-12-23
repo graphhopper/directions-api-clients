@@ -66,9 +66,31 @@ class Vehicle implements ArrayAccess
         'max_distance' => 'int'
     ];
 
+    /**
+      * Array of property to format mappings. Used for (de)serialization
+      * @var string[]
+      */
+    protected static $swaggerFormats = [
+        'vehicle_id' => null,
+        'type_id' => null,
+        'start_address' => null,
+        'end_address' => null,
+        'break' => null,
+        'return_to_depot' => null,
+        'earliest_start' => 'int64',
+        'latest_end' => 'int64',
+        'skills' => null,
+        'max_distance' => 'int64'
+    ];
+
     public static function swaggerTypes()
     {
         return self::$swaggerTypes;
+    }
+
+    public static function swaggerFormats()
+    {
+        return self::$swaggerFormats;
     }
 
     /**

@@ -14,9 +14,14 @@
 package com.graphhopper.directions.api.client.model;
 
 import java.util.Objects;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 
 /**
  * Address
@@ -44,7 +49,7 @@ public class Address {
    * Unique identifier of location
    * @return locationId
   **/
-  @ApiModelProperty(example = "null", value = "Unique identifier of location")
+  @ApiModelProperty(value = "Unique identifier of location")
   public String getLocationId() {
     return locationId;
   }
@@ -62,7 +67,7 @@ public class Address {
    * name of location, e.g. street name plus house number
    * @return name
   **/
-  @ApiModelProperty(example = "null", value = "name of location, e.g. street name plus house number")
+  @ApiModelProperty(value = "name of location, e.g. street name plus house number")
   public String getName() {
     return name;
   }
@@ -80,7 +85,7 @@ public class Address {
    * longitude
    * @return lon
   **/
-  @ApiModelProperty(example = "null", value = "longitude")
+  @ApiModelProperty(value = "longitude")
   public Double getLon() {
     return lon;
   }
@@ -98,7 +103,7 @@ public class Address {
    * latitude
    * @return lat
   **/
-  @ApiModelProperty(example = "null", value = "latitude")
+  @ApiModelProperty(value = "latitude")
   public Double getLat() {
     return lat;
   }

@@ -1,4 +1,4 @@
-# SwaggerClient::IsochroneResponsePolygonProperties
+# DirectionsApiClient::IsochroneResponsePolygonProperties
 
 ## Properties
 Name | Type | Description | Notes

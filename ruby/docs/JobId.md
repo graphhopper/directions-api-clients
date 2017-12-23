@@ -1,4 +1,4 @@
-# SwaggerClient::JobId
+# DirectionsApiClient::JobId
 
 ## Properties
 Name | Type | Description | Notes

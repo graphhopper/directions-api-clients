@@ -14,10 +14,15 @@
 package com.graphhopper.directions.api.client.model;
 
 import java.util.Objects;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import com.graphhopper.directions.api.client.model.ResponseCoordinatesArray;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,7 +35,7 @@ public class IsochroneResponsePolygonGeometry {
   private String type = null;
 
   @SerializedName("coordinates")
-  private List<ResponseCoordinatesArray> coordinates = new ArrayList<ResponseCoordinatesArray>();
+  private List<ResponseCoordinatesArray> coordinates = null;
 
   public IsochroneResponsePolygonGeometry type(String type) {
     this.type = type;
@@ -41,7 +46,7 @@ public class IsochroneResponsePolygonGeometry {
    * Get type
    * @return type
   **/
-  @ApiModelProperty(example = "null", value = "")
+  @ApiModelProperty(value = "")
   public String getType() {
     return type;
   }
@@ -56,6 +61,9 @@ public class IsochroneResponsePolygonGeometry {
   }
 
   public IsochroneResponsePolygonGeometry addCoordinatesItem(ResponseCoordinatesArray coordinatesItem) {
+    if (this.coordinates == null) {
+      this.coordinates = new ArrayList<ResponseCoordinatesArray>();
+    }
     this.coordinates.add(coordinatesItem);
     return this;
   }
@@ -64,7 +72,7 @@ public class IsochroneResponsePolygonGeometry {
    * Get coordinates
    * @return coordinates
   **/
-  @ApiModelProperty(example = "null", value = "")
+  @ApiModelProperty(value = "")
   public List<ResponseCoordinatesArray> getCoordinates() {
     return coordinates;
   }

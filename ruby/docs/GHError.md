@@ -1,4 +1,4 @@
-# SwaggerClient::GHError
+# DirectionsApiClient::GHError
 
 ## Properties
 Name | Type | Description | Notes

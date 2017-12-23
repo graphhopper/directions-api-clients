@@ -1,4 +1,4 @@
-# SwaggerClient::TimeWindow
+# DirectionsApiClient::TimeWindow
 
 ## Properties
 Name | Type | Description | Notes

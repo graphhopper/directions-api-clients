@@ -14,11 +14,16 @@
 package com.graphhopper.directions.api.client.model;
 
 import java.util.Objects;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import com.graphhopper.directions.api.client.model.Route;
 import com.graphhopper.directions.api.client.model.SolutionUnassigned;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,7 +57,7 @@ public class Solution {
   private Integer noUnassigned = null;
 
   @SerializedName("routes")
-  private List<Route> routes = new ArrayList<Route>();
+  private List<Route> routes = null;
 
   @SerializedName("unassigned")
   private SolutionUnassigned unassigned = null;
@@ -66,7 +71,7 @@ public class Solution {
    * overall costs of solution
    * @return costs
   **/
-  @ApiModelProperty(example = "null", value = "overall costs of solution")
+  @ApiModelProperty(value = "overall costs of solution")
   public Integer getCosts() {
     return costs;
   }
@@ -84,7 +89,7 @@ public class Solution {
    * overall travel distance in meters
    * @return distance
   **/
-  @ApiModelProperty(example = "null", value = "overall travel distance in meters")
+  @ApiModelProperty(value = "overall travel distance in meters")
   public Integer getDistance() {
     return distance;
   }
@@ -102,7 +107,7 @@ public class Solution {
    * overall transport time in ms
    * @return time
   **/
-  @ApiModelProperty(example = "null", value = "overall transport time in ms")
+  @ApiModelProperty(value = "overall transport time in ms")
   public Long getTime() {
     return time;
   }
@@ -120,7 +125,7 @@ public class Solution {
    * overall transport time in ms
    * @return transportTime
   **/
-  @ApiModelProperty(example = "null", value = "overall transport time in ms")
+  @ApiModelProperty(value = "overall transport time in ms")
   public Long getTransportTime() {
     return transportTime;
   }
@@ -138,7 +143,7 @@ public class Solution {
    * operation time of the longest route in ms
    * @return maxOperationTime
   **/
-  @ApiModelProperty(example = "null", value = "operation time of the longest route in ms")
+  @ApiModelProperty(value = "operation time of the longest route in ms")
   public Long getMaxOperationTime() {
     return maxOperationTime;
   }
@@ -156,7 +161,7 @@ public class Solution {
    * total waiting time in ms
    * @return waitingTime
   **/
-  @ApiModelProperty(example = "null", value = "total waiting time in ms")
+  @ApiModelProperty(value = "total waiting time in ms")
   public Long getWaitingTime() {
     return waitingTime;
   }
@@ -174,7 +179,7 @@ public class Solution {
    * number of employed vehicles
    * @return noVehicles
   **/
-  @ApiModelProperty(example = "null", value = "number of employed vehicles")
+  @ApiModelProperty(value = "number of employed vehicles")
   public Integer getNoVehicles() {
     return noVehicles;
   }
@@ -192,7 +197,7 @@ public class Solution {
    * number of jobs that could not be assigned to final solution
    * @return noUnassigned
   **/
-  @ApiModelProperty(example = "null", value = "number of jobs that could not be assigned to final solution")
+  @ApiModelProperty(value = "number of jobs that could not be assigned to final solution")
   public Integer getNoUnassigned() {
     return noUnassigned;
   }
@@ -207,6 +212,9 @@ public class Solution {
   }
 
   public Solution addRoutesItem(Route routesItem) {
+    if (this.routes == null) {
+      this.routes = new ArrayList<Route>();
+    }
     this.routes.add(routesItem);
     return this;
   }
@@ -215,7 +223,7 @@ public class Solution {
    * An array of routes
    * @return routes
   **/
-  @ApiModelProperty(example = "null", value = "An array of routes")
+  @ApiModelProperty(value = "An array of routes")
   public List<Route> getRoutes() {
     return routes;
   }
@@ -233,7 +241,7 @@ public class Solution {
    * Get unassigned
    * @return unassigned
   **/
-  @ApiModelProperty(example = "null", value = "")
+  @ApiModelProperty(value = "")
   public SolutionUnassigned getUnassigned() {
     return unassigned;
   }

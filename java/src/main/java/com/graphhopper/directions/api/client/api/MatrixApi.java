@@ -56,12 +56,24 @@ public class MatrixApi {
         this.apiClient = apiClient;
     }
 
-    /* Build call for matrixGet */
-    private com.squareup.okhttp.Call matrixGetCall(String key, List<String> point, String fromPoint, String toPoint, List<String> outArray, String vehicle, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    /**
+     * Build call for matrixGet
+     * @param key Get your key at graphhopper.com (required)
+     * @param point Specifiy multiple points for which the weight-, route-, time- or distance-matrix should be calculated. In this case the starts are identical to the destinations. If there are N points, then NxN entries will be calculated. The order of the point parameter is important. Specify at least three points. Cannot be used together with from_point or to_point. Is a string with the format latitude,longitude. (optional)
+     * @param fromPoint The starting points for the routes. E.g. if you want to calculate the three routes A-&amp;gt;1, A-&amp;gt;2, A-&amp;gt;3 then you have one from_point parameter and three to_point parameters. Is a string with the format latitude,longitude. (optional)
+     * @param toPoint The destination points for the routes. Is a string with the format latitude,longitude. (optional)
+     * @param outArray Specifies which arrays should be included in the response. Specify one or more of the following options &#39;weights&#39;, &#39;times&#39;, &#39;distances&#39;. To specify more than one array use e.g. out_array&#x3D;times&amp;out_array&#x3D;distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API. (optional)
+     * @param vehicle The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc, see here for the details. (optional, default to car)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call matrixGetCall(String key, List<String> point, String fromPoint, String toPoint, List<String> outArray, String vehicle, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // create path and map variables
-        String localVarPath = "/matrix".replaceAll("\\{format\\}","json");
+        String localVarPath = "/matrix";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         if (point != null)
@@ -201,12 +213,20 @@ public class MatrixApi {
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
-    /* Build call for matrixPost */
-    private com.squareup.okhttp.Call matrixPostCall(String key, MatrixRequest body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    /**
+     * Build call for matrixPost
+     * @param key Get your key at graphhopper.com (required)
+     * @param body  (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call matrixPostCall(String key, MatrixRequest body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = body;
         
         // create path and map variables
-        String localVarPath = "/matrix".replaceAll("\\{format\\}","json");
+        String localVarPath = "/matrix";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         if (key != null)

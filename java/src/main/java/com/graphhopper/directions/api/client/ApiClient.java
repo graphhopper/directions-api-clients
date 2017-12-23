@@ -127,6 +127,7 @@ public class ApiClient {
 
     private InputStream sslCaCert;
     private boolean verifyingSsl;
+    private KeyManager[] keyManagers;
 
     private OkHttpClient httpClient;
     private JSON json;
@@ -138,6 +139,7 @@ public class ApiClient {
      */
     public ApiClient() {
         httpClient = new OkHttpClient();
+
 
         verifyingSsl = true;
 
@@ -267,6 +269,23 @@ public class ApiClient {
      */
     public ApiClient setSslCaCert(InputStream sslCaCert) {
         this.sslCaCert = sslCaCert;
+        applySslSettings();
+        return this;
+    }
+
+    public KeyManager[] getKeyManagers() {
+        return keyManagers;
+    }
+
+    /**
+     * Configure client keys to use for authorization in an SSL session.
+     * Use null to reset to default.
+     *
+     * @param managers The KeyManagers to use
+     * @return ApiClient
+     */
+    public ApiClient setKeyManagers(KeyManager[] managers) {
+        this.keyManagers = managers;
         applySslSettings();
         return this;
     }
@@ -724,12 +743,13 @@ public class ApiClient {
      *   application/json
      *   application/json; charset=UTF8
      *   APPLICATION/JSON
-     *
+     *   application/vnd.company+json
      * @param mime MIME (Multipurpose Internet Mail Extensions)
      * @return True if the given MIME is JSON, false otherwise.
      */
     public boolean isJsonMime(String mime) {
-        return mime != null && mime.matches("(?i)application\\/json(;.*)?");
+      String jsonMime = "(?i)^(application/json|[^;/ \t]+/[^;/ \t]+[+]json)[ \t]*(;.*)?$";
+      return mime != null && (mime.matches(jsonMime) || mime.equalsIgnoreCase("application/json-patch+json"));
     }
 
     /**
@@ -1031,6 +1051,13 @@ public class ApiClient {
             if (returnType == null || response.code() == 204) {
                 // returning null if the returnType is not defined,
                 // or the status code is 204 (No Content)
+                if (response.body() != null) {
+                    try {
+                        response.body().close();
+                    } catch (IOException e) {
+                        throw new ApiException(response.message(), e, response.code(), response.headers().toMultimap());
+                    }
+                }
                 return null;
             } else {
                 return deserialize(response, returnType);
@@ -1063,6 +1090,26 @@ public class ApiClient {
      * @throws ApiException If fail to serialize the request body object
      */
     public Call buildCall(String path, String method, List<Pair> queryParams, Object body, Map<String, String> headerParams, Map<String, Object> formParams, String[] authNames, ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Request request = buildRequest(path, method, queryParams, body, headerParams, formParams, authNames, progressRequestListener);
+
+        return httpClient.newCall(request);
+    }
+
+    /**
+     * Build an HTTP request with the given options.
+     *
+     * @param path The sub-path of the HTTP URL
+     * @param method The request method, one of "GET", "HEAD", "OPTIONS", "POST", "PUT", "PATCH" and "DELETE"
+     * @param queryParams The query parameters
+     * @param body The request body object
+     * @param headerParams The header parameters
+     * @param formParams The form parameters
+     * @param authNames The authentications to apply
+     * @param progressRequestListener Progress request listener
+     * @return The HTTP request 
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public Request buildRequest(String path, String method, List<Pair> queryParams, Object body, Map<String, String> headerParams, Map<String, Object> formParams, String[] authNames, ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         updateParamsForAuth(authNames, queryParams, headerParams);
 
         final String url = buildUrl(path, queryParams);
@@ -1103,7 +1150,7 @@ public class ApiClient {
             request = reqBuilder.method(method, reqBody).build();
         }
 
-        return httpClient.newCall(request);
+        return request;
     }
 
     /**
@@ -1252,7 +1299,6 @@ public class ApiClient {
      */
     private void applySslSettings() {
         try {
-            KeyManager[] keyManagers = null;
             TrustManager[] trustManagers = null;
             HostnameVerifier hostnameVerifier = null;
             if (!verifyingSsl) {

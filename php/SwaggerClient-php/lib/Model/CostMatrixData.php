@@ -60,9 +60,24 @@ class CostMatrixData implements ArrayAccess
         'info' => '\Swagger\Client\Model\CostMatrixDataInfo'
     ];
 
+    /**
+      * Array of property to format mappings. Used for (de)serialization
+      * @var string[]
+      */
+    protected static $swaggerFormats = [
+        'times' => 'int64',
+        'distances' => 'double',
+        'info' => null
+    ];
+
     public static function swaggerTypes()
     {
         return self::$swaggerTypes;
+    }
+
+    public static function swaggerFormats()
+    {
+        return self::$swaggerFormats;
     }
 
     /**

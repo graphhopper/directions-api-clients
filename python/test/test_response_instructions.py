@@ -35,7 +35,9 @@ class TestResponseInstructions(unittest.TestCase):
         """
         Test ResponseInstructions
         """
-        model = swagger_client.models.response_instructions.ResponseInstructions()
+        # FIXME: construct object with mandatory attributes with example values
+        #model = swagger_client.models.response_instructions.ResponseInstructions()
+        pass
 
 
 if __name__ == '__main__':

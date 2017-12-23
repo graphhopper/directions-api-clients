@@ -14,11 +14,16 @@
 package com.graphhopper.directions.api.client.model;
 
 import java.util.Objects;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import com.graphhopper.directions.api.client.model.Activity;
 import com.graphhopper.directions.api.client.model.RoutePoint;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,10 +48,10 @@ public class Route {
   private Long waitingTime = null;
 
   @SerializedName("activities")
-  private List<Activity> activities = new ArrayList<Activity>();
+  private List<Activity> activities = null;
 
   @SerializedName("points")
-  private List<RoutePoint> points = new ArrayList<RoutePoint>();
+  private List<RoutePoint> points = null;
 
   public Route vehicleId(String vehicleId) {
     this.vehicleId = vehicleId;
@@ -57,7 +62,7 @@ public class Route {
    * id of vehicle that operates route
    * @return vehicleId
   **/
-  @ApiModelProperty(example = "null", value = "id of vehicle that operates route")
+  @ApiModelProperty(value = "id of vehicle that operates route")
   public String getVehicleId() {
     return vehicleId;
   }
@@ -75,7 +80,7 @@ public class Route {
    * distance of route in meter
    * @return distance
   **/
-  @ApiModelProperty(example = "null", value = "distance of route in meter")
+  @ApiModelProperty(value = "distance of route in meter")
   public Long getDistance() {
     return distance;
   }
@@ -93,7 +98,7 @@ public class Route {
    * transport time of route in ms
    * @return transportTime
   **/
-  @ApiModelProperty(example = "null", value = "transport time of route in ms")
+  @ApiModelProperty(value = "transport time of route in ms")
   public Long getTransportTime() {
     return transportTime;
   }
@@ -111,7 +116,7 @@ public class Route {
    * completion time of route in ms
    * @return completionTime
   **/
-  @ApiModelProperty(example = "null", value = "completion time of route in ms")
+  @ApiModelProperty(value = "completion time of route in ms")
   public Long getCompletionTime() {
     return completionTime;
   }
@@ -129,7 +134,7 @@ public class Route {
    * waiting time of route in ms
    * @return waitingTime
   **/
-  @ApiModelProperty(example = "null", value = "waiting time of route in ms")
+  @ApiModelProperty(value = "waiting time of route in ms")
   public Long getWaitingTime() {
     return waitingTime;
   }
@@ -144,6 +149,9 @@ public class Route {
   }
 
   public Route addActivitiesItem(Activity activitiesItem) {
+    if (this.activities == null) {
+      this.activities = new ArrayList<Activity>();
+    }
     this.activities.add(activitiesItem);
     return this;
   }
@@ -152,7 +160,7 @@ public class Route {
    * array of activities
    * @return activities
   **/
-  @ApiModelProperty(example = "null", value = "array of activities")
+  @ApiModelProperty(value = "array of activities")
   public List<Activity> getActivities() {
     return activities;
   }
@@ -167,6 +175,9 @@ public class Route {
   }
 
   public Route addPointsItem(RoutePoint pointsItem) {
+    if (this.points == null) {
+      this.points = new ArrayList<RoutePoint>();
+    }
     this.points.add(pointsItem);
     return this;
   }
@@ -175,7 +186,7 @@ public class Route {
    * array of route planning points
    * @return points
   **/
-  @ApiModelProperty(example = "null", value = "array of route planning points")
+  @ApiModelProperty(value = "array of route planning points")
   public List<RoutePoint> getPoints() {
     return points;
   }

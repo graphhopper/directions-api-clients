@@ -15,9 +15,10 @@ package io.swagger.client.model
 
 case class Relation (
   /* identifier of relation */
-  _type: String,
+  _type: Option[String],
   /* An array of ids that should be related */
-  ids: List[String],
+  ids: Option[List[String]],
   /* vehicle id */
-  vehicleId: String
+  vehicleId: Option[String]
 )
+

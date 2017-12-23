@@ -50,6 +50,6 @@ private:
     QString* message;
 };
 
-} /* namespace Swagger */
+}
 
 #endif /* SWGGHError_hints_H_ */

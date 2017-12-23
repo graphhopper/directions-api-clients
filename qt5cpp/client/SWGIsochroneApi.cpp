@@ -18,6 +18,7 @@
 #include <QJsonDocument>
 
 namespace Swagger {
+
 SWGIsochroneApi::SWGIsochroneApi() {}
 
 SWGIsochroneApi::~SWGIsochroneApi() {}
@@ -93,9 +94,13 @@ SWGIsochroneApi::isochroneGet(QString* point, QString* key, qint32 time_limit, q
     HttpRequestWorker *worker = new HttpRequestWorker();
     HttpRequestInput input(fullPath, "GET");
 
-    
 
 
+
+
+    foreach(QString key, this->defaultHeaders.keys()) {
+        input.headers.insert(key, this->defaultHeaders.value(key));
+    }
 
     connect(worker,
             &HttpRequestWorker::on_execution_finished,
@@ -108,6 +113,9 @@ SWGIsochroneApi::isochroneGet(QString* point, QString* key, qint32 time_limit, q
 void
 SWGIsochroneApi::isochroneGetCallback(HttpRequestWorker * worker) {
     QString msg;
+    QString error_str = worker->error_str;
+    QNetworkReply::NetworkError error_type = worker->error_type;
+
     if (worker->error_type == QNetworkReply::NoError) {
         msg = QString("Success! %1 bytes").arg(worker->response.length());
     }
@@ -115,14 +123,14 @@ SWGIsochroneApi::isochroneGetCallback(HttpRequestWorker * worker) {
         msg = "Error: " + worker->error_str;
     }
 
-    
-        QString json(worker->response);
-    SWGIsochroneResponse* output = static_cast<SWGIsochroneResponse*>(create(json, QString("SWGIsochroneResponse")));
-    
 
+    QString json(worker->response);
+    SWGIsochroneResponse* output = static_cast<SWGIsochroneResponse*>(create(json, QString("SWGIsochroneResponse")));
     worker->deleteLater();
 
     emit isochroneGetSignal(output);
-    
+    emit isochroneGetSignalE(output, error_type, error_str);
 }
-} /* namespace Swagger */
+
+
+}

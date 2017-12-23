@@ -1,4 +1,4 @@
-# SwaggerClient::GeocodingApi
+# DirectionsApiClient::GeocodingApi
 
 All URIs are relative to *https://graphhopper.com/api/1*
 
@@ -17,9 +17,9 @@ This endpoint provides forward and reverse geocoding. For more details, review t
 ### Example
 ```ruby
 # load the gem
-require 'swagger_client'
+require 'directions-api-client'
 
-api_instance = SwaggerClient::GeocodingApi.new
+api_instance = DirectionsApiClient::GeocodingApi.new
 
 key = "key_example" # String | Get your key at graphhopper.com
 
@@ -36,7 +36,7 @@ begin
   #Execute a Geocoding request
   result = api_instance.geocode_get(key, opts)
   p result
-rescue SwaggerClient::ApiError => e
+rescue DirectionsApiClient::ApiError => e
   puts "Exception when calling GeocodingApi->geocode_get: #{e}"
 end
 ```

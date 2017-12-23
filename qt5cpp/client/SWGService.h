@@ -93,6 +93,6 @@ private:
     QList<QString*>* allowed_vehicles;
 };
 
-} /* namespace Swagger */
+}
 
 #endif /* SWGService_H_ */

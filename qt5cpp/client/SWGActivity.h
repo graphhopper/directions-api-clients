@@ -87,6 +87,6 @@ private:
     QList<qint32>* load_after;
 };
 
-} /* namespace Swagger */
+}
 
 #endif /* SWGActivity_H_ */

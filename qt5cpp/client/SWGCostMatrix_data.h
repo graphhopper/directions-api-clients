@@ -59,6 +59,6 @@ private:
     SWGCostMatrix_data_info* info;
 };
 
-} /* namespace Swagger */
+}
 
 #endif /* SWGCostMatrix_data_H_ */

@@ -47,7 +47,6 @@ class RouteTest extends \PHPUnit_Framework_TestCase
      */
     public static function setUpBeforeClass()
     {
-
     }
 
     /**
@@ -55,7 +54,6 @@ class RouteTest extends \PHPUnit_Framework_TestCase
      */
     public function setUp()
     {
-
     }
 
     /**
@@ -63,7 +61,6 @@ class RouteTest extends \PHPUnit_Framework_TestCase
      */
     public function tearDown()
     {
-
     }
 
     /**
@@ -71,7 +68,6 @@ class RouteTest extends \PHPUnit_Framework_TestCase
      */
     public static function tearDownAfterClass()
     {
-
     }
 
     /**
@@ -79,7 +75,6 @@ class RouteTest extends \PHPUnit_Framework_TestCase
      */
     public function testRoute()
     {
-
     }
 
     /**
@@ -87,7 +82,6 @@ class RouteTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyVehicleId()
     {
-
     }
 
     /**
@@ -95,7 +89,6 @@ class RouteTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyDistance()
     {
-
     }
 
     /**
@@ -103,7 +96,6 @@ class RouteTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyTransportTime()
     {
-
     }
 
     /**
@@ -111,7 +103,6 @@ class RouteTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyCompletionTime()
     {
-
     }
 
     /**
@@ -119,7 +110,6 @@ class RouteTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyWaitingTime()
     {
-
     }
 
     /**
@@ -127,7 +117,6 @@ class RouteTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyActivities()
     {
-
     }
 
     /**
@@ -135,7 +124,5 @@ class RouteTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyPoints()
     {
-
     }
-
 }

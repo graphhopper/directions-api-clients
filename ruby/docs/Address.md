@@ -1,4 +1,4 @@
-# SwaggerClient::Address
+# DirectionsApiClient::Address
 
 ## Properties
 Name | Type | Description | Notes

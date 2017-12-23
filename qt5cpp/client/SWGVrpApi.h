@@ -33,6 +33,7 @@ public:
 
     QString host;
     QString basePath;
+    QMap<QString, QString> defaultHeaders;
 
     void postVrp(QString* key, SWGRequest body);
     
@@ -42,6 +43,9 @@ private:
 signals:
     void postVrpSignal(SWGJobId* summary);
     
+    void postVrpSignalE(SWGJobId* summary, QNetworkReply::NetworkError error_type, QString& error_str);
+    
 };
+
 }
 #endif

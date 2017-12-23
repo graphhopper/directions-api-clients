@@ -14,9 +14,14 @@
 package com.graphhopper.directions.api.client.model;
 
 import java.util.Objects;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 
 /**
  * Location
@@ -38,7 +43,7 @@ public class Location {
    * longitude
    * @return lon
   **/
-  @ApiModelProperty(example = "null", value = "longitude")
+  @ApiModelProperty(value = "longitude")
   public Double getLon() {
     return lon;
   }
@@ -56,7 +61,7 @@ public class Location {
    * latitude
    * @return lat
   **/
-  @ApiModelProperty(example = "null", value = "latitude")
+  @ApiModelProperty(value = "latitude")
   public Double getLat() {
     return lat;
   }

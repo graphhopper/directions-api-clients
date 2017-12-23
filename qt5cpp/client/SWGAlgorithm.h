@@ -54,6 +54,6 @@ private:
     QString* objective;
 };
 
-} /* namespace Swagger */
+}
 
 #endif /* SWGAlgorithm_H_ */

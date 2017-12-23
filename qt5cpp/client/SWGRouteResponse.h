@@ -56,6 +56,6 @@ private:
     SWGResponseInfo* info;
 };
 
-} /* namespace Swagger */
+}
 
 #endif /* SWGRouteResponse_H_ */

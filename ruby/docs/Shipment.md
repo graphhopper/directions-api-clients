@@ -1,4 +1,4 @@
-# SwaggerClient::Shipment
+# DirectionsApiClient::Shipment
 
 ## Properties
 Name | Type | Description | Notes

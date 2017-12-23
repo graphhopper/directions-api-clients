@@ -1,4 +1,4 @@
-# SwaggerClient::VehicleType
+# DirectionsApiClient::VehicleType
 
 ## Properties
 Name | Type | Description | Notes

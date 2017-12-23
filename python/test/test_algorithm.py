@@ -35,7 +35,9 @@ class TestAlgorithm(unittest.TestCase):
         """
         Test Algorithm
         """
-        model = swagger_client.models.algorithm.Algorithm()
+        # FIXME: construct object with mandatory attributes with example values
+        #model = swagger_client.models.algorithm.Algorithm()
+        pass
 
 
 if __name__ == '__main__':

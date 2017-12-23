@@ -14,9 +14,14 @@
 package com.graphhopper.directions.api.client.model;
 
 import java.util.Objects;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 
 /**
  * JobId
@@ -35,7 +40,7 @@ public class JobId {
    * unique id for your job/request with which you can fetch your solution
    * @return jobId
   **/
-  @ApiModelProperty(example = "null", value = "unique id for your job/request with which you can fetch your solution")
+  @ApiModelProperty(value = "unique id for your job/request with which you can fetch your solution")
   public String getJobId() {
     return jobId;
   }

@@ -35,7 +35,9 @@ class TestIsochroneResponsePolygonGeometry(unittest.TestCase):
         """
         Test IsochroneResponsePolygonGeometry
         """
-        model = swagger_client.models.isochrone_response_polygon_geometry.IsochroneResponsePolygonGeometry()
+        # FIXME: construct object with mandatory attributes with example values
+        #model = swagger_client.models.isochrone_response_polygon_geometry.IsochroneResponsePolygonGeometry()
+        pass
 
 
 if __name__ == '__main__':

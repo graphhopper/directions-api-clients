@@ -58,9 +58,23 @@ class Algorithm implements ArrayAccess
         'objective' => 'string'
     ];
 
+    /**
+      * Array of property to format mappings. Used for (de)serialization
+      * @var string[]
+      */
+    protected static $swaggerFormats = [
+        'problem_type' => null,
+        'objective' => null
+    ];
+
     public static function swaggerTypes()
     {
         return self::$swaggerTypes;
+    }
+
+    public static function swaggerFormats()
+    {
+        return self::$swaggerFormats;
     }
 
     /**
@@ -164,14 +178,20 @@ class Algorithm implements ArrayAccess
     {
         $invalid_properties = [];
 
-        $allowed_values = ["min", "min-max"];
+        $allowed_values = $this->getProblemTypeAllowableValues();
         if (!in_array($this->container['problem_type'], $allowed_values)) {
-            $invalid_properties[] = "invalid value for 'problem_type', must be one of 'min', 'min-max'.";
+            $invalid_properties[] = sprintf(
+                "invalid value for 'problem_type', must be one of '%s'",
+                implode("', '", $allowed_values)
+            );
         }
 
-        $allowed_values = ["transport_time", "completion_time"];
+        $allowed_values = $this->getObjectiveAllowableValues();
         if (!in_array($this->container['objective'], $allowed_values)) {
-            $invalid_properties[] = "invalid value for 'objective', must be one of 'transport_time', 'completion_time'.";
+            $invalid_properties[] = sprintf(
+                "invalid value for 'objective', must be one of '%s'",
+                implode("', '", $allowed_values)
+            );
         }
 
         return $invalid_properties;
@@ -186,11 +206,11 @@ class Algorithm implements ArrayAccess
     public function valid()
     {
 
-        $allowed_values = ["min", "min-max"];
+        $allowed_values = $this->getProblemTypeAllowableValues();
         if (!in_array($this->container['problem_type'], $allowed_values)) {
             return false;
         }
-        $allowed_values = ["transport_time", "completion_time"];
+        $allowed_values = $this->getObjectiveAllowableValues();
         if (!in_array($this->container['objective'], $allowed_values)) {
             return false;
         }
@@ -214,9 +234,14 @@ class Algorithm implements ArrayAccess
      */
     public function setProblemType($problem_type)
     {
-        $allowed_values = array('min', 'min-max');
-        if (!is_null($problem_type) && (!in_array($problem_type, $allowed_values))) {
-            throw new \InvalidArgumentException("Invalid value for 'problem_type', must be one of 'min', 'min-max'");
+        $allowed_values = $this->getProblemTypeAllowableValues();
+        if (!is_null($problem_type) && !in_array($problem_type, $allowed_values)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'problem_type', must be one of '%s'",
+                    implode("', '", $allowed_values)
+                )
+            );
         }
         $this->container['problem_type'] = $problem_type;
 
@@ -239,9 +264,14 @@ class Algorithm implements ArrayAccess
      */
     public function setObjective($objective)
     {
-        $allowed_values = array('transport_time', 'completion_time');
-        if (!is_null($objective) && (!in_array($objective, $allowed_values))) {
-            throw new \InvalidArgumentException("Invalid value for 'objective', must be one of 'transport_time', 'completion_time'");
+        $allowed_values = $this->getObjectiveAllowableValues();
+        if (!is_null($objective) && !in_array($objective, $allowed_values)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'objective', must be one of '%s'",
+                    implode("', '", $allowed_values)
+                )
+            );
         }
         $this->container['objective'] = $objective;
 

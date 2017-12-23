@@ -65,9 +65,30 @@ class Request implements ArrayAccess
         'configuration' => '\Swagger\Client\Model\Configuration'
     ];
 
+    /**
+      * Array of property to format mappings. Used for (de)serialization
+      * @var string[]
+      */
+    protected static $swaggerFormats = [
+        'vehicles' => null,
+        'vehicle_types' => null,
+        'services' => null,
+        'shipments' => null,
+        'relations' => null,
+        'algorithm' => null,
+        'objectives' => null,
+        'cost_matrices' => null,
+        'configuration' => null
+    ];
+
     public static function swaggerTypes()
     {
         return self::$swaggerTypes;
+    }
+
+    public static function swaggerFormats()
+    {
+        return self::$swaggerFormats;
     }
 
     /**

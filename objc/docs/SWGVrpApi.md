@@ -44,7 +44,7 @@ SWGVrpApi*apiInstance = [[SWGVrpApi alloc] init];
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **key** | **NSString***| your API key | 
- **body** | [**SWGRequest***](SWGRequest*.md)| Request object that contains the problem to be solved | 
+ **body** | [**SWGRequest***](SWGRequest.md)| Request object that contains the problem to be solved | 
 
 ### Return type
 

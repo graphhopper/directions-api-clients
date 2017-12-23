@@ -58,9 +58,23 @@ class RouteResponse implements ArrayAccess
         'info' => '\Swagger\Client\Model\ResponseInfo'
     ];
 
+    /**
+      * Array of property to format mappings. Used for (de)serialization
+      * @var string[]
+      */
+    protected static $swaggerFormats = [
+        'paths' => null,
+        'info' => null
+    ];
+
     public static function swaggerTypes()
     {
         return self::$swaggerTypes;
+    }
+
+    public static function swaggerFormats()
+    {
+        return self::$swaggerFormats;
     }
 
     /**

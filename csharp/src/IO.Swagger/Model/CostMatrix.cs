@@ -20,6 +20,7 @@ using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System.ComponentModel.DataAnnotations;
+using SwaggerDateConverter = IO.Swagger.Client.SwaggerDateConverter;
 
 namespace IO.Swagger.Model
 {
@@ -73,28 +74,33 @@ namespace IO.Swagger.Model
             this.Profile = Profile;
         }
         
+
         /// <summary>
         /// URL of matrix service
         /// </summary>
         /// <value>URL of matrix service</value>
         [DataMember(Name="url", EmitDefaultValue=false)]
         public string Url { get; set; }
+
         /// <summary>
         /// Gets or Sets LocationIds
         /// </summary>
         [DataMember(Name="location_ids", EmitDefaultValue=false)]
         public List<string> LocationIds { get; set; }
+
         /// <summary>
         /// Gets or Sets Data
         /// </summary>
         [DataMember(Name="data", EmitDefaultValue=false)]
         public CostMatrixData Data { get; set; }
+
         /// <summary>
         /// vehicle profile or empty if catch all fallback
         /// </summary>
         /// <value>vehicle profile or empty if catch all fallback</value>
         [DataMember(Name="profile", EmitDefaultValue=false)]
         public string Profile { get; set; }
+
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -196,8 +202,13 @@ namespace IO.Swagger.Model
             }
         }
 
-        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
-        { 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
             yield break;
         }
     }

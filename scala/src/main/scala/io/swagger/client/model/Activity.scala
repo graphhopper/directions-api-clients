@@ -15,23 +15,24 @@ package io.swagger.client.model
 
 case class Activity (
   /* type of activity */
-  _type: String,
+  _type: Option[String],
   /* id referring to the underlying service or shipment, i.e. the shipment or service this activity belongs to */
-  id: String,
+  id: Option[String],
   /* id that refers to address */
-  locationId: String,
+  locationId: Option[String],
   /* arrival time at this activity in ms */
-  arrTime: Long,
+  arrTime: Option[Long],
   /* end time of and thus departure time at this activity */
-  endTime: Long,
+  endTime: Option[Long],
   /* waiting time at this activity in ms */
-  waitingTime: Long,
+  waitingTime: Option[Long],
   /* cumulated distance from start to this activity in m */
-  distance: Long,
+  distance: Option[Long],
   /* driving time of driver in ms */
-  drivingTime: Long,
+  drivingTime: Option[Long],
   /* Array with size/capacity dimensions before this activity */
-  loadBefore: List[Integer],
+  loadBefore: Option[List[Integer]],
   /* Array with size/capacity dimensions after this activity */
-  loadAfter: List[Integer]
+  loadAfter: Option[List[Integer]]
 )
+

@@ -20,6 +20,7 @@ using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System.ComponentModel.DataAnnotations;
+using SwaggerDateConverter = IO.Swagger.Client.SwaggerDateConverter;
 
 namespace IO.Swagger.Model
 {
@@ -58,46 +59,54 @@ namespace IO.Swagger.Model
         /// <value>Unique identifier of service</value>
         [DataMember(Name="id", EmitDefaultValue=false)]
         public string Id { get; set; }
+
         /// <summary>
         /// name of shipment
         /// </summary>
         /// <value>name of shipment</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
         public string Name { get; set; }
+
         /// <summary>
         /// priority of service, i.e. 1 &#x3D; high, 2 &#x3D; normal, 3 &#x3D; low. default is 2.
         /// </summary>
         /// <value>priority of service, i.e. 1 &#x3D; high, 2 &#x3D; normal, 3 &#x3D; low. default is 2.</value>
         [DataMember(Name="priority", EmitDefaultValue=false)]
         public int? Priority { get; set; }
+
         /// <summary>
         /// Gets or Sets Pickup
         /// </summary>
         [DataMember(Name="pickup", EmitDefaultValue=false)]
         public Stop Pickup { get; set; }
+
         /// <summary>
         /// Gets or Sets Delivery
         /// </summary>
         [DataMember(Name="delivery", EmitDefaultValue=false)]
         public Stop Delivery { get; set; }
+
         /// <summary>
         /// array of capacity dimensions
         /// </summary>
         /// <value>array of capacity dimensions</value>
         [DataMember(Name="size", EmitDefaultValue=false)]
         public List<int?> Size { get; set; }
+
         /// <summary>
         /// array of required skills
         /// </summary>
         /// <value>array of required skills</value>
         [DataMember(Name="required_skills", EmitDefaultValue=false)]
         public List<string> RequiredSkills { get; set; }
+
         /// <summary>
         /// array of allowed vehicle ids
         /// </summary>
         /// <value>array of allowed vehicle ids</value>
         [DataMember(Name="allowed_vehicles", EmitDefaultValue=false)]
         public List<string> AllowedVehicles { get; set; }
+
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -223,8 +232,13 @@ namespace IO.Swagger.Model
             }
         }
 
-        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
-        { 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
             yield break;
         }
     }

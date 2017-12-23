@@ -66,9 +66,31 @@ class Solution implements ArrayAccess
         'unassigned' => '\Swagger\Client\Model\SolutionUnassigned'
     ];
 
+    /**
+      * Array of property to format mappings. Used for (de)serialization
+      * @var string[]
+      */
+    protected static $swaggerFormats = [
+        'costs' => 'int32',
+        'distance' => 'int32',
+        'time' => 'int64',
+        'transport_time' => 'int64',
+        'max_operation_time' => 'int64',
+        'waiting_time' => 'int64',
+        'no_vehicles' => 'int32',
+        'no_unassigned' => 'int32',
+        'routes' => null,
+        'unassigned' => null
+    ];
+
     public static function swaggerTypes()
     {
         return self::$swaggerTypes;
+    }
+
+    public static function swaggerFormats()
+    {
+        return self::$swaggerFormats;
     }
 
     /**

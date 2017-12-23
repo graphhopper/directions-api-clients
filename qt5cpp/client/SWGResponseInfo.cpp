@@ -22,7 +22,6 @@
 
 namespace Swagger {
 
-
 SWGResponseInfo::SWGResponseInfo(QString* json) {
     init();
     this->fromJson(*json);
@@ -114,6 +113,5 @@ SWGResponseInfo::setTook(double took) {
 }
 
 
-
-} /* namespace Swagger */
+}
 

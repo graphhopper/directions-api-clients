@@ -35,7 +35,9 @@ class TestRoutePoint(unittest.TestCase):
         """
         Test RoutePoint
         """
-        model = swagger_client.models.route_point.RoutePoint()
+        # FIXME: construct object with mandatory attributes with example values
+        #model = swagger_client.models.route_point.RoutePoint()
+        pass
 
 
 if __name__ == '__main__':

@@ -70,6 +70,6 @@ private:
     QList<qint64>* possible_split;
 };
 
-} /* namespace Swagger */
+}
 
 #endif /* SWGBreak_H_ */

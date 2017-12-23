@@ -101,7 +101,7 @@ class MatrixApi
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @return \Swagger\Client\Model\MatrixResponse
      */
-    public function matrixGet($key, $point = null, $from_point = null, $to_point = null, $out_array = null, $vehicle = null)
+    public function matrixGet($key, $point = null, $from_point = null, $to_point = null, $out_array = null, $vehicle = 'car')
     {
         list($response) = $this->matrixGetWithHttpInfo($key, $point, $from_point, $to_point, $out_array, $vehicle);
         return $response;
@@ -121,7 +121,7 @@ class MatrixApi
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @return array of \Swagger\Client\Model\MatrixResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function matrixGetWithHttpInfo($key, $point = null, $from_point = null, $to_point = null, $out_array = null, $vehicle = null)
+    public function matrixGetWithHttpInfo($key, $point = null, $from_point = null, $to_point = null, $out_array = null, $vehicle = 'car')
     {
         // verify the required parameter 'key' is set
         if ($key === null) {
@@ -169,10 +169,7 @@ class MatrixApi
         if ($key !== null) {
             $queryParams['key'] = $this->apiClient->getSerializer()->toQueryValue($key);
         }
-        // default format to json
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
 
-        
         // for model (json/xml)
         if (isset($_tempBody)) {
             $httpBody = $_tempBody; // $_tempBody is the method argument, if present
@@ -198,7 +195,7 @@ class MatrixApi
                     $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\MatrixResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
-                case 0:
+                default:
                     $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\GHError', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
@@ -256,9 +253,6 @@ class MatrixApi
         if ($key !== null) {
             $queryParams['key'] = $this->apiClient->getSerializer()->toQueryValue($key);
         }
-        // default format to json
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-
         // body params
         $_tempBody = null;
         if (isset($body)) {
@@ -290,7 +284,7 @@ class MatrixApi
                     $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\MatrixResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
-                case 0:
+                default:
                     $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\GHError', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;

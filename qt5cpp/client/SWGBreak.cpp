@@ -22,7 +22,6 @@
 
 namespace Swagger {
 
-
 SWGBreak::SWGBreak(QString* json) {
     init();
     this->fromJson(*json);
@@ -163,6 +162,5 @@ SWGBreak::setPossibleSplit(QList<qint64>* possible_split) {
 }
 
 
-
-} /* namespace Swagger */
+}
 

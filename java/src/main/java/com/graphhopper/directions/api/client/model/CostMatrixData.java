@@ -14,10 +14,15 @@
 package com.graphhopper.directions.api.client.model;
 
 import java.util.Objects;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import com.graphhopper.directions.api.client.model.CostMatrixDataInfo;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,10 +33,10 @@ import java.util.List;
 
 public class CostMatrixData {
   @SerializedName("times")
-  private List<List<Long>> times = new ArrayList<List<Long>>();
+  private List<List<Long>> times = null;
 
   @SerializedName("distances")
-  private List<List<Double>> distances = new ArrayList<List<Double>>();
+  private List<List<Double>> distances = null;
 
   @SerializedName("info")
   private CostMatrixDataInfo info = null;
@@ -42,6 +47,9 @@ public class CostMatrixData {
   }
 
   public CostMatrixData addTimesItem(List<Long> timesItem) {
+    if (this.times == null) {
+      this.times = new ArrayList<List<Long>>();
+    }
     this.times.add(timesItem);
     return this;
   }
@@ -50,7 +58,7 @@ public class CostMatrixData {
    * Get times
    * @return times
   **/
-  @ApiModelProperty(example = "null", value = "")
+  @ApiModelProperty(value = "")
   public List<List<Long>> getTimes() {
     return times;
   }
@@ -65,6 +73,9 @@ public class CostMatrixData {
   }
 
   public CostMatrixData addDistancesItem(List<Double> distancesItem) {
+    if (this.distances == null) {
+      this.distances = new ArrayList<List<Double>>();
+    }
     this.distances.add(distancesItem);
     return this;
   }
@@ -73,7 +84,7 @@ public class CostMatrixData {
    * Get distances
    * @return distances
   **/
-  @ApiModelProperty(example = "null", value = "")
+  @ApiModelProperty(value = "")
   public List<List<Double>> getDistances() {
     return distances;
   }
@@ -91,7 +102,7 @@ public class CostMatrixData {
    * Get info
    * @return info
   **/
-  @ApiModelProperty(example = "null", value = "")
+  @ApiModelProperty(value = "")
   public CostMatrixDataInfo getInfo() {
     return info;
   }

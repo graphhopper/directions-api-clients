@@ -32,6 +32,7 @@ public:
 
     QString host;
     QString basePath;
+    QMap<QString, QString> defaultHeaders;
 
     void getSolution(QString* key, QString* job_id);
     
@@ -41,6 +42,9 @@ private:
 signals:
     void getSolutionSignal(SWGResponse* summary);
     
+    void getSolutionSignalE(SWGResponse* summary, QNetworkReply::NetworkError error_type, QString& error_str);
+    
 };
+
 }
 #endif

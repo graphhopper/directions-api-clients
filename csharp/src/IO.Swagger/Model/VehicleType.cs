@@ -20,6 +20,7 @@ using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System.ComponentModel.DataAnnotations;
+using SwaggerDateConverter = IO.Swagger.Client.SwaggerDateConverter;
 
 namespace IO.Swagger.Model
 {
@@ -115,42 +116,50 @@ namespace IO.Swagger.Model
         /// <value>Unique identifier for the vehicle type</value>
         [DataMember(Name="type_id", EmitDefaultValue=false)]
         public string TypeId { get; set; }
+
+
         /// <summary>
         /// array of capacity dimensions
         /// </summary>
         /// <value>array of capacity dimensions</value>
         [DataMember(Name="capacity", EmitDefaultValue=false)]
         public List<int?> Capacity { get; set; }
+
         /// <summary>
         /// speed_factor of vehicle type
         /// </summary>
         /// <value>speed_factor of vehicle type</value>
         [DataMember(Name="speed_factor", EmitDefaultValue=false)]
         public double? SpeedFactor { get; set; }
+
         /// <summary>
         /// service time factor of vehicle type
         /// </summary>
         /// <value>service time factor of vehicle type</value>
         [DataMember(Name="service_time_factor", EmitDefaultValue=false)]
         public double? ServiceTimeFactor { get; set; }
+
         /// <summary>
         /// cost parameter per distance unit, here meter is used
         /// </summary>
         /// <value>cost parameter per distance unit, here meter is used</value>
         [DataMember(Name="cost_per_meter", EmitDefaultValue=false)]
         public double? CostPerMeter { get; set; }
+
         /// <summary>
         /// cost parameter per time unit, here second is used
         /// </summary>
         /// <value>cost parameter per time unit, here second is used</value>
         [DataMember(Name="cost_per_second", EmitDefaultValue=false)]
         public double? CostPerSecond { get; set; }
+
         /// <summary>
         /// cost parameter vehicle activation, i.e. fixed costs per vehicle
         /// </summary>
         /// <value>cost parameter vehicle activation, i.e. fixed costs per vehicle</value>
         [DataMember(Name="cost_per_activation", EmitDefaultValue=false)]
         public double? CostPerActivation { get; set; }
+
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -276,8 +285,13 @@ namespace IO.Swagger.Model
             }
         }
 
-        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
-        { 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
             yield break;
         }
     }

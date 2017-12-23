@@ -37,7 +37,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **key** | **string**| your API key |
- **body** | [**\Swagger\Client\Model\Request**](../Model/\Swagger\Client\Model\Request.md)| Request object that contains the problem to be solved |
+ **body** | [**\Swagger\Client\Model\Request**](../Model/Request.md)| Request object that contains the problem to be solved |
 
 ### Return type
 

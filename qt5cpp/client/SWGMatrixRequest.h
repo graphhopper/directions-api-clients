@@ -67,6 +67,6 @@ private:
     QString* vehicle;
 };
 
-} /* namespace Swagger */
+}
 
 #endif /* SWGMatrixRequest_H_ */

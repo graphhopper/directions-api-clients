@@ -20,6 +20,7 @@ using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System.ComponentModel.DataAnnotations;
+using SwaggerDateConverter = IO.Swagger.Client.SwaggerDateConverter;
 
 namespace IO.Swagger.Model
 {
@@ -46,12 +47,14 @@ namespace IO.Swagger.Model
         /// <value>earliest start time of corresponding activity</value>
         [DataMember(Name="earliest", EmitDefaultValue=false)]
         public long? Earliest { get; set; }
+
         /// <summary>
         /// latest start time of corresponding activity
         /// </summary>
         /// <value>latest start time of corresponding activity</value>
         [DataMember(Name="latest", EmitDefaultValue=false)]
         public long? Latest { get; set; }
+
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -129,8 +132,13 @@ namespace IO.Swagger.Model
             }
         }
 
-        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
-        { 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
             yield break;
         }
     }

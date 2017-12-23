@@ -35,7 +35,9 @@ class TestResponseCoordinatesArray(unittest.TestCase):
         """
         Test ResponseCoordinatesArray
         """
-        model = swagger_client.models.response_coordinates_array.ResponseCoordinatesArray()
+        # FIXME: construct object with mandatory attributes with example values
+        #model = swagger_client.models.response_coordinates_array.ResponseCoordinatesArray()
+        pass
 
 
 if __name__ == '__main__':

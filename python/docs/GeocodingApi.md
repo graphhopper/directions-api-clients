@@ -16,7 +16,7 @@ This endpoint provides forward and reverse geocoding. For more details, review t
 
 ### Example 
 ```python
-from __future__ import print_statement
+from __future__ import print_function
 import time
 import swagger_client
 from swagger_client.rest import ApiException

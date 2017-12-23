@@ -47,6 +47,6 @@ public:
 private:
 };
 
-} /* namespace Swagger */
+}
 
 #endif /* SWGResponseInstructions_H_ */

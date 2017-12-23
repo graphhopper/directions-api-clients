@@ -35,7 +35,9 @@ class TestVehicleType(unittest.TestCase):
         """
         Test VehicleType
         """
-        model = swagger_client.models.vehicle_type.VehicleType()
+        # FIXME: construct object with mandatory attributes with example values
+        #model = swagger_client.models.vehicle_type.VehicleType()
+        pass
 
 
 if __name__ == '__main__':

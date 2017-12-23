@@ -91,6 +91,6 @@ private:
     QString* postcode;
 };
 
-} /* namespace Swagger */
+}
 
 #endif /* SWGGeocodingLocation_H_ */

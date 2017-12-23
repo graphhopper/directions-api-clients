@@ -22,7 +22,6 @@
 
 namespace Swagger {
 
-
 SWGShipment::SWGShipment(QString* json) {
     init();
     this->fromJson(*json);
@@ -225,6 +224,5 @@ SWGShipment::setAllowedVehicles(QList<QString*>* allowed_vehicles) {
 }
 
 
-
-} /* namespace Swagger */
+}
 

@@ -34,6 +34,7 @@ public:
 
     QString host;
     QString basePath;
+    QMap<QString, QString> defaultHeaders;
 
     void matrixGet(QString* key, QList<QString*>* point, QString* from_point, QString* to_point, QList<QString*>* out_array, QString* vehicle);
     void matrixPost(QString* key, SWGMatrixRequest body);
@@ -46,6 +47,10 @@ signals:
     void matrixGetSignal(SWGMatrixResponse* summary);
     void matrixPostSignal(SWGMatrixResponse* summary);
     
+    void matrixGetSignalE(SWGMatrixResponse* summary, QNetworkReply::NetworkError error_type, QString& error_str);
+    void matrixPostSignalE(SWGMatrixResponse* summary, QNetworkReply::NetworkError error_type, QString& error_str);
+    
 };
+
 }
 #endif

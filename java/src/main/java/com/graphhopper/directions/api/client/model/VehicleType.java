@@ -14,9 +14,14 @@
 package com.graphhopper.directions.api.client.model;
 
 import java.util.Objects;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,26 +36,20 @@ public class VehicleType {
   /**
    * Profile of vehicle type
    */
+  @JsonAdapter(ProfileEnum.Adapter.class)
   public enum ProfileEnum {
-    @SerializedName("car")
     CAR("car"),
     
-    @SerializedName("bike")
     BIKE("bike"),
     
-    @SerializedName("foot")
     FOOT("foot"),
     
-    @SerializedName("mtb")
     MTB("mtb"),
     
-    @SerializedName("racingbike")
     RACINGBIKE("racingbike"),
     
-    @SerializedName("truck")
     TRUCK("truck"),
     
-    @SerializedName("small_truck")
     SMALL_TRUCK("small_truck");
 
     private String value;
@@ -59,9 +58,35 @@ public class VehicleType {
       this.value = value;
     }
 
+    public String getValue() {
+      return value;
+    }
+
     @Override
     public String toString() {
       return String.valueOf(value);
+    }
+
+    public static ProfileEnum fromValue(String text) {
+      for (ProfileEnum b : ProfileEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      return null;
+    }
+
+    public static class Adapter extends TypeAdapter<ProfileEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final ProfileEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public ProfileEnum read(final JsonReader jsonReader) throws IOException {
+        String value = jsonReader.nextString();
+        return ProfileEnum.fromValue(String.valueOf(value));
+      }
     }
   }
 
@@ -69,7 +94,7 @@ public class VehicleType {
   private ProfileEnum profile = null;
 
   @SerializedName("capacity")
-  private List<Integer> capacity = new ArrayList<Integer>();
+  private List<Integer> capacity = null;
 
   @SerializedName("speed_factor")
   private Double speedFactor = null;
@@ -95,7 +120,7 @@ public class VehicleType {
    * Unique identifier for the vehicle type
    * @return typeId
   **/
-  @ApiModelProperty(example = "null", value = "Unique identifier for the vehicle type")
+  @ApiModelProperty(value = "Unique identifier for the vehicle type")
   public String getTypeId() {
     return typeId;
   }
@@ -128,6 +153,9 @@ public class VehicleType {
   }
 
   public VehicleType addCapacityItem(Integer capacityItem) {
+    if (this.capacity == null) {
+      this.capacity = new ArrayList<Integer>();
+    }
     this.capacity.add(capacityItem);
     return this;
   }
@@ -136,7 +164,7 @@ public class VehicleType {
    * array of capacity dimensions
    * @return capacity
   **/
-  @ApiModelProperty(example = "null", value = "array of capacity dimensions")
+  @ApiModelProperty(value = "array of capacity dimensions")
   public List<Integer> getCapacity() {
     return capacity;
   }
@@ -154,7 +182,7 @@ public class VehicleType {
    * speed_factor of vehicle type
    * @return speedFactor
   **/
-  @ApiModelProperty(example = "null", value = "speed_factor of vehicle type")
+  @ApiModelProperty(value = "speed_factor of vehicle type")
   public Double getSpeedFactor() {
     return speedFactor;
   }
@@ -172,7 +200,7 @@ public class VehicleType {
    * service time factor of vehicle type
    * @return serviceTimeFactor
   **/
-  @ApiModelProperty(example = "null", value = "service time factor of vehicle type")
+  @ApiModelProperty(value = "service time factor of vehicle type")
   public Double getServiceTimeFactor() {
     return serviceTimeFactor;
   }
@@ -190,7 +218,7 @@ public class VehicleType {
    * cost parameter per distance unit, here meter is used
    * @return costPerMeter
   **/
-  @ApiModelProperty(example = "null", value = "cost parameter per distance unit, here meter is used")
+  @ApiModelProperty(value = "cost parameter per distance unit, here meter is used")
   public Double getCostPerMeter() {
     return costPerMeter;
   }
@@ -208,7 +236,7 @@ public class VehicleType {
    * cost parameter per time unit, here second is used
    * @return costPerSecond
   **/
-  @ApiModelProperty(example = "null", value = "cost parameter per time unit, here second is used")
+  @ApiModelProperty(value = "cost parameter per time unit, here second is used")
   public Double getCostPerSecond() {
     return costPerSecond;
   }
@@ -226,7 +254,7 @@ public class VehicleType {
    * cost parameter vehicle activation, i.e. fixed costs per vehicle
    * @return costPerActivation
   **/
-  @ApiModelProperty(example = "null", value = "cost parameter vehicle activation, i.e. fixed costs per vehicle")
+  @ApiModelProperty(value = "cost parameter vehicle activation, i.e. fixed costs per vehicle")
   public Double getCostPerActivation() {
     return costPerActivation;
   }

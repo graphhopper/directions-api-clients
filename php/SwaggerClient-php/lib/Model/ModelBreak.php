@@ -62,9 +62,27 @@ class ModelBreak implements ArrayAccess
         'possible_split' => 'int[]'
     ];
 
+    /**
+      * Array of property to format mappings. Used for (de)serialization
+      * @var string[]
+      */
+    protected static $swaggerFormats = [
+        'earliest' => 'int64',
+        'latest' => 'int64',
+        'duration' => 'int64',
+        'max_driving_time' => 'int64',
+        'initial_driving_time' => 'int64',
+        'possible_split' => 'int64'
+    ];
+
     public static function swaggerTypes()
     {
         return self::$swaggerTypes;
+    }
+
+    public static function swaggerFormats()
+    {
+        return self::$swaggerFormats;
     }
 
     /**

@@ -35,7 +35,9 @@ class TestMatrixRequest(unittest.TestCase):
         """
         Test MatrixRequest
         """
-        model = swagger_client.models.matrix_request.MatrixRequest()
+        # FIXME: construct object with mandatory attributes with example values
+        #model = swagger_client.models.matrix_request.MatrixRequest()
+        pass
 
 
 if __name__ == '__main__':

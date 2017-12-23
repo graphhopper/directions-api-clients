@@ -22,7 +22,6 @@
 
 namespace Swagger {
 
-
 SWGAlgorithm::SWGAlgorithm(QString* json) {
     init();
     this->fromJson(*json);
@@ -109,6 +108,5 @@ SWGAlgorithm::setObjective(QString* objective) {
 }
 
 
-
-} /* namespace Swagger */
+}
 

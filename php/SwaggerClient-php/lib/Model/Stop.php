@@ -60,9 +60,25 @@ class Stop implements ArrayAccess
         'time_windows' => '\Swagger\Client\Model\TimeWindow[]'
     ];
 
+    /**
+      * Array of property to format mappings. Used for (de)serialization
+      * @var string[]
+      */
+    protected static $swaggerFormats = [
+        'address' => null,
+        'duration' => 'int64',
+        'preparation_time' => 'int64',
+        'time_windows' => null
+    ];
+
     public static function swaggerTypes()
     {
         return self::$swaggerTypes;
+    }
+
+    public static function swaggerFormats()
+    {
+        return self::$swaggerFormats;
     }
 
     /**

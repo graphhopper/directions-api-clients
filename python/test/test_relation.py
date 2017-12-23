@@ -35,7 +35,9 @@ class TestRelation(unittest.TestCase):
         """
         Test Relation
         """
-        model = swagger_client.models.relation.Relation()
+        # FIXME: construct object with mandatory attributes with example values
+        #model = swagger_client.models.relation.Relation()
+        pass
 
 
 if __name__ == '__main__':

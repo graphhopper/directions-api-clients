@@ -22,7 +22,6 @@
 
 namespace Swagger {
 
-
 SWGIsochroneResponsePolygon_properties::SWGIsochroneResponsePolygon_properties(QString* json) {
     init();
     this->fromJson(*json);
@@ -89,6 +88,5 @@ SWGIsochroneResponsePolygon_properties::setBucket(qint32 bucket) {
 }
 
 
-
-} /* namespace Swagger */
+}
 

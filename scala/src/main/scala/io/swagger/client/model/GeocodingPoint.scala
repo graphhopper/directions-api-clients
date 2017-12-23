@@ -15,7 +15,8 @@ package io.swagger.client.model
 
 case class GeocodingPoint (
   /* Latitude */
-  lat: Double,
+  lat: Option[Double],
   /* Longitude */
-  lng: Double
+  lng: Option[Double]
 )
+

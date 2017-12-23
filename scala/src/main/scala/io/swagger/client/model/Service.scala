@@ -15,24 +15,25 @@ package io.swagger.client.model
 
 case class Service (
   /* Unique identifier of service */
-  id: String,
+  id: Option[String],
   /* type of service */
-  _type: String,
+  _type: Option[String],
   /* priority of service */
-  priority: Integer,
+  priority: Option[Integer],
   /* name of service */
-  name: String,
-  address: Address,
+  name: Option[String],
+  address: Option[Address],
   /* duration of service, i.e. time in ms the corresponding activity takes */
-  duration: Long,
+  duration: Option[Long],
   /* preparation time of service, e.g. search for a parking space. it only falls due if the location of previous activity differs from this location */
-  preparationTime: Long,
+  preparationTime: Option[Long],
   /* array of time windows. currently, only a single time window is allowed */
-  timeWindows: List[TimeWindow],
+  timeWindows: Option[List[TimeWindow]],
   /* array of capacity dimensions */
-  size: List[Integer],
+  size: Option[List[Integer]],
   /* array of required skills */
-  requiredSkills: List[String],
+  requiredSkills: Option[List[String]],
   /* array of allowed vehicle ids */
-  allowedVehicles: List[String]
+  allowedVehicles: Option[List[String]]
 )
+

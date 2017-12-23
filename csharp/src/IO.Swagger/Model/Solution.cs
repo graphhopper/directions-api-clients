@@ -20,6 +20,7 @@ using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System.ComponentModel.DataAnnotations;
+using SwaggerDateConverter = IO.Swagger.Client.SwaggerDateConverter;
 
 namespace IO.Swagger.Model
 {
@@ -62,59 +63,69 @@ namespace IO.Swagger.Model
         /// <value>overall costs of solution</value>
         [DataMember(Name="costs", EmitDefaultValue=false)]
         public int? Costs { get; set; }
+
         /// <summary>
         /// overall travel distance in meters
         /// </summary>
         /// <value>overall travel distance in meters</value>
         [DataMember(Name="distance", EmitDefaultValue=false)]
         public int? Distance { get; set; }
+
         /// <summary>
         /// overall transport time in ms
         /// </summary>
         /// <value>overall transport time in ms</value>
         [DataMember(Name="time", EmitDefaultValue=false)]
         public long? Time { get; set; }
+
         /// <summary>
         /// overall transport time in ms
         /// </summary>
         /// <value>overall transport time in ms</value>
         [DataMember(Name="transport_time", EmitDefaultValue=false)]
         public long? TransportTime { get; set; }
+
         /// <summary>
         /// operation time of the longest route in ms
         /// </summary>
         /// <value>operation time of the longest route in ms</value>
         [DataMember(Name="max_operation_time", EmitDefaultValue=false)]
         public long? MaxOperationTime { get; set; }
+
         /// <summary>
         /// total waiting time in ms
         /// </summary>
         /// <value>total waiting time in ms</value>
         [DataMember(Name="waiting_time", EmitDefaultValue=false)]
         public long? WaitingTime { get; set; }
+
         /// <summary>
         /// number of employed vehicles
         /// </summary>
         /// <value>number of employed vehicles</value>
         [DataMember(Name="no_vehicles", EmitDefaultValue=false)]
         public int? NoVehicles { get; set; }
+
         /// <summary>
         /// number of jobs that could not be assigned to final solution
         /// </summary>
         /// <value>number of jobs that could not be assigned to final solution</value>
         [DataMember(Name="no_unassigned", EmitDefaultValue=false)]
         public int? NoUnassigned { get; set; }
+
         /// <summary>
         /// An array of routes
         /// </summary>
         /// <value>An array of routes</value>
         [DataMember(Name="routes", EmitDefaultValue=false)]
         public List<Route> Routes { get; set; }
+
         /// <summary>
         /// Gets or Sets Unassigned
         /// </summary>
         [DataMember(Name="unassigned", EmitDefaultValue=false)]
         public SolutionUnassigned Unassigned { get; set; }
+
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -256,8 +267,13 @@ namespace IO.Swagger.Model
             }
         }
 
-        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
-        { 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
             yield break;
         }
     }

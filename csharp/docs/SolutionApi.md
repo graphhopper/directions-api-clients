@@ -29,7 +29,6 @@ namespace Example
     {
         public void main()
         {
-            
             var apiInstance = new SolutionApi();
             var key = key_example;  // string | your API key
             var jobId = jobId_example;  // string | Request solution with jobId

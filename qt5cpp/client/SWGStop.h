@@ -64,6 +64,6 @@ private:
     QList<SWGTimeWindow*>* time_windows;
 };
 
-} /* namespace Swagger */
+}
 
 #endif /* SWGStop_H_ */

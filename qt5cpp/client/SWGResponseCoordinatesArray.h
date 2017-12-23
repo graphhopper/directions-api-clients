@@ -46,6 +46,6 @@ public:
 private:
 };
 
-} /* namespace Swagger */
+}
 
 #endif /* SWGResponseCoordinatesArray_H_ */

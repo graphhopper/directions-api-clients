@@ -113,14 +113,13 @@ class SolutionApi(object):
 
         collection_formats = {}
 
-        resource_path = '/vrp/solution/{jobId}'.replace('{format}', 'json')
         path_params = {}
         if 'job_id' in params:
             path_params['jobId'] = params['job_id']
 
-        query_params = {}
+        query_params = []
         if 'key' in params:
-            query_params['key'] = params['key']
+            query_params.append(('key', params['key']))
 
         header_params = {}
 
@@ -139,7 +138,7 @@ class SolutionApi(object):
         # Authentication setting
         auth_settings = []
 
-        return self.api_client.call_api(resource_path, 'GET',
+        return self.api_client.call_api('/vrp/solution/{jobId}', 'GET',
                                         path_params,
                                         query_params,
                                         header_params,

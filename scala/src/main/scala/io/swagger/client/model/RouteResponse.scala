@@ -14,6 +14,7 @@ package io.swagger.client.model
 
 
 case class RouteResponse (
-  paths: List[RouteResponsePath],
-  info: ResponseInfo
+  paths: Option[List[RouteResponsePath]],
+  info: Option[ResponseInfo]
 )
+

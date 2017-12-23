@@ -22,7 +22,6 @@
 
 namespace Swagger {
 
-
 SWGSolution::SWGSolution(QString* json) {
     init();
     this->fromJson(*json);
@@ -229,6 +228,5 @@ SWGSolution::setUnassigned(SWGSolution_unassigned* unassigned) {
 }
 
 
-
-} /* namespace Swagger */
+}
 

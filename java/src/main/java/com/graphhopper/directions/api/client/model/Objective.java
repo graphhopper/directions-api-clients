@@ -14,9 +14,14 @@
 package com.graphhopper.directions.api.client.model;
 
 import java.util.Objects;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 
 /**
  * Objective
@@ -26,11 +31,10 @@ public class Objective {
   /**
    * type of objective function, i.e. min or min-max 
    */
+  @JsonAdapter(TypeEnum.Adapter.class)
   public enum TypeEnum {
-    @SerializedName("min")
     MIN("min"),
     
-    @SerializedName("min-max")
     MIN_MAX("min-max");
 
     private String value;
@@ -39,9 +43,35 @@ public class Objective {
       this.value = value;
     }
 
+    public String getValue() {
+      return value;
+    }
+
     @Override
     public String toString() {
       return String.valueOf(value);
+    }
+
+    public static TypeEnum fromValue(String text) {
+      for (TypeEnum b : TypeEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      return null;
+    }
+
+    public static class Adapter extends TypeAdapter<TypeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final TypeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public TypeEnum read(final JsonReader jsonReader) throws IOException {
+        String value = jsonReader.nextString();
+        return TypeEnum.fromValue(String.valueOf(value));
+      }
     }
   }
 
@@ -51,14 +81,12 @@ public class Objective {
   /**
    * objective function value
    */
+  @JsonAdapter(ValueEnum.Adapter.class)
   public enum ValueEnum {
-    @SerializedName("completion_time")
     COMPLETION_TIME("completion_time"),
     
-    @SerializedName("transport_time")
     TRANSPORT_TIME("transport_time"),
     
-    @SerializedName("vehicles")
     VEHICLES("vehicles");
 
     private String value;
@@ -67,9 +95,35 @@ public class Objective {
       this.value = value;
     }
 
+    public String getValue() {
+      return value;
+    }
+
     @Override
     public String toString() {
       return String.valueOf(value);
+    }
+
+    public static ValueEnum fromValue(String text) {
+      for (ValueEnum b : ValueEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      return null;
+    }
+
+    public static class Adapter extends TypeAdapter<ValueEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final ValueEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public ValueEnum read(final JsonReader jsonReader) throws IOException {
+        String value = jsonReader.nextString();
+        return ValueEnum.fromValue(String.valueOf(value));
+      }
     }
   }
 
@@ -85,7 +139,7 @@ public class Objective {
    * type of objective function, i.e. min or min-max 
    * @return type
   **/
-  @ApiModelProperty(example = "null", value = "type of objective function, i.e. min or min-max ")
+  @ApiModelProperty(value = "type of objective function, i.e. min or min-max ")
   public TypeEnum getType() {
     return type;
   }
@@ -103,7 +157,7 @@ public class Objective {
    * objective function value
    * @return value
   **/
-  @ApiModelProperty(example = "null", value = "objective function value")
+  @ApiModelProperty(value = "objective function value")
   public ValueEnum getValue() {
     return value;
   }

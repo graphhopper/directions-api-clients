@@ -84,6 +84,6 @@ private:
     SWGResponseInstructions* instructions;
 };
 
-} /* namespace Swagger */
+}
 
 #endif /* SWGRouteResponsePath_H_ */

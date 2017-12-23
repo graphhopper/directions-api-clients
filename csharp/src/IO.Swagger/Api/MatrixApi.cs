@@ -301,9 +301,6 @@ namespace IO.Swagger.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            // set "format" to json by default
-            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
-            localVarPathParams.Add("format", "json");
             if (point != null) localVarQueryParams.Add("point", Configuration.ApiClient.ParameterToString(point)); // query parameter
             if (fromPoint != null) localVarQueryParams.Add("from_point", Configuration.ApiClient.ParameterToString(fromPoint)); // query parameter
             if (toPoint != null) localVarQueryParams.Add("to_point", Configuration.ApiClient.ParameterToString(toPoint)); // query parameter
@@ -328,7 +325,6 @@ namespace IO.Swagger.Api
             return new ApiResponse<MatrixResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 (MatrixResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(MatrixResponse)));
-            
         }
 
         /// <summary>
@@ -387,9 +383,6 @@ namespace IO.Swagger.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            // set "format" to json by default
-            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
-            localVarPathParams.Add("format", "json");
             if (point != null) localVarQueryParams.Add("point", Configuration.ApiClient.ParameterToString(point)); // query parameter
             if (fromPoint != null) localVarQueryParams.Add("from_point", Configuration.ApiClient.ParameterToString(fromPoint)); // query parameter
             if (toPoint != null) localVarQueryParams.Add("to_point", Configuration.ApiClient.ParameterToString(toPoint)); // query parameter
@@ -414,7 +407,6 @@ namespace IO.Swagger.Api
             return new ApiResponse<MatrixResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 (MatrixResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(MatrixResponse)));
-            
         }
 
         /// <summary>
@@ -464,9 +456,6 @@ namespace IO.Swagger.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            // set "format" to json by default
-            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
-            localVarPathParams.Add("format", "json");
             if (key != null) localVarQueryParams.Add("key", Configuration.ApiClient.ParameterToString(key)); // query parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
@@ -494,7 +483,6 @@ namespace IO.Swagger.Api
             return new ApiResponse<MatrixResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 (MatrixResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(MatrixResponse)));
-            
         }
 
         /// <summary>
@@ -545,9 +533,6 @@ namespace IO.Swagger.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            // set "format" to json by default
-            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
-            localVarPathParams.Add("format", "json");
             if (key != null) localVarQueryParams.Add("key", Configuration.ApiClient.ParameterToString(key)); // query parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
@@ -575,7 +560,6 @@ namespace IO.Swagger.Api
             return new ApiResponse<MatrixResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 (MatrixResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(MatrixResponse)));
-            
         }
 
     }

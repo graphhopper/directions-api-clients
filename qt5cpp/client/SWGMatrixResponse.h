@@ -64,6 +64,6 @@ private:
     SWGResponseInfo* info;
 };
 
-} /* namespace Swagger */
+}
 
 #endif /* SWGMatrixResponse_H_ */

@@ -22,7 +22,6 @@
 
 namespace Swagger {
 
-
 SWGRouteResponse::SWGRouteResponse(QString* json) {
     init();
     this->fromJson(*json);
@@ -117,6 +116,5 @@ SWGRouteResponse::setInfo(SWGResponseInfo* info) {
 }
 
 
-
-} /* namespace Swagger */
+}
 

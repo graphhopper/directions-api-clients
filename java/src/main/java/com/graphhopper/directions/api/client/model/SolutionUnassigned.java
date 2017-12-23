@@ -14,9 +14,14 @@
 package com.graphhopper.directions.api.client.model;
 
 import java.util.Objects;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,10 +31,10 @@ import java.util.List;
 
 public class SolutionUnassigned {
   @SerializedName("services")
-  private List<String> services = new ArrayList<String>();
+  private List<String> services = null;
 
   @SerializedName("shipments")
-  private List<String> shipments = new ArrayList<String>();
+  private List<String> shipments = null;
 
   public SolutionUnassigned services(List<String> services) {
     this.services = services;
@@ -37,6 +42,9 @@ public class SolutionUnassigned {
   }
 
   public SolutionUnassigned addServicesItem(String servicesItem) {
+    if (this.services == null) {
+      this.services = new ArrayList<String>();
+    }
     this.services.add(servicesItem);
     return this;
   }
@@ -45,7 +53,7 @@ public class SolutionUnassigned {
    * An array of ids of unassigned services
    * @return services
   **/
-  @ApiModelProperty(example = "null", value = "An array of ids of unassigned services")
+  @ApiModelProperty(value = "An array of ids of unassigned services")
   public List<String> getServices() {
     return services;
   }
@@ -60,6 +68,9 @@ public class SolutionUnassigned {
   }
 
   public SolutionUnassigned addShipmentsItem(String shipmentsItem) {
+    if (this.shipments == null) {
+      this.shipments = new ArrayList<String>();
+    }
     this.shipments.add(shipmentsItem);
     return this;
   }
@@ -68,7 +79,7 @@ public class SolutionUnassigned {
    * An array of ids of unassigned shipments
    * @return shipments
   **/
-  @ApiModelProperty(example = "null", value = "An array of ids of unassigned shipments")
+  @ApiModelProperty(value = "An array of ids of unassigned shipments")
   public List<String> getShipments() {
     return shipments;
   }

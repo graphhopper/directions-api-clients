@@ -1,4 +1,4 @@
-# SwaggerClient::RoutingApi
+# DirectionsApiClient::RoutingApi
 
 All URIs are relative to *https://graphhopper.com/api/1*
 
@@ -17,9 +17,9 @@ The GraphHopper Routing API allows to calculate route and implement navigation v
 ### Example
 ```ruby
 # load the gem
-require 'swagger_client'
+require 'directions-api-client'
 
-api_instance = SwaggerClient::RoutingApi.new
+api_instance = DirectionsApiClient::RoutingApi.new
 
 point = ["point_example"] # Array<String> | Specify multiple points for which the route should be calculated. The order is important. Specify at least two points.
 
@@ -52,7 +52,7 @@ begin
   #Routing Request
   result = api_instance.route_get(point, points_encoded, key, opts)
   p result
-rescue SwaggerClient::ApiError => e
+rescue DirectionsApiClient::ApiError => e
   puts "Exception when calling RoutingApi->route_get: #{e}"
 end
 ```

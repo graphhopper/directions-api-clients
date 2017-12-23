@@ -35,7 +35,9 @@ class TestTimeWindow(unittest.TestCase):
         """
         Test TimeWindow
         """
-        model = swagger_client.models.time_window.TimeWindow()
+        # FIXME: construct object with mandatory attributes with example values
+        #model = swagger_client.models.time_window.TimeWindow()
+        pass
 
 
 if __name__ == '__main__':

@@ -22,7 +22,6 @@
 
 namespace Swagger {
 
-
 SWGGHError::SWGGHError(QString* json) {
     init();
     this->fromJson(*json);
@@ -131,6 +130,5 @@ SWGGHError::setHints(QList<SWGGHError_hints*>* hints) {
 }
 
 
-
-} /* namespace Swagger */
+}
 

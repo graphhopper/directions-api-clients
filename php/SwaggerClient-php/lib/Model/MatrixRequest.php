@@ -61,9 +61,26 @@ class MatrixRequest implements ArrayAccess
         'vehicle' => 'string'
     ];
 
+    /**
+      * Array of property to format mappings. Used for (de)serialization
+      * @var string[]
+      */
+    protected static $swaggerFormats = [
+        'points' => 'double',
+        'from_points' => null,
+        'to_points' => null,
+        'out_arrays' => null,
+        'vehicle' => null
+    ];
+
     public static function swaggerTypes()
     {
         return self::$swaggerTypes;
+    }
+
+    public static function swaggerFormats()
+    {
+        return self::$swaggerFormats;
     }
 
     /**

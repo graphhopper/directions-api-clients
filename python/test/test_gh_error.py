@@ -35,7 +35,9 @@ class TestGHError(unittest.TestCase):
         """
         Test GHError
         """
-        model = swagger_client.models.gh_error.GHError()
+        # FIXME: construct object with mandatory attributes with example values
+        #model = swagger_client.models.gh_error.GHError()
+        pass
 
 
 if __name__ == '__main__':

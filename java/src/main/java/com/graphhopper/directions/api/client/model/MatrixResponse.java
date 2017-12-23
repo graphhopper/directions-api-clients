@@ -14,10 +14,15 @@
 package com.graphhopper.directions.api.client.model;
 
 import java.util.Objects;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import com.graphhopper.directions.api.client.model.ResponseInfo;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,13 +33,13 @@ import java.util.List;
 
 public class MatrixResponse {
   @SerializedName("distances")
-  private List<List<BigDecimal>> distances = new ArrayList<List<BigDecimal>>();
+  private List<List<BigDecimal>> distances = null;
 
   @SerializedName("times")
-  private List<List<BigDecimal>> times = new ArrayList<List<BigDecimal>>();
+  private List<List<BigDecimal>> times = null;
 
   @SerializedName("weights")
-  private List<List<Double>> weights = new ArrayList<List<Double>>();
+  private List<List<Double>> weights = null;
 
   @SerializedName("info")
   private ResponseInfo info = null;
@@ -45,6 +50,9 @@ public class MatrixResponse {
   }
 
   public MatrixResponse addDistancesItem(List<BigDecimal> distancesItem) {
+    if (this.distances == null) {
+      this.distances = new ArrayList<List<BigDecimal>>();
+    }
     this.distances.add(distancesItem);
     return this;
   }
@@ -53,7 +61,7 @@ public class MatrixResponse {
    * Get distances
    * @return distances
   **/
-  @ApiModelProperty(example = "null", value = "")
+  @ApiModelProperty(value = "")
   public List<List<BigDecimal>> getDistances() {
     return distances;
   }
@@ -68,6 +76,9 @@ public class MatrixResponse {
   }
 
   public MatrixResponse addTimesItem(List<BigDecimal> timesItem) {
+    if (this.times == null) {
+      this.times = new ArrayList<List<BigDecimal>>();
+    }
     this.times.add(timesItem);
     return this;
   }
@@ -76,7 +87,7 @@ public class MatrixResponse {
    * Get times
    * @return times
   **/
-  @ApiModelProperty(example = "null", value = "")
+  @ApiModelProperty(value = "")
   public List<List<BigDecimal>> getTimes() {
     return times;
   }
@@ -91,6 +102,9 @@ public class MatrixResponse {
   }
 
   public MatrixResponse addWeightsItem(List<Double> weightsItem) {
+    if (this.weights == null) {
+      this.weights = new ArrayList<List<Double>>();
+    }
     this.weights.add(weightsItem);
     return this;
   }
@@ -99,7 +113,7 @@ public class MatrixResponse {
    * Get weights
    * @return weights
   **/
-  @ApiModelProperty(example = "null", value = "")
+  @ApiModelProperty(value = "")
   public List<List<Double>> getWeights() {
     return weights;
   }
@@ -117,7 +131,7 @@ public class MatrixResponse {
    * Get info
    * @return info
   **/
-  @ApiModelProperty(example = "null", value = "")
+  @ApiModelProperty(value = "")
   public ResponseInfo getInfo() {
     return info;
   }

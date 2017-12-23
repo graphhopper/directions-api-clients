@@ -351,9 +351,6 @@ namespace IO.Swagger.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            // set "format" to json by default
-            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
-            localVarPathParams.Add("format", "json");
             if (point != null) localVarQueryParams.Add("point", Configuration.ApiClient.ParameterToString(point)); // query parameter
             if (locale != null) localVarQueryParams.Add("locale", Configuration.ApiClient.ParameterToString(locale)); // query parameter
             if (instructions != null) localVarQueryParams.Add("instructions", Configuration.ApiClient.ParameterToString(instructions)); // query parameter
@@ -393,7 +390,6 @@ namespace IO.Swagger.Api
             return new ApiResponse<RouteResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 (RouteResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(RouteResponse)));
-            
         }
 
         /// <summary>
@@ -488,9 +484,6 @@ namespace IO.Swagger.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            // set "format" to json by default
-            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
-            localVarPathParams.Add("format", "json");
             if (point != null) localVarQueryParams.Add("point", Configuration.ApiClient.ParameterToString(point)); // query parameter
             if (locale != null) localVarQueryParams.Add("locale", Configuration.ApiClient.ParameterToString(locale)); // query parameter
             if (instructions != null) localVarQueryParams.Add("instructions", Configuration.ApiClient.ParameterToString(instructions)); // query parameter
@@ -530,7 +523,6 @@ namespace IO.Swagger.Api
             return new ApiResponse<RouteResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 (RouteResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(RouteResponse)));
-            
         }
 
     }

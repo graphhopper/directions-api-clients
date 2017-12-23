@@ -22,7 +22,6 @@
 
 namespace Swagger {
 
-
 SWGRelation::SWGRelation(QString* json) {
     init();
     this->fromJson(*json);
@@ -134,6 +133,5 @@ SWGRelation::setVehicleId(QString* vehicle_id) {
 }
 
 
-
-} /* namespace Swagger */
+}
 

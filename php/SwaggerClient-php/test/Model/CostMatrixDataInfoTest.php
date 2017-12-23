@@ -47,7 +47,6 @@ class CostMatrixDataInfoTest extends \PHPUnit_Framework_TestCase
      */
     public static function setUpBeforeClass()
     {
-
     }
 
     /**
@@ -55,7 +54,6 @@ class CostMatrixDataInfoTest extends \PHPUnit_Framework_TestCase
      */
     public function setUp()
     {
-
     }
 
     /**
@@ -63,7 +61,6 @@ class CostMatrixDataInfoTest extends \PHPUnit_Framework_TestCase
      */
     public function tearDown()
     {
-
     }
 
     /**
@@ -71,7 +68,6 @@ class CostMatrixDataInfoTest extends \PHPUnit_Framework_TestCase
      */
     public static function tearDownAfterClass()
     {
-
     }
 
     /**
@@ -79,7 +75,6 @@ class CostMatrixDataInfoTest extends \PHPUnit_Framework_TestCase
      */
     public function testCostMatrixDataInfo()
     {
-
     }
 
     /**
@@ -87,7 +82,6 @@ class CostMatrixDataInfoTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyCopyrights()
     {
-
     }
 
     /**
@@ -95,7 +89,5 @@ class CostMatrixDataInfoTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyTook()
     {
-
     }
-
 }

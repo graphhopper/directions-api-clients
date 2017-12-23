@@ -50,6 +50,6 @@ private:
     QString* job_id;
 };
 
-} /* namespace Swagger */
+}
 
 #endif /* SWGJobId_H_ */

@@ -35,7 +35,9 @@ class TestObjective(unittest.TestCase):
         """
         Test Objective
         """
-        model = swagger_client.models.objective.Objective()
+        # FIXME: construct object with mandatory attributes with example values
+        #model = swagger_client.models.objective.Objective()
+        pass
 
 
 if __name__ == '__main__':

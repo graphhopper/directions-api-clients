@@ -35,7 +35,9 @@ class TestIsochroneResponse(unittest.TestCase):
         """
         Test IsochroneResponse
         """
-        model = swagger_client.models.isochrone_response.IsochroneResponse()
+        # FIXME: construct object with mandatory attributes with example values
+        #model = swagger_client.models.isochrone_response.IsochroneResponse()
+        pass
 
 
 if __name__ == '__main__':

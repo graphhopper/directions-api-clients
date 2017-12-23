@@ -1,4 +1,4 @@
-# SwaggerClient::MatrixResponse
+# DirectionsApiClient::MatrixResponse
 
 ## Properties
 Name | Type | Description | Notes

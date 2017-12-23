@@ -20,6 +20,7 @@ using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System.ComponentModel.DataAnnotations;
+using SwaggerDateConverter = IO.Swagger.Client.SwaggerDateConverter;
 
 namespace IO.Swagger.Model
 {
@@ -50,24 +51,28 @@ namespace IO.Swagger.Model
         /// <value>Unique identifier of location</value>
         [DataMember(Name="location_id", EmitDefaultValue=false)]
         public string LocationId { get; set; }
+
         /// <summary>
         /// name of location, e.g. street name plus house number
         /// </summary>
         /// <value>name of location, e.g. street name plus house number</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
         public string Name { get; set; }
+
         /// <summary>
         /// longitude
         /// </summary>
         /// <value>longitude</value>
         [DataMember(Name="lon", EmitDefaultValue=false)]
         public double? Lon { get; set; }
+
         /// <summary>
         /// latitude
         /// </summary>
         /// <value>latitude</value>
         [DataMember(Name="lat", EmitDefaultValue=false)]
         public double? Lat { get; set; }
+
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -161,8 +166,13 @@ namespace IO.Swagger.Model
             }
         }
 
-        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
-        { 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
             yield break;
         }
     }

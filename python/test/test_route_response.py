@@ -35,7 +35,9 @@ class TestRouteResponse(unittest.TestCase):
         """
         Test RouteResponse
         """
-        model = swagger_client.models.route_response.RouteResponse()
+        # FIXME: construct object with mandatory attributes with example values
+        #model = swagger_client.models.route_response.RouteResponse()
+        pass
 
 
 if __name__ == '__main__':

@@ -22,7 +22,6 @@
 
 namespace Swagger {
 
-
 SWGMatrixRequest::SWGMatrixRequest(QString* json) {
     init();
     this->fromJson(*json);
@@ -176,6 +175,5 @@ SWGMatrixRequest::setVehicle(QString* vehicle) {
 }
 
 
-
-} /* namespace Swagger */
+}
 

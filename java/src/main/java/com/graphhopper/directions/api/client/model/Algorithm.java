@@ -14,9 +14,14 @@
 package com.graphhopper.directions.api.client.model;
 
 import java.util.Objects;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 
 /**
  * Algorithm
@@ -26,11 +31,10 @@ public class Algorithm {
   /**
    * Gets or Sets problemType
    */
+  @JsonAdapter(ProblemTypeEnum.Adapter.class)
   public enum ProblemTypeEnum {
-    @SerializedName("min")
     MIN("min"),
     
-    @SerializedName("min-max")
     MIN_MAX("min-max");
 
     private String value;
@@ -39,9 +43,35 @@ public class Algorithm {
       this.value = value;
     }
 
+    public String getValue() {
+      return value;
+    }
+
     @Override
     public String toString() {
       return String.valueOf(value);
+    }
+
+    public static ProblemTypeEnum fromValue(String text) {
+      for (ProblemTypeEnum b : ProblemTypeEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      return null;
+    }
+
+    public static class Adapter extends TypeAdapter<ProblemTypeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final ProblemTypeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public ProblemTypeEnum read(final JsonReader jsonReader) throws IOException {
+        String value = jsonReader.nextString();
+        return ProblemTypeEnum.fromValue(String.valueOf(value));
+      }
     }
   }
 
@@ -51,11 +81,10 @@ public class Algorithm {
   /**
    * Gets or Sets objective
    */
+  @JsonAdapter(ObjectiveEnum.Adapter.class)
   public enum ObjectiveEnum {
-    @SerializedName("transport_time")
     TRANSPORT_TIME("transport_time"),
     
-    @SerializedName("completion_time")
     COMPLETION_TIME("completion_time");
 
     private String value;
@@ -64,9 +93,35 @@ public class Algorithm {
       this.value = value;
     }
 
+    public String getValue() {
+      return value;
+    }
+
     @Override
     public String toString() {
       return String.valueOf(value);
+    }
+
+    public static ObjectiveEnum fromValue(String text) {
+      for (ObjectiveEnum b : ObjectiveEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      return null;
+    }
+
+    public static class Adapter extends TypeAdapter<ObjectiveEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final ObjectiveEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public ObjectiveEnum read(final JsonReader jsonReader) throws IOException {
+        String value = jsonReader.nextString();
+        return ObjectiveEnum.fromValue(String.valueOf(value));
+      }
     }
   }
 
@@ -82,7 +137,7 @@ public class Algorithm {
    * Get problemType
    * @return problemType
   **/
-  @ApiModelProperty(example = "null", value = "")
+  @ApiModelProperty(value = "")
   public ProblemTypeEnum getProblemType() {
     return problemType;
   }
@@ -100,7 +155,7 @@ public class Algorithm {
    * Get objective
    * @return objective
   **/
-  @ApiModelProperty(example = "null", value = "")
+  @ApiModelProperty(value = "")
   public ObjectiveEnum getObjective() {
     return objective;
   }

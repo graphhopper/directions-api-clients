@@ -91,6 +91,6 @@ private:
     SWGConfiguration* configuration;
 };
 
-} /* namespace Swagger */
+}
 
 #endif /* SWGRequest_H_ */

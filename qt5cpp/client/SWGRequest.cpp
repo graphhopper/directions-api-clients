@@ -22,7 +22,6 @@
 
 namespace Swagger {
 
-
 SWGRequest::SWGRequest(QString* json) {
     init();
     this->fromJson(*json);
@@ -284,6 +283,5 @@ SWGRequest::setConfiguration(SWGConfiguration* configuration) {
 }
 
 
-
-} /* namespace Swagger */
+}
 

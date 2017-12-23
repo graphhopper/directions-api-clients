@@ -35,7 +35,9 @@ class TestShipment(unittest.TestCase):
         """
         Test Shipment
         """
-        model = swagger_client.models.shipment.Shipment()
+        # FIXME: construct object with mandatory attributes with example values
+        #model = swagger_client.models.shipment.Shipment()
+        pass
 
 
 if __name__ == '__main__':

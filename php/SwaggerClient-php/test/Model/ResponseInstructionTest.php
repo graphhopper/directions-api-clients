@@ -47,7 +47,6 @@ class ResponseInstructionTest extends \PHPUnit_Framework_TestCase
      */
     public static function setUpBeforeClass()
     {
-
     }
 
     /**
@@ -55,7 +54,6 @@ class ResponseInstructionTest extends \PHPUnit_Framework_TestCase
      */
     public function setUp()
     {
-
     }
 
     /**
@@ -63,7 +61,6 @@ class ResponseInstructionTest extends \PHPUnit_Framework_TestCase
      */
     public function tearDown()
     {
-
     }
 
     /**
@@ -71,7 +68,6 @@ class ResponseInstructionTest extends \PHPUnit_Framework_TestCase
      */
     public static function tearDownAfterClass()
     {
-
     }
 
     /**
@@ -79,7 +75,6 @@ class ResponseInstructionTest extends \PHPUnit_Framework_TestCase
      */
     public function testResponseInstruction()
     {
-
     }
 
     /**
@@ -87,7 +82,6 @@ class ResponseInstructionTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyText()
     {
-
     }
 
     /**
@@ -95,7 +89,6 @@ class ResponseInstructionTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyStreetName()
     {
-
     }
 
     /**
@@ -103,7 +96,6 @@ class ResponseInstructionTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyDistance()
     {
-
     }
 
     /**
@@ -111,7 +103,6 @@ class ResponseInstructionTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyTime()
     {
-
     }
 
     /**
@@ -119,7 +110,6 @@ class ResponseInstructionTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyInterval()
     {
-
     }
 
     /**
@@ -127,7 +117,6 @@ class ResponseInstructionTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertySign()
     {
-
     }
 
     /**
@@ -135,7 +124,6 @@ class ResponseInstructionTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyAnnotationText()
     {
-
     }
 
     /**
@@ -143,7 +131,6 @@ class ResponseInstructionTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyAnnotationImportance()
     {
-
     }
 
     /**
@@ -151,7 +138,6 @@ class ResponseInstructionTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyExitNumber()
     {
-
     }
 
     /**
@@ -159,7 +145,5 @@ class ResponseInstructionTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyTurnAngle()
     {
-
     }
-
 }

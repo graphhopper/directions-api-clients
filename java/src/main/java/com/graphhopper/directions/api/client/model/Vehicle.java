@@ -14,11 +14,16 @@
 package com.graphhopper.directions.api.client.model;
 
 import java.util.Objects;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import com.graphhopper.directions.api.client.model.Address;
 import com.graphhopper.directions.api.client.model.ModelBreak;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,7 +57,7 @@ public class Vehicle {
   private Long latestEnd = null;
 
   @SerializedName("skills")
-  private List<String> skills = new ArrayList<String>();
+  private List<String> skills = null;
 
   @SerializedName("max_distance")
   private Long maxDistance = null;
@@ -66,7 +71,7 @@ public class Vehicle {
    * Unique identifier of vehicle
    * @return vehicleId
   **/
-  @ApiModelProperty(example = "null", value = "Unique identifier of vehicle")
+  @ApiModelProperty(value = "Unique identifier of vehicle")
   public String getVehicleId() {
     return vehicleId;
   }
@@ -84,7 +89,7 @@ public class Vehicle {
    * Unique identifier referring to the available vehicle types
    * @return typeId
   **/
-  @ApiModelProperty(example = "null", value = "Unique identifier referring to the available vehicle types")
+  @ApiModelProperty(value = "Unique identifier referring to the available vehicle types")
   public String getTypeId() {
     return typeId;
   }
@@ -102,7 +107,7 @@ public class Vehicle {
    * Get startAddress
    * @return startAddress
   **/
-  @ApiModelProperty(example = "null", value = "")
+  @ApiModelProperty(value = "")
   public Address getStartAddress() {
     return startAddress;
   }
@@ -120,7 +125,7 @@ public class Vehicle {
    * Get endAddress
    * @return endAddress
   **/
-  @ApiModelProperty(example = "null", value = "")
+  @ApiModelProperty(value = "")
   public Address getEndAddress() {
     return endAddress;
   }
@@ -138,7 +143,7 @@ public class Vehicle {
    * Get _break
    * @return _break
   **/
-  @ApiModelProperty(example = "null", value = "")
+  @ApiModelProperty(value = "")
   public ModelBreak getBreak() {
     return _break;
   }
@@ -156,7 +161,7 @@ public class Vehicle {
    * Indicates whether vehicle should return to start address or not. If not, it can end at any service activity.
    * @return returnToDepot
   **/
-  @ApiModelProperty(example = "null", value = "Indicates whether vehicle should return to start address or not. If not, it can end at any service activity.")
+  @ApiModelProperty(value = "Indicates whether vehicle should return to start address or not. If not, it can end at any service activity.")
   public Boolean getReturnToDepot() {
     return returnToDepot;
   }
@@ -174,7 +179,7 @@ public class Vehicle {
    * earliest start of vehicle at its start location
    * @return earliestStart
   **/
-  @ApiModelProperty(example = "null", value = "earliest start of vehicle at its start location")
+  @ApiModelProperty(value = "earliest start of vehicle at its start location")
   public Long getEarliestStart() {
     return earliestStart;
   }
@@ -192,7 +197,7 @@ public class Vehicle {
    * latest end of vehicle at its end location
    * @return latestEnd
   **/
-  @ApiModelProperty(example = "null", value = "latest end of vehicle at its end location")
+  @ApiModelProperty(value = "latest end of vehicle at its end location")
   public Long getLatestEnd() {
     return latestEnd;
   }
@@ -207,6 +212,9 @@ public class Vehicle {
   }
 
   public Vehicle addSkillsItem(String skillsItem) {
+    if (this.skills == null) {
+      this.skills = new ArrayList<String>();
+    }
     this.skills.add(skillsItem);
     return this;
   }
@@ -215,7 +223,7 @@ public class Vehicle {
    * array of skills
    * @return skills
   **/
-  @ApiModelProperty(example = "null", value = "array of skills")
+  @ApiModelProperty(value = "array of skills")
   public List<String> getSkills() {
     return skills;
   }
@@ -233,7 +241,7 @@ public class Vehicle {
    * max distance of vehicle
    * @return maxDistance
   **/
-  @ApiModelProperty(example = "null", value = "max distance of vehicle")
+  @ApiModelProperty(value = "max distance of vehicle")
   public Long getMaxDistance() {
     return maxDistance;
   }

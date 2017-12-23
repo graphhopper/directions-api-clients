@@ -35,7 +35,9 @@ class TestJobId(unittest.TestCase):
         """
         Test JobId
         """
-        model = swagger_client.models.job_id.JobId()
+        # FIXME: construct object with mandatory attributes with example values
+        #model = swagger_client.models.job_id.JobId()
+        pass
 
 
 if __name__ == '__main__':

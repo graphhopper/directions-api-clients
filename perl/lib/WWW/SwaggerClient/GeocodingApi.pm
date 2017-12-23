@@ -119,7 +119,6 @@ sub geocode_get {
 
     # parse inputs
     my $_resource_path = '/geocode';
-    $_resource_path =~ s/{format}/json/; # default format to json
 
     my $_method = 'GET';
     my $query_params = {};

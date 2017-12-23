@@ -35,7 +35,9 @@ class TestRequest(unittest.TestCase):
         """
         Test Request
         """
-        model = swagger_client.models.request.Request()
+        # FIXME: construct object with mandatory attributes with example values
+        #model = swagger_client.models.request.Request()
+        pass
 
 
 if __name__ == '__main__':

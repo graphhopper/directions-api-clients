@@ -14,9 +14,14 @@
 package com.graphhopper.directions.api.client.model;
 
 import java.util.Objects;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,7 +34,7 @@ public class Relation {
   private String type = null;
 
   @SerializedName("ids")
-  private List<String> ids = new ArrayList<String>();
+  private List<String> ids = null;
 
   @SerializedName("vehicle_id")
   private String vehicleId = null;
@@ -43,7 +48,7 @@ public class Relation {
    * identifier of relation
    * @return type
   **/
-  @ApiModelProperty(example = "null", value = "identifier of relation")
+  @ApiModelProperty(value = "identifier of relation")
   public String getType() {
     return type;
   }
@@ -58,6 +63,9 @@ public class Relation {
   }
 
   public Relation addIdsItem(String idsItem) {
+    if (this.ids == null) {
+      this.ids = new ArrayList<String>();
+    }
     this.ids.add(idsItem);
     return this;
   }
@@ -66,7 +74,7 @@ public class Relation {
    * An array of ids that should be related
    * @return ids
   **/
-  @ApiModelProperty(example = "null", value = "An array of ids that should be related")
+  @ApiModelProperty(value = "An array of ids that should be related")
   public List<String> getIds() {
     return ids;
   }
@@ -84,7 +92,7 @@ public class Relation {
    * vehicle id
    * @return vehicleId
   **/
-  @ApiModelProperty(example = "null", value = "vehicle id")
+  @ApiModelProperty(value = "vehicle id")
   public String getVehicleId() {
     return vehicleId;
   }

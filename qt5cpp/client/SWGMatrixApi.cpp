@@ -18,6 +18,7 @@
 #include <QJsonDocument>
 
 namespace Swagger {
+
 SWGMatrixApi::SWGMatrixApi() {}
 
 SWGMatrixApi::~SWGMatrixApi() {}
@@ -153,9 +154,13 @@ SWGMatrixApi::matrixGet(QString* key, QList<QString*>* point, QString* from_poin
     HttpRequestWorker *worker = new HttpRequestWorker();
     HttpRequestInput input(fullPath, "GET");
 
-    
 
 
+
+
+    foreach(QString key, this->defaultHeaders.keys()) {
+        input.headers.insert(key, this->defaultHeaders.value(key));
+    }
 
     connect(worker,
             &HttpRequestWorker::on_execution_finished,
@@ -168,6 +173,9 @@ SWGMatrixApi::matrixGet(QString* key, QList<QString*>* point, QString* from_poin
 void
 SWGMatrixApi::matrixGetCallback(HttpRequestWorker * worker) {
     QString msg;
+    QString error_str = worker->error_str;
+    QNetworkReply::NetworkError error_type = worker->error_type;
+
     if (worker->error_type == QNetworkReply::NoError) {
         msg = QString("Success! %1 bytes").arg(worker->response.length());
     }
@@ -175,16 +183,15 @@ SWGMatrixApi::matrixGetCallback(HttpRequestWorker * worker) {
         msg = "Error: " + worker->error_str;
     }
 
-    
-        QString json(worker->response);
-    SWGMatrixResponse* output = static_cast<SWGMatrixResponse*>(create(json, QString("SWGMatrixResponse")));
-    
 
+    QString json(worker->response);
+    SWGMatrixResponse* output = static_cast<SWGMatrixResponse*>(create(json, QString("SWGMatrixResponse")));
     worker->deleteLater();
 
     emit matrixGetSignal(output);
-    
+    emit matrixGetSignalE(output, error_type, error_str);
 }
+
 void
 SWGMatrixApi::matrixPost(QString* key, SWGMatrixRequest body) {
     QString fullPath;
@@ -203,11 +210,15 @@ SWGMatrixApi::matrixPost(QString* key, SWGMatrixRequest body) {
     HttpRequestWorker *worker = new HttpRequestWorker();
     HttpRequestInput input(fullPath, "POST");
 
-    
+
     QString output = body.asJson();
     input.request_body.append(output);
     
 
+
+    foreach(QString key, this->defaultHeaders.keys()) {
+        input.headers.insert(key, this->defaultHeaders.value(key));
+    }
 
     connect(worker,
             &HttpRequestWorker::on_execution_finished,
@@ -220,6 +231,9 @@ SWGMatrixApi::matrixPost(QString* key, SWGMatrixRequest body) {
 void
 SWGMatrixApi::matrixPostCallback(HttpRequestWorker * worker) {
     QString msg;
+    QString error_str = worker->error_str;
+    QNetworkReply::NetworkError error_type = worker->error_type;
+
     if (worker->error_type == QNetworkReply::NoError) {
         msg = QString("Success! %1 bytes").arg(worker->response.length());
     }
@@ -227,14 +241,14 @@ SWGMatrixApi::matrixPostCallback(HttpRequestWorker * worker) {
         msg = "Error: " + worker->error_str;
     }
 
-    
-        QString json(worker->response);
-    SWGMatrixResponse* output = static_cast<SWGMatrixResponse*>(create(json, QString("SWGMatrixResponse")));
-    
 
+    QString json(worker->response);
+    SWGMatrixResponse* output = static_cast<SWGMatrixResponse*>(create(json, QString("SWGMatrixResponse")));
     worker->deleteLater();
 
     emit matrixPostSignal(output);
-    
+    emit matrixPostSignalE(output, error_type, error_str);
 }
-} /* namespace Swagger */
+
+
+}

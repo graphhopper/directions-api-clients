@@ -35,7 +35,9 @@ class TestSolutionUnassigned(unittest.TestCase):
         """
         Test SolutionUnassigned
         """
-        model = swagger_client.models.solution_unassigned.SolutionUnassigned()
+        # FIXME: construct object with mandatory attributes with example values
+        #model = swagger_client.models.solution_unassigned.SolutionUnassigned()
+        pass
 
 
 if __name__ == '__main__':

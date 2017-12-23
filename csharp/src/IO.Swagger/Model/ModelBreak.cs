@@ -20,6 +20,7 @@ using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System.ComponentModel.DataAnnotations;
+using SwaggerDateConverter = IO.Swagger.Client.SwaggerDateConverter;
 
 namespace IO.Swagger.Model
 {
@@ -54,36 +55,42 @@ namespace IO.Swagger.Model
         /// <value>earliest start of break</value>
         [DataMember(Name="earliest", EmitDefaultValue=false)]
         public long? Earliest { get; set; }
+
         /// <summary>
         /// latest start of break
         /// </summary>
         /// <value>latest start of break</value>
         [DataMember(Name="latest", EmitDefaultValue=false)]
         public long? Latest { get; set; }
+
         /// <summary>
         /// duration of break
         /// </summary>
         /// <value>duration of break</value>
         [DataMember(Name="duration", EmitDefaultValue=false)]
         public long? Duration { get; set; }
+
         /// <summary>
         /// max driving time without break
         /// </summary>
         /// <value>max driving time without break</value>
         [DataMember(Name="max_driving_time", EmitDefaultValue=false)]
         public long? MaxDrivingTime { get; set; }
+
         /// <summary>
         /// initial driving time, i.e. the time your driver has already spent for driving
         /// </summary>
         /// <value>initial driving time, i.e. the time your driver has already spent for driving</value>
         [DataMember(Name="initial_driving_time", EmitDefaultValue=false)]
         public long? InitialDrivingTime { get; set; }
+
         /// <summary>
         /// array of splits
         /// </summary>
         /// <value>array of splits</value>
         [DataMember(Name="possible_split", EmitDefaultValue=false)]
         public List<long?> PossibleSplit { get; set; }
+
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -193,8 +200,13 @@ namespace IO.Swagger.Model
             }
         }
 
-        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
-        { 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
             yield break;
         }
     }

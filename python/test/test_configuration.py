@@ -35,7 +35,9 @@ class TestConfiguration(unittest.TestCase):
         """
         Test Configuration
         """
-        model = swagger_client.models.configuration.Configuration()
+        # FIXME: construct object with mandatory attributes with example values
+        #model = swagger_client.models.configuration.Configuration()
+        pass
 
 
 if __name__ == '__main__':

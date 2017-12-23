@@ -30,7 +30,6 @@ namespace Example
     {
         public void main()
         {
-            
             var apiInstance = new MatrixApi();
             var key = key_example;  // string | Get your key at graphhopper.com
             var point = new List<string>(); // List<string> | Specifiy multiple points for which the weight-, route-, time- or distance-matrix should be calculated. In this case the starts are identical to the destinations. If there are N points, then NxN entries will be calculated. The order of the point parameter is important. Specify at least three points. Cannot be used together with from_point or to_point. Is a string with the format latitude,longitude. (optional) 
@@ -102,7 +101,6 @@ namespace Example
     {
         public void main()
         {
-            
             var apiInstance = new MatrixApi();
             var key = key_example;  // string | Get your key at graphhopper.com
             var body = new MatrixRequest(); // MatrixRequest |  (optional) 

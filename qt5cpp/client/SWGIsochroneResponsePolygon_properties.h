@@ -49,6 +49,6 @@ private:
     qint32 bucket;
 };
 
-} /* namespace Swagger */
+}
 
 #endif /* SWGIsochroneResponsePolygon_properties_H_ */

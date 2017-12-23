@@ -47,7 +47,6 @@ class MatrixResponseTest extends \PHPUnit_Framework_TestCase
      */
     public static function setUpBeforeClass()
     {
-
     }
 
     /**
@@ -55,7 +54,6 @@ class MatrixResponseTest extends \PHPUnit_Framework_TestCase
      */
     public function setUp()
     {
-
     }
 
     /**
@@ -63,7 +61,6 @@ class MatrixResponseTest extends \PHPUnit_Framework_TestCase
      */
     public function tearDown()
     {
-
     }
 
     /**
@@ -71,7 +68,6 @@ class MatrixResponseTest extends \PHPUnit_Framework_TestCase
      */
     public static function tearDownAfterClass()
     {
-
     }
 
     /**
@@ -79,7 +75,6 @@ class MatrixResponseTest extends \PHPUnit_Framework_TestCase
      */
     public function testMatrixResponse()
     {
-
     }
 
     /**
@@ -87,7 +82,6 @@ class MatrixResponseTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyDistances()
     {
-
     }
 
     /**
@@ -95,7 +89,6 @@ class MatrixResponseTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyTimes()
     {
-
     }
 
     /**
@@ -103,7 +96,6 @@ class MatrixResponseTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyWeights()
     {
-
     }
 
     /**
@@ -111,7 +103,5 @@ class MatrixResponseTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyInfo()
     {
-
     }
-
 }

@@ -14,6 +14,7 @@ package io.swagger.client.model
 
 
 case class RoutePoint (
-  _type: String,
-  coordinates: List[Any]
+  _type: Option[String],
+  coordinates: Option[List[Any]]
 )
+

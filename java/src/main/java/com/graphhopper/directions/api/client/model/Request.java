@@ -14,7 +14,11 @@
 package com.graphhopper.directions.api.client.model;
 
 import java.util.Objects;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import com.graphhopper.directions.api.client.model.Algorithm;
 import com.graphhopper.directions.api.client.model.CostMatrix;
 import com.graphhopper.directions.api.client.model.ModelConfiguration;
@@ -26,6 +30,7 @@ import com.graphhopper.directions.api.client.model.Vehicle;
 import com.graphhopper.directions.api.client.model.VehicleType;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,28 +40,28 @@ import java.util.List;
 
 public class Request {
   @SerializedName("vehicles")
-  private List<Vehicle> vehicles = new ArrayList<Vehicle>();
+  private List<Vehicle> vehicles = null;
 
   @SerializedName("vehicle_types")
-  private List<VehicleType> vehicleTypes = new ArrayList<VehicleType>();
+  private List<VehicleType> vehicleTypes = null;
 
   @SerializedName("services")
-  private List<Service> services = new ArrayList<Service>();
+  private List<Service> services = null;
 
   @SerializedName("shipments")
-  private List<Shipment> shipments = new ArrayList<Shipment>();
+  private List<Shipment> shipments = null;
 
   @SerializedName("relations")
-  private List<Relation> relations = new ArrayList<Relation>();
+  private List<Relation> relations = null;
 
   @SerializedName("algorithm")
   private Algorithm algorithm = null;
 
   @SerializedName("objectives")
-  private List<Objective> objectives = new ArrayList<Objective>();
+  private List<Objective> objectives = null;
 
   @SerializedName("cost_matrices")
-  private List<CostMatrix> costMatrices = new ArrayList<CostMatrix>();
+  private List<CostMatrix> costMatrices = null;
 
   @SerializedName("configuration")
   private ModelConfiguration _configuration = null;
@@ -67,6 +72,9 @@ public class Request {
   }
 
   public Request addVehiclesItem(Vehicle vehiclesItem) {
+    if (this.vehicles == null) {
+      this.vehicles = new ArrayList<Vehicle>();
+    }
     this.vehicles.add(vehiclesItem);
     return this;
   }
@@ -75,7 +83,7 @@ public class Request {
    * An array of vehicles that can be employed
    * @return vehicles
   **/
-  @ApiModelProperty(example = "null", value = "An array of vehicles that can be employed")
+  @ApiModelProperty(value = "An array of vehicles that can be employed")
   public List<Vehicle> getVehicles() {
     return vehicles;
   }
@@ -90,6 +98,9 @@ public class Request {
   }
 
   public Request addVehicleTypesItem(VehicleType vehicleTypesItem) {
+    if (this.vehicleTypes == null) {
+      this.vehicleTypes = new ArrayList<VehicleType>();
+    }
     this.vehicleTypes.add(vehicleTypesItem);
     return this;
   }
@@ -98,7 +109,7 @@ public class Request {
    * An array of vehicle types
    * @return vehicleTypes
   **/
-  @ApiModelProperty(example = "null", value = "An array of vehicle types")
+  @ApiModelProperty(value = "An array of vehicle types")
   public List<VehicleType> getVehicleTypes() {
     return vehicleTypes;
   }
@@ -113,6 +124,9 @@ public class Request {
   }
 
   public Request addServicesItem(Service servicesItem) {
+    if (this.services == null) {
+      this.services = new ArrayList<Service>();
+    }
     this.services.add(servicesItem);
     return this;
   }
@@ -121,7 +135,7 @@ public class Request {
    * An array of services
    * @return services
   **/
-  @ApiModelProperty(example = "null", value = "An array of services")
+  @ApiModelProperty(value = "An array of services")
   public List<Service> getServices() {
     return services;
   }
@@ -136,6 +150,9 @@ public class Request {
   }
 
   public Request addShipmentsItem(Shipment shipmentsItem) {
+    if (this.shipments == null) {
+      this.shipments = new ArrayList<Shipment>();
+    }
     this.shipments.add(shipmentsItem);
     return this;
   }
@@ -144,7 +161,7 @@ public class Request {
    * An array of shipments
    * @return shipments
   **/
-  @ApiModelProperty(example = "null", value = "An array of shipments")
+  @ApiModelProperty(value = "An array of shipments")
   public List<Shipment> getShipments() {
     return shipments;
   }
@@ -159,6 +176,9 @@ public class Request {
   }
 
   public Request addRelationsItem(Relation relationsItem) {
+    if (this.relations == null) {
+      this.relations = new ArrayList<Relation>();
+    }
     this.relations.add(relationsItem);
     return this;
   }
@@ -167,7 +187,7 @@ public class Request {
    * An array of relations
    * @return relations
   **/
-  @ApiModelProperty(example = "null", value = "An array of relations")
+  @ApiModelProperty(value = "An array of relations")
   public List<Relation> getRelations() {
     return relations;
   }
@@ -185,7 +205,7 @@ public class Request {
    * Get algorithm
    * @return algorithm
   **/
-  @ApiModelProperty(example = "null", value = "")
+  @ApiModelProperty(value = "")
   public Algorithm getAlgorithm() {
     return algorithm;
   }
@@ -200,6 +220,9 @@ public class Request {
   }
 
   public Request addObjectivesItem(Objective objectivesItem) {
+    if (this.objectives == null) {
+      this.objectives = new ArrayList<Objective>();
+    }
     this.objectives.add(objectivesItem);
     return this;
   }
@@ -208,7 +231,7 @@ public class Request {
    * An array of objectives
    * @return objectives
   **/
-  @ApiModelProperty(example = "null", value = "An array of objectives")
+  @ApiModelProperty(value = "An array of objectives")
   public List<Objective> getObjectives() {
     return objectives;
   }
@@ -223,6 +246,9 @@ public class Request {
   }
 
   public Request addCostMatricesItem(CostMatrix costMatricesItem) {
+    if (this.costMatrices == null) {
+      this.costMatrices = new ArrayList<CostMatrix>();
+    }
     this.costMatrices.add(costMatricesItem);
     return this;
   }
@@ -231,7 +257,7 @@ public class Request {
    * An array of cost matrices
    * @return costMatrices
   **/
-  @ApiModelProperty(example = "null", value = "An array of cost matrices")
+  @ApiModelProperty(value = "An array of cost matrices")
   public List<CostMatrix> getCostMatrices() {
     return costMatrices;
   }
@@ -249,7 +275,7 @@ public class Request {
    * Get _configuration
    * @return _configuration
   **/
-  @ApiModelProperty(example = "null", value = "")
+  @ApiModelProperty(value = "")
   public ModelConfiguration getConfiguration() {
     return _configuration;
   }

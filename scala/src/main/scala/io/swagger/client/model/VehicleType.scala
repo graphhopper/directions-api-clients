@@ -15,19 +15,20 @@ package io.swagger.client.model
 
 case class VehicleType (
   /* Unique identifier for the vehicle type */
-  typeId: String,
+  typeId: Option[String],
   /* Profile of vehicle type */
-  profile: String,
+  profile: Option[String],
   /* array of capacity dimensions */
-  capacity: List[Integer],
+  capacity: Option[List[Integer]],
   /* speed_factor of vehicle type */
-  speedFactor: Double,
+  speedFactor: Option[Double],
   /* service time factor of vehicle type */
-  serviceTimeFactor: Double,
+  serviceTimeFactor: Option[Double],
   /* cost parameter per distance unit, here meter is used */
-  costPerMeter: Double,
+  costPerMeter: Option[Double],
   /* cost parameter per time unit, here second is used */
-  costPerSecond: Double,
+  costPerSecond: Option[Double],
   /* cost parameter vehicle activation, i.e. fixed costs per vehicle */
-  costPerActivation: Double
+  costPerActivation: Option[Double]
 )
+

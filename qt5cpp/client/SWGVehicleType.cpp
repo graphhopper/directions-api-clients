@@ -22,7 +22,6 @@
 
 namespace Swagger {
 
-
 SWGVehicleType::SWGVehicleType(QString* json) {
     init();
     this->fromJson(*json);
@@ -197,6 +196,5 @@ SWGVehicleType::setCostPerActivation(double cost_per_activation) {
 }
 
 
-
-} /* namespace Swagger */
+}
 

@@ -47,7 +47,6 @@ class SolutionTest extends \PHPUnit_Framework_TestCase
      */
     public static function setUpBeforeClass()
     {
-
     }
 
     /**
@@ -55,7 +54,6 @@ class SolutionTest extends \PHPUnit_Framework_TestCase
      */
     public function setUp()
     {
-
     }
 
     /**
@@ -63,7 +61,6 @@ class SolutionTest extends \PHPUnit_Framework_TestCase
      */
     public function tearDown()
     {
-
     }
 
     /**
@@ -71,7 +68,6 @@ class SolutionTest extends \PHPUnit_Framework_TestCase
      */
     public static function tearDownAfterClass()
     {
-
     }
 
     /**
@@ -79,7 +75,6 @@ class SolutionTest extends \PHPUnit_Framework_TestCase
      */
     public function testSolution()
     {
-
     }
 
     /**
@@ -87,7 +82,6 @@ class SolutionTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyCosts()
     {
-
     }
 
     /**
@@ -95,7 +89,6 @@ class SolutionTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyDistance()
     {
-
     }
 
     /**
@@ -103,7 +96,6 @@ class SolutionTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyTime()
     {
-
     }
 
     /**
@@ -111,7 +103,6 @@ class SolutionTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyTransportTime()
     {
-
     }
 
     /**
@@ -119,7 +110,6 @@ class SolutionTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyMaxOperationTime()
     {
-
     }
 
     /**
@@ -127,7 +117,6 @@ class SolutionTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyWaitingTime()
     {
-
     }
 
     /**
@@ -135,7 +124,6 @@ class SolutionTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyNoVehicles()
     {
-
     }
 
     /**
@@ -143,7 +131,6 @@ class SolutionTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyNoUnassigned()
     {
-
     }
 
     /**
@@ -151,7 +138,6 @@ class SolutionTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyRoutes()
     {
-
     }
 
     /**
@@ -159,7 +145,5 @@ class SolutionTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyUnassigned()
     {
-
     }
-
 }

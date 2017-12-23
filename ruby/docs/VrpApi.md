@@ -1,4 +1,4 @@
-# SwaggerClient::VrpApi
+# DirectionsApiClient::VrpApi
 
 All URIs are relative to *https://graphhopper.com/api/1*
 
@@ -17,20 +17,20 @@ This endpoint for solving vehicle routing problems, i.e. traveling salesman or v
 ### Example
 ```ruby
 # load the gem
-require 'swagger_client'
+require 'directions-api-client'
 
-api_instance = SwaggerClient::VrpApi.new
+api_instance = DirectionsApiClient::VrpApi.new
 
 key = "key_example" # String | your API key
 
-body = SwaggerClient::Request.new # Request | Request object that contains the problem to be solved
+body = DirectionsApiClient::Request.new # Request | Request object that contains the problem to be solved
 
 
 begin
   #Solves vehicle routing problems
   result = api_instance.post_vrp(key, body)
   p result
-rescue SwaggerClient::ApiError => e
+rescue DirectionsApiClient::ApiError => e
   puts "Exception when calling VrpApi->post_vrp: #{e}"
 end
 ```

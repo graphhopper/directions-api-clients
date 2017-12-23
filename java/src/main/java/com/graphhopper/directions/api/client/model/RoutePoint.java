@@ -14,9 +14,14 @@
 package com.graphhopper.directions.api.client.model;
 
 import java.util.Objects;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,7 +34,7 @@ public class RoutePoint {
   private String type = null;
 
   @SerializedName("coordinates")
-  private List<Object> coordinates = new ArrayList<Object>();
+  private List<Object> coordinates = null;
 
   public RoutePoint type(String type) {
     this.type = type;
@@ -40,7 +45,7 @@ public class RoutePoint {
    * Get type
    * @return type
   **/
-  @ApiModelProperty(example = "null", value = "")
+  @ApiModelProperty(value = "")
   public String getType() {
     return type;
   }
@@ -55,6 +60,9 @@ public class RoutePoint {
   }
 
   public RoutePoint addCoordinatesItem(Object coordinatesItem) {
+    if (this.coordinates == null) {
+      this.coordinates = new ArrayList<Object>();
+    }
     this.coordinates.add(coordinatesItem);
     return this;
   }
@@ -63,7 +71,7 @@ public class RoutePoint {
    * Get coordinates
    * @return coordinates
   **/
-  @ApiModelProperty(example = "null", value = "")
+  @ApiModelProperty(value = "")
   public List<Object> getCoordinates() {
     return coordinates;
   }

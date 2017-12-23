@@ -15,17 +15,18 @@ package io.swagger.client.model
 
 case class RouteResponsePath (
   /* The total distance of the route, in meter */
-  distance: Double,
+  distance: Option[Double],
   /* The total time of the route, in ms */
-  time: Long,
-  ascend: Double,
+  time: Option[Long],
+  ascend: Option[Double],
   /* The total descend (downhill) of the route, in meter */
-  descend: Double,
-  points: ResponseCoordinates,
+  descend: Option[Double],
+  points: Option[ResponseCoordinates],
   /* Is true if the points are encoded, if not paths[0].points contains the geo json of the path (then order is lon,lat,elevation), which is easier to handle but consumes more bandwidth compared to encoded version */
-  pointsEncoded: Boolean,
+  pointsEncoded: Option[Boolean],
   /* The bounding box of the route, format <br> minLon, minLat, maxLon, maxLat */
-  bbox: List[Double],
-  snappedWaypoints: ResponseCoordinates,
-  instructions: ResponseInstructions
+  bbox: Option[List[Double]],
+  snappedWaypoints: Option[ResponseCoordinates],
+  instructions: Option[ResponseInstructions]
 )
+

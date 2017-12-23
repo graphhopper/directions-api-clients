@@ -20,6 +20,7 @@ using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System.ComponentModel.DataAnnotations;
+using SwaggerDateConverter = IO.Swagger.Client.SwaggerDateConverter;
 
 namespace IO.Swagger.Model
 {
@@ -63,59 +64,70 @@ namespace IO.Swagger.Model
         /// </summary>
         [DataMember(Name="point", EmitDefaultValue=false)]
         public GeocodingPoint Point { get; set; }
+
         /// <summary>
         /// OSM Id
         /// </summary>
         /// <value>OSM Id</value>
         [DataMember(Name="osm_id", EmitDefaultValue=false)]
         public string OsmId { get; set; }
+
         /// <summary>
         /// N &#x3D; node, R &#x3D; relation, W &#x3D; way
         /// </summary>
         /// <value>N &#x3D; node, R &#x3D; relation, W &#x3D; way</value>
         [DataMember(Name="osm_type", EmitDefaultValue=false)]
         public string OsmType { get; set; }
+
         /// <summary>
         /// The osm key of the result like &#x60;place&#x60; or &#x60;amenity&#x60;
         /// </summary>
         /// <value>The osm key of the result like &#x60;place&#x60; or &#x60;amenity&#x60;</value>
         [DataMember(Name="osm_key", EmitDefaultValue=false)]
         public string OsmKey { get; set; }
+
         /// <summary>
         /// Gets or Sets Name
         /// </summary>
         [DataMember(Name="name", EmitDefaultValue=false)]
         public string Name { get; set; }
+
         /// <summary>
         /// Gets or Sets Country
         /// </summary>
         [DataMember(Name="country", EmitDefaultValue=false)]
         public string Country { get; set; }
+
         /// <summary>
         /// Gets or Sets City
         /// </summary>
         [DataMember(Name="city", EmitDefaultValue=false)]
         public string City { get; set; }
+
         /// <summary>
         /// Gets or Sets State
         /// </summary>
         [DataMember(Name="state", EmitDefaultValue=false)]
         public string State { get; set; }
+
         /// <summary>
         /// Gets or Sets Street
         /// </summary>
         [DataMember(Name="street", EmitDefaultValue=false)]
         public string Street { get; set; }
+
         /// <summary>
         /// Gets or Sets Housenumber
         /// </summary>
         [DataMember(Name="housenumber", EmitDefaultValue=false)]
         public string Housenumber { get; set; }
+
         /// <summary>
         /// Gets or Sets Postcode
         /// </summary>
         [DataMember(Name="postcode", EmitDefaultValue=false)]
         public string Postcode { get; set; }
+
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -265,8 +277,13 @@ namespace IO.Swagger.Model
             }
         }
 
-        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
-        { 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
             yield break;
         }
     }

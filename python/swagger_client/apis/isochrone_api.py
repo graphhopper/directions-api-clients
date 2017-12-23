@@ -123,24 +123,23 @@ class IsochroneApi(object):
 
         collection_formats = {}
 
-        resource_path = '/isochrone'.replace('{format}', 'json')
         path_params = {}
 
-        query_params = {}
+        query_params = []
         if 'point' in params:
-            query_params['point'] = params['point']
+            query_params.append(('point', params['point']))
         if 'time_limit' in params:
-            query_params['time_limit'] = params['time_limit']
+            query_params.append(('time_limit', params['time_limit']))
         if 'distance_limit' in params:
-            query_params['distance_limit'] = params['distance_limit']
+            query_params.append(('distance_limit', params['distance_limit']))
         if 'vehicle' in params:
-            query_params['vehicle'] = params['vehicle']
+            query_params.append(('vehicle', params['vehicle']))
         if 'buckets' in params:
-            query_params['buckets'] = params['buckets']
+            query_params.append(('buckets', params['buckets']))
         if 'reverse_flow' in params:
-            query_params['reverse_flow'] = params['reverse_flow']
+            query_params.append(('reverse_flow', params['reverse_flow']))
         if 'key' in params:
-            query_params['key'] = params['key']
+            query_params.append(('key', params['key']))
 
         header_params = {}
 
@@ -155,7 +154,7 @@ class IsochroneApi(object):
         # Authentication setting
         auth_settings = []
 
-        return self.api_client.call_api(resource_path, 'GET',
+        return self.api_client.call_api('/isochrone', 'GET',
                                         path_params,
                                         query_params,
                                         header_params,

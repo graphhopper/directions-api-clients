@@ -29,7 +29,6 @@ namespace Example
     {
         public void main()
         {
-            
             var apiInstance = new GeocodingApi();
             var key = key_example;  // string | Get your key at graphhopper.com
             var q = q_example;  // string | If you do forward geocoding, then this would be a textual description of the adress you are looking for. If you do reverse geocoding this would be in lat,lon. (optional) 

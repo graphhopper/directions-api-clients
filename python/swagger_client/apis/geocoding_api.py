@@ -120,24 +120,23 @@ class GeocodingApi(object):
 
         collection_formats = {}
 
-        resource_path = '/geocode'.replace('{format}', 'json')
         path_params = {}
 
-        query_params = {}
+        query_params = []
         if 'q' in params:
-            query_params['q'] = params['q']
+            query_params.append(('q', params['q']))
         if 'locale' in params:
-            query_params['locale'] = params['locale']
+            query_params.append(('locale', params['locale']))
         if 'limit' in params:
-            query_params['limit'] = params['limit']
+            query_params.append(('limit', params['limit']))
         if 'reverse' in params:
-            query_params['reverse'] = params['reverse']
+            query_params.append(('reverse', params['reverse']))
         if 'point' in params:
-            query_params['point'] = params['point']
+            query_params.append(('point', params['point']))
         if 'provider' in params:
-            query_params['provider'] = params['provider']
+            query_params.append(('provider', params['provider']))
         if 'key' in params:
-            query_params['key'] = params['key']
+            query_params.append(('key', params['key']))
 
         header_params = {}
 
@@ -152,7 +151,7 @@ class GeocodingApi(object):
         # Authentication setting
         auth_settings = []
 
-        return self.api_client.call_api(resource_path, 'GET',
+        return self.api_client.call_api('/geocode', 'GET',
                                         path_params,
                                         query_params,
                                         header_params,

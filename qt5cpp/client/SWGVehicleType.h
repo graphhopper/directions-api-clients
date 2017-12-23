@@ -79,6 +79,6 @@ private:
     double cost_per_activation;
 };
 
-} /* namespace Swagger */
+}
 
 #endif /* SWGVehicleType_H_ */

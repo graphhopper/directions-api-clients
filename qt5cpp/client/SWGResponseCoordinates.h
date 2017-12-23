@@ -50,6 +50,6 @@ private:
     SWGResponseCoordinatesArray* coordinates;
 };
 
-} /* namespace Swagger */
+}
 
 #endif /* SWGResponseCoordinates_H_ */

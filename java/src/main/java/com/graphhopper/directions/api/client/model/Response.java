@@ -14,10 +14,15 @@
 package com.graphhopper.directions.api.client.model;
 
 import java.util.Objects;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import com.graphhopper.directions.api.client.model.Solution;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,7 +32,7 @@ import java.util.List;
 
 public class Response {
   @SerializedName("copyrights")
-  private List<String> copyrights = new ArrayList<String>();
+  private List<String> copyrights = null;
 
   @SerializedName("job_id")
   private String jobId = null;
@@ -35,14 +40,12 @@ public class Response {
   /**
    * indicates the current status of the job
    */
+  @JsonAdapter(StatusEnum.Adapter.class)
   public enum StatusEnum {
-    @SerializedName("waiting_in_queue")
     WAITING_IN_QUEUE("waiting_in_queue"),
     
-    @SerializedName("processing")
     PROCESSING("processing"),
     
-    @SerializedName("finished")
     FINISHED("finished");
 
     private String value;
@@ -51,9 +54,35 @@ public class Response {
       this.value = value;
     }
 
+    public String getValue() {
+      return value;
+    }
+
     @Override
     public String toString() {
       return String.valueOf(value);
+    }
+
+    public static StatusEnum fromValue(String text) {
+      for (StatusEnum b : StatusEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      return null;
+    }
+
+    public static class Adapter extends TypeAdapter<StatusEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final StatusEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public StatusEnum read(final JsonReader jsonReader) throws IOException {
+        String value = jsonReader.nextString();
+        return StatusEnum.fromValue(String.valueOf(value));
+      }
     }
   }
 
@@ -75,6 +104,9 @@ public class Response {
   }
 
   public Response addCopyrightsItem(String copyrightsItem) {
+    if (this.copyrights == null) {
+      this.copyrights = new ArrayList<String>();
+    }
     this.copyrights.add(copyrightsItem);
     return this;
   }
@@ -83,7 +115,7 @@ public class Response {
    * Get copyrights
    * @return copyrights
   **/
-  @ApiModelProperty(example = "null", value = "")
+  @ApiModelProperty(value = "")
   public List<String> getCopyrights() {
     return copyrights;
   }
@@ -101,7 +133,7 @@ public class Response {
    * unique identify of job - which you get when posting your request to the large problem solver
    * @return jobId
   **/
-  @ApiModelProperty(example = "null", value = "unique identify of job - which you get when posting your request to the large problem solver")
+  @ApiModelProperty(value = "unique identify of job - which you get when posting your request to the large problem solver")
   public String getJobId() {
     return jobId;
   }
@@ -119,7 +151,7 @@ public class Response {
    * indicates the current status of the job
    * @return status
   **/
-  @ApiModelProperty(example = "null", value = "indicates the current status of the job")
+  @ApiModelProperty(value = "indicates the current status of the job")
   public StatusEnum getStatus() {
     return status;
   }
@@ -137,7 +169,7 @@ public class Response {
    * waiting time in ms
    * @return waitingInQueue
   **/
-  @ApiModelProperty(example = "null", value = "waiting time in ms")
+  @ApiModelProperty(value = "waiting time in ms")
   public Long getWaitingInQueue() {
     return waitingInQueue;
   }
@@ -155,7 +187,7 @@ public class Response {
    * processing time in ms. if job is still waiting in queue, processing_time is 0
    * @return processingTime
   **/
-  @ApiModelProperty(example = "null", value = "processing time in ms. if job is still waiting in queue, processing_time is 0")
+  @ApiModelProperty(value = "processing time in ms. if job is still waiting in queue, processing_time is 0")
   public Long getProcessingTime() {
     return processingTime;
   }
@@ -173,7 +205,7 @@ public class Response {
    * the solution. only available if status field indicates finished
    * @return solution
   **/
-  @ApiModelProperty(example = "null", value = "the solution. only available if status field indicates finished")
+  @ApiModelProperty(value = "the solution. only available if status field indicates finished")
   public Solution getSolution() {
     return solution;
   }

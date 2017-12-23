@@ -87,6 +87,6 @@ private:
     double turn_angle;
 };
 
-} /* namespace Swagger */
+}
 
 #endif /* SWGResponseInstruction_H_ */

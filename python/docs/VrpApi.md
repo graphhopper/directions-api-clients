@@ -16,7 +16,7 @@ This endpoint for solving vehicle routing problems, i.e. traveling salesman or v
 
 ### Example 
 ```python
-from __future__ import print_statement
+from __future__ import print_function
 import time
 import swagger_client
 from swagger_client.rest import ApiException

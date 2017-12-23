@@ -235,9 +235,6 @@ namespace IO.Swagger.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            // set "format" to json by default
-            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
-            localVarPathParams.Add("format", "json");
             if (jobId != null) localVarPathParams.Add("jobId", Configuration.ApiClient.ParameterToString(jobId)); // path parameter
             if (key != null) localVarQueryParams.Add("key", Configuration.ApiClient.ParameterToString(key)); // query parameter
 
@@ -258,7 +255,6 @@ namespace IO.Swagger.Api
             return new ApiResponse<Response>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 (Response) Configuration.ApiClient.Deserialize(localVarResponse, typeof(Response)));
-            
         }
 
         /// <summary>
@@ -313,9 +309,6 @@ namespace IO.Swagger.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            // set "format" to json by default
-            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
-            localVarPathParams.Add("format", "json");
             if (jobId != null) localVarPathParams.Add("jobId", Configuration.ApiClient.ParameterToString(jobId)); // path parameter
             if (key != null) localVarQueryParams.Add("key", Configuration.ApiClient.ParameterToString(key)); // query parameter
 
@@ -336,7 +329,6 @@ namespace IO.Swagger.Api
             return new ApiResponse<Response>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 (Response) Configuration.ApiClient.Deserialize(localVarResponse, typeof(Response)));
-            
         }
 
     }

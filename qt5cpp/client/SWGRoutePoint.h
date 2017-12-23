@@ -56,6 +56,6 @@ private:
     QList<SWGObject*>* coordinates;
 };
 
-} /* namespace Swagger */
+}
 
 #endif /* SWGRoutePoint_H_ */

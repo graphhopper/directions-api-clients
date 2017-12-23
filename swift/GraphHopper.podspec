@@ -9,5 +9,5 @@ Pod::Spec.new do |s|
   s.homepage = 'https://github.com/swagger-api/swagger-codegen'
   s.summary = 'GraphHopper Swift SDK'
   s.source_files = 'GraphHopper/Classes/Swaggers/**/*.swift'
-  s.dependency 'Alamofire', '~> 3.4.1'
+  s.dependency 'Alamofire', '~> 3.5.1'
 end

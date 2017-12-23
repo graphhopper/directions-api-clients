@@ -124,7 +124,6 @@ sub isochrone_get {
 
     # parse inputs
     my $_resource_path = '/isochrone';
-    $_resource_path =~ s/{format}/json/; # default format to json
 
     my $_method = 'GET';
     my $query_params = {};

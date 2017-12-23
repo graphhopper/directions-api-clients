@@ -41,7 +41,7 @@ public class IsochroneAPI: APIBase {
     },
     "type" : "aeiou",
     "properties" : {
-      "bucket" : 123
+      "bucket" : 0
     }
   } ],
   "copyrights" : [ "aeiou" ]

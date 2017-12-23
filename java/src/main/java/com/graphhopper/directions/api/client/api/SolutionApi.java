@@ -54,13 +54,21 @@ public class SolutionApi {
         this.apiClient = apiClient;
     }
 
-    /* Build call for getSolution */
-    private com.squareup.okhttp.Call getSolutionCall(String key, String jobId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    /**
+     * Build call for getSolution
+     * @param key your API key (required)
+     * @param jobId Request solution with jobId (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getSolutionCall(String key, String jobId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // create path and map variables
-        String localVarPath = "/vrp/solution/{jobId}".replaceAll("\\{format\\}","json")
-        .replaceAll("\\{" + "jobId" + "\\}", apiClient.escapeString(jobId.toString()));
+        String localVarPath = "/vrp/solution/{jobId}"
+            .replaceAll("\\{" + "jobId" + "\\}", apiClient.escapeString(jobId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         if (key != null)

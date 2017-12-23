@@ -22,7 +22,6 @@
 
 namespace Swagger {
 
-
 SWGMatrixResponse::SWGMatrixResponse(QString* json) {
     init();
     this->fromJson(*json);
@@ -167,6 +166,5 @@ SWGMatrixResponse::setInfo(SWGResponseInfo* info) {
 }
 
 
-
-} /* namespace Swagger */
+}
 

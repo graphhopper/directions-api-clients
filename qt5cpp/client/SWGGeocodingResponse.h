@@ -56,6 +56,6 @@ private:
     QString* locale;
 };
 
-} /* namespace Swagger */
+}
 
 #endif /* SWGGeocodingResponse_H_ */

@@ -22,7 +22,6 @@
 
 namespace Swagger {
 
-
 SWGIsochroneResponsePolygon::SWGIsochroneResponsePolygon(QString* json) {
     init();
     this->fromJson(*json);
@@ -126,6 +125,5 @@ SWGIsochroneResponsePolygon::setGeometry(SWGIsochroneResponsePolygon_geometry* g
 }
 
 
-
-} /* namespace Swagger */
+}
 

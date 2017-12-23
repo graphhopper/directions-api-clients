@@ -14,11 +14,16 @@
 package com.graphhopper.directions.api.client.model;
 
 import java.util.Objects;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import com.graphhopper.directions.api.client.model.IsochroneResponsePolygonGeometry;
 import com.graphhopper.directions.api.client.model.IsochroneResponsePolygonProperties;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 
 /**
  * A found path
@@ -44,7 +49,7 @@ public class IsochroneResponsePolygon {
    * Get properties
    * @return properties
   **/
-  @ApiModelProperty(example = "null", value = "")
+  @ApiModelProperty(value = "")
   public IsochroneResponsePolygonProperties getProperties() {
     return properties;
   }
@@ -62,7 +67,7 @@ public class IsochroneResponsePolygon {
    * Get type
    * @return type
   **/
-  @ApiModelProperty(example = "null", value = "")
+  @ApiModelProperty(value = "")
   public String getType() {
     return type;
   }
@@ -80,7 +85,7 @@ public class IsochroneResponsePolygon {
    * Get geometry
    * @return geometry
   **/
-  @ApiModelProperty(example = "null", value = "")
+  @ApiModelProperty(value = "")
   public IsochroneResponsePolygonGeometry getGeometry() {
     return geometry;
   }

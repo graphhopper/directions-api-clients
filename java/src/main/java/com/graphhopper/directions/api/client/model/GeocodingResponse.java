@@ -14,10 +14,15 @@
 package com.graphhopper.directions.api.client.model;
 
 import java.util.Objects;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import com.graphhopper.directions.api.client.model.GeocodingLocation;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,7 +32,7 @@ import java.util.List;
 
 public class GeocodingResponse {
   @SerializedName("hits")
-  private List<GeocodingLocation> hits = new ArrayList<GeocodingLocation>();
+  private List<GeocodingLocation> hits = null;
 
   @SerializedName("locale")
   private String locale = null;
@@ -38,6 +43,9 @@ public class GeocodingResponse {
   }
 
   public GeocodingResponse addHitsItem(GeocodingLocation hitsItem) {
+    if (this.hits == null) {
+      this.hits = new ArrayList<GeocodingLocation>();
+    }
     this.hits.add(hitsItem);
     return this;
   }
@@ -46,7 +54,7 @@ public class GeocodingResponse {
    * Get hits
    * @return hits
   **/
-  @ApiModelProperty(example = "null", value = "")
+  @ApiModelProperty(value = "")
   public List<GeocodingLocation> getHits() {
     return hits;
   }
@@ -64,7 +72,7 @@ public class GeocodingResponse {
    * Get locale
    * @return locale
   **/
-  @ApiModelProperty(example = "null", value = "")
+  @ApiModelProperty(value = "")
   public String getLocale() {
     return locale;
   }

@@ -1,4 +1,4 @@
-# SwaggerClient::ResponseCoordinates
+# DirectionsApiClient::ResponseCoordinates
 
 ## Properties
 Name | Type | Description | Notes

@@ -66,9 +66,30 @@ class RouteResponsePath implements ArrayAccess
         'instructions' => '\Swagger\Client\Model\ResponseInstructions'
     ];
 
+    /**
+      * Array of property to format mappings. Used for (de)serialization
+      * @var string[]
+      */
+    protected static $swaggerFormats = [
+        'distance' => 'double',
+        'time' => 'int64',
+        'ascend' => 'double',
+        'descend' => 'double',
+        'points' => null,
+        'points_encoded' => null,
+        'bbox' => 'double',
+        'snapped_waypoints' => null,
+        'instructions' => null
+    ];
+
     public static function swaggerTypes()
     {
         return self::$swaggerTypes;
+    }
+
+    public static function swaggerFormats()
+    {
+        return self::$swaggerFormats;
     }
 
     /**

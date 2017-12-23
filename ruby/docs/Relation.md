@@ -1,4 +1,4 @@
-# SwaggerClient::Relation
+# DirectionsApiClient::Relation
 
 ## Properties
 Name | Type | Description | Notes

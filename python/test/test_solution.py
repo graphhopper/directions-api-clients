@@ -35,7 +35,9 @@ class TestSolution(unittest.TestCase):
         """
         Test Solution
         """
-        model = swagger_client.models.solution.Solution()
+        # FIXME: construct object with mandatory attributes with example values
+        #model = swagger_client.models.solution.Solution()
+        pass
 
 
 if __name__ == '__main__':

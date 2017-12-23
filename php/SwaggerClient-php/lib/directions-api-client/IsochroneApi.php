@@ -102,7 +102,7 @@ class IsochroneApi
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @return \Swagger\Client\Model\IsochroneResponse
      */
-    public function isochroneGet($point, $key, $time_limit = null, $distance_limit = null, $vehicle = null, $buckets = null, $reverse_flow = null)
+    public function isochroneGet($point, $key, $time_limit = '600', $distance_limit = '-1', $vehicle = 'car', $buckets = '1', $reverse_flow = 'false')
     {
         list($response) = $this->isochroneGetWithHttpInfo($point, $key, $time_limit, $distance_limit, $vehicle, $buckets, $reverse_flow);
         return $response;
@@ -123,7 +123,7 @@ class IsochroneApi
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @return array of \Swagger\Client\Model\IsochroneResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function isochroneGetWithHttpInfo($point, $key, $time_limit = null, $distance_limit = null, $vehicle = null, $buckets = null, $reverse_flow = null)
+    public function isochroneGetWithHttpInfo($point, $key, $time_limit = '600', $distance_limit = '-1', $vehicle = 'car', $buckets = '1', $reverse_flow = 'false')
     {
         // verify the required parameter 'point' is set
         if ($point === null) {
@@ -173,10 +173,7 @@ class IsochroneApi
         if ($key !== null) {
             $queryParams['key'] = $this->apiClient->getSerializer()->toQueryValue($key);
         }
-        // default format to json
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
 
-        
         // for model (json/xml)
         if (isset($_tempBody)) {
             $httpBody = $_tempBody; // $_tempBody is the method argument, if present
@@ -202,7 +199,7 @@ class IsochroneApi
                     $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\IsochroneResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
-                case 0:
+                default:
                     $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\GHError', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;

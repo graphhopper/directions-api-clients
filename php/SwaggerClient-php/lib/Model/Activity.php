@@ -66,9 +66,31 @@ class Activity implements ArrayAccess
         'load_after' => 'int[]'
     ];
 
+    /**
+      * Array of property to format mappings. Used for (de)serialization
+      * @var string[]
+      */
+    protected static $swaggerFormats = [
+        'type' => null,
+        'id' => null,
+        'location_id' => null,
+        'arr_time' => 'int64',
+        'end_time' => 'int64',
+        'waiting_time' => 'int64',
+        'distance' => 'int64',
+        'driving_time' => 'int64',
+        'load_before' => 'int32',
+        'load_after' => 'int32'
+    ];
+
     public static function swaggerTypes()
     {
         return self::$swaggerTypes;
+    }
+
+    public static function swaggerFormats()
+    {
+        return self::$swaggerFormats;
     }
 
     /**
@@ -146,7 +168,7 @@ class Activity implements ArrayAccess
     const TYPE_DELIVER_SHIPMENT = 'deliverShipment';
     const TYPE_PICKUP = 'pickup';
     const TYPE_DELIVERY = 'delivery';
-    const TYPE_BREAK = 'break';
+    const TYPE__BREAK = 'break';
     
 
     
@@ -164,7 +186,7 @@ class Activity implements ArrayAccess
             self::TYPE_DELIVER_SHIPMENT,
             self::TYPE_PICKUP,
             self::TYPE_DELIVERY,
-            self::TYPE_BREAK,
+            self::TYPE__BREAK,
         ];
     }
     
@@ -202,9 +224,12 @@ class Activity implements ArrayAccess
     {
         $invalid_properties = [];
 
-        $allowed_values = ["start", "end", "service", "pickupShipment", "deliverShipment", "pickup", "delivery", "break"];
+        $allowed_values = $this->getTypeAllowableValues();
         if (!in_array($this->container['type'], $allowed_values)) {
-            $invalid_properties[] = "invalid value for 'type', must be one of 'start', 'end', 'service', 'pickupShipment', 'deliverShipment', 'pickup', 'delivery', 'break'.";
+            $invalid_properties[] = sprintf(
+                "invalid value for 'type', must be one of '%s'",
+                implode("', '", $allowed_values)
+            );
         }
 
         return $invalid_properties;
@@ -219,7 +244,7 @@ class Activity implements ArrayAccess
     public function valid()
     {
 
-        $allowed_values = ["start", "end", "service", "pickupShipment", "deliverShipment", "pickup", "delivery", "break"];
+        $allowed_values = $this->getTypeAllowableValues();
         if (!in_array($this->container['type'], $allowed_values)) {
             return false;
         }
@@ -243,9 +268,14 @@ class Activity implements ArrayAccess
      */
     public function setType($type)
     {
-        $allowed_values = array('start', 'end', 'service', 'pickupShipment', 'deliverShipment', 'pickup', 'delivery', 'break');
-        if (!is_null($type) && (!in_array($type, $allowed_values))) {
-            throw new \InvalidArgumentException("Invalid value for 'type', must be one of 'start', 'end', 'service', 'pickupShipment', 'deliverShipment', 'pickup', 'delivery', 'break'");
+        $allowed_values = $this->getTypeAllowableValues();
+        if (!is_null($type) && !in_array($type, $allowed_values)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'type', must be one of '%s'",
+                    implode("', '", $allowed_values)
+                )
+            );
         }
         $this->container['type'] = $type;
 

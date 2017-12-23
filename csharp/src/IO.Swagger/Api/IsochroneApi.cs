@@ -264,9 +264,6 @@ namespace IO.Swagger.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            // set "format" to json by default
-            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
-            localVarPathParams.Add("format", "json");
             if (point != null) localVarQueryParams.Add("point", Configuration.ApiClient.ParameterToString(point)); // query parameter
             if (timeLimit != null) localVarQueryParams.Add("time_limit", Configuration.ApiClient.ParameterToString(timeLimit)); // query parameter
             if (distanceLimit != null) localVarQueryParams.Add("distance_limit", Configuration.ApiClient.ParameterToString(distanceLimit)); // query parameter
@@ -292,7 +289,6 @@ namespace IO.Swagger.Api
             return new ApiResponse<IsochroneResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 (IsochroneResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(IsochroneResponse)));
-            
         }
 
         /// <summary>
@@ -356,9 +352,6 @@ namespace IO.Swagger.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            // set "format" to json by default
-            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
-            localVarPathParams.Add("format", "json");
             if (point != null) localVarQueryParams.Add("point", Configuration.ApiClient.ParameterToString(point)); // query parameter
             if (timeLimit != null) localVarQueryParams.Add("time_limit", Configuration.ApiClient.ParameterToString(timeLimit)); // query parameter
             if (distanceLimit != null) localVarQueryParams.Add("distance_limit", Configuration.ApiClient.ParameterToString(distanceLimit)); // query parameter
@@ -384,7 +377,6 @@ namespace IO.Swagger.Api
             return new ApiResponse<IsochroneResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 (IsochroneResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(IsochroneResponse)));
-            
         }
 
     }

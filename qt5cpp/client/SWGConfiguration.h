@@ -50,6 +50,6 @@ private:
     SWGRouting* routing;
 };
 
-} /* namespace Swagger */
+}
 
 #endif /* SWGConfiguration_H_ */

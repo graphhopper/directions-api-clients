@@ -35,7 +35,9 @@ class TestRouting(unittest.TestCase):
         """
         Test Routing
         """
-        model = swagger_client.models.routing.Routing()
+        # FIXME: construct object with mandatory attributes with example values
+        #model = swagger_client.models.routing.Routing()
+        pass
 
 
 if __name__ == '__main__':

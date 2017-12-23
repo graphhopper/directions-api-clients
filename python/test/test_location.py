@@ -35,7 +35,9 @@ class TestLocation(unittest.TestCase):
         """
         Test Location
         """
-        model = swagger_client.models.location.Location()
+        # FIXME: construct object with mandatory attributes with example values
+        #model = swagger_client.models.location.Location()
+        pass
 
 
 if __name__ == '__main__':

@@ -20,6 +20,7 @@ using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System.ComponentModel.DataAnnotations;
+using SwaggerDateConverter = IO.Swagger.Client.SwaggerDateConverter;
 
 namespace IO.Swagger.Model
 {
@@ -119,60 +120,70 @@ namespace IO.Swagger.Model
             this.LoadAfter = LoadAfter;
         }
         
+
         /// <summary>
         /// id referring to the underlying service or shipment, i.e. the shipment or service this activity belongs to
         /// </summary>
         /// <value>id referring to the underlying service or shipment, i.e. the shipment or service this activity belongs to</value>
         [DataMember(Name="id", EmitDefaultValue=false)]
         public string Id { get; set; }
+
         /// <summary>
         /// id that refers to address
         /// </summary>
         /// <value>id that refers to address</value>
         [DataMember(Name="location_id", EmitDefaultValue=false)]
         public string LocationId { get; set; }
+
         /// <summary>
         /// arrival time at this activity in ms
         /// </summary>
         /// <value>arrival time at this activity in ms</value>
         [DataMember(Name="arr_time", EmitDefaultValue=false)]
         public long? ArrTime { get; set; }
+
         /// <summary>
         /// end time of and thus departure time at this activity
         /// </summary>
         /// <value>end time of and thus departure time at this activity</value>
         [DataMember(Name="end_time", EmitDefaultValue=false)]
         public long? EndTime { get; set; }
+
         /// <summary>
         /// waiting time at this activity in ms
         /// </summary>
         /// <value>waiting time at this activity in ms</value>
         [DataMember(Name="waiting_time", EmitDefaultValue=false)]
         public long? WaitingTime { get; set; }
+
         /// <summary>
         /// cumulated distance from start to this activity in m
         /// </summary>
         /// <value>cumulated distance from start to this activity in m</value>
         [DataMember(Name="distance", EmitDefaultValue=false)]
         public long? Distance { get; set; }
+
         /// <summary>
         /// driving time of driver in ms
         /// </summary>
         /// <value>driving time of driver in ms</value>
         [DataMember(Name="driving_time", EmitDefaultValue=false)]
         public long? DrivingTime { get; set; }
+
         /// <summary>
         /// Array with size/capacity dimensions before this activity
         /// </summary>
         /// <value>Array with size/capacity dimensions before this activity</value>
         [DataMember(Name="load_before", EmitDefaultValue=false)]
         public List<int?> LoadBefore { get; set; }
+
         /// <summary>
         /// Array with size/capacity dimensions after this activity
         /// </summary>
         /// <value>Array with size/capacity dimensions after this activity</value>
         [DataMember(Name="load_after", EmitDefaultValue=false)]
         public List<int?> LoadAfter { get; set; }
+
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -314,8 +325,13 @@ namespace IO.Swagger.Model
             }
         }
 
-        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
-        { 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
             yield break;
         }
     }

@@ -33,6 +33,7 @@ public:
 
     QString host;
     QString basePath;
+    QMap<QString, QString> defaultHeaders;
 
     void geocodeGet(QString* key, QString* q, QString* locale, qint32 limit, bool reverse, QString* point, QString* provider);
     
@@ -42,6 +43,9 @@ private:
 signals:
     void geocodeGetSignal(SWGGeocodingResponse* summary);
     
+    void geocodeGetSignalE(SWGGeocodingResponse* summary, QNetworkReply::NetworkError error_type, QString& error_str);
+    
 };
+
 }
 #endif

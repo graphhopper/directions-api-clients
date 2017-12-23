@@ -14,10 +14,15 @@
 package com.graphhopper.directions.api.client.model;
 
 import java.util.Objects;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import com.graphhopper.directions.api.client.model.IsochroneResponsePolygon;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,10 +32,10 @@ import java.util.List;
 
 public class IsochroneResponse {
   @SerializedName("polygons")
-  private List<IsochroneResponsePolygon> polygons = new ArrayList<IsochroneResponsePolygon>();
+  private List<IsochroneResponsePolygon> polygons = null;
 
   @SerializedName("copyrights")
-  private List<String> copyrights = new ArrayList<String>();
+  private List<String> copyrights = null;
 
   public IsochroneResponse polygons(List<IsochroneResponsePolygon> polygons) {
     this.polygons = polygons;
@@ -38,6 +43,9 @@ public class IsochroneResponse {
   }
 
   public IsochroneResponse addPolygonsItem(IsochroneResponsePolygon polygonsItem) {
+    if (this.polygons == null) {
+      this.polygons = new ArrayList<IsochroneResponsePolygon>();
+    }
     this.polygons.add(polygonsItem);
     return this;
   }
@@ -46,7 +54,7 @@ public class IsochroneResponse {
    * Get polygons
    * @return polygons
   **/
-  @ApiModelProperty(example = "null", value = "")
+  @ApiModelProperty(value = "")
   public List<IsochroneResponsePolygon> getPolygons() {
     return polygons;
   }
@@ -61,6 +69,9 @@ public class IsochroneResponse {
   }
 
   public IsochroneResponse addCopyrightsItem(String copyrightsItem) {
+    if (this.copyrights == null) {
+      this.copyrights = new ArrayList<String>();
+    }
     this.copyrights.add(copyrightsItem);
     return this;
   }
@@ -69,7 +80,7 @@ public class IsochroneResponse {
    * Get copyrights
    * @return copyrights
   **/
-  @ApiModelProperty(example = "null", value = "")
+  @ApiModelProperty(value = "")
   public List<String> getCopyrights() {
     return copyrights;
   }

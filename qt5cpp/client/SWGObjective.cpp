@@ -22,7 +22,6 @@
 
 namespace Swagger {
 
-
 SWGObjective::SWGObjective(QString* json) {
     init();
     this->fromJson(*json);
@@ -109,6 +108,5 @@ SWGObjective::setValue(QString* value) {
 }
 
 
-
-} /* namespace Swagger */
+}
 

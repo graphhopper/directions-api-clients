@@ -113,12 +113,11 @@ class VrpApi(object):
 
         collection_formats = {}
 
-        resource_path = '/vrp/optimize'.replace('{format}', 'json')
         path_params = {}
 
-        query_params = {}
+        query_params = []
         if 'key' in params:
-            query_params['key'] = params['key']
+            query_params.append(('key', params['key']))
 
         header_params = {}
 
@@ -139,7 +138,7 @@ class VrpApi(object):
         # Authentication setting
         auth_settings = []
 
-        return self.api_client.call_api(resource_path, 'POST',
+        return self.api_client.call_api('/vrp/optimize', 'POST',
                                         path_params,
                                         query_params,
                                         header_params,

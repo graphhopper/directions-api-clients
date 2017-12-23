@@ -22,7 +22,6 @@
 
 namespace Swagger {
 
-
 SWGRoute::SWGRoute(QString* json) {
     init();
     this->fromJson(*json);
@@ -198,6 +197,5 @@ SWGRoute::setPoints(QList<SWGRoutePoint*>* points) {
 }
 
 
-
-} /* namespace Swagger */
+}
 

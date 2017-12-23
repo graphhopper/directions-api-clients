@@ -1,4 +1,4 @@
-# SwaggerClient::ModelBreak
+# DirectionsApiClient::ModelBreak
 
 ## Properties
 Name | Type | Description | Notes

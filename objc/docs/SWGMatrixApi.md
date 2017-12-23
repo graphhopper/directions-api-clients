@@ -115,7 +115,7 @@ SWGMatrixApi*apiInstance = [[SWGMatrixApi alloc] init];
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **key** | **NSString***| Get your key at graphhopper.com | 
- **body** | [**SWGMatrixRequest***](SWGMatrixRequest*.md)|  | [optional] 
+ **body** | [**SWGMatrixRequest***](SWGMatrixRequest.md)|  | [optional] 
 
 ### Return type
 

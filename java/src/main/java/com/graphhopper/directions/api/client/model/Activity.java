@@ -14,9 +14,14 @@
 package com.graphhopper.directions.api.client.model;
 
 import java.util.Objects;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,29 +33,22 @@ public class Activity {
   /**
    * type of activity
    */
+  @JsonAdapter(TypeEnum.Adapter.class)
   public enum TypeEnum {
-    @SerializedName("start")
     START("start"),
     
-    @SerializedName("end")
     END("end"),
     
-    @SerializedName("service")
     SERVICE("service"),
     
-    @SerializedName("pickupShipment")
     PICKUPSHIPMENT("pickupShipment"),
     
-    @SerializedName("deliverShipment")
     DELIVERSHIPMENT("deliverShipment"),
     
-    @SerializedName("pickup")
     PICKUP("pickup"),
     
-    @SerializedName("delivery")
     DELIVERY("delivery"),
     
-    @SerializedName("break")
     BREAK("break");
 
     private String value;
@@ -59,9 +57,35 @@ public class Activity {
       this.value = value;
     }
 
+    public String getValue() {
+      return value;
+    }
+
     @Override
     public String toString() {
       return String.valueOf(value);
+    }
+
+    public static TypeEnum fromValue(String text) {
+      for (TypeEnum b : TypeEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      return null;
+    }
+
+    public static class Adapter extends TypeAdapter<TypeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final TypeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public TypeEnum read(final JsonReader jsonReader) throws IOException {
+        String value = jsonReader.nextString();
+        return TypeEnum.fromValue(String.valueOf(value));
+      }
     }
   }
 
@@ -90,10 +114,10 @@ public class Activity {
   private Long drivingTime = null;
 
   @SerializedName("load_before")
-  private List<Integer> loadBefore = new ArrayList<Integer>();
+  private List<Integer> loadBefore = null;
 
   @SerializedName("load_after")
-  private List<Integer> loadAfter = new ArrayList<Integer>();
+  private List<Integer> loadAfter = null;
 
   public Activity type(TypeEnum type) {
     this.type = type;
@@ -104,7 +128,7 @@ public class Activity {
    * type of activity
    * @return type
   **/
-  @ApiModelProperty(example = "null", value = "type of activity")
+  @ApiModelProperty(value = "type of activity")
   public TypeEnum getType() {
     return type;
   }
@@ -122,7 +146,7 @@ public class Activity {
    * id referring to the underlying service or shipment, i.e. the shipment or service this activity belongs to
    * @return id
   **/
-  @ApiModelProperty(example = "null", value = "id referring to the underlying service or shipment, i.e. the shipment or service this activity belongs to")
+  @ApiModelProperty(value = "id referring to the underlying service or shipment, i.e. the shipment or service this activity belongs to")
   public String getId() {
     return id;
   }
@@ -140,7 +164,7 @@ public class Activity {
    * id that refers to address
    * @return locationId
   **/
-  @ApiModelProperty(example = "null", value = "id that refers to address")
+  @ApiModelProperty(value = "id that refers to address")
   public String getLocationId() {
     return locationId;
   }
@@ -158,7 +182,7 @@ public class Activity {
    * arrival time at this activity in ms
    * @return arrTime
   **/
-  @ApiModelProperty(example = "null", value = "arrival time at this activity in ms")
+  @ApiModelProperty(value = "arrival time at this activity in ms")
   public Long getArrTime() {
     return arrTime;
   }
@@ -176,7 +200,7 @@ public class Activity {
    * end time of and thus departure time at this activity
    * @return endTime
   **/
-  @ApiModelProperty(example = "null", value = "end time of and thus departure time at this activity")
+  @ApiModelProperty(value = "end time of and thus departure time at this activity")
   public Long getEndTime() {
     return endTime;
   }
@@ -194,7 +218,7 @@ public class Activity {
    * waiting time at this activity in ms
    * @return waitingTime
   **/
-  @ApiModelProperty(example = "null", value = "waiting time at this activity in ms")
+  @ApiModelProperty(value = "waiting time at this activity in ms")
   public Long getWaitingTime() {
     return waitingTime;
   }
@@ -212,7 +236,7 @@ public class Activity {
    * cumulated distance from start to this activity in m
    * @return distance
   **/
-  @ApiModelProperty(example = "null", value = "cumulated distance from start to this activity in m")
+  @ApiModelProperty(value = "cumulated distance from start to this activity in m")
   public Long getDistance() {
     return distance;
   }
@@ -230,7 +254,7 @@ public class Activity {
    * driving time of driver in ms
    * @return drivingTime
   **/
-  @ApiModelProperty(example = "null", value = "driving time of driver in ms")
+  @ApiModelProperty(value = "driving time of driver in ms")
   public Long getDrivingTime() {
     return drivingTime;
   }
@@ -245,6 +269,9 @@ public class Activity {
   }
 
   public Activity addLoadBeforeItem(Integer loadBeforeItem) {
+    if (this.loadBefore == null) {
+      this.loadBefore = new ArrayList<Integer>();
+    }
     this.loadBefore.add(loadBeforeItem);
     return this;
   }
@@ -253,7 +280,7 @@ public class Activity {
    * Array with size/capacity dimensions before this activity
    * @return loadBefore
   **/
-  @ApiModelProperty(example = "null", value = "Array with size/capacity dimensions before this activity")
+  @ApiModelProperty(value = "Array with size/capacity dimensions before this activity")
   public List<Integer> getLoadBefore() {
     return loadBefore;
   }
@@ -268,6 +295,9 @@ public class Activity {
   }
 
   public Activity addLoadAfterItem(Integer loadAfterItem) {
+    if (this.loadAfter == null) {
+      this.loadAfter = new ArrayList<Integer>();
+    }
     this.loadAfter.add(loadAfterItem);
     return this;
   }
@@ -276,7 +306,7 @@ public class Activity {
    * Array with size/capacity dimensions after this activity
    * @return loadAfter
   **/
-  @ApiModelProperty(example = "null", value = "Array with size/capacity dimensions after this activity")
+  @ApiModelProperty(value = "Array with size/capacity dimensions after this activity")
   public List<Integer> getLoadAfter() {
     return loadAfter;
   }

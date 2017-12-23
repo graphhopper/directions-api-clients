@@ -14,18 +14,19 @@ package io.swagger.client.model
 
 
 case class GeocodingLocation (
-  point: GeocodingPoint,
+  point: Option[GeocodingPoint],
   /* OSM Id */
-  osmId: String,
+  osmId: Option[String],
   /* N = node, R = relation, W = way */
-  osmType: String,
+  osmType: Option[String],
   /* The osm key of the result like `place` or `amenity` */
-  osmKey: String,
-  name: String,
-  country: String,
-  city: String,
-  state: String,
-  street: String,
-  housenumber: String,
-  postcode: String
+  osmKey: Option[String],
+  name: Option[String],
+  country: Option[String],
+  city: Option[String],
+  state: Option[String],
+  street: Option[String],
+  housenumber: Option[String],
+  postcode: Option[String]
 )
+

@@ -93,7 +93,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **key** | **string**| Get your key at graphhopper.com |
- **body** | [**\Swagger\Client\Model\MatrixRequest**](../Model/\Swagger\Client\Model\MatrixRequest.md)|  | [optional]
+ **body** | [**\Swagger\Client\Model\MatrixRequest**](../Model/MatrixRequest.md)|  | [optional]
 
 ### Return type
 

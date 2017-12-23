@@ -77,6 +77,6 @@ private:
     QList<SWGRoutePoint*>* points;
 };
 
-} /* namespace Swagger */
+}
 
 #endif /* SWGRoute_H_ */

@@ -1,4 +1,4 @@
-# SwaggerClient::GeocodingLocation
+# DirectionsApiClient::GeocodingLocation
 
 ## Properties
 Name | Type | Description | Notes

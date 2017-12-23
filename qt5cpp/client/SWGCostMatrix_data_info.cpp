@@ -22,7 +22,6 @@
 
 namespace Swagger {
 
-
 SWGCostMatrix_data_info::SWGCostMatrix_data_info(QString* json) {
     init();
     this->fromJson(*json);
@@ -114,6 +113,5 @@ SWGCostMatrix_data_info::setTook(double took) {
 }
 
 
-
-} /* namespace Swagger */
+}
 

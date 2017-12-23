@@ -22,7 +22,6 @@
 
 namespace Swagger {
 
-
 SWGResponseInstruction::SWGResponseInstruction(QString* json) {
     init();
     this->fromJson(*json);
@@ -228,6 +227,5 @@ SWGResponseInstruction::setTurnAngle(double turn_angle) {
 }
 
 
-
-} /* namespace Swagger */
+}
 

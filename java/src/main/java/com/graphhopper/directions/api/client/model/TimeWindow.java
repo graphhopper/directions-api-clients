@@ -14,9 +14,14 @@
 package com.graphhopper.directions.api.client.model;
 
 import java.util.Objects;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 
 /**
  * TimeWindow
@@ -38,7 +43,7 @@ public class TimeWindow {
    * earliest start time of corresponding activity
    * @return earliest
   **/
-  @ApiModelProperty(example = "null", value = "earliest start time of corresponding activity")
+  @ApiModelProperty(value = "earliest start time of corresponding activity")
   public Long getEarliest() {
     return earliest;
   }
@@ -56,7 +61,7 @@ public class TimeWindow {
    * latest start time of corresponding activity
    * @return latest
   **/
-  @ApiModelProperty(example = "null", value = "latest start time of corresponding activity")
+  @ApiModelProperty(value = "latest start time of corresponding activity")
   public Long getLatest() {
     return latest;
   }

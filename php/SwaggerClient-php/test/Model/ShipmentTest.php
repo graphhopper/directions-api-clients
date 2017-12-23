@@ -47,7 +47,6 @@ class ShipmentTest extends \PHPUnit_Framework_TestCase
      */
     public static function setUpBeforeClass()
     {
-
     }
 
     /**
@@ -55,7 +54,6 @@ class ShipmentTest extends \PHPUnit_Framework_TestCase
      */
     public function setUp()
     {
-
     }
 
     /**
@@ -63,7 +61,6 @@ class ShipmentTest extends \PHPUnit_Framework_TestCase
      */
     public function tearDown()
     {
-
     }
 
     /**
@@ -71,7 +68,6 @@ class ShipmentTest extends \PHPUnit_Framework_TestCase
      */
     public static function tearDownAfterClass()
     {
-
     }
 
     /**
@@ -79,7 +75,6 @@ class ShipmentTest extends \PHPUnit_Framework_TestCase
      */
     public function testShipment()
     {
-
     }
 
     /**
@@ -87,7 +82,6 @@ class ShipmentTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyId()
     {
-
     }
 
     /**
@@ -95,7 +89,6 @@ class ShipmentTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyName()
     {
-
     }
 
     /**
@@ -103,7 +96,6 @@ class ShipmentTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyPriority()
     {
-
     }
 
     /**
@@ -111,7 +103,6 @@ class ShipmentTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyPickup()
     {
-
     }
 
     /**
@@ -119,7 +110,6 @@ class ShipmentTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyDelivery()
     {
-
     }
 
     /**
@@ -127,7 +117,6 @@ class ShipmentTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertySize()
     {
-
     }
 
     /**
@@ -135,7 +124,6 @@ class ShipmentTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyRequiredSkills()
     {
-
     }
 
     /**
@@ -143,7 +131,5 @@ class ShipmentTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyAllowedVehicles()
     {
-
     }
-
 }

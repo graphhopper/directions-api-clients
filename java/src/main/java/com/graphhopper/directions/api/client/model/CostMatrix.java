@@ -14,10 +14,15 @@
 package com.graphhopper.directions.api.client.model;
 
 import java.util.Objects;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import com.graphhopper.directions.api.client.model.CostMatrixData;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,11 +34,10 @@ public class CostMatrix {
   /**
    * type of cost matrix, currently default or google are supported
    */
+  @JsonAdapter(TypeEnum.Adapter.class)
   public enum TypeEnum {
-    @SerializedName("default")
     DEFAULT("default"),
     
-    @SerializedName("google")
     GOOGLE("google");
 
     private String value;
@@ -42,9 +46,35 @@ public class CostMatrix {
       this.value = value;
     }
 
+    public String getValue() {
+      return value;
+    }
+
     @Override
     public String toString() {
       return String.valueOf(value);
+    }
+
+    public static TypeEnum fromValue(String text) {
+      for (TypeEnum b : TypeEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      return null;
+    }
+
+    public static class Adapter extends TypeAdapter<TypeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final TypeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public TypeEnum read(final JsonReader jsonReader) throws IOException {
+        String value = jsonReader.nextString();
+        return TypeEnum.fromValue(String.valueOf(value));
+      }
     }
   }
 
@@ -55,7 +85,7 @@ public class CostMatrix {
   private String url = null;
 
   @SerializedName("location_ids")
-  private List<String> locationIds = new ArrayList<String>();
+  private List<String> locationIds = null;
 
   @SerializedName("data")
   private CostMatrixData data = null;
@@ -72,7 +102,7 @@ public class CostMatrix {
    * type of cost matrix, currently default or google are supported
    * @return type
   **/
-  @ApiModelProperty(example = "null", value = "type of cost matrix, currently default or google are supported")
+  @ApiModelProperty(value = "type of cost matrix, currently default or google are supported")
   public TypeEnum getType() {
     return type;
   }
@@ -90,7 +120,7 @@ public class CostMatrix {
    * URL of matrix service
    * @return url
   **/
-  @ApiModelProperty(example = "null", value = "URL of matrix service")
+  @ApiModelProperty(value = "URL of matrix service")
   public String getUrl() {
     return url;
   }
@@ -105,6 +135,9 @@ public class CostMatrix {
   }
 
   public CostMatrix addLocationIdsItem(String locationIdsItem) {
+    if (this.locationIds == null) {
+      this.locationIds = new ArrayList<String>();
+    }
     this.locationIds.add(locationIdsItem);
     return this;
   }
@@ -113,7 +146,7 @@ public class CostMatrix {
    * Get locationIds
    * @return locationIds
   **/
-  @ApiModelProperty(example = "null", value = "")
+  @ApiModelProperty(value = "")
   public List<String> getLocationIds() {
     return locationIds;
   }
@@ -131,7 +164,7 @@ public class CostMatrix {
    * Get data
    * @return data
   **/
-  @ApiModelProperty(example = "null", value = "")
+  @ApiModelProperty(value = "")
   public CostMatrixData getData() {
     return data;
   }
@@ -149,7 +182,7 @@ public class CostMatrix {
    * vehicle profile or empty if catch all fallback
    * @return profile
   **/
-  @ApiModelProperty(example = "null", value = "vehicle profile or empty if catch all fallback")
+  @ApiModelProperty(value = "vehicle profile or empty if catch all fallback")
   public String getProfile() {
     return profile;
   }

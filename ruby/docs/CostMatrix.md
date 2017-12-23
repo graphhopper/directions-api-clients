@@ -1,4 +1,4 @@
-# SwaggerClient::CostMatrix
+# DirectionsApiClient::CostMatrix
 
 ## Properties
 Name | Type | Description | Notes

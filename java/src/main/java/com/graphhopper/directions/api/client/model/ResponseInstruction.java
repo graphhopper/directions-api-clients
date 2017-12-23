@@ -14,9 +14,14 @@
 package com.graphhopper.directions.api.client.model;
 
 import java.util.Objects;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,7 +43,7 @@ public class ResponseInstruction {
   private Integer time = null;
 
   @SerializedName("interval")
-  private List<Integer> interval = new ArrayList<Integer>();
+  private List<Integer> interval = null;
 
   @SerializedName("sign")
   private Integer sign = null;
@@ -64,7 +69,7 @@ public class ResponseInstruction {
    * A description what the user has to do in order to follow the route. The language depends on the locale parameter.
    * @return text
   **/
-  @ApiModelProperty(example = "null", value = "A description what the user has to do in order to follow the route. The language depends on the locale parameter.")
+  @ApiModelProperty(value = "A description what the user has to do in order to follow the route. The language depends on the locale parameter.")
   public String getText() {
     return text;
   }
@@ -82,7 +87,7 @@ public class ResponseInstruction {
    * The name of the street to turn onto in order to follow the route.
    * @return streetName
   **/
-  @ApiModelProperty(example = "null", value = "The name of the street to turn onto in order to follow the route.")
+  @ApiModelProperty(value = "The name of the street to turn onto in order to follow the route.")
   public String getStreetName() {
     return streetName;
   }
@@ -100,7 +105,7 @@ public class ResponseInstruction {
    * The distance for this instruction, in meter
    * @return distance
   **/
-  @ApiModelProperty(example = "null", value = "The distance for this instruction, in meter")
+  @ApiModelProperty(value = "The distance for this instruction, in meter")
   public Double getDistance() {
     return distance;
   }
@@ -118,7 +123,7 @@ public class ResponseInstruction {
    * The duration for this instruction, in ms
    * @return time
   **/
-  @ApiModelProperty(example = "null", value = "The duration for this instruction, in ms")
+  @ApiModelProperty(value = "The duration for this instruction, in ms")
   public Integer getTime() {
     return time;
   }
@@ -133,6 +138,9 @@ public class ResponseInstruction {
   }
 
   public ResponseInstruction addIntervalItem(Integer intervalItem) {
+    if (this.interval == null) {
+      this.interval = new ArrayList<Integer>();
+    }
     this.interval.add(intervalItem);
     return this;
   }
@@ -141,7 +149,7 @@ public class ResponseInstruction {
    * An array containing the first and the last index (relative to paths[0].points) of the points for this instruction. This is useful to know for which part of the route the instructions are valid.
    * @return interval
   **/
-  @ApiModelProperty(example = "null", value = "An array containing the first and the last index (relative to paths[0].points) of the points for this instruction. This is useful to know for which part of the route the instructions are valid.")
+  @ApiModelProperty(value = "An array containing the first and the last index (relative to paths[0].points) of the points for this instruction. This is useful to know for which part of the route the instructions are valid.")
   public List<Integer> getInterval() {
     return interval;
   }
@@ -156,10 +164,10 @@ public class ResponseInstruction {
   }
 
    /**
-   * A number which specifies the sign to show e.g. for right turn etc <br>TURN_SHARP_LEFT = -3<br>TURN_LEFT = -2<br>TURN_SLIGHT_LEFT = -1<br>CONTINUE_ON_STREET = 0<br>TURN_SLIGHT_RIGHT = 1<br>TURN_RIGHT = 2<br>TURN_SHARP_RIGHT = 3<br>FINISH = 4<br>VIA_REACHED = 5<br>USE_ROUNDABOUT = 6
+   * A number which specifies the sign to show e.g. for right turn etc &lt;br&gt;TURN_SHARP_LEFT &#x3D; -3&lt;br&gt;TURN_LEFT &#x3D; -2&lt;br&gt;TURN_SLIGHT_LEFT &#x3D; -1&lt;br&gt;CONTINUE_ON_STREET &#x3D; 0&lt;br&gt;TURN_SLIGHT_RIGHT &#x3D; 1&lt;br&gt;TURN_RIGHT &#x3D; 2&lt;br&gt;TURN_SHARP_RIGHT &#x3D; 3&lt;br&gt;FINISH &#x3D; 4&lt;br&gt;VIA_REACHED &#x3D; 5&lt;br&gt;USE_ROUNDABOUT &#x3D; 6
    * @return sign
   **/
-  @ApiModelProperty(example = "null", value = "A number which specifies the sign to show e.g. for right turn etc <br>TURN_SHARP_LEFT = -3<br>TURN_LEFT = -2<br>TURN_SLIGHT_LEFT = -1<br>CONTINUE_ON_STREET = 0<br>TURN_SLIGHT_RIGHT = 1<br>TURN_RIGHT = 2<br>TURN_SHARP_RIGHT = 3<br>FINISH = 4<br>VIA_REACHED = 5<br>USE_ROUNDABOUT = 6")
+  @ApiModelProperty(value = "A number which specifies the sign to show e.g. for right turn etc <br>TURN_SHARP_LEFT = -3<br>TURN_LEFT = -2<br>TURN_SLIGHT_LEFT = -1<br>CONTINUE_ON_STREET = 0<br>TURN_SLIGHT_RIGHT = 1<br>TURN_RIGHT = 2<br>TURN_SHARP_RIGHT = 3<br>FINISH = 4<br>VIA_REACHED = 5<br>USE_ROUNDABOUT = 6")
   public Integer getSign() {
     return sign;
   }
@@ -177,7 +185,7 @@ public class ResponseInstruction {
    * optional - A text describing the instruction in more detail, e.g. like surface of the way, warnings or involved costs.
    * @return annotationText
   **/
-  @ApiModelProperty(example = "null", value = "optional - A text describing the instruction in more detail, e.g. like surface of the way, warnings or involved costs.")
+  @ApiModelProperty(value = "optional - A text describing the instruction in more detail, e.g. like surface of the way, warnings or involved costs.")
   public String getAnnotationText() {
     return annotationText;
   }
@@ -195,7 +203,7 @@ public class ResponseInstruction {
    * optional - 0 stands for INFO, 1 for warning, 2 for costs, 3 for costs and warning
    * @return annotationImportance
   **/
-  @ApiModelProperty(example = "null", value = "optional - 0 stands for INFO, 1 for warning, 2 for costs, 3 for costs and warning")
+  @ApiModelProperty(value = "optional - 0 stands for INFO, 1 for warning, 2 for costs, 3 for costs and warning")
   public Integer getAnnotationImportance() {
     return annotationImportance;
   }
@@ -213,7 +221,7 @@ public class ResponseInstruction {
    * optional - Only available for USE_ROUNDABOUT instructions. The count of exits at which the route leaves the roundabout.
    * @return exitNumber
   **/
-  @ApiModelProperty(example = "null", value = "optional - Only available for USE_ROUNDABOUT instructions. The count of exits at which the route leaves the roundabout.")
+  @ApiModelProperty(value = "optional - Only available for USE_ROUNDABOUT instructions. The count of exits at which the route leaves the roundabout.")
   public Integer getExitNumber() {
     return exitNumber;
   }
@@ -228,10 +236,10 @@ public class ResponseInstruction {
   }
 
    /**
-   * optional - Only available for USE_ROUNDABOUT instructions. The radian of the route within the roundabout - 0&lt;r&lt;2*PI for clockwise and -2PI&lt;r&lt;0 for counterclockwise transit. Null if the direction of rotation is undefined.
+   * optional - Only available for USE_ROUNDABOUT instructions. The radian of the route within the roundabout - 0&amp;lt;r&amp;lt;2*PI for clockwise and -2PI&amp;lt;r&amp;lt;0 for counterclockwise transit. Null if the direction of rotation is undefined.
    * @return turnAngle
   **/
-  @ApiModelProperty(example = "null", value = "optional - Only available for USE_ROUNDABOUT instructions. The radian of the route within the roundabout - 0&lt;r&lt;2*PI for clockwise and -2PI&lt;r&lt;0 for counterclockwise transit. Null if the direction of rotation is undefined.")
+  @ApiModelProperty(value = "optional - Only available for USE_ROUNDABOUT instructions. The radian of the route within the roundabout - 0&lt;r&lt;2*PI for clockwise and -2PI&lt;r&lt;0 for counterclockwise transit. Null if the direction of rotation is undefined.")
   public Double getTurnAngle() {
     return turnAngle;
   }

@@ -56,6 +56,6 @@ private:
     QList<QString*>* copyrights;
 };
 
-} /* namespace Swagger */
+}
 
 #endif /* SWGIsochroneResponse_H_ */

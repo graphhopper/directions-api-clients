@@ -22,7 +22,6 @@
 
 namespace Swagger {
 
-
 SWGResponseInstructions::SWGResponseInstructions(QString* json) {
     init();
     this->fromJson(*json);
@@ -75,6 +74,5 @@ SWGResponseInstructions::asJsonObject() {
 }
 
 
-
-} /* namespace Swagger */
+}
 

@@ -14,6 +14,7 @@ package io.swagger.client.model
 
 
 case class ResponseInfo (
-  copyrights: List[String],
-  took: Double
+  copyrights: Option[List[String]],
+  took: Option[Double]
 )
+

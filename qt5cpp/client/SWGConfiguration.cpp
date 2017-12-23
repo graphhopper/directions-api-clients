@@ -22,7 +22,6 @@
 
 namespace Swagger {
 
-
 SWGConfiguration::SWGConfiguration(QString* json) {
     init();
     this->fromJson(*json);
@@ -92,6 +91,5 @@ SWGConfiguration::setRouting(SWGRouting* routing) {
 }
 
 
-
-} /* namespace Swagger */
+}
 

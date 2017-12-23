@@ -35,7 +35,9 @@ class TestAddress(unittest.TestCase):
         """
         Test Address
         """
-        model = swagger_client.models.address.Address()
+        # FIXME: construct object with mandatory attributes with example values
+        #model = swagger_client.models.address.Address()
+        pass
 
 
 if __name__ == '__main__':

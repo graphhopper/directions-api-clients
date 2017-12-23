@@ -22,7 +22,6 @@
 
 namespace Swagger {
 
-
 SWGStop::SWGStop(QString* json) {
     init();
     this->fromJson(*json);
@@ -145,6 +144,5 @@ SWGStop::setTimeWindows(QList<SWGTimeWindow*>* time_windows) {
 }
 
 
-
-} /* namespace Swagger */
+}
 

@@ -47,7 +47,6 @@ class MatrixRequestTest extends \PHPUnit_Framework_TestCase
      */
     public static function setUpBeforeClass()
     {
-
     }
 
     /**
@@ -55,7 +54,6 @@ class MatrixRequestTest extends \PHPUnit_Framework_TestCase
      */
     public function setUp()
     {
-
     }
 
     /**
@@ -63,7 +61,6 @@ class MatrixRequestTest extends \PHPUnit_Framework_TestCase
      */
     public function tearDown()
     {
-
     }
 
     /**
@@ -71,7 +68,6 @@ class MatrixRequestTest extends \PHPUnit_Framework_TestCase
      */
     public static function tearDownAfterClass()
     {
-
     }
 
     /**
@@ -79,7 +75,6 @@ class MatrixRequestTest extends \PHPUnit_Framework_TestCase
      */
     public function testMatrixRequest()
     {
-
     }
 
     /**
@@ -87,7 +82,6 @@ class MatrixRequestTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyPoints()
     {
-
     }
 
     /**
@@ -95,7 +89,6 @@ class MatrixRequestTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyFromPoints()
     {
-
     }
 
     /**
@@ -103,7 +96,6 @@ class MatrixRequestTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyToPoints()
     {
-
     }
 
     /**
@@ -111,7 +103,6 @@ class MatrixRequestTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyOutArrays()
     {
-
     }
 
     /**
@@ -119,7 +110,5 @@ class MatrixRequestTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyVehicle()
     {
-
     }
-
 }

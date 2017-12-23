@@ -67,9 +67,32 @@ class GeocodingLocation implements ArrayAccess
         'postcode' => 'string'
     ];
 
+    /**
+      * Array of property to format mappings. Used for (de)serialization
+      * @var string[]
+      */
+    protected static $swaggerFormats = [
+        'point' => null,
+        'osm_id' => null,
+        'osm_type' => null,
+        'osm_key' => null,
+        'name' => null,
+        'country' => null,
+        'city' => null,
+        'state' => null,
+        'street' => null,
+        'housenumber' => null,
+        'postcode' => null
+    ];
+
     public static function swaggerTypes()
     {
         return self::$swaggerTypes;
+    }
+
+    public static function swaggerFormats()
+    {
+        return self::$swaggerFormats;
     }
 
     /**

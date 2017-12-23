@@ -15,7 +15,8 @@ package io.swagger.client.model
 
 case class Location (
   /* longitude */
-  lon: Double,
+  lon: Option[Double],
   /* latitude */
-  lat: Double
+  lat: Option[Double]
 )
+

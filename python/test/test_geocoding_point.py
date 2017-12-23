@@ -35,7 +35,9 @@ class TestGeocodingPoint(unittest.TestCase):
         """
         Test GeocodingPoint
         """
-        model = swagger_client.models.geocoding_point.GeocodingPoint()
+        # FIXME: construct object with mandatory attributes with example values
+        #model = swagger_client.models.geocoding_point.GeocodingPoint()
+        pass
 
 
 if __name__ == '__main__':

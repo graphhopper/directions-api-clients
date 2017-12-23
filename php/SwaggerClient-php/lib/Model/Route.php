@@ -63,9 +63,28 @@ class Route implements ArrayAccess
         'points' => '\Swagger\Client\Model\RoutePoint[]'
     ];
 
+    /**
+      * Array of property to format mappings. Used for (de)serialization
+      * @var string[]
+      */
+    protected static $swaggerFormats = [
+        'vehicle_id' => null,
+        'distance' => 'int64',
+        'transport_time' => 'int64',
+        'completion_time' => 'int64',
+        'waiting_time' => 'int64',
+        'activities' => null,
+        'points' => null
+    ];
+
     public static function swaggerTypes()
     {
         return self::$swaggerTypes;
+    }
+
+    public static function swaggerFormats()
+    {
+        return self::$swaggerFormats;
     }
 
     /**

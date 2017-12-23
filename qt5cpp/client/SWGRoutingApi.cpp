@@ -18,6 +18,7 @@
 #include <QJsonDocument>
 
 namespace Swagger {
+
 SWGRoutingApi::SWGRoutingApi() {}
 
 SWGRoutingApi::~SWGRoutingApi() {}
@@ -273,9 +274,13 @@ SWGRoutingApi::routeGet(QList<QString*>* point, bool points_encoded, QString* ke
     HttpRequestWorker *worker = new HttpRequestWorker();
     HttpRequestInput input(fullPath, "GET");
 
-    
 
 
+
+
+    foreach(QString key, this->defaultHeaders.keys()) {
+        input.headers.insert(key, this->defaultHeaders.value(key));
+    }
 
     connect(worker,
             &HttpRequestWorker::on_execution_finished,
@@ -288,6 +293,9 @@ SWGRoutingApi::routeGet(QList<QString*>* point, bool points_encoded, QString* ke
 void
 SWGRoutingApi::routeGetCallback(HttpRequestWorker * worker) {
     QString msg;
+    QString error_str = worker->error_str;
+    QNetworkReply::NetworkError error_type = worker->error_type;
+
     if (worker->error_type == QNetworkReply::NoError) {
         msg = QString("Success! %1 bytes").arg(worker->response.length());
     }
@@ -295,14 +303,14 @@ SWGRoutingApi::routeGetCallback(HttpRequestWorker * worker) {
         msg = "Error: " + worker->error_str;
     }
 
-    
-        QString json(worker->response);
-    SWGRouteResponse* output = static_cast<SWGRouteResponse*>(create(json, QString("SWGRouteResponse")));
-    
 
+    QString json(worker->response);
+    SWGRouteResponse* output = static_cast<SWGRouteResponse*>(create(json, QString("SWGRouteResponse")));
     worker->deleteLater();
 
     emit routeGetSignal(output);
-    
+    emit routeGetSignalE(output, error_type, error_str);
 }
-} /* namespace Swagger */
+
+
+}

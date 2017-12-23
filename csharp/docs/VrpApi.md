@@ -29,7 +29,6 @@ namespace Example
     {
         public void main()
         {
-            
             var apiInstance = new VrpApi();
             var key = key_example;  // string | your API key
             var body = new Request(); // Request | Request object that contains the problem to be solved

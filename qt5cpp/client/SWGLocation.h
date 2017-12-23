@@ -53,6 +53,6 @@ private:
     double lat;
 };
 
-} /* namespace Swagger */
+}
 
 #endif /* SWGLocation_H_ */

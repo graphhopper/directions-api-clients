@@ -64,9 +64,29 @@ class VehicleType implements ArrayAccess
         'cost_per_activation' => 'double'
     ];
 
+    /**
+      * Array of property to format mappings. Used for (de)serialization
+      * @var string[]
+      */
+    protected static $swaggerFormats = [
+        'type_id' => null,
+        'profile' => null,
+        'capacity' => 'int32',
+        'speed_factor' => 'double',
+        'service_time_factor' => 'double',
+        'cost_per_meter' => 'double',
+        'cost_per_second' => 'double',
+        'cost_per_activation' => 'double'
+    ];
+
     public static function swaggerTypes()
     {
         return self::$swaggerTypes;
+    }
+
+    public static function swaggerFormats()
+    {
+        return self::$swaggerFormats;
     }
 
     /**
@@ -190,9 +210,12 @@ class VehicleType implements ArrayAccess
     {
         $invalid_properties = [];
 
-        $allowed_values = ["car", "bike", "foot", "mtb", "racingbike", "truck", "small_truck"];
+        $allowed_values = $this->getProfileAllowableValues();
         if (!in_array($this->container['profile'], $allowed_values)) {
-            $invalid_properties[] = "invalid value for 'profile', must be one of 'car', 'bike', 'foot', 'mtb', 'racingbike', 'truck', 'small_truck'.";
+            $invalid_properties[] = sprintf(
+                "invalid value for 'profile', must be one of '%s'",
+                implode("', '", $allowed_values)
+            );
         }
 
         return $invalid_properties;
@@ -207,7 +230,7 @@ class VehicleType implements ArrayAccess
     public function valid()
     {
 
-        $allowed_values = ["car", "bike", "foot", "mtb", "racingbike", "truck", "small_truck"];
+        $allowed_values = $this->getProfileAllowableValues();
         if (!in_array($this->container['profile'], $allowed_values)) {
             return false;
         }
@@ -252,9 +275,14 @@ class VehicleType implements ArrayAccess
      */
     public function setProfile($profile)
     {
-        $allowed_values = array('car', 'bike', 'foot', 'mtb', 'racingbike', 'truck', 'small_truck');
-        if (!is_null($profile) && (!in_array($profile, $allowed_values))) {
-            throw new \InvalidArgumentException("Invalid value for 'profile', must be one of 'car', 'bike', 'foot', 'mtb', 'racingbike', 'truck', 'small_truck'");
+        $allowed_values = $this->getProfileAllowableValues();
+        if (!is_null($profile) && !in_array($profile, $allowed_values)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'profile', must be one of '%s'",
+                    implode("', '", $allowed_values)
+                )
+            );
         }
         $this->container['profile'] = $profile;
 

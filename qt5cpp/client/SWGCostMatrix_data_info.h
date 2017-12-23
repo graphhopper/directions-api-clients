@@ -55,6 +55,6 @@ private:
     double took;
 };
 
-} /* namespace Swagger */
+}
 
 #endif /* SWGCostMatrix_data_info_H_ */

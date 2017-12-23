@@ -22,7 +22,6 @@
 
 namespace Swagger {
 
-
 SWGSolution_unassigned::SWGSolution_unassigned(QString* json) {
     init();
     this->fromJson(*json);
@@ -125,6 +124,5 @@ SWGSolution_unassigned::setShipments(QList<QString*>* shipments) {
 }
 
 
-
-} /* namespace Swagger */
+}
 

@@ -14,9 +14,14 @@
 package com.graphhopper.directions.api.client.model;
 
 import java.util.Objects;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,7 +46,7 @@ public class ModelBreak {
   private Long initialDrivingTime = null;
 
   @SerializedName("possible_split")
-  private List<Long> possibleSplit = new ArrayList<Long>();
+  private List<Long> possibleSplit = null;
 
   public ModelBreak earliest(Long earliest) {
     this.earliest = earliest;
@@ -52,7 +57,7 @@ public class ModelBreak {
    * earliest start of break
    * @return earliest
   **/
-  @ApiModelProperty(example = "null", value = "earliest start of break")
+  @ApiModelProperty(value = "earliest start of break")
   public Long getEarliest() {
     return earliest;
   }
@@ -70,7 +75,7 @@ public class ModelBreak {
    * latest start of break
    * @return latest
   **/
-  @ApiModelProperty(example = "null", value = "latest start of break")
+  @ApiModelProperty(value = "latest start of break")
   public Long getLatest() {
     return latest;
   }
@@ -88,7 +93,7 @@ public class ModelBreak {
    * duration of break
    * @return duration
   **/
-  @ApiModelProperty(example = "null", value = "duration of break")
+  @ApiModelProperty(value = "duration of break")
   public Long getDuration() {
     return duration;
   }
@@ -106,7 +111,7 @@ public class ModelBreak {
    * max driving time without break
    * @return maxDrivingTime
   **/
-  @ApiModelProperty(example = "null", value = "max driving time without break")
+  @ApiModelProperty(value = "max driving time without break")
   public Long getMaxDrivingTime() {
     return maxDrivingTime;
   }
@@ -124,7 +129,7 @@ public class ModelBreak {
    * initial driving time, i.e. the time your driver has already spent for driving
    * @return initialDrivingTime
   **/
-  @ApiModelProperty(example = "null", value = "initial driving time, i.e. the time your driver has already spent for driving")
+  @ApiModelProperty(value = "initial driving time, i.e. the time your driver has already spent for driving")
   public Long getInitialDrivingTime() {
     return initialDrivingTime;
   }
@@ -139,6 +144,9 @@ public class ModelBreak {
   }
 
   public ModelBreak addPossibleSplitItem(Long possibleSplitItem) {
+    if (this.possibleSplit == null) {
+      this.possibleSplit = new ArrayList<Long>();
+    }
     this.possibleSplit.add(possibleSplitItem);
     return this;
   }
@@ -147,7 +155,7 @@ public class ModelBreak {
    * array of splits
    * @return possibleSplit
   **/
-  @ApiModelProperty(example = "null", value = "array of splits")
+  @ApiModelProperty(value = "array of splits")
   public List<Long> getPossibleSplit() {
     return possibleSplit;
   }

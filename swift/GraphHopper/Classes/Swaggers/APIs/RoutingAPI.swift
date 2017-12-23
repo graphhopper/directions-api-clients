@@ -49,12 +49,12 @@ public class RoutingAPI: APIBase {
      - The GraphHopper Routing API allows to calculate route and implement navigation via the turn instructions
      - examples: [{contentType=application/json, example={
   "paths" : [ {
-    "descend" : 1.3579000000000001069366817318950779736042022705078125,
+    "descend" : 5.962133916683182,
     "instructions" : "",
-    "ascend" : 1.3579000000000001069366817318950779736042022705078125,
-    "distance" : 1.3579000000000001069366817318950779736042022705078125,
-    "bbox" : [ 1.3579000000000001069366817318950779736042022705078125 ],
-    "time" : 123456789,
+    "ascend" : 1.4658129805029452,
+    "distance" : 0.8008281904610115,
+    "bbox" : [ 5.637376656633329 ],
+    "time" : 6,
     "points_encoded" : true,
     "points" : {
       "coordinates" : ""
@@ -62,7 +62,7 @@ public class RoutingAPI: APIBase {
     "snapped_waypoints" : ""
   } ],
   "info" : {
-    "took" : 1.3579000000000001069366817318950779736042022705078125,
+    "took" : 2.3021358869347655,
     "copyrights" : [ "aeiou" ]
   }
 }}]

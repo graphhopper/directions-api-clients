@@ -47,7 +47,6 @@ class RequestTest extends \PHPUnit_Framework_TestCase
      */
     public static function setUpBeforeClass()
     {
-
     }
 
     /**
@@ -55,7 +54,6 @@ class RequestTest extends \PHPUnit_Framework_TestCase
      */
     public function setUp()
     {
-
     }
 
     /**
@@ -63,7 +61,6 @@ class RequestTest extends \PHPUnit_Framework_TestCase
      */
     public function tearDown()
     {
-
     }
 
     /**
@@ -71,7 +68,6 @@ class RequestTest extends \PHPUnit_Framework_TestCase
      */
     public static function tearDownAfterClass()
     {
-
     }
 
     /**
@@ -79,7 +75,6 @@ class RequestTest extends \PHPUnit_Framework_TestCase
      */
     public function testRequest()
     {
-
     }
 
     /**
@@ -87,7 +82,6 @@ class RequestTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyVehicles()
     {
-
     }
 
     /**
@@ -95,7 +89,6 @@ class RequestTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyVehicleTypes()
     {
-
     }
 
     /**
@@ -103,7 +96,6 @@ class RequestTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyServices()
     {
-
     }
 
     /**
@@ -111,7 +103,6 @@ class RequestTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyShipments()
     {
-
     }
 
     /**
@@ -119,7 +110,6 @@ class RequestTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyRelations()
     {
-
     }
 
     /**
@@ -127,7 +117,6 @@ class RequestTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyAlgorithm()
     {
-
     }
 
     /**
@@ -135,7 +124,6 @@ class RequestTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyObjectives()
     {
-
     }
 
     /**
@@ -143,7 +131,6 @@ class RequestTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyCostMatrices()
     {
-
     }
 
     /**
@@ -151,7 +138,5 @@ class RequestTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyConfiguration()
     {
-
     }
-
 }

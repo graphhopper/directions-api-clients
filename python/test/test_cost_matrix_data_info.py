@@ -35,7 +35,9 @@ class TestCostMatrixDataInfo(unittest.TestCase):
         """
         Test CostMatrixDataInfo
         """
-        model = swagger_client.models.cost_matrix_data_info.CostMatrixDataInfo()
+        # FIXME: construct object with mandatory attributes with example values
+        #model = swagger_client.models.cost_matrix_data_info.CostMatrixDataInfo()
+        pass
 
 
 if __name__ == '__main__':

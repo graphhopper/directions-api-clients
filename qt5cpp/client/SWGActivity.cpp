@@ -22,7 +22,6 @@
 
 namespace Swagger {
 
-
 SWGActivity::SWGActivity(QString* json) {
     init();
     this->fromJson(*json);
@@ -232,6 +231,5 @@ SWGActivity::setLoadAfter(QList<qint32>* load_after) {
 }
 
 
-
-} /* namespace Swagger */
+}
 

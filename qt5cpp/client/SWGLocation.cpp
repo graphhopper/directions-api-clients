@@ -22,7 +22,6 @@
 
 namespace Swagger {
 
-
 SWGLocation::SWGLocation(QString* json) {
     init();
     this->fromJson(*json);
@@ -103,6 +102,5 @@ SWGLocation::setLat(double lat) {
 }
 
 
-
-} /* namespace Swagger */
+}
 

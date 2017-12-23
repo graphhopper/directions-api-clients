@@ -20,6 +20,7 @@ using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System.ComponentModel.DataAnnotations;
+using SwaggerDateConverter = IO.Swagger.Client.SwaggerDateConverter;
 
 namespace IO.Swagger.Model
 {
@@ -47,16 +48,19 @@ namespace IO.Swagger.Model
         /// </summary>
         [DataMember(Name="times", EmitDefaultValue=false)]
         public List<List<long?>> Times { get; set; }
+
         /// <summary>
         /// Gets or Sets Distances
         /// </summary>
         [DataMember(Name="distances", EmitDefaultValue=false)]
         public List<List<double?>> Distances { get; set; }
+
         /// <summary>
         /// Gets or Sets Info
         /// </summary>
         [DataMember(Name="info", EmitDefaultValue=false)]
         public CostMatrixDataInfo Info { get; set; }
+
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -142,8 +146,13 @@ namespace IO.Swagger.Model
             }
         }
 
-        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
-        { 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
             yield break;
         }
     }

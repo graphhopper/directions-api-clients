@@ -55,6 +55,6 @@ private:
     double took;
 };
 
-} /* namespace Swagger */
+}
 
 #endif /* SWGResponseInfo_H_ */

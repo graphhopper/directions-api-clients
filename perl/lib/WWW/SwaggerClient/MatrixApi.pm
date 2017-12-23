@@ -113,7 +113,6 @@ sub matrix_get {
 
     # parse inputs
     my $_resource_path = '/matrix';
-    $_resource_path =~ s/{format}/json/; # default format to json
 
     my $_method = 'GET';
     my $query_params = {};
@@ -210,7 +209,6 @@ sub matrix_post {
 
     # parse inputs
     my $_resource_path = '/matrix';
-    $_resource_path =~ s/{format}/json/; # default format to json
 
     my $_method = 'POST';
     my $query_params = {};

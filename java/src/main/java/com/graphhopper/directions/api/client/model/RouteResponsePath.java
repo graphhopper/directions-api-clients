@@ -14,11 +14,16 @@
 package com.graphhopper.directions.api.client.model;
 
 import java.util.Objects;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import com.graphhopper.directions.api.client.model.ResponseCoordinates;
 import com.graphhopper.directions.api.client.model.ResponseInstructions;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,7 +52,7 @@ public class RouteResponsePath {
   private Boolean pointsEncoded = null;
 
   @SerializedName("bbox")
-  private List<Double> bbox = new ArrayList<Double>();
+  private List<Double> bbox = null;
 
   @SerializedName("snapped_waypoints")
   private ResponseCoordinates snappedWaypoints = null;
@@ -64,7 +69,7 @@ public class RouteResponsePath {
    * The total distance of the route, in meter
    * @return distance
   **/
-  @ApiModelProperty(example = "null", value = "The total distance of the route, in meter")
+  @ApiModelProperty(value = "The total distance of the route, in meter")
   public Double getDistance() {
     return distance;
   }
@@ -82,7 +87,7 @@ public class RouteResponsePath {
    * The total time of the route, in ms
    * @return time
   **/
-  @ApiModelProperty(example = "null", value = "The total time of the route, in ms")
+  @ApiModelProperty(value = "The total time of the route, in ms")
   public Long getTime() {
     return time;
   }
@@ -100,7 +105,7 @@ public class RouteResponsePath {
    * Get ascend
    * @return ascend
   **/
-  @ApiModelProperty(example = "null", value = "")
+  @ApiModelProperty(value = "")
   public Double getAscend() {
     return ascend;
   }
@@ -118,7 +123,7 @@ public class RouteResponsePath {
    * The total descend (downhill) of the route, in meter
    * @return descend
   **/
-  @ApiModelProperty(example = "null", value = "The total descend (downhill) of the route, in meter")
+  @ApiModelProperty(value = "The total descend (downhill) of the route, in meter")
   public Double getDescend() {
     return descend;
   }
@@ -136,7 +141,7 @@ public class RouteResponsePath {
    * Get points
    * @return points
   **/
-  @ApiModelProperty(example = "null", value = "")
+  @ApiModelProperty(value = "")
   public ResponseCoordinates getPoints() {
     return points;
   }
@@ -154,7 +159,7 @@ public class RouteResponsePath {
    * Is true if the points are encoded, if not paths[0].points contains the geo json of the path (then order is lon,lat,elevation), which is easier to handle but consumes more bandwidth compared to encoded version
    * @return pointsEncoded
   **/
-  @ApiModelProperty(example = "null", value = "Is true if the points are encoded, if not paths[0].points contains the geo json of the path (then order is lon,lat,elevation), which is easier to handle but consumes more bandwidth compared to encoded version")
+  @ApiModelProperty(value = "Is true if the points are encoded, if not paths[0].points contains the geo json of the path (then order is lon,lat,elevation), which is easier to handle but consumes more bandwidth compared to encoded version")
   public Boolean getPointsEncoded() {
     return pointsEncoded;
   }
@@ -169,15 +174,18 @@ public class RouteResponsePath {
   }
 
   public RouteResponsePath addBboxItem(Double bboxItem) {
+    if (this.bbox == null) {
+      this.bbox = new ArrayList<Double>();
+    }
     this.bbox.add(bboxItem);
     return this;
   }
 
    /**
-   * The bounding box of the route, format <br> minLon, minLat, maxLon, maxLat
+   * The bounding box of the route, format &lt;br&gt; minLon, minLat, maxLon, maxLat
    * @return bbox
   **/
-  @ApiModelProperty(example = "null", value = "The bounding box of the route, format <br> minLon, minLat, maxLon, maxLat")
+  @ApiModelProperty(value = "The bounding box of the route, format <br> minLon, minLat, maxLon, maxLat")
   public List<Double> getBbox() {
     return bbox;
   }
@@ -195,7 +203,7 @@ public class RouteResponsePath {
    * Get snappedWaypoints
    * @return snappedWaypoints
   **/
-  @ApiModelProperty(example = "null", value = "")
+  @ApiModelProperty(value = "")
   public ResponseCoordinates getSnappedWaypoints() {
     return snappedWaypoints;
   }
@@ -213,7 +221,7 @@ public class RouteResponsePath {
    * Get instructions
    * @return instructions
   **/
-  @ApiModelProperty(example = "null", value = "")
+  @ApiModelProperty(value = "")
   public ResponseInstructions getInstructions() {
     return instructions;
   }

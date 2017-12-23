@@ -15,7 +15,8 @@ package io.swagger.client.model
 
 case class SolutionUnassigned (
   /* An array of ids of unassigned services */
-  services: List[String],
+  services: Option[List[String]],
   /* An array of ids of unassigned shipments */
-  shipments: List[String]
+  shipments: Option[List[String]]
 )
+

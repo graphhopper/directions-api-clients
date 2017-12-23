@@ -20,6 +20,7 @@ using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System.ComponentModel.DataAnnotations;
+using SwaggerDateConverter = IO.Swagger.Client.SwaggerDateConverter;
 
 namespace IO.Swagger.Model
 {
@@ -60,50 +61,59 @@ namespace IO.Swagger.Model
         /// <value>The total distance of the route, in meter</value>
         [DataMember(Name="distance", EmitDefaultValue=false)]
         public double? Distance { get; set; }
+
         /// <summary>
         /// The total time of the route, in ms
         /// </summary>
         /// <value>The total time of the route, in ms</value>
         [DataMember(Name="time", EmitDefaultValue=false)]
         public long? Time { get; set; }
+
         /// <summary>
         /// Gets or Sets Ascend
         /// </summary>
         [DataMember(Name="ascend", EmitDefaultValue=false)]
         public double? Ascend { get; set; }
+
         /// <summary>
         /// The total descend (downhill) of the route, in meter
         /// </summary>
         /// <value>The total descend (downhill) of the route, in meter</value>
         [DataMember(Name="descend", EmitDefaultValue=false)]
         public double? Descend { get; set; }
+
         /// <summary>
         /// Gets or Sets Points
         /// </summary>
         [DataMember(Name="points", EmitDefaultValue=false)]
         public ResponseCoordinates Points { get; set; }
+
         /// <summary>
         /// Is true if the points are encoded, if not paths[0].points contains the geo json of the path (then order is lon,lat,elevation), which is easier to handle but consumes more bandwidth compared to encoded version
         /// </summary>
         /// <value>Is true if the points are encoded, if not paths[0].points contains the geo json of the path (then order is lon,lat,elevation), which is easier to handle but consumes more bandwidth compared to encoded version</value>
         [DataMember(Name="points_encoded", EmitDefaultValue=false)]
         public bool? PointsEncoded { get; set; }
+
         /// <summary>
         /// The bounding box of the route, format &lt;br&gt; minLon, minLat, maxLon, maxLat
         /// </summary>
         /// <value>The bounding box of the route, format &lt;br&gt; minLon, minLat, maxLon, maxLat</value>
         [DataMember(Name="bbox", EmitDefaultValue=false)]
         public List<double?> Bbox { get; set; }
+
         /// <summary>
         /// Gets or Sets SnappedWaypoints
         /// </summary>
         [DataMember(Name="snapped_waypoints", EmitDefaultValue=false)]
         public ResponseCoordinates SnappedWaypoints { get; set; }
+
         /// <summary>
         /// Gets or Sets Instructions
         /// </summary>
         [DataMember(Name="instructions", EmitDefaultValue=false)]
         public ResponseInstructions Instructions { get; set; }
+
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -237,8 +247,13 @@ namespace IO.Swagger.Model
             }
         }
 
-        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
-        { 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
             yield break;
         }
     }

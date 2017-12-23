@@ -22,7 +22,6 @@
 
 namespace Swagger {
 
-
 SWGResponseCoordinatesArray::SWGResponseCoordinatesArray(QString* json) {
     init();
     this->fromJson(*json);
@@ -75,6 +74,5 @@ SWGResponseCoordinatesArray::asJsonObject() {
 }
 
 
-
-} /* namespace Swagger */
+}
 

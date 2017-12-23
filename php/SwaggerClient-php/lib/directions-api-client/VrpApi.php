@@ -139,9 +139,6 @@ class VrpApi
         if ($key !== null) {
             $queryParams['key'] = $this->apiClient->getSerializer()->toQueryValue($key);
         }
-        // default format to json
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-
         // body params
         $_tempBody = null;
         if (isset($body)) {

@@ -12,7 +12,8 @@
 
 package io.swagger.client.model
 
-import scala.collections.mutable.ListBuffer
+import scala.collection.mutable.ListBuffer
 
 case class ResponseInstructions (
 )
+

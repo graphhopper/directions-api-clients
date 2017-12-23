@@ -14,7 +14,8 @@ package io.swagger.client.model
 
 
 case class CostMatrixData (
-  times: List[List[Long]],
-  distances: List[List[Double]],
-  info: CostMatrixDataInfo
+  times: Option[List[List[Long]]],
+  distances: Option[List[List[Double]]],
+  info: Option[CostMatrixDataInfo]
 )
+

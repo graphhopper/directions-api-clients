@@ -60,6 +60,6 @@ private:
     SWGIsochroneResponsePolygon_geometry* geometry;
 };
 
-} /* namespace Swagger */
+}
 
 #endif /* SWGIsochroneResponsePolygon_H_ */

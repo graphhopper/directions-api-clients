@@ -33,6 +33,7 @@ public:
 
     QString host;
     QString basePath;
+    QMap<QString, QString> defaultHeaders;
 
     void routeGet(QList<QString*>* point, bool points_encoded, QString* key, QString* locale, bool instructions, QString* vehicle, bool elevation, bool calc_points, QList<QString*>* point_hint, bool ch_disable, QString* weighting, bool edge_traversal, QString* algorithm, qint32 heading, qint32 heading_penalty, bool pass_through, qint32 round_trip_distance, qint64 round_trip_seed, qint32 alternative_route_max_paths, qint32 alternative_route_max_weight_factor, qint32 alternative_route_max_share_factor);
     
@@ -42,6 +43,9 @@ private:
 signals:
     void routeGetSignal(SWGRouteResponse* summary);
     
+    void routeGetSignalE(SWGRouteResponse* summary, QNetworkReply::NetworkError error_type, QString& error_str);
+    
 };
+
 }
 #endif

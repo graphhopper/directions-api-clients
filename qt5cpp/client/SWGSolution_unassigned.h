@@ -55,6 +55,6 @@ private:
     QList<QString*>* shipments;
 };
 
-} /* namespace Swagger */
+}
 
 #endif /* SWGSolution_unassigned_H_ */

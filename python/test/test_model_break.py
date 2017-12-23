@@ -35,7 +35,9 @@ class TestModelBreak(unittest.TestCase):
         """
         Test ModelBreak
         """
-        model = swagger_client.models.model_break.ModelBreak()
+        # FIXME: construct object with mandatory attributes with example values
+        #model = swagger_client.models.model_break.ModelBreak()
+        pass
 
 
 if __name__ == '__main__':

@@ -47,7 +47,6 @@ class VehicleTest extends \PHPUnit_Framework_TestCase
      */
     public static function setUpBeforeClass()
     {
-
     }
 
     /**
@@ -55,7 +54,6 @@ class VehicleTest extends \PHPUnit_Framework_TestCase
      */
     public function setUp()
     {
-
     }
 
     /**
@@ -63,7 +61,6 @@ class VehicleTest extends \PHPUnit_Framework_TestCase
      */
     public function tearDown()
     {
-
     }
 
     /**
@@ -71,7 +68,6 @@ class VehicleTest extends \PHPUnit_Framework_TestCase
      */
     public static function tearDownAfterClass()
     {
-
     }
 
     /**
@@ -79,7 +75,6 @@ class VehicleTest extends \PHPUnit_Framework_TestCase
      */
     public function testVehicle()
     {
-
     }
 
     /**
@@ -87,7 +82,6 @@ class VehicleTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyVehicleId()
     {
-
     }
 
     /**
@@ -95,7 +89,6 @@ class VehicleTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyTypeId()
     {
-
     }
 
     /**
@@ -103,7 +96,6 @@ class VehicleTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyStartAddress()
     {
-
     }
 
     /**
@@ -111,7 +103,6 @@ class VehicleTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyEndAddress()
     {
-
     }
 
     /**
@@ -119,7 +110,6 @@ class VehicleTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyBreak()
     {
-
     }
 
     /**
@@ -127,7 +117,6 @@ class VehicleTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyReturnToDepot()
     {
-
     }
 
     /**
@@ -135,7 +124,6 @@ class VehicleTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyEarliestStart()
     {
-
     }
 
     /**
@@ -143,7 +131,6 @@ class VehicleTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyLatestEnd()
     {
-
     }
 
     /**
@@ -151,7 +138,6 @@ class VehicleTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertySkills()
     {
-
     }
 
     /**
@@ -159,7 +145,5 @@ class VehicleTest extends \PHPUnit_Framework_TestCase
      */
     public function testPropertyMaxDistance()
     {
-
     }
-
 }

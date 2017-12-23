@@ -60,6 +60,6 @@ private:
     QList<SWGGHError_hints*>* hints;
 };
 
-} /* namespace Swagger */
+}
 
 #endif /* SWGGHError_H_ */

@@ -15,15 +15,16 @@ package io.swagger.client.model
 
 case class Break (
   /* earliest start of break */
-  earliest: Long,
+  earliest: Option[Long],
   /* latest start of break */
-  latest: Long,
+  latest: Option[Long],
   /* duration of break */
-  duration: Long,
+  duration: Option[Long],
   /* max driving time without break */
-  maxDrivingTime: Long,
+  maxDrivingTime: Option[Long],
   /* initial driving time, i.e. the time your driver has already spent for driving */
-  initialDrivingTime: Long,
+  initialDrivingTime: Option[Long],
   /* array of splits */
-  possibleSplit: List[Long]
+  possibleSplit: Option[List[Long]]
 )
+

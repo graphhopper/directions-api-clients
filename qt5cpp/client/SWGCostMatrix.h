@@ -68,6 +68,6 @@ private:
     QString* profile;
 };
 
-} /* namespace Swagger */
+}
 
 #endif /* SWGCostMatrix_H_ */

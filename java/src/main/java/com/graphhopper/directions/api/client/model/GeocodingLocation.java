@@ -14,10 +14,15 @@
 package com.graphhopper.directions.api.client.model;
 
 import java.util.Objects;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import com.graphhopper.directions.api.client.model.GeocodingPoint;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 
 /**
  * GeocodingLocation
@@ -66,7 +71,7 @@ public class GeocodingLocation {
    * Get point
    * @return point
   **/
-  @ApiModelProperty(example = "null", value = "")
+  @ApiModelProperty(value = "")
   public GeocodingPoint getPoint() {
     return point;
   }
@@ -84,7 +89,7 @@ public class GeocodingLocation {
    * OSM Id
    * @return osmId
   **/
-  @ApiModelProperty(example = "null", value = "OSM Id")
+  @ApiModelProperty(value = "OSM Id")
   public String getOsmId() {
     return osmId;
   }
@@ -99,10 +104,10 @@ public class GeocodingLocation {
   }
 
    /**
-   * N = node, R = relation, W = way
+   * N &#x3D; node, R &#x3D; relation, W &#x3D; way
    * @return osmType
   **/
-  @ApiModelProperty(example = "null", value = "N = node, R = relation, W = way")
+  @ApiModelProperty(value = "N = node, R = relation, W = way")
   public String getOsmType() {
     return osmType;
   }
@@ -117,10 +122,10 @@ public class GeocodingLocation {
   }
 
    /**
-   * The osm key of the result like `place` or `amenity`
+   * The osm key of the result like &#x60;place&#x60; or &#x60;amenity&#x60;
    * @return osmKey
   **/
-  @ApiModelProperty(example = "null", value = "The osm key of the result like `place` or `amenity`")
+  @ApiModelProperty(value = "The osm key of the result like `place` or `amenity`")
   public String getOsmKey() {
     return osmKey;
   }
@@ -138,7 +143,7 @@ public class GeocodingLocation {
    * Get name
    * @return name
   **/
-  @ApiModelProperty(example = "null", value = "")
+  @ApiModelProperty(value = "")
   public String getName() {
     return name;
   }
@@ -156,7 +161,7 @@ public class GeocodingLocation {
    * Get country
    * @return country
   **/
-  @ApiModelProperty(example = "null", value = "")
+  @ApiModelProperty(value = "")
   public String getCountry() {
     return country;
   }
@@ -174,7 +179,7 @@ public class GeocodingLocation {
    * Get city
    * @return city
   **/
-  @ApiModelProperty(example = "null", value = "")
+  @ApiModelProperty(value = "")
   public String getCity() {
     return city;
   }
@@ -192,7 +197,7 @@ public class GeocodingLocation {
    * Get state
    * @return state
   **/
-  @ApiModelProperty(example = "null", value = "")
+  @ApiModelProperty(value = "")
   public String getState() {
     return state;
   }
@@ -210,7 +215,7 @@ public class GeocodingLocation {
    * Get street
    * @return street
   **/
-  @ApiModelProperty(example = "null", value = "")
+  @ApiModelProperty(value = "")
   public String getStreet() {
     return street;
   }
@@ -228,7 +233,7 @@ public class GeocodingLocation {
    * Get housenumber
    * @return housenumber
   **/
-  @ApiModelProperty(example = "null", value = "")
+  @ApiModelProperty(value = "")
   public String getHousenumber() {
     return housenumber;
   }
@@ -246,7 +251,7 @@ public class GeocodingLocation {
    * Get postcode
    * @return postcode
   **/
-  @ApiModelProperty(example = "null", value = "")
+  @ApiModelProperty(value = "")
   public String getPostcode() {
     return postcode;
   }

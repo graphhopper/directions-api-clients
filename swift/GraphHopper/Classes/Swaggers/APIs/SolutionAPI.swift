@@ -29,25 +29,25 @@ public class SolutionAPI: APIBase {
      - GET /vrp/solution/{jobId}
      - This endpoint returns the solution of a large problems. You can fetch it with the job_id, you have been sent. 
      - examples: [{contentType=application/json, example={
-  "processing_time" : 123456789,
+  "processing_time" : 6,
   "solution" : {
-    "costs" : 123,
+    "costs" : 1,
     "routes" : [ {
-      "completion_time" : 123456789,
-      "distance" : 123456789,
-      "transport_time" : 123456789,
-      "waiting_time" : 123456789,
+      "completion_time" : 1,
+      "distance" : 4,
+      "transport_time" : 7,
+      "waiting_time" : 1,
       "activities" : [ {
-        "distance" : 123456789,
-        "waiting_time" : 123456789,
-        "driving_time" : 123456789,
-        "end_time" : 123456789,
-        "load_before" : [ 123 ],
-        "arr_time" : 123456789,
+        "distance" : 1,
+        "waiting_time" : 7,
+        "driving_time" : 4,
+        "end_time" : 6,
+        "load_before" : [ 5 ],
+        "arr_time" : 1,
         "id" : "aeiou",
-        "type" : "aeiou",
+        "type" : "start",
         "location_id" : "aeiou",
-        "load_after" : [ 123 ]
+        "load_after" : [ 9 ]
       } ],
       "vehicle_id" : "aeiou",
       "points" : [ {
@@ -55,22 +55,22 @@ public class SolutionAPI: APIBase {
         "type" : "aeiou"
       } ]
     } ],
-    "distance" : 123,
-    "transport_time" : 123456789,
-    "waiting_time" : 123456789,
-    "no_vehicles" : 123,
-    "time" : 123456789,
-    "no_unassigned" : 123,
+    "distance" : 5,
+    "transport_time" : 2,
+    "waiting_time" : 9,
+    "no_vehicles" : 3,
+    "time" : 5,
+    "no_unassigned" : 2,
     "unassigned" : {
       "services" : [ "aeiou" ],
       "shipments" : [ "aeiou" ]
     },
-    "max_operation_time" : 123456789
+    "max_operation_time" : 7
   },
   "copyrights" : [ "aeiou" ],
   "job_id" : "aeiou",
-  "waiting_in_queue" : 123456789,
-  "status" : "aeiou"
+  "waiting_in_queue" : 0,
+  "status" : "waiting_in_queue"
 }}]
      
      - parameter key: (query) your API key 

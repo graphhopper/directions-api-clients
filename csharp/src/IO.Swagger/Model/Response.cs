@@ -20,6 +20,7 @@ using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System.ComponentModel.DataAnnotations;
+using SwaggerDateConverter = IO.Swagger.Client.SwaggerDateConverter;
 
 namespace IO.Swagger.Model
 {
@@ -86,30 +87,36 @@ namespace IO.Swagger.Model
         /// </summary>
         [DataMember(Name="copyrights", EmitDefaultValue=false)]
         public List<string> Copyrights { get; set; }
+
         /// <summary>
         /// unique identify of job - which you get when posting your request to the large problem solver
         /// </summary>
         /// <value>unique identify of job - which you get when posting your request to the large problem solver</value>
         [DataMember(Name="job_id", EmitDefaultValue=false)]
         public string JobId { get; set; }
+
+
         /// <summary>
         /// waiting time in ms
         /// </summary>
         /// <value>waiting time in ms</value>
         [DataMember(Name="waiting_in_queue", EmitDefaultValue=false)]
         public long? WaitingInQueue { get; set; }
+
         /// <summary>
         /// processing time in ms. if job is still waiting in queue, processing_time is 0
         /// </summary>
         /// <value>processing time in ms. if job is still waiting in queue, processing_time is 0</value>
         [DataMember(Name="processing_time", EmitDefaultValue=false)]
         public long? ProcessingTime { get; set; }
+
         /// <summary>
         /// the solution. only available if status field indicates finished
         /// </summary>
         /// <value>the solution. only available if status field indicates finished</value>
         [DataMember(Name="solution", EmitDefaultValue=false)]
         public Solution Solution { get; set; }
+
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -219,8 +226,13 @@ namespace IO.Swagger.Model
             }
         }
 
-        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
-        { 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
             yield break;
         }
     }

@@ -56,6 +56,6 @@ private:
     QList<SWGResponseCoordinatesArray*>* coordinates;
 };
 
-} /* namespace Swagger */
+}
 
 #endif /* SWGIsochroneResponsePolygon_geometry_H_ */

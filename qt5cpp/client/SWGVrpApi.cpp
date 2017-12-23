@@ -18,6 +18,7 @@
 #include <QJsonDocument>
 
 namespace Swagger {
+
 SWGVrpApi::SWGVrpApi() {}
 
 SWGVrpApi::~SWGVrpApi() {}
@@ -45,11 +46,15 @@ SWGVrpApi::postVrp(QString* key, SWGRequest body) {
     HttpRequestWorker *worker = new HttpRequestWorker();
     HttpRequestInput input(fullPath, "POST");
 
-    
+
     QString output = body.asJson();
     input.request_body.append(output);
     
 
+
+    foreach(QString key, this->defaultHeaders.keys()) {
+        input.headers.insert(key, this->defaultHeaders.value(key));
+    }
 
     connect(worker,
             &HttpRequestWorker::on_execution_finished,
@@ -62,6 +67,9 @@ SWGVrpApi::postVrp(QString* key, SWGRequest body) {
 void
 SWGVrpApi::postVrpCallback(HttpRequestWorker * worker) {
     QString msg;
+    QString error_str = worker->error_str;
+    QNetworkReply::NetworkError error_type = worker->error_type;
+
     if (worker->error_type == QNetworkReply::NoError) {
         msg = QString("Success! %1 bytes").arg(worker->response.length());
     }
@@ -69,14 +77,14 @@ SWGVrpApi::postVrpCallback(HttpRequestWorker * worker) {
         msg = "Error: " + worker->error_str;
     }
 
-    
-        QString json(worker->response);
-    SWGJobId* output = static_cast<SWGJobId*>(create(json, QString("SWGJobId")));
-    
 
+    QString json(worker->response);
+    SWGJobId* output = static_cast<SWGJobId*>(create(json, QString("SWGJobId")));
     worker->deleteLater();
 
     emit postVrpSignal(output);
-    
+    emit postVrpSignalE(output, error_type, error_str);
 }
-} /* namespace Swagger */
+
+
+}

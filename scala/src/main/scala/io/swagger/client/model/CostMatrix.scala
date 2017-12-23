@@ -15,11 +15,12 @@ package io.swagger.client.model
 
 case class CostMatrix (
   /* type of cost matrix, currently default or google are supported */
-  _type: String,
+  _type: Option[String],
   /* URL of matrix service */
-  url: String,
-  locationIds: List[String],
-  data: CostMatrixData,
+  url: Option[String],
+  locationIds: Option[List[String]],
+  data: Option[CostMatrixData],
   /* vehicle profile or empty if catch all fallback */
-  profile: String
+  profile: Option[String]
 )
+

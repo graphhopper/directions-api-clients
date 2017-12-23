@@ -14,11 +14,16 @@
 package com.graphhopper.directions.api.client.model;
 
 import java.util.Objects;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import com.graphhopper.directions.api.client.model.ResponseInfo;
 import com.graphhopper.directions.api.client.model.RouteResponsePath;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,7 +33,7 @@ import java.util.List;
 
 public class RouteResponse {
   @SerializedName("paths")
-  private List<RouteResponsePath> paths = new ArrayList<RouteResponsePath>();
+  private List<RouteResponsePath> paths = null;
 
   @SerializedName("info")
   private ResponseInfo info = null;
@@ -39,6 +44,9 @@ public class RouteResponse {
   }
 
   public RouteResponse addPathsItem(RouteResponsePath pathsItem) {
+    if (this.paths == null) {
+      this.paths = new ArrayList<RouteResponsePath>();
+    }
     this.paths.add(pathsItem);
     return this;
   }
@@ -47,7 +55,7 @@ public class RouteResponse {
    * Get paths
    * @return paths
   **/
-  @ApiModelProperty(example = "null", value = "")
+  @ApiModelProperty(value = "")
   public List<RouteResponsePath> getPaths() {
     return paths;
   }
@@ -65,7 +73,7 @@ public class RouteResponse {
    * Get info
    * @return info
   **/
-  @ApiModelProperty(example = "null", value = "")
+  @ApiModelProperty(value = "")
   public ResponseInfo getInfo() {
     return info;
   }

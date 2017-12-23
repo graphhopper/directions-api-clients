@@ -89,6 +89,6 @@ private:
     qint64 max_distance;
 };
 
-} /* namespace Swagger */
+}
 
 #endif /* SWGVehicle_H_ */

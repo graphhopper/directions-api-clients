@@ -22,7 +22,6 @@
 
 namespace Swagger {
 
-
 SWGGeocodingPoint::SWGGeocodingPoint(QString* json) {
     init();
     this->fromJson(*json);
@@ -103,6 +102,5 @@ SWGGeocodingPoint::setLng(double lng) {
 }
 
 
-
-} /* namespace Swagger */
+}
 

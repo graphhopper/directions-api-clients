@@ -22,7 +22,6 @@
 
 namespace Swagger {
 
-
 SWGJobId::SWGJobId(QString* json) {
     init();
     this->fromJson(*json);
@@ -92,6 +91,5 @@ SWGJobId::setJobId(QString* job_id) {
 }
 
 
-
-} /* namespace Swagger */
+}
 
