@@ -6,3 +6,4 @@ swagger-codegen-cli*.jar
 nodejs-server/
 .idea/
 *iml
+csharp/nuget.exe
