@@ -63,7 +63,7 @@ namespace IO.Swagger.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
@@ -71,30 +71,28 @@ namespace IO.Swagger.Model
         /// <summary>
         /// Returns true if objects are equal
         /// </summary>
-        /// <param name="obj">Object to be compared</param>
+        /// <param name="input">Object to be compared</param>
         /// <returns>Boolean</returns>
-        public override bool Equals(object obj)
+        public override bool Equals(object input)
         {
-            // credit: http://stackoverflow.com/a/10454552/677735
-            return this.Equals(obj as Routing);
+            return this.Equals(input as Routing);
         }
 
         /// <summary>
         /// Returns true if Routing instances are equal
         /// </summary>
-        /// <param name="other">Instance of Routing to be compared</param>
+        /// <param name="input">Instance of Routing to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(Routing other)
+        public bool Equals(Routing input)
         {
-            // credit: http://stackoverflow.com/a/10454552/677735
-            if (other == null)
+            if (input == null)
                 return false;
 
             return 
                 (
-                    this.CalcPoints == other.CalcPoints ||
-                    this.CalcPoints != null &&
-                    this.CalcPoints.Equals(other.CalcPoints)
+                    this.CalcPoints == input.CalcPoints ||
+                    (this.CalcPoints != null &&
+                    this.CalcPoints.Equals(input.CalcPoints))
                 );
         }
 
@@ -104,14 +102,12 @@ namespace IO.Swagger.Model
         /// <returns>Hash code</returns>
         public override int GetHashCode()
         {
-            // credit: http://stackoverflow.com/a/263416/677735
             unchecked // Overflow is fine, just wrap
             {
-                int hash = 41;
-                // Suitable nullity checks etc, of course :)
+                int hashCode = 41;
                 if (this.CalcPoints != null)
-                    hash = hash * 59 + this.CalcPoints.GetHashCode();
-                return hash;
+                    hashCode = hashCode * 59 + this.CalcPoints.GetHashCode();
+                return hashCode;
             }
         }
 

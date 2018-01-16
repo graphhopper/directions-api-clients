@@ -155,7 +155,7 @@ namespace IO.Swagger.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
@@ -163,80 +163,78 @@ namespace IO.Swagger.Model
         /// <summary>
         /// Returns true if objects are equal
         /// </summary>
-        /// <param name="obj">Object to be compared</param>
+        /// <param name="input">Object to be compared</param>
         /// <returns>Boolean</returns>
-        public override bool Equals(object obj)
+        public override bool Equals(object input)
         {
-            // credit: http://stackoverflow.com/a/10454552/677735
-            return this.Equals(obj as GeocodingLocation);
+            return this.Equals(input as GeocodingLocation);
         }
 
         /// <summary>
         /// Returns true if GeocodingLocation instances are equal
         /// </summary>
-        /// <param name="other">Instance of GeocodingLocation to be compared</param>
+        /// <param name="input">Instance of GeocodingLocation to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(GeocodingLocation other)
+        public bool Equals(GeocodingLocation input)
         {
-            // credit: http://stackoverflow.com/a/10454552/677735
-            if (other == null)
+            if (input == null)
                 return false;
 
             return 
                 (
-                    this.Point == other.Point ||
-                    this.Point != null &&
-                    this.Point.Equals(other.Point)
+                    this.Point == input.Point ||
+                    (this.Point != null &&
+                    this.Point.Equals(input.Point))
                 ) && 
                 (
-                    this.OsmId == other.OsmId ||
-                    this.OsmId != null &&
-                    this.OsmId.Equals(other.OsmId)
+                    this.OsmId == input.OsmId ||
+                    (this.OsmId != null &&
+                    this.OsmId.Equals(input.OsmId))
                 ) && 
                 (
-                    this.OsmType == other.OsmType ||
-                    this.OsmType != null &&
-                    this.OsmType.Equals(other.OsmType)
+                    this.OsmType == input.OsmType ||
+                    (this.OsmType != null &&
+                    this.OsmType.Equals(input.OsmType))
                 ) && 
                 (
-                    this.OsmKey == other.OsmKey ||
-                    this.OsmKey != null &&
-                    this.OsmKey.Equals(other.OsmKey)
+                    this.OsmKey == input.OsmKey ||
+                    (this.OsmKey != null &&
+                    this.OsmKey.Equals(input.OsmKey))
                 ) && 
                 (
-                    this.Name == other.Name ||
-                    this.Name != null &&
-                    this.Name.Equals(other.Name)
+                    this.Name == input.Name ||
+                    (this.Name != null &&
+                    this.Name.Equals(input.Name))
                 ) && 
                 (
-                    this.Country == other.Country ||
-                    this.Country != null &&
-                    this.Country.Equals(other.Country)
+                    this.Country == input.Country ||
+                    (this.Country != null &&
+                    this.Country.Equals(input.Country))
                 ) && 
                 (
-                    this.City == other.City ||
-                    this.City != null &&
-                    this.City.Equals(other.City)
+                    this.City == input.City ||
+                    (this.City != null &&
+                    this.City.Equals(input.City))
                 ) && 
                 (
-                    this.State == other.State ||
-                    this.State != null &&
-                    this.State.Equals(other.State)
+                    this.State == input.State ||
+                    (this.State != null &&
+                    this.State.Equals(input.State))
                 ) && 
                 (
-                    this.Street == other.Street ||
-                    this.Street != null &&
-                    this.Street.Equals(other.Street)
+                    this.Street == input.Street ||
+                    (this.Street != null &&
+                    this.Street.Equals(input.Street))
                 ) && 
                 (
-                    this.Housenumber == other.Housenumber ||
-                    this.Housenumber != null &&
-                    this.Housenumber.Equals(other.Housenumber)
+                    this.Housenumber == input.Housenumber ||
+                    (this.Housenumber != null &&
+                    this.Housenumber.Equals(input.Housenumber))
                 ) && 
                 (
-                    this.Postcode == other.Postcode ||
-                    this.Postcode != null &&
-                    this.Postcode.Equals(other.Postcode)
+                    this.Postcode == input.Postcode ||
+                    (this.Postcode != null &&
+                    this.Postcode.Equals(input.Postcode))
                 );
         }
 
@@ -246,34 +244,32 @@ namespace IO.Swagger.Model
         /// <returns>Hash code</returns>
         public override int GetHashCode()
         {
-            // credit: http://stackoverflow.com/a/263416/677735
             unchecked // Overflow is fine, just wrap
             {
-                int hash = 41;
-                // Suitable nullity checks etc, of course :)
+                int hashCode = 41;
                 if (this.Point != null)
-                    hash = hash * 59 + this.Point.GetHashCode();
+                    hashCode = hashCode * 59 + this.Point.GetHashCode();
                 if (this.OsmId != null)
-                    hash = hash * 59 + this.OsmId.GetHashCode();
+                    hashCode = hashCode * 59 + this.OsmId.GetHashCode();
                 if (this.OsmType != null)
-                    hash = hash * 59 + this.OsmType.GetHashCode();
+                    hashCode = hashCode * 59 + this.OsmType.GetHashCode();
                 if (this.OsmKey != null)
-                    hash = hash * 59 + this.OsmKey.GetHashCode();
+                    hashCode = hashCode * 59 + this.OsmKey.GetHashCode();
                 if (this.Name != null)
-                    hash = hash * 59 + this.Name.GetHashCode();
+                    hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.Country != null)
-                    hash = hash * 59 + this.Country.GetHashCode();
+                    hashCode = hashCode * 59 + this.Country.GetHashCode();
                 if (this.City != null)
-                    hash = hash * 59 + this.City.GetHashCode();
+                    hashCode = hashCode * 59 + this.City.GetHashCode();
                 if (this.State != null)
-                    hash = hash * 59 + this.State.GetHashCode();
+                    hashCode = hashCode * 59 + this.State.GetHashCode();
                 if (this.Street != null)
-                    hash = hash * 59 + this.Street.GetHashCode();
+                    hashCode = hashCode * 59 + this.Street.GetHashCode();
                 if (this.Housenumber != null)
-                    hash = hash * 59 + this.Housenumber.GetHashCode();
+                    hashCode = hashCode * 59 + this.Housenumber.GetHashCode();
                 if (this.Postcode != null)
-                    hash = hash * 59 + this.Postcode.GetHashCode();
-                return hash;
+                    hashCode = hashCode * 59 + this.Postcode.GetHashCode();
+                return hashCode;
             }
         }
 

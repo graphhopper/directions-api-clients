@@ -19,6 +19,7 @@ using IO.Swagger.Api;
 using IO.Swagger.Model;
 using IO.Swagger.Client;
 using System.Reflection;
+using Newtonsoft.Json;
 
 namespace IO.Swagger.Test
 {
@@ -64,6 +65,7 @@ namespace IO.Swagger.Test
             //Assert.IsInstanceOfType<Vehicle> (instance, "variable 'instance' is a Vehicle");
         }
 
+
         /// <summary>
         /// Test the property 'VehicleId'
         /// </summary>
@@ -97,12 +99,12 @@ namespace IO.Swagger.Test
             // TODO unit test for the property 'EndAddress'
         }
         /// <summary>
-        /// Test the property '_Break'
+        /// Test the property 'Break'
         /// </summary>
         [Test]
-        public void _BreakTest()
+        public void BreakTest()
         {
-            // TODO unit test for the property '_Break'
+            // TODO unit test for the property 'Break'
         }
         /// <summary>
         /// Test the property 'ReturnToDepot'

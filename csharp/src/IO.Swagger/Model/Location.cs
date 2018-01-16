@@ -73,7 +73,7 @@ namespace IO.Swagger.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
@@ -81,35 +81,33 @@ namespace IO.Swagger.Model
         /// <summary>
         /// Returns true if objects are equal
         /// </summary>
-        /// <param name="obj">Object to be compared</param>
+        /// <param name="input">Object to be compared</param>
         /// <returns>Boolean</returns>
-        public override bool Equals(object obj)
+        public override bool Equals(object input)
         {
-            // credit: http://stackoverflow.com/a/10454552/677735
-            return this.Equals(obj as Location);
+            return this.Equals(input as Location);
         }
 
         /// <summary>
         /// Returns true if Location instances are equal
         /// </summary>
-        /// <param name="other">Instance of Location to be compared</param>
+        /// <param name="input">Instance of Location to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(Location other)
+        public bool Equals(Location input)
         {
-            // credit: http://stackoverflow.com/a/10454552/677735
-            if (other == null)
+            if (input == null)
                 return false;
 
             return 
                 (
-                    this.Lon == other.Lon ||
-                    this.Lon != null &&
-                    this.Lon.Equals(other.Lon)
+                    this.Lon == input.Lon ||
+                    (this.Lon != null &&
+                    this.Lon.Equals(input.Lon))
                 ) && 
                 (
-                    this.Lat == other.Lat ||
-                    this.Lat != null &&
-                    this.Lat.Equals(other.Lat)
+                    this.Lat == input.Lat ||
+                    (this.Lat != null &&
+                    this.Lat.Equals(input.Lat))
                 );
         }
 
@@ -119,16 +117,14 @@ namespace IO.Swagger.Model
         /// <returns>Hash code</returns>
         public override int GetHashCode()
         {
-            // credit: http://stackoverflow.com/a/263416/677735
             unchecked // Overflow is fine, just wrap
             {
-                int hash = 41;
-                // Suitable nullity checks etc, of course :)
+                int hashCode = 41;
                 if (this.Lon != null)
-                    hash = hash * 59 + this.Lon.GetHashCode();
+                    hashCode = hashCode * 59 + this.Lon.GetHashCode();
                 if (this.Lat != null)
-                    hash = hash * 59 + this.Lat.GetHashCode();
-                return hash;
+                    hashCode = hashCode * 59 + this.Lat.GetHashCode();
+                return hashCode;
             }
         }
 

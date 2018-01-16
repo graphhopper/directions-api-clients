@@ -25,13 +25,13 @@ using SwaggerDateConverter = IO.Swagger.Client.SwaggerDateConverter;
 namespace IO.Swagger.Model
 {
     /// <summary>
-    /// ModelBreak
+    /// Break
     /// </summary>
     [DataContract]
-    public partial class ModelBreak :  IEquatable<ModelBreak>, IValidatableObject
+    public partial class Break :  IEquatable<Break>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ModelBreak" /> class.
+        /// Initializes a new instance of the <see cref="Break" /> class.
         /// </summary>
         /// <param name="Earliest">earliest start of break.</param>
         /// <param name="Latest">latest start of break.</param>
@@ -39,7 +39,7 @@ namespace IO.Swagger.Model
         /// <param name="MaxDrivingTime">max driving time without break.</param>
         /// <param name="InitialDrivingTime">initial driving time, i.e. the time your driver has already spent for driving.</param>
         /// <param name="PossibleSplit">array of splits.</param>
-        public ModelBreak(long? Earliest = default(long?), long? Latest = default(long?), long? Duration = default(long?), long? MaxDrivingTime = default(long?), long? InitialDrivingTime = default(long?), List<long?> PossibleSplit = default(List<long?>))
+        public Break(long? Earliest = default(long?), long? Latest = default(long?), long? Duration = default(long?), long? MaxDrivingTime = default(long?), long? InitialDrivingTime = default(long?), List<long?> PossibleSplit = default(List<long?>))
         {
             this.Earliest = Earliest;
             this.Latest = Latest;
@@ -98,7 +98,7 @@ namespace IO.Swagger.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class ModelBreak {\n");
+            sb.Append("class Break {\n");
             sb.Append("  Earliest: ").Append(Earliest).Append("\n");
             sb.Append("  Latest: ").Append(Latest).Append("\n");
             sb.Append("  Duration: ").Append(Duration).Append("\n");
@@ -113,7 +113,7 @@ namespace IO.Swagger.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
@@ -121,55 +121,53 @@ namespace IO.Swagger.Model
         /// <summary>
         /// Returns true if objects are equal
         /// </summary>
-        /// <param name="obj">Object to be compared</param>
+        /// <param name="input">Object to be compared</param>
         /// <returns>Boolean</returns>
-        public override bool Equals(object obj)
+        public override bool Equals(object input)
         {
-            // credit: http://stackoverflow.com/a/10454552/677735
-            return this.Equals(obj as ModelBreak);
+            return this.Equals(input as Break);
         }
 
         /// <summary>
-        /// Returns true if ModelBreak instances are equal
+        /// Returns true if Break instances are equal
         /// </summary>
-        /// <param name="other">Instance of ModelBreak to be compared</param>
+        /// <param name="input">Instance of Break to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(ModelBreak other)
+        public bool Equals(Break input)
         {
-            // credit: http://stackoverflow.com/a/10454552/677735
-            if (other == null)
+            if (input == null)
                 return false;
 
             return 
                 (
-                    this.Earliest == other.Earliest ||
-                    this.Earliest != null &&
-                    this.Earliest.Equals(other.Earliest)
+                    this.Earliest == input.Earliest ||
+                    (this.Earliest != null &&
+                    this.Earliest.Equals(input.Earliest))
                 ) && 
                 (
-                    this.Latest == other.Latest ||
-                    this.Latest != null &&
-                    this.Latest.Equals(other.Latest)
+                    this.Latest == input.Latest ||
+                    (this.Latest != null &&
+                    this.Latest.Equals(input.Latest))
                 ) && 
                 (
-                    this.Duration == other.Duration ||
-                    this.Duration != null &&
-                    this.Duration.Equals(other.Duration)
+                    this.Duration == input.Duration ||
+                    (this.Duration != null &&
+                    this.Duration.Equals(input.Duration))
                 ) && 
                 (
-                    this.MaxDrivingTime == other.MaxDrivingTime ||
-                    this.MaxDrivingTime != null &&
-                    this.MaxDrivingTime.Equals(other.MaxDrivingTime)
+                    this.MaxDrivingTime == input.MaxDrivingTime ||
+                    (this.MaxDrivingTime != null &&
+                    this.MaxDrivingTime.Equals(input.MaxDrivingTime))
                 ) && 
                 (
-                    this.InitialDrivingTime == other.InitialDrivingTime ||
-                    this.InitialDrivingTime != null &&
-                    this.InitialDrivingTime.Equals(other.InitialDrivingTime)
+                    this.InitialDrivingTime == input.InitialDrivingTime ||
+                    (this.InitialDrivingTime != null &&
+                    this.InitialDrivingTime.Equals(input.InitialDrivingTime))
                 ) && 
                 (
-                    this.PossibleSplit == other.PossibleSplit ||
+                    this.PossibleSplit == input.PossibleSplit ||
                     this.PossibleSplit != null &&
-                    this.PossibleSplit.SequenceEqual(other.PossibleSplit)
+                    this.PossibleSplit.SequenceEqual(input.PossibleSplit)
                 );
         }
 
@@ -179,24 +177,22 @@ namespace IO.Swagger.Model
         /// <returns>Hash code</returns>
         public override int GetHashCode()
         {
-            // credit: http://stackoverflow.com/a/263416/677735
             unchecked // Overflow is fine, just wrap
             {
-                int hash = 41;
-                // Suitable nullity checks etc, of course :)
+                int hashCode = 41;
                 if (this.Earliest != null)
-                    hash = hash * 59 + this.Earliest.GetHashCode();
+                    hashCode = hashCode * 59 + this.Earliest.GetHashCode();
                 if (this.Latest != null)
-                    hash = hash * 59 + this.Latest.GetHashCode();
+                    hashCode = hashCode * 59 + this.Latest.GetHashCode();
                 if (this.Duration != null)
-                    hash = hash * 59 + this.Duration.GetHashCode();
+                    hashCode = hashCode * 59 + this.Duration.GetHashCode();
                 if (this.MaxDrivingTime != null)
-                    hash = hash * 59 + this.MaxDrivingTime.GetHashCode();
+                    hashCode = hashCode * 59 + this.MaxDrivingTime.GetHashCode();
                 if (this.InitialDrivingTime != null)
-                    hash = hash * 59 + this.InitialDrivingTime.GetHashCode();
+                    hashCode = hashCode * 59 + this.InitialDrivingTime.GetHashCode();
                 if (this.PossibleSplit != null)
-                    hash = hash * 59 + this.PossibleSplit.GetHashCode();
-                return hash;
+                    hashCode = hashCode * 59 + this.PossibleSplit.GetHashCode();
+                return hashCode;
             }
         }
 

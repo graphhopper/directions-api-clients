@@ -93,7 +93,7 @@ namespace IO.Swagger.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
@@ -101,45 +101,43 @@ namespace IO.Swagger.Model
         /// <summary>
         /// Returns true if objects are equal
         /// </summary>
-        /// <param name="obj">Object to be compared</param>
+        /// <param name="input">Object to be compared</param>
         /// <returns>Boolean</returns>
-        public override bool Equals(object obj)
+        public override bool Equals(object input)
         {
-            // credit: http://stackoverflow.com/a/10454552/677735
-            return this.Equals(obj as Address);
+            return this.Equals(input as Address);
         }
 
         /// <summary>
         /// Returns true if Address instances are equal
         /// </summary>
-        /// <param name="other">Instance of Address to be compared</param>
+        /// <param name="input">Instance of Address to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(Address other)
+        public bool Equals(Address input)
         {
-            // credit: http://stackoverflow.com/a/10454552/677735
-            if (other == null)
+            if (input == null)
                 return false;
 
             return 
                 (
-                    this.LocationId == other.LocationId ||
-                    this.LocationId != null &&
-                    this.LocationId.Equals(other.LocationId)
+                    this.LocationId == input.LocationId ||
+                    (this.LocationId != null &&
+                    this.LocationId.Equals(input.LocationId))
                 ) && 
                 (
-                    this.Name == other.Name ||
-                    this.Name != null &&
-                    this.Name.Equals(other.Name)
+                    this.Name == input.Name ||
+                    (this.Name != null &&
+                    this.Name.Equals(input.Name))
                 ) && 
                 (
-                    this.Lon == other.Lon ||
-                    this.Lon != null &&
-                    this.Lon.Equals(other.Lon)
+                    this.Lon == input.Lon ||
+                    (this.Lon != null &&
+                    this.Lon.Equals(input.Lon))
                 ) && 
                 (
-                    this.Lat == other.Lat ||
-                    this.Lat != null &&
-                    this.Lat.Equals(other.Lat)
+                    this.Lat == input.Lat ||
+                    (this.Lat != null &&
+                    this.Lat.Equals(input.Lat))
                 );
         }
 
@@ -149,20 +147,18 @@ namespace IO.Swagger.Model
         /// <returns>Hash code</returns>
         public override int GetHashCode()
         {
-            // credit: http://stackoverflow.com/a/263416/677735
             unchecked // Overflow is fine, just wrap
             {
-                int hash = 41;
-                // Suitable nullity checks etc, of course :)
+                int hashCode = 41;
                 if (this.LocationId != null)
-                    hash = hash * 59 + this.LocationId.GetHashCode();
+                    hashCode = hashCode * 59 + this.LocationId.GetHashCode();
                 if (this.Name != null)
-                    hash = hash * 59 + this.Name.GetHashCode();
+                    hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.Lon != null)
-                    hash = hash * 59 + this.Lon.GetHashCode();
+                    hashCode = hashCode * 59 + this.Lon.GetHashCode();
                 if (this.Lat != null)
-                    hash = hash * 59 + this.Lat.GetHashCode();
-                return hash;
+                    hashCode = hashCode * 59 + this.Lat.GetHashCode();
+                return hashCode;
             }
         }
 

@@ -19,6 +19,7 @@ using IO.Swagger.Api;
 using IO.Swagger.Model;
 using IO.Swagger.Client;
 using System.Reflection;
+using Newtonsoft.Json;
 
 namespace IO.Swagger.Test
 {
@@ -63,6 +64,7 @@ namespace IO.Swagger.Test
             // TODO uncomment below to test "IsInstanceOfType" Relation
             //Assert.IsInstanceOfType<Relation> (instance, "variable 'instance' is a Relation");
         }
+
 
         /// <summary>
         /// Test the property 'Type'

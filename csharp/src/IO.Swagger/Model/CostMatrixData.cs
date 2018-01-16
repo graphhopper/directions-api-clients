@@ -80,7 +80,7 @@ namespace IO.Swagger.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
@@ -88,40 +88,38 @@ namespace IO.Swagger.Model
         /// <summary>
         /// Returns true if objects are equal
         /// </summary>
-        /// <param name="obj">Object to be compared</param>
+        /// <param name="input">Object to be compared</param>
         /// <returns>Boolean</returns>
-        public override bool Equals(object obj)
+        public override bool Equals(object input)
         {
-            // credit: http://stackoverflow.com/a/10454552/677735
-            return this.Equals(obj as CostMatrixData);
+            return this.Equals(input as CostMatrixData);
         }
 
         /// <summary>
         /// Returns true if CostMatrixData instances are equal
         /// </summary>
-        /// <param name="other">Instance of CostMatrixData to be compared</param>
+        /// <param name="input">Instance of CostMatrixData to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(CostMatrixData other)
+        public bool Equals(CostMatrixData input)
         {
-            // credit: http://stackoverflow.com/a/10454552/677735
-            if (other == null)
+            if (input == null)
                 return false;
 
             return 
                 (
-                    this.Times == other.Times ||
+                    this.Times == input.Times ||
                     this.Times != null &&
-                    this.Times.SequenceEqual(other.Times)
+                    this.Times.SequenceEqual(input.Times)
                 ) && 
                 (
-                    this.Distances == other.Distances ||
+                    this.Distances == input.Distances ||
                     this.Distances != null &&
-                    this.Distances.SequenceEqual(other.Distances)
+                    this.Distances.SequenceEqual(input.Distances)
                 ) && 
                 (
-                    this.Info == other.Info ||
-                    this.Info != null &&
-                    this.Info.Equals(other.Info)
+                    this.Info == input.Info ||
+                    (this.Info != null &&
+                    this.Info.Equals(input.Info))
                 );
         }
 
@@ -131,18 +129,16 @@ namespace IO.Swagger.Model
         /// <returns>Hash code</returns>
         public override int GetHashCode()
         {
-            // credit: http://stackoverflow.com/a/263416/677735
             unchecked // Overflow is fine, just wrap
             {
-                int hash = 41;
-                // Suitable nullity checks etc, of course :)
+                int hashCode = 41;
                 if (this.Times != null)
-                    hash = hash * 59 + this.Times.GetHashCode();
+                    hashCode = hashCode * 59 + this.Times.GetHashCode();
                 if (this.Distances != null)
-                    hash = hash * 59 + this.Distances.GetHashCode();
+                    hashCode = hashCode * 59 + this.Distances.GetHashCode();
                 if (this.Info != null)
-                    hash = hash * 59 + this.Info.GetHashCode();
-                return hash;
+                    hashCode = hashCode * 59 + this.Info.GetHashCode();
+                return hashCode;
             }
         }
 

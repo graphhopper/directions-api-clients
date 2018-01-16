@@ -19,6 +19,7 @@ using IO.Swagger.Api;
 using IO.Swagger.Model;
 using IO.Swagger.Client;
 using System.Reflection;
+using Newtonsoft.Json;
 
 namespace IO.Swagger.Test
 {
@@ -63,6 +64,7 @@ namespace IO.Swagger.Test
             // TODO uncomment below to test "IsInstanceOfType" Objective
             //Assert.IsInstanceOfType<Objective> (instance, "variable 'instance' is a Objective");
         }
+
 
         /// <summary>
         /// Test the property 'Type'

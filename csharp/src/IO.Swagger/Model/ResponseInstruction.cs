@@ -153,7 +153,7 @@ namespace IO.Swagger.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
@@ -161,75 +161,73 @@ namespace IO.Swagger.Model
         /// <summary>
         /// Returns true if objects are equal
         /// </summary>
-        /// <param name="obj">Object to be compared</param>
+        /// <param name="input">Object to be compared</param>
         /// <returns>Boolean</returns>
-        public override bool Equals(object obj)
+        public override bool Equals(object input)
         {
-            // credit: http://stackoverflow.com/a/10454552/677735
-            return this.Equals(obj as ResponseInstruction);
+            return this.Equals(input as ResponseInstruction);
         }
 
         /// <summary>
         /// Returns true if ResponseInstruction instances are equal
         /// </summary>
-        /// <param name="other">Instance of ResponseInstruction to be compared</param>
+        /// <param name="input">Instance of ResponseInstruction to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(ResponseInstruction other)
+        public bool Equals(ResponseInstruction input)
         {
-            // credit: http://stackoverflow.com/a/10454552/677735
-            if (other == null)
+            if (input == null)
                 return false;
 
             return 
                 (
-                    this.Text == other.Text ||
-                    this.Text != null &&
-                    this.Text.Equals(other.Text)
+                    this.Text == input.Text ||
+                    (this.Text != null &&
+                    this.Text.Equals(input.Text))
                 ) && 
                 (
-                    this.StreetName == other.StreetName ||
-                    this.StreetName != null &&
-                    this.StreetName.Equals(other.StreetName)
+                    this.StreetName == input.StreetName ||
+                    (this.StreetName != null &&
+                    this.StreetName.Equals(input.StreetName))
                 ) && 
                 (
-                    this.Distance == other.Distance ||
-                    this.Distance != null &&
-                    this.Distance.Equals(other.Distance)
+                    this.Distance == input.Distance ||
+                    (this.Distance != null &&
+                    this.Distance.Equals(input.Distance))
                 ) && 
                 (
-                    this.Time == other.Time ||
-                    this.Time != null &&
-                    this.Time.Equals(other.Time)
+                    this.Time == input.Time ||
+                    (this.Time != null &&
+                    this.Time.Equals(input.Time))
                 ) && 
                 (
-                    this.Interval == other.Interval ||
+                    this.Interval == input.Interval ||
                     this.Interval != null &&
-                    this.Interval.SequenceEqual(other.Interval)
+                    this.Interval.SequenceEqual(input.Interval)
                 ) && 
                 (
-                    this.Sign == other.Sign ||
-                    this.Sign != null &&
-                    this.Sign.Equals(other.Sign)
+                    this.Sign == input.Sign ||
+                    (this.Sign != null &&
+                    this.Sign.Equals(input.Sign))
                 ) && 
                 (
-                    this.AnnotationText == other.AnnotationText ||
-                    this.AnnotationText != null &&
-                    this.AnnotationText.Equals(other.AnnotationText)
+                    this.AnnotationText == input.AnnotationText ||
+                    (this.AnnotationText != null &&
+                    this.AnnotationText.Equals(input.AnnotationText))
                 ) && 
                 (
-                    this.AnnotationImportance == other.AnnotationImportance ||
-                    this.AnnotationImportance != null &&
-                    this.AnnotationImportance.Equals(other.AnnotationImportance)
+                    this.AnnotationImportance == input.AnnotationImportance ||
+                    (this.AnnotationImportance != null &&
+                    this.AnnotationImportance.Equals(input.AnnotationImportance))
                 ) && 
                 (
-                    this.ExitNumber == other.ExitNumber ||
-                    this.ExitNumber != null &&
-                    this.ExitNumber.Equals(other.ExitNumber)
+                    this.ExitNumber == input.ExitNumber ||
+                    (this.ExitNumber != null &&
+                    this.ExitNumber.Equals(input.ExitNumber))
                 ) && 
                 (
-                    this.TurnAngle == other.TurnAngle ||
-                    this.TurnAngle != null &&
-                    this.TurnAngle.Equals(other.TurnAngle)
+                    this.TurnAngle == input.TurnAngle ||
+                    (this.TurnAngle != null &&
+                    this.TurnAngle.Equals(input.TurnAngle))
                 );
         }
 
@@ -239,32 +237,30 @@ namespace IO.Swagger.Model
         /// <returns>Hash code</returns>
         public override int GetHashCode()
         {
-            // credit: http://stackoverflow.com/a/263416/677735
             unchecked // Overflow is fine, just wrap
             {
-                int hash = 41;
-                // Suitable nullity checks etc, of course :)
+                int hashCode = 41;
                 if (this.Text != null)
-                    hash = hash * 59 + this.Text.GetHashCode();
+                    hashCode = hashCode * 59 + this.Text.GetHashCode();
                 if (this.StreetName != null)
-                    hash = hash * 59 + this.StreetName.GetHashCode();
+                    hashCode = hashCode * 59 + this.StreetName.GetHashCode();
                 if (this.Distance != null)
-                    hash = hash * 59 + this.Distance.GetHashCode();
+                    hashCode = hashCode * 59 + this.Distance.GetHashCode();
                 if (this.Time != null)
-                    hash = hash * 59 + this.Time.GetHashCode();
+                    hashCode = hashCode * 59 + this.Time.GetHashCode();
                 if (this.Interval != null)
-                    hash = hash * 59 + this.Interval.GetHashCode();
+                    hashCode = hashCode * 59 + this.Interval.GetHashCode();
                 if (this.Sign != null)
-                    hash = hash * 59 + this.Sign.GetHashCode();
+                    hashCode = hashCode * 59 + this.Sign.GetHashCode();
                 if (this.AnnotationText != null)
-                    hash = hash * 59 + this.AnnotationText.GetHashCode();
+                    hashCode = hashCode * 59 + this.AnnotationText.GetHashCode();
                 if (this.AnnotationImportance != null)
-                    hash = hash * 59 + this.AnnotationImportance.GetHashCode();
+                    hashCode = hashCode * 59 + this.AnnotationImportance.GetHashCode();
                 if (this.ExitNumber != null)
-                    hash = hash * 59 + this.ExitNumber.GetHashCode();
+                    hashCode = hashCode * 59 + this.ExitNumber.GetHashCode();
                 if (this.TurnAngle != null)
-                    hash = hash * 59 + this.TurnAngle.GetHashCode();
-                return hash;
+                    hashCode = hashCode * 59 + this.TurnAngle.GetHashCode();
+                return hashCode;
             }
         }
 

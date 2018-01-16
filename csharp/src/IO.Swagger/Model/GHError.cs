@@ -80,7 +80,7 @@ namespace IO.Swagger.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
@@ -88,40 +88,38 @@ namespace IO.Swagger.Model
         /// <summary>
         /// Returns true if objects are equal
         /// </summary>
-        /// <param name="obj">Object to be compared</param>
+        /// <param name="input">Object to be compared</param>
         /// <returns>Boolean</returns>
-        public override bool Equals(object obj)
+        public override bool Equals(object input)
         {
-            // credit: http://stackoverflow.com/a/10454552/677735
-            return this.Equals(obj as GHError);
+            return this.Equals(input as GHError);
         }
 
         /// <summary>
         /// Returns true if GHError instances are equal
         /// </summary>
-        /// <param name="other">Instance of GHError to be compared</param>
+        /// <param name="input">Instance of GHError to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(GHError other)
+        public bool Equals(GHError input)
         {
-            // credit: http://stackoverflow.com/a/10454552/677735
-            if (other == null)
+            if (input == null)
                 return false;
 
             return 
                 (
-                    this.Code == other.Code ||
-                    this.Code != null &&
-                    this.Code.Equals(other.Code)
+                    this.Code == input.Code ||
+                    (this.Code != null &&
+                    this.Code.Equals(input.Code))
                 ) && 
                 (
-                    this.Message == other.Message ||
-                    this.Message != null &&
-                    this.Message.Equals(other.Message)
+                    this.Message == input.Message ||
+                    (this.Message != null &&
+                    this.Message.Equals(input.Message))
                 ) && 
                 (
-                    this.Hints == other.Hints ||
+                    this.Hints == input.Hints ||
                     this.Hints != null &&
-                    this.Hints.SequenceEqual(other.Hints)
+                    this.Hints.SequenceEqual(input.Hints)
                 );
         }
 
@@ -131,18 +129,16 @@ namespace IO.Swagger.Model
         /// <returns>Hash code</returns>
         public override int GetHashCode()
         {
-            // credit: http://stackoverflow.com/a/263416/677735
             unchecked // Overflow is fine, just wrap
             {
-                int hash = 41;
-                // Suitable nullity checks etc, of course :)
+                int hashCode = 41;
                 if (this.Code != null)
-                    hash = hash * 59 + this.Code.GetHashCode();
+                    hashCode = hashCode * 59 + this.Code.GetHashCode();
                 if (this.Message != null)
-                    hash = hash * 59 + this.Message.GetHashCode();
+                    hashCode = hashCode * 59 + this.Message.GetHashCode();
                 if (this.Hints != null)
-                    hash = hash * 59 + this.Hints.GetHashCode();
-                return hash;
+                    hashCode = hashCode * 59 + this.Hints.GetHashCode();
+                return hashCode;
             }
         }
 

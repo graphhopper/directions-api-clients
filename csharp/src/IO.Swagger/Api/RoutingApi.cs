@@ -164,15 +164,9 @@ namespace IO.Swagger.Api
         /// <returns></returns>
         public RoutingApi(String basePath)
         {
-            this.Configuration = new Configuration(new ApiClient(basePath));
+            this.Configuration = new IO.Swagger.Client.Configuration { BasePath = basePath };
 
             ExceptionFactory = IO.Swagger.Client.Configuration.DefaultExceptionFactory;
-
-            // ensure API client has configuration ready
-            if (Configuration.ApiClient.Configuration == null)
-            {
-                this.Configuration.ApiClient.Configuration = this.Configuration;
-            }
         }
 
         /// <summary>
@@ -181,20 +175,14 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <param name="configuration">An instance of Configuration</param>
         /// <returns></returns>
-        public RoutingApi(Configuration configuration = null)
+        public RoutingApi(IO.Swagger.Client.Configuration configuration = null)
         {
             if (configuration == null) // use the default one in Configuration
-                this.Configuration = Configuration.Default;
+                this.Configuration = IO.Swagger.Client.Configuration.Default;
             else
                 this.Configuration = configuration;
 
             ExceptionFactory = IO.Swagger.Client.Configuration.DefaultExceptionFactory;
-
-            // ensure API client has configuration ready
-            if (Configuration.ApiClient.Configuration == null)
-            {
-                this.Configuration.ApiClient.Configuration = this.Configuration;
-            }
         }
 
         /// <summary>
@@ -220,7 +208,7 @@ namespace IO.Swagger.Api
         /// Gets or sets the configuration object
         /// </summary>
         /// <value>An instance of the Configuration</value>
-        public Configuration Configuration {get; set;}
+        public IO.Swagger.Client.Configuration Configuration {get; set;}
 
         /// <summary>
         /// Provides a factory method hook for the creation of exceptions.
@@ -243,9 +231,9 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <returns>Dictionary of HTTP header</returns>
         [Obsolete("DefaultHeader is deprecated, please use Configuration.DefaultHeader instead.")]
-        public Dictionary<String, String> DefaultHeader()
+        public IDictionary<String, String> DefaultHeader()
         {
-            return this.Configuration.DefaultHeader;
+            return new ReadOnlyDictionary<string, string>(this.Configuration.DefaultHeader);
         }
 
         /// <summary>
@@ -332,8 +320,8 @@ namespace IO.Swagger.Api
 
             var localVarPath = "/route";
             var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new Dictionary<String, String>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -341,41 +329,41 @@ namespace IO.Swagger.Api
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (point != null) localVarQueryParams.Add("point", Configuration.ApiClient.ParameterToString(point)); // query parameter
-            if (locale != null) localVarQueryParams.Add("locale", Configuration.ApiClient.ParameterToString(locale)); // query parameter
-            if (instructions != null) localVarQueryParams.Add("instructions", Configuration.ApiClient.ParameterToString(instructions)); // query parameter
-            if (vehicle != null) localVarQueryParams.Add("vehicle", Configuration.ApiClient.ParameterToString(vehicle)); // query parameter
-            if (elevation != null) localVarQueryParams.Add("elevation", Configuration.ApiClient.ParameterToString(elevation)); // query parameter
-            if (pointsEncoded != null) localVarQueryParams.Add("points_encoded", Configuration.ApiClient.ParameterToString(pointsEncoded)); // query parameter
-            if (calcPoints != null) localVarQueryParams.Add("calc_points", Configuration.ApiClient.ParameterToString(calcPoints)); // query parameter
-            if (pointHint != null) localVarQueryParams.Add("point_hint", Configuration.ApiClient.ParameterToString(pointHint)); // query parameter
-            if (chDisable != null) localVarQueryParams.Add("ch.disable", Configuration.ApiClient.ParameterToString(chDisable)); // query parameter
-            if (weighting != null) localVarQueryParams.Add("weighting", Configuration.ApiClient.ParameterToString(weighting)); // query parameter
-            if (edgeTraversal != null) localVarQueryParams.Add("edge_traversal", Configuration.ApiClient.ParameterToString(edgeTraversal)); // query parameter
-            if (algorithm != null) localVarQueryParams.Add("algorithm", Configuration.ApiClient.ParameterToString(algorithm)); // query parameter
-            if (heading != null) localVarQueryParams.Add("heading", Configuration.ApiClient.ParameterToString(heading)); // query parameter
-            if (headingPenalty != null) localVarQueryParams.Add("heading_penalty", Configuration.ApiClient.ParameterToString(headingPenalty)); // query parameter
-            if (passThrough != null) localVarQueryParams.Add("pass_through", Configuration.ApiClient.ParameterToString(passThrough)); // query parameter
-            if (roundTripDistance != null) localVarQueryParams.Add("round_trip.distance", Configuration.ApiClient.ParameterToString(roundTripDistance)); // query parameter
-            if (roundTripSeed != null) localVarQueryParams.Add("round_trip.seed", Configuration.ApiClient.ParameterToString(roundTripSeed)); // query parameter
-            if (alternativeRouteMaxPaths != null) localVarQueryParams.Add("alternative_route.max_paths", Configuration.ApiClient.ParameterToString(alternativeRouteMaxPaths)); // query parameter
-            if (alternativeRouteMaxWeightFactor != null) localVarQueryParams.Add("alternative_route.max_weight_factor", Configuration.ApiClient.ParameterToString(alternativeRouteMaxWeightFactor)); // query parameter
-            if (alternativeRouteMaxShareFactor != null) localVarQueryParams.Add("alternative_route.max_share_factor", Configuration.ApiClient.ParameterToString(alternativeRouteMaxShareFactor)); // query parameter
-            if (key != null) localVarQueryParams.Add("key", Configuration.ApiClient.ParameterToString(key)); // query parameter
+            if (point != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("multi", "point", point)); // query parameter
+            if (locale != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "locale", locale)); // query parameter
+            if (instructions != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "instructions", instructions)); // query parameter
+            if (vehicle != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "vehicle", vehicle)); // query parameter
+            if (elevation != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "elevation", elevation)); // query parameter
+            if (pointsEncoded != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "points_encoded", pointsEncoded)); // query parameter
+            if (calcPoints != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "calc_points", calcPoints)); // query parameter
+            if (pointHint != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("multi", "point_hint", pointHint)); // query parameter
+            if (chDisable != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "ch.disable", chDisable)); // query parameter
+            if (weighting != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "weighting", weighting)); // query parameter
+            if (edgeTraversal != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "edge_traversal", edgeTraversal)); // query parameter
+            if (algorithm != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "algorithm", algorithm)); // query parameter
+            if (heading != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "heading", heading)); // query parameter
+            if (headingPenalty != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "heading_penalty", headingPenalty)); // query parameter
+            if (passThrough != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "pass_through", passThrough)); // query parameter
+            if (roundTripDistance != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "round_trip.distance", roundTripDistance)); // query parameter
+            if (roundTripSeed != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "round_trip.seed", roundTripSeed)); // query parameter
+            if (alternativeRouteMaxPaths != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "alternative_route.max_paths", alternativeRouteMaxPaths)); // query parameter
+            if (alternativeRouteMaxWeightFactor != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "alternative_route.max_weight_factor", alternativeRouteMaxWeightFactor)); // query parameter
+            if (alternativeRouteMaxShareFactor != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "alternative_route.max_share_factor", alternativeRouteMaxShareFactor)); // query parameter
+            if (key != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "key", key)); // query parameter
 
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -389,7 +377,7 @@ namespace IO.Swagger.Api
 
             return new ApiResponse<RouteResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (RouteResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(RouteResponse)));
+                (RouteResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(RouteResponse)));
         }
 
         /// <summary>
@@ -465,8 +453,8 @@ namespace IO.Swagger.Api
 
             var localVarPath = "/route";
             var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new Dictionary<String, String>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -474,41 +462,41 @@ namespace IO.Swagger.Api
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (point != null) localVarQueryParams.Add("point", Configuration.ApiClient.ParameterToString(point)); // query parameter
-            if (locale != null) localVarQueryParams.Add("locale", Configuration.ApiClient.ParameterToString(locale)); // query parameter
-            if (instructions != null) localVarQueryParams.Add("instructions", Configuration.ApiClient.ParameterToString(instructions)); // query parameter
-            if (vehicle != null) localVarQueryParams.Add("vehicle", Configuration.ApiClient.ParameterToString(vehicle)); // query parameter
-            if (elevation != null) localVarQueryParams.Add("elevation", Configuration.ApiClient.ParameterToString(elevation)); // query parameter
-            if (pointsEncoded != null) localVarQueryParams.Add("points_encoded", Configuration.ApiClient.ParameterToString(pointsEncoded)); // query parameter
-            if (calcPoints != null) localVarQueryParams.Add("calc_points", Configuration.ApiClient.ParameterToString(calcPoints)); // query parameter
-            if (pointHint != null) localVarQueryParams.Add("point_hint", Configuration.ApiClient.ParameterToString(pointHint)); // query parameter
-            if (chDisable != null) localVarQueryParams.Add("ch.disable", Configuration.ApiClient.ParameterToString(chDisable)); // query parameter
-            if (weighting != null) localVarQueryParams.Add("weighting", Configuration.ApiClient.ParameterToString(weighting)); // query parameter
-            if (edgeTraversal != null) localVarQueryParams.Add("edge_traversal", Configuration.ApiClient.ParameterToString(edgeTraversal)); // query parameter
-            if (algorithm != null) localVarQueryParams.Add("algorithm", Configuration.ApiClient.ParameterToString(algorithm)); // query parameter
-            if (heading != null) localVarQueryParams.Add("heading", Configuration.ApiClient.ParameterToString(heading)); // query parameter
-            if (headingPenalty != null) localVarQueryParams.Add("heading_penalty", Configuration.ApiClient.ParameterToString(headingPenalty)); // query parameter
-            if (passThrough != null) localVarQueryParams.Add("pass_through", Configuration.ApiClient.ParameterToString(passThrough)); // query parameter
-            if (roundTripDistance != null) localVarQueryParams.Add("round_trip.distance", Configuration.ApiClient.ParameterToString(roundTripDistance)); // query parameter
-            if (roundTripSeed != null) localVarQueryParams.Add("round_trip.seed", Configuration.ApiClient.ParameterToString(roundTripSeed)); // query parameter
-            if (alternativeRouteMaxPaths != null) localVarQueryParams.Add("alternative_route.max_paths", Configuration.ApiClient.ParameterToString(alternativeRouteMaxPaths)); // query parameter
-            if (alternativeRouteMaxWeightFactor != null) localVarQueryParams.Add("alternative_route.max_weight_factor", Configuration.ApiClient.ParameterToString(alternativeRouteMaxWeightFactor)); // query parameter
-            if (alternativeRouteMaxShareFactor != null) localVarQueryParams.Add("alternative_route.max_share_factor", Configuration.ApiClient.ParameterToString(alternativeRouteMaxShareFactor)); // query parameter
-            if (key != null) localVarQueryParams.Add("key", Configuration.ApiClient.ParameterToString(key)); // query parameter
+            if (point != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("multi", "point", point)); // query parameter
+            if (locale != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "locale", locale)); // query parameter
+            if (instructions != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "instructions", instructions)); // query parameter
+            if (vehicle != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "vehicle", vehicle)); // query parameter
+            if (elevation != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "elevation", elevation)); // query parameter
+            if (pointsEncoded != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "points_encoded", pointsEncoded)); // query parameter
+            if (calcPoints != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "calc_points", calcPoints)); // query parameter
+            if (pointHint != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("multi", "point_hint", pointHint)); // query parameter
+            if (chDisable != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "ch.disable", chDisable)); // query parameter
+            if (weighting != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "weighting", weighting)); // query parameter
+            if (edgeTraversal != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "edge_traversal", edgeTraversal)); // query parameter
+            if (algorithm != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "algorithm", algorithm)); // query parameter
+            if (heading != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "heading", heading)); // query parameter
+            if (headingPenalty != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "heading_penalty", headingPenalty)); // query parameter
+            if (passThrough != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "pass_through", passThrough)); // query parameter
+            if (roundTripDistance != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "round_trip.distance", roundTripDistance)); // query parameter
+            if (roundTripSeed != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "round_trip.seed", roundTripSeed)); // query parameter
+            if (alternativeRouteMaxPaths != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "alternative_route.max_paths", alternativeRouteMaxPaths)); // query parameter
+            if (alternativeRouteMaxWeightFactor != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "alternative_route.max_weight_factor", alternativeRouteMaxWeightFactor)); // query parameter
+            if (alternativeRouteMaxShareFactor != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "alternative_route.max_share_factor", alternativeRouteMaxShareFactor)); // query parameter
+            if (key != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "key", key)); // query parameter
 
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -522,7 +510,7 @@ namespace IO.Swagger.Api
 
             return new ApiResponse<RouteResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (RouteResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(RouteResponse)));
+                (RouteResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(RouteResponse)));
         }
 
     }

@@ -31,43 +31,23 @@ namespace IO.Swagger.Model
     public partial class Algorithm :  IEquatable<Algorithm>, IValidatableObject
     {
         /// <summary>
-        /// Gets or Sets ProblemType
+        /// Defines ProblemType
         /// </summary>
         [JsonConverter(typeof(StringEnumConverter))]
         public enum ProblemTypeEnum
         {
             
             /// <summary>
-            /// Enum Min for "min"
+            /// Enum Min for value: min
             /// </summary>
             [EnumMember(Value = "min")]
-            Min,
+            Min = 1,
             
             /// <summary>
-            /// Enum Minmax for "min-max"
+            /// Enum MinMax for value: min-max
             /// </summary>
             [EnumMember(Value = "min-max")]
-            Minmax
-        }
-
-        /// <summary>
-        /// Gets or Sets Objective
-        /// </summary>
-        [JsonConverter(typeof(StringEnumConverter))]
-        public enum ObjectiveEnum
-        {
-            
-            /// <summary>
-            /// Enum Transporttime for "transport_time"
-            /// </summary>
-            [EnumMember(Value = "transport_time")]
-            Transporttime,
-            
-            /// <summary>
-            /// Enum Completiontime for "completion_time"
-            /// </summary>
-            [EnumMember(Value = "completion_time")]
-            Completiontime
+            MinMax = 2
         }
 
         /// <summary>
@@ -75,6 +55,26 @@ namespace IO.Swagger.Model
         /// </summary>
         [DataMember(Name="problem_type", EmitDefaultValue=false)]
         public ProblemTypeEnum? ProblemType { get; set; }
+        /// <summary>
+        /// Defines Objective
+        /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum ObjectiveEnum
+        {
+            
+            /// <summary>
+            /// Enum Transporttime for value: transport_time
+            /// </summary>
+            [EnumMember(Value = "transport_time")]
+            Transporttime = 1,
+            
+            /// <summary>
+            /// Enum Completiontime for value: completion_time
+            /// </summary>
+            [EnumMember(Value = "completion_time")]
+            Completiontime = 2
+        }
+
         /// <summary>
         /// Gets or Sets Objective
         /// </summary>
@@ -111,7 +111,7 @@ namespace IO.Swagger.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
@@ -119,35 +119,33 @@ namespace IO.Swagger.Model
         /// <summary>
         /// Returns true if objects are equal
         /// </summary>
-        /// <param name="obj">Object to be compared</param>
+        /// <param name="input">Object to be compared</param>
         /// <returns>Boolean</returns>
-        public override bool Equals(object obj)
+        public override bool Equals(object input)
         {
-            // credit: http://stackoverflow.com/a/10454552/677735
-            return this.Equals(obj as Algorithm);
+            return this.Equals(input as Algorithm);
         }
 
         /// <summary>
         /// Returns true if Algorithm instances are equal
         /// </summary>
-        /// <param name="other">Instance of Algorithm to be compared</param>
+        /// <param name="input">Instance of Algorithm to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(Algorithm other)
+        public bool Equals(Algorithm input)
         {
-            // credit: http://stackoverflow.com/a/10454552/677735
-            if (other == null)
+            if (input == null)
                 return false;
 
             return 
                 (
-                    this.ProblemType == other.ProblemType ||
-                    this.ProblemType != null &&
-                    this.ProblemType.Equals(other.ProblemType)
+                    this.ProblemType == input.ProblemType ||
+                    (this.ProblemType != null &&
+                    this.ProblemType.Equals(input.ProblemType))
                 ) && 
                 (
-                    this.Objective == other.Objective ||
-                    this.Objective != null &&
-                    this.Objective.Equals(other.Objective)
+                    this.Objective == input.Objective ||
+                    (this.Objective != null &&
+                    this.Objective.Equals(input.Objective))
                 );
         }
 
@@ -157,16 +155,14 @@ namespace IO.Swagger.Model
         /// <returns>Hash code</returns>
         public override int GetHashCode()
         {
-            // credit: http://stackoverflow.com/a/263416/677735
             unchecked // Overflow is fine, just wrap
             {
-                int hash = 41;
-                // Suitable nullity checks etc, of course :)
+                int hashCode = 41;
                 if (this.ProblemType != null)
-                    hash = hash * 59 + this.ProblemType.GetHashCode();
+                    hashCode = hashCode * 59 + this.ProblemType.GetHashCode();
                 if (this.Objective != null)
-                    hash = hash * 59 + this.Objective.GetHashCode();
-                return hash;
+                    hashCode = hashCode * 59 + this.Objective.GetHashCode();
+                return hashCode;
             }
         }
 

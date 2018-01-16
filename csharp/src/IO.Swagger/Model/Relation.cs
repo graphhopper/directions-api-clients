@@ -83,7 +83,7 @@ namespace IO.Swagger.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
@@ -91,40 +91,38 @@ namespace IO.Swagger.Model
         /// <summary>
         /// Returns true if objects are equal
         /// </summary>
-        /// <param name="obj">Object to be compared</param>
+        /// <param name="input">Object to be compared</param>
         /// <returns>Boolean</returns>
-        public override bool Equals(object obj)
+        public override bool Equals(object input)
         {
-            // credit: http://stackoverflow.com/a/10454552/677735
-            return this.Equals(obj as Relation);
+            return this.Equals(input as Relation);
         }
 
         /// <summary>
         /// Returns true if Relation instances are equal
         /// </summary>
-        /// <param name="other">Instance of Relation to be compared</param>
+        /// <param name="input">Instance of Relation to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(Relation other)
+        public bool Equals(Relation input)
         {
-            // credit: http://stackoverflow.com/a/10454552/677735
-            if (other == null)
+            if (input == null)
                 return false;
 
             return 
                 (
-                    this.Type == other.Type ||
-                    this.Type != null &&
-                    this.Type.Equals(other.Type)
+                    this.Type == input.Type ||
+                    (this.Type != null &&
+                    this.Type.Equals(input.Type))
                 ) && 
                 (
-                    this.Ids == other.Ids ||
+                    this.Ids == input.Ids ||
                     this.Ids != null &&
-                    this.Ids.SequenceEqual(other.Ids)
+                    this.Ids.SequenceEqual(input.Ids)
                 ) && 
                 (
-                    this.VehicleId == other.VehicleId ||
-                    this.VehicleId != null &&
-                    this.VehicleId.Equals(other.VehicleId)
+                    this.VehicleId == input.VehicleId ||
+                    (this.VehicleId != null &&
+                    this.VehicleId.Equals(input.VehicleId))
                 );
         }
 
@@ -134,18 +132,16 @@ namespace IO.Swagger.Model
         /// <returns>Hash code</returns>
         public override int GetHashCode()
         {
-            // credit: http://stackoverflow.com/a/263416/677735
             unchecked // Overflow is fine, just wrap
             {
-                int hash = 41;
-                // Suitable nullity checks etc, of course :)
+                int hashCode = 41;
                 if (this.Type != null)
-                    hash = hash * 59 + this.Type.GetHashCode();
+                    hashCode = hashCode * 59 + this.Type.GetHashCode();
                 if (this.Ids != null)
-                    hash = hash * 59 + this.Ids.GetHashCode();
+                    hashCode = hashCode * 59 + this.Ids.GetHashCode();
                 if (this.VehicleId != null)
-                    hash = hash * 59 + this.VehicleId.GetHashCode();
-                return hash;
+                    hashCode = hashCode * 59 + this.VehicleId.GetHashCode();
+                return hashCode;
             }
         }
 

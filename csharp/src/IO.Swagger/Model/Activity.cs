@@ -39,52 +39,52 @@ namespace IO.Swagger.Model
         {
             
             /// <summary>
-            /// Enum Start for "start"
+            /// Enum Start for value: start
             /// </summary>
             [EnumMember(Value = "start")]
-            Start,
+            Start = 1,
             
             /// <summary>
-            /// Enum End for "end"
+            /// Enum End for value: end
             /// </summary>
             [EnumMember(Value = "end")]
-            End,
+            End = 2,
             
             /// <summary>
-            /// Enum Service for "service"
+            /// Enum Service for value: service
             /// </summary>
             [EnumMember(Value = "service")]
-            Service,
+            Service = 3,
             
             /// <summary>
-            /// Enum PickupShipment for "pickupShipment"
+            /// Enum PickupShipment for value: pickupShipment
             /// </summary>
             [EnumMember(Value = "pickupShipment")]
-            PickupShipment,
+            PickupShipment = 4,
             
             /// <summary>
-            /// Enum DeliverShipment for "deliverShipment"
+            /// Enum DeliverShipment for value: deliverShipment
             /// </summary>
             [EnumMember(Value = "deliverShipment")]
-            DeliverShipment,
+            DeliverShipment = 5,
             
             /// <summary>
-            /// Enum Pickup for "pickup"
+            /// Enum Pickup for value: pickup
             /// </summary>
             [EnumMember(Value = "pickup")]
-            Pickup,
+            Pickup = 6,
             
             /// <summary>
-            /// Enum Delivery for "delivery"
+            /// Enum Delivery for value: delivery
             /// </summary>
             [EnumMember(Value = "delivery")]
-            Delivery,
+            Delivery = 7,
             
             /// <summary>
-            /// Enum Break for "break"
+            /// Enum Break for value: break
             /// </summary>
             [EnumMember(Value = "break")]
-            Break
+            Break = 8
         }
 
         /// <summary>
@@ -210,7 +210,7 @@ namespace IO.Swagger.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
@@ -218,75 +218,73 @@ namespace IO.Swagger.Model
         /// <summary>
         /// Returns true if objects are equal
         /// </summary>
-        /// <param name="obj">Object to be compared</param>
+        /// <param name="input">Object to be compared</param>
         /// <returns>Boolean</returns>
-        public override bool Equals(object obj)
+        public override bool Equals(object input)
         {
-            // credit: http://stackoverflow.com/a/10454552/677735
-            return this.Equals(obj as Activity);
+            return this.Equals(input as Activity);
         }
 
         /// <summary>
         /// Returns true if Activity instances are equal
         /// </summary>
-        /// <param name="other">Instance of Activity to be compared</param>
+        /// <param name="input">Instance of Activity to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(Activity other)
+        public bool Equals(Activity input)
         {
-            // credit: http://stackoverflow.com/a/10454552/677735
-            if (other == null)
+            if (input == null)
                 return false;
 
             return 
                 (
-                    this.Type == other.Type ||
-                    this.Type != null &&
-                    this.Type.Equals(other.Type)
+                    this.Type == input.Type ||
+                    (this.Type != null &&
+                    this.Type.Equals(input.Type))
                 ) && 
                 (
-                    this.Id == other.Id ||
-                    this.Id != null &&
-                    this.Id.Equals(other.Id)
+                    this.Id == input.Id ||
+                    (this.Id != null &&
+                    this.Id.Equals(input.Id))
                 ) && 
                 (
-                    this.LocationId == other.LocationId ||
-                    this.LocationId != null &&
-                    this.LocationId.Equals(other.LocationId)
+                    this.LocationId == input.LocationId ||
+                    (this.LocationId != null &&
+                    this.LocationId.Equals(input.LocationId))
                 ) && 
                 (
-                    this.ArrTime == other.ArrTime ||
-                    this.ArrTime != null &&
-                    this.ArrTime.Equals(other.ArrTime)
+                    this.ArrTime == input.ArrTime ||
+                    (this.ArrTime != null &&
+                    this.ArrTime.Equals(input.ArrTime))
                 ) && 
                 (
-                    this.EndTime == other.EndTime ||
-                    this.EndTime != null &&
-                    this.EndTime.Equals(other.EndTime)
+                    this.EndTime == input.EndTime ||
+                    (this.EndTime != null &&
+                    this.EndTime.Equals(input.EndTime))
                 ) && 
                 (
-                    this.WaitingTime == other.WaitingTime ||
-                    this.WaitingTime != null &&
-                    this.WaitingTime.Equals(other.WaitingTime)
+                    this.WaitingTime == input.WaitingTime ||
+                    (this.WaitingTime != null &&
+                    this.WaitingTime.Equals(input.WaitingTime))
                 ) && 
                 (
-                    this.Distance == other.Distance ||
-                    this.Distance != null &&
-                    this.Distance.Equals(other.Distance)
+                    this.Distance == input.Distance ||
+                    (this.Distance != null &&
+                    this.Distance.Equals(input.Distance))
                 ) && 
                 (
-                    this.DrivingTime == other.DrivingTime ||
-                    this.DrivingTime != null &&
-                    this.DrivingTime.Equals(other.DrivingTime)
+                    this.DrivingTime == input.DrivingTime ||
+                    (this.DrivingTime != null &&
+                    this.DrivingTime.Equals(input.DrivingTime))
                 ) && 
                 (
-                    this.LoadBefore == other.LoadBefore ||
+                    this.LoadBefore == input.LoadBefore ||
                     this.LoadBefore != null &&
-                    this.LoadBefore.SequenceEqual(other.LoadBefore)
+                    this.LoadBefore.SequenceEqual(input.LoadBefore)
                 ) && 
                 (
-                    this.LoadAfter == other.LoadAfter ||
+                    this.LoadAfter == input.LoadAfter ||
                     this.LoadAfter != null &&
-                    this.LoadAfter.SequenceEqual(other.LoadAfter)
+                    this.LoadAfter.SequenceEqual(input.LoadAfter)
                 );
         }
 
@@ -296,32 +294,30 @@ namespace IO.Swagger.Model
         /// <returns>Hash code</returns>
         public override int GetHashCode()
         {
-            // credit: http://stackoverflow.com/a/263416/677735
             unchecked // Overflow is fine, just wrap
             {
-                int hash = 41;
-                // Suitable nullity checks etc, of course :)
+                int hashCode = 41;
                 if (this.Type != null)
-                    hash = hash * 59 + this.Type.GetHashCode();
+                    hashCode = hashCode * 59 + this.Type.GetHashCode();
                 if (this.Id != null)
-                    hash = hash * 59 + this.Id.GetHashCode();
+                    hashCode = hashCode * 59 + this.Id.GetHashCode();
                 if (this.LocationId != null)
-                    hash = hash * 59 + this.LocationId.GetHashCode();
+                    hashCode = hashCode * 59 + this.LocationId.GetHashCode();
                 if (this.ArrTime != null)
-                    hash = hash * 59 + this.ArrTime.GetHashCode();
+                    hashCode = hashCode * 59 + this.ArrTime.GetHashCode();
                 if (this.EndTime != null)
-                    hash = hash * 59 + this.EndTime.GetHashCode();
+                    hashCode = hashCode * 59 + this.EndTime.GetHashCode();
                 if (this.WaitingTime != null)
-                    hash = hash * 59 + this.WaitingTime.GetHashCode();
+                    hashCode = hashCode * 59 + this.WaitingTime.GetHashCode();
                 if (this.Distance != null)
-                    hash = hash * 59 + this.Distance.GetHashCode();
+                    hashCode = hashCode * 59 + this.Distance.GetHashCode();
                 if (this.DrivingTime != null)
-                    hash = hash * 59 + this.DrivingTime.GetHashCode();
+                    hashCode = hashCode * 59 + this.DrivingTime.GetHashCode();
                 if (this.LoadBefore != null)
-                    hash = hash * 59 + this.LoadBefore.GetHashCode();
+                    hashCode = hashCode * 59 + this.LoadBefore.GetHashCode();
                 if (this.LoadAfter != null)
-                    hash = hash * 59 + this.LoadAfter.GetHashCode();
-                return hash;
+                    hashCode = hashCode * 59 + this.LoadAfter.GetHashCode();
+                return hashCode;
             }
         }
 

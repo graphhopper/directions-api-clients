@@ -28,13 +28,13 @@ namespace IO.Swagger.Model
     /// An array containing coordinates
     /// </summary>
     [DataContract]
-    public partial class ResponseCoordinatesArray : List<List>,  IEquatable<ResponseCoordinatesArray>, IValidatableObject
+    public partial class ResponseCoordinatesArray : List<List<double?>>,  IEquatable<ResponseCoordinatesArray>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="ResponseCoordinatesArray" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        public ResponseCoordinatesArray()
+        public ResponseCoordinatesArray() : base()
         {
         }
         
@@ -46,6 +46,7 @@ namespace IO.Swagger.Model
         {
             var sb = new StringBuilder();
             sb.Append("class ResponseCoordinatesArray {\n");
+            sb.Append("  ").Append(base.ToString().Replace("\n", "\n  ")).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -54,7 +55,7 @@ namespace IO.Swagger.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public  new string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
@@ -62,26 +63,24 @@ namespace IO.Swagger.Model
         /// <summary>
         /// Returns true if objects are equal
         /// </summary>
-        /// <param name="obj">Object to be compared</param>
+        /// <param name="input">Object to be compared</param>
         /// <returns>Boolean</returns>
-        public override bool Equals(object obj)
+        public override bool Equals(object input)
         {
-            // credit: http://stackoverflow.com/a/10454552/677735
-            return this.Equals(obj as ResponseCoordinatesArray);
+            return this.Equals(input as ResponseCoordinatesArray);
         }
 
         /// <summary>
         /// Returns true if ResponseCoordinatesArray instances are equal
         /// </summary>
-        /// <param name="other">Instance of ResponseCoordinatesArray to be compared</param>
+        /// <param name="input">Instance of ResponseCoordinatesArray to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(ResponseCoordinatesArray other)
+        public bool Equals(ResponseCoordinatesArray input)
         {
-            // credit: http://stackoverflow.com/a/10454552/677735
-            if (other == null)
+            if (input == null)
                 return false;
 
-            return false;
+            return base.Equals(input);
         }
 
         /// <summary>
@@ -90,12 +89,10 @@ namespace IO.Swagger.Model
         /// <returns>Hash code</returns>
         public override int GetHashCode()
         {
-            // credit: http://stackoverflow.com/a/263416/677735
             unchecked // Overflow is fine, just wrap
             {
-                int hash = 41;
-                // Suitable nullity checks etc, of course :)
-                return hash;
+                int hashCode = base.GetHashCode();
+                return hashCode;
             }
         }
 

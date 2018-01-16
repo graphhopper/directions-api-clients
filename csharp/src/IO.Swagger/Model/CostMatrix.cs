@@ -39,16 +39,16 @@ namespace IO.Swagger.Model
         {
             
             /// <summary>
-            /// Enum Default for "default"
+            /// Enum Default for value: default
             /// </summary>
             [EnumMember(Value = "default")]
-            Default,
+            Default = 1,
             
             /// <summary>
-            /// Enum Google for "google"
+            /// Enum Google for value: google
             /// </summary>
             [EnumMember(Value = "google")]
-            Google
+            Google = 2
         }
 
         /// <summary>
@@ -122,7 +122,7 @@ namespace IO.Swagger.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
@@ -130,50 +130,48 @@ namespace IO.Swagger.Model
         /// <summary>
         /// Returns true if objects are equal
         /// </summary>
-        /// <param name="obj">Object to be compared</param>
+        /// <param name="input">Object to be compared</param>
         /// <returns>Boolean</returns>
-        public override bool Equals(object obj)
+        public override bool Equals(object input)
         {
-            // credit: http://stackoverflow.com/a/10454552/677735
-            return this.Equals(obj as CostMatrix);
+            return this.Equals(input as CostMatrix);
         }
 
         /// <summary>
         /// Returns true if CostMatrix instances are equal
         /// </summary>
-        /// <param name="other">Instance of CostMatrix to be compared</param>
+        /// <param name="input">Instance of CostMatrix to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(CostMatrix other)
+        public bool Equals(CostMatrix input)
         {
-            // credit: http://stackoverflow.com/a/10454552/677735
-            if (other == null)
+            if (input == null)
                 return false;
 
             return 
                 (
-                    this.Type == other.Type ||
-                    this.Type != null &&
-                    this.Type.Equals(other.Type)
+                    this.Type == input.Type ||
+                    (this.Type != null &&
+                    this.Type.Equals(input.Type))
                 ) && 
                 (
-                    this.Url == other.Url ||
-                    this.Url != null &&
-                    this.Url.Equals(other.Url)
+                    this.Url == input.Url ||
+                    (this.Url != null &&
+                    this.Url.Equals(input.Url))
                 ) && 
                 (
-                    this.LocationIds == other.LocationIds ||
+                    this.LocationIds == input.LocationIds ||
                     this.LocationIds != null &&
-                    this.LocationIds.SequenceEqual(other.LocationIds)
+                    this.LocationIds.SequenceEqual(input.LocationIds)
                 ) && 
                 (
-                    this.Data == other.Data ||
-                    this.Data != null &&
-                    this.Data.Equals(other.Data)
+                    this.Data == input.Data ||
+                    (this.Data != null &&
+                    this.Data.Equals(input.Data))
                 ) && 
                 (
-                    this.Profile == other.Profile ||
-                    this.Profile != null &&
-                    this.Profile.Equals(other.Profile)
+                    this.Profile == input.Profile ||
+                    (this.Profile != null &&
+                    this.Profile.Equals(input.Profile))
                 );
         }
 
@@ -183,22 +181,20 @@ namespace IO.Swagger.Model
         /// <returns>Hash code</returns>
         public override int GetHashCode()
         {
-            // credit: http://stackoverflow.com/a/263416/677735
             unchecked // Overflow is fine, just wrap
             {
-                int hash = 41;
-                // Suitable nullity checks etc, of course :)
+                int hashCode = 41;
                 if (this.Type != null)
-                    hash = hash * 59 + this.Type.GetHashCode();
+                    hashCode = hashCode * 59 + this.Type.GetHashCode();
                 if (this.Url != null)
-                    hash = hash * 59 + this.Url.GetHashCode();
+                    hashCode = hashCode * 59 + this.Url.GetHashCode();
                 if (this.LocationIds != null)
-                    hash = hash * 59 + this.LocationIds.GetHashCode();
+                    hashCode = hashCode * 59 + this.LocationIds.GetHashCode();
                 if (this.Data != null)
-                    hash = hash * 59 + this.Data.GetHashCode();
+                    hashCode = hashCode * 59 + this.Data.GetHashCode();
                 if (this.Profile != null)
-                    hash = hash * 59 + this.Profile.GetHashCode();
-                return hash;
+                    hashCode = hashCode * 59 + this.Profile.GetHashCode();
+                return hashCode;
             }
         }
 

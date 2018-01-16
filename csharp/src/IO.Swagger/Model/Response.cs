@@ -39,22 +39,22 @@ namespace IO.Swagger.Model
         {
             
             /// <summary>
-            /// Enum Waitinginqueue for "waiting_in_queue"
+            /// Enum Waitinginqueue for value: waiting_in_queue
             /// </summary>
             [EnumMember(Value = "waiting_in_queue")]
-            Waitinginqueue,
+            Waitinginqueue = 1,
             
             /// <summary>
-            /// Enum Processing for "processing"
+            /// Enum Processing for value: processing
             /// </summary>
             [EnumMember(Value = "processing")]
-            Processing,
+            Processing = 2,
             
             /// <summary>
-            /// Enum Finished for "finished"
+            /// Enum Finished for value: finished
             /// </summary>
             [EnumMember(Value = "finished")]
-            Finished
+            Finished = 3
         }
 
         /// <summary>
@@ -139,7 +139,7 @@ namespace IO.Swagger.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
@@ -147,55 +147,53 @@ namespace IO.Swagger.Model
         /// <summary>
         /// Returns true if objects are equal
         /// </summary>
-        /// <param name="obj">Object to be compared</param>
+        /// <param name="input">Object to be compared</param>
         /// <returns>Boolean</returns>
-        public override bool Equals(object obj)
+        public override bool Equals(object input)
         {
-            // credit: http://stackoverflow.com/a/10454552/677735
-            return this.Equals(obj as Response);
+            return this.Equals(input as Response);
         }
 
         /// <summary>
         /// Returns true if Response instances are equal
         /// </summary>
-        /// <param name="other">Instance of Response to be compared</param>
+        /// <param name="input">Instance of Response to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(Response other)
+        public bool Equals(Response input)
         {
-            // credit: http://stackoverflow.com/a/10454552/677735
-            if (other == null)
+            if (input == null)
                 return false;
 
             return 
                 (
-                    this.Copyrights == other.Copyrights ||
+                    this.Copyrights == input.Copyrights ||
                     this.Copyrights != null &&
-                    this.Copyrights.SequenceEqual(other.Copyrights)
+                    this.Copyrights.SequenceEqual(input.Copyrights)
                 ) && 
                 (
-                    this.JobId == other.JobId ||
-                    this.JobId != null &&
-                    this.JobId.Equals(other.JobId)
+                    this.JobId == input.JobId ||
+                    (this.JobId != null &&
+                    this.JobId.Equals(input.JobId))
                 ) && 
                 (
-                    this.Status == other.Status ||
-                    this.Status != null &&
-                    this.Status.Equals(other.Status)
+                    this.Status == input.Status ||
+                    (this.Status != null &&
+                    this.Status.Equals(input.Status))
                 ) && 
                 (
-                    this.WaitingInQueue == other.WaitingInQueue ||
-                    this.WaitingInQueue != null &&
-                    this.WaitingInQueue.Equals(other.WaitingInQueue)
+                    this.WaitingInQueue == input.WaitingInQueue ||
+                    (this.WaitingInQueue != null &&
+                    this.WaitingInQueue.Equals(input.WaitingInQueue))
                 ) && 
                 (
-                    this.ProcessingTime == other.ProcessingTime ||
-                    this.ProcessingTime != null &&
-                    this.ProcessingTime.Equals(other.ProcessingTime)
+                    this.ProcessingTime == input.ProcessingTime ||
+                    (this.ProcessingTime != null &&
+                    this.ProcessingTime.Equals(input.ProcessingTime))
                 ) && 
                 (
-                    this.Solution == other.Solution ||
-                    this.Solution != null &&
-                    this.Solution.Equals(other.Solution)
+                    this.Solution == input.Solution ||
+                    (this.Solution != null &&
+                    this.Solution.Equals(input.Solution))
                 );
         }
 
@@ -205,24 +203,22 @@ namespace IO.Swagger.Model
         /// <returns>Hash code</returns>
         public override int GetHashCode()
         {
-            // credit: http://stackoverflow.com/a/263416/677735
             unchecked // Overflow is fine, just wrap
             {
-                int hash = 41;
-                // Suitable nullity checks etc, of course :)
+                int hashCode = 41;
                 if (this.Copyrights != null)
-                    hash = hash * 59 + this.Copyrights.GetHashCode();
+                    hashCode = hashCode * 59 + this.Copyrights.GetHashCode();
                 if (this.JobId != null)
-                    hash = hash * 59 + this.JobId.GetHashCode();
+                    hashCode = hashCode * 59 + this.JobId.GetHashCode();
                 if (this.Status != null)
-                    hash = hash * 59 + this.Status.GetHashCode();
+                    hashCode = hashCode * 59 + this.Status.GetHashCode();
                 if (this.WaitingInQueue != null)
-                    hash = hash * 59 + this.WaitingInQueue.GetHashCode();
+                    hashCode = hashCode * 59 + this.WaitingInQueue.GetHashCode();
                 if (this.ProcessingTime != null)
-                    hash = hash * 59 + this.ProcessingTime.GetHashCode();
+                    hashCode = hashCode * 59 + this.ProcessingTime.GetHashCode();
                 if (this.Solution != null)
-                    hash = hash * 59 + this.Solution.GetHashCode();
-                return hash;
+                    hashCode = hashCode * 59 + this.Solution.GetHashCode();
+                return hashCode;
             }
         }
 

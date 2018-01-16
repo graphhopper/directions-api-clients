@@ -73,7 +73,7 @@ namespace IO.Swagger.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
@@ -81,35 +81,33 @@ namespace IO.Swagger.Model
         /// <summary>
         /// Returns true if objects are equal
         /// </summary>
-        /// <param name="obj">Object to be compared</param>
+        /// <param name="input">Object to be compared</param>
         /// <returns>Boolean</returns>
-        public override bool Equals(object obj)
+        public override bool Equals(object input)
         {
-            // credit: http://stackoverflow.com/a/10454552/677735
-            return this.Equals(obj as SolutionUnassigned);
+            return this.Equals(input as SolutionUnassigned);
         }
 
         /// <summary>
         /// Returns true if SolutionUnassigned instances are equal
         /// </summary>
-        /// <param name="other">Instance of SolutionUnassigned to be compared</param>
+        /// <param name="input">Instance of SolutionUnassigned to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(SolutionUnassigned other)
+        public bool Equals(SolutionUnassigned input)
         {
-            // credit: http://stackoverflow.com/a/10454552/677735
-            if (other == null)
+            if (input == null)
                 return false;
 
             return 
                 (
-                    this.Services == other.Services ||
+                    this.Services == input.Services ||
                     this.Services != null &&
-                    this.Services.SequenceEqual(other.Services)
+                    this.Services.SequenceEqual(input.Services)
                 ) && 
                 (
-                    this.Shipments == other.Shipments ||
+                    this.Shipments == input.Shipments ||
                     this.Shipments != null &&
-                    this.Shipments.SequenceEqual(other.Shipments)
+                    this.Shipments.SequenceEqual(input.Shipments)
                 );
         }
 
@@ -119,16 +117,14 @@ namespace IO.Swagger.Model
         /// <returns>Hash code</returns>
         public override int GetHashCode()
         {
-            // credit: http://stackoverflow.com/a/263416/677735
             unchecked // Overflow is fine, just wrap
             {
-                int hash = 41;
-                // Suitable nullity checks etc, of course :)
+                int hashCode = 41;
                 if (this.Services != null)
-                    hash = hash * 59 + this.Services.GetHashCode();
+                    hashCode = hashCode * 59 + this.Services.GetHashCode();
                 if (this.Shipments != null)
-                    hash = hash * 59 + this.Shipments.GetHashCode();
-                return hash;
+                    hashCode = hashCode * 59 + this.Shipments.GetHashCode();
+                return hashCode;
             }
         }
 

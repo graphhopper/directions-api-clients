@@ -1,4 +1,4 @@
-# IO.Swagger.Model.ModelBreak
+# IO.Swagger.Model.Break
 ## Properties
 
 Name | Type | Description | Notes

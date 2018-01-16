@@ -103,7 +103,7 @@ namespace IO.Swagger.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
@@ -111,50 +111,48 @@ namespace IO.Swagger.Model
         /// <summary>
         /// Returns true if objects are equal
         /// </summary>
-        /// <param name="obj">Object to be compared</param>
+        /// <param name="input">Object to be compared</param>
         /// <returns>Boolean</returns>
-        public override bool Equals(object obj)
+        public override bool Equals(object input)
         {
-            // credit: http://stackoverflow.com/a/10454552/677735
-            return this.Equals(obj as MatrixRequest);
+            return this.Equals(input as MatrixRequest);
         }
 
         /// <summary>
         /// Returns true if MatrixRequest instances are equal
         /// </summary>
-        /// <param name="other">Instance of MatrixRequest to be compared</param>
+        /// <param name="input">Instance of MatrixRequest to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(MatrixRequest other)
+        public bool Equals(MatrixRequest input)
         {
-            // credit: http://stackoverflow.com/a/10454552/677735
-            if (other == null)
+            if (input == null)
                 return false;
 
             return 
                 (
-                    this.Points == other.Points ||
+                    this.Points == input.Points ||
                     this.Points != null &&
-                    this.Points.SequenceEqual(other.Points)
+                    this.Points.SequenceEqual(input.Points)
                 ) && 
                 (
-                    this.FromPoints == other.FromPoints ||
-                    this.FromPoints != null &&
-                    this.FromPoints.Equals(other.FromPoints)
+                    this.FromPoints == input.FromPoints ||
+                    (this.FromPoints != null &&
+                    this.FromPoints.Equals(input.FromPoints))
                 ) && 
                 (
-                    this.ToPoints == other.ToPoints ||
-                    this.ToPoints != null &&
-                    this.ToPoints.Equals(other.ToPoints)
+                    this.ToPoints == input.ToPoints ||
+                    (this.ToPoints != null &&
+                    this.ToPoints.Equals(input.ToPoints))
                 ) && 
                 (
-                    this.OutArrays == other.OutArrays ||
+                    this.OutArrays == input.OutArrays ||
                     this.OutArrays != null &&
-                    this.OutArrays.SequenceEqual(other.OutArrays)
+                    this.OutArrays.SequenceEqual(input.OutArrays)
                 ) && 
                 (
-                    this.Vehicle == other.Vehicle ||
-                    this.Vehicle != null &&
-                    this.Vehicle.Equals(other.Vehicle)
+                    this.Vehicle == input.Vehicle ||
+                    (this.Vehicle != null &&
+                    this.Vehicle.Equals(input.Vehicle))
                 );
         }
 
@@ -164,22 +162,20 @@ namespace IO.Swagger.Model
         /// <returns>Hash code</returns>
         public override int GetHashCode()
         {
-            // credit: http://stackoverflow.com/a/263416/677735
             unchecked // Overflow is fine, just wrap
             {
-                int hash = 41;
-                // Suitable nullity checks etc, of course :)
+                int hashCode = 41;
                 if (this.Points != null)
-                    hash = hash * 59 + this.Points.GetHashCode();
+                    hashCode = hashCode * 59 + this.Points.GetHashCode();
                 if (this.FromPoints != null)
-                    hash = hash * 59 + this.FromPoints.GetHashCode();
+                    hashCode = hashCode * 59 + this.FromPoints.GetHashCode();
                 if (this.ToPoints != null)
-                    hash = hash * 59 + this.ToPoints.GetHashCode();
+                    hashCode = hashCode * 59 + this.ToPoints.GetHashCode();
                 if (this.OutArrays != null)
-                    hash = hash * 59 + this.OutArrays.GetHashCode();
+                    hashCode = hashCode * 59 + this.OutArrays.GetHashCode();
                 if (this.Vehicle != null)
-                    hash = hash * 59 + this.Vehicle.GetHashCode();
-                return hash;
+                    hashCode = hashCode * 59 + this.Vehicle.GetHashCode();
+                return hashCode;
             }
         }
 

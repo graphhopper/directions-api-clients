@@ -152,7 +152,7 @@ namespace IO.Swagger.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
@@ -160,75 +160,73 @@ namespace IO.Swagger.Model
         /// <summary>
         /// Returns true if objects are equal
         /// </summary>
-        /// <param name="obj">Object to be compared</param>
+        /// <param name="input">Object to be compared</param>
         /// <returns>Boolean</returns>
-        public override bool Equals(object obj)
+        public override bool Equals(object input)
         {
-            // credit: http://stackoverflow.com/a/10454552/677735
-            return this.Equals(obj as Solution);
+            return this.Equals(input as Solution);
         }
 
         /// <summary>
         /// Returns true if Solution instances are equal
         /// </summary>
-        /// <param name="other">Instance of Solution to be compared</param>
+        /// <param name="input">Instance of Solution to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(Solution other)
+        public bool Equals(Solution input)
         {
-            // credit: http://stackoverflow.com/a/10454552/677735
-            if (other == null)
+            if (input == null)
                 return false;
 
             return 
                 (
-                    this.Costs == other.Costs ||
-                    this.Costs != null &&
-                    this.Costs.Equals(other.Costs)
+                    this.Costs == input.Costs ||
+                    (this.Costs != null &&
+                    this.Costs.Equals(input.Costs))
                 ) && 
                 (
-                    this.Distance == other.Distance ||
-                    this.Distance != null &&
-                    this.Distance.Equals(other.Distance)
+                    this.Distance == input.Distance ||
+                    (this.Distance != null &&
+                    this.Distance.Equals(input.Distance))
                 ) && 
                 (
-                    this.Time == other.Time ||
-                    this.Time != null &&
-                    this.Time.Equals(other.Time)
+                    this.Time == input.Time ||
+                    (this.Time != null &&
+                    this.Time.Equals(input.Time))
                 ) && 
                 (
-                    this.TransportTime == other.TransportTime ||
-                    this.TransportTime != null &&
-                    this.TransportTime.Equals(other.TransportTime)
+                    this.TransportTime == input.TransportTime ||
+                    (this.TransportTime != null &&
+                    this.TransportTime.Equals(input.TransportTime))
                 ) && 
                 (
-                    this.MaxOperationTime == other.MaxOperationTime ||
-                    this.MaxOperationTime != null &&
-                    this.MaxOperationTime.Equals(other.MaxOperationTime)
+                    this.MaxOperationTime == input.MaxOperationTime ||
+                    (this.MaxOperationTime != null &&
+                    this.MaxOperationTime.Equals(input.MaxOperationTime))
                 ) && 
                 (
-                    this.WaitingTime == other.WaitingTime ||
-                    this.WaitingTime != null &&
-                    this.WaitingTime.Equals(other.WaitingTime)
+                    this.WaitingTime == input.WaitingTime ||
+                    (this.WaitingTime != null &&
+                    this.WaitingTime.Equals(input.WaitingTime))
                 ) && 
                 (
-                    this.NoVehicles == other.NoVehicles ||
-                    this.NoVehicles != null &&
-                    this.NoVehicles.Equals(other.NoVehicles)
+                    this.NoVehicles == input.NoVehicles ||
+                    (this.NoVehicles != null &&
+                    this.NoVehicles.Equals(input.NoVehicles))
                 ) && 
                 (
-                    this.NoUnassigned == other.NoUnassigned ||
-                    this.NoUnassigned != null &&
-                    this.NoUnassigned.Equals(other.NoUnassigned)
+                    this.NoUnassigned == input.NoUnassigned ||
+                    (this.NoUnassigned != null &&
+                    this.NoUnassigned.Equals(input.NoUnassigned))
                 ) && 
                 (
-                    this.Routes == other.Routes ||
+                    this.Routes == input.Routes ||
                     this.Routes != null &&
-                    this.Routes.SequenceEqual(other.Routes)
+                    this.Routes.SequenceEqual(input.Routes)
                 ) && 
                 (
-                    this.Unassigned == other.Unassigned ||
-                    this.Unassigned != null &&
-                    this.Unassigned.Equals(other.Unassigned)
+                    this.Unassigned == input.Unassigned ||
+                    (this.Unassigned != null &&
+                    this.Unassigned.Equals(input.Unassigned))
                 );
         }
 
@@ -238,32 +236,30 @@ namespace IO.Swagger.Model
         /// <returns>Hash code</returns>
         public override int GetHashCode()
         {
-            // credit: http://stackoverflow.com/a/263416/677735
             unchecked // Overflow is fine, just wrap
             {
-                int hash = 41;
-                // Suitable nullity checks etc, of course :)
+                int hashCode = 41;
                 if (this.Costs != null)
-                    hash = hash * 59 + this.Costs.GetHashCode();
+                    hashCode = hashCode * 59 + this.Costs.GetHashCode();
                 if (this.Distance != null)
-                    hash = hash * 59 + this.Distance.GetHashCode();
+                    hashCode = hashCode * 59 + this.Distance.GetHashCode();
                 if (this.Time != null)
-                    hash = hash * 59 + this.Time.GetHashCode();
+                    hashCode = hashCode * 59 + this.Time.GetHashCode();
                 if (this.TransportTime != null)
-                    hash = hash * 59 + this.TransportTime.GetHashCode();
+                    hashCode = hashCode * 59 + this.TransportTime.GetHashCode();
                 if (this.MaxOperationTime != null)
-                    hash = hash * 59 + this.MaxOperationTime.GetHashCode();
+                    hashCode = hashCode * 59 + this.MaxOperationTime.GetHashCode();
                 if (this.WaitingTime != null)
-                    hash = hash * 59 + this.WaitingTime.GetHashCode();
+                    hashCode = hashCode * 59 + this.WaitingTime.GetHashCode();
                 if (this.NoVehicles != null)
-                    hash = hash * 59 + this.NoVehicles.GetHashCode();
+                    hashCode = hashCode * 59 + this.NoVehicles.GetHashCode();
                 if (this.NoUnassigned != null)
-                    hash = hash * 59 + this.NoUnassigned.GetHashCode();
+                    hashCode = hashCode * 59 + this.NoUnassigned.GetHashCode();
                 if (this.Routes != null)
-                    hash = hash * 59 + this.Routes.GetHashCode();
+                    hashCode = hashCode * 59 + this.Routes.GetHashCode();
                 if (this.Unassigned != null)
-                    hash = hash * 59 + this.Unassigned.GetHashCode();
-                return hash;
+                    hashCode = hashCode * 59 + this.Unassigned.GetHashCode();
+                return hashCode;
             }
         }
 

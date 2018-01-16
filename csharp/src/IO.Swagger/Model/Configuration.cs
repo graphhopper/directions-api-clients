@@ -62,7 +62,7 @@ namespace IO.Swagger.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
@@ -70,30 +70,28 @@ namespace IO.Swagger.Model
         /// <summary>
         /// Returns true if objects are equal
         /// </summary>
-        /// <param name="obj">Object to be compared</param>
+        /// <param name="input">Object to be compared</param>
         /// <returns>Boolean</returns>
-        public override bool Equals(object obj)
+        public override bool Equals(object input)
         {
-            // credit: http://stackoverflow.com/a/10454552/677735
-            return this.Equals(obj as Configuration);
+            return this.Equals(input as Configuration);
         }
 
         /// <summary>
         /// Returns true if Configuration instances are equal
         /// </summary>
-        /// <param name="other">Instance of Configuration to be compared</param>
+        /// <param name="input">Instance of Configuration to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(Configuration other)
+        public bool Equals(Configuration input)
         {
-            // credit: http://stackoverflow.com/a/10454552/677735
-            if (other == null)
+            if (input == null)
                 return false;
 
             return 
                 (
-                    this.Routing == other.Routing ||
-                    this.Routing != null &&
-                    this.Routing.Equals(other.Routing)
+                    this.Routing == input.Routing ||
+                    (this.Routing != null &&
+                    this.Routing.Equals(input.Routing))
                 );
         }
 
@@ -103,14 +101,12 @@ namespace IO.Swagger.Model
         /// <returns>Hash code</returns>
         public override int GetHashCode()
         {
-            // credit: http://stackoverflow.com/a/263416/677735
             unchecked // Overflow is fine, just wrap
             {
-                int hash = 41;
-                // Suitable nullity checks etc, of course :)
+                int hashCode = 41;
                 if (this.Routing != null)
-                    hash = hash * 59 + this.Routing.GetHashCode();
-                return hash;
+                    hashCode = hashCode * 59 + this.Routing.GetHashCode();
+                return hashCode;
             }
         }
 

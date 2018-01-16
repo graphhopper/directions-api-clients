@@ -39,46 +39,46 @@ namespace IO.Swagger.Model
         {
             
             /// <summary>
-            /// Enum Car for "car"
+            /// Enum Car for value: car
             /// </summary>
             [EnumMember(Value = "car")]
-            Car,
+            Car = 1,
             
             /// <summary>
-            /// Enum Bike for "bike"
+            /// Enum Bike for value: bike
             /// </summary>
             [EnumMember(Value = "bike")]
-            Bike,
+            Bike = 2,
             
             /// <summary>
-            /// Enum Foot for "foot"
+            /// Enum Foot for value: foot
             /// </summary>
             [EnumMember(Value = "foot")]
-            Foot,
+            Foot = 3,
             
             /// <summary>
-            /// Enum Mtb for "mtb"
+            /// Enum Mtb for value: mtb
             /// </summary>
             [EnumMember(Value = "mtb")]
-            Mtb,
+            Mtb = 4,
             
             /// <summary>
-            /// Enum Racingbike for "racingbike"
+            /// Enum Racingbike for value: racingbike
             /// </summary>
             [EnumMember(Value = "racingbike")]
-            Racingbike,
+            Racingbike = 5,
             
             /// <summary>
-            /// Enum Truck for "truck"
+            /// Enum Truck for value: truck
             /// </summary>
             [EnumMember(Value = "truck")]
-            Truck,
+            Truck = 6,
             
             /// <summary>
-            /// Enum Smalltruck for "small_truck"
+            /// Enum Smalltruck for value: small_truck
             /// </summary>
             [EnumMember(Value = "small_truck")]
-            Smalltruck
+            Smalltruck = 7
         }
 
         /// <summary>
@@ -184,7 +184,7 @@ namespace IO.Swagger.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
@@ -192,65 +192,63 @@ namespace IO.Swagger.Model
         /// <summary>
         /// Returns true if objects are equal
         /// </summary>
-        /// <param name="obj">Object to be compared</param>
+        /// <param name="input">Object to be compared</param>
         /// <returns>Boolean</returns>
-        public override bool Equals(object obj)
+        public override bool Equals(object input)
         {
-            // credit: http://stackoverflow.com/a/10454552/677735
-            return this.Equals(obj as VehicleType);
+            return this.Equals(input as VehicleType);
         }
 
         /// <summary>
         /// Returns true if VehicleType instances are equal
         /// </summary>
-        /// <param name="other">Instance of VehicleType to be compared</param>
+        /// <param name="input">Instance of VehicleType to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(VehicleType other)
+        public bool Equals(VehicleType input)
         {
-            // credit: http://stackoverflow.com/a/10454552/677735
-            if (other == null)
+            if (input == null)
                 return false;
 
             return 
                 (
-                    this.TypeId == other.TypeId ||
-                    this.TypeId != null &&
-                    this.TypeId.Equals(other.TypeId)
+                    this.TypeId == input.TypeId ||
+                    (this.TypeId != null &&
+                    this.TypeId.Equals(input.TypeId))
                 ) && 
                 (
-                    this.Profile == other.Profile ||
-                    this.Profile != null &&
-                    this.Profile.Equals(other.Profile)
+                    this.Profile == input.Profile ||
+                    (this.Profile != null &&
+                    this.Profile.Equals(input.Profile))
                 ) && 
                 (
-                    this.Capacity == other.Capacity ||
+                    this.Capacity == input.Capacity ||
                     this.Capacity != null &&
-                    this.Capacity.SequenceEqual(other.Capacity)
+                    this.Capacity.SequenceEqual(input.Capacity)
                 ) && 
                 (
-                    this.SpeedFactor == other.SpeedFactor ||
-                    this.SpeedFactor != null &&
-                    this.SpeedFactor.Equals(other.SpeedFactor)
+                    this.SpeedFactor == input.SpeedFactor ||
+                    (this.SpeedFactor != null &&
+                    this.SpeedFactor.Equals(input.SpeedFactor))
                 ) && 
                 (
-                    this.ServiceTimeFactor == other.ServiceTimeFactor ||
-                    this.ServiceTimeFactor != null &&
-                    this.ServiceTimeFactor.Equals(other.ServiceTimeFactor)
+                    this.ServiceTimeFactor == input.ServiceTimeFactor ||
+                    (this.ServiceTimeFactor != null &&
+                    this.ServiceTimeFactor.Equals(input.ServiceTimeFactor))
                 ) && 
                 (
-                    this.CostPerMeter == other.CostPerMeter ||
-                    this.CostPerMeter != null &&
-                    this.CostPerMeter.Equals(other.CostPerMeter)
+                    this.CostPerMeter == input.CostPerMeter ||
+                    (this.CostPerMeter != null &&
+                    this.CostPerMeter.Equals(input.CostPerMeter))
                 ) && 
                 (
-                    this.CostPerSecond == other.CostPerSecond ||
-                    this.CostPerSecond != null &&
-                    this.CostPerSecond.Equals(other.CostPerSecond)
+                    this.CostPerSecond == input.CostPerSecond ||
+                    (this.CostPerSecond != null &&
+                    this.CostPerSecond.Equals(input.CostPerSecond))
                 ) && 
                 (
-                    this.CostPerActivation == other.CostPerActivation ||
-                    this.CostPerActivation != null &&
-                    this.CostPerActivation.Equals(other.CostPerActivation)
+                    this.CostPerActivation == input.CostPerActivation ||
+                    (this.CostPerActivation != null &&
+                    this.CostPerActivation.Equals(input.CostPerActivation))
                 );
         }
 
@@ -260,28 +258,26 @@ namespace IO.Swagger.Model
         /// <returns>Hash code</returns>
         public override int GetHashCode()
         {
-            // credit: http://stackoverflow.com/a/263416/677735
             unchecked // Overflow is fine, just wrap
             {
-                int hash = 41;
-                // Suitable nullity checks etc, of course :)
+                int hashCode = 41;
                 if (this.TypeId != null)
-                    hash = hash * 59 + this.TypeId.GetHashCode();
+                    hashCode = hashCode * 59 + this.TypeId.GetHashCode();
                 if (this.Profile != null)
-                    hash = hash * 59 + this.Profile.GetHashCode();
+                    hashCode = hashCode * 59 + this.Profile.GetHashCode();
                 if (this.Capacity != null)
-                    hash = hash * 59 + this.Capacity.GetHashCode();
+                    hashCode = hashCode * 59 + this.Capacity.GetHashCode();
                 if (this.SpeedFactor != null)
-                    hash = hash * 59 + this.SpeedFactor.GetHashCode();
+                    hashCode = hashCode * 59 + this.SpeedFactor.GetHashCode();
                 if (this.ServiceTimeFactor != null)
-                    hash = hash * 59 + this.ServiceTimeFactor.GetHashCode();
+                    hashCode = hashCode * 59 + this.ServiceTimeFactor.GetHashCode();
                 if (this.CostPerMeter != null)
-                    hash = hash * 59 + this.CostPerMeter.GetHashCode();
+                    hashCode = hashCode * 59 + this.CostPerMeter.GetHashCode();
                 if (this.CostPerSecond != null)
-                    hash = hash * 59 + this.CostPerSecond.GetHashCode();
+                    hashCode = hashCode * 59 + this.CostPerSecond.GetHashCode();
                 if (this.CostPerActivation != null)
-                    hash = hash * 59 + this.CostPerActivation.GetHashCode();
-                return hash;
+                    hashCode = hashCode * 59 + this.CostPerActivation.GetHashCode();
+                return hashCode;
             }
         }
 

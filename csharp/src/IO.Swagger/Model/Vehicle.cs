@@ -37,19 +37,19 @@ namespace IO.Swagger.Model
         /// <param name="TypeId">Unique identifier referring to the available vehicle types.</param>
         /// <param name="StartAddress">StartAddress.</param>
         /// <param name="EndAddress">EndAddress.</param>
-        /// <param name="_Break">_Break.</param>
+        /// <param name="Break">Break.</param>
         /// <param name="ReturnToDepot">Indicates whether vehicle should return to start address or not. If not, it can end at any service activity..</param>
         /// <param name="EarliestStart">earliest start of vehicle at its start location.</param>
         /// <param name="LatestEnd">latest end of vehicle at its end location.</param>
         /// <param name="Skills">array of skills.</param>
         /// <param name="MaxDistance">max distance of vehicle.</param>
-        public Vehicle(string VehicleId = default(string), string TypeId = default(string), Address StartAddress = default(Address), Address EndAddress = default(Address), ModelBreak _Break = default(ModelBreak), bool? ReturnToDepot = default(bool?), long? EarliestStart = default(long?), long? LatestEnd = default(long?), List<string> Skills = default(List<string>), long? MaxDistance = default(long?))
+        public Vehicle(string VehicleId = default(string), string TypeId = default(string), Address StartAddress = default(Address), Address EndAddress = default(Address), Break Break = default(Break), bool? ReturnToDepot = default(bool?), long? EarliestStart = default(long?), long? LatestEnd = default(long?), List<string> Skills = default(List<string>), long? MaxDistance = default(long?))
         {
             this.VehicleId = VehicleId;
             this.TypeId = TypeId;
             this.StartAddress = StartAddress;
             this.EndAddress = EndAddress;
-            this._Break = _Break;
+            this.Break = Break;
             this.ReturnToDepot = ReturnToDepot;
             this.EarliestStart = EarliestStart;
             this.LatestEnd = LatestEnd;
@@ -84,10 +84,10 @@ namespace IO.Swagger.Model
         public Address EndAddress { get; set; }
 
         /// <summary>
-        /// Gets or Sets _Break
+        /// Gets or Sets Break
         /// </summary>
         [DataMember(Name="break", EmitDefaultValue=false)]
-        public ModelBreak _Break { get; set; }
+        public Break Break { get; set; }
 
         /// <summary>
         /// Indicates whether vehicle should return to start address or not. If not, it can end at any service activity.
@@ -136,7 +136,7 @@ namespace IO.Swagger.Model
             sb.Append("  TypeId: ").Append(TypeId).Append("\n");
             sb.Append("  StartAddress: ").Append(StartAddress).Append("\n");
             sb.Append("  EndAddress: ").Append(EndAddress).Append("\n");
-            sb.Append("  _Break: ").Append(_Break).Append("\n");
+            sb.Append("  Break: ").Append(Break).Append("\n");
             sb.Append("  ReturnToDepot: ").Append(ReturnToDepot).Append("\n");
             sb.Append("  EarliestStart: ").Append(EarliestStart).Append("\n");
             sb.Append("  LatestEnd: ").Append(LatestEnd).Append("\n");
@@ -150,7 +150,7 @@ namespace IO.Swagger.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
@@ -158,75 +158,73 @@ namespace IO.Swagger.Model
         /// <summary>
         /// Returns true if objects are equal
         /// </summary>
-        /// <param name="obj">Object to be compared</param>
+        /// <param name="input">Object to be compared</param>
         /// <returns>Boolean</returns>
-        public override bool Equals(object obj)
+        public override bool Equals(object input)
         {
-            // credit: http://stackoverflow.com/a/10454552/677735
-            return this.Equals(obj as Vehicle);
+            return this.Equals(input as Vehicle);
         }
 
         /// <summary>
         /// Returns true if Vehicle instances are equal
         /// </summary>
-        /// <param name="other">Instance of Vehicle to be compared</param>
+        /// <param name="input">Instance of Vehicle to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(Vehicle other)
+        public bool Equals(Vehicle input)
         {
-            // credit: http://stackoverflow.com/a/10454552/677735
-            if (other == null)
+            if (input == null)
                 return false;
 
             return 
                 (
-                    this.VehicleId == other.VehicleId ||
-                    this.VehicleId != null &&
-                    this.VehicleId.Equals(other.VehicleId)
+                    this.VehicleId == input.VehicleId ||
+                    (this.VehicleId != null &&
+                    this.VehicleId.Equals(input.VehicleId))
                 ) && 
                 (
-                    this.TypeId == other.TypeId ||
-                    this.TypeId != null &&
-                    this.TypeId.Equals(other.TypeId)
+                    this.TypeId == input.TypeId ||
+                    (this.TypeId != null &&
+                    this.TypeId.Equals(input.TypeId))
                 ) && 
                 (
-                    this.StartAddress == other.StartAddress ||
-                    this.StartAddress != null &&
-                    this.StartAddress.Equals(other.StartAddress)
+                    this.StartAddress == input.StartAddress ||
+                    (this.StartAddress != null &&
+                    this.StartAddress.Equals(input.StartAddress))
                 ) && 
                 (
-                    this.EndAddress == other.EndAddress ||
-                    this.EndAddress != null &&
-                    this.EndAddress.Equals(other.EndAddress)
+                    this.EndAddress == input.EndAddress ||
+                    (this.EndAddress != null &&
+                    this.EndAddress.Equals(input.EndAddress))
                 ) && 
                 (
-                    this._Break == other._Break ||
-                    this._Break != null &&
-                    this._Break.Equals(other._Break)
+                    this.Break == input.Break ||
+                    (this.Break != null &&
+                    this.Break.Equals(input.Break))
                 ) && 
                 (
-                    this.ReturnToDepot == other.ReturnToDepot ||
-                    this.ReturnToDepot != null &&
-                    this.ReturnToDepot.Equals(other.ReturnToDepot)
+                    this.ReturnToDepot == input.ReturnToDepot ||
+                    (this.ReturnToDepot != null &&
+                    this.ReturnToDepot.Equals(input.ReturnToDepot))
                 ) && 
                 (
-                    this.EarliestStart == other.EarliestStart ||
-                    this.EarliestStart != null &&
-                    this.EarliestStart.Equals(other.EarliestStart)
+                    this.EarliestStart == input.EarliestStart ||
+                    (this.EarliestStart != null &&
+                    this.EarliestStart.Equals(input.EarliestStart))
                 ) && 
                 (
-                    this.LatestEnd == other.LatestEnd ||
-                    this.LatestEnd != null &&
-                    this.LatestEnd.Equals(other.LatestEnd)
+                    this.LatestEnd == input.LatestEnd ||
+                    (this.LatestEnd != null &&
+                    this.LatestEnd.Equals(input.LatestEnd))
                 ) && 
                 (
-                    this.Skills == other.Skills ||
+                    this.Skills == input.Skills ||
                     this.Skills != null &&
-                    this.Skills.SequenceEqual(other.Skills)
+                    this.Skills.SequenceEqual(input.Skills)
                 ) && 
                 (
-                    this.MaxDistance == other.MaxDistance ||
-                    this.MaxDistance != null &&
-                    this.MaxDistance.Equals(other.MaxDistance)
+                    this.MaxDistance == input.MaxDistance ||
+                    (this.MaxDistance != null &&
+                    this.MaxDistance.Equals(input.MaxDistance))
                 );
         }
 
@@ -236,32 +234,30 @@ namespace IO.Swagger.Model
         /// <returns>Hash code</returns>
         public override int GetHashCode()
         {
-            // credit: http://stackoverflow.com/a/263416/677735
             unchecked // Overflow is fine, just wrap
             {
-                int hash = 41;
-                // Suitable nullity checks etc, of course :)
+                int hashCode = 41;
                 if (this.VehicleId != null)
-                    hash = hash * 59 + this.VehicleId.GetHashCode();
+                    hashCode = hashCode * 59 + this.VehicleId.GetHashCode();
                 if (this.TypeId != null)
-                    hash = hash * 59 + this.TypeId.GetHashCode();
+                    hashCode = hashCode * 59 + this.TypeId.GetHashCode();
                 if (this.StartAddress != null)
-                    hash = hash * 59 + this.StartAddress.GetHashCode();
+                    hashCode = hashCode * 59 + this.StartAddress.GetHashCode();
                 if (this.EndAddress != null)
-                    hash = hash * 59 + this.EndAddress.GetHashCode();
-                if (this._Break != null)
-                    hash = hash * 59 + this._Break.GetHashCode();
+                    hashCode = hashCode * 59 + this.EndAddress.GetHashCode();
+                if (this.Break != null)
+                    hashCode = hashCode * 59 + this.Break.GetHashCode();
                 if (this.ReturnToDepot != null)
-                    hash = hash * 59 + this.ReturnToDepot.GetHashCode();
+                    hashCode = hashCode * 59 + this.ReturnToDepot.GetHashCode();
                 if (this.EarliestStart != null)
-                    hash = hash * 59 + this.EarliestStart.GetHashCode();
+                    hashCode = hashCode * 59 + this.EarliestStart.GetHashCode();
                 if (this.LatestEnd != null)
-                    hash = hash * 59 + this.LatestEnd.GetHashCode();
+                    hashCode = hashCode * 59 + this.LatestEnd.GetHashCode();
                 if (this.Skills != null)
-                    hash = hash * 59 + this.Skills.GetHashCode();
+                    hashCode = hashCode * 59 + this.Skills.GetHashCode();
                 if (this.MaxDistance != null)
-                    hash = hash * 59 + this.MaxDistance.GetHashCode();
-                return hash;
+                    hashCode = hashCode * 59 + this.MaxDistance.GetHashCode();
+                return hashCode;
             }
         }
 

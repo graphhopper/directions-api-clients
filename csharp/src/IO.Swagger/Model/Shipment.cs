@@ -131,7 +131,7 @@ namespace IO.Swagger.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
@@ -139,65 +139,63 @@ namespace IO.Swagger.Model
         /// <summary>
         /// Returns true if objects are equal
         /// </summary>
-        /// <param name="obj">Object to be compared</param>
+        /// <param name="input">Object to be compared</param>
         /// <returns>Boolean</returns>
-        public override bool Equals(object obj)
+        public override bool Equals(object input)
         {
-            // credit: http://stackoverflow.com/a/10454552/677735
-            return this.Equals(obj as Shipment);
+            return this.Equals(input as Shipment);
         }
 
         /// <summary>
         /// Returns true if Shipment instances are equal
         /// </summary>
-        /// <param name="other">Instance of Shipment to be compared</param>
+        /// <param name="input">Instance of Shipment to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(Shipment other)
+        public bool Equals(Shipment input)
         {
-            // credit: http://stackoverflow.com/a/10454552/677735
-            if (other == null)
+            if (input == null)
                 return false;
 
             return 
                 (
-                    this.Id == other.Id ||
-                    this.Id != null &&
-                    this.Id.Equals(other.Id)
+                    this.Id == input.Id ||
+                    (this.Id != null &&
+                    this.Id.Equals(input.Id))
                 ) && 
                 (
-                    this.Name == other.Name ||
-                    this.Name != null &&
-                    this.Name.Equals(other.Name)
+                    this.Name == input.Name ||
+                    (this.Name != null &&
+                    this.Name.Equals(input.Name))
                 ) && 
                 (
-                    this.Priority == other.Priority ||
-                    this.Priority != null &&
-                    this.Priority.Equals(other.Priority)
+                    this.Priority == input.Priority ||
+                    (this.Priority != null &&
+                    this.Priority.Equals(input.Priority))
                 ) && 
                 (
-                    this.Pickup == other.Pickup ||
-                    this.Pickup != null &&
-                    this.Pickup.Equals(other.Pickup)
+                    this.Pickup == input.Pickup ||
+                    (this.Pickup != null &&
+                    this.Pickup.Equals(input.Pickup))
                 ) && 
                 (
-                    this.Delivery == other.Delivery ||
-                    this.Delivery != null &&
-                    this.Delivery.Equals(other.Delivery)
+                    this.Delivery == input.Delivery ||
+                    (this.Delivery != null &&
+                    this.Delivery.Equals(input.Delivery))
                 ) && 
                 (
-                    this.Size == other.Size ||
+                    this.Size == input.Size ||
                     this.Size != null &&
-                    this.Size.SequenceEqual(other.Size)
+                    this.Size.SequenceEqual(input.Size)
                 ) && 
                 (
-                    this.RequiredSkills == other.RequiredSkills ||
+                    this.RequiredSkills == input.RequiredSkills ||
                     this.RequiredSkills != null &&
-                    this.RequiredSkills.SequenceEqual(other.RequiredSkills)
+                    this.RequiredSkills.SequenceEqual(input.RequiredSkills)
                 ) && 
                 (
-                    this.AllowedVehicles == other.AllowedVehicles ||
+                    this.AllowedVehicles == input.AllowedVehicles ||
                     this.AllowedVehicles != null &&
-                    this.AllowedVehicles.SequenceEqual(other.AllowedVehicles)
+                    this.AllowedVehicles.SequenceEqual(input.AllowedVehicles)
                 );
         }
 
@@ -207,28 +205,26 @@ namespace IO.Swagger.Model
         /// <returns>Hash code</returns>
         public override int GetHashCode()
         {
-            // credit: http://stackoverflow.com/a/263416/677735
             unchecked // Overflow is fine, just wrap
             {
-                int hash = 41;
-                // Suitable nullity checks etc, of course :)
+                int hashCode = 41;
                 if (this.Id != null)
-                    hash = hash * 59 + this.Id.GetHashCode();
+                    hashCode = hashCode * 59 + this.Id.GetHashCode();
                 if (this.Name != null)
-                    hash = hash * 59 + this.Name.GetHashCode();
+                    hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.Priority != null)
-                    hash = hash * 59 + this.Priority.GetHashCode();
+                    hashCode = hashCode * 59 + this.Priority.GetHashCode();
                 if (this.Pickup != null)
-                    hash = hash * 59 + this.Pickup.GetHashCode();
+                    hashCode = hashCode * 59 + this.Pickup.GetHashCode();
                 if (this.Delivery != null)
-                    hash = hash * 59 + this.Delivery.GetHashCode();
+                    hashCode = hashCode * 59 + this.Delivery.GetHashCode();
                 if (this.Size != null)
-                    hash = hash * 59 + this.Size.GetHashCode();
+                    hashCode = hashCode * 59 + this.Size.GetHashCode();
                 if (this.RequiredSkills != null)
-                    hash = hash * 59 + this.RequiredSkills.GetHashCode();
+                    hashCode = hashCode * 59 + this.RequiredSkills.GetHashCode();
                 if (this.AllowedVehicles != null)
-                    hash = hash * 59 + this.AllowedVehicles.GetHashCode();
-                return hash;
+                    hashCode = hashCode * 59 + this.AllowedVehicles.GetHashCode();
+                return hashCode;
             }
         }
 

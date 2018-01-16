@@ -92,7 +92,7 @@ namespace IO.Swagger.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
@@ -100,45 +100,43 @@ namespace IO.Swagger.Model
         /// <summary>
         /// Returns true if objects are equal
         /// </summary>
-        /// <param name="obj">Object to be compared</param>
+        /// <param name="input">Object to be compared</param>
         /// <returns>Boolean</returns>
-        public override bool Equals(object obj)
+        public override bool Equals(object input)
         {
-            // credit: http://stackoverflow.com/a/10454552/677735
-            return this.Equals(obj as Stop);
+            return this.Equals(input as Stop);
         }
 
         /// <summary>
         /// Returns true if Stop instances are equal
         /// </summary>
-        /// <param name="other">Instance of Stop to be compared</param>
+        /// <param name="input">Instance of Stop to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(Stop other)
+        public bool Equals(Stop input)
         {
-            // credit: http://stackoverflow.com/a/10454552/677735
-            if (other == null)
+            if (input == null)
                 return false;
 
             return 
                 (
-                    this.Address == other.Address ||
-                    this.Address != null &&
-                    this.Address.Equals(other.Address)
+                    this.Address == input.Address ||
+                    (this.Address != null &&
+                    this.Address.Equals(input.Address))
                 ) && 
                 (
-                    this.Duration == other.Duration ||
-                    this.Duration != null &&
-                    this.Duration.Equals(other.Duration)
+                    this.Duration == input.Duration ||
+                    (this.Duration != null &&
+                    this.Duration.Equals(input.Duration))
                 ) && 
                 (
-                    this.PreparationTime == other.PreparationTime ||
-                    this.PreparationTime != null &&
-                    this.PreparationTime.Equals(other.PreparationTime)
+                    this.PreparationTime == input.PreparationTime ||
+                    (this.PreparationTime != null &&
+                    this.PreparationTime.Equals(input.PreparationTime))
                 ) && 
                 (
-                    this.TimeWindows == other.TimeWindows ||
+                    this.TimeWindows == input.TimeWindows ||
                     this.TimeWindows != null &&
-                    this.TimeWindows.SequenceEqual(other.TimeWindows)
+                    this.TimeWindows.SequenceEqual(input.TimeWindows)
                 );
         }
 
@@ -148,20 +146,18 @@ namespace IO.Swagger.Model
         /// <returns>Hash code</returns>
         public override int GetHashCode()
         {
-            // credit: http://stackoverflow.com/a/263416/677735
             unchecked // Overflow is fine, just wrap
             {
-                int hash = 41;
-                // Suitable nullity checks etc, of course :)
+                int hashCode = 41;
                 if (this.Address != null)
-                    hash = hash * 59 + this.Address.GetHashCode();
+                    hashCode = hashCode * 59 + this.Address.GetHashCode();
                 if (this.Duration != null)
-                    hash = hash * 59 + this.Duration.GetHashCode();
+                    hashCode = hashCode * 59 + this.Duration.GetHashCode();
                 if (this.PreparationTime != null)
-                    hash = hash * 59 + this.PreparationTime.GetHashCode();
+                    hashCode = hashCode * 59 + this.PreparationTime.GetHashCode();
                 if (this.TimeWindows != null)
-                    hash = hash * 59 + this.TimeWindows.GetHashCode();
-                return hash;
+                    hashCode = hashCode * 59 + this.TimeWindows.GetHashCode();
+                return hashCode;
             }
         }
 

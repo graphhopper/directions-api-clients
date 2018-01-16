@@ -5,8 +5,8 @@ SPEC=swagger.json
 DIR=.
 
 VERSION=0.10-SNAPSHOT
-# SW_VERSION=master
-SW_VERSION=2.2.3
+SW_VERSION=master
+#SW_VERSION=2.2.3
 FILE=swagger-codegen-cli-$SW_VERSION.jar
 
 NAME=directions-api-client

@@ -39,18 +39,24 @@ namespace IO.Swagger.Model
         {
             
             /// <summary>
-            /// Enum Min for "min"
+            /// Enum Min for value: min
             /// </summary>
             [EnumMember(Value = "min")]
-            Min,
+            Min = 1,
             
             /// <summary>
-            /// Enum Minmax for "min-max"
+            /// Enum MinMax for value: min-max
             /// </summary>
             [EnumMember(Value = "min-max")]
-            Minmax
+            MinMax = 2
         }
 
+        /// <summary>
+        /// type of objective function, i.e. min or min-max 
+        /// </summary>
+        /// <value>type of objective function, i.e. min or min-max </value>
+        [DataMember(Name="type", EmitDefaultValue=false)]
+        public TypeEnum? Type { get; set; }
         /// <summary>
         /// objective function value
         /// </summary>
@@ -60,30 +66,24 @@ namespace IO.Swagger.Model
         {
             
             /// <summary>
-            /// Enum Completiontime for "completion_time"
+            /// Enum Completiontime for value: completion_time
             /// </summary>
             [EnumMember(Value = "completion_time")]
-            Completiontime,
+            Completiontime = 1,
             
             /// <summary>
-            /// Enum Transporttime for "transport_time"
+            /// Enum Transporttime for value: transport_time
             /// </summary>
             [EnumMember(Value = "transport_time")]
-            Transporttime,
+            Transporttime = 2,
             
             /// <summary>
-            /// Enum Vehicles for "vehicles"
+            /// Enum Vehicles for value: vehicles
             /// </summary>
             [EnumMember(Value = "vehicles")]
-            Vehicles
+            Vehicles = 3
         }
 
-        /// <summary>
-        /// type of objective function, i.e. min or min-max 
-        /// </summary>
-        /// <value>type of objective function, i.e. min or min-max </value>
-        [DataMember(Name="type", EmitDefaultValue=false)]
-        public TypeEnum? Type { get; set; }
         /// <summary>
         /// objective function value
         /// </summary>
@@ -121,7 +121,7 @@ namespace IO.Swagger.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
@@ -129,35 +129,33 @@ namespace IO.Swagger.Model
         /// <summary>
         /// Returns true if objects are equal
         /// </summary>
-        /// <param name="obj">Object to be compared</param>
+        /// <param name="input">Object to be compared</param>
         /// <returns>Boolean</returns>
-        public override bool Equals(object obj)
+        public override bool Equals(object input)
         {
-            // credit: http://stackoverflow.com/a/10454552/677735
-            return this.Equals(obj as Objective);
+            return this.Equals(input as Objective);
         }
 
         /// <summary>
         /// Returns true if Objective instances are equal
         /// </summary>
-        /// <param name="other">Instance of Objective to be compared</param>
+        /// <param name="input">Instance of Objective to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(Objective other)
+        public bool Equals(Objective input)
         {
-            // credit: http://stackoverflow.com/a/10454552/677735
-            if (other == null)
+            if (input == null)
                 return false;
 
             return 
                 (
-                    this.Type == other.Type ||
-                    this.Type != null &&
-                    this.Type.Equals(other.Type)
+                    this.Type == input.Type ||
+                    (this.Type != null &&
+                    this.Type.Equals(input.Type))
                 ) && 
                 (
-                    this.Value == other.Value ||
-                    this.Value != null &&
-                    this.Value.Equals(other.Value)
+                    this.Value == input.Value ||
+                    (this.Value != null &&
+                    this.Value.Equals(input.Value))
                 );
         }
 
@@ -167,16 +165,14 @@ namespace IO.Swagger.Model
         /// <returns>Hash code</returns>
         public override int GetHashCode()
         {
-            // credit: http://stackoverflow.com/a/263416/677735
             unchecked // Overflow is fine, just wrap
             {
-                int hash = 41;
-                // Suitable nullity checks etc, of course :)
+                int hashCode = 41;
                 if (this.Type != null)
-                    hash = hash * 59 + this.Type.GetHashCode();
+                    hashCode = hashCode * 59 + this.Type.GetHashCode();
                 if (this.Value != null)
-                    hash = hash * 59 + this.Value.GetHashCode();
-                return hash;
+                    hashCode = hashCode * 59 + this.Value.GetHashCode();
+                return hashCode;
             }
         }
 

@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **TypeId** | **string** | Unique identifier referring to the available vehicle types | [optional] 
 **StartAddress** | [**Address**](Address.md) |  | [optional] 
 **EndAddress** | [**Address**](Address.md) |  | [optional] 
-**_Break** | [**ModelBreak**](ModelBreak.md) |  | [optional] 
+**Break** | [**Break**](Break.md) |  | [optional] 
 **ReturnToDepot** | **bool?** | Indicates whether vehicle should return to start address or not. If not, it can end at any service activity. | [optional] 
 **EarliestStart** | **long?** | earliest start of vehicle at its start location | [optional] 
 **LatestEnd** | **long?** | latest end of vehicle at its end location | [optional] 

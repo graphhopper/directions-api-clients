@@ -141,7 +141,7 @@ namespace IO.Swagger.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
@@ -149,70 +149,68 @@ namespace IO.Swagger.Model
         /// <summary>
         /// Returns true if objects are equal
         /// </summary>
-        /// <param name="obj">Object to be compared</param>
+        /// <param name="input">Object to be compared</param>
         /// <returns>Boolean</returns>
-        public override bool Equals(object obj)
+        public override bool Equals(object input)
         {
-            // credit: http://stackoverflow.com/a/10454552/677735
-            return this.Equals(obj as Request);
+            return this.Equals(input as Request);
         }
 
         /// <summary>
         /// Returns true if Request instances are equal
         /// </summary>
-        /// <param name="other">Instance of Request to be compared</param>
+        /// <param name="input">Instance of Request to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(Request other)
+        public bool Equals(Request input)
         {
-            // credit: http://stackoverflow.com/a/10454552/677735
-            if (other == null)
+            if (input == null)
                 return false;
 
             return 
                 (
-                    this.Vehicles == other.Vehicles ||
+                    this.Vehicles == input.Vehicles ||
                     this.Vehicles != null &&
-                    this.Vehicles.SequenceEqual(other.Vehicles)
+                    this.Vehicles.SequenceEqual(input.Vehicles)
                 ) && 
                 (
-                    this.VehicleTypes == other.VehicleTypes ||
+                    this.VehicleTypes == input.VehicleTypes ||
                     this.VehicleTypes != null &&
-                    this.VehicleTypes.SequenceEqual(other.VehicleTypes)
+                    this.VehicleTypes.SequenceEqual(input.VehicleTypes)
                 ) && 
                 (
-                    this.Services == other.Services ||
+                    this.Services == input.Services ||
                     this.Services != null &&
-                    this.Services.SequenceEqual(other.Services)
+                    this.Services.SequenceEqual(input.Services)
                 ) && 
                 (
-                    this.Shipments == other.Shipments ||
+                    this.Shipments == input.Shipments ||
                     this.Shipments != null &&
-                    this.Shipments.SequenceEqual(other.Shipments)
+                    this.Shipments.SequenceEqual(input.Shipments)
                 ) && 
                 (
-                    this.Relations == other.Relations ||
+                    this.Relations == input.Relations ||
                     this.Relations != null &&
-                    this.Relations.SequenceEqual(other.Relations)
+                    this.Relations.SequenceEqual(input.Relations)
                 ) && 
                 (
-                    this.Algorithm == other.Algorithm ||
-                    this.Algorithm != null &&
-                    this.Algorithm.Equals(other.Algorithm)
+                    this.Algorithm == input.Algorithm ||
+                    (this.Algorithm != null &&
+                    this.Algorithm.Equals(input.Algorithm))
                 ) && 
                 (
-                    this.Objectives == other.Objectives ||
+                    this.Objectives == input.Objectives ||
                     this.Objectives != null &&
-                    this.Objectives.SequenceEqual(other.Objectives)
+                    this.Objectives.SequenceEqual(input.Objectives)
                 ) && 
                 (
-                    this.CostMatrices == other.CostMatrices ||
+                    this.CostMatrices == input.CostMatrices ||
                     this.CostMatrices != null &&
-                    this.CostMatrices.SequenceEqual(other.CostMatrices)
+                    this.CostMatrices.SequenceEqual(input.CostMatrices)
                 ) && 
                 (
-                    this.Configuration == other.Configuration ||
-                    this.Configuration != null &&
-                    this.Configuration.Equals(other.Configuration)
+                    this.Configuration == input.Configuration ||
+                    (this.Configuration != null &&
+                    this.Configuration.Equals(input.Configuration))
                 );
         }
 
@@ -222,30 +220,28 @@ namespace IO.Swagger.Model
         /// <returns>Hash code</returns>
         public override int GetHashCode()
         {
-            // credit: http://stackoverflow.com/a/263416/677735
             unchecked // Overflow is fine, just wrap
             {
-                int hash = 41;
-                // Suitable nullity checks etc, of course :)
+                int hashCode = 41;
                 if (this.Vehicles != null)
-                    hash = hash * 59 + this.Vehicles.GetHashCode();
+                    hashCode = hashCode * 59 + this.Vehicles.GetHashCode();
                 if (this.VehicleTypes != null)
-                    hash = hash * 59 + this.VehicleTypes.GetHashCode();
+                    hashCode = hashCode * 59 + this.VehicleTypes.GetHashCode();
                 if (this.Services != null)
-                    hash = hash * 59 + this.Services.GetHashCode();
+                    hashCode = hashCode * 59 + this.Services.GetHashCode();
                 if (this.Shipments != null)
-                    hash = hash * 59 + this.Shipments.GetHashCode();
+                    hashCode = hashCode * 59 + this.Shipments.GetHashCode();
                 if (this.Relations != null)
-                    hash = hash * 59 + this.Relations.GetHashCode();
+                    hashCode = hashCode * 59 + this.Relations.GetHashCode();
                 if (this.Algorithm != null)
-                    hash = hash * 59 + this.Algorithm.GetHashCode();
+                    hashCode = hashCode * 59 + this.Algorithm.GetHashCode();
                 if (this.Objectives != null)
-                    hash = hash * 59 + this.Objectives.GetHashCode();
+                    hashCode = hashCode * 59 + this.Objectives.GetHashCode();
                 if (this.CostMatrices != null)
-                    hash = hash * 59 + this.CostMatrices.GetHashCode();
+                    hashCode = hashCode * 59 + this.CostMatrices.GetHashCode();
                 if (this.Configuration != null)
-                    hash = hash * 59 + this.Configuration.GetHashCode();
-                return hash;
+                    hashCode = hashCode * 59 + this.Configuration.GetHashCode();
+                return hashCode;
             }
         }
 

@@ -71,7 +71,7 @@ namespace IO.Swagger.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
@@ -79,35 +79,33 @@ namespace IO.Swagger.Model
         /// <summary>
         /// Returns true if objects are equal
         /// </summary>
-        /// <param name="obj">Object to be compared</param>
+        /// <param name="input">Object to be compared</param>
         /// <returns>Boolean</returns>
-        public override bool Equals(object obj)
+        public override bool Equals(object input)
         {
-            // credit: http://stackoverflow.com/a/10454552/677735
-            return this.Equals(obj as RoutePoint);
+            return this.Equals(input as RoutePoint);
         }
 
         /// <summary>
         /// Returns true if RoutePoint instances are equal
         /// </summary>
-        /// <param name="other">Instance of RoutePoint to be compared</param>
+        /// <param name="input">Instance of RoutePoint to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(RoutePoint other)
+        public bool Equals(RoutePoint input)
         {
-            // credit: http://stackoverflow.com/a/10454552/677735
-            if (other == null)
+            if (input == null)
                 return false;
 
             return 
                 (
-                    this.Type == other.Type ||
-                    this.Type != null &&
-                    this.Type.Equals(other.Type)
+                    this.Type == input.Type ||
+                    (this.Type != null &&
+                    this.Type.Equals(input.Type))
                 ) && 
                 (
-                    this.Coordinates == other.Coordinates ||
+                    this.Coordinates == input.Coordinates ||
                     this.Coordinates != null &&
-                    this.Coordinates.SequenceEqual(other.Coordinates)
+                    this.Coordinates.SequenceEqual(input.Coordinates)
                 );
         }
 
@@ -117,16 +115,14 @@ namespace IO.Swagger.Model
         /// <returns>Hash code</returns>
         public override int GetHashCode()
         {
-            // credit: http://stackoverflow.com/a/263416/677735
             unchecked // Overflow is fine, just wrap
             {
-                int hash = 41;
-                // Suitable nullity checks etc, of course :)
+                int hashCode = 41;
                 if (this.Type != null)
-                    hash = hash * 59 + this.Type.GetHashCode();
+                    hashCode = hashCode * 59 + this.Type.GetHashCode();
                 if (this.Coordinates != null)
-                    hash = hash * 59 + this.Coordinates.GetHashCode();
-                return hash;
+                    hashCode = hashCode * 59 + this.Coordinates.GetHashCode();
+                return hashCode;
             }
         }
 
