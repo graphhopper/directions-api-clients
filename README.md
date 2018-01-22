@@ -50,8 +50,8 @@ Currently the following APIs are supported
 
 ## Build it yourself
 
-Currently we use [swagger codegen](https://github.com/swagger-api/swagger-codegen/) from master (will switch when release after
-2.2.3 comes out) to create the clients. You can easily edit the create.sh script
+Currently we use [swagger codegen](https://github.com/swagger-api/swagger-codegen/) from master
+(we'll soon switch to stable 2.4.0) to create the clients. You can easily edit the create.sh script
 to specify your own packaged version.
 
 ### Update all clients
