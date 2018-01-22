@@ -3,7 +3,7 @@
 """
     GraphHopper Directions API
 
-    You use the GraphHopper Directions API to add route planning, navigation and route optimization to your software. E.g. the Routing API has turn instructions and elevation data and the Route Optimization API solves your logistic problems and supports various constraints like time window and capacity restrictions. Also it is possible to get all distances between all locations with our fast Matrix API.
+    You use the GraphHopper Directions API to add route planning, navigation and route optimization to your software. E.g. the Routing API has turn instructions and elevation data and the Route Optimization API solves your logistic problems and supports various constraints like time window and capacity restrictions. Also it is possible to get all distances between all locations with our fast Matrix API.  # noqa: E501
 
     OpenAPI spec version: 1.0.0
     
@@ -13,17 +13,15 @@
 
 from __future__ import absolute_import
 
-import os
-import sys
 import unittest
 
 import swagger_client
+from swagger_client.models.route_point import RoutePoint  # noqa: E501
 from swagger_client.rest import ApiException
-from swagger_client.models.route_point import RoutePoint
 
 
 class TestRoutePoint(unittest.TestCase):
-    """ RoutePoint unit test stubs """
+    """RoutePoint unit test stubs"""
 
     def setUp(self):
         pass
@@ -32,11 +30,9 @@ class TestRoutePoint(unittest.TestCase):
         pass
 
     def testRoutePoint(self):
-        """
-        Test RoutePoint
-        """
+        """Test RoutePoint"""
         # FIXME: construct object with mandatory attributes with example values
-        #model = swagger_client.models.route_point.RoutePoint()
+        # model = swagger_client.models.route_point.RoutePoint()  # noqa: E501
         pass
 
 

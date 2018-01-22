@@ -23,10 +23,10 @@ The Matrix API is part of the GraphHopper Directions API and with this API you c
 ### Example 
 ```perl
 use Data::Dumper;
-use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::MatrixApi;
+my $api_instance = WWW::SwaggerClient::MatrixApi->new(
+);
 
-my $api_instance = WWW::SwaggerClient::MatrixApi->new();
 my $key = 'key_example'; # string | Get your key at graphhopper.com
 my $point = []; # ARRAY[string] | Specifiy multiple points for which the weight-, route-, time- or distance-matrix should be calculated. In this case the starts are identical to the destinations. If there are N points, then NxN entries will be calculated. The order of the point parameter is important. Specify at least three points. Cannot be used together with from_point or to_point. Is a string with the format latitude,longitude.
 my $from_point = 'from_point_example'; # string | The starting points for the routes. E.g. if you want to calculate the three routes A-&gt;1, A-&gt;2, A-&gt;3 then you have one from_point parameter and three to_point parameters. Is a string with the format latitude,longitude.
@@ -79,10 +79,10 @@ The GET request has an URL length limitation, which hurts for many locations per
 ### Example 
 ```perl
 use Data::Dumper;
-use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::MatrixApi;
+my $api_instance = WWW::SwaggerClient::MatrixApi->new(
+);
 
-my $api_instance = WWW::SwaggerClient::MatrixApi->new();
 my $key = 'key_example'; # string | Get your key at graphhopper.com
 my $body = WWW::SwaggerClient::Object::MatrixRequest->new(); # MatrixRequest | 
 

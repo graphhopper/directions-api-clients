@@ -71,23 +71,24 @@ public class MatrixApi {
      */
     public com.squareup.okhttp.Call matrixGetCall(String key, List<String> point, String fromPoint, String toPoint, List<String> outArray, String vehicle, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
-        
+
         // create path and map variables
         String localVarPath = "/matrix";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (point != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "point", point));
+        localVarCollectionQueryParams.addAll(apiClient.parameterToPairs("multi", "point", point));
         if (fromPoint != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "from_point", fromPoint));
+        localVarQueryParams.addAll(apiClient.parameterToPair("from_point", fromPoint));
         if (toPoint != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "to_point", toPoint));
+        localVarQueryParams.addAll(apiClient.parameterToPair("to_point", toPoint));
         if (outArray != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "out_array", outArray));
+        localVarCollectionQueryParams.addAll(apiClient.parameterToPairs("multi", "out_array", outArray));
         if (vehicle != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "vehicle", vehicle));
+        localVarQueryParams.addAll(apiClient.parameterToPair("vehicle", vehicle));
         if (key != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "key", key));
+        localVarQueryParams.addAll(apiClient.parameterToPair("key", key));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -118,9 +119,9 @@ public class MatrixApi {
         }
 
         String[] localVarAuthNames = new String[] {  };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
-    
+
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call matrixGetValidateBeforeCall(String key, List<String> point, String fromPoint, String toPoint, List<String> outArray, String vehicle, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
@@ -129,14 +130,10 @@ public class MatrixApi {
             throw new ApiException("Missing the required parameter 'key' when calling matrixGet(Async)");
         }
         
-        
+
         com.squareup.okhttp.Call call = matrixGetCall(key, point, fromPoint, toPoint, outArray, vehicle, progressListener, progressRequestListener);
         return call;
 
-        
-        
-        
-        
     }
 
     /**
@@ -224,13 +221,14 @@ public class MatrixApi {
      */
     public com.squareup.okhttp.Call matrixPostCall(String key, MatrixRequest body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = body;
-        
+
         // create path and map variables
         String localVarPath = "/matrix";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (key != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "key", key));
+        localVarQueryParams.addAll(apiClient.parameterToPair("key", key));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -261,9 +259,9 @@ public class MatrixApi {
         }
 
         String[] localVarAuthNames = new String[] {  };
-        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
-    
+
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call matrixPostValidateBeforeCall(String key, MatrixRequest body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
@@ -272,14 +270,10 @@ public class MatrixApi {
             throw new ApiException("Missing the required parameter 'key' when calling matrixPost(Async)");
         }
         
-        
+
         com.squareup.okhttp.Call call = matrixPostCall(key, body, progressListener, progressRequestListener);
         return call;
 
-        
-        
-        
-        
     }
 
     /**

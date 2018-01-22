@@ -38,12 +38,12 @@ SWGResponseCoordinates::~SWGResponseCoordinates() {
 void
 SWGResponseCoordinates::init() {
     coordinates = new SWGResponseCoordinatesArray();
+    m_coordinates_isSet = false;
 }
 
 void
 SWGResponseCoordinates::cleanup() {
-    
-    if(coordinates != nullptr) {
+    if(coordinates != nullptr) { 
         delete coordinates;
     }
 }
@@ -60,6 +60,7 @@ SWGResponseCoordinates::fromJson(QString &json) {
 void
 SWGResponseCoordinates::fromJsonObject(QJsonObject &pJson) {
     ::Swagger::setValue(&coordinates, pJson["coordinates"], "SWGResponseCoordinatesArray", "SWGResponseCoordinatesArray");
+    
 }
 
 QString
@@ -75,8 +76,10 @@ SWGResponseCoordinates::asJson ()
 QJsonObject*
 SWGResponseCoordinates::asJsonObject() {
     QJsonObject* obj = new QJsonObject();
-    
-    toJsonValue(QString("coordinates"), coordinates, obj, QString("SWGResponseCoordinatesArray"));
+     
+    if((coordinates != nullptr) && (coordinates->isSet())){
+        toJsonValue(QString("coordinates"), coordinates, obj, QString("SWGResponseCoordinatesArray"));
+    }
 
     return obj;
 }
@@ -88,8 +91,17 @@ SWGResponseCoordinates::getCoordinates() {
 void
 SWGResponseCoordinates::setCoordinates(SWGResponseCoordinatesArray* coordinates) {
     this->coordinates = coordinates;
+    this->m_coordinates_isSet = true;
 }
 
 
+bool 
+SWGResponseCoordinates::isSet(){
+    bool isObjectUpdated = false;
+    do{
+        if(coordinates != nullptr && coordinates->isSet()){ isObjectUpdated = true; break;}
+    }while(false);
+    return isObjectUpdated;
+}
 }
 

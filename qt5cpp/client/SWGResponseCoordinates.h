@@ -26,7 +26,6 @@
 
 #include "SWGObject.h"
 
-
 namespace Swagger {
 
 class SWGResponseCoordinates: public SWGObject {
@@ -46,8 +45,12 @@ public:
     void setCoordinates(SWGResponseCoordinatesArray* coordinates);
 
 
+    virtual bool isSet() override;
+
 private:
     SWGResponseCoordinatesArray* coordinates;
+    bool m_coordinates_isSet;
+    
 };
 
 }

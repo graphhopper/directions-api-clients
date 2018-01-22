@@ -14,6 +14,7 @@
 package com.graphhopper.directions.api.client.model;
 
 import java.util.Objects;
+import java.util.Arrays;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -160,7 +161,7 @@ public class RouteResponsePath {
    * @return pointsEncoded
   **/
   @ApiModelProperty(value = "Is true if the points are encoded, if not paths[0].points contains the geo json of the path (then order is lon,lat,elevation), which is easier to handle but consumes more bandwidth compared to encoded version")
-  public Boolean getPointsEncoded() {
+  public Boolean isPointsEncoded() {
     return pointsEncoded;
   }
 
@@ -285,6 +286,6 @@ public class RouteResponsePath {
     }
     return o.toString().replace("\n", "\n    ");
   }
-  
+
 }
 

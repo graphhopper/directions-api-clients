@@ -14,16 +14,16 @@ package io.swagger.client.model
 
 
 case class Response (
-  copyrights: Option[List[String]],
-  /* unique identify of job - which you get when posting your request to the large problem solver */
-  jobId: Option[String],
-  /* indicates the current status of the job */
-  status: Option[String],
-  /* waiting time in ms */
-  waitingInQueue: Option[Long],
-  /* processing time in ms. if job is still waiting in queue, processing_time is 0 */
-  processingTime: Option[Long],
-  /* the solution. only available if status field indicates finished */
-  solution: Option[Solution]
+  copyrights: Option[List[String]] = None,
+  // unique identify of job - which you get when posting your request to the large problem solver
+  jobId: Option[String] = None,
+  // indicates the current status of the job
+  status: Option[String] = None,
+  // waiting time in ms
+  waitingInQueue: Option[Long] = None,
+  // processing time in ms. if job is still waiting in queue, processing_time is 0
+  processingTime: Option[Long] = None,
+  // the solution. only available if status field indicates finished
+  solution: Option[Solution] = None
 )
 

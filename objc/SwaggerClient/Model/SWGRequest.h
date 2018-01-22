@@ -23,6 +23,25 @@
 #import "SWGShipment.h"
 #import "SWGVehicle.h"
 #import "SWGVehicleType.h"
+@protocol SWGAlgorithm;
+@class SWGAlgorithm;
+@protocol SWGConfiguration;
+@class SWGConfiguration;
+@protocol SWGCostMatrix;
+@class SWGCostMatrix;
+@protocol SWGObjective;
+@class SWGObjective;
+@protocol SWGRelation;
+@class SWGRelation;
+@protocol SWGService;
+@class SWGService;
+@protocol SWGShipment;
+@class SWGShipment;
+@protocol SWGVehicle;
+@class SWGVehicle;
+@protocol SWGVehicleType;
+@class SWGVehicleType;
+
 
 
 @protocol SWGRequest

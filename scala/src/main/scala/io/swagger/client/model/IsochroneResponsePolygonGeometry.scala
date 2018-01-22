@@ -14,7 +14,7 @@ package io.swagger.client.model
 
 
 case class IsochroneResponsePolygonGeometry (
-  _type: Option[String],
-  coordinates: Option[List[ResponseCoordinatesArray]]
+  `type`: Option[String] = None,
+  coordinates: Option[List[ResponseCoordinatesArray]] = None
 )
 

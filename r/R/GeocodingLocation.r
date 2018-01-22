@@ -190,7 +190,7 @@ GeocodingLocation <- R6::R6Class(
     },
     fromJSONString = function(GeocodingLocationJson) {
       GeocodingLocationObject <- jsonlite::fromJSON(GeocodingLocationJson)
-      GeocodingPointObject -> GeocodingPoint$new()
+      GeocodingPointObject <- GeocodingPoint$new()
       self$`point` <- GeocodingPointObject$fromJSON(jsonlite::toJSON(GeocodingLocationObject$point, auto_unbox = TRUE))
       self$`osm_id` <- GeocodingLocationObject$`osm_id`
       self$`osm_type` <- GeocodingLocationObject$`osm_type`

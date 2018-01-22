@@ -26,7 +26,6 @@
 
 #include "SWGObject.h"
 
-
 namespace Swagger {
 
 class SWGResponseCoordinatesArray: public SWGObject {
@@ -42,6 +41,8 @@ public:
     void fromJsonObject(QJsonObject &json);
     SWGResponseCoordinatesArray* fromJson(QString &jsonString);
 
+
+    virtual bool isSet() override;
 
 private:
 };

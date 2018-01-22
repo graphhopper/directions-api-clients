@@ -271,8 +271,8 @@ SWGRoutingApi::routeGet(QList<QString*>* point, bool points_encoded, QString* ke
         .append(QUrl::toPercentEncoding(stringValue(key)));
 
 
-    HttpRequestWorker *worker = new HttpRequestWorker();
-    HttpRequestInput input(fullPath, "GET");
+    SWGHttpRequestWorker *worker = new SWGHttpRequestWorker();
+    SWGHttpRequestInput input(fullPath, "GET");
 
 
 
@@ -283,7 +283,7 @@ SWGRoutingApi::routeGet(QList<QString*>* point, bool points_encoded, QString* ke
     }
 
     connect(worker,
-            &HttpRequestWorker::on_execution_finished,
+            &SWGHttpRequestWorker::on_execution_finished,
             this,
             &SWGRoutingApi::routeGetCallback);
 
@@ -291,7 +291,7 @@ SWGRoutingApi::routeGet(QList<QString*>* point, bool points_encoded, QString* ke
 }
 
 void
-SWGRoutingApi::routeGetCallback(HttpRequestWorker * worker) {
+SWGRoutingApi::routeGetCallback(SWGHttpRequestWorker * worker) {
     QString msg;
     QString error_str = worker->error_str;
     QNetworkReply::NetworkError error_type = worker->error_type;
@@ -304,12 +304,18 @@ SWGRoutingApi::routeGetCallback(HttpRequestWorker * worker) {
     }
 
 
+    
+
     QString json(worker->response);
     SWGRouteResponse* output = static_cast<SWGRouteResponse*>(create(json, QString("SWGRouteResponse")));
     worker->deleteLater();
 
-    emit routeGetSignal(output);
-    emit routeGetSignalE(output, error_type, error_str);
+    if (worker->error_type == QNetworkReply::NoError) {
+        emit routeGetSignal(output);
+    } else {
+        emit routeGetSignalE(output, error_type, error_str);
+        emit routeGetSignalEFull(worker, error_type, error_str);
+    }
 }
 
 

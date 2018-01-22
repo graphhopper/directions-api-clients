@@ -14,6 +14,6 @@ package io.swagger.client.model
 
 
 case class Configuration (
-  routing: Option[Routing]
+  routing: Option[Routing] = None
 )
 

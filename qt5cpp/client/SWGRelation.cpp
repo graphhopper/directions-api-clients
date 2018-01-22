@@ -38,26 +38,26 @@ SWGRelation::~SWGRelation() {
 void
 SWGRelation::init() {
     type = new QString("");
+    m_type_isSet = false;
     ids = new QList<QString*>();
+    m_ids_isSet = false;
     vehicle_id = new QString("");
+    m_vehicle_id_isSet = false;
 }
 
 void
 SWGRelation::cleanup() {
-    
-    if(type != nullptr) {
+    if(type != nullptr) { 
         delete type;
     }
-
-    if(ids != nullptr) {
-        QList<QString*>* arr = ids;
-        foreach(QString* o, *arr) {
+    if(ids != nullptr) { 
+        auto arr = ids;
+        for(auto o: *arr) { 
             delete o;
         }
         delete ids;
     }
-
-    if(vehicle_id != nullptr) {
+    if(vehicle_id != nullptr) { 
         delete vehicle_id;
     }
 }
@@ -75,9 +75,10 @@ void
 SWGRelation::fromJsonObject(QJsonObject &pJson) {
     ::Swagger::setValue(&type, pJson["type"], "QString", "QString");
     
-    ::Swagger::setValue(&ids, pJson["ids"], "QList", "QString");
     
+    ::Swagger::setValue(&ids, pJson["ids"], "QList", "QString");
     ::Swagger::setValue(&vehicle_id, pJson["vehicle_id"], "QString", "QString");
+    
 }
 
 QString
@@ -94,13 +95,17 @@ QJsonObject*
 SWGRelation::asJsonObject() {
     QJsonObject* obj = new QJsonObject();
     
-    toJsonValue(QString("type"), type, obj, QString("QString"));
-
-    QJsonArray idsJsonArray;
-    toJsonArray((QList<void*>*)ids, &idsJsonArray, "ids", "QString");
-    obj->insert("ids", idsJsonArray);
-
-    toJsonValue(QString("vehicle_id"), vehicle_id, obj, QString("QString"));
+    if(type != nullptr && *type != QString("")){
+        toJsonValue(QString("type"), type, obj, QString("QString"));
+    }
+    
+    if(ids->size() > 0){
+        toJsonArray((QList<void*>*)ids, obj, "ids", "QString");
+    }
+    
+    if(vehicle_id != nullptr && *vehicle_id != QString("")){
+        toJsonValue(QString("vehicle_id"), vehicle_id, obj, QString("QString"));
+    }
 
     return obj;
 }
@@ -112,6 +117,7 @@ SWGRelation::getType() {
 void
 SWGRelation::setType(QString* type) {
     this->type = type;
+    this->m_type_isSet = true;
 }
 
 QList<QString*>*
@@ -121,6 +127,7 @@ SWGRelation::getIds() {
 void
 SWGRelation::setIds(QList<QString*>* ids) {
     this->ids = ids;
+    this->m_ids_isSet = true;
 }
 
 QString*
@@ -130,8 +137,19 @@ SWGRelation::getVehicleId() {
 void
 SWGRelation::setVehicleId(QString* vehicle_id) {
     this->vehicle_id = vehicle_id;
+    this->m_vehicle_id_isSet = true;
 }
 
 
+bool 
+SWGRelation::isSet(){
+    bool isObjectUpdated = false;
+    do{
+        if(type != nullptr && *type != QString("")){ isObjectUpdated = true; break;}
+        if(ids->size() > 0){ isObjectUpdated = true; break;}
+        if(vehicle_id != nullptr && *vehicle_id != QString("")){ isObjectUpdated = true; break;}
+    }while(false);
+    return isObjectUpdated;
+}
 }
 

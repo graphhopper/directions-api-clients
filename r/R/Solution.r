@@ -190,7 +190,7 @@ Solution <- R6::R6Class(
       self$`no_vehicles` <- SolutionObject$`no_vehicles`
       self$`no_unassigned` <- SolutionObject$`no_unassigned`
       self$`routes` <- lapply(SolutionObject$`routes`, function(x) Route$new()$fromJSON(jsonlite::toJSON(x, auto_unbox = TRUE)))
-      SolutionUnassignedObject -> SolutionUnassigned$new()
+      SolutionUnassignedObject <- SolutionUnassigned$new()
       self$`unassigned` <- SolutionUnassignedObject$fromJSON(jsonlite::toJSON(SolutionObject$unassigned, auto_unbox = TRUE))
     }
   )

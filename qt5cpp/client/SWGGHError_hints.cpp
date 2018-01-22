@@ -38,12 +38,12 @@ SWGGHError_hints::~SWGGHError_hints() {
 void
 SWGGHError_hints::init() {
     message = new QString("");
+    m_message_isSet = false;
 }
 
 void
 SWGGHError_hints::cleanup() {
-    
-    if(message != nullptr) {
+    if(message != nullptr) { 
         delete message;
     }
 }
@@ -60,6 +60,7 @@ SWGGHError_hints::fromJson(QString &json) {
 void
 SWGGHError_hints::fromJsonObject(QJsonObject &pJson) {
     ::Swagger::setValue(&message, pJson["message"], "QString", "QString");
+    
 }
 
 QString
@@ -76,7 +77,9 @@ QJsonObject*
 SWGGHError_hints::asJsonObject() {
     QJsonObject* obj = new QJsonObject();
     
-    toJsonValue(QString("message"), message, obj, QString("QString"));
+    if(message != nullptr && *message != QString("")){
+        toJsonValue(QString("message"), message, obj, QString("QString"));
+    }
 
     return obj;
 }
@@ -88,8 +91,17 @@ SWGGHError_hints::getMessage() {
 void
 SWGGHError_hints::setMessage(QString* message) {
     this->message = message;
+    this->m_message_isSet = true;
 }
 
 
+bool 
+SWGGHError_hints::isSet(){
+    bool isObjectUpdated = false;
+    do{
+        if(message != nullptr && *message != QString("")){ isObjectUpdated = true; break;}
+    }while(false);
+    return isObjectUpdated;
+}
 }
 

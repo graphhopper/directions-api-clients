@@ -38,21 +38,22 @@ SWGGHError::~SWGGHError() {
 void
 SWGGHError::init() {
     code = 0;
+    m_code_isSet = false;
     message = new QString("");
+    m_message_isSet = false;
     hints = new QList<SWGGHError_hints*>();
+    m_hints_isSet = false;
 }
 
 void
 SWGGHError::cleanup() {
-    
 
-    if(message != nullptr) {
+    if(message != nullptr) { 
         delete message;
     }
-
-    if(hints != nullptr) {
-        QList<SWGGHError_hints*>* arr = hints;
-        foreach(SWGGHError_hints* o, *arr) {
+    if(hints != nullptr) { 
+        auto arr = hints;
+        for(auto o: *arr) { 
             delete o;
         }
         delete hints;
@@ -71,10 +72,11 @@ SWGGHError::fromJson(QString &json) {
 void
 SWGGHError::fromJsonObject(QJsonObject &pJson) {
     ::Swagger::setValue(&code, pJson["code"], "qint32", "");
+    
     ::Swagger::setValue(&message, pJson["message"], "QString", "QString");
     
-    ::Swagger::setValue(&hints, pJson["hints"], "QList", "SWGGHError_hints");
     
+    ::Swagger::setValue(&hints, pJson["hints"], "QList", "SWGGHError_hints");
 }
 
 QString
@@ -91,13 +93,17 @@ QJsonObject*
 SWGGHError::asJsonObject() {
     QJsonObject* obj = new QJsonObject();
     
-    obj->insert("code", QJsonValue(code));
-
-    toJsonValue(QString("message"), message, obj, QString("QString"));
-
-    QJsonArray hintsJsonArray;
-    toJsonArray((QList<void*>*)hints, &hintsJsonArray, "hints", "SWGGHError_hints");
-    obj->insert("hints", hintsJsonArray);
+    if(m_code_isSet){
+        obj->insert("code", QJsonValue(code));
+    }
+    
+    if(message != nullptr && *message != QString("")){
+        toJsonValue(QString("message"), message, obj, QString("QString"));
+    }
+    
+    if(hints->size() > 0){
+        toJsonArray((QList<void*>*)hints, obj, "hints", "SWGGHError_hints");
+    }
 
     return obj;
 }
@@ -109,6 +115,7 @@ SWGGHError::getCode() {
 void
 SWGGHError::setCode(qint32 code) {
     this->code = code;
+    this->m_code_isSet = true;
 }
 
 QString*
@@ -118,6 +125,7 @@ SWGGHError::getMessage() {
 void
 SWGGHError::setMessage(QString* message) {
     this->message = message;
+    this->m_message_isSet = true;
 }
 
 QList<SWGGHError_hints*>*
@@ -127,8 +135,19 @@ SWGGHError::getHints() {
 void
 SWGGHError::setHints(QList<SWGGHError_hints*>* hints) {
     this->hints = hints;
+    this->m_hints_isSet = true;
 }
 
 
+bool 
+SWGGHError::isSet(){
+    bool isObjectUpdated = false;
+    do{
+        if(m_code_isSet){ isObjectUpdated = true; break;}
+        if(message != nullptr && *message != QString("")){ isObjectUpdated = true; break;}
+        if(hints->size() > 0){ isObjectUpdated = true; break;}
+    }while(false);
+    return isObjectUpdated;
+}
 }
 

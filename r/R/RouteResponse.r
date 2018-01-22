@@ -70,7 +70,7 @@ RouteResponse <- R6::R6Class(
     fromJSONString = function(RouteResponseJson) {
       RouteResponseObject <- jsonlite::fromJSON(RouteResponseJson)
       self$`paths` <- lapply(RouteResponseObject$`paths`, function(x) RouteResponsePath$new()$fromJSON(jsonlite::toJSON(x, auto_unbox = TRUE)))
-      ResponseInfoObject -> ResponseInfo$new()
+      ResponseInfoObject <- ResponseInfo$new()
       self$`info` <- ResponseInfoObject$fromJSON(jsonlite::toJSON(RouteResponseObject$info, auto_unbox = TRUE))
     }
   )

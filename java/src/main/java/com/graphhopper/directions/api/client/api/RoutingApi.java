@@ -85,53 +85,54 @@ public class RoutingApi {
      */
     public com.squareup.okhttp.Call routeGetCall(List<String> point, Boolean pointsEncoded, String key, String locale, Boolean instructions, String vehicle, Boolean elevation, Boolean calcPoints, List<String> pointHint, Boolean chDisable, String weighting, Boolean edgeTraversal, String algorithm, Integer heading, Integer headingPenalty, Boolean passThrough, Integer roundTripDistance, Long roundTripSeed, Integer alternativeRouteMaxPaths, Integer alternativeRouteMaxWeightFactor, Integer alternativeRouteMaxShareFactor, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
-        
+
         // create path and map variables
         String localVarPath = "/route";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (point != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "point", point));
+        localVarCollectionQueryParams.addAll(apiClient.parameterToPairs("multi", "point", point));
         if (locale != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "locale", locale));
+        localVarQueryParams.addAll(apiClient.parameterToPair("locale", locale));
         if (instructions != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "instructions", instructions));
+        localVarQueryParams.addAll(apiClient.parameterToPair("instructions", instructions));
         if (vehicle != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "vehicle", vehicle));
+        localVarQueryParams.addAll(apiClient.parameterToPair("vehicle", vehicle));
         if (elevation != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "elevation", elevation));
+        localVarQueryParams.addAll(apiClient.parameterToPair("elevation", elevation));
         if (pointsEncoded != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "points_encoded", pointsEncoded));
+        localVarQueryParams.addAll(apiClient.parameterToPair("points_encoded", pointsEncoded));
         if (calcPoints != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "calc_points", calcPoints));
+        localVarQueryParams.addAll(apiClient.parameterToPair("calc_points", calcPoints));
         if (pointHint != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "point_hint", pointHint));
+        localVarCollectionQueryParams.addAll(apiClient.parameterToPairs("multi", "point_hint", pointHint));
         if (chDisable != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "ch.disable", chDisable));
+        localVarQueryParams.addAll(apiClient.parameterToPair("ch.disable", chDisable));
         if (weighting != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "weighting", weighting));
+        localVarQueryParams.addAll(apiClient.parameterToPair("weighting", weighting));
         if (edgeTraversal != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "edge_traversal", edgeTraversal));
+        localVarQueryParams.addAll(apiClient.parameterToPair("edge_traversal", edgeTraversal));
         if (algorithm != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "algorithm", algorithm));
+        localVarQueryParams.addAll(apiClient.parameterToPair("algorithm", algorithm));
         if (heading != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "heading", heading));
+        localVarQueryParams.addAll(apiClient.parameterToPair("heading", heading));
         if (headingPenalty != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "heading_penalty", headingPenalty));
+        localVarQueryParams.addAll(apiClient.parameterToPair("heading_penalty", headingPenalty));
         if (passThrough != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "pass_through", passThrough));
+        localVarQueryParams.addAll(apiClient.parameterToPair("pass_through", passThrough));
         if (roundTripDistance != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "round_trip.distance", roundTripDistance));
+        localVarQueryParams.addAll(apiClient.parameterToPair("round_trip.distance", roundTripDistance));
         if (roundTripSeed != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "round_trip.seed", roundTripSeed));
+        localVarQueryParams.addAll(apiClient.parameterToPair("round_trip.seed", roundTripSeed));
         if (alternativeRouteMaxPaths != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "alternative_route.max_paths", alternativeRouteMaxPaths));
+        localVarQueryParams.addAll(apiClient.parameterToPair("alternative_route.max_paths", alternativeRouteMaxPaths));
         if (alternativeRouteMaxWeightFactor != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "alternative_route.max_weight_factor", alternativeRouteMaxWeightFactor));
+        localVarQueryParams.addAll(apiClient.parameterToPair("alternative_route.max_weight_factor", alternativeRouteMaxWeightFactor));
         if (alternativeRouteMaxShareFactor != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "alternative_route.max_share_factor", alternativeRouteMaxShareFactor));
+        localVarQueryParams.addAll(apiClient.parameterToPair("alternative_route.max_share_factor", alternativeRouteMaxShareFactor));
         if (key != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "key", key));
+        localVarQueryParams.addAll(apiClient.parameterToPair("key", key));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -162,9 +163,9 @@ public class RoutingApi {
         }
 
         String[] localVarAuthNames = new String[] {  };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
-    
+
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call routeGetValidateBeforeCall(List<String> point, Boolean pointsEncoded, String key, String locale, Boolean instructions, String vehicle, Boolean elevation, Boolean calcPoints, List<String> pointHint, Boolean chDisable, String weighting, Boolean edgeTraversal, String algorithm, Integer heading, Integer headingPenalty, Boolean passThrough, Integer roundTripDistance, Long roundTripSeed, Integer alternativeRouteMaxPaths, Integer alternativeRouteMaxWeightFactor, Integer alternativeRouteMaxShareFactor, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
@@ -183,14 +184,10 @@ public class RoutingApi {
             throw new ApiException("Missing the required parameter 'key' when calling routeGet(Async)");
         }
         
-        
+
         com.squareup.okhttp.Call call = routeGetCall(point, pointsEncoded, key, locale, instructions, vehicle, elevation, calcPoints, pointHint, chDisable, weighting, edgeTraversal, algorithm, heading, headingPenalty, passThrough, roundTripDistance, roundTripSeed, alternativeRouteMaxPaths, alternativeRouteMaxWeightFactor, alternativeRouteMaxShareFactor, progressListener, progressRequestListener);
         return call;
 
-        
-        
-        
-        
     }
 
     /**

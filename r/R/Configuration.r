@@ -50,7 +50,7 @@ Configuration <- R6::R6Class(
     },
     fromJSONString = function(ConfigurationJson) {
       ConfigurationObject <- jsonlite::fromJSON(ConfigurationJson)
-      RoutingObject -> Routing$new()
+      RoutingObject <- Routing$new()
       self$`routing` <- RoutingObject$fromJSON(jsonlite::toJSON(ConfigurationObject$routing, auto_unbox = TRUE))
     }
   )

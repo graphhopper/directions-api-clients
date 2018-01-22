@@ -29,7 +29,6 @@
 
 #include "SWGObject.h"
 
-
 namespace Swagger {
 
 class SWGVehicle: public SWGObject {
@@ -58,9 +57,9 @@ public:
     void setEndAddress(SWGAddress* end_address);
 
     SWGBreak* getBreak();
-    void setBreak(SWGBreak* break);
+    void setBreak(SWGBreak* _break);
 
-    bool getReturnToDepot();
+    bool isReturnToDepot();
     void setReturnToDepot(bool return_to_depot);
 
     qint64 getEarliestStart();
@@ -76,17 +75,39 @@ public:
     void setMaxDistance(qint64 max_distance);
 
 
+    virtual bool isSet() override;
+
 private:
     QString* vehicle_id;
+    bool m_vehicle_id_isSet;
+    
     QString* type_id;
+    bool m_type_id_isSet;
+    
     SWGAddress* start_address;
+    bool m_start_address_isSet;
+    
     SWGAddress* end_address;
-    SWGBreak* break;
+    bool m_end_address_isSet;
+    
+    SWGBreak* _break;
+    bool m__break_isSet;
+    
     bool return_to_depot;
+    bool m_return_to_depot_isSet;
+    
     qint64 earliest_start;
+    bool m_earliest_start_isSet;
+    
     qint64 latest_end;
+    bool m_latest_end_isSet;
+    
     QList<QString*>* skills;
+    bool m_skills_isSet;
+    
     qint64 max_distance;
+    bool m_max_distance_isSet;
+    
 };
 
 }

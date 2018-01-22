@@ -14,6 +14,7 @@
 package com.graphhopper.directions.api.client.model;
 
 import java.util.Objects;
+import java.util.Arrays;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -41,7 +42,7 @@ public class Routing {
    * @return calcPoints
   **/
   @ApiModelProperty(value = "indicates whether solution should come with route geometries")
-  public Boolean getCalcPoints() {
+  public Boolean isCalcPoints() {
     return calcPoints;
   }
 
@@ -88,6 +89,6 @@ public class Routing {
     }
     return o.toString().replace("\n", "\n    ");
   }
-  
+
 }
 

@@ -14,7 +14,7 @@ Return the solution associated to the jobId
 
 This endpoint returns the solution of a large problems. You can fetch it with the job_id, you have been sent. 
 
-### Example 
+### Example
 ```python
 from __future__ import print_function
 import time
@@ -27,7 +27,7 @@ api_instance = swagger_client.SolutionApi()
 key = 'key_example' # str | your API key
 job_id = 'job_id_example' # str | Request solution with jobId
 
-try: 
+try:
     # Return the solution associated to the jobId
     api_response = api_instance.get_solution(key, job_id)
     pprint(api_response)

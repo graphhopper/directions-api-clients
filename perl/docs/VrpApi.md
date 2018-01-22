@@ -22,10 +22,10 @@ This endpoint for solving vehicle routing problems, i.e. traveling salesman or v
 ### Example 
 ```perl
 use Data::Dumper;
-use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::VrpApi;
+my $api_instance = WWW::SwaggerClient::VrpApi->new(
+);
 
-my $api_instance = WWW::SwaggerClient::VrpApi->new();
 my $key = 'key_example'; # string | your API key
 my $body = WWW::SwaggerClient::Object::Request->new(); # Request | Request object that contains the problem to be solved
 

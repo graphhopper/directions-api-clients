@@ -16,6 +16,11 @@
 
 #import "SWGResponseCoordinates.h"
 #import "SWGResponseInstructions.h"
+@protocol SWGResponseCoordinates;
+@class SWGResponseCoordinates;
+@protocol SWGResponseInstructions;
+@class SWGResponseInstructions;
+
 
 
 @protocol SWGRouteResponsePath

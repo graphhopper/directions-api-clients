@@ -14,6 +14,6 @@ package io.swagger.client.model
 
 
 case class ResponseCoordinates (
-  coordinates: Option[ResponseCoordinatesArray]
+  coordinates: Option[ResponseCoordinatesArray] = None
 )
 

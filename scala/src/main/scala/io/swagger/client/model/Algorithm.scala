@@ -14,7 +14,7 @@ package io.swagger.client.model
 
 
 case class Algorithm (
-  problemType: Option[String],
-  objective: Option[String]
+  problemType: Option[String] = None,
+  objective: Option[String] = None
 )
 

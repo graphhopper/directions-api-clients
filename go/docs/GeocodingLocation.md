@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Point** | [**GeocodingPoint**](GeocodingPoint.md) |  | [optional] [default to null]
+**Point** | [***GeocodingPoint**](GeocodingPoint.md) |  | [optional] [default to null]
 **OsmId** | **string** | OSM Id | [optional] [default to null]
 **OsmType** | **string** | N &#x3D; node, R &#x3D; relation, W &#x3D; way | [optional] [default to null]
 **OsmKey** | **string** | The osm key of the result like &#x60;place&#x60; or &#x60;amenity&#x60; | [optional] [default to null]

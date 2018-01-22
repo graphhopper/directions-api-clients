@@ -15,6 +15,9 @@
 
 
 #import "SWGRouting.h"
+@protocol SWGRouting;
+@class SWGRouting;
+
 
 
 @protocol SWGConfiguration

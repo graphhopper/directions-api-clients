@@ -14,19 +14,19 @@ package io.swagger.client.model
 
 
 case class Shipment (
-  /* Unique identifier of service */
-  id: Option[String],
-  /* name of shipment */
-  name: Option[String],
-  /* priority of service, i.e. 1 = high, 2 = normal, 3 = low. default is 2. */
-  priority: Option[Integer],
-  pickup: Option[Stop],
-  delivery: Option[Stop],
-  /* array of capacity dimensions */
-  size: Option[List[Integer]],
-  /* array of required skills */
-  requiredSkills: Option[List[String]],
-  /* array of allowed vehicle ids */
-  allowedVehicles: Option[List[String]]
+  // Unique identifier of service
+  id: Option[String] = None,
+  // name of shipment
+  name: Option[String] = None,
+  // priority of service, i.e. 1 = high, 2 = normal, 3 = low. default is 2.
+  priority: Option[Integer] = None,
+  pickup: Option[Stop] = None,
+  delivery: Option[Stop] = None,
+  // array of capacity dimensions
+  size: Option[List[Integer]] = None,
+  // array of required skills
+  requiredSkills: Option[List[String]] = None,
+  // array of allowed vehicle ids
+  allowedVehicles: Option[List[String]] = None
 )
 

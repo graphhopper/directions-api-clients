@@ -28,7 +28,6 @@
 
 #include "SWGObject.h"
 
-
 namespace Swagger {
 
 class SWGShipment: public SWGObject {
@@ -69,15 +68,33 @@ public:
     void setAllowedVehicles(QList<QString*>* allowed_vehicles);
 
 
+    virtual bool isSet() override;
+
 private:
     QString* id;
+    bool m_id_isSet;
+    
     QString* name;
+    bool m_name_isSet;
+    
     qint32 priority;
+    bool m_priority_isSet;
+    
     SWGStop* pickup;
+    bool m_pickup_isSet;
+    
     SWGStop* delivery;
+    bool m_delivery_isSet;
+    
     QList<qint32>* size;
+    bool m_size_isSet;
+    
     QList<QString*>* required_skills;
+    bool m_required_skills_isSet;
+    
     QList<QString*>* allowed_vehicles;
+    bool m_allowed_vehicles_isSet;
+    
 };
 
 }

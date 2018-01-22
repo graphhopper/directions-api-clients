@@ -97,7 +97,7 @@ Stop <- R6::R6Class(
     },
     fromJSONString = function(StopJson) {
       StopObject <- jsonlite::fromJSON(StopJson)
-      AddressObject -> Address$new()
+      AddressObject <- Address$new()
       self$`address` <- AddressObject$fromJSON(jsonlite::toJSON(StopObject$address, auto_unbox = TRUE))
       self$`duration` <- StopObject$`duration`
       self$`preparation_time` <- StopObject$`preparation_time`

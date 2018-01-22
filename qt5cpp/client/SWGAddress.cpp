@@ -38,19 +38,21 @@ SWGAddress::~SWGAddress() {
 void
 SWGAddress::init() {
     location_id = new QString("");
+    m_location_id_isSet = false;
     name = new QString("");
+    m_name_isSet = false;
     lon = 0.0;
+    m_lon_isSet = false;
     lat = 0.0;
+    m_lat_isSet = false;
 }
 
 void
 SWGAddress::cleanup() {
-    
-    if(location_id != nullptr) {
+    if(location_id != nullptr) { 
         delete location_id;
     }
-
-    if(name != nullptr) {
+    if(name != nullptr) { 
         delete name;
     }
 
@@ -69,9 +71,13 @@ SWGAddress::fromJson(QString &json) {
 void
 SWGAddress::fromJsonObject(QJsonObject &pJson) {
     ::Swagger::setValue(&location_id, pJson["location_id"], "QString", "QString");
+    
     ::Swagger::setValue(&name, pJson["name"], "QString", "QString");
+    
     ::Swagger::setValue(&lon, pJson["lon"], "double", "");
+    
     ::Swagger::setValue(&lat, pJson["lat"], "double", "");
+    
 }
 
 QString
@@ -88,13 +94,21 @@ QJsonObject*
 SWGAddress::asJsonObject() {
     QJsonObject* obj = new QJsonObject();
     
-    toJsonValue(QString("location_id"), location_id, obj, QString("QString"));
-
-    toJsonValue(QString("name"), name, obj, QString("QString"));
-
-    obj->insert("lon", QJsonValue(lon));
-
-    obj->insert("lat", QJsonValue(lat));
+    if(location_id != nullptr && *location_id != QString("")){
+        toJsonValue(QString("location_id"), location_id, obj, QString("QString"));
+    }
+    
+    if(name != nullptr && *name != QString("")){
+        toJsonValue(QString("name"), name, obj, QString("QString"));
+    }
+    
+    if(m_lon_isSet){
+        obj->insert("lon", QJsonValue(lon));
+    }
+    
+    if(m_lat_isSet){
+        obj->insert("lat", QJsonValue(lat));
+    }
 
     return obj;
 }
@@ -106,6 +120,7 @@ SWGAddress::getLocationId() {
 void
 SWGAddress::setLocationId(QString* location_id) {
     this->location_id = location_id;
+    this->m_location_id_isSet = true;
 }
 
 QString*
@@ -115,6 +130,7 @@ SWGAddress::getName() {
 void
 SWGAddress::setName(QString* name) {
     this->name = name;
+    this->m_name_isSet = true;
 }
 
 double
@@ -124,6 +140,7 @@ SWGAddress::getLon() {
 void
 SWGAddress::setLon(double lon) {
     this->lon = lon;
+    this->m_lon_isSet = true;
 }
 
 double
@@ -133,8 +150,20 @@ SWGAddress::getLat() {
 void
 SWGAddress::setLat(double lat) {
     this->lat = lat;
+    this->m_lat_isSet = true;
 }
 
 
+bool 
+SWGAddress::isSet(){
+    bool isObjectUpdated = false;
+    do{
+        if(location_id != nullptr && *location_id != QString("")){ isObjectUpdated = true; break;}
+        if(name != nullptr && *name != QString("")){ isObjectUpdated = true; break;}
+        if(m_lon_isSet){ isObjectUpdated = true; break;}
+        if(m_lat_isSet){ isObjectUpdated = true; break;}
+    }while(false);
+    return isObjectUpdated;
+}
 }
 

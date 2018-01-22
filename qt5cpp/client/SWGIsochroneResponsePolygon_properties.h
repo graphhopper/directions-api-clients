@@ -25,7 +25,6 @@
 
 #include "SWGObject.h"
 
-
 namespace Swagger {
 
 class SWGIsochroneResponsePolygon_properties: public SWGObject {
@@ -45,8 +44,12 @@ public:
     void setBucket(qint32 bucket);
 
 
+    virtual bool isSet() override;
+
 private:
     qint32 bucket;
+    bool m_bucket_isSet;
+    
 };
 
 }

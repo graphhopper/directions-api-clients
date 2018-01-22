@@ -12,10 +12,11 @@
 
 package io.swagger.client.api
 
+import java.text.SimpleDateFormat
+
 import io.swagger.client.model.JobId
 import io.swagger.client.model.Request
-import io.swagger.client.ApiInvoker
-import io.swagger.client.ApiException
+import io.swagger.client.{ApiInvoker, ApiException}
 
 import com.sun.jersey.multipart.FormDataMultiPart
 import com.sun.jersey.multipart.file.FileDataBodyPart
@@ -24,59 +25,112 @@ import javax.ws.rs.core.MediaType
 
 import java.io.File
 import java.util.Date
+import java.util.TimeZone
 
 import scala.collection.mutable.HashMap
 
-class VrpApi(val defBasePath: String = "https://graphhopper.com/api/1",
-                        defApiInvoker: ApiInvoker = ApiInvoker) {
-  var basePath = defBasePath
-  var apiInvoker = defApiInvoker
+import com.wordnik.swagger.client._
+import scala.concurrent.Future
+import collection.mutable
 
-  def addHeader(key: String, value: String) = apiInvoker.defaultHeaders += key -> value 
+import java.net.URI
+
+import com.wordnik.swagger.client.ClientResponseReaders.Json4sFormatsReader._
+import com.wordnik.swagger.client.RequestWriters.Json4sFormatsWriter._
+
+import scala.concurrent.ExecutionContext.Implicits.global
+import scala.concurrent._
+import scala.concurrent.duration._
+import scala.util.{Failure, Success, Try}
+
+import org.json4s._
+
+class VrpApi(
+  val defBasePath: String = "https://graphhopper.com/api/1",
+  defApiInvoker: ApiInvoker = ApiInvoker
+) {
+  private lazy val dateTimeFormatter = {
+    val formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ")
+    formatter.setTimeZone(TimeZone.getTimeZone("UTC"))
+    formatter
+  }
+  private val dateFormatter = {
+    val formatter = new SimpleDateFormat("yyyy-MM-dd")
+    formatter.setTimeZone(TimeZone.getTimeZone("UTC"))
+    formatter
+  }
+  implicit val formats = new org.json4s.DefaultFormats {
+    override def dateFormatter = dateTimeFormatter
+  }
+  implicit val stringReader: ClientResponseReader[String] = ClientResponseReaders.StringReader
+  implicit val unitReader: ClientResponseReader[Unit] = ClientResponseReaders.UnitReader
+  implicit val jvalueReader: ClientResponseReader[JValue] = ClientResponseReaders.JValueReader
+  implicit val jsonReader: ClientResponseReader[Nothing] = JsonFormatsReader
+  implicit val stringWriter: RequestWriter[String] = RequestWriters.StringWriter
+  implicit val jsonWriter: RequestWriter[Nothing] = JsonFormatsWriter
+
+  var basePath: String = defBasePath
+  var apiInvoker: ApiInvoker = defApiInvoker
+
+  def addHeader(key: String, value: String): mutable.HashMap[String, String] = {
+    apiInvoker.defaultHeaders += key -> value
+  }
+
+  val config: SwaggerConfig = SwaggerConfig.forUrl(new URI(defBasePath))
+  val client = new RestClient(config)
+  val helper = new VrpApiAsyncHelper(client, config)
 
   /**
    * Solves vehicle routing problems
    * This endpoint for solving vehicle routing problems, i.e. traveling salesman or vehicle routing problems, and returns the solution.
+   *
    * @param key your API key 
    * @param body Request object that contains the problem to be solved 
    * @return JobId
    */
   def postVrp(key: String, body: Request): Option[JobId] = {
+    val await = Try(Await.result(postVrpAsync(key, body), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * Solves vehicle routing problems asynchronously
+   * This endpoint for solving vehicle routing problems, i.e. traveling salesman or vehicle routing problems, and returns the solution.
+   *
+   * @param key your API key 
+   * @param body Request object that contains the problem to be solved 
+   * @return Future(JobId)
+   */
+  def postVrpAsync(key: String, body: Request): Future[JobId] = {
+      helper.postVrp(key, body)
+  }
+
+}
+
+class VrpApiAsyncHelper(client: TransportClient, config: SwaggerConfig) extends ApiClient(client, config) {
+
+  def postVrp(key: String,
+    body: Request)(implicit reader: ClientResponseReader[JobId], writer: RequestWriter[Request]): Future[JobId] = {
     // create path and map variables
-    val path = "/vrp/optimize".replaceAll("\\{format\\}", "json")
+    val path = (addFmt("/vrp/optimize"))
 
-    val contentTypes = List("application/json")
-    val contentType = contentTypes(0)
-
-    val queryParams = new HashMap[String, String]
-    val headerParams = new HashMap[String, String]
-    val formParams = new HashMap[String, String]
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
 
     if (key == null) throw new Exception("Missing required parameter 'key' when calling VrpApi->postVrp")
 
     if (body == null) throw new Exception("Missing required parameter 'body' when calling VrpApi->postVrp")
-
     queryParams += "key" -> key.toString
-    
 
-    var postBody: AnyRef = body
-
-    if (contentType.startsWith("multipart/form-data")) {
-      val mp = new FormDataMultiPart
-      postBody = mp
-    } else {
-    }
-
-    try {
-      apiInvoker.invokeApi(basePath, path, "POST", queryParams.toMap, formParams.toMap, postBody, headerParams.toMap, contentType) match {
-        case s: String =>
-           Some(apiInvoker.deserialize(s, "", classOf[JobId]).asInstanceOf[JobId])
-        case _ => None
-      }
-    } catch {
-      case ex: ApiException if ex.code == 404 => None
-      case ex: ApiException => throw ex
+    val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, writer.write(body))
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
     }
   }
+
 
 }

@@ -38,17 +38,17 @@ SWGAlgorithm::~SWGAlgorithm() {
 void
 SWGAlgorithm::init() {
     problem_type = new QString("");
+    m_problem_type_isSet = false;
     objective = new QString("");
+    m_objective_isSet = false;
 }
 
 void
 SWGAlgorithm::cleanup() {
-    
-    if(problem_type != nullptr) {
+    if(problem_type != nullptr) { 
         delete problem_type;
     }
-
-    if(objective != nullptr) {
+    if(objective != nullptr) { 
         delete objective;
     }
 }
@@ -65,7 +65,9 @@ SWGAlgorithm::fromJson(QString &json) {
 void
 SWGAlgorithm::fromJsonObject(QJsonObject &pJson) {
     ::Swagger::setValue(&problem_type, pJson["problem_type"], "QString", "QString");
+    
     ::Swagger::setValue(&objective, pJson["objective"], "QString", "QString");
+    
 }
 
 QString
@@ -82,9 +84,13 @@ QJsonObject*
 SWGAlgorithm::asJsonObject() {
     QJsonObject* obj = new QJsonObject();
     
-    toJsonValue(QString("problem_type"), problem_type, obj, QString("QString"));
-
-    toJsonValue(QString("objective"), objective, obj, QString("QString"));
+    if(problem_type != nullptr && *problem_type != QString("")){
+        toJsonValue(QString("problem_type"), problem_type, obj, QString("QString"));
+    }
+    
+    if(objective != nullptr && *objective != QString("")){
+        toJsonValue(QString("objective"), objective, obj, QString("QString"));
+    }
 
     return obj;
 }
@@ -96,6 +102,7 @@ SWGAlgorithm::getProblemType() {
 void
 SWGAlgorithm::setProblemType(QString* problem_type) {
     this->problem_type = problem_type;
+    this->m_problem_type_isSet = true;
 }
 
 QString*
@@ -105,8 +112,18 @@ SWGAlgorithm::getObjective() {
 void
 SWGAlgorithm::setObjective(QString* objective) {
     this->objective = objective;
+    this->m_objective_isSet = true;
 }
 
 
+bool 
+SWGAlgorithm::isSet(){
+    bool isObjectUpdated = false;
+    do{
+        if(problem_type != nullptr && *problem_type != QString("")){ isObjectUpdated = true; break;}
+        if(objective != nullptr && *objective != QString("")){ isObjectUpdated = true; break;}
+    }while(false);
+    return isObjectUpdated;
+}
 }
 

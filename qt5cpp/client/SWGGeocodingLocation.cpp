@@ -38,62 +38,62 @@ SWGGeocodingLocation::~SWGGeocodingLocation() {
 void
 SWGGeocodingLocation::init() {
     point = new SWGGeocodingPoint();
+    m_point_isSet = false;
     osm_id = new QString("");
+    m_osm_id_isSet = false;
     osm_type = new QString("");
+    m_osm_type_isSet = false;
     osm_key = new QString("");
+    m_osm_key_isSet = false;
     name = new QString("");
+    m_name_isSet = false;
     country = new QString("");
+    m_country_isSet = false;
     city = new QString("");
+    m_city_isSet = false;
     state = new QString("");
+    m_state_isSet = false;
     street = new QString("");
+    m_street_isSet = false;
     housenumber = new QString("");
+    m_housenumber_isSet = false;
     postcode = new QString("");
+    m_postcode_isSet = false;
 }
 
 void
 SWGGeocodingLocation::cleanup() {
-    
-    if(point != nullptr) {
+    if(point != nullptr) { 
         delete point;
     }
-
-    if(osm_id != nullptr) {
+    if(osm_id != nullptr) { 
         delete osm_id;
     }
-
-    if(osm_type != nullptr) {
+    if(osm_type != nullptr) { 
         delete osm_type;
     }
-
-    if(osm_key != nullptr) {
+    if(osm_key != nullptr) { 
         delete osm_key;
     }
-
-    if(name != nullptr) {
+    if(name != nullptr) { 
         delete name;
     }
-
-    if(country != nullptr) {
+    if(country != nullptr) { 
         delete country;
     }
-
-    if(city != nullptr) {
+    if(city != nullptr) { 
         delete city;
     }
-
-    if(state != nullptr) {
+    if(state != nullptr) { 
         delete state;
     }
-
-    if(street != nullptr) {
+    if(street != nullptr) { 
         delete street;
     }
-
-    if(housenumber != nullptr) {
+    if(housenumber != nullptr) { 
         delete housenumber;
     }
-
-    if(postcode != nullptr) {
+    if(postcode != nullptr) { 
         delete postcode;
     }
 }
@@ -110,16 +110,27 @@ SWGGeocodingLocation::fromJson(QString &json) {
 void
 SWGGeocodingLocation::fromJsonObject(QJsonObject &pJson) {
     ::Swagger::setValue(&point, pJson["point"], "SWGGeocodingPoint", "SWGGeocodingPoint");
+    
     ::Swagger::setValue(&osm_id, pJson["osm_id"], "QString", "QString");
+    
     ::Swagger::setValue(&osm_type, pJson["osm_type"], "QString", "QString");
+    
     ::Swagger::setValue(&osm_key, pJson["osm_key"], "QString", "QString");
+    
     ::Swagger::setValue(&name, pJson["name"], "QString", "QString");
+    
     ::Swagger::setValue(&country, pJson["country"], "QString", "QString");
+    
     ::Swagger::setValue(&city, pJson["city"], "QString", "QString");
+    
     ::Swagger::setValue(&state, pJson["state"], "QString", "QString");
+    
     ::Swagger::setValue(&street, pJson["street"], "QString", "QString");
+    
     ::Swagger::setValue(&housenumber, pJson["housenumber"], "QString", "QString");
+    
     ::Swagger::setValue(&postcode, pJson["postcode"], "QString", "QString");
+    
 }
 
 QString
@@ -135,28 +146,50 @@ SWGGeocodingLocation::asJson ()
 QJsonObject*
 SWGGeocodingLocation::asJsonObject() {
     QJsonObject* obj = new QJsonObject();
+     
+    if((point != nullptr) && (point->isSet())){
+        toJsonValue(QString("point"), point, obj, QString("SWGGeocodingPoint"));
+    }
     
-    toJsonValue(QString("point"), point, obj, QString("SWGGeocodingPoint"));
-
-    toJsonValue(QString("osm_id"), osm_id, obj, QString("QString"));
-
-    toJsonValue(QString("osm_type"), osm_type, obj, QString("QString"));
-
-    toJsonValue(QString("osm_key"), osm_key, obj, QString("QString"));
-
-    toJsonValue(QString("name"), name, obj, QString("QString"));
-
-    toJsonValue(QString("country"), country, obj, QString("QString"));
-
-    toJsonValue(QString("city"), city, obj, QString("QString"));
-
-    toJsonValue(QString("state"), state, obj, QString("QString"));
-
-    toJsonValue(QString("street"), street, obj, QString("QString"));
-
-    toJsonValue(QString("housenumber"), housenumber, obj, QString("QString"));
-
-    toJsonValue(QString("postcode"), postcode, obj, QString("QString"));
+    if(osm_id != nullptr && *osm_id != QString("")){
+        toJsonValue(QString("osm_id"), osm_id, obj, QString("QString"));
+    }
+    
+    if(osm_type != nullptr && *osm_type != QString("")){
+        toJsonValue(QString("osm_type"), osm_type, obj, QString("QString"));
+    }
+    
+    if(osm_key != nullptr && *osm_key != QString("")){
+        toJsonValue(QString("osm_key"), osm_key, obj, QString("QString"));
+    }
+    
+    if(name != nullptr && *name != QString("")){
+        toJsonValue(QString("name"), name, obj, QString("QString"));
+    }
+    
+    if(country != nullptr && *country != QString("")){
+        toJsonValue(QString("country"), country, obj, QString("QString"));
+    }
+    
+    if(city != nullptr && *city != QString("")){
+        toJsonValue(QString("city"), city, obj, QString("QString"));
+    }
+    
+    if(state != nullptr && *state != QString("")){
+        toJsonValue(QString("state"), state, obj, QString("QString"));
+    }
+    
+    if(street != nullptr && *street != QString("")){
+        toJsonValue(QString("street"), street, obj, QString("QString"));
+    }
+    
+    if(housenumber != nullptr && *housenumber != QString("")){
+        toJsonValue(QString("housenumber"), housenumber, obj, QString("QString"));
+    }
+    
+    if(postcode != nullptr && *postcode != QString("")){
+        toJsonValue(QString("postcode"), postcode, obj, QString("QString"));
+    }
 
     return obj;
 }
@@ -168,6 +201,7 @@ SWGGeocodingLocation::getPoint() {
 void
 SWGGeocodingLocation::setPoint(SWGGeocodingPoint* point) {
     this->point = point;
+    this->m_point_isSet = true;
 }
 
 QString*
@@ -177,6 +211,7 @@ SWGGeocodingLocation::getOsmId() {
 void
 SWGGeocodingLocation::setOsmId(QString* osm_id) {
     this->osm_id = osm_id;
+    this->m_osm_id_isSet = true;
 }
 
 QString*
@@ -186,6 +221,7 @@ SWGGeocodingLocation::getOsmType() {
 void
 SWGGeocodingLocation::setOsmType(QString* osm_type) {
     this->osm_type = osm_type;
+    this->m_osm_type_isSet = true;
 }
 
 QString*
@@ -195,6 +231,7 @@ SWGGeocodingLocation::getOsmKey() {
 void
 SWGGeocodingLocation::setOsmKey(QString* osm_key) {
     this->osm_key = osm_key;
+    this->m_osm_key_isSet = true;
 }
 
 QString*
@@ -204,6 +241,7 @@ SWGGeocodingLocation::getName() {
 void
 SWGGeocodingLocation::setName(QString* name) {
     this->name = name;
+    this->m_name_isSet = true;
 }
 
 QString*
@@ -213,6 +251,7 @@ SWGGeocodingLocation::getCountry() {
 void
 SWGGeocodingLocation::setCountry(QString* country) {
     this->country = country;
+    this->m_country_isSet = true;
 }
 
 QString*
@@ -222,6 +261,7 @@ SWGGeocodingLocation::getCity() {
 void
 SWGGeocodingLocation::setCity(QString* city) {
     this->city = city;
+    this->m_city_isSet = true;
 }
 
 QString*
@@ -231,6 +271,7 @@ SWGGeocodingLocation::getState() {
 void
 SWGGeocodingLocation::setState(QString* state) {
     this->state = state;
+    this->m_state_isSet = true;
 }
 
 QString*
@@ -240,6 +281,7 @@ SWGGeocodingLocation::getStreet() {
 void
 SWGGeocodingLocation::setStreet(QString* street) {
     this->street = street;
+    this->m_street_isSet = true;
 }
 
 QString*
@@ -249,6 +291,7 @@ SWGGeocodingLocation::getHousenumber() {
 void
 SWGGeocodingLocation::setHousenumber(QString* housenumber) {
     this->housenumber = housenumber;
+    this->m_housenumber_isSet = true;
 }
 
 QString*
@@ -258,8 +301,27 @@ SWGGeocodingLocation::getPostcode() {
 void
 SWGGeocodingLocation::setPostcode(QString* postcode) {
     this->postcode = postcode;
+    this->m_postcode_isSet = true;
 }
 
 
+bool 
+SWGGeocodingLocation::isSet(){
+    bool isObjectUpdated = false;
+    do{
+        if(point != nullptr && point->isSet()){ isObjectUpdated = true; break;}
+        if(osm_id != nullptr && *osm_id != QString("")){ isObjectUpdated = true; break;}
+        if(osm_type != nullptr && *osm_type != QString("")){ isObjectUpdated = true; break;}
+        if(osm_key != nullptr && *osm_key != QString("")){ isObjectUpdated = true; break;}
+        if(name != nullptr && *name != QString("")){ isObjectUpdated = true; break;}
+        if(country != nullptr && *country != QString("")){ isObjectUpdated = true; break;}
+        if(city != nullptr && *city != QString("")){ isObjectUpdated = true; break;}
+        if(state != nullptr && *state != QString("")){ isObjectUpdated = true; break;}
+        if(street != nullptr && *street != QString("")){ isObjectUpdated = true; break;}
+        if(housenumber != nullptr && *housenumber != QString("")){ isObjectUpdated = true; break;}
+        if(postcode != nullptr && *postcode != QString("")){ isObjectUpdated = true; break;}
+    }while(false);
+    return isObjectUpdated;
+}
 }
 

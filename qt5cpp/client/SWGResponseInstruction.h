@@ -27,7 +27,6 @@
 
 #include "SWGObject.h"
 
-
 namespace Swagger {
 
 class SWGResponseInstruction: public SWGObject {
@@ -74,17 +73,39 @@ public:
     void setTurnAngle(double turn_angle);
 
 
+    virtual bool isSet() override;
+
 private:
     QString* text;
+    bool m_text_isSet;
+    
     QString* street_name;
+    bool m_street_name_isSet;
+    
     double distance;
+    bool m_distance_isSet;
+    
     qint32 time;
+    bool m_time_isSet;
+    
     QList<qint32>* interval;
+    bool m_interval_isSet;
+    
     qint32 sign;
+    bool m_sign_isSet;
+    
     QString* annotation_text;
+    bool m_annotation_text_isSet;
+    
     qint32 annotation_importance;
+    bool m_annotation_importance_isSet;
+    
     qint32 exit_number;
+    bool m_exit_number_isSet;
+    
     double turn_angle;
+    bool m_turn_angle_isSet;
+    
 };
 
 }

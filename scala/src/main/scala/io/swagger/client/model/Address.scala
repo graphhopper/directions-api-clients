@@ -14,13 +14,13 @@ package io.swagger.client.model
 
 
 case class Address (
-  /* Unique identifier of location */
-  locationId: Option[String],
-  /* name of location, e.g. street name plus house number */
-  name: Option[String],
-  /* longitude */
-  lon: Option[Double],
-  /* latitude */
-  lat: Option[Double]
+  // Unique identifier of location
+  locationId: Option[String] = None,
+  // name of location, e.g. street name plus house number
+  name: Option[String] = None,
+  // longitude
+  lon: Option[Double] = None,
+  // latitude
+  lat: Option[Double] = None
 )
 

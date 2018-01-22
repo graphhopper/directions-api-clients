@@ -14,7 +14,7 @@ package io.swagger.client.model
 
 
 case class JobId (
-  /* unique id for your job/request with which you can fetch your solution */
-  jobId: Option[String]
+  // unique id for your job/request with which you can fetch your solution
+  jobId: Option[String] = None
 )
 

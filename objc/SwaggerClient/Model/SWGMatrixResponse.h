@@ -15,6 +15,9 @@
 
 
 #import "SWGResponseInfo.h"
+@protocol SWGResponseInfo;
+@class SWGResponseInfo;
+
 
 
 @protocol SWGMatrixResponse

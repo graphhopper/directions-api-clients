@@ -28,7 +28,6 @@
 
 #include "SWGObject.h"
 
-
 namespace Swagger {
 
 class SWGGHError: public SWGObject {
@@ -54,10 +53,18 @@ public:
     void setHints(QList<SWGGHError_hints*>* hints);
 
 
+    virtual bool isSet() override;
+
 private:
     qint32 code;
+    bool m_code_isSet;
+    
     QString* message;
+    bool m_message_isSet;
+    
     QList<SWGGHError_hints*>* hints;
+    bool m_hints_isSet;
+    
 };
 
 }

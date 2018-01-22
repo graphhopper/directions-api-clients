@@ -110,7 +110,7 @@ CostMatrix <- R6::R6Class(
       self$`type` <- CostMatrixObject$`type`
       self$`url` <- CostMatrixObject$`url`
       self$`location_ids` <- CostMatrixObject$`location_ids`
-      CostMatrixDataObject -> CostMatrixData$new()
+      CostMatrixDataObject <- CostMatrixData$new()
       self$`data` <- CostMatrixDataObject$fromJSON(jsonlite::toJSON(CostMatrixObject$data, auto_unbox = TRUE))
       self$`profile` <- CostMatrixObject$`profile`
     }

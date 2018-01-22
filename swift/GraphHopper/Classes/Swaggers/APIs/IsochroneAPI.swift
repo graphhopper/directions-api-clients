@@ -36,15 +36,24 @@ public class IsochroneAPI: APIBase {
      - examples: [{contentType=application/json, example={
   "polygons" : [ {
     "geometry" : {
-      "coordinates" : [ "" ],
-      "type" : "aeiou"
+      "coordinates" : [ "", "" ],
+      "type" : "type"
     },
-    "type" : "aeiou",
+    "type" : "type",
+    "properties" : {
+      "bucket" : 0
+    }
+  }, {
+    "geometry" : {
+      "coordinates" : [ "", "" ],
+      "type" : "type"
+    },
+    "type" : "type",
     "properties" : {
       "bucket" : 0
     }
   } ],
-  "copyrights" : [ "aeiou" ]
+  "copyrights" : [ "copyrights", "copyrights" ]
 }}]
      
      - parameter point: (query) Specify the start coordinate 

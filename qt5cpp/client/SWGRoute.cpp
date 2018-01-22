@@ -38,36 +38,40 @@ SWGRoute::~SWGRoute() {
 void
 SWGRoute::init() {
     vehicle_id = new QString("");
+    m_vehicle_id_isSet = false;
     distance = 0L;
+    m_distance_isSet = false;
     transport_time = 0L;
+    m_transport_time_isSet = false;
     completion_time = 0L;
+    m_completion_time_isSet = false;
     waiting_time = 0L;
+    m_waiting_time_isSet = false;
     activities = new QList<SWGActivity*>();
+    m_activities_isSet = false;
     points = new QList<SWGRoutePoint*>();
+    m_points_isSet = false;
 }
 
 void
 SWGRoute::cleanup() {
-    
-    if(vehicle_id != nullptr) {
+    if(vehicle_id != nullptr) { 
         delete vehicle_id;
     }
 
 
 
 
-
-    if(activities != nullptr) {
-        QList<SWGActivity*>* arr = activities;
-        foreach(SWGActivity* o, *arr) {
+    if(activities != nullptr) { 
+        auto arr = activities;
+        for(auto o: *arr) { 
             delete o;
         }
         delete activities;
     }
-
-    if(points != nullptr) {
-        QList<SWGRoutePoint*>* arr = points;
-        foreach(SWGRoutePoint* o, *arr) {
+    if(points != nullptr) { 
+        auto arr = points;
+        for(auto o: *arr) { 
             delete o;
         }
         delete points;
@@ -86,16 +90,19 @@ SWGRoute::fromJson(QString &json) {
 void
 SWGRoute::fromJsonObject(QJsonObject &pJson) {
     ::Swagger::setValue(&vehicle_id, pJson["vehicle_id"], "QString", "QString");
+    
     ::Swagger::setValue(&distance, pJson["distance"], "qint64", "");
+    
     ::Swagger::setValue(&transport_time, pJson["transport_time"], "qint64", "");
+    
     ::Swagger::setValue(&completion_time, pJson["completion_time"], "qint64", "");
+    
     ::Swagger::setValue(&waiting_time, pJson["waiting_time"], "qint64", "");
+    
     
     ::Swagger::setValue(&activities, pJson["activities"], "QList", "SWGActivity");
     
-    
     ::Swagger::setValue(&points, pJson["points"], "QList", "SWGRoutePoint");
-    
 }
 
 QString
@@ -112,23 +119,33 @@ QJsonObject*
 SWGRoute::asJsonObject() {
     QJsonObject* obj = new QJsonObject();
     
-    toJsonValue(QString("vehicle_id"), vehicle_id, obj, QString("QString"));
-
-    obj->insert("distance", QJsonValue(distance));
-
-    obj->insert("transport_time", QJsonValue(transport_time));
-
-    obj->insert("completion_time", QJsonValue(completion_time));
-
-    obj->insert("waiting_time", QJsonValue(waiting_time));
-
-    QJsonArray activitiesJsonArray;
-    toJsonArray((QList<void*>*)activities, &activitiesJsonArray, "activities", "SWGActivity");
-    obj->insert("activities", activitiesJsonArray);
-
-    QJsonArray pointsJsonArray;
-    toJsonArray((QList<void*>*)points, &pointsJsonArray, "points", "SWGRoutePoint");
-    obj->insert("points", pointsJsonArray);
+    if(vehicle_id != nullptr && *vehicle_id != QString("")){
+        toJsonValue(QString("vehicle_id"), vehicle_id, obj, QString("QString"));
+    }
+    
+    if(m_distance_isSet){
+        obj->insert("distance", QJsonValue(distance));
+    }
+    
+    if(m_transport_time_isSet){
+        obj->insert("transport_time", QJsonValue(transport_time));
+    }
+    
+    if(m_completion_time_isSet){
+        obj->insert("completion_time", QJsonValue(completion_time));
+    }
+    
+    if(m_waiting_time_isSet){
+        obj->insert("waiting_time", QJsonValue(waiting_time));
+    }
+    
+    if(activities->size() > 0){
+        toJsonArray((QList<void*>*)activities, obj, "activities", "SWGActivity");
+    }
+    
+    if(points->size() > 0){
+        toJsonArray((QList<void*>*)points, obj, "points", "SWGRoutePoint");
+    }
 
     return obj;
 }
@@ -140,6 +157,7 @@ SWGRoute::getVehicleId() {
 void
 SWGRoute::setVehicleId(QString* vehicle_id) {
     this->vehicle_id = vehicle_id;
+    this->m_vehicle_id_isSet = true;
 }
 
 qint64
@@ -149,6 +167,7 @@ SWGRoute::getDistance() {
 void
 SWGRoute::setDistance(qint64 distance) {
     this->distance = distance;
+    this->m_distance_isSet = true;
 }
 
 qint64
@@ -158,6 +177,7 @@ SWGRoute::getTransportTime() {
 void
 SWGRoute::setTransportTime(qint64 transport_time) {
     this->transport_time = transport_time;
+    this->m_transport_time_isSet = true;
 }
 
 qint64
@@ -167,6 +187,7 @@ SWGRoute::getCompletionTime() {
 void
 SWGRoute::setCompletionTime(qint64 completion_time) {
     this->completion_time = completion_time;
+    this->m_completion_time_isSet = true;
 }
 
 qint64
@@ -176,6 +197,7 @@ SWGRoute::getWaitingTime() {
 void
 SWGRoute::setWaitingTime(qint64 waiting_time) {
     this->waiting_time = waiting_time;
+    this->m_waiting_time_isSet = true;
 }
 
 QList<SWGActivity*>*
@@ -185,6 +207,7 @@ SWGRoute::getActivities() {
 void
 SWGRoute::setActivities(QList<SWGActivity*>* activities) {
     this->activities = activities;
+    this->m_activities_isSet = true;
 }
 
 QList<SWGRoutePoint*>*
@@ -194,8 +217,23 @@ SWGRoute::getPoints() {
 void
 SWGRoute::setPoints(QList<SWGRoutePoint*>* points) {
     this->points = points;
+    this->m_points_isSet = true;
 }
 
 
+bool 
+SWGRoute::isSet(){
+    bool isObjectUpdated = false;
+    do{
+        if(vehicle_id != nullptr && *vehicle_id != QString("")){ isObjectUpdated = true; break;}
+        if(m_distance_isSet){ isObjectUpdated = true; break;}
+        if(m_transport_time_isSet){ isObjectUpdated = true; break;}
+        if(m_completion_time_isSet){ isObjectUpdated = true; break;}
+        if(m_waiting_time_isSet){ isObjectUpdated = true; break;}
+        if(activities->size() > 0){ isObjectUpdated = true; break;}
+        if(points->size() > 0){ isObjectUpdated = true; break;}
+    }while(false);
+    return isObjectUpdated;
+}
 }
 

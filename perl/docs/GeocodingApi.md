@@ -22,10 +22,10 @@ This endpoint provides forward and reverse geocoding. For more details, review t
 ### Example 
 ```perl
 use Data::Dumper;
-use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::GeocodingApi;
+my $api_instance = WWW::SwaggerClient::GeocodingApi->new(
+);
 
-my $api_instance = WWW::SwaggerClient::GeocodingApi->new();
 my $key = 'key_example'; # string | Get your key at graphhopper.com
 my $q = 'q_example'; # string | If you do forward geocoding, then this would be a textual description of the adress you are looking for. If you do reverse geocoding this would be in lat,lon.
 my $locale = 'locale_example'; # string | Display the search results for the specified locale. Currently French (fr), English (en), German (de) and Italian (it) are supported. If the locale wasn't found the default (en) is used.

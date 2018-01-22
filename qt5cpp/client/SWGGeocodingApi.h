@@ -38,12 +38,14 @@ public:
     void geocodeGet(QString* key, QString* q, QString* locale, qint32 limit, bool reverse, QString* point, QString* provider);
     
 private:
-    void geocodeGetCallback (HttpRequestWorker * worker);
+    void geocodeGetCallback (SWGHttpRequestWorker * worker);
     
 signals:
     void geocodeGetSignal(SWGGeocodingResponse* summary);
     
     void geocodeGetSignalE(SWGGeocodingResponse* summary, QNetworkReply::NetworkError error_type, QString& error_str);
+    
+    void geocodeGetSignalEFull(SWGHttpRequestWorker* worker, QNetworkReply::NetworkError error_type, QString& error_str);
     
 };
 

@@ -25,7 +25,6 @@
 
 #include "SWGObject.h"
 
-
 namespace Swagger {
 
 class SWGTimeWindow: public SWGObject {
@@ -48,9 +47,15 @@ public:
     void setLatest(qint64 latest);
 
 
+    virtual bool isSet() override;
+
 private:
     qint64 earliest;
+    bool m_earliest_isSet;
+    
     qint64 latest;
+    bool m_latest_isSet;
+    
 };
 
 }

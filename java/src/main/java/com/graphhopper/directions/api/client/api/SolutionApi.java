@@ -65,14 +65,15 @@ public class SolutionApi {
      */
     public com.squareup.okhttp.Call getSolutionCall(String key, String jobId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
-        
+
         // create path and map variables
         String localVarPath = "/vrp/solution/{jobId}"
             .replaceAll("\\{" + "jobId" + "\\}", apiClient.escapeString(jobId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (key != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "key", key));
+        localVarQueryParams.addAll(apiClient.parameterToPair("key", key));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -103,9 +104,9 @@ public class SolutionApi {
         }
 
         String[] localVarAuthNames = new String[] {  };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
-    
+
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getSolutionValidateBeforeCall(String key, String jobId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
@@ -119,14 +120,10 @@ public class SolutionApi {
             throw new ApiException("Missing the required parameter 'jobId' when calling getSolution(Async)");
         }
         
-        
+
         com.squareup.okhttp.Call call = getSolutionCall(key, jobId, progressListener, progressRequestListener);
         return call;
 
-        
-        
-        
-        
     }
 
     /**

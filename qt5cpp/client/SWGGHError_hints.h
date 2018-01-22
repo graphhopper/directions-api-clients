@@ -26,7 +26,6 @@
 
 #include "SWGObject.h"
 
-
 namespace Swagger {
 
 class SWGGHError_hints: public SWGObject {
@@ -46,8 +45,12 @@ public:
     void setMessage(QString* message);
 
 
+    virtual bool isSet() override;
+
 private:
     QString* message;
+    bool m_message_isSet;
+    
 };
 
 }

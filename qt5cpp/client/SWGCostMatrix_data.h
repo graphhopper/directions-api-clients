@@ -27,7 +27,6 @@
 
 #include "SWGObject.h"
 
-
 namespace Swagger {
 
 class SWGCostMatrix_data: public SWGObject {
@@ -53,10 +52,18 @@ public:
     void setInfo(SWGCostMatrix_data_info* info);
 
 
+    virtual bool isSet() override;
+
 private:
     QList<QList<qint64>*>* times;
+    bool m_times_isSet;
+    
     QList<QList<double>*>* distances;
+    bool m_distances_isSet;
+    
     SWGCostMatrix_data_info* info;
+    bool m_info_isSet;
+    
 };
 
 }

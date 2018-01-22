@@ -14,6 +14,6 @@ package io.swagger.client.model
 
 
 case class IsochroneResponsePolygonProperties (
-  bucket: Option[Integer]
+  bucket: Option[Integer] = None
 )
 

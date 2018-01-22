@@ -14,7 +14,7 @@ package io.swagger.client.model
 
 
 case class GeocodingResponse (
-  hits: Option[List[GeocodingLocation]],
-  locale: Option[String]
+  hits: Option[List[GeocodingLocation]] = None,
+  locale: Option[String] = None
 )
 

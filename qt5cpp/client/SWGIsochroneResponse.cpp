@@ -38,23 +38,23 @@ SWGIsochroneResponse::~SWGIsochroneResponse() {
 void
 SWGIsochroneResponse::init() {
     polygons = new QList<SWGIsochroneResponsePolygon*>();
+    m_polygons_isSet = false;
     copyrights = new QList<QString*>();
+    m_copyrights_isSet = false;
 }
 
 void
 SWGIsochroneResponse::cleanup() {
-    
-    if(polygons != nullptr) {
-        QList<SWGIsochroneResponsePolygon*>* arr = polygons;
-        foreach(SWGIsochroneResponsePolygon* o, *arr) {
+    if(polygons != nullptr) { 
+        auto arr = polygons;
+        for(auto o: *arr) { 
             delete o;
         }
         delete polygons;
     }
-
-    if(copyrights != nullptr) {
-        QList<QString*>* arr = copyrights;
-        foreach(QString* o, *arr) {
+    if(copyrights != nullptr) { 
+        auto arr = copyrights;
+        for(auto o: *arr) { 
             delete o;
         }
         delete copyrights;
@@ -75,9 +75,7 @@ SWGIsochroneResponse::fromJsonObject(QJsonObject &pJson) {
     
     ::Swagger::setValue(&polygons, pJson["polygons"], "QList", "SWGIsochroneResponsePolygon");
     
-    
     ::Swagger::setValue(&copyrights, pJson["copyrights"], "QList", "QString");
-    
 }
 
 QString
@@ -94,13 +92,13 @@ QJsonObject*
 SWGIsochroneResponse::asJsonObject() {
     QJsonObject* obj = new QJsonObject();
     
-    QJsonArray polygonsJsonArray;
-    toJsonArray((QList<void*>*)polygons, &polygonsJsonArray, "polygons", "SWGIsochroneResponsePolygon");
-    obj->insert("polygons", polygonsJsonArray);
-
-    QJsonArray copyrightsJsonArray;
-    toJsonArray((QList<void*>*)copyrights, &copyrightsJsonArray, "copyrights", "QString");
-    obj->insert("copyrights", copyrightsJsonArray);
+    if(polygons->size() > 0){
+        toJsonArray((QList<void*>*)polygons, obj, "polygons", "SWGIsochroneResponsePolygon");
+    }
+    
+    if(copyrights->size() > 0){
+        toJsonArray((QList<void*>*)copyrights, obj, "copyrights", "QString");
+    }
 
     return obj;
 }
@@ -112,6 +110,7 @@ SWGIsochroneResponse::getPolygons() {
 void
 SWGIsochroneResponse::setPolygons(QList<SWGIsochroneResponsePolygon*>* polygons) {
     this->polygons = polygons;
+    this->m_polygons_isSet = true;
 }
 
 QList<QString*>*
@@ -121,8 +120,18 @@ SWGIsochroneResponse::getCopyrights() {
 void
 SWGIsochroneResponse::setCopyrights(QList<QString*>* copyrights) {
     this->copyrights = copyrights;
+    this->m_copyrights_isSet = true;
 }
 
 
+bool 
+SWGIsochroneResponse::isSet(){
+    bool isObjectUpdated = false;
+    do{
+        if(polygons->size() > 0){ isObjectUpdated = true; break;}
+        if(copyrights->size() > 0){ isObjectUpdated = true; break;}
+    }while(false);
+    return isObjectUpdated;
+}
 }
 

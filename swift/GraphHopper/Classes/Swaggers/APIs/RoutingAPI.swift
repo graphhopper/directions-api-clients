@@ -53,17 +53,33 @@ public class RoutingAPI: APIBase {
     "instructions" : "",
     "ascend" : 1.4658129805029452,
     "distance" : 0.8008281904610115,
-    "bbox" : [ 5.637376656633329 ],
+    "bbox" : [ 5.637376656633329, 5.637376656633329 ],
     "time" : 6,
     "points_encoded" : true,
     "points" : {
       "coordinates" : ""
     },
-    "snapped_waypoints" : ""
+    "snapped_waypoints" : {
+      "coordinates" : ""
+    }
+  }, {
+    "descend" : 5.962133916683182,
+    "instructions" : "",
+    "ascend" : 1.4658129805029452,
+    "distance" : 0.8008281904610115,
+    "bbox" : [ 5.637376656633329, 5.637376656633329 ],
+    "time" : 6,
+    "points_encoded" : true,
+    "points" : {
+      "coordinates" : ""
+    },
+    "snapped_waypoints" : {
+      "coordinates" : ""
+    }
   } ],
   "info" : {
     "took" : 2.3021358869347655,
-    "copyrights" : [ "aeiou" ]
+    "copyrights" : [ "copyrights", "copyrights" ]
   }
 }}]
      

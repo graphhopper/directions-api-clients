@@ -66,13 +66,14 @@ public class VrpApi {
      */
     public com.squareup.okhttp.Call postVrpCall(String key, Request body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = body;
-        
+
         // create path and map variables
         String localVarPath = "/vrp/optimize";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (key != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "key", key));
+        localVarQueryParams.addAll(apiClient.parameterToPair("key", key));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -103,9 +104,9 @@ public class VrpApi {
         }
 
         String[] localVarAuthNames = new String[] {  };
-        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
-    
+
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call postVrpValidateBeforeCall(String key, Request body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
@@ -119,14 +120,10 @@ public class VrpApi {
             throw new ApiException("Missing the required parameter 'body' when calling postVrp(Async)");
         }
         
-        
+
         com.squareup.okhttp.Call call = postVrpCall(key, body, progressListener, progressRequestListener);
         return call;
 
-        
-        
-        
-        
     }
 
     /**

@@ -15,6 +15,9 @@
 
 
 #import "SWGResponseInstruction.h"
+@protocol SWGResponseInstruction;
+@class SWGResponseInstruction;
+
 
 
 @protocol SWGResponseInstructions

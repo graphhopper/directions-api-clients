@@ -26,7 +26,6 @@
 
 #include "SWGObject.h"
 
-
 namespace Swagger {
 
 class SWGJobId: public SWGObject {
@@ -46,8 +45,12 @@ public:
     void setJobId(QString* job_id);
 
 
+    virtual bool isSet() override;
+
 private:
     QString* job_id;
+    bool m_job_id_isSet;
+    
 };
 
 }

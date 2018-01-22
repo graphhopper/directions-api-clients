@@ -14,9 +14,9 @@ package io.swagger.client.model
 
 
 case class Objective (
-  /* type of objective function, i.e. min or min-max  */
-  _type: Option[String],
-  /* objective function value */
-  value: Option[String]
+  // type of objective function, i.e. min or min-max 
+  `type`: Option[String] = None,
+  // objective function value
+  value: Option[String] = None
 )
 

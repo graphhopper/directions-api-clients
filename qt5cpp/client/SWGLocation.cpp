@@ -38,12 +38,14 @@ SWGLocation::~SWGLocation() {
 void
 SWGLocation::init() {
     lon = 0.0;
+    m_lon_isSet = false;
     lat = 0.0;
+    m_lat_isSet = false;
 }
 
 void
 SWGLocation::cleanup() {
-    
+
 
 }
 
@@ -59,7 +61,9 @@ SWGLocation::fromJson(QString &json) {
 void
 SWGLocation::fromJsonObject(QJsonObject &pJson) {
     ::Swagger::setValue(&lon, pJson["lon"], "double", "");
+    
     ::Swagger::setValue(&lat, pJson["lat"], "double", "");
+    
 }
 
 QString
@@ -76,9 +80,13 @@ QJsonObject*
 SWGLocation::asJsonObject() {
     QJsonObject* obj = new QJsonObject();
     
-    obj->insert("lon", QJsonValue(lon));
-
-    obj->insert("lat", QJsonValue(lat));
+    if(m_lon_isSet){
+        obj->insert("lon", QJsonValue(lon));
+    }
+    
+    if(m_lat_isSet){
+        obj->insert("lat", QJsonValue(lat));
+    }
 
     return obj;
 }
@@ -90,6 +98,7 @@ SWGLocation::getLon() {
 void
 SWGLocation::setLon(double lon) {
     this->lon = lon;
+    this->m_lon_isSet = true;
 }
 
 double
@@ -99,8 +108,18 @@ SWGLocation::getLat() {
 void
 SWGLocation::setLat(double lat) {
     this->lat = lat;
+    this->m_lat_isSet = true;
 }
 
 
+bool 
+SWGLocation::isSet(){
+    bool isObjectUpdated = false;
+    do{
+        if(m_lon_isSet){ isObjectUpdated = true; break;}
+        if(m_lat_isSet){ isObjectUpdated = true; break;}
+    }while(false);
+    return isObjectUpdated;
+}
 }
 

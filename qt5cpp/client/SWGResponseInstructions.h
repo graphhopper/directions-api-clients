@@ -27,7 +27,6 @@
 
 #include "SWGObject.h"
 
-
 namespace Swagger {
 
 class SWGResponseInstructions: public SWGObject {
@@ -43,6 +42,8 @@ public:
     void fromJsonObject(QJsonObject &json);
     SWGResponseInstructions* fromJson(QString &jsonString);
 
+
+    virtual bool isSet() override;
 
 private:
 };

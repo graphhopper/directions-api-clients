@@ -26,7 +26,6 @@
 
 #include "SWGObject.h"
 
-
 namespace Swagger {
 
 class SWGAlgorithm: public SWGObject {
@@ -49,9 +48,15 @@ public:
     void setObjective(QString* objective);
 
 
+    virtual bool isSet() override;
+
 private:
     QString* problem_type;
+    bool m_problem_type_isSet;
+    
     QString* objective;
+    bool m_objective_isSet;
+    
 };
 
 }

@@ -16,6 +16,11 @@
 
 #import "SWGResponseInfo.h"
 #import "SWGRouteResponsePath.h"
+@protocol SWGResponseInfo;
+@class SWGResponseInfo;
+@protocol SWGRouteResponsePath;
+@class SWGRouteResponsePath;
+
 
 
 @protocol SWGRouteResponse

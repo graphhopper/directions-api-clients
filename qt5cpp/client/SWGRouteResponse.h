@@ -28,7 +28,6 @@
 
 #include "SWGObject.h"
 
-
 namespace Swagger {
 
 class SWGRouteResponse: public SWGObject {
@@ -51,9 +50,15 @@ public:
     void setInfo(SWGResponseInfo* info);
 
 
+    virtual bool isSet() override;
+
 private:
     QList<SWGRouteResponsePath*>* paths;
+    bool m_paths_isSet;
+    
     SWGResponseInfo* info;
+    bool m_info_isSet;
+    
 };
 
 }

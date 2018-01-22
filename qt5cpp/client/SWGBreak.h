@@ -26,7 +26,6 @@
 
 #include "SWGObject.h"
 
-
 namespace Swagger {
 
 class SWGBreak: public SWGObject {
@@ -61,13 +60,27 @@ public:
     void setPossibleSplit(QList<qint64>* possible_split);
 
 
+    virtual bool isSet() override;
+
 private:
     qint64 earliest;
+    bool m_earliest_isSet;
+    
     qint64 latest;
+    bool m_latest_isSet;
+    
     qint64 duration;
+    bool m_duration_isSet;
+    
     qint64 max_driving_time;
+    bool m_max_driving_time_isSet;
+    
     qint64 initial_driving_time;
+    bool m_initial_driving_time_isSet;
+    
     QList<qint64>* possible_split;
+    bool m_possible_split_isSet;
+    
 };
 
 }

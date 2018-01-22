@@ -38,15 +38,16 @@ SWGResponseInfo::~SWGResponseInfo() {
 void
 SWGResponseInfo::init() {
     copyrights = new QList<QString*>();
+    m_copyrights_isSet = false;
     took = 0.0;
+    m_took_isSet = false;
 }
 
 void
 SWGResponseInfo::cleanup() {
-    
-    if(copyrights != nullptr) {
-        QList<QString*>* arr = copyrights;
-        foreach(QString* o, *arr) {
+    if(copyrights != nullptr) { 
+        auto arr = copyrights;
+        for(auto o: *arr) { 
             delete o;
         }
         delete copyrights;
@@ -67,8 +68,8 @@ void
 SWGResponseInfo::fromJsonObject(QJsonObject &pJson) {
     
     ::Swagger::setValue(&copyrights, pJson["copyrights"], "QList", "QString");
-    
     ::Swagger::setValue(&took, pJson["took"], "double", "");
+    
 }
 
 QString
@@ -85,11 +86,13 @@ QJsonObject*
 SWGResponseInfo::asJsonObject() {
     QJsonObject* obj = new QJsonObject();
     
-    QJsonArray copyrightsJsonArray;
-    toJsonArray((QList<void*>*)copyrights, &copyrightsJsonArray, "copyrights", "QString");
-    obj->insert("copyrights", copyrightsJsonArray);
-
-    obj->insert("took", QJsonValue(took));
+    if(copyrights->size() > 0){
+        toJsonArray((QList<void*>*)copyrights, obj, "copyrights", "QString");
+    }
+    
+    if(m_took_isSet){
+        obj->insert("took", QJsonValue(took));
+    }
 
     return obj;
 }
@@ -101,6 +104,7 @@ SWGResponseInfo::getCopyrights() {
 void
 SWGResponseInfo::setCopyrights(QList<QString*>* copyrights) {
     this->copyrights = copyrights;
+    this->m_copyrights_isSet = true;
 }
 
 double
@@ -110,8 +114,18 @@ SWGResponseInfo::getTook() {
 void
 SWGResponseInfo::setTook(double took) {
     this->took = took;
+    this->m_took_isSet = true;
 }
 
 
+bool 
+SWGResponseInfo::isSet(){
+    bool isObjectUpdated = false;
+    do{
+        if(copyrights->size() > 0){ isObjectUpdated = true; break;}
+        if(m_took_isSet){ isObjectUpdated = true; break;}
+    }while(false);
+    return isObjectUpdated;
+}
 }
 

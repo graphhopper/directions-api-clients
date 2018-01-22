@@ -14,6 +14,7 @@
 package com.graphhopper.directions.api.client.model;
 
 import java.util.Objects;
+import java.util.Arrays;
 import io.swagger.annotations.ApiModel;
 import java.util.ArrayList;
 import java.util.List;
@@ -61,6 +62,6 @@ public class ResponseCoordinatesArray extends ArrayList<List> {
     }
     return o.toString().replace("\n", "\n    ");
   }
-  
+
 }
 

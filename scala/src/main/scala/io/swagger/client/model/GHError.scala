@@ -14,8 +14,8 @@ package io.swagger.client.model
 
 
 case class GHError (
-  code: Option[Integer],
-  message: Option[String],
-  hints: Option[List[GHErrorHints]]
+  code: Option[Integer] = None,
+  message: Option[String] = None,
+  hints: Option[List[GHErrorHints]] = None
 )
 

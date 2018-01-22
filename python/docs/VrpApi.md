@@ -14,7 +14,7 @@ Solves vehicle routing problems
 
 This endpoint for solving vehicle routing problems, i.e. traveling salesman or vehicle routing problems, and returns the solution.
 
-### Example 
+### Example
 ```python
 from __future__ import print_function
 import time
@@ -27,7 +27,7 @@ api_instance = swagger_client.VrpApi()
 key = 'key_example' # str | your API key
 body = swagger_client.Request() # Request | Request object that contains the problem to be solved
 
-try: 
+try:
     # Solves vehicle routing problems
     api_response = api_instance.post_vrp(key, body)
     pprint(api_response)

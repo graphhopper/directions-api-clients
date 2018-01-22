@@ -38,12 +38,12 @@ SWGConfiguration::~SWGConfiguration() {
 void
 SWGConfiguration::init() {
     routing = new SWGRouting();
+    m_routing_isSet = false;
 }
 
 void
 SWGConfiguration::cleanup() {
-    
-    if(routing != nullptr) {
+    if(routing != nullptr) { 
         delete routing;
     }
 }
@@ -60,6 +60,7 @@ SWGConfiguration::fromJson(QString &json) {
 void
 SWGConfiguration::fromJsonObject(QJsonObject &pJson) {
     ::Swagger::setValue(&routing, pJson["routing"], "SWGRouting", "SWGRouting");
+    
 }
 
 QString
@@ -75,8 +76,10 @@ SWGConfiguration::asJson ()
 QJsonObject*
 SWGConfiguration::asJsonObject() {
     QJsonObject* obj = new QJsonObject();
-    
-    toJsonValue(QString("routing"), routing, obj, QString("SWGRouting"));
+     
+    if((routing != nullptr) && (routing->isSet())){
+        toJsonValue(QString("routing"), routing, obj, QString("SWGRouting"));
+    }
 
     return obj;
 }
@@ -88,8 +91,17 @@ SWGConfiguration::getRouting() {
 void
 SWGConfiguration::setRouting(SWGRouting* routing) {
     this->routing = routing;
+    this->m_routing_isSet = true;
 }
 
 
+bool 
+SWGConfiguration::isSet(){
+    bool isObjectUpdated = false;
+    do{
+        if(routing != nullptr && routing->isSet()){ isObjectUpdated = true; break;}
+    }while(false);
+    return isObjectUpdated;
+}
 }
 

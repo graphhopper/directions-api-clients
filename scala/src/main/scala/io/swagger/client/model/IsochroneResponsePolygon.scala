@@ -14,8 +14,8 @@ package io.swagger.client.model
 
 
 case class IsochroneResponsePolygon (
-  properties: Option[IsochroneResponsePolygonProperties],
-  _type: Option[String],
-  geometry: Option[IsochroneResponsePolygonGeometry]
+  properties: Option[IsochroneResponsePolygonProperties] = None,
+  `type`: Option[String] = None,
+  geometry: Option[IsochroneResponsePolygonGeometry] = None
 )
 

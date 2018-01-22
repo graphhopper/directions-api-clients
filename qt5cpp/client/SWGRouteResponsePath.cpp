@@ -38,34 +38,40 @@ SWGRouteResponsePath::~SWGRouteResponsePath() {
 void
 SWGRouteResponsePath::init() {
     distance = 0.0;
+    m_distance_isSet = false;
     time = 0L;
+    m_time_isSet = false;
     ascend = 0.0;
+    m_ascend_isSet = false;
     descend = 0.0;
+    m_descend_isSet = false;
     points = new SWGResponseCoordinates();
+    m_points_isSet = false;
     points_encoded = false;
+    m_points_encoded_isSet = false;
     bbox = new QList<double>();
+    m_bbox_isSet = false;
     snapped_waypoints = new SWGResponseCoordinates();
+    m_snapped_waypoints_isSet = false;
     instructions = new SWGResponseInstructions();
+    m_instructions_isSet = false;
 }
 
 void
 SWGRouteResponsePath::cleanup() {
-    
 
 
 
 
-    if(points != nullptr) {
+    if(points != nullptr) { 
         delete points;
     }
 
 
-
-    if(snapped_waypoints != nullptr) {
+    if(snapped_waypoints != nullptr) { 
         delete snapped_waypoints;
     }
-
-    if(instructions != nullptr) {
+    if(instructions != nullptr) { 
         delete instructions;
     }
 }
@@ -82,16 +88,23 @@ SWGRouteResponsePath::fromJson(QString &json) {
 void
 SWGRouteResponsePath::fromJsonObject(QJsonObject &pJson) {
     ::Swagger::setValue(&distance, pJson["distance"], "double", "");
+    
     ::Swagger::setValue(&time, pJson["time"], "qint64", "");
+    
     ::Swagger::setValue(&ascend, pJson["ascend"], "double", "");
+    
     ::Swagger::setValue(&descend, pJson["descend"], "double", "");
+    
     ::Swagger::setValue(&points, pJson["points"], "SWGResponseCoordinates", "SWGResponseCoordinates");
+    
     ::Swagger::setValue(&points_encoded, pJson["points_encoded"], "bool", "");
     
     
     ::Swagger::setValue(&bbox, pJson["bbox"], "QList", "double");
     ::Swagger::setValue(&snapped_waypoints, pJson["snapped_waypoints"], "SWGResponseCoordinates", "SWGResponseCoordinates");
+    
     ::Swagger::setValue(&instructions, pJson["instructions"], "SWGResponseInstructions", "SWGResponseInstructions");
+    
 }
 
 QString
@@ -108,25 +121,41 @@ QJsonObject*
 SWGRouteResponsePath::asJsonObject() {
     QJsonObject* obj = new QJsonObject();
     
-    obj->insert("distance", QJsonValue(distance));
-
-    obj->insert("time", QJsonValue(time));
-
-    obj->insert("ascend", QJsonValue(ascend));
-
-    obj->insert("descend", QJsonValue(descend));
-
-    toJsonValue(QString("points"), points, obj, QString("SWGResponseCoordinates"));
-
-    obj->insert("points_encoded", QJsonValue(points_encoded));
-
-    QJsonArray bboxJsonArray;
-    toJsonArray((QList<void*>*)bbox, &bboxJsonArray, "bbox", "double");
-    obj->insert("bbox", bboxJsonArray);
-
-    toJsonValue(QString("snapped_waypoints"), snapped_waypoints, obj, QString("SWGResponseCoordinates"));
-
-    toJsonValue(QString("instructions"), instructions, obj, QString("SWGResponseInstructions"));
+    if(m_distance_isSet){
+        obj->insert("distance", QJsonValue(distance));
+    }
+    
+    if(m_time_isSet){
+        obj->insert("time", QJsonValue(time));
+    }
+    
+    if(m_ascend_isSet){
+        obj->insert("ascend", QJsonValue(ascend));
+    }
+    
+    if(m_descend_isSet){
+        obj->insert("descend", QJsonValue(descend));
+    }
+     
+    if((points != nullptr) && (points->isSet())){
+        toJsonValue(QString("points"), points, obj, QString("SWGResponseCoordinates"));
+    }
+    
+    if(m_points_encoded_isSet){
+        obj->insert("points_encoded", QJsonValue(points_encoded));
+    }
+    
+    if(bbox->size() > 0){
+        toJsonArray((QList<void*>*)bbox, obj, "bbox", "");
+    }
+     
+    if((snapped_waypoints != nullptr) && (snapped_waypoints->isSet())){
+        toJsonValue(QString("snapped_waypoints"), snapped_waypoints, obj, QString("SWGResponseCoordinates"));
+    }
+     
+    if((instructions != nullptr) && (instructions->isSet())){
+        toJsonValue(QString("instructions"), instructions, obj, QString("SWGResponseInstructions"));
+    }
 
     return obj;
 }
@@ -138,6 +167,7 @@ SWGRouteResponsePath::getDistance() {
 void
 SWGRouteResponsePath::setDistance(double distance) {
     this->distance = distance;
+    this->m_distance_isSet = true;
 }
 
 qint64
@@ -147,6 +177,7 @@ SWGRouteResponsePath::getTime() {
 void
 SWGRouteResponsePath::setTime(qint64 time) {
     this->time = time;
+    this->m_time_isSet = true;
 }
 
 double
@@ -156,6 +187,7 @@ SWGRouteResponsePath::getAscend() {
 void
 SWGRouteResponsePath::setAscend(double ascend) {
     this->ascend = ascend;
+    this->m_ascend_isSet = true;
 }
 
 double
@@ -165,6 +197,7 @@ SWGRouteResponsePath::getDescend() {
 void
 SWGRouteResponsePath::setDescend(double descend) {
     this->descend = descend;
+    this->m_descend_isSet = true;
 }
 
 SWGResponseCoordinates*
@@ -174,15 +207,17 @@ SWGRouteResponsePath::getPoints() {
 void
 SWGRouteResponsePath::setPoints(SWGResponseCoordinates* points) {
     this->points = points;
+    this->m_points_isSet = true;
 }
 
 bool
-SWGRouteResponsePath::getPointsEncoded() {
+SWGRouteResponsePath::isPointsEncoded() {
     return points_encoded;
 }
 void
 SWGRouteResponsePath::setPointsEncoded(bool points_encoded) {
     this->points_encoded = points_encoded;
+    this->m_points_encoded_isSet = true;
 }
 
 QList<double>*
@@ -192,6 +227,7 @@ SWGRouteResponsePath::getBbox() {
 void
 SWGRouteResponsePath::setBbox(QList<double>* bbox) {
     this->bbox = bbox;
+    this->m_bbox_isSet = true;
 }
 
 SWGResponseCoordinates*
@@ -201,6 +237,7 @@ SWGRouteResponsePath::getSnappedWaypoints() {
 void
 SWGRouteResponsePath::setSnappedWaypoints(SWGResponseCoordinates* snapped_waypoints) {
     this->snapped_waypoints = snapped_waypoints;
+    this->m_snapped_waypoints_isSet = true;
 }
 
 SWGResponseInstructions*
@@ -210,8 +247,25 @@ SWGRouteResponsePath::getInstructions() {
 void
 SWGRouteResponsePath::setInstructions(SWGResponseInstructions* instructions) {
     this->instructions = instructions;
+    this->m_instructions_isSet = true;
 }
 
 
+bool 
+SWGRouteResponsePath::isSet(){
+    bool isObjectUpdated = false;
+    do{
+        if(m_distance_isSet){ isObjectUpdated = true; break;}
+        if(m_time_isSet){ isObjectUpdated = true; break;}
+        if(m_ascend_isSet){ isObjectUpdated = true; break;}
+        if(m_descend_isSet){ isObjectUpdated = true; break;}
+        if(points != nullptr && points->isSet()){ isObjectUpdated = true; break;}
+        if(m_points_encoded_isSet){ isObjectUpdated = true; break;}
+        if(m_bbox_isSet){ isObjectUpdated = true; break;}if(bbox->size() > 0){ isObjectUpdated = true; break;}
+        if(snapped_waypoints != nullptr && snapped_waypoints->isSet()){ isObjectUpdated = true; break;}
+        if(instructions != nullptr && instructions->isSet()){ isObjectUpdated = true; break;}
+    }while(false);
+    return isObjectUpdated;
+}
 }
 

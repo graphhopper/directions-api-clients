@@ -80,10 +80,10 @@ IsochroneResponsePolygon <- R6::R6Class(
     },
     fromJSONString = function(IsochroneResponsePolygonJson) {
       IsochroneResponsePolygonObject <- jsonlite::fromJSON(IsochroneResponsePolygonJson)
-      IsochroneResponsePolygonPropertiesObject -> IsochroneResponsePolygonProperties$new()
+      IsochroneResponsePolygonPropertiesObject <- IsochroneResponsePolygonProperties$new()
       self$`properties` <- IsochroneResponsePolygonPropertiesObject$fromJSON(jsonlite::toJSON(IsochroneResponsePolygonObject$properties, auto_unbox = TRUE))
       self$`type` <- IsochroneResponsePolygonObject$`type`
-      IsochroneResponsePolygonGeometryObject -> IsochroneResponsePolygonGeometry$new()
+      IsochroneResponsePolygonGeometryObject <- IsochroneResponsePolygonGeometry$new()
       self$`geometry` <- IsochroneResponsePolygonGeometryObject$fromJSON(jsonlite::toJSON(IsochroneResponsePolygonObject$geometry, auto_unbox = TRUE))
     }
   )

@@ -90,7 +90,7 @@ CostMatrixData <- R6::R6Class(
       CostMatrixDataObject <- jsonlite::fromJSON(CostMatrixDataJson)
       self$`times` <- lapply(CostMatrixDataObject$`times`, function(x) Integer$new()$fromJSON(jsonlite::toJSON(x, auto_unbox = TRUE)))
       self$`distances` <- lapply(CostMatrixDataObject$`distances`, function(x) Numeric$new()$fromJSON(jsonlite::toJSON(x, auto_unbox = TRUE)))
-      CostMatrixDataInfoObject -> CostMatrixDataInfo$new()
+      CostMatrixDataInfoObject <- CostMatrixDataInfo$new()
       self$`info` <- CostMatrixDataInfoObject$fromJSON(jsonlite::toJSON(CostMatrixDataObject$info, auto_unbox = TRUE))
     }
   )

@@ -50,7 +50,7 @@ ResponseCoordinates <- R6::R6Class(
     },
     fromJSONString = function(ResponseCoordinatesJson) {
       ResponseCoordinatesObject <- jsonlite::fromJSON(ResponseCoordinatesJson)
-      ResponseCoordinatesArrayObject -> ResponseCoordinatesArray$new()
+      ResponseCoordinatesArrayObject <- ResponseCoordinatesArray$new()
       self$`coordinates` <- ResponseCoordinatesArrayObject$fromJSON(jsonlite::toJSON(ResponseCoordinatesObject$coordinates, auto_unbox = TRUE))
     }
   )

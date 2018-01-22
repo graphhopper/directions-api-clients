@@ -28,7 +28,6 @@
 
 #include "SWGObject.h"
 
-
 namespace Swagger {
 
 class SWGRouteResponsePath: public SWGObject {
@@ -59,7 +58,7 @@ public:
     SWGResponseCoordinates* getPoints();
     void setPoints(SWGResponseCoordinates* points);
 
-    bool getPointsEncoded();
+    bool isPointsEncoded();
     void setPointsEncoded(bool points_encoded);
 
     QList<double>* getBbox();
@@ -72,16 +71,36 @@ public:
     void setInstructions(SWGResponseInstructions* instructions);
 
 
+    virtual bool isSet() override;
+
 private:
     double distance;
+    bool m_distance_isSet;
+    
     qint64 time;
+    bool m_time_isSet;
+    
     double ascend;
+    bool m_ascend_isSet;
+    
     double descend;
+    bool m_descend_isSet;
+    
     SWGResponseCoordinates* points;
+    bool m_points_isSet;
+    
     bool points_encoded;
+    bool m_points_encoded_isSet;
+    
     QList<double>* bbox;
+    bool m_bbox_isSet;
+    
     SWGResponseCoordinates* snapped_waypoints;
+    bool m_snapped_waypoints_isSet;
+    
     SWGResponseInstructions* instructions;
+    bool m_instructions_isSet;
+    
 };
 
 }

@@ -38,36 +38,36 @@ SWGCostMatrix::~SWGCostMatrix() {
 void
 SWGCostMatrix::init() {
     type = new QString("");
+    m_type_isSet = false;
     url = new QString("");
+    m_url_isSet = false;
     location_ids = new QList<QString*>();
+    m_location_ids_isSet = false;
     data = new SWGCostMatrix_data();
+    m_data_isSet = false;
     profile = new QString("");
+    m_profile_isSet = false;
 }
 
 void
 SWGCostMatrix::cleanup() {
-    
-    if(type != nullptr) {
+    if(type != nullptr) { 
         delete type;
     }
-
-    if(url != nullptr) {
+    if(url != nullptr) { 
         delete url;
     }
-
-    if(location_ids != nullptr) {
-        QList<QString*>* arr = location_ids;
-        foreach(QString* o, *arr) {
+    if(location_ids != nullptr) { 
+        auto arr = location_ids;
+        for(auto o: *arr) { 
             delete o;
         }
         delete location_ids;
     }
-
-    if(data != nullptr) {
+    if(data != nullptr) { 
         delete data;
     }
-
-    if(profile != nullptr) {
+    if(profile != nullptr) { 
         delete profile;
     }
 }
@@ -84,12 +84,15 @@ SWGCostMatrix::fromJson(QString &json) {
 void
 SWGCostMatrix::fromJsonObject(QJsonObject &pJson) {
     ::Swagger::setValue(&type, pJson["type"], "QString", "QString");
+    
     ::Swagger::setValue(&url, pJson["url"], "QString", "QString");
     
-    ::Swagger::setValue(&location_ids, pJson["location_ids"], "QList", "QString");
     
+    ::Swagger::setValue(&location_ids, pJson["location_ids"], "QList", "QString");
     ::Swagger::setValue(&data, pJson["data"], "SWGCostMatrix_data", "SWGCostMatrix_data");
+    
     ::Swagger::setValue(&profile, pJson["profile"], "QString", "QString");
+    
 }
 
 QString
@@ -106,17 +109,25 @@ QJsonObject*
 SWGCostMatrix::asJsonObject() {
     QJsonObject* obj = new QJsonObject();
     
-    toJsonValue(QString("type"), type, obj, QString("QString"));
-
-    toJsonValue(QString("url"), url, obj, QString("QString"));
-
-    QJsonArray location_idsJsonArray;
-    toJsonArray((QList<void*>*)location_ids, &location_idsJsonArray, "location_ids", "QString");
-    obj->insert("location_ids", location_idsJsonArray);
-
-    toJsonValue(QString("data"), data, obj, QString("SWGCostMatrix_data"));
-
-    toJsonValue(QString("profile"), profile, obj, QString("QString"));
+    if(type != nullptr && *type != QString("")){
+        toJsonValue(QString("type"), type, obj, QString("QString"));
+    }
+    
+    if(url != nullptr && *url != QString("")){
+        toJsonValue(QString("url"), url, obj, QString("QString"));
+    }
+    
+    if(location_ids->size() > 0){
+        toJsonArray((QList<void*>*)location_ids, obj, "location_ids", "QString");
+    }
+     
+    if((data != nullptr) && (data->isSet())){
+        toJsonValue(QString("data"), data, obj, QString("SWGCostMatrix_data"));
+    }
+    
+    if(profile != nullptr && *profile != QString("")){
+        toJsonValue(QString("profile"), profile, obj, QString("QString"));
+    }
 
     return obj;
 }
@@ -128,6 +139,7 @@ SWGCostMatrix::getType() {
 void
 SWGCostMatrix::setType(QString* type) {
     this->type = type;
+    this->m_type_isSet = true;
 }
 
 QString*
@@ -137,6 +149,7 @@ SWGCostMatrix::getUrl() {
 void
 SWGCostMatrix::setUrl(QString* url) {
     this->url = url;
+    this->m_url_isSet = true;
 }
 
 QList<QString*>*
@@ -146,6 +159,7 @@ SWGCostMatrix::getLocationIds() {
 void
 SWGCostMatrix::setLocationIds(QList<QString*>* location_ids) {
     this->location_ids = location_ids;
+    this->m_location_ids_isSet = true;
 }
 
 SWGCostMatrix_data*
@@ -155,6 +169,7 @@ SWGCostMatrix::getData() {
 void
 SWGCostMatrix::setData(SWGCostMatrix_data* data) {
     this->data = data;
+    this->m_data_isSet = true;
 }
 
 QString*
@@ -164,8 +179,21 @@ SWGCostMatrix::getProfile() {
 void
 SWGCostMatrix::setProfile(QString* profile) {
     this->profile = profile;
+    this->m_profile_isSet = true;
 }
 
 
+bool 
+SWGCostMatrix::isSet(){
+    bool isObjectUpdated = false;
+    do{
+        if(type != nullptr && *type != QString("")){ isObjectUpdated = true; break;}
+        if(url != nullptr && *url != QString("")){ isObjectUpdated = true; break;}
+        if(location_ids->size() > 0){ isObjectUpdated = true; break;}
+        if(data != nullptr && data->isSet()){ isObjectUpdated = true; break;}
+        if(profile != nullptr && *profile != QString("")){ isObjectUpdated = true; break;}
+    }while(false);
+    return isObjectUpdated;
+}
 }
 

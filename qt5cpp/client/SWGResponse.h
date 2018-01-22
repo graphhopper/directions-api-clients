@@ -28,7 +28,6 @@
 
 #include "SWGObject.h"
 
-
 namespace Swagger {
 
 class SWGResponse: public SWGObject {
@@ -63,13 +62,27 @@ public:
     void setSolution(SWGSolution* solution);
 
 
+    virtual bool isSet() override;
+
 private:
     QList<QString*>* copyrights;
+    bool m_copyrights_isSet;
+    
     QString* job_id;
+    bool m_job_id_isSet;
+    
     QString* status;
+    bool m_status_isSet;
+    
     qint64 waiting_in_queue;
+    bool m_waiting_in_queue_isSet;
+    
     qint64 processing_time;
+    bool m_processing_time_isSet;
+    
     SWGSolution* solution;
+    bool m_solution_isSet;
+    
 };
 
 }

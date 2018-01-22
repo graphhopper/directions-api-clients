@@ -38,12 +38,12 @@ SWGJobId::~SWGJobId() {
 void
 SWGJobId::init() {
     job_id = new QString("");
+    m_job_id_isSet = false;
 }
 
 void
 SWGJobId::cleanup() {
-    
-    if(job_id != nullptr) {
+    if(job_id != nullptr) { 
         delete job_id;
     }
 }
@@ -60,6 +60,7 @@ SWGJobId::fromJson(QString &json) {
 void
 SWGJobId::fromJsonObject(QJsonObject &pJson) {
     ::Swagger::setValue(&job_id, pJson["job_id"], "QString", "QString");
+    
 }
 
 QString
@@ -76,7 +77,9 @@ QJsonObject*
 SWGJobId::asJsonObject() {
     QJsonObject* obj = new QJsonObject();
     
-    toJsonValue(QString("job_id"), job_id, obj, QString("QString"));
+    if(job_id != nullptr && *job_id != QString("")){
+        toJsonValue(QString("job_id"), job_id, obj, QString("QString"));
+    }
 
     return obj;
 }
@@ -88,8 +91,17 @@ SWGJobId::getJobId() {
 void
 SWGJobId::setJobId(QString* job_id) {
     this->job_id = job_id;
+    this->m_job_id_isSet = true;
 }
 
 
+bool 
+SWGJobId::isSet(){
+    bool isObjectUpdated = false;
+    do{
+        if(job_id != nullptr && *job_id != QString("")){ isObjectUpdated = true; break;}
+    }while(false);
+    return isObjectUpdated;
+}
 }
 

@@ -71,25 +71,26 @@ public class IsochroneApi {
      */
     public com.squareup.okhttp.Call isochroneGetCall(String point, String key, Integer timeLimit, Integer distanceLimit, String vehicle, Integer buckets, Boolean reverseFlow, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
-        
+
         // create path and map variables
         String localVarPath = "/isochrone";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (point != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "point", point));
+        localVarQueryParams.addAll(apiClient.parameterToPair("point", point));
         if (timeLimit != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "time_limit", timeLimit));
+        localVarQueryParams.addAll(apiClient.parameterToPair("time_limit", timeLimit));
         if (distanceLimit != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "distance_limit", distanceLimit));
+        localVarQueryParams.addAll(apiClient.parameterToPair("distance_limit", distanceLimit));
         if (vehicle != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "vehicle", vehicle));
+        localVarQueryParams.addAll(apiClient.parameterToPair("vehicle", vehicle));
         if (buckets != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "buckets", buckets));
+        localVarQueryParams.addAll(apiClient.parameterToPair("buckets", buckets));
         if (reverseFlow != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "reverse_flow", reverseFlow));
+        localVarQueryParams.addAll(apiClient.parameterToPair("reverse_flow", reverseFlow));
         if (key != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "key", key));
+        localVarQueryParams.addAll(apiClient.parameterToPair("key", key));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -120,9 +121,9 @@ public class IsochroneApi {
         }
 
         String[] localVarAuthNames = new String[] {  };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
-    
+
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call isochroneGetValidateBeforeCall(String point, String key, Integer timeLimit, Integer distanceLimit, String vehicle, Integer buckets, Boolean reverseFlow, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
@@ -136,14 +137,10 @@ public class IsochroneApi {
             throw new ApiException("Missing the required parameter 'key' when calling isochroneGet(Async)");
         }
         
-        
+
         com.squareup.okhttp.Call call = isochroneGetCall(point, key, timeLimit, distanceLimit, vehicle, buckets, reverseFlow, progressListener, progressRequestListener);
         return call;
 
-        
-        
-        
-        
     }
 
     /**

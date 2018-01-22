@@ -27,7 +27,6 @@
 
 #include "SWGObject.h"
 
-
 namespace Swagger {
 
 class SWGActivity: public SWGObject {
@@ -74,17 +73,39 @@ public:
     void setLoadAfter(QList<qint32>* load_after);
 
 
+    virtual bool isSet() override;
+
 private:
     QString* type;
+    bool m_type_isSet;
+    
     QString* id;
+    bool m_id_isSet;
+    
     QString* location_id;
+    bool m_location_id_isSet;
+    
     qint64 arr_time;
+    bool m_arr_time_isSet;
+    
     qint64 end_time;
+    bool m_end_time_isSet;
+    
     qint64 waiting_time;
+    bool m_waiting_time_isSet;
+    
     qint64 distance;
+    bool m_distance_isSet;
+    
     qint64 driving_time;
+    bool m_driving_time_isSet;
+    
     QList<qint32>* load_before;
+    bool m_load_before_isSet;
+    
     QList<qint32>* load_after;
+    bool m_load_after_isSet;
+    
 };
 
 }

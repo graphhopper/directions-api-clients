@@ -29,7 +29,7 @@ public class VrpAPI: APIBase {
      - POST /vrp/optimize
      - This endpoint for solving vehicle routing problems, i.e. traveling salesman or vehicle routing problems, and returns the solution.
      - examples: [{contentType=application/json, example={
-  "job_id" : "aeiou"
+  "job_id" : "job_id"
 }}]
      
      - parameter key: (query) your API key 

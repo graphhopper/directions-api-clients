@@ -38,21 +38,21 @@ SWGRouteResponse::~SWGRouteResponse() {
 void
 SWGRouteResponse::init() {
     paths = new QList<SWGRouteResponsePath*>();
+    m_paths_isSet = false;
     info = new SWGResponseInfo();
+    m_info_isSet = false;
 }
 
 void
 SWGRouteResponse::cleanup() {
-    
-    if(paths != nullptr) {
-        QList<SWGRouteResponsePath*>* arr = paths;
-        foreach(SWGRouteResponsePath* o, *arr) {
+    if(paths != nullptr) { 
+        auto arr = paths;
+        for(auto o: *arr) { 
             delete o;
         }
         delete paths;
     }
-
-    if(info != nullptr) {
+    if(info != nullptr) { 
         delete info;
     }
 }
@@ -70,8 +70,8 @@ void
 SWGRouteResponse::fromJsonObject(QJsonObject &pJson) {
     
     ::Swagger::setValue(&paths, pJson["paths"], "QList", "SWGRouteResponsePath");
-    
     ::Swagger::setValue(&info, pJson["info"], "SWGResponseInfo", "SWGResponseInfo");
+    
 }
 
 QString
@@ -88,11 +88,13 @@ QJsonObject*
 SWGRouteResponse::asJsonObject() {
     QJsonObject* obj = new QJsonObject();
     
-    QJsonArray pathsJsonArray;
-    toJsonArray((QList<void*>*)paths, &pathsJsonArray, "paths", "SWGRouteResponsePath");
-    obj->insert("paths", pathsJsonArray);
-
-    toJsonValue(QString("info"), info, obj, QString("SWGResponseInfo"));
+    if(paths->size() > 0){
+        toJsonArray((QList<void*>*)paths, obj, "paths", "SWGRouteResponsePath");
+    }
+     
+    if((info != nullptr) && (info->isSet())){
+        toJsonValue(QString("info"), info, obj, QString("SWGResponseInfo"));
+    }
 
     return obj;
 }
@@ -104,6 +106,7 @@ SWGRouteResponse::getPaths() {
 void
 SWGRouteResponse::setPaths(QList<SWGRouteResponsePath*>* paths) {
     this->paths = paths;
+    this->m_paths_isSet = true;
 }
 
 SWGResponseInfo*
@@ -113,8 +116,18 @@ SWGRouteResponse::getInfo() {
 void
 SWGRouteResponse::setInfo(SWGResponseInfo* info) {
     this->info = info;
+    this->m_info_isSet = true;
 }
 
 
+bool 
+SWGRouteResponse::isSet(){
+    bool isObjectUpdated = false;
+    do{
+        if(paths->size() > 0){ isObjectUpdated = true; break;}
+        if(info != nullptr && info->isSet()){ isObjectUpdated = true; break;}
+    }while(false);
+    return isObjectUpdated;
+}
 }
 

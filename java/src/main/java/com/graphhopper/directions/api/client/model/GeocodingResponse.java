@@ -14,6 +14,7 @@
 package com.graphhopper.directions.api.client.model;
 
 import java.util.Objects;
+import java.util.Arrays;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -122,6 +123,6 @@ public class GeocodingResponse {
     }
     return o.toString().replace("\n", "\n    ");
   }
-  
+
 }
 

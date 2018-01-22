@@ -19,12 +19,16 @@ This endpoint for solving vehicle routing problems, i.e. traveling salesman or v
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\VrpApi();
+$apiInstance = new Swagger\Client\Api\VrpApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $key = "key_example"; // string | your API key
 $body = new \Swagger\Client\Model\Request(); // \Swagger\Client\Model\Request | Request object that contains the problem to be solved
 
 try {
-    $result = $api_instance->postVrp($key, $body);
+    $result = $apiInstance->postVrp($key, $body);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling VrpApi->postVrp: ', $e->getMessage(), PHP_EOL;

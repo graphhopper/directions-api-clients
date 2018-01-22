@@ -25,7 +25,6 @@
 
 #include "SWGObject.h"
 
-
 namespace Swagger {
 
 class SWGRouting: public SWGObject {
@@ -41,12 +40,16 @@ public:
     void fromJsonObject(QJsonObject &json);
     SWGRouting* fromJson(QString &jsonString);
 
-    bool getCalcPoints();
+    bool isCalcPoints();
     void setCalcPoints(bool calc_points);
 
 
+    virtual bool isSet() override;
+
 private:
     bool calc_points;
+    bool m_calc_points_isSet;
+    
 };
 
 }

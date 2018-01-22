@@ -1,9 +1,10 @@
 # coding: utf-8
 
+# flake8: noqa
 """
     GraphHopper Directions API
 
-    You use the GraphHopper Directions API to add route planning, navigation and route optimization to your software. E.g. the Routing API has turn instructions and elevation data and the Route Optimization API solves your logistic problems and supports various constraints like time window and capacity restrictions. Also it is possible to get all distances between all locations with our fast Matrix API.
+    You use the GraphHopper Directions API to add route planning, navigation and route optimization to your software. E.g. the Routing API has turn instructions and elevation data and the Route Optimization API solves your logistic problems and supports various constraints like time window and capacity restrictions. Also it is possible to get all distances between all locations with our fast Matrix API.  # noqa: E501
 
     OpenAPI spec version: 1.0.0
     
@@ -14,46 +15,46 @@
 from __future__ import absolute_import
 
 # import models into model package
-from .activity import Activity
-from .address import Address
-from .algorithm import Algorithm
-from .configuration import Configuration
-from .cost_matrix import CostMatrix
-from .cost_matrix_data import CostMatrixData
-from .cost_matrix_data_info import CostMatrixDataInfo
-from .gh_error import GHError
-from .gh_error_hints import GHErrorHints
-from .geocoding_location import GeocodingLocation
-from .geocoding_point import GeocodingPoint
-from .geocoding_response import GeocodingResponse
-from .isochrone_response import IsochroneResponse
-from .isochrone_response_polygon import IsochroneResponsePolygon
-from .isochrone_response_polygon_geometry import IsochroneResponsePolygonGeometry
-from .isochrone_response_polygon_properties import IsochroneResponsePolygonProperties
-from .job_id import JobId
-from .location import Location
-from .matrix_request import MatrixRequest
-from .matrix_response import MatrixResponse
-from .model_break import ModelBreak
-from .objective import Objective
-from .relation import Relation
-from .request import Request
-from .response import Response
-from .response_coordinates import ResponseCoordinates
-from .response_coordinates_array import ResponseCoordinatesArray
-from .response_info import ResponseInfo
-from .response_instruction import ResponseInstruction
-from .response_instructions import ResponseInstructions
-from .route import Route
-from .route_point import RoutePoint
-from .route_response import RouteResponse
-from .route_response_path import RouteResponsePath
-from .routing import Routing
-from .service import Service
-from .shipment import Shipment
-from .solution import Solution
-from .solution_unassigned import SolutionUnassigned
-from .stop import Stop
-from .time_window import TimeWindow
-from .vehicle import Vehicle
-from .vehicle_type import VehicleType
+from swagger_client.models.activity import Activity
+from swagger_client.models.address import Address
+from swagger_client.models.algorithm import Algorithm
+from swagger_client.models.configuration import Configuration
+from swagger_client.models.cost_matrix import CostMatrix
+from swagger_client.models.cost_matrix_data import CostMatrixData
+from swagger_client.models.cost_matrix_data_info import CostMatrixDataInfo
+from swagger_client.models.gh_error import GHError
+from swagger_client.models.gh_error_hints import GHErrorHints
+from swagger_client.models.geocoding_location import GeocodingLocation
+from swagger_client.models.geocoding_point import GeocodingPoint
+from swagger_client.models.geocoding_response import GeocodingResponse
+from swagger_client.models.isochrone_response import IsochroneResponse
+from swagger_client.models.isochrone_response_polygon import IsochroneResponsePolygon
+from swagger_client.models.isochrone_response_polygon_geometry import IsochroneResponsePolygonGeometry
+from swagger_client.models.isochrone_response_polygon_properties import IsochroneResponsePolygonProperties
+from swagger_client.models.job_id import JobId
+from swagger_client.models.location import Location
+from swagger_client.models.matrix_request import MatrixRequest
+from swagger_client.models.matrix_response import MatrixResponse
+from swagger_client.models.model_break import ModelBreak
+from swagger_client.models.objective import Objective
+from swagger_client.models.relation import Relation
+from swagger_client.models.request import Request
+from swagger_client.models.response import Response
+from swagger_client.models.response_coordinates import ResponseCoordinates
+from swagger_client.models.response_coordinates_array import ResponseCoordinatesArray
+from swagger_client.models.response_info import ResponseInfo
+from swagger_client.models.response_instruction import ResponseInstruction
+from swagger_client.models.response_instructions import ResponseInstructions
+from swagger_client.models.route import Route
+from swagger_client.models.route_point import RoutePoint
+from swagger_client.models.route_response import RouteResponse
+from swagger_client.models.route_response_path import RouteResponsePath
+from swagger_client.models.routing import Routing
+from swagger_client.models.service import Service
+from swagger_client.models.shipment import Shipment
+from swagger_client.models.solution import Solution
+from swagger_client.models.solution_unassigned import SolutionUnassigned
+from swagger_client.models.stop import Stop
+from swagger_client.models.time_window import TimeWindow
+from swagger_client.models.vehicle import Vehicle
+from swagger_client.models.vehicle_type import VehicleType

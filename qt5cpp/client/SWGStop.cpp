@@ -38,23 +38,25 @@ SWGStop::~SWGStop() {
 void
 SWGStop::init() {
     address = new SWGAddress();
+    m_address_isSet = false;
     duration = 0L;
+    m_duration_isSet = false;
     preparation_time = 0L;
+    m_preparation_time_isSet = false;
     time_windows = new QList<SWGTimeWindow*>();
+    m_time_windows_isSet = false;
 }
 
 void
 SWGStop::cleanup() {
-    
-    if(address != nullptr) {
+    if(address != nullptr) { 
         delete address;
     }
 
 
-
-    if(time_windows != nullptr) {
-        QList<SWGTimeWindow*>* arr = time_windows;
-        foreach(SWGTimeWindow* o, *arr) {
+    if(time_windows != nullptr) { 
+        auto arr = time_windows;
+        for(auto o: *arr) { 
             delete o;
         }
         delete time_windows;
@@ -73,11 +75,13 @@ SWGStop::fromJson(QString &json) {
 void
 SWGStop::fromJsonObject(QJsonObject &pJson) {
     ::Swagger::setValue(&address, pJson["address"], "SWGAddress", "SWGAddress");
+    
     ::Swagger::setValue(&duration, pJson["duration"], "qint64", "");
+    
     ::Swagger::setValue(&preparation_time, pJson["preparation_time"], "qint64", "");
     
-    ::Swagger::setValue(&time_windows, pJson["time_windows"], "QList", "SWGTimeWindow");
     
+    ::Swagger::setValue(&time_windows, pJson["time_windows"], "QList", "SWGTimeWindow");
 }
 
 QString
@@ -93,16 +97,22 @@ SWGStop::asJson ()
 QJsonObject*
 SWGStop::asJsonObject() {
     QJsonObject* obj = new QJsonObject();
+     
+    if((address != nullptr) && (address->isSet())){
+        toJsonValue(QString("address"), address, obj, QString("SWGAddress"));
+    }
     
-    toJsonValue(QString("address"), address, obj, QString("SWGAddress"));
-
-    obj->insert("duration", QJsonValue(duration));
-
-    obj->insert("preparation_time", QJsonValue(preparation_time));
-
-    QJsonArray time_windowsJsonArray;
-    toJsonArray((QList<void*>*)time_windows, &time_windowsJsonArray, "time_windows", "SWGTimeWindow");
-    obj->insert("time_windows", time_windowsJsonArray);
+    if(m_duration_isSet){
+        obj->insert("duration", QJsonValue(duration));
+    }
+    
+    if(m_preparation_time_isSet){
+        obj->insert("preparation_time", QJsonValue(preparation_time));
+    }
+    
+    if(time_windows->size() > 0){
+        toJsonArray((QList<void*>*)time_windows, obj, "time_windows", "SWGTimeWindow");
+    }
 
     return obj;
 }
@@ -114,6 +124,7 @@ SWGStop::getAddress() {
 void
 SWGStop::setAddress(SWGAddress* address) {
     this->address = address;
+    this->m_address_isSet = true;
 }
 
 qint64
@@ -123,6 +134,7 @@ SWGStop::getDuration() {
 void
 SWGStop::setDuration(qint64 duration) {
     this->duration = duration;
+    this->m_duration_isSet = true;
 }
 
 qint64
@@ -132,6 +144,7 @@ SWGStop::getPreparationTime() {
 void
 SWGStop::setPreparationTime(qint64 preparation_time) {
     this->preparation_time = preparation_time;
+    this->m_preparation_time_isSet = true;
 }
 
 QList<SWGTimeWindow*>*
@@ -141,8 +154,20 @@ SWGStop::getTimeWindows() {
 void
 SWGStop::setTimeWindows(QList<SWGTimeWindow*>* time_windows) {
     this->time_windows = time_windows;
+    this->m_time_windows_isSet = true;
 }
 
 
+bool 
+SWGStop::isSet(){
+    bool isObjectUpdated = false;
+    do{
+        if(address != nullptr && address->isSet()){ isObjectUpdated = true; break;}
+        if(m_duration_isSet){ isObjectUpdated = true; break;}
+        if(m_preparation_time_isSet){ isObjectUpdated = true; break;}
+        if(time_windows->size() > 0){ isObjectUpdated = true; break;}
+    }while(false);
+    return isObjectUpdated;
+}
 }
 

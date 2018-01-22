@@ -38,12 +38,14 @@ SWGTimeWindow::~SWGTimeWindow() {
 void
 SWGTimeWindow::init() {
     earliest = 0L;
+    m_earliest_isSet = false;
     latest = 0L;
+    m_latest_isSet = false;
 }
 
 void
 SWGTimeWindow::cleanup() {
-    
+
 
 }
 
@@ -59,7 +61,9 @@ SWGTimeWindow::fromJson(QString &json) {
 void
 SWGTimeWindow::fromJsonObject(QJsonObject &pJson) {
     ::Swagger::setValue(&earliest, pJson["earliest"], "qint64", "");
+    
     ::Swagger::setValue(&latest, pJson["latest"], "qint64", "");
+    
 }
 
 QString
@@ -76,9 +80,13 @@ QJsonObject*
 SWGTimeWindow::asJsonObject() {
     QJsonObject* obj = new QJsonObject();
     
-    obj->insert("earliest", QJsonValue(earliest));
-
-    obj->insert("latest", QJsonValue(latest));
+    if(m_earliest_isSet){
+        obj->insert("earliest", QJsonValue(earliest));
+    }
+    
+    if(m_latest_isSet){
+        obj->insert("latest", QJsonValue(latest));
+    }
 
     return obj;
 }
@@ -90,6 +98,7 @@ SWGTimeWindow::getEarliest() {
 void
 SWGTimeWindow::setEarliest(qint64 earliest) {
     this->earliest = earliest;
+    this->m_earliest_isSet = true;
 }
 
 qint64
@@ -99,8 +108,18 @@ SWGTimeWindow::getLatest() {
 void
 SWGTimeWindow::setLatest(qint64 latest) {
     this->latest = latest;
+    this->m_latest_isSet = true;
 }
 
 
+bool 
+SWGTimeWindow::isSet(){
+    bool isObjectUpdated = false;
+    do{
+        if(m_earliest_isSet){ isObjectUpdated = true; break;}
+        if(m_latest_isSet){ isObjectUpdated = true; break;}
+    }while(false);
+    return isObjectUpdated;
+}
 }
 

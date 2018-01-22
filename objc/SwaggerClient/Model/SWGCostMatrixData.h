@@ -15,6 +15,9 @@
 
 
 #import "SWGCostMatrixDataInfo.h"
+@protocol SWGCostMatrixDataInfo;
+@class SWGCostMatrixDataInfo;
+
 
 
 @protocol SWGCostMatrixData

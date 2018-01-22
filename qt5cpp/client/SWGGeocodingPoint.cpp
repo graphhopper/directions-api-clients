@@ -38,12 +38,14 @@ SWGGeocodingPoint::~SWGGeocodingPoint() {
 void
 SWGGeocodingPoint::init() {
     lat = 0.0;
+    m_lat_isSet = false;
     lng = 0.0;
+    m_lng_isSet = false;
 }
 
 void
 SWGGeocodingPoint::cleanup() {
-    
+
 
 }
 
@@ -59,7 +61,9 @@ SWGGeocodingPoint::fromJson(QString &json) {
 void
 SWGGeocodingPoint::fromJsonObject(QJsonObject &pJson) {
     ::Swagger::setValue(&lat, pJson["lat"], "double", "");
+    
     ::Swagger::setValue(&lng, pJson["lng"], "double", "");
+    
 }
 
 QString
@@ -76,9 +80,13 @@ QJsonObject*
 SWGGeocodingPoint::asJsonObject() {
     QJsonObject* obj = new QJsonObject();
     
-    obj->insert("lat", QJsonValue(lat));
-
-    obj->insert("lng", QJsonValue(lng));
+    if(m_lat_isSet){
+        obj->insert("lat", QJsonValue(lat));
+    }
+    
+    if(m_lng_isSet){
+        obj->insert("lng", QJsonValue(lng));
+    }
 
     return obj;
 }
@@ -90,6 +98,7 @@ SWGGeocodingPoint::getLat() {
 void
 SWGGeocodingPoint::setLat(double lat) {
     this->lat = lat;
+    this->m_lat_isSet = true;
 }
 
 double
@@ -99,8 +108,18 @@ SWGGeocodingPoint::getLng() {
 void
 SWGGeocodingPoint::setLng(double lng) {
     this->lng = lng;
+    this->m_lng_isSet = true;
 }
 
 
+bool 
+SWGGeocodingPoint::isSet(){
+    bool isObjectUpdated = false;
+    do{
+        if(m_lat_isSet){ isObjectUpdated = true; break;}
+        if(m_lng_isSet){ isObjectUpdated = true; break;}
+    }while(false);
+    return isObjectUpdated;
+}
 }
 

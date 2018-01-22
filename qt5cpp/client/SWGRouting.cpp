@@ -38,11 +38,12 @@ SWGRouting::~SWGRouting() {
 void
 SWGRouting::init() {
     calc_points = false;
+    m_calc_points_isSet = false;
 }
 
 void
 SWGRouting::cleanup() {
-    
+
 }
 
 SWGRouting*
@@ -57,6 +58,7 @@ SWGRouting::fromJson(QString &json) {
 void
 SWGRouting::fromJsonObject(QJsonObject &pJson) {
     ::Swagger::setValue(&calc_points, pJson["calc_points"], "bool", "");
+    
 }
 
 QString
@@ -73,20 +75,31 @@ QJsonObject*
 SWGRouting::asJsonObject() {
     QJsonObject* obj = new QJsonObject();
     
-    obj->insert("calc_points", QJsonValue(calc_points));
+    if(m_calc_points_isSet){
+        obj->insert("calc_points", QJsonValue(calc_points));
+    }
 
     return obj;
 }
 
 bool
-SWGRouting::getCalcPoints() {
+SWGRouting::isCalcPoints() {
     return calc_points;
 }
 void
 SWGRouting::setCalcPoints(bool calc_points) {
     this->calc_points = calc_points;
+    this->m_calc_points_isSet = true;
 }
 
 
+bool 
+SWGRouting::isSet(){
+    bool isObjectUpdated = false;
+    do{
+        if(m_calc_points_isSet){ isObjectUpdated = true; break;}
+    }while(false);
+    return isObjectUpdated;
+}
 }
 

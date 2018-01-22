@@ -22,10 +22,10 @@ This endpoint returns the solution of a large problems. You can fetch it with th
 ### Example 
 ```perl
 use Data::Dumper;
-use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::SolutionApi;
+my $api_instance = WWW::SwaggerClient::SolutionApi->new(
+);
 
-my $api_instance = WWW::SwaggerClient::SolutionApi->new();
 my $key = 'key_example'; # string | your API key
 my $job_id = 'job_id_example'; # string | Request solution with jobId
 

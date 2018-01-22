@@ -8,19 +8,18 @@ Method | HTTP request | Description
 
 
 # **PostVrp**
-> JobId PostVrp($key, $body)
-
+> JobId PostVrp(ctx, key, body)
 Solves vehicle routing problems
 
 This endpoint for solving vehicle routing problems, i.e. traveling salesman or vehicle routing problems, and returns the solution.
 
-
-### Parameters
+### Required Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **key** | **string**| your API key | 
- **body** | [**Request**](Request.md)| Request object that contains the problem to be solved | 
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+  **key** | **string**| your API key | 
+  **body** | [**Request**](Request.md)| Request object that contains the problem to be solved | 
 
 ### Return type
 

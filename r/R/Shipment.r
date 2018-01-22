@@ -156,9 +156,9 @@ Shipment <- R6::R6Class(
       self$`id` <- ShipmentObject$`id`
       self$`name` <- ShipmentObject$`name`
       self$`priority` <- ShipmentObject$`priority`
-      StopObject -> Stop$new()
+      StopObject <- Stop$new()
       self$`pickup` <- StopObject$fromJSON(jsonlite::toJSON(ShipmentObject$pickup, auto_unbox = TRUE))
-      StopObject -> Stop$new()
+      StopObject <- Stop$new()
       self$`delivery` <- StopObject$fromJSON(jsonlite::toJSON(ShipmentObject$delivery, auto_unbox = TRUE))
       self$`size` <- ShipmentObject$`size`
       self$`required_skills` <- ShipmentObject$`required_skills`

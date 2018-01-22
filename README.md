@@ -7,11 +7,14 @@ Please see the successfully created one in the subfolders.
 language  |  tested?| alternative
 :---------|:--------|:------------
 clojure   |  no     |
-csharp    |  no     |
+cpprest   |  no     |
+csharp    |  [partly](https://github.com/graphhopper/directions-api-clients/issues/14) |
+dart      |  no     |
 go        |  no     |
 haskell   |  no     |
-java      |  yes    | You can use the optimized [handcoded client](https://github.com/graphhopper/graphhopper/tree/master/client-hc) for some APIs.
+java      |  yes    | You can use the optimized [handcoded client](https://github.com/graphhopper/graphhopper/tree/master/client-hc)
 javascript|  yes    | Use the [official client](https://github.com/graphhopper/directions-api-js-client)
+kotlin	  |  no     |
 objc      |  no     |
 perl      |  no     |
 php       |  [yes](https://github.com/graphhopper/directions-api-clients-route-optimization/issues/4)     |
@@ -19,12 +22,14 @@ python    |  no     |
 qt5cpp    |  no     |
 r         |  no     |
 ruby      |  [yes](https://github.com/graphhopper/directions-api-clients-route-optimization/issues/3)   |
+rust      |  no     |
 scala     |  no     |
+sinatra   |  no     |
 swift     |  no     | Community contribution for the [Routing](https://github.com/rmnblm/GraphHopperRouting) and [Geocoding](https://github.com/rmnblm/GraphHopperGeocoder) API
 tizen     |  no     |
 
 
-tested=yes means we or one of our customers have successfully used the
+`tested=yes` means we or one of our customers have successfully used the
 client for this programming language. 
 
 The JavaScript client is handcrafted and can be found in the separate,

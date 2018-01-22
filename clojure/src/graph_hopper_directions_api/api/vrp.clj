@@ -6,6 +6,7 @@
   "Solves vehicle routing problems
   This endpoint for solving vehicle routing problems, i.e. traveling salesman or vehicle routing problems, and returns the solution."
   [key body ]
+  (check-required-params key body)
   (call-api "/vrp/optimize" :post
             {:path-params   {}
              :header-params {}

@@ -14,12 +14,12 @@ package io.swagger.client.model
 
 
 case class Stop (
-  address: Option[Address],
-  /* duration of stop, i.e. time in ms the corresponding activity takes */
-  duration: Option[Long],
-  /* preparation time of service, e.g. search for a parking space. it only falls due if the location of previous activity differs from this location */
-  preparationTime: Option[Long],
-  /* array of time windows. currently, only a single time window is allowed */
-  timeWindows: Option[List[TimeWindow]]
+  address: Option[Address] = None,
+  // duration of stop, i.e. time in ms the corresponding activity takes
+  duration: Option[Long] = None,
+  // preparation time of service, e.g. search for a parking space. it only falls due if the location of previous activity differs from this location
+  preparationTime: Option[Long] = None,
+  // array of time windows. currently, only a single time window is allowed
+  timeWindows: Option[List[TimeWindow]] = None
 )
 

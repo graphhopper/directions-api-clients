@@ -14,6 +14,6 @@ package io.swagger.client.model
 
 
 case class GHErrorHints (
-  message: Option[String]
+  message: Option[String] = None
 )
 

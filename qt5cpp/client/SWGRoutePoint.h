@@ -28,7 +28,6 @@
 
 #include "SWGObject.h"
 
-
 namespace Swagger {
 
 class SWGRoutePoint: public SWGObject {
@@ -51,9 +50,15 @@ public:
     void setCoordinates(QList<SWGObject*>* coordinates);
 
 
+    virtual bool isSet() override;
+
 private:
     QString* type;
+    bool m_type_isSet;
+    
     QList<SWGObject*>* coordinates;
+    bool m_coordinates_isSet;
+    
 };
 
 }

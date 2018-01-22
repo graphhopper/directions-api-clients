@@ -15,6 +15,9 @@
 
 
 #import "SWGGeocodingLocation.h"
+@protocol SWGGeocodingLocation;
+@class SWGGeocodingLocation;
+
 
 
 @protocol SWGGeocodingResponse

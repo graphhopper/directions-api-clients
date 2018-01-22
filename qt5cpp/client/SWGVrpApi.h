@@ -35,15 +35,17 @@ public:
     QString basePath;
     QMap<QString, QString> defaultHeaders;
 
-    void postVrp(QString* key, SWGRequest body);
+    void postVrp(QString* key, SWGRequest& body);
     
 private:
-    void postVrpCallback (HttpRequestWorker * worker);
+    void postVrpCallback (SWGHttpRequestWorker * worker);
     
 signals:
     void postVrpSignal(SWGJobId* summary);
     
     void postVrpSignalE(SWGJobId* summary, QNetworkReply::NetworkError error_type, QString& error_str);
+    
+    void postVrpSignalEFull(SWGHttpRequestWorker* worker, QNetworkReply::NetworkError error_type, QString& error_str);
     
 };
 

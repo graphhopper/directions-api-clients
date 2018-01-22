@@ -38,19 +38,19 @@ SWGRoutePoint::~SWGRoutePoint() {
 void
 SWGRoutePoint::init() {
     type = new QString("");
+    m_type_isSet = false;
     coordinates = new QList<SWGObject*>();
+    m_coordinates_isSet = false;
 }
 
 void
 SWGRoutePoint::cleanup() {
-    
-    if(type != nullptr) {
+    if(type != nullptr) { 
         delete type;
     }
-
-    if(coordinates != nullptr) {
-        QList<SWGObject*>* arr = coordinates;
-        foreach(SWGObject* o, *arr) {
+    if(coordinates != nullptr) { 
+        auto arr = coordinates;
+        for(auto o: *arr) { 
             delete o;
         }
         delete coordinates;
@@ -70,8 +70,8 @@ void
 SWGRoutePoint::fromJsonObject(QJsonObject &pJson) {
     ::Swagger::setValue(&type, pJson["type"], "QString", "QString");
     
-    ::Swagger::setValue(&coordinates, pJson["coordinates"], "QList", "SWGObject");
     
+    ::Swagger::setValue(&coordinates, pJson["coordinates"], "QList", "SWGObject");
 }
 
 QString
@@ -88,11 +88,13 @@ QJsonObject*
 SWGRoutePoint::asJsonObject() {
     QJsonObject* obj = new QJsonObject();
     
-    toJsonValue(QString("type"), type, obj, QString("QString"));
-
-    QJsonArray coordinatesJsonArray;
-    toJsonArray((QList<void*>*)coordinates, &coordinatesJsonArray, "coordinates", "SWGObject");
-    obj->insert("coordinates", coordinatesJsonArray);
+    if(type != nullptr && *type != QString("")){
+        toJsonValue(QString("type"), type, obj, QString("QString"));
+    }
+    
+    if(coordinates->size() > 0){
+        toJsonArray((QList<void*>*)coordinates, obj, "coordinates", "SWGObject");
+    }
 
     return obj;
 }
@@ -104,6 +106,7 @@ SWGRoutePoint::getType() {
 void
 SWGRoutePoint::setType(QString* type) {
     this->type = type;
+    this->m_type_isSet = true;
 }
 
 QList<SWGObject*>*
@@ -113,8 +116,18 @@ SWGRoutePoint::getCoordinates() {
 void
 SWGRoutePoint::setCoordinates(QList<SWGObject*>* coordinates) {
     this->coordinates = coordinates;
+    this->m_coordinates_isSet = true;
 }
 
 
+bool 
+SWGRoutePoint::isSet(){
+    bool isObjectUpdated = false;
+    do{
+        if(type != nullptr && *type != QString("")){ isObjectUpdated = true; break;}
+        if(coordinates->size() > 0){ isObjectUpdated = true; break;}
+    }while(false);
+    return isObjectUpdated;
+}
 }
 

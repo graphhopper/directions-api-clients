@@ -38,23 +38,23 @@ SWGSolution_unassigned::~SWGSolution_unassigned() {
 void
 SWGSolution_unassigned::init() {
     services = new QList<QString*>();
+    m_services_isSet = false;
     shipments = new QList<QString*>();
+    m_shipments_isSet = false;
 }
 
 void
 SWGSolution_unassigned::cleanup() {
-    
-    if(services != nullptr) {
-        QList<QString*>* arr = services;
-        foreach(QString* o, *arr) {
+    if(services != nullptr) { 
+        auto arr = services;
+        for(auto o: *arr) { 
             delete o;
         }
         delete services;
     }
-
-    if(shipments != nullptr) {
-        QList<QString*>* arr = shipments;
-        foreach(QString* o, *arr) {
+    if(shipments != nullptr) { 
+        auto arr = shipments;
+        for(auto o: *arr) { 
             delete o;
         }
         delete shipments;
@@ -75,9 +75,7 @@ SWGSolution_unassigned::fromJsonObject(QJsonObject &pJson) {
     
     ::Swagger::setValue(&services, pJson["services"], "QList", "QString");
     
-    
     ::Swagger::setValue(&shipments, pJson["shipments"], "QList", "QString");
-    
 }
 
 QString
@@ -94,13 +92,13 @@ QJsonObject*
 SWGSolution_unassigned::asJsonObject() {
     QJsonObject* obj = new QJsonObject();
     
-    QJsonArray servicesJsonArray;
-    toJsonArray((QList<void*>*)services, &servicesJsonArray, "services", "QString");
-    obj->insert("services", servicesJsonArray);
-
-    QJsonArray shipmentsJsonArray;
-    toJsonArray((QList<void*>*)shipments, &shipmentsJsonArray, "shipments", "QString");
-    obj->insert("shipments", shipmentsJsonArray);
+    if(services->size() > 0){
+        toJsonArray((QList<void*>*)services, obj, "services", "QString");
+    }
+    
+    if(shipments->size() > 0){
+        toJsonArray((QList<void*>*)shipments, obj, "shipments", "QString");
+    }
 
     return obj;
 }
@@ -112,6 +110,7 @@ SWGSolution_unassigned::getServices() {
 void
 SWGSolution_unassigned::setServices(QList<QString*>* services) {
     this->services = services;
+    this->m_services_isSet = true;
 }
 
 QList<QString*>*
@@ -121,8 +120,18 @@ SWGSolution_unassigned::getShipments() {
 void
 SWGSolution_unassigned::setShipments(QList<QString*>* shipments) {
     this->shipments = shipments;
+    this->m_shipments_isSet = true;
 }
 
 
+bool 
+SWGSolution_unassigned::isSet(){
+    bool isObjectUpdated = false;
+    do{
+        if(services->size() > 0){ isObjectUpdated = true; break;}
+        if(shipments->size() > 0){ isObjectUpdated = true; break;}
+    }while(false);
+    return isObjectUpdated;
+}
 }
 

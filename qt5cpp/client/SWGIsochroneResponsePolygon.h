@@ -28,7 +28,6 @@
 
 #include "SWGObject.h"
 
-
 namespace Swagger {
 
 class SWGIsochroneResponsePolygon: public SWGObject {
@@ -54,10 +53,18 @@ public:
     void setGeometry(SWGIsochroneResponsePolygon_geometry* geometry);
 
 
+    virtual bool isSet() override;
+
 private:
     SWGIsochroneResponsePolygon_properties* properties;
+    bool m_properties_isSet;
+    
     QString* type;
+    bool m_type_isSet;
+    
     SWGIsochroneResponsePolygon_geometry* geometry;
+    bool m_geometry_isSet;
+    
 };
 
 }

@@ -27,7 +27,6 @@
 
 #include "SWGObject.h"
 
-
 namespace Swagger {
 
 class SWGCostMatrix_data_info: public SWGObject {
@@ -50,9 +49,15 @@ public:
     void setTook(double took);
 
 
+    virtual bool isSet() override;
+
 private:
     QList<QString*>* copyrights;
+    bool m_copyrights_isSet;
+    
     double took;
+    bool m_took_isSet;
+    
 };
 
 }

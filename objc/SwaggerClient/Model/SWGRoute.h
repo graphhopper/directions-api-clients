@@ -16,6 +16,11 @@
 
 #import "SWGActivity.h"
 #import "SWGRoutePoint.h"
+@protocol SWGActivity;
+@class SWGActivity;
+@protocol SWGRoutePoint;
+@class SWGRoutePoint;
+
 
 
 @protocol SWGRoute

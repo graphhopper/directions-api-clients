@@ -38,17 +38,17 @@ SWGObjective::~SWGObjective() {
 void
 SWGObjective::init() {
     type = new QString("");
+    m_type_isSet = false;
     value = new QString("");
+    m_value_isSet = false;
 }
 
 void
 SWGObjective::cleanup() {
-    
-    if(type != nullptr) {
+    if(type != nullptr) { 
         delete type;
     }
-
-    if(value != nullptr) {
+    if(value != nullptr) { 
         delete value;
     }
 }
@@ -65,7 +65,9 @@ SWGObjective::fromJson(QString &json) {
 void
 SWGObjective::fromJsonObject(QJsonObject &pJson) {
     ::Swagger::setValue(&type, pJson["type"], "QString", "QString");
+    
     ::Swagger::setValue(&value, pJson["value"], "QString", "QString");
+    
 }
 
 QString
@@ -82,9 +84,13 @@ QJsonObject*
 SWGObjective::asJsonObject() {
     QJsonObject* obj = new QJsonObject();
     
-    toJsonValue(QString("type"), type, obj, QString("QString"));
-
-    toJsonValue(QString("value"), value, obj, QString("QString"));
+    if(type != nullptr && *type != QString("")){
+        toJsonValue(QString("type"), type, obj, QString("QString"));
+    }
+    
+    if(value != nullptr && *value != QString("")){
+        toJsonValue(QString("value"), value, obj, QString("QString"));
+    }
 
     return obj;
 }
@@ -96,6 +102,7 @@ SWGObjective::getType() {
 void
 SWGObjective::setType(QString* type) {
     this->type = type;
+    this->m_type_isSet = true;
 }
 
 QString*
@@ -105,8 +112,18 @@ SWGObjective::getValue() {
 void
 SWGObjective::setValue(QString* value) {
     this->value = value;
+    this->m_value_isSet = true;
 }
 
 
+bool 
+SWGObjective::isSet(){
+    bool isObjectUpdated = false;
+    do{
+        if(type != nullptr && *type != QString("")){ isObjectUpdated = true; break;}
+        if(value != nullptr && *value != QString("")){ isObjectUpdated = true; break;}
+    }while(false);
+    return isObjectUpdated;
+}
 }
 

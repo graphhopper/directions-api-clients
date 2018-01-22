@@ -14,22 +14,22 @@ package io.swagger.client.model
 
 
 case class Vehicle (
-  /* Unique identifier of vehicle */
-  vehicleId: Option[String],
-  /* Unique identifier referring to the available vehicle types */
-  typeId: Option[String],
-  startAddress: Option[Address],
-  endAddress: Option[Address],
-  break: Option[Break],
-  /* Indicates whether vehicle should return to start address or not. If not, it can end at any service activity. */
-  returnToDepot: Option[Boolean],
-  /* earliest start of vehicle at its start location */
-  earliestStart: Option[Long],
-  /* latest end of vehicle at its end location */
-  latestEnd: Option[Long],
-  /* array of skills */
-  skills: Option[List[String]],
-  /* max distance of vehicle */
-  maxDistance: Option[Long]
+  // Unique identifier of vehicle
+  vehicleId: Option[String] = None,
+  // Unique identifier referring to the available vehicle types
+  typeId: Option[String] = None,
+  startAddress: Option[Address] = None,
+  endAddress: Option[Address] = None,
+  break: Option[Break] = None,
+  // Indicates whether vehicle should return to start address or not. If not, it can end at any service activity.
+  returnToDepot: Option[Boolean] = None,
+  // earliest start of vehicle at its start location
+  earliestStart: Option[Long] = None,
+  // latest end of vehicle at its end location
+  latestEnd: Option[Long] = None,
+  // array of skills
+  skills: Option[List[String]] = None,
+  // max distance of vehicle
+  maxDistance: Option[Long] = None
 )
 

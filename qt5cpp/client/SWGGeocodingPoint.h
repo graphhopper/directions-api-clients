@@ -25,7 +25,6 @@
 
 #include "SWGObject.h"
 
-
 namespace Swagger {
 
 class SWGGeocodingPoint: public SWGObject {
@@ -48,9 +47,15 @@ public:
     void setLng(double lng);
 
 
+    virtual bool isSet() override;
+
 private:
     double lat;
+    bool m_lat_isSet;
+    
     double lng;
+    bool m_lng_isSet;
+    
 };
 
 }

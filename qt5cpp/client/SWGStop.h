@@ -28,7 +28,6 @@
 
 #include "SWGObject.h"
 
-
 namespace Swagger {
 
 class SWGStop: public SWGObject {
@@ -57,11 +56,21 @@ public:
     void setTimeWindows(QList<SWGTimeWindow*>* time_windows);
 
 
+    virtual bool isSet() override;
+
 private:
     SWGAddress* address;
+    bool m_address_isSet;
+    
     qint64 duration;
+    bool m_duration_isSet;
+    
     qint64 preparation_time;
+    bool m_preparation_time_isSet;
+    
     QList<SWGTimeWindow*>* time_windows;
+    bool m_time_windows_isSet;
+    
 };
 
 }

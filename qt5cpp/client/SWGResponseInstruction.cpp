@@ -38,33 +38,40 @@ SWGResponseInstruction::~SWGResponseInstruction() {
 void
 SWGResponseInstruction::init() {
     text = new QString("");
+    m_text_isSet = false;
     street_name = new QString("");
+    m_street_name_isSet = false;
     distance = 0.0;
+    m_distance_isSet = false;
     time = 0;
+    m_time_isSet = false;
     interval = new QList<qint32>();
+    m_interval_isSet = false;
     sign = 0;
+    m_sign_isSet = false;
     annotation_text = new QString("");
+    m_annotation_text_isSet = false;
     annotation_importance = 0;
+    m_annotation_importance_isSet = false;
     exit_number = 0;
+    m_exit_number_isSet = false;
     turn_angle = 0.0;
+    m_turn_angle_isSet = false;
 }
 
 void
 SWGResponseInstruction::cleanup() {
-    
-    if(text != nullptr) {
+    if(text != nullptr) { 
         delete text;
     }
-
-    if(street_name != nullptr) {
+    if(street_name != nullptr) { 
         delete street_name;
     }
 
 
 
 
-
-    if(annotation_text != nullptr) {
+    if(annotation_text != nullptr) { 
         delete annotation_text;
     }
 
@@ -84,17 +91,25 @@ SWGResponseInstruction::fromJson(QString &json) {
 void
 SWGResponseInstruction::fromJsonObject(QJsonObject &pJson) {
     ::Swagger::setValue(&text, pJson["text"], "QString", "QString");
+    
     ::Swagger::setValue(&street_name, pJson["street_name"], "QString", "QString");
+    
     ::Swagger::setValue(&distance, pJson["distance"], "double", "");
+    
     ::Swagger::setValue(&time, pJson["time"], "qint32", "");
     
     
     ::Swagger::setValue(&interval, pJson["interval"], "QList", "qint32");
     ::Swagger::setValue(&sign, pJson["sign"], "qint32", "");
+    
     ::Swagger::setValue(&annotation_text, pJson["annotation_text"], "QString", "QString");
+    
     ::Swagger::setValue(&annotation_importance, pJson["annotation_importance"], "qint32", "");
+    
     ::Swagger::setValue(&exit_number, pJson["exit_number"], "qint32", "");
+    
     ::Swagger::setValue(&turn_angle, pJson["turn_angle"], "double", "");
+    
 }
 
 QString
@@ -111,27 +126,45 @@ QJsonObject*
 SWGResponseInstruction::asJsonObject() {
     QJsonObject* obj = new QJsonObject();
     
-    toJsonValue(QString("text"), text, obj, QString("QString"));
-
-    toJsonValue(QString("street_name"), street_name, obj, QString("QString"));
-
-    obj->insert("distance", QJsonValue(distance));
-
-    obj->insert("time", QJsonValue(time));
-
-    QJsonArray intervalJsonArray;
-    toJsonArray((QList<void*>*)interval, &intervalJsonArray, "interval", "qint32");
-    obj->insert("interval", intervalJsonArray);
-
-    obj->insert("sign", QJsonValue(sign));
-
-    toJsonValue(QString("annotation_text"), annotation_text, obj, QString("QString"));
-
-    obj->insert("annotation_importance", QJsonValue(annotation_importance));
-
-    obj->insert("exit_number", QJsonValue(exit_number));
-
-    obj->insert("turn_angle", QJsonValue(turn_angle));
+    if(text != nullptr && *text != QString("")){
+        toJsonValue(QString("text"), text, obj, QString("QString"));
+    }
+    
+    if(street_name != nullptr && *street_name != QString("")){
+        toJsonValue(QString("street_name"), street_name, obj, QString("QString"));
+    }
+    
+    if(m_distance_isSet){
+        obj->insert("distance", QJsonValue(distance));
+    }
+    
+    if(m_time_isSet){
+        obj->insert("time", QJsonValue(time));
+    }
+    
+    if(interval->size() > 0){
+        toJsonArray((QList<void*>*)interval, obj, "interval", "");
+    }
+    
+    if(m_sign_isSet){
+        obj->insert("sign", QJsonValue(sign));
+    }
+    
+    if(annotation_text != nullptr && *annotation_text != QString("")){
+        toJsonValue(QString("annotation_text"), annotation_text, obj, QString("QString"));
+    }
+    
+    if(m_annotation_importance_isSet){
+        obj->insert("annotation_importance", QJsonValue(annotation_importance));
+    }
+    
+    if(m_exit_number_isSet){
+        obj->insert("exit_number", QJsonValue(exit_number));
+    }
+    
+    if(m_turn_angle_isSet){
+        obj->insert("turn_angle", QJsonValue(turn_angle));
+    }
 
     return obj;
 }
@@ -143,6 +176,7 @@ SWGResponseInstruction::getText() {
 void
 SWGResponseInstruction::setText(QString* text) {
     this->text = text;
+    this->m_text_isSet = true;
 }
 
 QString*
@@ -152,6 +186,7 @@ SWGResponseInstruction::getStreetName() {
 void
 SWGResponseInstruction::setStreetName(QString* street_name) {
     this->street_name = street_name;
+    this->m_street_name_isSet = true;
 }
 
 double
@@ -161,6 +196,7 @@ SWGResponseInstruction::getDistance() {
 void
 SWGResponseInstruction::setDistance(double distance) {
     this->distance = distance;
+    this->m_distance_isSet = true;
 }
 
 qint32
@@ -170,6 +206,7 @@ SWGResponseInstruction::getTime() {
 void
 SWGResponseInstruction::setTime(qint32 time) {
     this->time = time;
+    this->m_time_isSet = true;
 }
 
 QList<qint32>*
@@ -179,6 +216,7 @@ SWGResponseInstruction::getInterval() {
 void
 SWGResponseInstruction::setInterval(QList<qint32>* interval) {
     this->interval = interval;
+    this->m_interval_isSet = true;
 }
 
 qint32
@@ -188,6 +226,7 @@ SWGResponseInstruction::getSign() {
 void
 SWGResponseInstruction::setSign(qint32 sign) {
     this->sign = sign;
+    this->m_sign_isSet = true;
 }
 
 QString*
@@ -197,6 +236,7 @@ SWGResponseInstruction::getAnnotationText() {
 void
 SWGResponseInstruction::setAnnotationText(QString* annotation_text) {
     this->annotation_text = annotation_text;
+    this->m_annotation_text_isSet = true;
 }
 
 qint32
@@ -206,6 +246,7 @@ SWGResponseInstruction::getAnnotationImportance() {
 void
 SWGResponseInstruction::setAnnotationImportance(qint32 annotation_importance) {
     this->annotation_importance = annotation_importance;
+    this->m_annotation_importance_isSet = true;
 }
 
 qint32
@@ -215,6 +256,7 @@ SWGResponseInstruction::getExitNumber() {
 void
 SWGResponseInstruction::setExitNumber(qint32 exit_number) {
     this->exit_number = exit_number;
+    this->m_exit_number_isSet = true;
 }
 
 double
@@ -224,8 +266,26 @@ SWGResponseInstruction::getTurnAngle() {
 void
 SWGResponseInstruction::setTurnAngle(double turn_angle) {
     this->turn_angle = turn_angle;
+    this->m_turn_angle_isSet = true;
 }
 
 
+bool 
+SWGResponseInstruction::isSet(){
+    bool isObjectUpdated = false;
+    do{
+        if(text != nullptr && *text != QString("")){ isObjectUpdated = true; break;}
+        if(street_name != nullptr && *street_name != QString("")){ isObjectUpdated = true; break;}
+        if(m_distance_isSet){ isObjectUpdated = true; break;}
+        if(m_time_isSet){ isObjectUpdated = true; break;}
+        if(m_interval_isSet){ isObjectUpdated = true; break;}if(interval->size() > 0){ isObjectUpdated = true; break;}
+        if(m_sign_isSet){ isObjectUpdated = true; break;}
+        if(annotation_text != nullptr && *annotation_text != QString("")){ isObjectUpdated = true; break;}
+        if(m_annotation_importance_isSet){ isObjectUpdated = true; break;}
+        if(m_exit_number_isSet){ isObjectUpdated = true; break;}
+        if(m_turn_angle_isSet){ isObjectUpdated = true; break;}
+    }while(false);
+    return isObjectUpdated;
+}
 }
 

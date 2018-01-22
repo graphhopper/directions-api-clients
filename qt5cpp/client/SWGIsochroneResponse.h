@@ -28,7 +28,6 @@
 
 #include "SWGObject.h"
 
-
 namespace Swagger {
 
 class SWGIsochroneResponse: public SWGObject {
@@ -51,9 +50,15 @@ public:
     void setCopyrights(QList<QString*>* copyrights);
 
 
+    virtual bool isSet() override;
+
 private:
     QList<SWGIsochroneResponsePolygon*>* polygons;
+    bool m_polygons_isSet;
+    
     QList<QString*>* copyrights;
+    bool m_copyrights_isSet;
+    
 };
 
 }

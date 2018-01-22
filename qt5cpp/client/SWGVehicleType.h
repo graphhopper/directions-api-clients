@@ -27,7 +27,6 @@
 
 #include "SWGObject.h"
 
-
 namespace Swagger {
 
 class SWGVehicleType: public SWGObject {
@@ -68,15 +67,33 @@ public:
     void setCostPerActivation(double cost_per_activation);
 
 
+    virtual bool isSet() override;
+
 private:
     QString* type_id;
+    bool m_type_id_isSet;
+    
     QString* profile;
+    bool m_profile_isSet;
+    
     QList<qint32>* capacity;
+    bool m_capacity_isSet;
+    
     double speed_factor;
+    bool m_speed_factor_isSet;
+    
     double service_time_factor;
+    bool m_service_time_factor_isSet;
+    
     double cost_per_meter;
+    bool m_cost_per_meter_isSet;
+    
     double cost_per_second;
+    bool m_cost_per_second_isSet;
+    
     double cost_per_activation;
+    bool m_cost_per_activation_isSet;
+    
 };
 
 }

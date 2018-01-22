@@ -38,35 +38,37 @@ SWGResponse::~SWGResponse() {
 void
 SWGResponse::init() {
     copyrights = new QList<QString*>();
+    m_copyrights_isSet = false;
     job_id = new QString("");
+    m_job_id_isSet = false;
     status = new QString("");
+    m_status_isSet = false;
     waiting_in_queue = 0L;
+    m_waiting_in_queue_isSet = false;
     processing_time = 0L;
+    m_processing_time_isSet = false;
     solution = new SWGSolution();
+    m_solution_isSet = false;
 }
 
 void
 SWGResponse::cleanup() {
-    
-    if(copyrights != nullptr) {
-        QList<QString*>* arr = copyrights;
-        foreach(QString* o, *arr) {
+    if(copyrights != nullptr) { 
+        auto arr = copyrights;
+        for(auto o: *arr) { 
             delete o;
         }
         delete copyrights;
     }
-
-    if(job_id != nullptr) {
+    if(job_id != nullptr) { 
         delete job_id;
     }
-
-    if(status != nullptr) {
+    if(status != nullptr) { 
         delete status;
     }
 
 
-
-    if(solution != nullptr) {
+    if(solution != nullptr) { 
         delete solution;
     }
 }
@@ -84,12 +86,16 @@ void
 SWGResponse::fromJsonObject(QJsonObject &pJson) {
     
     ::Swagger::setValue(&copyrights, pJson["copyrights"], "QList", "QString");
-    
     ::Swagger::setValue(&job_id, pJson["job_id"], "QString", "QString");
+    
     ::Swagger::setValue(&status, pJson["status"], "QString", "QString");
+    
     ::Swagger::setValue(&waiting_in_queue, pJson["waiting_in_queue"], "qint64", "");
+    
     ::Swagger::setValue(&processing_time, pJson["processing_time"], "qint64", "");
+    
     ::Swagger::setValue(&solution, pJson["solution"], "SWGSolution", "SWGSolution");
+    
 }
 
 QString
@@ -106,19 +112,29 @@ QJsonObject*
 SWGResponse::asJsonObject() {
     QJsonObject* obj = new QJsonObject();
     
-    QJsonArray copyrightsJsonArray;
-    toJsonArray((QList<void*>*)copyrights, &copyrightsJsonArray, "copyrights", "QString");
-    obj->insert("copyrights", copyrightsJsonArray);
-
-    toJsonValue(QString("job_id"), job_id, obj, QString("QString"));
-
-    toJsonValue(QString("status"), status, obj, QString("QString"));
-
-    obj->insert("waiting_in_queue", QJsonValue(waiting_in_queue));
-
-    obj->insert("processing_time", QJsonValue(processing_time));
-
-    toJsonValue(QString("solution"), solution, obj, QString("SWGSolution"));
+    if(copyrights->size() > 0){
+        toJsonArray((QList<void*>*)copyrights, obj, "copyrights", "QString");
+    }
+    
+    if(job_id != nullptr && *job_id != QString("")){
+        toJsonValue(QString("job_id"), job_id, obj, QString("QString"));
+    }
+    
+    if(status != nullptr && *status != QString("")){
+        toJsonValue(QString("status"), status, obj, QString("QString"));
+    }
+    
+    if(m_waiting_in_queue_isSet){
+        obj->insert("waiting_in_queue", QJsonValue(waiting_in_queue));
+    }
+    
+    if(m_processing_time_isSet){
+        obj->insert("processing_time", QJsonValue(processing_time));
+    }
+     
+    if((solution != nullptr) && (solution->isSet())){
+        toJsonValue(QString("solution"), solution, obj, QString("SWGSolution"));
+    }
 
     return obj;
 }
@@ -130,6 +146,7 @@ SWGResponse::getCopyrights() {
 void
 SWGResponse::setCopyrights(QList<QString*>* copyrights) {
     this->copyrights = copyrights;
+    this->m_copyrights_isSet = true;
 }
 
 QString*
@@ -139,6 +156,7 @@ SWGResponse::getJobId() {
 void
 SWGResponse::setJobId(QString* job_id) {
     this->job_id = job_id;
+    this->m_job_id_isSet = true;
 }
 
 QString*
@@ -148,6 +166,7 @@ SWGResponse::getStatus() {
 void
 SWGResponse::setStatus(QString* status) {
     this->status = status;
+    this->m_status_isSet = true;
 }
 
 qint64
@@ -157,6 +176,7 @@ SWGResponse::getWaitingInQueue() {
 void
 SWGResponse::setWaitingInQueue(qint64 waiting_in_queue) {
     this->waiting_in_queue = waiting_in_queue;
+    this->m_waiting_in_queue_isSet = true;
 }
 
 qint64
@@ -166,6 +186,7 @@ SWGResponse::getProcessingTime() {
 void
 SWGResponse::setProcessingTime(qint64 processing_time) {
     this->processing_time = processing_time;
+    this->m_processing_time_isSet = true;
 }
 
 SWGSolution*
@@ -175,8 +196,22 @@ SWGResponse::getSolution() {
 void
 SWGResponse::setSolution(SWGSolution* solution) {
     this->solution = solution;
+    this->m_solution_isSet = true;
 }
 
 
+bool 
+SWGResponse::isSet(){
+    bool isObjectUpdated = false;
+    do{
+        if(copyrights->size() > 0){ isObjectUpdated = true; break;}
+        if(job_id != nullptr && *job_id != QString("")){ isObjectUpdated = true; break;}
+        if(status != nullptr && *status != QString("")){ isObjectUpdated = true; break;}
+        if(m_waiting_in_queue_isSet){ isObjectUpdated = true; break;}
+        if(m_processing_time_isSet){ isObjectUpdated = true; break;}
+        if(solution != nullptr && solution->isSet()){ isObjectUpdated = true; break;}
+    }while(false);
+    return isObjectUpdated;
+}
 }
 

@@ -38,23 +38,29 @@ SWGVehicleType::~SWGVehicleType() {
 void
 SWGVehicleType::init() {
     type_id = new QString("");
+    m_type_id_isSet = false;
     profile = new QString("");
+    m_profile_isSet = false;
     capacity = new QList<qint32>();
+    m_capacity_isSet = false;
     speed_factor = 0.0;
+    m_speed_factor_isSet = false;
     service_time_factor = 0.0;
+    m_service_time_factor_isSet = false;
     cost_per_meter = 0.0;
+    m_cost_per_meter_isSet = false;
     cost_per_second = 0.0;
+    m_cost_per_second_isSet = false;
     cost_per_activation = 0.0;
+    m_cost_per_activation_isSet = false;
 }
 
 void
 SWGVehicleType::cleanup() {
-    
-    if(type_id != nullptr) {
+    if(type_id != nullptr) { 
         delete type_id;
     }
-
-    if(profile != nullptr) {
+    if(profile != nullptr) { 
         delete profile;
     }
 
@@ -77,15 +83,21 @@ SWGVehicleType::fromJson(QString &json) {
 void
 SWGVehicleType::fromJsonObject(QJsonObject &pJson) {
     ::Swagger::setValue(&type_id, pJson["type_id"], "QString", "QString");
+    
     ::Swagger::setValue(&profile, pJson["profile"], "QString", "QString");
     
     
     ::Swagger::setValue(&capacity, pJson["capacity"], "QList", "qint32");
     ::Swagger::setValue(&speed_factor, pJson["speed_factor"], "double", "");
+    
     ::Swagger::setValue(&service_time_factor, pJson["service_time_factor"], "double", "");
+    
     ::Swagger::setValue(&cost_per_meter, pJson["cost_per_meter"], "double", "");
+    
     ::Swagger::setValue(&cost_per_second, pJson["cost_per_second"], "double", "");
+    
     ::Swagger::setValue(&cost_per_activation, pJson["cost_per_activation"], "double", "");
+    
 }
 
 QString
@@ -102,23 +114,37 @@ QJsonObject*
 SWGVehicleType::asJsonObject() {
     QJsonObject* obj = new QJsonObject();
     
-    toJsonValue(QString("type_id"), type_id, obj, QString("QString"));
-
-    toJsonValue(QString("profile"), profile, obj, QString("QString"));
-
-    QJsonArray capacityJsonArray;
-    toJsonArray((QList<void*>*)capacity, &capacityJsonArray, "capacity", "qint32");
-    obj->insert("capacity", capacityJsonArray);
-
-    obj->insert("speed_factor", QJsonValue(speed_factor));
-
-    obj->insert("service_time_factor", QJsonValue(service_time_factor));
-
-    obj->insert("cost_per_meter", QJsonValue(cost_per_meter));
-
-    obj->insert("cost_per_second", QJsonValue(cost_per_second));
-
-    obj->insert("cost_per_activation", QJsonValue(cost_per_activation));
+    if(type_id != nullptr && *type_id != QString("")){
+        toJsonValue(QString("type_id"), type_id, obj, QString("QString"));
+    }
+    
+    if(profile != nullptr && *profile != QString("")){
+        toJsonValue(QString("profile"), profile, obj, QString("QString"));
+    }
+    
+    if(capacity->size() > 0){
+        toJsonArray((QList<void*>*)capacity, obj, "capacity", "");
+    }
+    
+    if(m_speed_factor_isSet){
+        obj->insert("speed_factor", QJsonValue(speed_factor));
+    }
+    
+    if(m_service_time_factor_isSet){
+        obj->insert("service_time_factor", QJsonValue(service_time_factor));
+    }
+    
+    if(m_cost_per_meter_isSet){
+        obj->insert("cost_per_meter", QJsonValue(cost_per_meter));
+    }
+    
+    if(m_cost_per_second_isSet){
+        obj->insert("cost_per_second", QJsonValue(cost_per_second));
+    }
+    
+    if(m_cost_per_activation_isSet){
+        obj->insert("cost_per_activation", QJsonValue(cost_per_activation));
+    }
 
     return obj;
 }
@@ -130,6 +156,7 @@ SWGVehicleType::getTypeId() {
 void
 SWGVehicleType::setTypeId(QString* type_id) {
     this->type_id = type_id;
+    this->m_type_id_isSet = true;
 }
 
 QString*
@@ -139,6 +166,7 @@ SWGVehicleType::getProfile() {
 void
 SWGVehicleType::setProfile(QString* profile) {
     this->profile = profile;
+    this->m_profile_isSet = true;
 }
 
 QList<qint32>*
@@ -148,6 +176,7 @@ SWGVehicleType::getCapacity() {
 void
 SWGVehicleType::setCapacity(QList<qint32>* capacity) {
     this->capacity = capacity;
+    this->m_capacity_isSet = true;
 }
 
 double
@@ -157,6 +186,7 @@ SWGVehicleType::getSpeedFactor() {
 void
 SWGVehicleType::setSpeedFactor(double speed_factor) {
     this->speed_factor = speed_factor;
+    this->m_speed_factor_isSet = true;
 }
 
 double
@@ -166,6 +196,7 @@ SWGVehicleType::getServiceTimeFactor() {
 void
 SWGVehicleType::setServiceTimeFactor(double service_time_factor) {
     this->service_time_factor = service_time_factor;
+    this->m_service_time_factor_isSet = true;
 }
 
 double
@@ -175,6 +206,7 @@ SWGVehicleType::getCostPerMeter() {
 void
 SWGVehicleType::setCostPerMeter(double cost_per_meter) {
     this->cost_per_meter = cost_per_meter;
+    this->m_cost_per_meter_isSet = true;
 }
 
 double
@@ -184,6 +216,7 @@ SWGVehicleType::getCostPerSecond() {
 void
 SWGVehicleType::setCostPerSecond(double cost_per_second) {
     this->cost_per_second = cost_per_second;
+    this->m_cost_per_second_isSet = true;
 }
 
 double
@@ -193,8 +226,24 @@ SWGVehicleType::getCostPerActivation() {
 void
 SWGVehicleType::setCostPerActivation(double cost_per_activation) {
     this->cost_per_activation = cost_per_activation;
+    this->m_cost_per_activation_isSet = true;
 }
 
 
+bool 
+SWGVehicleType::isSet(){
+    bool isObjectUpdated = false;
+    do{
+        if(type_id != nullptr && *type_id != QString("")){ isObjectUpdated = true; break;}
+        if(profile != nullptr && *profile != QString("")){ isObjectUpdated = true; break;}
+        if(m_capacity_isSet){ isObjectUpdated = true; break;}if(capacity->size() > 0){ isObjectUpdated = true; break;}
+        if(m_speed_factor_isSet){ isObjectUpdated = true; break;}
+        if(m_service_time_factor_isSet){ isObjectUpdated = true; break;}
+        if(m_cost_per_meter_isSet){ isObjectUpdated = true; break;}
+        if(m_cost_per_second_isSet){ isObjectUpdated = true; break;}
+        if(m_cost_per_activation_isSet){ isObjectUpdated = true; break;}
+    }while(false);
+    return isObjectUpdated;
+}
 }
 

@@ -120,7 +120,7 @@ NSInteger kSWGIsochroneApiMissingParamErrorCode = 234513;
         queryParams[@"buckets"] = buckets;
     }
     if (reverseFlow != nil) {
-        queryParams[@"reverse_flow"] = reverseFlow;
+        queryParams[@"reverse_flow"] = [reverseFlow isEqual:@(YES)] ? @"true" : @"false";
     }
     if (key != nil) {
         queryParams[@"key"] = key;

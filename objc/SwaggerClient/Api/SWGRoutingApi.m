@@ -159,38 +159,36 @@ NSInteger kSWGRoutingApiMissingParamErrorCode = 234513;
     NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];
     if (point != nil) {
         queryParams[@"point"] = [[SWGQueryParamCollection alloc] initWithValuesAndFormat: point format: @"multi"];
-        
     }
     if (locale != nil) {
         queryParams[@"locale"] = locale;
     }
     if (instructions != nil) {
-        queryParams[@"instructions"] = instructions;
+        queryParams[@"instructions"] = [instructions isEqual:@(YES)] ? @"true" : @"false";
     }
     if (vehicle != nil) {
         queryParams[@"vehicle"] = vehicle;
     }
     if (elevation != nil) {
-        queryParams[@"elevation"] = elevation;
+        queryParams[@"elevation"] = [elevation isEqual:@(YES)] ? @"true" : @"false";
     }
     if (pointsEncoded != nil) {
-        queryParams[@"points_encoded"] = pointsEncoded;
+        queryParams[@"points_encoded"] = [pointsEncoded isEqual:@(YES)] ? @"true" : @"false";
     }
     if (calcPoints != nil) {
-        queryParams[@"calc_points"] = calcPoints;
+        queryParams[@"calc_points"] = [calcPoints isEqual:@(YES)] ? @"true" : @"false";
     }
     if (pointHint != nil) {
         queryParams[@"point_hint"] = [[SWGQueryParamCollection alloc] initWithValuesAndFormat: pointHint format: @"multi"];
-        
     }
     if (chDisable != nil) {
-        queryParams[@"ch.disable"] = chDisable;
+        queryParams[@"ch.disable"] = [chDisable isEqual:@(YES)] ? @"true" : @"false";
     }
     if (weighting != nil) {
         queryParams[@"weighting"] = weighting;
     }
     if (edgeTraversal != nil) {
-        queryParams[@"edge_traversal"] = edgeTraversal;
+        queryParams[@"edge_traversal"] = [edgeTraversal isEqual:@(YES)] ? @"true" : @"false";
     }
     if (algorithm != nil) {
         queryParams[@"algorithm"] = algorithm;
@@ -202,7 +200,7 @@ NSInteger kSWGRoutingApiMissingParamErrorCode = 234513;
         queryParams[@"heading_penalty"] = headingPenalty;
     }
     if (passThrough != nil) {
-        queryParams[@"pass_through"] = passThrough;
+        queryParams[@"pass_through"] = [passThrough isEqual:@(YES)] ? @"true" : @"false";
     }
     if (roundTripDistance != nil) {
         queryParams[@"round_trip.distance"] = roundTripDistance;

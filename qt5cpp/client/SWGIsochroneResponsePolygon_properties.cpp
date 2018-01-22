@@ -38,11 +38,12 @@ SWGIsochroneResponsePolygon_properties::~SWGIsochroneResponsePolygon_properties(
 void
 SWGIsochroneResponsePolygon_properties::init() {
     bucket = 0;
+    m_bucket_isSet = false;
 }
 
 void
 SWGIsochroneResponsePolygon_properties::cleanup() {
-    
+
 }
 
 SWGIsochroneResponsePolygon_properties*
@@ -57,6 +58,7 @@ SWGIsochroneResponsePolygon_properties::fromJson(QString &json) {
 void
 SWGIsochroneResponsePolygon_properties::fromJsonObject(QJsonObject &pJson) {
     ::Swagger::setValue(&bucket, pJson["bucket"], "qint32", "");
+    
 }
 
 QString
@@ -73,7 +75,9 @@ QJsonObject*
 SWGIsochroneResponsePolygon_properties::asJsonObject() {
     QJsonObject* obj = new QJsonObject();
     
-    obj->insert("bucket", QJsonValue(bucket));
+    if(m_bucket_isSet){
+        obj->insert("bucket", QJsonValue(bucket));
+    }
 
     return obj;
 }
@@ -85,8 +89,17 @@ SWGIsochroneResponsePolygon_properties::getBucket() {
 void
 SWGIsochroneResponsePolygon_properties::setBucket(qint32 bucket) {
     this->bucket = bucket;
+    this->m_bucket_isSet = true;
 }
 
 
+bool 
+SWGIsochroneResponsePolygon_properties::isSet(){
+    bool isObjectUpdated = false;
+    do{
+        if(m_bucket_isSet){ isObjectUpdated = true; break;}
+    }while(false);
+    return isObjectUpdated;
+}
 }
 

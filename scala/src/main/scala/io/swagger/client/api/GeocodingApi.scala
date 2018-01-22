@@ -12,10 +12,11 @@
 
 package io.swagger.client.api
 
+import java.text.SimpleDateFormat
+
 import io.swagger.client.model.GHError
 import io.swagger.client.model.GeocodingResponse
-import io.swagger.client.ApiInvoker
-import io.swagger.client.ApiException
+import io.swagger.client.{ApiInvoker, ApiException}
 
 import com.sun.jersey.multipart.FormDataMultiPart
 import com.sun.jersey.multipart.file.FileDataBodyPart
@@ -24,19 +25,65 @@ import javax.ws.rs.core.MediaType
 
 import java.io.File
 import java.util.Date
+import java.util.TimeZone
 
 import scala.collection.mutable.HashMap
 
-class GeocodingApi(val defBasePath: String = "https://graphhopper.com/api/1",
-                        defApiInvoker: ApiInvoker = ApiInvoker) {
-  var basePath = defBasePath
-  var apiInvoker = defApiInvoker
+import com.wordnik.swagger.client._
+import scala.concurrent.Future
+import collection.mutable
 
-  def addHeader(key: String, value: String) = apiInvoker.defaultHeaders += key -> value 
+import java.net.URI
+
+import com.wordnik.swagger.client.ClientResponseReaders.Json4sFormatsReader._
+import com.wordnik.swagger.client.RequestWriters.Json4sFormatsWriter._
+
+import scala.concurrent.ExecutionContext.Implicits.global
+import scala.concurrent._
+import scala.concurrent.duration._
+import scala.util.{Failure, Success, Try}
+
+import org.json4s._
+
+class GeocodingApi(
+  val defBasePath: String = "https://graphhopper.com/api/1",
+  defApiInvoker: ApiInvoker = ApiInvoker
+) {
+  private lazy val dateTimeFormatter = {
+    val formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ")
+    formatter.setTimeZone(TimeZone.getTimeZone("UTC"))
+    formatter
+  }
+  private val dateFormatter = {
+    val formatter = new SimpleDateFormat("yyyy-MM-dd")
+    formatter.setTimeZone(TimeZone.getTimeZone("UTC"))
+    formatter
+  }
+  implicit val formats = new org.json4s.DefaultFormats {
+    override def dateFormatter = dateTimeFormatter
+  }
+  implicit val stringReader: ClientResponseReader[String] = ClientResponseReaders.StringReader
+  implicit val unitReader: ClientResponseReader[Unit] = ClientResponseReaders.UnitReader
+  implicit val jvalueReader: ClientResponseReader[JValue] = ClientResponseReaders.JValueReader
+  implicit val jsonReader: ClientResponseReader[Nothing] = JsonFormatsReader
+  implicit val stringWriter: RequestWriter[String] = RequestWriters.StringWriter
+  implicit val jsonWriter: RequestWriter[Nothing] = JsonFormatsWriter
+
+  var basePath: String = defBasePath
+  var apiInvoker: ApiInvoker = defApiInvoker
+
+  def addHeader(key: String, value: String): mutable.HashMap[String, String] = {
+    apiInvoker.defaultHeaders += key -> value
+  }
+
+  val config: SwaggerConfig = SwaggerConfig.forUrl(new URI(defBasePath))
+  val client = new RestClient(config)
+  val helper = new GeocodingApiAsyncHelper(client, config)
 
   /**
    * Execute a Geocoding request
    * This endpoint provides forward and reverse geocoding. For more details, review the official documentation at: https://graphhopper.com/api/1/docs/geocoding/ 
+   *
    * @param key Get your key at graphhopper.com 
    * @param q If you do forward geocoding, then this would be a textual description of the adress you are looking for. If you do reverse geocoding this would be in lat,lon. (optional)
    * @param locale Display the search results for the specified locale. Currently French (fr), English (en), German (de) and Italian (it) are supported. If the locale wasn&#39;t found the default (en) is used. (optional)
@@ -47,45 +94,82 @@ class GeocodingApi(val defBasePath: String = "https://graphhopper.com/api/1",
    * @return GeocodingResponse
    */
   def geocodeGet(key: String, q: Option[String] = None, locale: Option[String] = None, limit: Option[Integer] = None, reverse: Option[Boolean] = None, point: Option[String] = None, provider: Option[String] = None): Option[GeocodingResponse] = {
+    val await = Try(Await.result(geocodeGetAsync(key, q, locale, limit, reverse, point, provider), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * Execute a Geocoding request asynchronously
+   * This endpoint provides forward and reverse geocoding. For more details, review the official documentation at: https://graphhopper.com/api/1/docs/geocoding/ 
+   *
+   * @param key Get your key at graphhopper.com 
+   * @param q If you do forward geocoding, then this would be a textual description of the adress you are looking for. If you do reverse geocoding this would be in lat,lon. (optional)
+   * @param locale Display the search results for the specified locale. Currently French (fr), English (en), German (de) and Italian (it) are supported. If the locale wasn&#39;t found the default (en) is used. (optional)
+   * @param limit Specify the maximum number of returned results (optional)
+   * @param reverse Set to true to do a reverse Geocoding request (optional)
+   * @param point The location bias in the format &#39;latitude,longitude&#39; e.g. point&#x3D;45.93272,11.58803 (optional)
+   * @param provider Can be either, default, nominatim, opencagedata (optional)
+   * @return Future(GeocodingResponse)
+   */
+  def geocodeGetAsync(key: String, q: Option[String] = None, locale: Option[String] = None, limit: Option[Integer] = None, reverse: Option[Boolean] = None, point: Option[String] = None, provider: Option[String] = None): Future[GeocodingResponse] = {
+      helper.geocodeGet(key, q, locale, limit, reverse, point, provider)
+  }
+
+}
+
+class GeocodingApiAsyncHelper(client: TransportClient, config: SwaggerConfig) extends ApiClient(client, config) {
+
+  def geocodeGet(key: String,
+    q: Option[String] = None,
+    locale: Option[String] = None,
+    limit: Option[Integer] = None,
+    reverse: Option[Boolean] = None,
+    point: Option[String] = None,
+    provider: Option[String] = None
+    )(implicit reader: ClientResponseReader[GeocodingResponse]): Future[GeocodingResponse] = {
     // create path and map variables
-    val path = "/geocode".replaceAll("\\{format\\}", "json")
+    val path = (addFmt("/geocode"))
 
-    val contentTypes = List("application/json")
-    val contentType = contentTypes(0)
-
-    val queryParams = new HashMap[String, String]
-    val headerParams = new HashMap[String, String]
-    val formParams = new HashMap[String, String]
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
 
     if (key == null) throw new Exception("Missing required parameter 'key' when calling GeocodingApi->geocodeGet")
 
-    q.map(paramVal => queryParams += "q" -> paramVal.toString)
-    locale.map(paramVal => queryParams += "locale" -> paramVal.toString)
-    limit.map(paramVal => queryParams += "limit" -> paramVal.toString)
-    reverse.map(paramVal => queryParams += "reverse" -> paramVal.toString)
-    point.map(paramVal => queryParams += "point" -> paramVal.toString)
-    provider.map(paramVal => queryParams += "provider" -> paramVal.toString)
-    queryParams += "key" -> key.toString
-    
-
-    var postBody: AnyRef = null
-
-    if (contentType.startsWith("multipart/form-data")) {
-      val mp = new FormDataMultiPart
-      postBody = mp
-    } else {
+    q match {
+      case Some(param) => queryParams += "q" -> param.toString
+      case _ => queryParams
     }
+    locale match {
+      case Some(param) => queryParams += "locale" -> param.toString
+      case _ => queryParams
+    }
+    limit match {
+      case Some(param) => queryParams += "limit" -> param.toString
+      case _ => queryParams
+    }
+    reverse match {
+      case Some(param) => queryParams += "reverse" -> param.toString
+      case _ => queryParams
+    }
+    point match {
+      case Some(param) => queryParams += "point" -> param.toString
+      case _ => queryParams
+    }
+    provider match {
+      case Some(param) => queryParams += "provider" -> param.toString
+      case _ => queryParams
+    }
+    queryParams += "key" -> key.toString
 
-    try {
-      apiInvoker.invokeApi(basePath, path, "GET", queryParams.toMap, formParams.toMap, postBody, headerParams.toMap, contentType) match {
-        case s: String =>
-           Some(apiInvoker.deserialize(s, "", classOf[GeocodingResponse]).asInstanceOf[GeocodingResponse])
-        case _ => None
-      }
-    } catch {
-      case ex: ApiException if ex.code == 404 => None
-      case ex: ApiException => throw ex
+    val resFuture = client.submit("GET", path, queryParams.toMap, headerParams.toMap, "")
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
     }
   }
+
 
 }

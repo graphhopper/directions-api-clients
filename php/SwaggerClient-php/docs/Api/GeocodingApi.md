@@ -19,7 +19,11 @@ This endpoint provides forward and reverse geocoding. For more details, review t
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\GeocodingApi();
+$apiInstance = new Swagger\Client\Api\GeocodingApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $key = "key_example"; // string | Get your key at graphhopper.com
 $q = "q_example"; // string | If you do forward geocoding, then this would be a textual description of the adress you are looking for. If you do reverse geocoding this would be in lat,lon.
 $locale = "locale_example"; // string | Display the search results for the specified locale. Currently French (fr), English (en), German (de) and Italian (it) are supported. If the locale wasn't found the default (en) is used.
@@ -29,7 +33,7 @@ $point = "point_example"; // string | The location bias in the format 'latitude,
 $provider = "provider_example"; // string | Can be either, default, nominatim, opencagedata
 
 try {
-    $result = $api_instance->geocodeGet($key, $q, $locale, $limit, $reverse, $point, $provider);
+    $result = $apiInstance->geocodeGet($key, $q, $locale, $limit, $reverse, $point, $provider);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling GeocodingApi->geocodeGet: ', $e->getMessage(), PHP_EOL;

@@ -38,21 +38,21 @@ SWGGeocodingResponse::~SWGGeocodingResponse() {
 void
 SWGGeocodingResponse::init() {
     hits = new QList<SWGGeocodingLocation*>();
+    m_hits_isSet = false;
     locale = new QString("");
+    m_locale_isSet = false;
 }
 
 void
 SWGGeocodingResponse::cleanup() {
-    
-    if(hits != nullptr) {
-        QList<SWGGeocodingLocation*>* arr = hits;
-        foreach(SWGGeocodingLocation* o, *arr) {
+    if(hits != nullptr) { 
+        auto arr = hits;
+        for(auto o: *arr) { 
             delete o;
         }
         delete hits;
     }
-
-    if(locale != nullptr) {
+    if(locale != nullptr) { 
         delete locale;
     }
 }
@@ -70,8 +70,8 @@ void
 SWGGeocodingResponse::fromJsonObject(QJsonObject &pJson) {
     
     ::Swagger::setValue(&hits, pJson["hits"], "QList", "SWGGeocodingLocation");
-    
     ::Swagger::setValue(&locale, pJson["locale"], "QString", "QString");
+    
 }
 
 QString
@@ -88,11 +88,13 @@ QJsonObject*
 SWGGeocodingResponse::asJsonObject() {
     QJsonObject* obj = new QJsonObject();
     
-    QJsonArray hitsJsonArray;
-    toJsonArray((QList<void*>*)hits, &hitsJsonArray, "hits", "SWGGeocodingLocation");
-    obj->insert("hits", hitsJsonArray);
-
-    toJsonValue(QString("locale"), locale, obj, QString("QString"));
+    if(hits->size() > 0){
+        toJsonArray((QList<void*>*)hits, obj, "hits", "SWGGeocodingLocation");
+    }
+    
+    if(locale != nullptr && *locale != QString("")){
+        toJsonValue(QString("locale"), locale, obj, QString("QString"));
+    }
 
     return obj;
 }
@@ -104,6 +106,7 @@ SWGGeocodingResponse::getHits() {
 void
 SWGGeocodingResponse::setHits(QList<SWGGeocodingLocation*>* hits) {
     this->hits = hits;
+    this->m_hits_isSet = true;
 }
 
 QString*
@@ -113,8 +116,18 @@ SWGGeocodingResponse::getLocale() {
 void
 SWGGeocodingResponse::setLocale(QString* locale) {
     this->locale = locale;
+    this->m_locale_isSet = true;
 }
 
 
+bool 
+SWGGeocodingResponse::isSet(){
+    bool isObjectUpdated = false;
+    do{
+        if(hits->size() > 0){ isObjectUpdated = true; break;}
+        if(locale != nullptr && *locale != QString("")){ isObjectUpdated = true; break;}
+    }while(false);
+    return isObjectUpdated;
+}
 }
 

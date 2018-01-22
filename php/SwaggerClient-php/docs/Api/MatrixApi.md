@@ -20,7 +20,11 @@ The Matrix API is part of the GraphHopper Directions API and with this API you c
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\MatrixApi();
+$apiInstance = new Swagger\Client\Api\MatrixApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $key = "key_example"; // string | Get your key at graphhopper.com
 $point = array("point_example"); // string[] | Specifiy multiple points for which the weight-, route-, time- or distance-matrix should be calculated. In this case the starts are identical to the destinations. If there are N points, then NxN entries will be calculated. The order of the point parameter is important. Specify at least three points. Cannot be used together with from_point or to_point. Is a string with the format latitude,longitude.
 $from_point = "from_point_example"; // string | The starting points for the routes. E.g. if you want to calculate the three routes A-&gt;1, A-&gt;2, A-&gt;3 then you have one from_point parameter and three to_point parameters. Is a string with the format latitude,longitude.
@@ -29,7 +33,7 @@ $out_array = array("out_array_example"); // string[] | Specifies which arrays sh
 $vehicle = "car"; // string | The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc, see here for the details.
 
 try {
-    $result = $api_instance->matrixGet($key, $point, $from_point, $to_point, $out_array, $vehicle);
+    $result = $apiInstance->matrixGet($key, $point, $from_point, $to_point, $out_array, $vehicle);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling MatrixApi->matrixGet: ', $e->getMessage(), PHP_EOL;
@@ -75,12 +79,16 @@ The GET request has an URL length limitation, which hurts for many locations per
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\MatrixApi();
+$apiInstance = new Swagger\Client\Api\MatrixApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $key = "key_example"; // string | Get your key at graphhopper.com
 $body = new \Swagger\Client\Model\MatrixRequest(); // \Swagger\Client\Model\MatrixRequest | 
 
 try {
-    $result = $api_instance->matrixPost($key, $body);
+    $result = $apiInstance->matrixPost($key, $body);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling MatrixApi->matrixPost: ', $e->getMessage(), PHP_EOL;

@@ -170,13 +170,13 @@ RouteResponsePath <- R6::R6Class(
       self$`time` <- RouteResponsePathObject$`time`
       self$`ascend` <- RouteResponsePathObject$`ascend`
       self$`descend` <- RouteResponsePathObject$`descend`
-      ResponseCoordinatesObject -> ResponseCoordinates$new()
+      ResponseCoordinatesObject <- ResponseCoordinates$new()
       self$`points` <- ResponseCoordinatesObject$fromJSON(jsonlite::toJSON(RouteResponsePathObject$points, auto_unbox = TRUE))
       self$`points_encoded` <- RouteResponsePathObject$`points_encoded`
       self$`bbox` <- RouteResponsePathObject$`bbox`
-      ResponseCoordinatesObject -> ResponseCoordinates$new()
+      ResponseCoordinatesObject <- ResponseCoordinates$new()
       self$`snapped_waypoints` <- ResponseCoordinatesObject$fromJSON(jsonlite::toJSON(RouteResponsePathObject$snapped_waypoints, auto_unbox = TRUE))
-      ResponseInstructionsObject -> ResponseInstructions$new()
+      ResponseInstructionsObject <- ResponseInstructions$new()
       self$`instructions` <- ResponseInstructionsObject$fromJSON(jsonlite::toJSON(RouteResponsePathObject$instructions, auto_unbox = TRUE))
     }
   )

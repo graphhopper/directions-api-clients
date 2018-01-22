@@ -14,6 +14,7 @@
 package com.graphhopper.directions.api.client.model;
 
 import java.util.Objects;
+import java.util.Arrays;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -162,7 +163,7 @@ public class Vehicle {
    * @return returnToDepot
   **/
   @ApiModelProperty(value = "Indicates whether vehicle should return to start address or not. If not, it can end at any service activity.")
-  public Boolean getReturnToDepot() {
+  public Boolean isReturnToDepot() {
     return returnToDepot;
   }
 
@@ -307,6 +308,6 @@ public class Vehicle {
     }
     return o.toString().replace("\n", "\n    ");
   }
-  
+
 }
 

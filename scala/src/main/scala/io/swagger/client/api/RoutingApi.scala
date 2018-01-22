@@ -12,10 +12,11 @@
 
 package io.swagger.client.api
 
+import java.text.SimpleDateFormat
+
 import io.swagger.client.model.GHError
 import io.swagger.client.model.RouteResponse
-import io.swagger.client.ApiInvoker
-import io.swagger.client.ApiException
+import io.swagger.client.{ApiInvoker, ApiException}
 
 import com.sun.jersey.multipart.FormDataMultiPart
 import com.sun.jersey.multipart.file.FileDataBodyPart
@@ -24,19 +25,65 @@ import javax.ws.rs.core.MediaType
 
 import java.io.File
 import java.util.Date
+import java.util.TimeZone
 
 import scala.collection.mutable.HashMap
 
-class RoutingApi(val defBasePath: String = "https://graphhopper.com/api/1",
-                        defApiInvoker: ApiInvoker = ApiInvoker) {
-  var basePath = defBasePath
-  var apiInvoker = defApiInvoker
+import com.wordnik.swagger.client._
+import scala.concurrent.Future
+import collection.mutable
 
-  def addHeader(key: String, value: String) = apiInvoker.defaultHeaders += key -> value 
+import java.net.URI
+
+import com.wordnik.swagger.client.ClientResponseReaders.Json4sFormatsReader._
+import com.wordnik.swagger.client.RequestWriters.Json4sFormatsWriter._
+
+import scala.concurrent.ExecutionContext.Implicits.global
+import scala.concurrent._
+import scala.concurrent.duration._
+import scala.util.{Failure, Success, Try}
+
+import org.json4s._
+
+class RoutingApi(
+  val defBasePath: String = "https://graphhopper.com/api/1",
+  defApiInvoker: ApiInvoker = ApiInvoker
+) {
+  private lazy val dateTimeFormatter = {
+    val formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ")
+    formatter.setTimeZone(TimeZone.getTimeZone("UTC"))
+    formatter
+  }
+  private val dateFormatter = {
+    val formatter = new SimpleDateFormat("yyyy-MM-dd")
+    formatter.setTimeZone(TimeZone.getTimeZone("UTC"))
+    formatter
+  }
+  implicit val formats = new org.json4s.DefaultFormats {
+    override def dateFormatter = dateTimeFormatter
+  }
+  implicit val stringReader: ClientResponseReader[String] = ClientResponseReaders.StringReader
+  implicit val unitReader: ClientResponseReader[Unit] = ClientResponseReaders.UnitReader
+  implicit val jvalueReader: ClientResponseReader[JValue] = ClientResponseReaders.JValueReader
+  implicit val jsonReader: ClientResponseReader[Nothing] = JsonFormatsReader
+  implicit val stringWriter: RequestWriter[String] = RequestWriters.StringWriter
+  implicit val jsonWriter: RequestWriter[Nothing] = JsonFormatsWriter
+
+  var basePath: String = defBasePath
+  var apiInvoker: ApiInvoker = defApiInvoker
+
+  def addHeader(key: String, value: String): mutable.HashMap[String, String] = {
+    apiInvoker.defaultHeaders += key -> value
+  }
+
+  val config: SwaggerConfig = SwaggerConfig.forUrl(new URI(defBasePath))
+  val client = new RestClient(config)
+  val helper = new RoutingApiAsyncHelper(client, config)
 
   /**
    * Routing Request
    * The GraphHopper Routing API allows to calculate route and implement navigation via the turn instructions
+   *
    * @param point Specify multiple points for which the route should be calculated. The order is important. Specify at least two points. 
    * @param pointsEncoded IMPORTANT- TODO - currently you have to pass false for the swagger client - Have not found a way to force add a parameter. If &#x60;false&#x60; the coordinates in &#x60;point&#x60; and &#x60;snapped_waypoints&#x60; are returned as array using the order [lon,lat,elevation] for every point. If &#x60;true&#x60; the coordinates will be encoded as string leading to less bandwith usage. You&#39;ll need a special handling for the decoding of this string on the client-side. We provide open source code in [Java](https://github.com/graphhopper/graphhopper/blob/d70b63660ac5200b03c38ba3406b8f93976628a6/web/src/main/java/com/graphhopper/http/WebHelper.java#L43) and [JavaScript](https://github.com/graphhopper/graphhopper/blob/d70b63660ac5200b03c38ba3406b8f93976628a6/web/src/main/webapp/js/ghrequest.js#L139). It is especially important to use no 3rd party client if you set &#x60;elevation&#x3D;true&#x60;! 
    * @param key Get your key at graphhopper.com 
@@ -61,61 +108,161 @@ class RoutingApi(val defBasePath: String = "https://graphhopper.com/api/1",
    * @return RouteResponse
    */
   def routeGet(point: List[String], pointsEncoded: Boolean, key: String, locale: Option[String] = None, instructions: Option[Boolean] = None, vehicle: Option[String] = None, elevation: Option[Boolean] = None, calcPoints: Option[Boolean] = None, pointHint: Option[List[String]] = None, chDisable: Option[Boolean] = None, weighting: Option[String] = None, edgeTraversal: Option[Boolean] = None, algorithm: Option[String] = None, heading: Option[Integer] = None, headingPenalty: Option[Integer] = None, passThrough: Option[Boolean] = None, roundTripDistance: Option[Integer] = None, roundTripSeed: Option[Long] = None, alternativeRouteMaxPaths: Option[Integer] = None, alternativeRouteMaxWeightFactor: Option[Integer] = None, alternativeRouteMaxShareFactor: Option[Integer] = None): Option[RouteResponse] = {
+    val await = Try(Await.result(routeGetAsync(point, pointsEncoded, key, locale, instructions, vehicle, elevation, calcPoints, pointHint, chDisable, weighting, edgeTraversal, algorithm, heading, headingPenalty, passThrough, roundTripDistance, roundTripSeed, alternativeRouteMaxPaths, alternativeRouteMaxWeightFactor, alternativeRouteMaxShareFactor), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * Routing Request asynchronously
+   * The GraphHopper Routing API allows to calculate route and implement navigation via the turn instructions
+   *
+   * @param point Specify multiple points for which the route should be calculated. The order is important. Specify at least two points. 
+   * @param pointsEncoded IMPORTANT- TODO - currently you have to pass false for the swagger client - Have not found a way to force add a parameter. If &#x60;false&#x60; the coordinates in &#x60;point&#x60; and &#x60;snapped_waypoints&#x60; are returned as array using the order [lon,lat,elevation] for every point. If &#x60;true&#x60; the coordinates will be encoded as string leading to less bandwith usage. You&#39;ll need a special handling for the decoding of this string on the client-side. We provide open source code in [Java](https://github.com/graphhopper/graphhopper/blob/d70b63660ac5200b03c38ba3406b8f93976628a6/web/src/main/java/com/graphhopper/http/WebHelper.java#L43) and [JavaScript](https://github.com/graphhopper/graphhopper/blob/d70b63660ac5200b03c38ba3406b8f93976628a6/web/src/main/webapp/js/ghrequest.js#L139). It is especially important to use no 3rd party client if you set &#x60;elevation&#x3D;true&#x60;! 
+   * @param key Get your key at graphhopper.com 
+   * @param locale The locale of the resulting turn instructions. E.g. &#x60;pt_PT&#x60; for Portuguese or &#x60;de&#x60; for German (optional)
+   * @param instructions If instruction should be calculated and returned (optional)
+   * @param vehicle The vehicle for which the route should be calculated. Other vehicles are foot, small_truck, ... (optional)
+   * @param elevation If &#x60;true&#x60; a third dimension - the elevation - is included in the polyline or in the GeoJson. If enabled you have to use a modified version of the decoding method or set points_encoded to &#x60;false&#x60;. See the points_encoded attribute for more details. Additionally a request can fail if the vehicle does not support elevation. See the features object for every vehicle. (optional)
+   * @param calcPoints If the points for the route should be calculated at all printing out only distance and time. (optional)
+   * @param pointHint Optional parameter. Specifies a hint for each &#x60;point&#x60; parameter to prefer a certain street for the closest location lookup. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up. (optional)
+   * @param chDisable Use this parameter in combination with one or more parameters of this table (optional)
+   * @param weighting Which kind of &#39;best&#39; route calculation you need. Other option is &#x60;shortest&#x60; (e.g. for &#x60;vehicle&#x3D;foot&#x60; or &#x60;bike&#x60;), &#x60;short_fastest&#x60; if time and distance is expensive e.g. for &#x60;vehicle&#x3D;truck&#x60; (optional)
+   * @param edgeTraversal Use &#x60;true&#x60; if you want to consider turn restrictions for bike and motor vehicles. Keep in mind that the response time is roughly 2 times slower. (optional)
+   * @param algorithm The algorithm to calculate the route. Other options are &#x60;dijkstra&#x60;, &#x60;astar&#x60;, &#x60;astarbi&#x60;, &#x60;alternative_route&#x60; and &#x60;round_trip&#x60; (optional)
+   * @param heading Favour a heading direction for a certain point. Specify either one heading for the start point or as many as there are points. In this case headings are associated by their order to the specific points. Headings are given as north based clockwise angle between 0 and 360 degree. This parameter also influences the tour generated with &#x60;algorithm&#x3D;round_trip&#x60; and force the initial direction. (optional)
+   * @param headingPenalty Penalty for omitting a specified heading. The penalty corresponds to the accepted time delay in seconds in comparison to the route without a heading. (optional)
+   * @param passThrough If &#x60;true&#x60; u-turns are avoided at via-points with regard to the &#x60;heading_penalty&#x60;. (optional)
+   * @param roundTripDistance If &#x60;algorithm&#x3D;round_trip&#x60; this parameter configures approximative length of the resulting round trip (optional)
+   * @param roundTripSeed If &#x60;algorithm&#x3D;round_trip&#x60; this parameter introduces randomness if e.g. the first try wasn&#39;t good. (optional)
+   * @param alternativeRouteMaxPaths If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the number of maximum paths which should be calculated. Increasing can lead to worse alternatives. (optional)
+   * @param alternativeRouteMaxWeightFactor If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the factor by which the alternatives routes can be longer than the optimal route. Increasing can lead to worse alternatives. (optional)
+   * @param alternativeRouteMaxShareFactor If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter specifies how much alternatives routes can have maximum in common with the optimal route. Increasing can lead to worse alternatives. (optional)
+   * @return Future(RouteResponse)
+   */
+  def routeGetAsync(point: List[String], pointsEncoded: Boolean, key: String, locale: Option[String] = None, instructions: Option[Boolean] = None, vehicle: Option[String] = None, elevation: Option[Boolean] = None, calcPoints: Option[Boolean] = None, pointHint: Option[List[String]] = None, chDisable: Option[Boolean] = None, weighting: Option[String] = None, edgeTraversal: Option[Boolean] = None, algorithm: Option[String] = None, heading: Option[Integer] = None, headingPenalty: Option[Integer] = None, passThrough: Option[Boolean] = None, roundTripDistance: Option[Integer] = None, roundTripSeed: Option[Long] = None, alternativeRouteMaxPaths: Option[Integer] = None, alternativeRouteMaxWeightFactor: Option[Integer] = None, alternativeRouteMaxShareFactor: Option[Integer] = None): Future[RouteResponse] = {
+      helper.routeGet(point, pointsEncoded, key, locale, instructions, vehicle, elevation, calcPoints, pointHint, chDisable, weighting, edgeTraversal, algorithm, heading, headingPenalty, passThrough, roundTripDistance, roundTripSeed, alternativeRouteMaxPaths, alternativeRouteMaxWeightFactor, alternativeRouteMaxShareFactor)
+  }
+
+}
+
+class RoutingApiAsyncHelper(client: TransportClient, config: SwaggerConfig) extends ApiClient(client, config) {
+
+  def routeGet(point: List[String],
+    pointsEncoded: Boolean,
+    key: String,
+    locale: Option[String] = None,
+    instructions: Option[Boolean] = None,
+    vehicle: Option[String] = None,
+    elevation: Option[Boolean] = None,
+    calcPoints: Option[Boolean] = None,
+    pointHint: Option[List[String]] = None,
+    chDisable: Option[Boolean] = None,
+    weighting: Option[String] = None,
+    edgeTraversal: Option[Boolean] = None,
+    algorithm: Option[String] = None,
+    heading: Option[Integer] = None,
+    headingPenalty: Option[Integer] = None,
+    passThrough: Option[Boolean] = None,
+    roundTripDistance: Option[Integer] = None,
+    roundTripSeed: Option[Long] = None,
+    alternativeRouteMaxPaths: Option[Integer] = None,
+    alternativeRouteMaxWeightFactor: Option[Integer] = None,
+    alternativeRouteMaxShareFactor: Option[Integer] = None
+    )(implicit reader: ClientResponseReader[RouteResponse]): Future[RouteResponse] = {
     // create path and map variables
-    val path = "/route".replaceAll("\\{format\\}", "json")
+    val path = (addFmt("/route"))
 
-    val contentTypes = List("application/json")
-    val contentType = contentTypes(0)
-
-    val queryParams = new HashMap[String, String]
-    val headerParams = new HashMap[String, String]
-    val formParams = new HashMap[String, String]
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
 
     if (point == null) throw new Exception("Missing required parameter 'point' when calling RoutingApi->routeGet")
-
     if (key == null) throw new Exception("Missing required parameter 'key' when calling RoutingApi->routeGet")
 
     queryParams += "point" -> point.toString
-    locale.map(paramVal => queryParams += "locale" -> paramVal.toString)
-    instructions.map(paramVal => queryParams += "instructions" -> paramVal.toString)
-    vehicle.map(paramVal => queryParams += "vehicle" -> paramVal.toString)
-    elevation.map(paramVal => queryParams += "elevation" -> paramVal.toString)
-    queryParams += "points_encoded" -> pointsEncoded.toString
-    calcPoints.map(paramVal => queryParams += "calc_points" -> paramVal.toString)
-    pointHint.map(paramVal => queryParams += "point_hint" -> paramVal.toString)
-    chDisable.map(paramVal => queryParams += "ch.disable" -> paramVal.toString)
-    weighting.map(paramVal => queryParams += "weighting" -> paramVal.toString)
-    edgeTraversal.map(paramVal => queryParams += "edge_traversal" -> paramVal.toString)
-    algorithm.map(paramVal => queryParams += "algorithm" -> paramVal.toString)
-    heading.map(paramVal => queryParams += "heading" -> paramVal.toString)
-    headingPenalty.map(paramVal => queryParams += "heading_penalty" -> paramVal.toString)
-    passThrough.map(paramVal => queryParams += "pass_through" -> paramVal.toString)
-    roundTripDistance.map(paramVal => queryParams += "round_trip.distance" -> paramVal.toString)
-    roundTripSeed.map(paramVal => queryParams += "round_trip.seed" -> paramVal.toString)
-    alternativeRouteMaxPaths.map(paramVal => queryParams += "alternative_route.max_paths" -> paramVal.toString)
-    alternativeRouteMaxWeightFactor.map(paramVal => queryParams += "alternative_route.max_weight_factor" -> paramVal.toString)
-    alternativeRouteMaxShareFactor.map(paramVal => queryParams += "alternative_route.max_share_factor" -> paramVal.toString)
-    queryParams += "key" -> key.toString
-    
-
-    var postBody: AnyRef = null
-
-    if (contentType.startsWith("multipart/form-data")) {
-      val mp = new FormDataMultiPart
-      postBody = mp
-    } else {
+    locale match {
+      case Some(param) => queryParams += "locale" -> param.toString
+      case _ => queryParams
     }
+    instructions match {
+      case Some(param) => queryParams += "instructions" -> param.toString
+      case _ => queryParams
+    }
+    vehicle match {
+      case Some(param) => queryParams += "vehicle" -> param.toString
+      case _ => queryParams
+    }
+    elevation match {
+      case Some(param) => queryParams += "elevation" -> param.toString
+      case _ => queryParams
+    }
+    queryParams += "points_encoded" -> pointsEncoded.toString
+    calcPoints match {
+      case Some(param) => queryParams += "calc_points" -> param.toString
+      case _ => queryParams
+    }
+    pointHint match {
+      case Some(param) => queryParams += "point_hint" -> param.toString
+      case _ => queryParams
+    }
+    chDisable match {
+      case Some(param) => queryParams += "ch.disable" -> param.toString
+      case _ => queryParams
+    }
+    weighting match {
+      case Some(param) => queryParams += "weighting" -> param.toString
+      case _ => queryParams
+    }
+    edgeTraversal match {
+      case Some(param) => queryParams += "edge_traversal" -> param.toString
+      case _ => queryParams
+    }
+    algorithm match {
+      case Some(param) => queryParams += "algorithm" -> param.toString
+      case _ => queryParams
+    }
+    heading match {
+      case Some(param) => queryParams += "heading" -> param.toString
+      case _ => queryParams
+    }
+    headingPenalty match {
+      case Some(param) => queryParams += "heading_penalty" -> param.toString
+      case _ => queryParams
+    }
+    passThrough match {
+      case Some(param) => queryParams += "pass_through" -> param.toString
+      case _ => queryParams
+    }
+    roundTripDistance match {
+      case Some(param) => queryParams += "round_trip.distance" -> param.toString
+      case _ => queryParams
+    }
+    roundTripSeed match {
+      case Some(param) => queryParams += "round_trip.seed" -> param.toString
+      case _ => queryParams
+    }
+    alternativeRouteMaxPaths match {
+      case Some(param) => queryParams += "alternative_route.max_paths" -> param.toString
+      case _ => queryParams
+    }
+    alternativeRouteMaxWeightFactor match {
+      case Some(param) => queryParams += "alternative_route.max_weight_factor" -> param.toString
+      case _ => queryParams
+    }
+    alternativeRouteMaxShareFactor match {
+      case Some(param) => queryParams += "alternative_route.max_share_factor" -> param.toString
+      case _ => queryParams
+    }
+    queryParams += "key" -> key.toString
 
-    try {
-      apiInvoker.invokeApi(basePath, path, "GET", queryParams.toMap, formParams.toMap, postBody, headerParams.toMap, contentType) match {
-        case s: String =>
-           Some(apiInvoker.deserialize(s, "", classOf[RouteResponse]).asInstanceOf[RouteResponse])
-        case _ => None
-      }
-    } catch {
-      case ex: ApiException if ex.code == 404 => None
-      case ex: ApiException => throw ex
+    val resFuture = client.submit("GET", path, queryParams.toMap, headerParams.toMap, "")
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
     }
   }
+
 
 }

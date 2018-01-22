@@ -15,6 +15,9 @@
 
 
 #import "SWGGHErrorHints.h"
+@protocol SWGGHErrorHints;
+@class SWGGHErrorHints;
+
 
 
 @protocol SWGGHError

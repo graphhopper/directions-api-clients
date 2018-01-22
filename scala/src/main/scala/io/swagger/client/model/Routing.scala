@@ -14,7 +14,7 @@ package io.swagger.client.model
 
 
 case class Routing (
-  /* indicates whether solution should come with route geometries */
-  calcPoints: Option[Boolean]
+  // indicates whether solution should come with route geometries
+  calcPoints: Option[Boolean] = None
 )
 

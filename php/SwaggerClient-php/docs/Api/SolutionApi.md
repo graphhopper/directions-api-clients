@@ -19,12 +19,16 @@ This endpoint returns the solution of a large problems. You can fetch it with th
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\SolutionApi();
+$apiInstance = new Swagger\Client\Api\SolutionApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $key = "key_example"; // string | your API key
 $job_id = "job_id_example"; // string | Request solution with jobId
 
 try {
-    $result = $api_instance->getSolution($key, $job_id);
+    $result = $apiInstance->getSolution($key, $job_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SolutionApi->getSolution: ', $e->getMessage(), PHP_EOL;

@@ -202,7 +202,7 @@ Service <- R6::R6Class(
       self$`type` <- ServiceObject$`type`
       self$`priority` <- ServiceObject$`priority`
       self$`name` <- ServiceObject$`name`
-      AddressObject -> Address$new()
+      AddressObject <- Address$new()
       self$`address` <- AddressObject$fromJSON(jsonlite::toJSON(ServiceObject$address, auto_unbox = TRUE))
       self$`duration` <- ServiceObject$`duration`
       self$`preparation_time` <- ServiceObject$`preparation_time`

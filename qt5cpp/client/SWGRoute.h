@@ -29,7 +29,6 @@
 
 #include "SWGObject.h"
 
-
 namespace Swagger {
 
 class SWGRoute: public SWGObject {
@@ -67,14 +66,30 @@ public:
     void setPoints(QList<SWGRoutePoint*>* points);
 
 
+    virtual bool isSet() override;
+
 private:
     QString* vehicle_id;
+    bool m_vehicle_id_isSet;
+    
     qint64 distance;
+    bool m_distance_isSet;
+    
     qint64 transport_time;
+    bool m_transport_time_isSet;
+    
     qint64 completion_time;
+    bool m_completion_time_isSet;
+    
     qint64 waiting_time;
+    bool m_waiting_time_isSet;
+    
     QList<SWGActivity*>* activities;
+    bool m_activities_isSet;
+    
     QList<SWGRoutePoint*>* points;
+    bool m_points_isSet;
+    
 };
 
 }

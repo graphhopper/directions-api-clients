@@ -35,7 +35,6 @@
 
 #include "SWGObject.h"
 
-
 namespace Swagger {
 
 class SWGRequest: public SWGObject {
@@ -79,16 +78,36 @@ public:
     void setConfiguration(SWGConfiguration* configuration);
 
 
+    virtual bool isSet() override;
+
 private:
     QList<SWGVehicle*>* vehicles;
+    bool m_vehicles_isSet;
+    
     QList<SWGVehicleType*>* vehicle_types;
+    bool m_vehicle_types_isSet;
+    
     QList<SWGService*>* services;
+    bool m_services_isSet;
+    
     QList<SWGShipment*>* shipments;
+    bool m_shipments_isSet;
+    
     QList<SWGRelation*>* relations;
+    bool m_relations_isSet;
+    
     SWGAlgorithm* algorithm;
+    bool m_algorithm_isSet;
+    
     QList<SWGObjective*>* objectives;
+    bool m_objectives_isSet;
+    
     QList<SWGCostMatrix*>* cost_matrices;
+    bool m_cost_matrices_isSet;
+    
     SWGConfiguration* configuration;
+    bool m_configuration_isSet;
+    
 };
 
 }

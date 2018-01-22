@@ -16,6 +16,7 @@
 
 
 
+
 @protocol SWGResponseInstruction
 @end
 

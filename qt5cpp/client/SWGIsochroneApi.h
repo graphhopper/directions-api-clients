@@ -38,12 +38,14 @@ public:
     void isochroneGet(QString* point, QString* key, qint32 time_limit, qint32 distance_limit, QString* vehicle, qint32 buckets, bool reverse_flow);
     
 private:
-    void isochroneGetCallback (HttpRequestWorker * worker);
+    void isochroneGetCallback (SWGHttpRequestWorker * worker);
     
 signals:
     void isochroneGetSignal(SWGIsochroneResponse* summary);
     
     void isochroneGetSignalE(SWGIsochroneResponse* summary, QNetworkReply::NetworkError error_type, QString& error_str);
+    
+    void isochroneGetSignalEFull(SWGHttpRequestWorker* worker, QNetworkReply::NetworkError error_type, QString& error_str);
     
 };
 

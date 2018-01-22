@@ -37,12 +37,14 @@ public:
     void getSolution(QString* key, QString* job_id);
     
 private:
-    void getSolutionCallback (HttpRequestWorker * worker);
+    void getSolutionCallback (SWGHttpRequestWorker * worker);
     
 signals:
     void getSolutionSignal(SWGResponse* summary);
     
     void getSolutionSignalE(SWGResponse* summary, QNetworkReply::NetworkError error_type, QString& error_str);
+    
+    void getSolutionSignalEFull(SWGHttpRequestWorker* worker, QNetworkReply::NetworkError error_type, QString& error_str);
     
 };
 

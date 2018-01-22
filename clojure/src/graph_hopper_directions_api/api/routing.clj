@@ -7,6 +7,7 @@
   The GraphHopper Routing API allows to calculate route and implement navigation via the turn instructions"
   ([point points-encoded key ] (route-get-with-http-info point points-encoded key nil))
   ([point points-encoded key {:keys [locale instructions vehicle elevation calc-points point-hint chdisable weighting edge-traversal algorithm heading heading-penalty pass-through round-tripdistance round-tripseed alternative-routemax-paths alternative-routemax-weight-factor alternative-routemax-share-factor ]}]
+   (check-required-params point points-encoded key)
    (call-api "/route" :get
              {:path-params   {}
               :header-params {}

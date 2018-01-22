@@ -28,7 +28,6 @@
 
 #include "SWGObject.h"
 
-
 namespace Swagger {
 
 class SWGCostMatrix: public SWGObject {
@@ -60,12 +59,24 @@ public:
     void setProfile(QString* profile);
 
 
+    virtual bool isSet() override;
+
 private:
     QString* type;
+    bool m_type_isSet;
+    
     QString* url;
+    bool m_url_isSet;
+    
     QList<QString*>* location_ids;
+    bool m_location_ids_isSet;
+    
     SWGCostMatrix_data* data;
+    bool m_data_isSet;
+    
     QString* profile;
+    bool m_profile_isSet;
+    
 };
 
 }

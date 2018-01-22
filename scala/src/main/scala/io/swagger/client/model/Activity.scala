@@ -14,25 +14,25 @@ package io.swagger.client.model
 
 
 case class Activity (
-  /* type of activity */
-  _type: Option[String],
-  /* id referring to the underlying service or shipment, i.e. the shipment or service this activity belongs to */
-  id: Option[String],
-  /* id that refers to address */
-  locationId: Option[String],
-  /* arrival time at this activity in ms */
-  arrTime: Option[Long],
-  /* end time of and thus departure time at this activity */
-  endTime: Option[Long],
-  /* waiting time at this activity in ms */
-  waitingTime: Option[Long],
-  /* cumulated distance from start to this activity in m */
-  distance: Option[Long],
-  /* driving time of driver in ms */
-  drivingTime: Option[Long],
-  /* Array with size/capacity dimensions before this activity */
-  loadBefore: Option[List[Integer]],
-  /* Array with size/capacity dimensions after this activity */
-  loadAfter: Option[List[Integer]]
+  // type of activity
+  `type`: Option[String] = None,
+  // id referring to the underlying service or shipment, i.e. the shipment or service this activity belongs to
+  id: Option[String] = None,
+  // id that refers to address
+  locationId: Option[String] = None,
+  // arrival time at this activity in ms
+  arrTime: Option[Long] = None,
+  // end time of and thus departure time at this activity
+  endTime: Option[Long] = None,
+  // waiting time at this activity in ms
+  waitingTime: Option[Long] = None,
+  // cumulated distance from start to this activity in m
+  distance: Option[Long] = None,
+  // driving time of driver in ms
+  drivingTime: Option[Long] = None,
+  // Array with size/capacity dimensions before this activity
+  loadBefore: Option[List[Integer]] = None,
+  // Array with size/capacity dimensions after this activity
+  loadAfter: Option[List[Integer]] = None
 )
 

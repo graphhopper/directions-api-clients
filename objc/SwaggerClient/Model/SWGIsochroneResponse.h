@@ -15,6 +15,9 @@
 
 
 #import "SWGIsochroneResponsePolygon.h"
+@protocol SWGIsochroneResponsePolygon;
+@class SWGIsochroneResponsePolygon;
+
 
 
 @protocol SWGIsochroneResponse

@@ -27,7 +27,6 @@
 
 #include "SWGObject.h"
 
-
 namespace Swagger {
 
 class SWGSolution_unassigned: public SWGObject {
@@ -50,9 +49,15 @@ public:
     void setShipments(QList<QString*>* shipments);
 
 
+    virtual bool isSet() override;
+
 private:
     QList<QString*>* services;
+    bool m_services_isSet;
+    
     QList<QString*>* shipments;
+    bool m_shipments_isSet;
+    
 };
 
 }

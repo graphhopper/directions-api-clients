@@ -12,10 +12,11 @@
 
 package io.swagger.client.api
 
+import java.text.SimpleDateFormat
+
 import io.swagger.client.model.GHError
 import io.swagger.client.model.IsochroneResponse
-import io.swagger.client.ApiInvoker
-import io.swagger.client.ApiException
+import io.swagger.client.{ApiInvoker, ApiException}
 
 import com.sun.jersey.multipart.FormDataMultiPart
 import com.sun.jersey.multipart.file.FileDataBodyPart
@@ -24,19 +25,65 @@ import javax.ws.rs.core.MediaType
 
 import java.io.File
 import java.util.Date
+import java.util.TimeZone
 
 import scala.collection.mutable.HashMap
 
-class IsochroneApi(val defBasePath: String = "https://graphhopper.com/api/1",
-                        defApiInvoker: ApiInvoker = ApiInvoker) {
-  var basePath = defBasePath
-  var apiInvoker = defApiInvoker
+import com.wordnik.swagger.client._
+import scala.concurrent.Future
+import collection.mutable
 
-  def addHeader(key: String, value: String) = apiInvoker.defaultHeaders += key -> value 
+import java.net.URI
+
+import com.wordnik.swagger.client.ClientResponseReaders.Json4sFormatsReader._
+import com.wordnik.swagger.client.RequestWriters.Json4sFormatsWriter._
+
+import scala.concurrent.ExecutionContext.Implicits.global
+import scala.concurrent._
+import scala.concurrent.duration._
+import scala.util.{Failure, Success, Try}
+
+import org.json4s._
+
+class IsochroneApi(
+  val defBasePath: String = "https://graphhopper.com/api/1",
+  defApiInvoker: ApiInvoker = ApiInvoker
+) {
+  private lazy val dateTimeFormatter = {
+    val formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ")
+    formatter.setTimeZone(TimeZone.getTimeZone("UTC"))
+    formatter
+  }
+  private val dateFormatter = {
+    val formatter = new SimpleDateFormat("yyyy-MM-dd")
+    formatter.setTimeZone(TimeZone.getTimeZone("UTC"))
+    formatter
+  }
+  implicit val formats = new org.json4s.DefaultFormats {
+    override def dateFormatter = dateTimeFormatter
+  }
+  implicit val stringReader: ClientResponseReader[String] = ClientResponseReaders.StringReader
+  implicit val unitReader: ClientResponseReader[Unit] = ClientResponseReaders.UnitReader
+  implicit val jvalueReader: ClientResponseReader[JValue] = ClientResponseReaders.JValueReader
+  implicit val jsonReader: ClientResponseReader[Nothing] = JsonFormatsReader
+  implicit val stringWriter: RequestWriter[String] = RequestWriters.StringWriter
+  implicit val jsonWriter: RequestWriter[Nothing] = JsonFormatsWriter
+
+  var basePath: String = defBasePath
+  var apiInvoker: ApiInvoker = defApiInvoker
+
+  def addHeader(key: String, value: String): mutable.HashMap[String, String] = {
+    apiInvoker.defaultHeaders += key -> value
+  }
+
+  val config: SwaggerConfig = SwaggerConfig.forUrl(new URI(defBasePath))
+  val client = new RestClient(config)
+  val helper = new IsochroneApiAsyncHelper(client, config)
 
   /**
    * Isochrone Request
    * The GraphHopper Isochrone API allows calculating an isochrone of a locations means to calculate &#39;a line connecting points at which a vehicle arrives at the same time,&#39; see [Wikipedia](http://en.wikipedia.org/wiki/Isochrone_map). It is also called **reachability** or **walkability**. 
+   *
    * @param point Specify the start coordinate 
    * @param key Get your key at graphhopper.com 
    * @param timeLimit Specify which time the vehicle should travel. In seconds. (optional, default to 600)
@@ -46,48 +93,82 @@ class IsochroneApi(val defBasePath: String = "https://graphhopper.com/api/1",
    * @param reverseFlow If &#x60;false&#x60; the flow goes from point to the polygon, if &#x60;true&#x60; the flow goes from the polygon \&quot;inside\&quot; to the point. Example usage for &#x60;false&#x60;&amp;#58; *How many potential customer can be reached within 30min travel time from your store* vs. &#x60;true&#x60;&amp;#58; *How many customers can reach your store within 30min travel time.* (optional, default to false)
    * @return IsochroneResponse
    */
-  def isochroneGet(point: String, key: String, timeLimit: Option[Integer] /* = 600*/, distanceLimit: Option[Integer] /* = -1*/, vehicle: Option[String] /* = car*/, buckets: Option[Integer] /* = 1*/, reverseFlow: Option[Boolean] /* = false*/): Option[IsochroneResponse] = {
+  def isochroneGet(point: String, key: String, timeLimit: Option[Integer] = Option(600), distanceLimit: Option[Integer] = Option(-1), vehicle: Option[String] = Option("car"), buckets: Option[Integer] = Option(1), reverseFlow: Option[Boolean] = Option(false)): Option[IsochroneResponse] = {
+    val await = Try(Await.result(isochroneGetAsync(point, key, timeLimit, distanceLimit, vehicle, buckets, reverseFlow), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * Isochrone Request asynchronously
+   * The GraphHopper Isochrone API allows calculating an isochrone of a locations means to calculate &#39;a line connecting points at which a vehicle arrives at the same time,&#39; see [Wikipedia](http://en.wikipedia.org/wiki/Isochrone_map). It is also called **reachability** or **walkability**. 
+   *
+   * @param point Specify the start coordinate 
+   * @param key Get your key at graphhopper.com 
+   * @param timeLimit Specify which time the vehicle should travel. In seconds. (optional, default to 600)
+   * @param distanceLimit Specify which distance the vehicle should travel. In meter. (optional, default to -1)
+   * @param vehicle Possible vehicles are bike, car, foot and [more](https://graphhopper.com/api/1/docs/supported-vehicle-profiles/) (optional, default to car)
+   * @param buckets For how many sub intervals an additional polygon should be calculated. (optional, default to 1)
+   * @param reverseFlow If &#x60;false&#x60; the flow goes from point to the polygon, if &#x60;true&#x60; the flow goes from the polygon \&quot;inside\&quot; to the point. Example usage for &#x60;false&#x60;&amp;#58; *How many potential customer can be reached within 30min travel time from your store* vs. &#x60;true&#x60;&amp;#58; *How many customers can reach your store within 30min travel time.* (optional, default to false)
+   * @return Future(IsochroneResponse)
+   */
+  def isochroneGetAsync(point: String, key: String, timeLimit: Option[Integer] = Option(600), distanceLimit: Option[Integer] = Option(-1), vehicle: Option[String] = Option("car"), buckets: Option[Integer] = Option(1), reverseFlow: Option[Boolean] = Option(false)): Future[IsochroneResponse] = {
+      helper.isochroneGet(point, key, timeLimit, distanceLimit, vehicle, buckets, reverseFlow)
+  }
+
+}
+
+class IsochroneApiAsyncHelper(client: TransportClient, config: SwaggerConfig) extends ApiClient(client, config) {
+
+  def isochroneGet(point: String,
+    key: String,
+    timeLimit: Option[Integer] = Option(600),
+    distanceLimit: Option[Integer] = Option(-1),
+    vehicle: Option[String] = Option("car"),
+    buckets: Option[Integer] = Option(1),
+    reverseFlow: Option[Boolean] = Option(false)
+    )(implicit reader: ClientResponseReader[IsochroneResponse]): Future[IsochroneResponse] = {
     // create path and map variables
-    val path = "/isochrone".replaceAll("\\{format\\}", "json")
+    val path = (addFmt("/isochrone"))
 
-    val contentTypes = List("application/json")
-    val contentType = contentTypes(0)
-
-    val queryParams = new HashMap[String, String]
-    val headerParams = new HashMap[String, String]
-    val formParams = new HashMap[String, String]
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
 
     if (point == null) throw new Exception("Missing required parameter 'point' when calling IsochroneApi->isochroneGet")
 
     if (key == null) throw new Exception("Missing required parameter 'key' when calling IsochroneApi->isochroneGet")
 
     queryParams += "point" -> point.toString
-    timeLimit.map(paramVal => queryParams += "time_limit" -> paramVal.toString)
-    distanceLimit.map(paramVal => queryParams += "distance_limit" -> paramVal.toString)
-    vehicle.map(paramVal => queryParams += "vehicle" -> paramVal.toString)
-    buckets.map(paramVal => queryParams += "buckets" -> paramVal.toString)
-    reverseFlow.map(paramVal => queryParams += "reverse_flow" -> paramVal.toString)
-    queryParams += "key" -> key.toString
-    
-
-    var postBody: AnyRef = null
-
-    if (contentType.startsWith("multipart/form-data")) {
-      val mp = new FormDataMultiPart
-      postBody = mp
-    } else {
+    timeLimit match {
+      case Some(param) => queryParams += "time_limit" -> param.toString
+      case _ => queryParams
     }
+    distanceLimit match {
+      case Some(param) => queryParams += "distance_limit" -> param.toString
+      case _ => queryParams
+    }
+    vehicle match {
+      case Some(param) => queryParams += "vehicle" -> param.toString
+      case _ => queryParams
+    }
+    buckets match {
+      case Some(param) => queryParams += "buckets" -> param.toString
+      case _ => queryParams
+    }
+    reverseFlow match {
+      case Some(param) => queryParams += "reverse_flow" -> param.toString
+      case _ => queryParams
+    }
+    queryParams += "key" -> key.toString
 
-    try {
-      apiInvoker.invokeApi(basePath, path, "GET", queryParams.toMap, formParams.toMap, postBody, headerParams.toMap, contentType) match {
-        case s: String =>
-           Some(apiInvoker.deserialize(s, "", classOf[IsochroneResponse]).asInstanceOf[IsochroneResponse])
-        case _ => None
-      }
-    } catch {
-      case ex: ApiException if ex.code == 404 => None
-      case ex: ApiException => throw ex
+    val resFuture = client.submit("GET", path, queryParams.toMap, headerParams.toMap, "")
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
     }
   }
+
 
 }

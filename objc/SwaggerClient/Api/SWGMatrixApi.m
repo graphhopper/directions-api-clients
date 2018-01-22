@@ -93,7 +93,6 @@ NSInteger kSWGMatrixApiMissingParamErrorCode = 234513;
     NSMutableDictionary* queryParams = [[NSMutableDictionary alloc] init];
     if (point != nil) {
         queryParams[@"point"] = [[SWGQueryParamCollection alloc] initWithValuesAndFormat: point format: @"multi"];
-        
     }
     if (fromPoint != nil) {
         queryParams[@"from_point"] = fromPoint;
@@ -103,7 +102,6 @@ NSInteger kSWGMatrixApiMissingParamErrorCode = 234513;
     }
     if (outArray != nil) {
         queryParams[@"out_array"] = [[SWGQueryParamCollection alloc] initWithValuesAndFormat: outArray format: @"multi"];
-        
     }
     if (vehicle != nil) {
         queryParams[@"vehicle"] = vehicle;

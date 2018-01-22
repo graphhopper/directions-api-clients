@@ -19,7 +19,11 @@ The GraphHopper Routing API allows to calculate route and implement navigation v
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\RoutingApi();
+$apiInstance = new Swagger\Client\Api\RoutingApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $point = array("point_example"); // string[] | Specify multiple points for which the route should be calculated. The order is important. Specify at least two points.
 $points_encoded = true; // bool | IMPORTANT- TODO - currently you have to pass false for the swagger client - Have not found a way to force add a parameter. If `false` the coordinates in `point` and `snapped_waypoints` are returned as array using the order [lon,lat,elevation] for every point. If `true` the coordinates will be encoded as string leading to less bandwith usage. You'll need a special handling for the decoding of this string on the client-side. We provide open source code in [Java](https://github.com/graphhopper/graphhopper/blob/d70b63660ac5200b03c38ba3406b8f93976628a6/web/src/main/java/com/graphhopper/http/WebHelper.java#L43) and [JavaScript](https://github.com/graphhopper/graphhopper/blob/d70b63660ac5200b03c38ba3406b8f93976628a6/web/src/main/webapp/js/ghrequest.js#L139). It is especially important to use no 3rd party client if you set `elevation=true`!
 $key = "key_example"; // string | Get your key at graphhopper.com
@@ -43,7 +47,7 @@ $alternative_route_max_weight_factor = 56; // int | If `algorithm=alternative_ro
 $alternative_route_max_share_factor = 56; // int | If `algorithm=alternative_route` this parameter specifies how much alternatives routes can have maximum in common with the optimal route. Increasing can lead to worse alternatives.
 
 try {
-    $result = $api_instance->routeGet($point, $points_encoded, $key, $locale, $instructions, $vehicle, $elevation, $calc_points, $point_hint, $ch_disable, $weighting, $edge_traversal, $algorithm, $heading, $heading_penalty, $pass_through, $round_trip_distance, $round_trip_seed, $alternative_route_max_paths, $alternative_route_max_weight_factor, $alternative_route_max_share_factor);
+    $result = $apiInstance->routeGet($point, $points_encoded, $key, $locale, $instructions, $vehicle, $elevation, $calc_points, $point_hint, $ch_disable, $weighting, $edge_traversal, $algorithm, $heading, $heading_penalty, $pass_through, $round_trip_distance, $round_trip_seed, $alternative_route_max_paths, $alternative_route_max_weight_factor, $alternative_route_max_share_factor);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling RoutingApi->routeGet: ', $e->getMessage(), PHP_EOL;

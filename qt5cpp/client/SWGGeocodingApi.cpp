@@ -91,8 +91,8 @@ SWGGeocodingApi::geocodeGet(QString* key, QString* q, QString* locale, qint32 li
         .append(QUrl::toPercentEncoding(stringValue(key)));
 
 
-    HttpRequestWorker *worker = new HttpRequestWorker();
-    HttpRequestInput input(fullPath, "GET");
+    SWGHttpRequestWorker *worker = new SWGHttpRequestWorker();
+    SWGHttpRequestInput input(fullPath, "GET");
 
 
 
@@ -103,7 +103,7 @@ SWGGeocodingApi::geocodeGet(QString* key, QString* q, QString* locale, qint32 li
     }
 
     connect(worker,
-            &HttpRequestWorker::on_execution_finished,
+            &SWGHttpRequestWorker::on_execution_finished,
             this,
             &SWGGeocodingApi::geocodeGetCallback);
 
@@ -111,7 +111,7 @@ SWGGeocodingApi::geocodeGet(QString* key, QString* q, QString* locale, qint32 li
 }
 
 void
-SWGGeocodingApi::geocodeGetCallback(HttpRequestWorker * worker) {
+SWGGeocodingApi::geocodeGetCallback(SWGHttpRequestWorker * worker) {
     QString msg;
     QString error_str = worker->error_str;
     QNetworkReply::NetworkError error_type = worker->error_type;
@@ -124,12 +124,18 @@ SWGGeocodingApi::geocodeGetCallback(HttpRequestWorker * worker) {
     }
 
 
+    
+
     QString json(worker->response);
     SWGGeocodingResponse* output = static_cast<SWGGeocodingResponse*>(create(json, QString("SWGGeocodingResponse")));
     worker->deleteLater();
 
-    emit geocodeGetSignal(output);
-    emit geocodeGetSignalE(output, error_type, error_str);
+    if (worker->error_type == QNetworkReply::NoError) {
+        emit geocodeGetSignal(output);
+    } else {
+        emit geocodeGetSignalE(output, error_type, error_str);
+        emit geocodeGetSignalEFull(worker, error_type, error_str);
+    }
 }
 
 

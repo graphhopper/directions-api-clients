@@ -27,7 +27,6 @@
 
 #include "SWGObject.h"
 
-
 namespace Swagger {
 
 class SWGMatrixRequest: public SWGObject {
@@ -59,12 +58,24 @@ public:
     void setVehicle(QString* vehicle);
 
 
+    virtual bool isSet() override;
+
 private:
     QList<QList<double>*>* points;
+    bool m_points_isSet;
+    
     QString* from_points;
+    bool m_from_points_isSet;
+    
     QString* to_points;
+    bool m_to_points_isSet;
+    
     QList<QString*>* out_arrays;
+    bool m_out_arrays_isSet;
+    
     QString* vehicle;
+    bool m_vehicle_isSet;
+    
 };
 
 }

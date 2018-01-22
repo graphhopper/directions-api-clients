@@ -28,7 +28,6 @@
 
 #include "SWGObject.h"
 
-
 namespace Swagger {
 
 class SWGSolution: public SWGObject {
@@ -75,17 +74,39 @@ public:
     void setUnassigned(SWGSolution_unassigned* unassigned);
 
 
+    virtual bool isSet() override;
+
 private:
     qint32 costs;
+    bool m_costs_isSet;
+    
     qint32 distance;
+    bool m_distance_isSet;
+    
     qint64 time;
+    bool m_time_isSet;
+    
     qint64 transport_time;
+    bool m_transport_time_isSet;
+    
     qint64 max_operation_time;
+    bool m_max_operation_time_isSet;
+    
     qint64 waiting_time;
+    bool m_waiting_time_isSet;
+    
     qint32 no_vehicles;
+    bool m_no_vehicles_isSet;
+    
     qint32 no_unassigned;
+    bool m_no_unassigned_isSet;
+    
     QList<SWGRoute*>* routes;
+    bool m_routes_isSet;
+    
     SWGSolution_unassigned* unassigned;
+    bool m_unassigned_isSet;
+    
 };
 
 }

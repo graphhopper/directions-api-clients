@@ -30,6 +30,16 @@ use Log::Any qw($log);
 use Date::Parse;
 use DateTime;
 
+use WWW::SwaggerClient::Object::Algorithm;
+use WWW::SwaggerClient::Object::Configuration;
+use WWW::SwaggerClient::Object::CostMatrix;
+use WWW::SwaggerClient::Object::Objective;
+use WWW::SwaggerClient::Object::Relation;
+use WWW::SwaggerClient::Object::Service;
+use WWW::SwaggerClient::Object::Shipment;
+use WWW::SwaggerClient::Object::Vehicle;
+use WWW::SwaggerClient::Object::VehicleType;
+
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
 

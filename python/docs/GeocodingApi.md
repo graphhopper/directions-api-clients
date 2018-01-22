@@ -14,7 +14,7 @@ Execute a Geocoding request
 
 This endpoint provides forward and reverse geocoding. For more details, review the official documentation at: https://graphhopper.com/api/1/docs/geocoding/ 
 
-### Example 
+### Example
 ```python
 from __future__ import print_function
 import time
@@ -32,7 +32,7 @@ reverse = true # bool | Set to true to do a reverse Geocoding request (optional)
 point = 'point_example' # str | The location bias in the format 'latitude,longitude' e.g. point=45.93272,11.58803 (optional)
 provider = 'provider_example' # str | Can be either, default, nominatim, opencagedata (optional)
 
-try: 
+try:
     # Execute a Geocoding request
     api_response = api_instance.geocode_get(key, q=q, locale=locale, limit=limit, reverse=reverse, point=point, provider=provider)
     pprint(api_response)

@@ -14,7 +14,7 @@ Routing Request
 
 The GraphHopper Routing API allows to calculate route and implement navigation via the turn instructions
 
-### Example 
+### Example
 ```python
 from __future__ import print_function
 import time
@@ -46,7 +46,7 @@ alternative_route_max_paths = 56 # int | If `algorithm=alternative_route` this p
 alternative_route_max_weight_factor = 56 # int | If `algorithm=alternative_route` this parameter sets the factor by which the alternatives routes can be longer than the optimal route. Increasing can lead to worse alternatives. (optional)
 alternative_route_max_share_factor = 56 # int | If `algorithm=alternative_route` this parameter specifies how much alternatives routes can have maximum in common with the optimal route. Increasing can lead to worse alternatives. (optional)
 
-try: 
+try:
     # Routing Request
     api_response = api_instance.route_get(point, points_encoded, key, locale=locale, instructions=instructions, vehicle=vehicle, elevation=elevation, calc_points=calc_points, point_hint=point_hint, ch_disable=ch_disable, weighting=weighting, edge_traversal=edge_traversal, algorithm=algorithm, heading=heading, heading_penalty=heading_penalty, pass_through=pass_through, round_trip_distance=round_trip_distance, round_trip_seed=round_trip_seed, alternative_route_max_paths=alternative_route_max_paths, alternative_route_max_weight_factor=alternative_route_max_weight_factor, alternative_route_max_share_factor=alternative_route_max_share_factor)
     pprint(api_response)

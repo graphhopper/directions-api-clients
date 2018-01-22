@@ -38,47 +38,49 @@ SWGShipment::~SWGShipment() {
 void
 SWGShipment::init() {
     id = new QString("");
+    m_id_isSet = false;
     name = new QString("");
+    m_name_isSet = false;
     priority = 0;
+    m_priority_isSet = false;
     pickup = new SWGStop();
+    m_pickup_isSet = false;
     delivery = new SWGStop();
+    m_delivery_isSet = false;
     size = new QList<qint32>();
+    m_size_isSet = false;
     required_skills = new QList<QString*>();
+    m_required_skills_isSet = false;
     allowed_vehicles = new QList<QString*>();
+    m_allowed_vehicles_isSet = false;
 }
 
 void
 SWGShipment::cleanup() {
-    
-    if(id != nullptr) {
+    if(id != nullptr) { 
         delete id;
     }
-
-    if(name != nullptr) {
+    if(name != nullptr) { 
         delete name;
     }
 
-
-    if(pickup != nullptr) {
+    if(pickup != nullptr) { 
         delete pickup;
     }
-
-    if(delivery != nullptr) {
+    if(delivery != nullptr) { 
         delete delivery;
     }
 
-
-    if(required_skills != nullptr) {
-        QList<QString*>* arr = required_skills;
-        foreach(QString* o, *arr) {
+    if(required_skills != nullptr) { 
+        auto arr = required_skills;
+        for(auto o: *arr) { 
             delete o;
         }
         delete required_skills;
     }
-
-    if(allowed_vehicles != nullptr) {
-        QList<QString*>* arr = allowed_vehicles;
-        foreach(QString* o, *arr) {
+    if(allowed_vehicles != nullptr) { 
+        auto arr = allowed_vehicles;
+        for(auto o: *arr) { 
             delete o;
         }
         delete allowed_vehicles;
@@ -97,9 +99,13 @@ SWGShipment::fromJson(QString &json) {
 void
 SWGShipment::fromJsonObject(QJsonObject &pJson) {
     ::Swagger::setValue(&id, pJson["id"], "QString", "QString");
+    
     ::Swagger::setValue(&name, pJson["name"], "QString", "QString");
+    
     ::Swagger::setValue(&priority, pJson["priority"], "qint32", "");
+    
     ::Swagger::setValue(&pickup, pJson["pickup"], "SWGStop", "SWGStop");
+    
     ::Swagger::setValue(&delivery, pJson["delivery"], "SWGStop", "SWGStop");
     
     
@@ -107,9 +113,7 @@ SWGShipment::fromJsonObject(QJsonObject &pJson) {
     
     ::Swagger::setValue(&required_skills, pJson["required_skills"], "QList", "QString");
     
-    
     ::Swagger::setValue(&allowed_vehicles, pJson["allowed_vehicles"], "QList", "QString");
-    
 }
 
 QString
@@ -126,27 +130,37 @@ QJsonObject*
 SWGShipment::asJsonObject() {
     QJsonObject* obj = new QJsonObject();
     
-    toJsonValue(QString("id"), id, obj, QString("QString"));
-
-    toJsonValue(QString("name"), name, obj, QString("QString"));
-
-    obj->insert("priority", QJsonValue(priority));
-
-    toJsonValue(QString("pickup"), pickup, obj, QString("SWGStop"));
-
-    toJsonValue(QString("delivery"), delivery, obj, QString("SWGStop"));
-
-    QJsonArray sizeJsonArray;
-    toJsonArray((QList<void*>*)size, &sizeJsonArray, "size", "qint32");
-    obj->insert("size", sizeJsonArray);
-
-    QJsonArray required_skillsJsonArray;
-    toJsonArray((QList<void*>*)required_skills, &required_skillsJsonArray, "required_skills", "QString");
-    obj->insert("required_skills", required_skillsJsonArray);
-
-    QJsonArray allowed_vehiclesJsonArray;
-    toJsonArray((QList<void*>*)allowed_vehicles, &allowed_vehiclesJsonArray, "allowed_vehicles", "QString");
-    obj->insert("allowed_vehicles", allowed_vehiclesJsonArray);
+    if(id != nullptr && *id != QString("")){
+        toJsonValue(QString("id"), id, obj, QString("QString"));
+    }
+    
+    if(name != nullptr && *name != QString("")){
+        toJsonValue(QString("name"), name, obj, QString("QString"));
+    }
+    
+    if(m_priority_isSet){
+        obj->insert("priority", QJsonValue(priority));
+    }
+     
+    if((pickup != nullptr) && (pickup->isSet())){
+        toJsonValue(QString("pickup"), pickup, obj, QString("SWGStop"));
+    }
+     
+    if((delivery != nullptr) && (delivery->isSet())){
+        toJsonValue(QString("delivery"), delivery, obj, QString("SWGStop"));
+    }
+    
+    if(size->size() > 0){
+        toJsonArray((QList<void*>*)size, obj, "size", "");
+    }
+    
+    if(required_skills->size() > 0){
+        toJsonArray((QList<void*>*)required_skills, obj, "required_skills", "QString");
+    }
+    
+    if(allowed_vehicles->size() > 0){
+        toJsonArray((QList<void*>*)allowed_vehicles, obj, "allowed_vehicles", "QString");
+    }
 
     return obj;
 }
@@ -158,6 +172,7 @@ SWGShipment::getId() {
 void
 SWGShipment::setId(QString* id) {
     this->id = id;
+    this->m_id_isSet = true;
 }
 
 QString*
@@ -167,6 +182,7 @@ SWGShipment::getName() {
 void
 SWGShipment::setName(QString* name) {
     this->name = name;
+    this->m_name_isSet = true;
 }
 
 qint32
@@ -176,6 +192,7 @@ SWGShipment::getPriority() {
 void
 SWGShipment::setPriority(qint32 priority) {
     this->priority = priority;
+    this->m_priority_isSet = true;
 }
 
 SWGStop*
@@ -185,6 +202,7 @@ SWGShipment::getPickup() {
 void
 SWGShipment::setPickup(SWGStop* pickup) {
     this->pickup = pickup;
+    this->m_pickup_isSet = true;
 }
 
 SWGStop*
@@ -194,6 +212,7 @@ SWGShipment::getDelivery() {
 void
 SWGShipment::setDelivery(SWGStop* delivery) {
     this->delivery = delivery;
+    this->m_delivery_isSet = true;
 }
 
 QList<qint32>*
@@ -203,6 +222,7 @@ SWGShipment::getSize() {
 void
 SWGShipment::setSize(QList<qint32>* size) {
     this->size = size;
+    this->m_size_isSet = true;
 }
 
 QList<QString*>*
@@ -212,6 +232,7 @@ SWGShipment::getRequiredSkills() {
 void
 SWGShipment::setRequiredSkills(QList<QString*>* required_skills) {
     this->required_skills = required_skills;
+    this->m_required_skills_isSet = true;
 }
 
 QList<QString*>*
@@ -221,8 +242,24 @@ SWGShipment::getAllowedVehicles() {
 void
 SWGShipment::setAllowedVehicles(QList<QString*>* allowed_vehicles) {
     this->allowed_vehicles = allowed_vehicles;
+    this->m_allowed_vehicles_isSet = true;
 }
 
 
+bool 
+SWGShipment::isSet(){
+    bool isObjectUpdated = false;
+    do{
+        if(id != nullptr && *id != QString("")){ isObjectUpdated = true; break;}
+        if(name != nullptr && *name != QString("")){ isObjectUpdated = true; break;}
+        if(m_priority_isSet){ isObjectUpdated = true; break;}
+        if(pickup != nullptr && pickup->isSet()){ isObjectUpdated = true; break;}
+        if(delivery != nullptr && delivery->isSet()){ isObjectUpdated = true; break;}
+        if(m_size_isSet){ isObjectUpdated = true; break;}if(size->size() > 0){ isObjectUpdated = true; break;}
+        if(required_skills->size() > 0){ isObjectUpdated = true; break;}
+        if(allowed_vehicles->size() > 0){ isObjectUpdated = true; break;}
+    }while(false);
+    return isObjectUpdated;
+}
 }
 

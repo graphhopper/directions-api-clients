@@ -151,8 +151,8 @@ SWGMatrixApi::matrixGet(QString* key, QList<QString*>* point, QString* from_poin
         .append(QUrl::toPercentEncoding(stringValue(key)));
 
 
-    HttpRequestWorker *worker = new HttpRequestWorker();
-    HttpRequestInput input(fullPath, "GET");
+    SWGHttpRequestWorker *worker = new SWGHttpRequestWorker();
+    SWGHttpRequestInput input(fullPath, "GET");
 
 
 
@@ -163,7 +163,7 @@ SWGMatrixApi::matrixGet(QString* key, QList<QString*>* point, QString* from_poin
     }
 
     connect(worker,
-            &HttpRequestWorker::on_execution_finished,
+            &SWGHttpRequestWorker::on_execution_finished,
             this,
             &SWGMatrixApi::matrixGetCallback);
 
@@ -171,7 +171,7 @@ SWGMatrixApi::matrixGet(QString* key, QList<QString*>* point, QString* from_poin
 }
 
 void
-SWGMatrixApi::matrixGetCallback(HttpRequestWorker * worker) {
+SWGMatrixApi::matrixGetCallback(SWGHttpRequestWorker * worker) {
     QString msg;
     QString error_str = worker->error_str;
     QNetworkReply::NetworkError error_type = worker->error_type;
@@ -184,16 +184,22 @@ SWGMatrixApi::matrixGetCallback(HttpRequestWorker * worker) {
     }
 
 
+    
+
     QString json(worker->response);
     SWGMatrixResponse* output = static_cast<SWGMatrixResponse*>(create(json, QString("SWGMatrixResponse")));
     worker->deleteLater();
 
-    emit matrixGetSignal(output);
-    emit matrixGetSignalE(output, error_type, error_str);
+    if (worker->error_type == QNetworkReply::NoError) {
+        emit matrixGetSignal(output);
+    } else {
+        emit matrixGetSignalE(output, error_type, error_str);
+        emit matrixGetSignalEFull(worker, error_type, error_str);
+    }
 }
 
 void
-SWGMatrixApi::matrixPost(QString* key, SWGMatrixRequest body) {
+SWGMatrixApi::matrixPost(QString* key, SWGMatrixRequest& body) {
     QString fullPath;
     fullPath.append(this->host).append(this->basePath).append("/matrix");
 
@@ -207,10 +213,11 @@ SWGMatrixApi::matrixPost(QString* key, SWGMatrixRequest body) {
         .append(QUrl::toPercentEncoding(stringValue(key)));
 
 
-    HttpRequestWorker *worker = new HttpRequestWorker();
-    HttpRequestInput input(fullPath, "POST");
+    SWGHttpRequestWorker *worker = new SWGHttpRequestWorker();
+    SWGHttpRequestInput input(fullPath, "POST");
 
 
+    
     QString output = body.asJson();
     input.request_body.append(output);
     
@@ -221,7 +228,7 @@ SWGMatrixApi::matrixPost(QString* key, SWGMatrixRequest body) {
     }
 
     connect(worker,
-            &HttpRequestWorker::on_execution_finished,
+            &SWGHttpRequestWorker::on_execution_finished,
             this,
             &SWGMatrixApi::matrixPostCallback);
 
@@ -229,7 +236,7 @@ SWGMatrixApi::matrixPost(QString* key, SWGMatrixRequest body) {
 }
 
 void
-SWGMatrixApi::matrixPostCallback(HttpRequestWorker * worker) {
+SWGMatrixApi::matrixPostCallback(SWGHttpRequestWorker * worker) {
     QString msg;
     QString error_str = worker->error_str;
     QNetworkReply::NetworkError error_type = worker->error_type;
@@ -242,12 +249,18 @@ SWGMatrixApi::matrixPostCallback(HttpRequestWorker * worker) {
     }
 
 
+    
+
     QString json(worker->response);
     SWGMatrixResponse* output = static_cast<SWGMatrixResponse*>(create(json, QString("SWGMatrixResponse")));
     worker->deleteLater();
 
-    emit matrixPostSignal(output);
-    emit matrixPostSignalE(output, error_type, error_str);
+    if (worker->error_type == QNetworkReply::NoError) {
+        emit matrixPostSignal(output);
+    } else {
+        emit matrixPostSignalE(output, error_type, error_str);
+        emit matrixPostSignalEFull(worker, error_type, error_str);
+    }
 }
 
 

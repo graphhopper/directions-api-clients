@@ -14,19 +14,19 @@ package io.swagger.client.model
 
 
 case class Route (
-  /* id of vehicle that operates route */
-  vehicleId: Option[String],
-  /* distance of route in meter */
-  distance: Option[Long],
-  /* transport time of route in ms */
-  transportTime: Option[Long],
-  /* completion time of route in ms */
-  completionTime: Option[Long],
-  /* waiting time of route in ms */
-  waitingTime: Option[Long],
-  /* array of activities */
-  activities: Option[List[Activity]],
-  /* array of route planning points */
-  points: Option[List[RoutePoint]]
+  // id of vehicle that operates route
+  vehicleId: Option[String] = None,
+  // distance of route in meter
+  distance: Option[Long] = None,
+  // transport time of route in ms
+  transportTime: Option[Long] = None,
+  // completion time of route in ms
+  completionTime: Option[Long] = None,
+  // waiting time of route in ms
+  waitingTime: Option[Long] = None,
+  // array of activities
+  activities: Option[List[Activity]] = None,
+  // array of route planning points
+  points: Option[List[RoutePoint]] = None
 )
 

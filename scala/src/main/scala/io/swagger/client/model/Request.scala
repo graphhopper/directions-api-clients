@@ -14,21 +14,21 @@ package io.swagger.client.model
 
 
 case class Request (
-  /* An array of vehicles that can be employed */
-  vehicles: Option[List[Vehicle]],
-  /* An array of vehicle types */
-  vehicleTypes: Option[List[VehicleType]],
-  /* An array of services */
-  services: Option[List[Service]],
-  /* An array of shipments */
-  shipments: Option[List[Shipment]],
-  /* An array of relations */
-  relations: Option[List[Relation]],
-  algorithm: Option[Algorithm],
-  /* An array of objectives */
-  objectives: Option[List[Objective]],
-  /* An array of cost matrices */
-  costMatrices: Option[List[CostMatrix]],
-  configuration: Option[Configuration]
+  // An array of vehicles that can be employed
+  vehicles: Option[List[Vehicle]] = None,
+  // An array of vehicle types
+  vehicleTypes: Option[List[VehicleType]] = None,
+  // An array of services
+  services: Option[List[Service]] = None,
+  // An array of shipments
+  shipments: Option[List[Shipment]] = None,
+  // An array of relations
+  relations: Option[List[Relation]] = None,
+  algorithm: Option[Algorithm] = None,
+  // An array of objectives
+  objectives: Option[List[Objective]] = None,
+  // An array of cost matrices
+  costMatrices: Option[List[CostMatrix]] = None,
+  configuration: Option[Configuration] = None
 )
 

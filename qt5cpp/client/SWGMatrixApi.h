@@ -37,11 +37,11 @@ public:
     QMap<QString, QString> defaultHeaders;
 
     void matrixGet(QString* key, QList<QString*>* point, QString* from_point, QString* to_point, QList<QString*>* out_array, QString* vehicle);
-    void matrixPost(QString* key, SWGMatrixRequest body);
+    void matrixPost(QString* key, SWGMatrixRequest& body);
     
 private:
-    void matrixGetCallback (HttpRequestWorker * worker);
-    void matrixPostCallback (HttpRequestWorker * worker);
+    void matrixGetCallback (SWGHttpRequestWorker * worker);
+    void matrixPostCallback (SWGHttpRequestWorker * worker);
     
 signals:
     void matrixGetSignal(SWGMatrixResponse* summary);
@@ -49,6 +49,9 @@ signals:
     
     void matrixGetSignalE(SWGMatrixResponse* summary, QNetworkReply::NetworkError error_type, QString& error_str);
     void matrixPostSignalE(SWGMatrixResponse* summary, QNetworkReply::NetworkError error_type, QString& error_str);
+    
+    void matrixGetSignalEFull(SWGHttpRequestWorker* worker, QNetworkReply::NetworkError error_type, QString& error_str);
+    void matrixPostSignalEFull(SWGHttpRequestWorker* worker, QNetworkReply::NetworkError error_type, QString& error_str);
     
 };
 

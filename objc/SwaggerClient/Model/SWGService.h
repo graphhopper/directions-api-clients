@@ -16,6 +16,11 @@
 
 #import "SWGAddress.h"
 #import "SWGTimeWindow.h"
+@protocol SWGAddress;
+@class SWGAddress;
+@protocol SWGTimeWindow;
+@class SWGTimeWindow;
+
 
 
 @protocol SWGService

@@ -16,6 +16,11 @@
 
 #import "SWGRoute.h"
 #import "SWGSolutionUnassigned.h"
+@protocol SWGRoute;
+@class SWGRoute;
+@protocol SWGSolutionUnassigned;
+@class SWGSolutionUnassigned;
+
 
 
 @protocol SWGSolution

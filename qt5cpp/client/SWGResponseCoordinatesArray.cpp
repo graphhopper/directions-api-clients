@@ -41,7 +41,7 @@ SWGResponseCoordinatesArray::init() {
 
 void
 SWGResponseCoordinatesArray::cleanup() {
-    }
+}
 
 SWGResponseCoordinatesArray*
 SWGResponseCoordinatesArray::fromJson(QString &json) {
@@ -69,10 +69,17 @@ SWGResponseCoordinatesArray::asJson ()
 QJsonObject*
 SWGResponseCoordinatesArray::asJsonObject() {
     QJsonObject* obj = new QJsonObject();
-    
+
     return obj;
 }
 
 
+bool 
+SWGResponseCoordinatesArray::isSet(){
+    bool isObjectUpdated = false;
+    do{
+    }while(false);
+    return isObjectUpdated;
+}
 }
 

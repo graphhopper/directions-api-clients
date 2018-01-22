@@ -14,7 +14,7 @@ package io.swagger.client.model
 
 
 case class IsochroneResponse (
-  polygons: Option[List[IsochroneResponsePolygon]],
-  copyrights: Option[List[String]]
+  polygons: Option[List[IsochroneResponsePolygon]] = None,
+  copyrights: Option[List[String]] = None
 )
 

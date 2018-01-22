@@ -38,16 +38,22 @@ SWGBreak::~SWGBreak() {
 void
 SWGBreak::init() {
     earliest = 0L;
+    m_earliest_isSet = false;
     latest = 0L;
+    m_latest_isSet = false;
     duration = 0L;
+    m_duration_isSet = false;
     max_driving_time = 0L;
+    m_max_driving_time_isSet = false;
     initial_driving_time = 0L;
+    m_initial_driving_time_isSet = false;
     possible_split = new QList<qint64>();
+    m_possible_split_isSet = false;
 }
 
 void
 SWGBreak::cleanup() {
-    
+
 
 
 
@@ -67,9 +73,13 @@ SWGBreak::fromJson(QString &json) {
 void
 SWGBreak::fromJsonObject(QJsonObject &pJson) {
     ::Swagger::setValue(&earliest, pJson["earliest"], "qint64", "");
+    
     ::Swagger::setValue(&latest, pJson["latest"], "qint64", "");
+    
     ::Swagger::setValue(&duration, pJson["duration"], "qint64", "");
+    
     ::Swagger::setValue(&max_driving_time, pJson["max_driving_time"], "qint64", "");
+    
     ::Swagger::setValue(&initial_driving_time, pJson["initial_driving_time"], "qint64", "");
     
     
@@ -90,19 +100,29 @@ QJsonObject*
 SWGBreak::asJsonObject() {
     QJsonObject* obj = new QJsonObject();
     
-    obj->insert("earliest", QJsonValue(earliest));
-
-    obj->insert("latest", QJsonValue(latest));
-
-    obj->insert("duration", QJsonValue(duration));
-
-    obj->insert("max_driving_time", QJsonValue(max_driving_time));
-
-    obj->insert("initial_driving_time", QJsonValue(initial_driving_time));
-
-    QJsonArray possible_splitJsonArray;
-    toJsonArray((QList<void*>*)possible_split, &possible_splitJsonArray, "possible_split", "qint64");
-    obj->insert("possible_split", possible_splitJsonArray);
+    if(m_earliest_isSet){
+        obj->insert("earliest", QJsonValue(earliest));
+    }
+    
+    if(m_latest_isSet){
+        obj->insert("latest", QJsonValue(latest));
+    }
+    
+    if(m_duration_isSet){
+        obj->insert("duration", QJsonValue(duration));
+    }
+    
+    if(m_max_driving_time_isSet){
+        obj->insert("max_driving_time", QJsonValue(max_driving_time));
+    }
+    
+    if(m_initial_driving_time_isSet){
+        obj->insert("initial_driving_time", QJsonValue(initial_driving_time));
+    }
+    
+    if(possible_split->size() > 0){
+        toJsonArray((QList<void*>*)possible_split, obj, "possible_split", "");
+    }
 
     return obj;
 }
@@ -114,6 +134,7 @@ SWGBreak::getEarliest() {
 void
 SWGBreak::setEarliest(qint64 earliest) {
     this->earliest = earliest;
+    this->m_earliest_isSet = true;
 }
 
 qint64
@@ -123,6 +144,7 @@ SWGBreak::getLatest() {
 void
 SWGBreak::setLatest(qint64 latest) {
     this->latest = latest;
+    this->m_latest_isSet = true;
 }
 
 qint64
@@ -132,6 +154,7 @@ SWGBreak::getDuration() {
 void
 SWGBreak::setDuration(qint64 duration) {
     this->duration = duration;
+    this->m_duration_isSet = true;
 }
 
 qint64
@@ -141,6 +164,7 @@ SWGBreak::getMaxDrivingTime() {
 void
 SWGBreak::setMaxDrivingTime(qint64 max_driving_time) {
     this->max_driving_time = max_driving_time;
+    this->m_max_driving_time_isSet = true;
 }
 
 qint64
@@ -150,6 +174,7 @@ SWGBreak::getInitialDrivingTime() {
 void
 SWGBreak::setInitialDrivingTime(qint64 initial_driving_time) {
     this->initial_driving_time = initial_driving_time;
+    this->m_initial_driving_time_isSet = true;
 }
 
 QList<qint64>*
@@ -159,8 +184,22 @@ SWGBreak::getPossibleSplit() {
 void
 SWGBreak::setPossibleSplit(QList<qint64>* possible_split) {
     this->possible_split = possible_split;
+    this->m_possible_split_isSet = true;
 }
 
 
+bool 
+SWGBreak::isSet(){
+    bool isObjectUpdated = false;
+    do{
+        if(m_earliest_isSet){ isObjectUpdated = true; break;}
+        if(m_latest_isSet){ isObjectUpdated = true; break;}
+        if(m_duration_isSet){ isObjectUpdated = true; break;}
+        if(m_max_driving_time_isSet){ isObjectUpdated = true; break;}
+        if(m_initial_driving_time_isSet){ isObjectUpdated = true; break;}
+        if(m_possible_split_isSet){ isObjectUpdated = true; break;}if(possible_split->size() > 0){ isObjectUpdated = true; break;}
+    }while(false);
+    return isObjectUpdated;
+}
 }
 

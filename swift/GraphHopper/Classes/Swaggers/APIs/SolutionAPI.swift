@@ -42,17 +42,67 @@ public class SolutionAPI: APIBase {
         "waiting_time" : 7,
         "driving_time" : 4,
         "end_time" : 6,
-        "load_before" : [ 5 ],
+        "load_before" : [ 5, 5 ],
         "arr_time" : 1,
-        "id" : "aeiou",
+        "id" : "id",
         "type" : "start",
-        "location_id" : "aeiou",
-        "load_after" : [ 9 ]
+        "location_id" : "location_id",
+        "load_after" : [ 9, 9 ]
+      }, {
+        "distance" : 1,
+        "waiting_time" : 7,
+        "driving_time" : 4,
+        "end_time" : 6,
+        "load_before" : [ 5, 5 ],
+        "arr_time" : 1,
+        "id" : "id",
+        "type" : "start",
+        "location_id" : "location_id",
+        "load_after" : [ 9, 9 ]
       } ],
-      "vehicle_id" : "aeiou",
+      "vehicle_id" : "vehicle_id",
       "points" : [ {
-        "coordinates" : [ "{}" ],
-        "type" : "aeiou"
+        "coordinates" : [ "{}", "{}" ],
+        "type" : "type"
+      }, {
+        "coordinates" : [ "{}", "{}" ],
+        "type" : "type"
+      } ]
+    }, {
+      "completion_time" : 1,
+      "distance" : 4,
+      "transport_time" : 7,
+      "waiting_time" : 1,
+      "activities" : [ {
+        "distance" : 1,
+        "waiting_time" : 7,
+        "driving_time" : 4,
+        "end_time" : 6,
+        "load_before" : [ 5, 5 ],
+        "arr_time" : 1,
+        "id" : "id",
+        "type" : "start",
+        "location_id" : "location_id",
+        "load_after" : [ 9, 9 ]
+      }, {
+        "distance" : 1,
+        "waiting_time" : 7,
+        "driving_time" : 4,
+        "end_time" : 6,
+        "load_before" : [ 5, 5 ],
+        "arr_time" : 1,
+        "id" : "id",
+        "type" : "start",
+        "location_id" : "location_id",
+        "load_after" : [ 9, 9 ]
+      } ],
+      "vehicle_id" : "vehicle_id",
+      "points" : [ {
+        "coordinates" : [ "{}", "{}" ],
+        "type" : "type"
+      }, {
+        "coordinates" : [ "{}", "{}" ],
+        "type" : "type"
       } ]
     } ],
     "distance" : 5,
@@ -62,13 +112,13 @@ public class SolutionAPI: APIBase {
     "time" : 5,
     "no_unassigned" : 2,
     "unassigned" : {
-      "services" : [ "aeiou" ],
-      "shipments" : [ "aeiou" ]
+      "services" : [ "services", "services" ],
+      "shipments" : [ "shipments", "shipments" ]
     },
     "max_operation_time" : 7
   },
-  "copyrights" : [ "aeiou" ],
-  "job_id" : "aeiou",
+  "copyrights" : [ "copyrights", "copyrights" ],
+  "job_id" : "job_id",
   "waiting_in_queue" : 0,
   "status" : "waiting_in_queue"
 }}]

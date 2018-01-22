@@ -41,7 +41,7 @@ SWGResponseInstructions::init() {
 
 void
 SWGResponseInstructions::cleanup() {
-    }
+}
 
 SWGResponseInstructions*
 SWGResponseInstructions::fromJson(QString &json) {
@@ -69,10 +69,17 @@ SWGResponseInstructions::asJson ()
 QJsonObject*
 SWGResponseInstructions::asJsonObject() {
     QJsonObject* obj = new QJsonObject();
-    
+
     return obj;
 }
 
 
+bool 
+SWGResponseInstructions::isSet(){
+    bool isObjectUpdated = false;
+    do{
+    }while(false);
+    return isObjectUpdated;
+}
 }
 

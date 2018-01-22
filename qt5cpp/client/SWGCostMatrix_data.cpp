@@ -37,31 +37,37 @@ SWGCostMatrix_data::~SWGCostMatrix_data() {
 
 void
 SWGCostMatrix_data::init() {
-    times = new QList<QList*>();
-    distances = new QList<QList*>();
+    times = new QList<QList<qint64>*>();
+    m_times_isSet = false;
+    distances = new QList<QList<double>*>();
+    m_distances_isSet = false;
     info = new SWGCostMatrix_data_info();
+    m_info_isSet = false;
 }
 
 void
 SWGCostMatrix_data::cleanup() {
-    
-    if(times != nullptr) {
-        QList<QList*>* arr = times;
-        foreach(QList* o, *arr) {
+    if(times != nullptr) { 
+        auto arr = times;
+        for(auto o: *arr) { 
+            for(auto o1: *o) {                
+                delete o1;
+            }
             delete o;
         }
         delete times;
     }
-
-    if(distances != nullptr) {
-        QList<QList*>* arr = distances;
-        foreach(QList* o, *arr) {
+    if(distances != nullptr) { 
+        auto arr = distances;
+        for(auto o: *arr) { 
+            for(auto o1: *o) {                
+                delete o1;
+            }
             delete o;
         }
         delete distances;
     }
-
-    if(info != nullptr) {
+    if(info != nullptr) { 
         delete info;
     }
 }
@@ -78,12 +84,31 @@ SWGCostMatrix_data::fromJson(QString &json) {
 void
 SWGCostMatrix_data::fromJsonObject(QJsonObject &pJson) {
     
-    ::Swagger::setValue(&times, pJson["times"], "QList", "QList");
+    
+    if(pJson["times"].isArray()){
+        auto arr = pJson["times"].toArray();
+        for (const QJsonValue & jval : arr) {
+            auto times_item = new QList<qint64>();
+            
+            auto jsonval = jval.toObject();
+            ::Swagger::setValue(times_item, jsonval, "QList", "qint64"); 
+            times->push_back(times_item);
+        }
+    }
     
     
-    ::Swagger::setValue(&distances, pJson["distances"], "QList", "QList");
-    
+    if(pJson["distances"].isArray()){
+        auto arr = pJson["distances"].toArray();
+        for (const QJsonValue & jval : arr) {
+            auto distances_item = new QList<double>();
+            
+            auto jsonval = jval.toObject();
+            ::Swagger::setValue(distances_item, jsonval, "QList", "double"); 
+            distances->push_back(distances_item);
+        }
+    }
     ::Swagger::setValue(&info, pJson["info"], "SWGCostMatrix_data_info", "SWGCostMatrix_data_info");
+    
 }
 
 QString
@@ -100,15 +125,33 @@ QJsonObject*
 SWGCostMatrix_data::asJsonObject() {
     QJsonObject* obj = new QJsonObject();
     
-    QJsonArray timesJsonArray;
-    toJsonArray((QList<void*>*)times, &timesJsonArray, "times", "QList");
-    obj->insert("times", timesJsonArray);
-
-    QJsonArray distancesJsonArray;
-    toJsonArray((QList<void*>*)distances, &distancesJsonArray, "distances", "QList");
-    obj->insert("distances", distancesJsonArray);
-
-    toJsonValue(QString("info"), info, obj, QString("SWGCostMatrix_data_info"));
+    if(times->size() > 0){
+        
+        QJsonArray jarray;
+        for(auto items : *times){
+            QJsonObject jobj;
+            toJsonArray((QList<void*>*)items, &jobj, "times", "qint64");
+            
+            jarray.append(jobj.value("times"));
+        }
+        obj->insert("times", jarray);
+    }
+    
+    if(distances->size() > 0){
+        
+        QJsonArray jarray;
+        for(auto items : *distances){
+            QJsonObject jobj;
+            toJsonArray((QList<void*>*)items, &jobj, "distances", "double");
+            
+            jarray.append(jobj.value("distances"));
+        }
+        obj->insert("distances", jarray);
+    }
+     
+    if((info != nullptr) && (info->isSet())){
+        toJsonValue(QString("info"), info, obj, QString("SWGCostMatrix_data_info"));
+    }
 
     return obj;
 }
@@ -120,6 +163,7 @@ SWGCostMatrix_data::getTimes() {
 void
 SWGCostMatrix_data::setTimes(QList<QList<qint64>*>* times) {
     this->times = times;
+    this->m_times_isSet = true;
 }
 
 QList<QList<double>*>*
@@ -129,6 +173,7 @@ SWGCostMatrix_data::getDistances() {
 void
 SWGCostMatrix_data::setDistances(QList<QList<double>*>* distances) {
     this->distances = distances;
+    this->m_distances_isSet = true;
 }
 
 SWGCostMatrix_data_info*
@@ -138,8 +183,19 @@ SWGCostMatrix_data::getInfo() {
 void
 SWGCostMatrix_data::setInfo(SWGCostMatrix_data_info* info) {
     this->info = info;
+    this->m_info_isSet = true;
 }
 
 
+bool 
+SWGCostMatrix_data::isSet(){
+    bool isObjectUpdated = false;
+    do{
+        if(times->size() > 0){ isObjectUpdated = true; break;}
+        if(distances->size() > 0){ isObjectUpdated = true; break;}
+        if(info != nullptr && info->isSet()){ isObjectUpdated = true; break;}
+    }while(false);
+    return isObjectUpdated;
+}
 }
 

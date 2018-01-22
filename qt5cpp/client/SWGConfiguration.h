@@ -26,7 +26,6 @@
 
 #include "SWGObject.h"
 
-
 namespace Swagger {
 
 class SWGConfiguration: public SWGObject {
@@ -46,8 +45,12 @@ public:
     void setRouting(SWGRouting* routing);
 
 
+    virtual bool isSet() override;
+
 private:
     SWGRouting* routing;
+    bool m_routing_isSet;
+    
 };
 
 }

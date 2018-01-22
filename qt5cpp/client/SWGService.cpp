@@ -38,60 +38,64 @@ SWGService::~SWGService() {
 void
 SWGService::init() {
     id = new QString("");
+    m_id_isSet = false;
     type = new QString("");
+    m_type_isSet = false;
     priority = 0;
+    m_priority_isSet = false;
     name = new QString("");
+    m_name_isSet = false;
     address = new SWGAddress();
+    m_address_isSet = false;
     duration = 0L;
+    m_duration_isSet = false;
     preparation_time = 0L;
+    m_preparation_time_isSet = false;
     time_windows = new QList<SWGTimeWindow*>();
+    m_time_windows_isSet = false;
     size = new QList<qint32>();
+    m_size_isSet = false;
     required_skills = new QList<QString*>();
+    m_required_skills_isSet = false;
     allowed_vehicles = new QList<QString*>();
+    m_allowed_vehicles_isSet = false;
 }
 
 void
 SWGService::cleanup() {
-    
-    if(id != nullptr) {
+    if(id != nullptr) { 
         delete id;
     }
-
-    if(type != nullptr) {
+    if(type != nullptr) { 
         delete type;
     }
 
-
-    if(name != nullptr) {
+    if(name != nullptr) { 
         delete name;
     }
-
-    if(address != nullptr) {
+    if(address != nullptr) { 
         delete address;
     }
 
 
-
-    if(time_windows != nullptr) {
-        QList<SWGTimeWindow*>* arr = time_windows;
-        foreach(SWGTimeWindow* o, *arr) {
+    if(time_windows != nullptr) { 
+        auto arr = time_windows;
+        for(auto o: *arr) { 
             delete o;
         }
         delete time_windows;
     }
 
-
-    if(required_skills != nullptr) {
-        QList<QString*>* arr = required_skills;
-        foreach(QString* o, *arr) {
+    if(required_skills != nullptr) { 
+        auto arr = required_skills;
+        for(auto o: *arr) { 
             delete o;
         }
         delete required_skills;
     }
-
-    if(allowed_vehicles != nullptr) {
-        QList<QString*>* arr = allowed_vehicles;
-        foreach(QString* o, *arr) {
+    if(allowed_vehicles != nullptr) { 
+        auto arr = allowed_vehicles;
+        for(auto o: *arr) { 
             delete o;
         }
         delete allowed_vehicles;
@@ -110,24 +114,27 @@ SWGService::fromJson(QString &json) {
 void
 SWGService::fromJsonObject(QJsonObject &pJson) {
     ::Swagger::setValue(&id, pJson["id"], "QString", "QString");
+    
     ::Swagger::setValue(&type, pJson["type"], "QString", "QString");
+    
     ::Swagger::setValue(&priority, pJson["priority"], "qint32", "");
+    
     ::Swagger::setValue(&name, pJson["name"], "QString", "QString");
+    
     ::Swagger::setValue(&address, pJson["address"], "SWGAddress", "SWGAddress");
+    
     ::Swagger::setValue(&duration, pJson["duration"], "qint64", "");
+    
     ::Swagger::setValue(&preparation_time, pJson["preparation_time"], "qint64", "");
     
+    
     ::Swagger::setValue(&time_windows, pJson["time_windows"], "QList", "SWGTimeWindow");
-    
-    
     
     ::Swagger::setValue(&size, pJson["size"], "QList", "qint32");
     
     ::Swagger::setValue(&required_skills, pJson["required_skills"], "QList", "QString");
     
-    
     ::Swagger::setValue(&allowed_vehicles, pJson["allowed_vehicles"], "QList", "QString");
-    
 }
 
 QString
@@ -144,35 +151,49 @@ QJsonObject*
 SWGService::asJsonObject() {
     QJsonObject* obj = new QJsonObject();
     
-    toJsonValue(QString("id"), id, obj, QString("QString"));
-
-    toJsonValue(QString("type"), type, obj, QString("QString"));
-
-    obj->insert("priority", QJsonValue(priority));
-
-    toJsonValue(QString("name"), name, obj, QString("QString"));
-
-    toJsonValue(QString("address"), address, obj, QString("SWGAddress"));
-
-    obj->insert("duration", QJsonValue(duration));
-
-    obj->insert("preparation_time", QJsonValue(preparation_time));
-
-    QJsonArray time_windowsJsonArray;
-    toJsonArray((QList<void*>*)time_windows, &time_windowsJsonArray, "time_windows", "SWGTimeWindow");
-    obj->insert("time_windows", time_windowsJsonArray);
-
-    QJsonArray sizeJsonArray;
-    toJsonArray((QList<void*>*)size, &sizeJsonArray, "size", "qint32");
-    obj->insert("size", sizeJsonArray);
-
-    QJsonArray required_skillsJsonArray;
-    toJsonArray((QList<void*>*)required_skills, &required_skillsJsonArray, "required_skills", "QString");
-    obj->insert("required_skills", required_skillsJsonArray);
-
-    QJsonArray allowed_vehiclesJsonArray;
-    toJsonArray((QList<void*>*)allowed_vehicles, &allowed_vehiclesJsonArray, "allowed_vehicles", "QString");
-    obj->insert("allowed_vehicles", allowed_vehiclesJsonArray);
+    if(id != nullptr && *id != QString("")){
+        toJsonValue(QString("id"), id, obj, QString("QString"));
+    }
+    
+    if(type != nullptr && *type != QString("")){
+        toJsonValue(QString("type"), type, obj, QString("QString"));
+    }
+    
+    if(m_priority_isSet){
+        obj->insert("priority", QJsonValue(priority));
+    }
+    
+    if(name != nullptr && *name != QString("")){
+        toJsonValue(QString("name"), name, obj, QString("QString"));
+    }
+     
+    if((address != nullptr) && (address->isSet())){
+        toJsonValue(QString("address"), address, obj, QString("SWGAddress"));
+    }
+    
+    if(m_duration_isSet){
+        obj->insert("duration", QJsonValue(duration));
+    }
+    
+    if(m_preparation_time_isSet){
+        obj->insert("preparation_time", QJsonValue(preparation_time));
+    }
+    
+    if(time_windows->size() > 0){
+        toJsonArray((QList<void*>*)time_windows, obj, "time_windows", "SWGTimeWindow");
+    }
+    
+    if(size->size() > 0){
+        toJsonArray((QList<void*>*)size, obj, "size", "");
+    }
+    
+    if(required_skills->size() > 0){
+        toJsonArray((QList<void*>*)required_skills, obj, "required_skills", "QString");
+    }
+    
+    if(allowed_vehicles->size() > 0){
+        toJsonArray((QList<void*>*)allowed_vehicles, obj, "allowed_vehicles", "QString");
+    }
 
     return obj;
 }
@@ -184,6 +205,7 @@ SWGService::getId() {
 void
 SWGService::setId(QString* id) {
     this->id = id;
+    this->m_id_isSet = true;
 }
 
 QString*
@@ -193,6 +215,7 @@ SWGService::getType() {
 void
 SWGService::setType(QString* type) {
     this->type = type;
+    this->m_type_isSet = true;
 }
 
 qint32
@@ -202,6 +225,7 @@ SWGService::getPriority() {
 void
 SWGService::setPriority(qint32 priority) {
     this->priority = priority;
+    this->m_priority_isSet = true;
 }
 
 QString*
@@ -211,6 +235,7 @@ SWGService::getName() {
 void
 SWGService::setName(QString* name) {
     this->name = name;
+    this->m_name_isSet = true;
 }
 
 SWGAddress*
@@ -220,6 +245,7 @@ SWGService::getAddress() {
 void
 SWGService::setAddress(SWGAddress* address) {
     this->address = address;
+    this->m_address_isSet = true;
 }
 
 qint64
@@ -229,6 +255,7 @@ SWGService::getDuration() {
 void
 SWGService::setDuration(qint64 duration) {
     this->duration = duration;
+    this->m_duration_isSet = true;
 }
 
 qint64
@@ -238,6 +265,7 @@ SWGService::getPreparationTime() {
 void
 SWGService::setPreparationTime(qint64 preparation_time) {
     this->preparation_time = preparation_time;
+    this->m_preparation_time_isSet = true;
 }
 
 QList<SWGTimeWindow*>*
@@ -247,6 +275,7 @@ SWGService::getTimeWindows() {
 void
 SWGService::setTimeWindows(QList<SWGTimeWindow*>* time_windows) {
     this->time_windows = time_windows;
+    this->m_time_windows_isSet = true;
 }
 
 QList<qint32>*
@@ -256,6 +285,7 @@ SWGService::getSize() {
 void
 SWGService::setSize(QList<qint32>* size) {
     this->size = size;
+    this->m_size_isSet = true;
 }
 
 QList<QString*>*
@@ -265,6 +295,7 @@ SWGService::getRequiredSkills() {
 void
 SWGService::setRequiredSkills(QList<QString*>* required_skills) {
     this->required_skills = required_skills;
+    this->m_required_skills_isSet = true;
 }
 
 QList<QString*>*
@@ -274,8 +305,27 @@ SWGService::getAllowedVehicles() {
 void
 SWGService::setAllowedVehicles(QList<QString*>* allowed_vehicles) {
     this->allowed_vehicles = allowed_vehicles;
+    this->m_allowed_vehicles_isSet = true;
 }
 
 
+bool 
+SWGService::isSet(){
+    bool isObjectUpdated = false;
+    do{
+        if(id != nullptr && *id != QString("")){ isObjectUpdated = true; break;}
+        if(type != nullptr && *type != QString("")){ isObjectUpdated = true; break;}
+        if(m_priority_isSet){ isObjectUpdated = true; break;}
+        if(name != nullptr && *name != QString("")){ isObjectUpdated = true; break;}
+        if(address != nullptr && address->isSet()){ isObjectUpdated = true; break;}
+        if(m_duration_isSet){ isObjectUpdated = true; break;}
+        if(m_preparation_time_isSet){ isObjectUpdated = true; break;}
+        if(time_windows->size() > 0){ isObjectUpdated = true; break;}
+        if(m_size_isSet){ isObjectUpdated = true; break;}if(size->size() > 0){ isObjectUpdated = true; break;}
+        if(required_skills->size() > 0){ isObjectUpdated = true; break;}
+        if(allowed_vehicles->size() > 0){ isObjectUpdated = true; break;}
+    }while(false);
+    return isObjectUpdated;
+}
 }
 

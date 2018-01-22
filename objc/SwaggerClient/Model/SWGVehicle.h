@@ -16,6 +16,11 @@
 
 #import "SWGAddress.h"
 #import "SWGBreak.h"
+@protocol SWGAddress;
+@class SWGAddress;
+@protocol SWGBreak;
+@class SWGBreak;
+
 
 
 @protocol SWGVehicle

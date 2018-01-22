@@ -35,22 +35,37 @@ public class GeocodingAPI: APIBase {
      - This endpoint provides forward and reverse geocoding. For more details, review the official documentation at: https://graphhopper.com/api/1/docs/geocoding/ 
      - examples: [{contentType=application/json, example={
   "hits" : [ {
-    "osm_id" : "aeiou",
-    "osm_type" : "aeiou",
-    "country" : "aeiou",
-    "osm_key" : "aeiou",
-    "city" : "aeiou",
-    "housenumber" : "aeiou",
-    "street" : "aeiou",
-    "name" : "aeiou",
-    "postcode" : "aeiou",
-    "state" : "aeiou",
+    "osm_id" : "osm_id",
+    "osm_type" : "osm_type",
+    "country" : "country",
+    "osm_key" : "osm_key",
+    "city" : "city",
+    "housenumber" : "housenumber",
+    "street" : "street",
+    "name" : "name",
+    "postcode" : "postcode",
+    "state" : "state",
+    "point" : {
+      "lng" : 6.027456183070403,
+      "lat" : 0.8008281904610115
+    }
+  }, {
+    "osm_id" : "osm_id",
+    "osm_type" : "osm_type",
+    "country" : "country",
+    "osm_key" : "osm_key",
+    "city" : "city",
+    "housenumber" : "housenumber",
+    "street" : "street",
+    "name" : "name",
+    "postcode" : "postcode",
+    "state" : "state",
     "point" : {
       "lng" : 6.027456183070403,
       "lat" : 0.8008281904610115
     }
   } ],
-  "locale" : "aeiou"
+  "locale" : "locale"
 }}]
      
      - parameter key: (query) Get your key at graphhopper.com 

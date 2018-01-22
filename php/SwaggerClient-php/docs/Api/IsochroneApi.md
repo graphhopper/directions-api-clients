@@ -19,7 +19,11 @@ The GraphHopper Isochrone API allows calculating an isochrone of a locations mea
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\IsochroneApi();
+$apiInstance = new Swagger\Client\Api\IsochroneApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
 $point = "point_example"; // string | Specify the start coordinate
 $key = "key_example"; // string | Get your key at graphhopper.com
 $time_limit = 600; // int | Specify which time the vehicle should travel. In seconds.
@@ -29,7 +33,7 @@ $buckets = 1; // int | For how many sub intervals an additional polygon should b
 $reverse_flow = false; // bool | If `false` the flow goes from point to the polygon, if `true` the flow goes from the polygon \"inside\" to the point. Example usage for `false`&#58; *How many potential customer can be reached within 30min travel time from your store* vs. `true`&#58; *How many customers can reach your store within 30min travel time.*
 
 try {
-    $result = $api_instance->isochroneGet($point, $key, $time_limit, $distance_limit, $vehicle, $buckets, $reverse_flow);
+    $result = $apiInstance->isochroneGet($point, $key, $time_limit, $distance_limit, $vehicle, $buckets, $reverse_flow);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling IsochroneApi->isochroneGet: ', $e->getMessage(), PHP_EOL;

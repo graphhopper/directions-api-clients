@@ -15,6 +15,9 @@
 
 
 #import "SWGSolution.h"
+@protocol SWGSolution;
+@class SWGSolution;
+
 
 
 @protocol SWGResponse

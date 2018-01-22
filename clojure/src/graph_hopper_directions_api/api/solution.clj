@@ -6,6 +6,7 @@
   "Return the solution associated to the jobId
   This endpoint returns the solution of a large problems. You can fetch it with the job_id, you have been sent."
   [key job-id ]
+  (check-required-params key job-id)
   (call-api "/vrp/solution/{jobId}" :get
             {:path-params   {"jobId" job-id }
              :header-params {}

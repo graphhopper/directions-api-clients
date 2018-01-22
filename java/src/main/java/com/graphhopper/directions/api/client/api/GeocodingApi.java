@@ -71,25 +71,26 @@ public class GeocodingApi {
      */
     public com.squareup.okhttp.Call geocodeGetCall(String key, String q, String locale, Integer limit, Boolean reverse, String point, String provider, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
-        
+
         // create path and map variables
         String localVarPath = "/geocode";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (q != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "q", q));
+        localVarQueryParams.addAll(apiClient.parameterToPair("q", q));
         if (locale != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "locale", locale));
+        localVarQueryParams.addAll(apiClient.parameterToPair("locale", locale));
         if (limit != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "limit", limit));
+        localVarQueryParams.addAll(apiClient.parameterToPair("limit", limit));
         if (reverse != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "reverse", reverse));
+        localVarQueryParams.addAll(apiClient.parameterToPair("reverse", reverse));
         if (point != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "point", point));
+        localVarQueryParams.addAll(apiClient.parameterToPair("point", point));
         if (provider != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "provider", provider));
+        localVarQueryParams.addAll(apiClient.parameterToPair("provider", provider));
         if (key != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "key", key));
+        localVarQueryParams.addAll(apiClient.parameterToPair("key", key));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -120,9 +121,9 @@ public class GeocodingApi {
         }
 
         String[] localVarAuthNames = new String[] {  };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
-    
+
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call geocodeGetValidateBeforeCall(String key, String q, String locale, Integer limit, Boolean reverse, String point, String provider, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
@@ -131,14 +132,10 @@ public class GeocodingApi {
             throw new ApiException("Missing the required parameter 'key' when calling geocodeGet(Async)");
         }
         
-        
+
         com.squareup.okhttp.Call call = geocodeGetCall(key, q, locale, limit, reverse, point, provider, progressListener, progressRequestListener);
         return call;
 
-        
-        
-        
-        
     }
 
     /**

@@ -38,80 +38,80 @@ SWGRequest::~SWGRequest() {
 void
 SWGRequest::init() {
     vehicles = new QList<SWGVehicle*>();
+    m_vehicles_isSet = false;
     vehicle_types = new QList<SWGVehicleType*>();
+    m_vehicle_types_isSet = false;
     services = new QList<SWGService*>();
+    m_services_isSet = false;
     shipments = new QList<SWGShipment*>();
+    m_shipments_isSet = false;
     relations = new QList<SWGRelation*>();
+    m_relations_isSet = false;
     algorithm = new SWGAlgorithm();
+    m_algorithm_isSet = false;
     objectives = new QList<SWGObjective*>();
+    m_objectives_isSet = false;
     cost_matrices = new QList<SWGCostMatrix*>();
+    m_cost_matrices_isSet = false;
     configuration = new SWGConfiguration();
+    m_configuration_isSet = false;
 }
 
 void
 SWGRequest::cleanup() {
-    
-    if(vehicles != nullptr) {
-        QList<SWGVehicle*>* arr = vehicles;
-        foreach(SWGVehicle* o, *arr) {
+    if(vehicles != nullptr) { 
+        auto arr = vehicles;
+        for(auto o: *arr) { 
             delete o;
         }
         delete vehicles;
     }
-
-    if(vehicle_types != nullptr) {
-        QList<SWGVehicleType*>* arr = vehicle_types;
-        foreach(SWGVehicleType* o, *arr) {
+    if(vehicle_types != nullptr) { 
+        auto arr = vehicle_types;
+        for(auto o: *arr) { 
             delete o;
         }
         delete vehicle_types;
     }
-
-    if(services != nullptr) {
-        QList<SWGService*>* arr = services;
-        foreach(SWGService* o, *arr) {
+    if(services != nullptr) { 
+        auto arr = services;
+        for(auto o: *arr) { 
             delete o;
         }
         delete services;
     }
-
-    if(shipments != nullptr) {
-        QList<SWGShipment*>* arr = shipments;
-        foreach(SWGShipment* o, *arr) {
+    if(shipments != nullptr) { 
+        auto arr = shipments;
+        for(auto o: *arr) { 
             delete o;
         }
         delete shipments;
     }
-
-    if(relations != nullptr) {
-        QList<SWGRelation*>* arr = relations;
-        foreach(SWGRelation* o, *arr) {
+    if(relations != nullptr) { 
+        auto arr = relations;
+        for(auto o: *arr) { 
             delete o;
         }
         delete relations;
     }
-
-    if(algorithm != nullptr) {
+    if(algorithm != nullptr) { 
         delete algorithm;
     }
-
-    if(objectives != nullptr) {
-        QList<SWGObjective*>* arr = objectives;
-        foreach(SWGObjective* o, *arr) {
+    if(objectives != nullptr) { 
+        auto arr = objectives;
+        for(auto o: *arr) { 
             delete o;
         }
         delete objectives;
     }
-
-    if(cost_matrices != nullptr) {
-        QList<SWGCostMatrix*>* arr = cost_matrices;
-        foreach(SWGCostMatrix* o, *arr) {
+    if(cost_matrices != nullptr) { 
+        auto arr = cost_matrices;
+        for(auto o: *arr) { 
             delete o;
         }
         delete cost_matrices;
     }
-
-    if(configuration != nullptr) {
+    if(configuration != nullptr) { 
         delete configuration;
     }
 }
@@ -130,26 +130,21 @@ SWGRequest::fromJsonObject(QJsonObject &pJson) {
     
     ::Swagger::setValue(&vehicles, pJson["vehicles"], "QList", "SWGVehicle");
     
-    
     ::Swagger::setValue(&vehicle_types, pJson["vehicle_types"], "QList", "SWGVehicleType");
-    
     
     ::Swagger::setValue(&services, pJson["services"], "QList", "SWGService");
     
-    
     ::Swagger::setValue(&shipments, pJson["shipments"], "QList", "SWGShipment");
     
-    
     ::Swagger::setValue(&relations, pJson["relations"], "QList", "SWGRelation");
-    
     ::Swagger::setValue(&algorithm, pJson["algorithm"], "SWGAlgorithm", "SWGAlgorithm");
+    
     
     ::Swagger::setValue(&objectives, pJson["objectives"], "QList", "SWGObjective");
     
-    
     ::Swagger::setValue(&cost_matrices, pJson["cost_matrices"], "QList", "SWGCostMatrix");
-    
     ::Swagger::setValue(&configuration, pJson["configuration"], "SWGConfiguration", "SWGConfiguration");
+    
 }
 
 QString
@@ -166,37 +161,41 @@ QJsonObject*
 SWGRequest::asJsonObject() {
     QJsonObject* obj = new QJsonObject();
     
-    QJsonArray vehiclesJsonArray;
-    toJsonArray((QList<void*>*)vehicles, &vehiclesJsonArray, "vehicles", "SWGVehicle");
-    obj->insert("vehicles", vehiclesJsonArray);
-
-    QJsonArray vehicle_typesJsonArray;
-    toJsonArray((QList<void*>*)vehicle_types, &vehicle_typesJsonArray, "vehicle_types", "SWGVehicleType");
-    obj->insert("vehicle_types", vehicle_typesJsonArray);
-
-    QJsonArray servicesJsonArray;
-    toJsonArray((QList<void*>*)services, &servicesJsonArray, "services", "SWGService");
-    obj->insert("services", servicesJsonArray);
-
-    QJsonArray shipmentsJsonArray;
-    toJsonArray((QList<void*>*)shipments, &shipmentsJsonArray, "shipments", "SWGShipment");
-    obj->insert("shipments", shipmentsJsonArray);
-
-    QJsonArray relationsJsonArray;
-    toJsonArray((QList<void*>*)relations, &relationsJsonArray, "relations", "SWGRelation");
-    obj->insert("relations", relationsJsonArray);
-
-    toJsonValue(QString("algorithm"), algorithm, obj, QString("SWGAlgorithm"));
-
-    QJsonArray objectivesJsonArray;
-    toJsonArray((QList<void*>*)objectives, &objectivesJsonArray, "objectives", "SWGObjective");
-    obj->insert("objectives", objectivesJsonArray);
-
-    QJsonArray cost_matricesJsonArray;
-    toJsonArray((QList<void*>*)cost_matrices, &cost_matricesJsonArray, "cost_matrices", "SWGCostMatrix");
-    obj->insert("cost_matrices", cost_matricesJsonArray);
-
-    toJsonValue(QString("configuration"), configuration, obj, QString("SWGConfiguration"));
+    if(vehicles->size() > 0){
+        toJsonArray((QList<void*>*)vehicles, obj, "vehicles", "SWGVehicle");
+    }
+    
+    if(vehicle_types->size() > 0){
+        toJsonArray((QList<void*>*)vehicle_types, obj, "vehicle_types", "SWGVehicleType");
+    }
+    
+    if(services->size() > 0){
+        toJsonArray((QList<void*>*)services, obj, "services", "SWGService");
+    }
+    
+    if(shipments->size() > 0){
+        toJsonArray((QList<void*>*)shipments, obj, "shipments", "SWGShipment");
+    }
+    
+    if(relations->size() > 0){
+        toJsonArray((QList<void*>*)relations, obj, "relations", "SWGRelation");
+    }
+     
+    if((algorithm != nullptr) && (algorithm->isSet())){
+        toJsonValue(QString("algorithm"), algorithm, obj, QString("SWGAlgorithm"));
+    }
+    
+    if(objectives->size() > 0){
+        toJsonArray((QList<void*>*)objectives, obj, "objectives", "SWGObjective");
+    }
+    
+    if(cost_matrices->size() > 0){
+        toJsonArray((QList<void*>*)cost_matrices, obj, "cost_matrices", "SWGCostMatrix");
+    }
+     
+    if((configuration != nullptr) && (configuration->isSet())){
+        toJsonValue(QString("configuration"), configuration, obj, QString("SWGConfiguration"));
+    }
 
     return obj;
 }
@@ -208,6 +207,7 @@ SWGRequest::getVehicles() {
 void
 SWGRequest::setVehicles(QList<SWGVehicle*>* vehicles) {
     this->vehicles = vehicles;
+    this->m_vehicles_isSet = true;
 }
 
 QList<SWGVehicleType*>*
@@ -217,6 +217,7 @@ SWGRequest::getVehicleTypes() {
 void
 SWGRequest::setVehicleTypes(QList<SWGVehicleType*>* vehicle_types) {
     this->vehicle_types = vehicle_types;
+    this->m_vehicle_types_isSet = true;
 }
 
 QList<SWGService*>*
@@ -226,6 +227,7 @@ SWGRequest::getServices() {
 void
 SWGRequest::setServices(QList<SWGService*>* services) {
     this->services = services;
+    this->m_services_isSet = true;
 }
 
 QList<SWGShipment*>*
@@ -235,6 +237,7 @@ SWGRequest::getShipments() {
 void
 SWGRequest::setShipments(QList<SWGShipment*>* shipments) {
     this->shipments = shipments;
+    this->m_shipments_isSet = true;
 }
 
 QList<SWGRelation*>*
@@ -244,6 +247,7 @@ SWGRequest::getRelations() {
 void
 SWGRequest::setRelations(QList<SWGRelation*>* relations) {
     this->relations = relations;
+    this->m_relations_isSet = true;
 }
 
 SWGAlgorithm*
@@ -253,6 +257,7 @@ SWGRequest::getAlgorithm() {
 void
 SWGRequest::setAlgorithm(SWGAlgorithm* algorithm) {
     this->algorithm = algorithm;
+    this->m_algorithm_isSet = true;
 }
 
 QList<SWGObjective*>*
@@ -262,6 +267,7 @@ SWGRequest::getObjectives() {
 void
 SWGRequest::setObjectives(QList<SWGObjective*>* objectives) {
     this->objectives = objectives;
+    this->m_objectives_isSet = true;
 }
 
 QList<SWGCostMatrix*>*
@@ -271,6 +277,7 @@ SWGRequest::getCostMatrices() {
 void
 SWGRequest::setCostMatrices(QList<SWGCostMatrix*>* cost_matrices) {
     this->cost_matrices = cost_matrices;
+    this->m_cost_matrices_isSet = true;
 }
 
 SWGConfiguration*
@@ -280,8 +287,25 @@ SWGRequest::getConfiguration() {
 void
 SWGRequest::setConfiguration(SWGConfiguration* configuration) {
     this->configuration = configuration;
+    this->m_configuration_isSet = true;
 }
 
 
+bool 
+SWGRequest::isSet(){
+    bool isObjectUpdated = false;
+    do{
+        if(vehicles->size() > 0){ isObjectUpdated = true; break;}
+        if(vehicle_types->size() > 0){ isObjectUpdated = true; break;}
+        if(services->size() > 0){ isObjectUpdated = true; break;}
+        if(shipments->size() > 0){ isObjectUpdated = true; break;}
+        if(relations->size() > 0){ isObjectUpdated = true; break;}
+        if(algorithm != nullptr && algorithm->isSet()){ isObjectUpdated = true; break;}
+        if(objectives->size() > 0){ isObjectUpdated = true; break;}
+        if(cost_matrices->size() > 0){ isObjectUpdated = true; break;}
+        if(configuration != nullptr && configuration->isSet()){ isObjectUpdated = true; break;}
+    }while(false);
+    return isObjectUpdated;
+}
 }
 

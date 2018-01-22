@@ -22,10 +22,10 @@ The GraphHopper Isochrone API allows calculating an isochrone of a locations mea
 ### Example 
 ```perl
 use Data::Dumper;
-use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::IsochroneApi;
+my $api_instance = WWW::SwaggerClient::IsochroneApi->new(
+);
 
-my $api_instance = WWW::SwaggerClient::IsochroneApi->new();
 my $point = 'point_example'; # string | Specify the start coordinate
 my $key = 'key_example'; # string | Get your key at graphhopper.com
 my $time_limit = 56; # int | Specify which time the vehicle should travel. In seconds.

@@ -25,7 +25,6 @@
 
 #include "SWGObject.h"
 
-
 namespace Swagger {
 
 class SWGLocation: public SWGObject {
@@ -48,9 +47,15 @@ public:
     void setLat(double lat);
 
 
+    virtual bool isSet() override;
+
 private:
     double lon;
+    bool m_lon_isSet;
+    
     double lat;
+    bool m_lat_isSet;
+    
 };
 
 }

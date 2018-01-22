@@ -28,7 +28,6 @@
 
 #include "SWGObject.h"
 
-
 namespace Swagger {
 
 class SWGGeocodingResponse: public SWGObject {
@@ -51,9 +50,15 @@ public:
     void setLocale(QString* locale);
 
 
+    virtual bool isSet() override;
+
 private:
     QList<SWGGeocodingLocation*>* hits;
+    bool m_hits_isSet;
+    
     QString* locale;
+    bool m_locale_isSet;
+    
 };
 
 }

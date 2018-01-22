@@ -38,22 +38,22 @@ SWGIsochroneResponsePolygon::~SWGIsochroneResponsePolygon() {
 void
 SWGIsochroneResponsePolygon::init() {
     properties = new SWGIsochroneResponsePolygon_properties();
+    m_properties_isSet = false;
     type = new QString("");
+    m_type_isSet = false;
     geometry = new SWGIsochroneResponsePolygon_geometry();
+    m_geometry_isSet = false;
 }
 
 void
 SWGIsochroneResponsePolygon::cleanup() {
-    
-    if(properties != nullptr) {
+    if(properties != nullptr) { 
         delete properties;
     }
-
-    if(type != nullptr) {
+    if(type != nullptr) { 
         delete type;
     }
-
-    if(geometry != nullptr) {
+    if(geometry != nullptr) { 
         delete geometry;
     }
 }
@@ -70,8 +70,11 @@ SWGIsochroneResponsePolygon::fromJson(QString &json) {
 void
 SWGIsochroneResponsePolygon::fromJsonObject(QJsonObject &pJson) {
     ::Swagger::setValue(&properties, pJson["properties"], "SWGIsochroneResponsePolygon_properties", "SWGIsochroneResponsePolygon_properties");
+    
     ::Swagger::setValue(&type, pJson["type"], "QString", "QString");
+    
     ::Swagger::setValue(&geometry, pJson["geometry"], "SWGIsochroneResponsePolygon_geometry", "SWGIsochroneResponsePolygon_geometry");
+    
 }
 
 QString
@@ -87,12 +90,18 @@ SWGIsochroneResponsePolygon::asJson ()
 QJsonObject*
 SWGIsochroneResponsePolygon::asJsonObject() {
     QJsonObject* obj = new QJsonObject();
+     
+    if((properties != nullptr) && (properties->isSet())){
+        toJsonValue(QString("properties"), properties, obj, QString("SWGIsochroneResponsePolygon_properties"));
+    }
     
-    toJsonValue(QString("properties"), properties, obj, QString("SWGIsochroneResponsePolygon_properties"));
-
-    toJsonValue(QString("type"), type, obj, QString("QString"));
-
-    toJsonValue(QString("geometry"), geometry, obj, QString("SWGIsochroneResponsePolygon_geometry"));
+    if(type != nullptr && *type != QString("")){
+        toJsonValue(QString("type"), type, obj, QString("QString"));
+    }
+     
+    if((geometry != nullptr) && (geometry->isSet())){
+        toJsonValue(QString("geometry"), geometry, obj, QString("SWGIsochroneResponsePolygon_geometry"));
+    }
 
     return obj;
 }
@@ -104,6 +113,7 @@ SWGIsochroneResponsePolygon::getProperties() {
 void
 SWGIsochroneResponsePolygon::setProperties(SWGIsochroneResponsePolygon_properties* properties) {
     this->properties = properties;
+    this->m_properties_isSet = true;
 }
 
 QString*
@@ -113,6 +123,7 @@ SWGIsochroneResponsePolygon::getType() {
 void
 SWGIsochroneResponsePolygon::setType(QString* type) {
     this->type = type;
+    this->m_type_isSet = true;
 }
 
 SWGIsochroneResponsePolygon_geometry*
@@ -122,8 +133,19 @@ SWGIsochroneResponsePolygon::getGeometry() {
 void
 SWGIsochroneResponsePolygon::setGeometry(SWGIsochroneResponsePolygon_geometry* geometry) {
     this->geometry = geometry;
+    this->m_geometry_isSet = true;
 }
 
 
+bool 
+SWGIsochroneResponsePolygon::isSet(){
+    bool isObjectUpdated = false;
+    do{
+        if(properties != nullptr && properties->isSet()){ isObjectUpdated = true; break;}
+        if(type != nullptr && *type != QString("")){ isObjectUpdated = true; break;}
+        if(geometry != nullptr && geometry->isSet()){ isObjectUpdated = true; break;}
+    }while(false);
+    return isObjectUpdated;
+}
 }
 

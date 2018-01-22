@@ -26,7 +26,6 @@
 
 #include "SWGObject.h"
 
-
 namespace Swagger {
 
 class SWGAddress: public SWGObject {
@@ -55,11 +54,21 @@ public:
     void setLat(double lat);
 
 
+    virtual bool isSet() override;
+
 private:
     QString* location_id;
+    bool m_location_id_isSet;
+    
     QString* name;
+    bool m_name_isSet;
+    
     double lon;
+    bool m_lon_isSet;
+    
     double lat;
+    bool m_lat_isSet;
+    
 };
 
 }

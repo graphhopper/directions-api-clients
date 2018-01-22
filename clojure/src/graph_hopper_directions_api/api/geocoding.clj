@@ -7,6 +7,7 @@
   This endpoint provides forward and reverse geocoding. For more details, review the official documentation at: https://graphhopper.com/api/1/docs/geocoding/"
   ([key ] (geocode-get-with-http-info key nil))
   ([key {:keys [q locale limit reverse point provider ]}]
+   (check-required-params key)
    (call-api "/geocode" :get
              {:path-params   {}
               :header-params {}

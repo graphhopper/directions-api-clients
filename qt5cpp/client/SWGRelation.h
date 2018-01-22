@@ -27,7 +27,6 @@
 
 #include "SWGObject.h"
 
-
 namespace Swagger {
 
 class SWGRelation: public SWGObject {
@@ -53,10 +52,18 @@ public:
     void setVehicleId(QString* vehicle_id);
 
 
+    virtual bool isSet() override;
+
 private:
     QString* type;
+    bool m_type_isSet;
+    
     QList<QString*>* ids;
+    bool m_ids_isSet;
+    
     QString* vehicle_id;
+    bool m_vehicle_id_isSet;
+    
 };
 
 }

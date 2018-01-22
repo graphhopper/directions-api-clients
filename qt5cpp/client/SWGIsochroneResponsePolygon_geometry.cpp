@@ -38,19 +38,19 @@ SWGIsochroneResponsePolygon_geometry::~SWGIsochroneResponsePolygon_geometry() {
 void
 SWGIsochroneResponsePolygon_geometry::init() {
     type = new QString("");
+    m_type_isSet = false;
     coordinates = new QList<SWGResponseCoordinatesArray*>();
+    m_coordinates_isSet = false;
 }
 
 void
 SWGIsochroneResponsePolygon_geometry::cleanup() {
-    
-    if(type != nullptr) {
+    if(type != nullptr) { 
         delete type;
     }
-
-    if(coordinates != nullptr) {
-        QList<SWGResponseCoordinatesArray*>* arr = coordinates;
-        foreach(SWGResponseCoordinatesArray* o, *arr) {
+    if(coordinates != nullptr) { 
+        auto arr = coordinates;
+        for(auto o: *arr) { 
             delete o;
         }
         delete coordinates;
@@ -70,8 +70,8 @@ void
 SWGIsochroneResponsePolygon_geometry::fromJsonObject(QJsonObject &pJson) {
     ::Swagger::setValue(&type, pJson["type"], "QString", "QString");
     
-    ::Swagger::setValue(&coordinates, pJson["coordinates"], "QList", "SWGResponseCoordinatesArray");
     
+    ::Swagger::setValue(&coordinates, pJson["coordinates"], "QList", "SWGResponseCoordinatesArray");
 }
 
 QString
@@ -88,11 +88,13 @@ QJsonObject*
 SWGIsochroneResponsePolygon_geometry::asJsonObject() {
     QJsonObject* obj = new QJsonObject();
     
-    toJsonValue(QString("type"), type, obj, QString("QString"));
-
-    QJsonArray coordinatesJsonArray;
-    toJsonArray((QList<void*>*)coordinates, &coordinatesJsonArray, "coordinates", "SWGResponseCoordinatesArray");
-    obj->insert("coordinates", coordinatesJsonArray);
+    if(type != nullptr && *type != QString("")){
+        toJsonValue(QString("type"), type, obj, QString("QString"));
+    }
+    
+    if(coordinates->size() > 0){
+        toJsonArray((QList<void*>*)coordinates, obj, "coordinates", "SWGResponseCoordinatesArray");
+    }
 
     return obj;
 }
@@ -104,6 +106,7 @@ SWGIsochroneResponsePolygon_geometry::getType() {
 void
 SWGIsochroneResponsePolygon_geometry::setType(QString* type) {
     this->type = type;
+    this->m_type_isSet = true;
 }
 
 QList<SWGResponseCoordinatesArray*>*
@@ -113,8 +116,18 @@ SWGIsochroneResponsePolygon_geometry::getCoordinates() {
 void
 SWGIsochroneResponsePolygon_geometry::setCoordinates(QList<SWGResponseCoordinatesArray*>* coordinates) {
     this->coordinates = coordinates;
+    this->m_coordinates_isSet = true;
 }
 
 
+bool 
+SWGIsochroneResponsePolygon_geometry::isSet(){
+    bool isObjectUpdated = false;
+    do{
+        if(type != nullptr && *type != QString("")){ isObjectUpdated = true; break;}
+        if(coordinates->size() > 0){ isObjectUpdated = true; break;}
+    }while(false);
+    return isObjectUpdated;
+}
 }
 

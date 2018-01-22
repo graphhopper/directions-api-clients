@@ -110,7 +110,7 @@ MatrixResponse <- R6::R6Class(
       self$`distances` <- lapply(MatrixResponseObject$`distances`, function(x) Numeric$new()$fromJSON(jsonlite::toJSON(x, auto_unbox = TRUE)))
       self$`times` <- lapply(MatrixResponseObject$`times`, function(x) Numeric$new()$fromJSON(jsonlite::toJSON(x, auto_unbox = TRUE)))
       self$`weights` <- lapply(MatrixResponseObject$`weights`, function(x) Numeric$new()$fromJSON(jsonlite::toJSON(x, auto_unbox = TRUE)))
-      ResponseInfoObject -> ResponseInfo$new()
+      ResponseInfoObject <- ResponseInfo$new()
       self$`info` <- ResponseInfoObject$fromJSON(jsonlite::toJSON(MatrixResponseObject$info, auto_unbox = TRUE))
     }
   )

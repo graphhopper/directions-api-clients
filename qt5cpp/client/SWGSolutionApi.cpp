@@ -45,8 +45,8 @@ SWGSolutionApi::getSolution(QString* key, QString* job_id) {
         .append(QUrl::toPercentEncoding(stringValue(key)));
 
 
-    HttpRequestWorker *worker = new HttpRequestWorker();
-    HttpRequestInput input(fullPath, "GET");
+    SWGHttpRequestWorker *worker = new SWGHttpRequestWorker();
+    SWGHttpRequestInput input(fullPath, "GET");
 
 
 
@@ -57,7 +57,7 @@ SWGSolutionApi::getSolution(QString* key, QString* job_id) {
     }
 
     connect(worker,
-            &HttpRequestWorker::on_execution_finished,
+            &SWGHttpRequestWorker::on_execution_finished,
             this,
             &SWGSolutionApi::getSolutionCallback);
 
@@ -65,7 +65,7 @@ SWGSolutionApi::getSolution(QString* key, QString* job_id) {
 }
 
 void
-SWGSolutionApi::getSolutionCallback(HttpRequestWorker * worker) {
+SWGSolutionApi::getSolutionCallback(SWGHttpRequestWorker * worker) {
     QString msg;
     QString error_str = worker->error_str;
     QNetworkReply::NetworkError error_type = worker->error_type;
@@ -78,12 +78,18 @@ SWGSolutionApi::getSolutionCallback(HttpRequestWorker * worker) {
     }
 
 
+    
+
     QString json(worker->response);
     SWGResponse* output = static_cast<SWGResponse*>(create(json, QString("SWGResponse")));
     worker->deleteLater();
 
-    emit getSolutionSignal(output);
-    emit getSolutionSignalE(output, error_type, error_str);
+    if (worker->error_type == QNetworkReply::NoError) {
+        emit getSolutionSignal(output);
+    } else {
+        emit getSolutionSignalE(output, error_type, error_str);
+        emit getSolutionSignalEFull(worker, error_type, error_str);
+    }
 }
 
 

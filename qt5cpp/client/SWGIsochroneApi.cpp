@@ -91,8 +91,8 @@ SWGIsochroneApi::isochroneGet(QString* point, QString* key, qint32 time_limit, q
         .append(QUrl::toPercentEncoding(stringValue(key)));
 
 
-    HttpRequestWorker *worker = new HttpRequestWorker();
-    HttpRequestInput input(fullPath, "GET");
+    SWGHttpRequestWorker *worker = new SWGHttpRequestWorker();
+    SWGHttpRequestInput input(fullPath, "GET");
 
 
 
@@ -103,7 +103,7 @@ SWGIsochroneApi::isochroneGet(QString* point, QString* key, qint32 time_limit, q
     }
 
     connect(worker,
-            &HttpRequestWorker::on_execution_finished,
+            &SWGHttpRequestWorker::on_execution_finished,
             this,
             &SWGIsochroneApi::isochroneGetCallback);
 
@@ -111,7 +111,7 @@ SWGIsochroneApi::isochroneGet(QString* point, QString* key, qint32 time_limit, q
 }
 
 void
-SWGIsochroneApi::isochroneGetCallback(HttpRequestWorker * worker) {
+SWGIsochroneApi::isochroneGetCallback(SWGHttpRequestWorker * worker) {
     QString msg;
     QString error_str = worker->error_str;
     QNetworkReply::NetworkError error_type = worker->error_type;
@@ -124,12 +124,18 @@ SWGIsochroneApi::isochroneGetCallback(HttpRequestWorker * worker) {
     }
 
 
+    
+
     QString json(worker->response);
     SWGIsochroneResponse* output = static_cast<SWGIsochroneResponse*>(create(json, QString("SWGIsochroneResponse")));
     worker->deleteLater();
 
-    emit isochroneGetSignal(output);
-    emit isochroneGetSignalE(output, error_type, error_str);
+    if (worker->error_type == QNetworkReply::NoError) {
+        emit isochroneGetSignal(output);
+    } else {
+        emit isochroneGetSignalE(output, error_type, error_str);
+        emit isochroneGetSignalEFull(worker, error_type, error_str);
+    }
 }
 
 

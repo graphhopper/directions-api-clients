@@ -12,9 +12,10 @@
 
 package io.swagger.client.api
 
+import java.text.SimpleDateFormat
+
 import io.swagger.client.model.Response
-import io.swagger.client.ApiInvoker
-import io.swagger.client.ApiException
+import io.swagger.client.{ApiInvoker, ApiException}
 
 import com.sun.jersey.multipart.FormDataMultiPart
 import com.sun.jersey.multipart.file.FileDataBodyPart
@@ -23,59 +24,114 @@ import javax.ws.rs.core.MediaType
 
 import java.io.File
 import java.util.Date
+import java.util.TimeZone
 
 import scala.collection.mutable.HashMap
 
-class SolutionApi(val defBasePath: String = "https://graphhopper.com/api/1",
-                        defApiInvoker: ApiInvoker = ApiInvoker) {
-  var basePath = defBasePath
-  var apiInvoker = defApiInvoker
+import com.wordnik.swagger.client._
+import scala.concurrent.Future
+import collection.mutable
 
-  def addHeader(key: String, value: String) = apiInvoker.defaultHeaders += key -> value 
+import java.net.URI
+
+import com.wordnik.swagger.client.ClientResponseReaders.Json4sFormatsReader._
+import com.wordnik.swagger.client.RequestWriters.Json4sFormatsWriter._
+
+import scala.concurrent.ExecutionContext.Implicits.global
+import scala.concurrent._
+import scala.concurrent.duration._
+import scala.util.{Failure, Success, Try}
+
+import org.json4s._
+
+class SolutionApi(
+  val defBasePath: String = "https://graphhopper.com/api/1",
+  defApiInvoker: ApiInvoker = ApiInvoker
+) {
+  private lazy val dateTimeFormatter = {
+    val formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ")
+    formatter.setTimeZone(TimeZone.getTimeZone("UTC"))
+    formatter
+  }
+  private val dateFormatter = {
+    val formatter = new SimpleDateFormat("yyyy-MM-dd")
+    formatter.setTimeZone(TimeZone.getTimeZone("UTC"))
+    formatter
+  }
+  implicit val formats = new org.json4s.DefaultFormats {
+    override def dateFormatter = dateTimeFormatter
+  }
+  implicit val stringReader: ClientResponseReader[String] = ClientResponseReaders.StringReader
+  implicit val unitReader: ClientResponseReader[Unit] = ClientResponseReaders.UnitReader
+  implicit val jvalueReader: ClientResponseReader[JValue] = ClientResponseReaders.JValueReader
+  implicit val jsonReader: ClientResponseReader[Nothing] = JsonFormatsReader
+  implicit val stringWriter: RequestWriter[String] = RequestWriters.StringWriter
+  implicit val jsonWriter: RequestWriter[Nothing] = JsonFormatsWriter
+
+  var basePath: String = defBasePath
+  var apiInvoker: ApiInvoker = defApiInvoker
+
+  def addHeader(key: String, value: String): mutable.HashMap[String, String] = {
+    apiInvoker.defaultHeaders += key -> value
+  }
+
+  val config: SwaggerConfig = SwaggerConfig.forUrl(new URI(defBasePath))
+  val client = new RestClient(config)
+  val helper = new SolutionApiAsyncHelper(client, config)
 
   /**
    * Return the solution associated to the jobId
    * This endpoint returns the solution of a large problems. You can fetch it with the job_id, you have been sent. 
+   *
    * @param key your API key 
    * @param jobId Request solution with jobId 
    * @return Response
    */
   def getSolution(key: String, jobId: String): Option[Response] = {
+    val await = Try(Await.result(getSolutionAsync(key, jobId), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * Return the solution associated to the jobId asynchronously
+   * This endpoint returns the solution of a large problems. You can fetch it with the job_id, you have been sent. 
+   *
+   * @param key your API key 
+   * @param jobId Request solution with jobId 
+   * @return Future(Response)
+   */
+  def getSolutionAsync(key: String, jobId: String): Future[Response] = {
+      helper.getSolution(key, jobId)
+  }
+
+}
+
+class SolutionApiAsyncHelper(client: TransportClient, config: SwaggerConfig) extends ApiClient(client, config) {
+
+  def getSolution(key: String,
+    jobId: String)(implicit reader: ClientResponseReader[Response]): Future[Response] = {
     // create path and map variables
-    val path = "/vrp/solution/{jobId}".replaceAll("\\{format\\}", "json").replaceAll("\\{" + "jobId" + "\\}",apiInvoker.escape(jobId))
+    val path = (addFmt("/vrp/solution/{jobId}")
+      replaceAll("\\{" + "jobId" + "\\}", jobId.toString))
 
-    val contentTypes = List("application/json")
-    val contentType = contentTypes(0)
-
-    val queryParams = new HashMap[String, String]
-    val headerParams = new HashMap[String, String]
-    val formParams = new HashMap[String, String]
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
 
     if (key == null) throw new Exception("Missing required parameter 'key' when calling SolutionApi->getSolution")
 
     if (jobId == null) throw new Exception("Missing required parameter 'jobId' when calling SolutionApi->getSolution")
 
     queryParams += "key" -> key.toString
-    
 
-    var postBody: AnyRef = null
-
-    if (contentType.startsWith("multipart/form-data")) {
-      val mp = new FormDataMultiPart
-      postBody = mp
-    } else {
-    }
-
-    try {
-      apiInvoker.invokeApi(basePath, path, "GET", queryParams.toMap, formParams.toMap, postBody, headerParams.toMap, contentType) match {
-        case s: String =>
-           Some(apiInvoker.deserialize(s, "", classOf[Response]).asInstanceOf[Response])
-        case _ => None
-      }
-    } catch {
-      case ex: ApiException if ex.code == 404 => None
-      case ex: ApiException => throw ex
+    val resFuture = client.submit("GET", path, queryParams.toMap, headerParams.toMap, "")
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
     }
   }
+
 
 }

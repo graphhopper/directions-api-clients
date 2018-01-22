@@ -1,0 +1,60 @@
+#include <map>
+#include <cstdlib>
+#include <glib-object.h>
+#include <json-glib/json-glib.h>
+#include "Helpers.h"
+
+
+#include "ResponseInstructions.h"
+
+using namespace std;
+using namespace Tizen::ArtikCloud;
+
+ResponseInstructions::ResponseInstructions()
+{
+	//__init();
+}
+
+ResponseInstructions::~ResponseInstructions()
+{
+	//__cleanup();
+}
+
+void
+ResponseInstructions::__init()
+{
+	//
+}
+
+void
+ResponseInstructions::__cleanup()
+{
+	//
+}
+
+void
+ResponseInstructions::fromJson(char* jsonStr)
+{
+	JsonObject *pJsonObject = json_node_get_object(json_from_string(jsonStr,NULL));
+	JsonNode *node;
+}
+
+ResponseInstructions::ResponseInstructions(char* json)
+{
+	this->fromJson(json);
+}
+
+char*
+ResponseInstructions::toJson()
+{
+	JsonObject *pJsonObject = json_object_new();
+	JsonNode *node;
+	node = json_node_alloc();
+	json_node_init(node, JSON_NODE_OBJECT);
+	json_node_take_object(node, pJsonObject);
+	char * ret = json_to_string(node, false);
+	json_node_free(node);
+	return ret;
+}
+
+

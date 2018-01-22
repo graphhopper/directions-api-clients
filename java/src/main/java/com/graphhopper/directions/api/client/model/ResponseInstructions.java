@@ -14,6 +14,7 @@
 package com.graphhopper.directions.api.client.model;
 
 import java.util.Objects;
+import java.util.Arrays;
 import com.graphhopper.directions.api.client.model.ResponseInstruction;
 import io.swagger.annotations.ApiModel;
 import java.util.ArrayList;
@@ -62,6 +63,6 @@ public class ResponseInstructions extends ArrayList<ResponseInstruction> {
     }
     return o.toString().replace("\n", "\n    ");
   }
-  
+
 }
 

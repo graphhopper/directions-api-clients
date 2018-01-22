@@ -29,7 +29,7 @@ SWGVrpApi::SWGVrpApi(QString host, QString basePath) {
 }
 
 void
-SWGVrpApi::postVrp(QString* key, SWGRequest body) {
+SWGVrpApi::postVrp(QString* key, SWGRequest& body) {
     QString fullPath;
     fullPath.append(this->host).append(this->basePath).append("/vrp/optimize");
 
@@ -43,10 +43,11 @@ SWGVrpApi::postVrp(QString* key, SWGRequest body) {
         .append(QUrl::toPercentEncoding(stringValue(key)));
 
 
-    HttpRequestWorker *worker = new HttpRequestWorker();
-    HttpRequestInput input(fullPath, "POST");
+    SWGHttpRequestWorker *worker = new SWGHttpRequestWorker();
+    SWGHttpRequestInput input(fullPath, "POST");
 
 
+    
     QString output = body.asJson();
     input.request_body.append(output);
     
@@ -57,7 +58,7 @@ SWGVrpApi::postVrp(QString* key, SWGRequest body) {
     }
 
     connect(worker,
-            &HttpRequestWorker::on_execution_finished,
+            &SWGHttpRequestWorker::on_execution_finished,
             this,
             &SWGVrpApi::postVrpCallback);
 
@@ -65,7 +66,7 @@ SWGVrpApi::postVrp(QString* key, SWGRequest body) {
 }
 
 void
-SWGVrpApi::postVrpCallback(HttpRequestWorker * worker) {
+SWGVrpApi::postVrpCallback(SWGHttpRequestWorker * worker) {
     QString msg;
     QString error_str = worker->error_str;
     QNetworkReply::NetworkError error_type = worker->error_type;
@@ -78,12 +79,18 @@ SWGVrpApi::postVrpCallback(HttpRequestWorker * worker) {
     }
 
 
+    
+
     QString json(worker->response);
     SWGJobId* output = static_cast<SWGJobId*>(create(json, QString("SWGJobId")));
     worker->deleteLater();
 
-    emit postVrpSignal(output);
-    emit postVrpSignalE(output, error_type, error_str);
+    if (worker->error_type == QNetworkReply::NoError) {
+        emit postVrpSignal(output);
+    } else {
+        emit postVrpSignalE(output, error_type, error_str);
+        emit postVrpSignalEFull(worker, error_type, error_str);
+    }
 }
 
 

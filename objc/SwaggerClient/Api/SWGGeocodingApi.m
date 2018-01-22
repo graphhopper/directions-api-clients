@@ -103,7 +103,7 @@ NSInteger kSWGGeocodingApiMissingParamErrorCode = 234513;
         queryParams[@"limit"] = limit;
     }
     if (reverse != nil) {
-        queryParams[@"reverse"] = reverse;
+        queryParams[@"reverse"] = [reverse isEqual:@(YES)] ? @"true" : @"false";
     }
     if (point != nil) {
         queryParams[@"point"] = point;

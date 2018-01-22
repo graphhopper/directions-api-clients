@@ -15,6 +15,9 @@
 
 
 #import "SWGResponseCoordinatesArray.h"
+@protocol SWGResponseCoordinatesArray;
+@class SWGResponseCoordinatesArray;
+
 
 
 @protocol SWGIsochroneResponsePolygonGeometry

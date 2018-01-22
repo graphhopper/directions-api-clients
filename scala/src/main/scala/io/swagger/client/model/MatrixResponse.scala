@@ -14,9 +14,9 @@ package io.swagger.client.model
 
 
 case class MatrixResponse (
-  distances: Option[List[List[Number]]],
-  times: Option[List[List[Number]]],
-  weights: Option[List[List[Double]]],
-  info: Option[ResponseInfo]
+  distances: Option[List[List[Number]]] = None,
+  times: Option[List[List[Number]]] = None,
+  weights: Option[List[List[Double]]] = None,
+  info: Option[ResponseInfo] = None
 )
 

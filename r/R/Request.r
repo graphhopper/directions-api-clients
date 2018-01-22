@@ -204,11 +204,11 @@ Request <- R6::R6Class(
       self$`services` <- lapply(RequestObject$`services`, function(x) Service$new()$fromJSON(jsonlite::toJSON(x, auto_unbox = TRUE)))
       self$`shipments` <- lapply(RequestObject$`shipments`, function(x) Shipment$new()$fromJSON(jsonlite::toJSON(x, auto_unbox = TRUE)))
       self$`relations` <- lapply(RequestObject$`relations`, function(x) Relation$new()$fromJSON(jsonlite::toJSON(x, auto_unbox = TRUE)))
-      AlgorithmObject -> Algorithm$new()
+      AlgorithmObject <- Algorithm$new()
       self$`algorithm` <- AlgorithmObject$fromJSON(jsonlite::toJSON(RequestObject$algorithm, auto_unbox = TRUE))
       self$`objectives` <- lapply(RequestObject$`objectives`, function(x) Objective$new()$fromJSON(jsonlite::toJSON(x, auto_unbox = TRUE)))
       self$`cost_matrices` <- lapply(RequestObject$`cost_matrices`, function(x) CostMatrix$new()$fromJSON(jsonlite::toJSON(x, auto_unbox = TRUE)))
-      ConfigurationObject -> Configuration$new()
+      ConfigurationObject <- Configuration$new()
       self$`configuration` <- ConfigurationObject$fromJSON(jsonlite::toJSON(RequestObject$configuration, auto_unbox = TRUE))
     }
   )

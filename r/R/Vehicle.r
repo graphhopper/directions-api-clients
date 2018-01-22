@@ -182,11 +182,11 @@ Vehicle <- R6::R6Class(
       VehicleObject <- jsonlite::fromJSON(VehicleJson)
       self$`vehicle_id` <- VehicleObject$`vehicle_id`
       self$`type_id` <- VehicleObject$`type_id`
-      AddressObject -> Address$new()
+      AddressObject <- Address$new()
       self$`start_address` <- AddressObject$fromJSON(jsonlite::toJSON(VehicleObject$start_address, auto_unbox = TRUE))
-      AddressObject -> Address$new()
+      AddressObject <- Address$new()
       self$`end_address` <- AddressObject$fromJSON(jsonlite::toJSON(VehicleObject$end_address, auto_unbox = TRUE))
-      ModelBreakObject -> ModelBreak$new()
+      ModelBreakObject <- ModelBreak$new()
       self$`break` <- ModelBreakObject$fromJSON(jsonlite::toJSON(VehicleObject$break, auto_unbox = TRUE))
       self$`return_to_depot` <- VehicleObject$`return_to_depot`
       self$`earliest_start` <- VehicleObject$`earliest_start`

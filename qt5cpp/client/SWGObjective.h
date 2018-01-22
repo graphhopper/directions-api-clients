@@ -26,7 +26,6 @@
 
 #include "SWGObject.h"
 
-
 namespace Swagger {
 
 class SWGObjective: public SWGObject {
@@ -49,9 +48,15 @@ public:
     void setValue(QString* value);
 
 
+    virtual bool isSet() override;
+
 private:
     QString* type;
+    bool m_type_isSet;
+    
     QString* value;
+    bool m_value_isSet;
+    
 };
 
 }

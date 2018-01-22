@@ -8,19 +8,18 @@ Method | HTTP request | Description
 
 
 # **GetSolution**
-> Response GetSolution($key, $jobId)
-
+> Response GetSolution(ctx, key, jobId)
 Return the solution associated to the jobId
 
 This endpoint returns the solution of a large problems. You can fetch it with the job_id, you have been sent. 
 
-
-### Parameters
+### Required Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **key** | **string**| your API key | 
- **jobId** | **string**| Request solution with jobId | 
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+  **key** | **string**| your API key | 
+  **jobId** | **string**| Request solution with jobId | 
 
 ### Return type
 

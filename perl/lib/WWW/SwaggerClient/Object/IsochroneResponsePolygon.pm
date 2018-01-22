@@ -30,6 +30,9 @@ use Log::Any qw($log);
 use Date::Parse;
 use DateTime;
 
+use WWW::SwaggerClient::Object::IsochroneResponsePolygonGeometry;
+use WWW::SwaggerClient::Object::IsochroneResponsePolygonProperties;
+
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
 

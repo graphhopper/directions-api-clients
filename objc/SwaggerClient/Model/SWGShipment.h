@@ -15,6 +15,9 @@
 
 
 #import "SWGStop.h"
+@protocol SWGStop;
+@class SWGStop;
+
 
 
 @protocol SWGShipment

@@ -14,26 +14,26 @@ package io.swagger.client.model
 
 
 case class Service (
-  /* Unique identifier of service */
-  id: Option[String],
-  /* type of service */
-  _type: Option[String],
-  /* priority of service */
-  priority: Option[Integer],
-  /* name of service */
-  name: Option[String],
-  address: Option[Address],
-  /* duration of service, i.e. time in ms the corresponding activity takes */
-  duration: Option[Long],
-  /* preparation time of service, e.g. search for a parking space. it only falls due if the location of previous activity differs from this location */
-  preparationTime: Option[Long],
-  /* array of time windows. currently, only a single time window is allowed */
-  timeWindows: Option[List[TimeWindow]],
-  /* array of capacity dimensions */
-  size: Option[List[Integer]],
-  /* array of required skills */
-  requiredSkills: Option[List[String]],
-  /* array of allowed vehicle ids */
-  allowedVehicles: Option[List[String]]
+  // Unique identifier of service
+  id: Option[String] = None,
+  // type of service
+  `type`: Option[String] = None,
+  // priority of service
+  priority: Option[Integer] = None,
+  // name of service
+  name: Option[String] = None,
+  address: Option[Address] = None,
+  // duration of service, i.e. time in ms the corresponding activity takes
+  duration: Option[Long] = None,
+  // preparation time of service, e.g. search for a parking space. it only falls due if the location of previous activity differs from this location
+  preparationTime: Option[Long] = None,
+  // array of time windows. currently, only a single time window is allowed
+  timeWindows: Option[List[TimeWindow]] = None,
+  // array of capacity dimensions
+  size: Option[List[Integer]] = None,
+  // array of required skills
+  requiredSkills: Option[List[String]] = None,
+  // array of allowed vehicle ids
+  allowedVehicles: Option[List[String]] = None
 )
 

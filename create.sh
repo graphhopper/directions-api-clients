@@ -5,6 +5,8 @@ SPEC=swagger.json
 DIR=.
 
 VERSION=0.10-SNAPSHOT
+
+# it is necessary to use the master snapshot to create a proper R and C# client
 SW_VERSION=master
 #SW_VERSION=2.2.3
 FILE=swagger-codegen-cli-$SW_VERSION.jar
@@ -67,25 +69,28 @@ if [[ "$LANG" != "" ]]; then
   exit 0
 else
   echo "creating all"
-# not yet in 2.3.0
-#  create r
-  create java
-  create php
-  create ruby
-  create python
-  create perl
-  create scala
-  create tizen
-  create csharp
-  create swift
-  create objc
-  create nodejs-server
-  create qt5cpp
-  create go
-  create clojure
-  create haskell
-
+  
+  # the JS client is just too large and not recommended so use nodejs-server
   # create javascript -> nodejs-server
-  # create dart
-  # create sinatra
+  
+  create clojure
+  create csharp
+  create dart
+  create go
+  create haskell
+  create kotlin
+  create java
+  create nodejs-server
+  create objc
+  create perl
+  create php
+  create python
+  create qt5cpp
+  create r
+  create ruby
+  create rust
+  create scala
+  create sinatra
+  create swift
+  create tizen
 fi

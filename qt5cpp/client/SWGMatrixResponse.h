@@ -28,7 +28,6 @@
 
 #include "SWGObject.h"
 
-
 namespace Swagger {
 
 class SWGMatrixResponse: public SWGObject {
@@ -57,11 +56,21 @@ public:
     void setInfo(SWGResponseInfo* info);
 
 
+    virtual bool isSet() override;
+
 private:
     QList<QList<SWGNumber*>*>* distances;
+    bool m_distances_isSet;
+    
     QList<QList<SWGNumber*>*>* times;
+    bool m_times_isSet;
+    
     QList<QList<double>*>* weights;
+    bool m_weights_isSet;
+    
     SWGResponseInfo* info;
+    bool m_info_isSet;
+    
 };
 
 }
