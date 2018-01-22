@@ -20,7 +20,7 @@ perl      |  no     |
 php       |  [yes](https://github.com/graphhopper/directions-api-clients-route-optimization/issues/4)     |
 python    |  no     |
 qt5cpp    |  no     |
-r         |  no     |
+r         |  no     | Community contribution for the [Routing API](https://www.rdocumentation.org/packages/stplanr/versions/0.2.2/topics/route_graphhopper) (stplanr).
 ruby      |  [yes](https://github.com/graphhopper/directions-api-clients-route-optimization/issues/3)   |
 rust      |  no     |
 scala     |  no     |
