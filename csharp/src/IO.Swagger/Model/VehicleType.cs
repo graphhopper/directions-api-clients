@@ -69,16 +69,22 @@ namespace IO.Swagger.Model
             Racingbike = 5,
             
             /// <summary>
+            /// Enum Scooter for value: scooter
+            /// </summary>
+            [EnumMember(Value = "scooter")]
+            Scooter = 6,
+            
+            /// <summary>
             /// Enum Truck for value: truck
             /// </summary>
             [EnumMember(Value = "truck")]
-            Truck = 6,
+            Truck = 7,
             
             /// <summary>
             /// Enum Smalltruck for value: small_truck
             /// </summary>
             [EnumMember(Value = "small_truck")]
-            Smalltruck = 7
+            Smalltruck = 8
         }
 
         /// <summary>

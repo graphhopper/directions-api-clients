@@ -9,7 +9,7 @@ class VehicleType {
 /* Profile of vehicle type */
   @Property(name: 'profile')
   String profile = null;
-  //enum profileEnum {  car,  bike,  foot,  mtb,  racingbike,  truck,  small_truck,  };
+  //enum profileEnum {  car,  bike,  foot,  mtb,  racingbike,  scooter,  truck,  small_truck,  };
 /* array of capacity dimensions */
   @Property(name: 'capacity')
   List<int> capacity = [];

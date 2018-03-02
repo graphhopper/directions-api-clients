@@ -198,6 +198,7 @@ class VehicleType implements ModelInterface, ArrayAccess
     const PROFILE_FOOT = 'foot';
     const PROFILE_MTB = 'mtb';
     const PROFILE_RACINGBIKE = 'racingbike';
+    const PROFILE_SCOOTER = 'scooter';
     const PROFILE_TRUCK = 'truck';
     const PROFILE_SMALL_TRUCK = 'small_truck';
     
@@ -216,6 +217,7 @@ class VehicleType implements ModelInterface, ArrayAccess
             self::PROFILE_FOOT,
             self::PROFILE_MTB,
             self::PROFILE_RACINGBIKE,
+            self::PROFILE_SCOOTER,
             self::PROFILE_TRUCK,
             self::PROFILE_SMALL_TRUCK,
         ];

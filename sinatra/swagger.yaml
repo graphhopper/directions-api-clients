@@ -1436,6 +1436,7 @@ definitions:
         - "foot"
         - "mtb"
         - "racingbike"
+        - "scooter"
         - "truck"
         - "small_truck"
       capacity:

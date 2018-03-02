@@ -49,6 +49,8 @@ public class VehicleType {
     
     RACINGBIKE("racingbike"),
     
+    SCOOTER("scooter"),
+    
     TRUCK("truck"),
     
     SMALL_TRUCK("small_truck");

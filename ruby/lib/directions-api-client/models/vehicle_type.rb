@@ -143,7 +143,7 @@ module DirectionsApiClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      profile_validator = EnumAttributeValidator.new('String', ["car", "bike", "foot", "mtb", "racingbike", "truck", "small_truck"])
+      profile_validator = EnumAttributeValidator.new('String', ["car", "bike", "foot", "mtb", "racingbike", "scooter", "truck", "small_truck"])
       return false unless profile_validator.valid?(@profile)
       return true
     end
@@ -151,7 +151,7 @@ module DirectionsApiClient
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] profile Object to be assigned
     def profile=(profile)
-      validator = EnumAttributeValidator.new('String', ["car", "bike", "foot", "mtb", "racingbike", "truck", "small_truck"])
+      validator = EnumAttributeValidator.new('String', ["car", "bike", "foot", "mtb", "racingbike", "scooter", "truck", "small_truck"])
       unless validator.valid?(profile)
         fail ArgumentError, "invalid value for 'profile', must be one of #{validator.allowable_values}."
       end

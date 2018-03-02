@@ -44,7 +44,7 @@ data class VehicleType (
 
     /**
     * Profile of vehicle type
-    * Values: car,bike,foot,mtb,racingbike,truck,smallTruck
+    * Values: car,bike,foot,mtb,racingbike,scooter,truck,smallTruck
     */
     enum class Profile(val value: kotlin.Any){
     
@@ -57,6 +57,8 @@ data class VehicleType (
         mtb("mtb"),
     
         racingbike("racingbike"),
+    
+        scooter("scooter"),
     
         truck("truck"),
     

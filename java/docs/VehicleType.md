@@ -23,6 +23,7 @@ BIKE | &quot;bike&quot;
 FOOT | &quot;foot&quot;
 MTB | &quot;mtb&quot;
 RACINGBIKE | &quot;racingbike&quot;
+SCOOTER | &quot;scooter&quot;
 TRUCK | &quot;truck&quot;
 SMALL_TRUCK | &quot;small_truck&quot;
 
