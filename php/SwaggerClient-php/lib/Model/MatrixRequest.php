@@ -58,8 +58,8 @@ class MatrixRequest implements ModelInterface, ArrayAccess
       */
     protected static $swaggerTypes = [
         'points' => 'double[][]',
-        'from_points' => 'string',
-        'to_points' => 'string',
+        'from_points' => 'double[][]',
+        'to_points' => 'double[][]',
         'out_arrays' => 'string[]',
         'vehicle' => 'string'
     ];
@@ -71,8 +71,8 @@ class MatrixRequest implements ModelInterface, ArrayAccess
       */
     protected static $swaggerFormats = [
         'points' => 'double',
-        'from_points' => null,
-        'to_points' => null,
+        'from_points' => 'double',
+        'to_points' => 'double',
         'out_arrays' => null,
         'vehicle' => null
     ];
@@ -256,7 +256,7 @@ class MatrixRequest implements ModelInterface, ArrayAccess
     /**
      * Gets from_points
      *
-     * @return string
+     * @return double[][]
      */
     public function getFromPoints()
     {
@@ -266,7 +266,7 @@ class MatrixRequest implements ModelInterface, ArrayAccess
     /**
      * Sets from_points
      *
-     * @param string $from_points The starting points for the routes. E.g. if you want to calculate the three routes A-&gt;1, A-&gt;2, A-&gt;3 then you have one from_point parameter and three to_point parameters. Is a string with the format longitude,latitude.
+     * @param double[][] $from_points The starting points for the routes. E.g. if you want to calculate the three routes A-&gt;1, A-&gt;2, A-&gt;3 then you have one from_point parameter and three to_point parameters. Is a string with the format longitude,latitude.
      *
      * @return $this
      */
@@ -280,7 +280,7 @@ class MatrixRequest implements ModelInterface, ArrayAccess
     /**
      * Gets to_points
      *
-     * @return string
+     * @return double[][]
      */
     public function getToPoints()
     {
@@ -290,7 +290,7 @@ class MatrixRequest implements ModelInterface, ArrayAccess
     /**
      * Sets to_points
      *
-     * @param string $to_points The destination points for the routes. Is a string with the format longitude,latitude.
+     * @param double[][] $to_points The destination points for the routes. Is a string with the format longitude,latitude.
      *
      * @return $this
      */

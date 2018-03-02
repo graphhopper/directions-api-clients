@@ -55,18 +55,18 @@ public:
 	void setPoints(std::list <std::list> points);
 	/*! \brief Get The starting points for the routes. E.g. if you want to calculate the three routes A-&gt;1, A-&gt;2, A-&gt;3 then you have one from_point parameter and three to_point parameters. Is a string with the format longitude,latitude.
 	 */
-	std::string getFromPoints();
+	std::list<std::list> getFromPoints();
 
 	/*! \brief Set The starting points for the routes. E.g. if you want to calculate the three routes A-&gt;1, A-&gt;2, A-&gt;3 then you have one from_point parameter and three to_point parameters. Is a string with the format longitude,latitude.
 	 */
-	void setFromPoints(std::string  from_points);
+	void setFromPoints(std::list <std::list> from_points);
 	/*! \brief Get The destination points for the routes. Is a string with the format longitude,latitude.
 	 */
-	std::string getToPoints();
+	std::list<std::list> getToPoints();
 
 	/*! \brief Set The destination points for the routes. Is a string with the format longitude,latitude.
 	 */
-	void setToPoints(std::string  to_points);
+	void setToPoints(std::list <std::list> to_points);
 	/*! \brief Get Specifies which arrays should be included in the response. Specify one or more of the following options 'weights', 'times', 'distances'. To specify more than one array use e.g. out_array=times&amp;out_array=distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API.
 	 */
 	std::list<std::string> getOutArrays();
@@ -84,8 +84,8 @@ public:
 
 private:
 	std::list <std::list>points;
-	std::string from_points;
-	std::string to_points;
+	std::list <std::list>from_points;
+	std::list <std::list>to_points;
 	std::list <std::string>out_arrays;
 	std::string vehicle;
 	void __init();

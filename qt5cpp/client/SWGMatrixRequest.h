@@ -45,11 +45,11 @@ public:
     QList<QList<double>*>* getPoints();
     void setPoints(QList<QList<double>*>* points);
 
-    QString* getFromPoints();
-    void setFromPoints(QString* from_points);
+    QList<QList<double>*>* getFromPoints();
+    void setFromPoints(QList<QList<double>*>* from_points);
 
-    QString* getToPoints();
-    void setToPoints(QString* to_points);
+    QList<QList<double>*>* getToPoints();
+    void setToPoints(QList<QList<double>*>* to_points);
 
     QList<QString*>* getOutArrays();
     void setOutArrays(QList<QString*>* out_arrays);
@@ -64,10 +64,10 @@ private:
     QList<QList<double>*>* points;
     bool m_points_isSet;
     
-    QString* from_points;
+    QList<QList<double>*>* from_points;
     bool m_from_points_isSet;
     
-    QString* to_points;
+    QList<QList<double>*>* to_points;
     bool m_to_points_isSet;
     
     QList<QString*>* out_arrays;

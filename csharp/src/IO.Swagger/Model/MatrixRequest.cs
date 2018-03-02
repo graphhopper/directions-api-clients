@@ -38,7 +38,7 @@ namespace IO.Swagger.Model
         /// <param name="ToPoints">The destination points for the routes. Is a string with the format longitude,latitude..</param>
         /// <param name="OutArrays">Specifies which arrays should be included in the response. Specify one or more of the following options &#39;weights&#39;, &#39;times&#39;, &#39;distances&#39;. To specify more than one array use e.g. out_array&#x3D;times&amp;amp;out_array&#x3D;distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API..</param>
         /// <param name="Vehicle">The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc, see here for the details..</param>
-        public MatrixRequest(List<List<double?>> Points = default(List<List<double?>>), string FromPoints = default(string), string ToPoints = default(string), List<string> OutArrays = default(List<string>), string Vehicle = default(string))
+        public MatrixRequest(List<List<double?>> Points = default(List<List<double?>>), List<List<double?>> FromPoints = default(List<List<double?>>), List<List<double?>> ToPoints = default(List<List<double?>>), List<string> OutArrays = default(List<string>), string Vehicle = default(string))
         {
             this.Points = Points;
             this.FromPoints = FromPoints;
@@ -59,14 +59,14 @@ namespace IO.Swagger.Model
         /// </summary>
         /// <value>The starting points for the routes. E.g. if you want to calculate the three routes A-&amp;gt;1, A-&amp;gt;2, A-&amp;gt;3 then you have one from_point parameter and three to_point parameters. Is a string with the format longitude,latitude.</value>
         [DataMember(Name="from_points", EmitDefaultValue=false)]
-        public string FromPoints { get; set; }
+        public List<List<double?>> FromPoints { get; set; }
 
         /// <summary>
         /// The destination points for the routes. Is a string with the format longitude,latitude.
         /// </summary>
         /// <value>The destination points for the routes. Is a string with the format longitude,latitude.</value>
         [DataMember(Name="to_points", EmitDefaultValue=false)]
-        public string ToPoints { get; set; }
+        public List<List<double?>> ToPoints { get; set; }
 
         /// <summary>
         /// Specifies which arrays should be included in the response. Specify one or more of the following options &#39;weights&#39;, &#39;times&#39;, &#39;distances&#39;. To specify more than one array use e.g. out_array&#x3D;times&amp;amp;out_array&#x3D;distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API.
@@ -136,13 +136,13 @@ namespace IO.Swagger.Model
                 ) && 
                 (
                     this.FromPoints == input.FromPoints ||
-                    (this.FromPoints != null &&
-                    this.FromPoints.Equals(input.FromPoints))
+                    this.FromPoints != null &&
+                    this.FromPoints.SequenceEqual(input.FromPoints)
                 ) && 
                 (
                     this.ToPoints == input.ToPoints ||
-                    (this.ToPoints != null &&
-                    this.ToPoints.Equals(input.ToPoints))
+                    this.ToPoints != null &&
+                    this.ToPoints.SequenceEqual(input.ToPoints)
                 ) && 
                 (
                     this.OutArrays == input.OutArrays ||

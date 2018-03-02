@@ -46,8 +46,8 @@ module DirectionsApiClient
     def self.swagger_types
       {
         :'points' => :'Array<Array<Float>>',
-        :'from_points' => :'String',
-        :'to_points' => :'String',
+        :'from_points' => :'Array<Array<Float>>',
+        :'to_points' => :'Array<Array<Float>>',
         :'out_arrays' => :'Array<String>',
         :'vehicle' => :'String'
       }
@@ -68,11 +68,15 @@ module DirectionsApiClient
       end
 
       if attributes.has_key?(:'from_points')
-        self.from_points = attributes[:'from_points']
+        if (value = attributes[:'from_points']).is_a?(Array)
+          self.from_points = value
+        end
       end
 
       if attributes.has_key?(:'to_points')
-        self.to_points = attributes[:'to_points']
+        if (value = attributes[:'to_points']).is_a?(Array)
+          self.to_points = value
+        end
       end
 
       if attributes.has_key?(:'out_arrays')

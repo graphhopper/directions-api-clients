@@ -8,11 +8,11 @@ class MatrixRequest {
   
 /* The starting points for the routes. E.g. if you want to calculate the three routes A-&gt;1, A-&gt;2, A-&gt;3 then you have one from_point parameter and three to_point parameters. Is a string with the format longitude,latitude. */
   @Property(name: 'from_points')
-  String fromPoints = null;
+  List<List<double>> fromPoints = [];
   
 /* The destination points for the routes. Is a string with the format longitude,latitude. */
   @Property(name: 'to_points')
-  String toPoints = null;
+  List<List<double>> toPoints = [];
   
 /* Specifies which arrays should be included in the response. Specify one or more of the following options 'weights', 'times', 'distances'. To specify more than one array use e.g. out_array=times&amp;out_array=distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API. */
   @Property(name: 'out_arrays')

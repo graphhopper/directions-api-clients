@@ -651,14 +651,24 @@ definitions:
             type: "number"
             format: "double"
       from_points:
-        type: "string"
+        type: "array"
         description: "The starting points for the routes. E.g. if you want to calculate\
           \ the three routes A-&gt;1, A-&gt;2, A-&gt;3 then you have one from_point\
           \ parameter and three to_point parameters. Is a string with the format longitude,latitude."
+        items:
+          type: "array"
+          items:
+            type: "number"
+            format: "double"
       to_points:
-        type: "string"
+        type: "array"
         description: "The destination points for the routes. Is a string with the\
           \ format longitude,latitude."
+        items:
+          type: "array"
+          items:
+            type: "number"
+            format: "double"
       out_arrays:
         type: "array"
         description: "Specifies which arrays should be included in the response. Specify\
@@ -677,8 +687,16 @@ definitions:
       out_arrays:
       - "out_arrays"
       - "out_arrays"
-      from_points: "from_points"
-      to_points: "to_points"
+      from_points:
+      - - 6.027456183070403
+        - 6.027456183070403
+      - - 6.027456183070403
+        - 6.027456183070403
+      to_points:
+      - - 1.4658129805029452
+        - 1.4658129805029452
+      - - 1.4658129805029452
+        - 1.4658129805029452
       points:
       - - 0.8008281904610115
         - 0.8008281904610115

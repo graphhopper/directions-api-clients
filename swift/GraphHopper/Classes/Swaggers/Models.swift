@@ -451,8 +451,8 @@ class Decoders {
                 let sourceDictionary = source as! [NSObject:AnyObject]
                 let instance = MatrixRequest()
                 instance.points = Decoders.decodeOptional(clazz: Array.self, source: sourceDictionary["points"])
-                instance.fromPoints = Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["from_points"])
-                instance.toPoints = Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["to_points"])
+                instance.fromPoints = Decoders.decodeOptional(clazz: Array.self, source: sourceDictionary["from_points"])
+                instance.toPoints = Decoders.decodeOptional(clazz: Array.self, source: sourceDictionary["to_points"])
                 instance.outArrays = Decoders.decodeOptional(clazz: Array.self, source: sourceDictionary["out_arrays"])
                 instance.vehicle = Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["vehicle"])
                 return instance

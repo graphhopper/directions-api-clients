@@ -33,11 +33,13 @@ MatrixRequest <- R6::R6Class(
         self$`points` <- `points`
       }
       if (!missing(`from_points`)) {
-        stopifnot(is.character(`from_points`), length(`from_points`) == 1)
+        stopifnot(is.list(`from_points`), length(`from_points`) != 0)
+        lapply(`from_points`, function(x) stopifnot(R6::is.R6(x)))
         self$`from_points` <- `from_points`
       }
       if (!missing(`to_points`)) {
-        stopifnot(is.character(`to_points`), length(`to_points`) == 1)
+        stopifnot(is.list(`to_points`), length(`to_points`) != 0)
+        lapply(`to_points`, function(x) stopifnot(R6::is.R6(x)))
         self$`to_points` <- `to_points`
       }
       if (!missing(`out_arrays`)) {
@@ -56,10 +58,10 @@ MatrixRequest <- R6::R6Class(
         MatrixRequestObject[['points']] <- lapply(self$`points`, function(x) x$toJSON())
       }
       if (!is.null(self$`from_points`)) {
-        MatrixRequestObject[['from_points']] <- self$`from_points`
+        MatrixRequestObject[['from_points']] <- lapply(self$`from_points`, function(x) x$toJSON())
       }
       if (!is.null(self$`to_points`)) {
-        MatrixRequestObject[['to_points']] <- self$`to_points`
+        MatrixRequestObject[['to_points']] <- lapply(self$`to_points`, function(x) x$toJSON())
       }
       if (!is.null(self$`out_arrays`)) {
         MatrixRequestObject[['out_arrays']] <- self$`out_arrays`
@@ -80,10 +82,18 @@ MatrixRequest <- R6::R6Class(
         })
       }
       if (!is.null(MatrixRequestObject$`from_points`)) {
-        self$`from_points` <- MatrixRequestObject$`from_points`
+        self$`from_points` <- lapply(MatrixRequestObject$`from_points`, function(x) {
+          from_pointsObject <- Numeric$new()
+          from_pointsObject$fromJSON(jsonlite::toJSON(x, auto_unbox = TRUE))
+          from_pointsObject
+        })
       }
       if (!is.null(MatrixRequestObject$`to_points`)) {
-        self$`to_points` <- MatrixRequestObject$`to_points`
+        self$`to_points` <- lapply(MatrixRequestObject$`to_points`, function(x) {
+          to_pointsObject <- Numeric$new()
+          to_pointsObject$fromJSON(jsonlite::toJSON(x, auto_unbox = TRUE))
+          to_pointsObject
+        })
       }
       if (!is.null(MatrixRequestObject$`out_arrays`)) {
         self$`out_arrays` <- MatrixRequestObject$`out_arrays`
@@ -96,14 +106,14 @@ MatrixRequest <- R6::R6Class(
        sprintf(
         '{
            "points": [%s],
-           "from_points": %s,
-           "to_points": %s,
+           "from_points": [%s],
+           "to_points": [%s],
            "out_arrays": [%s],
            "vehicle": %s
         }',
         lapply(self$`points`, function(x) paste(x$toJSON(), sep=",")),
-        self$`from_points`,
-        self$`to_points`,
+        lapply(self$`from_points`, function(x) paste(x$toJSON(), sep=",")),
+        lapply(self$`to_points`, function(x) paste(x$toJSON(), sep=",")),
         lapply(self$`out_arrays`, function(x) paste(paste0('"', x, '"'), sep=",")),
         self$`vehicle`
       )
@@ -111,8 +121,8 @@ MatrixRequest <- R6::R6Class(
     fromJSONString = function(MatrixRequestJson) {
       MatrixRequestObject <- jsonlite::fromJSON(MatrixRequestJson)
       self$`points` <- lapply(MatrixRequestObject$`points`, function(x) Numeric$new()$fromJSON(jsonlite::toJSON(x, auto_unbox = TRUE)))
-      self$`from_points` <- MatrixRequestObject$`from_points`
-      self$`to_points` <- MatrixRequestObject$`to_points`
+      self$`from_points` <- lapply(MatrixRequestObject$`from_points`, function(x) Numeric$new()$fromJSON(jsonlite::toJSON(x, auto_unbox = TRUE)))
+      self$`to_points` <- lapply(MatrixRequestObject$`to_points`, function(x) Numeric$new()$fromJSON(jsonlite::toJSON(x, auto_unbox = TRUE)))
       self$`out_arrays` <- MatrixRequestObject$`out_arrays`
       self$`vehicle` <- MatrixRequestObject$`vehicle`
     }

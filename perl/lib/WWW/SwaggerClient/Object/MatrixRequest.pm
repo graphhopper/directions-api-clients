@@ -151,14 +151,14 @@ __PACKAGE__->method_documentation({
     	read_only => '',
     		},
     'from_points' => {
-    	datatype => 'string',
+    	datatype => 'ARRAY[ARRAY[double]]',
     	base_name => 'from_points',
     	description => 'The starting points for the routes. E.g. if you want to calculate the three routes A-&amp;gt;1, A-&amp;gt;2, A-&amp;gt;3 then you have one from_point parameter and three to_point parameters. Is a string with the format longitude,latitude.',
     	format => '',
     	read_only => '',
     		},
     'to_points' => {
-    	datatype => 'string',
+    	datatype => 'ARRAY[ARRAY[double]]',
     	base_name => 'to_points',
     	description => 'The destination points for the routes. Is a string with the format longitude,latitude.',
     	format => '',
@@ -182,8 +182,8 @@ __PACKAGE__->method_documentation({
 
 __PACKAGE__->swagger_types( {
     'points' => 'ARRAY[ARRAY[double]]',
-    'from_points' => 'string',
-    'to_points' => 'string',
+    'from_points' => 'ARRAY[ARRAY[double]]',
+    'to_points' => 'ARRAY[ARRAY[double]]',
     'out_arrays' => 'ARRAY[string]',
     'vehicle' => 'string'
 } );

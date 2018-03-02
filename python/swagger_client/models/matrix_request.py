@@ -32,8 +32,8 @@ class MatrixRequest(object):
     """
     swagger_types = {
         'points': 'list[list[float]]',
-        'from_points': 'str',
-        'to_points': 'str',
+        'from_points': 'list[list[float]]',
+        'to_points': 'list[list[float]]',
         'out_arrays': 'list[str]',
         'vehicle': 'str'
     }
@@ -97,7 +97,7 @@ class MatrixRequest(object):
         The starting points for the routes. E.g. if you want to calculate the three routes A-&gt;1, A-&gt;2, A-&gt;3 then you have one from_point parameter and three to_point parameters. Is a string with the format longitude,latitude.  # noqa: E501
 
         :return: The from_points of this MatrixRequest.  # noqa: E501
-        :rtype: str
+        :rtype: list[list[float]]
         """
         return self._from_points
 
@@ -108,7 +108,7 @@ class MatrixRequest(object):
         The starting points for the routes. E.g. if you want to calculate the three routes A-&gt;1, A-&gt;2, A-&gt;3 then you have one from_point parameter and three to_point parameters. Is a string with the format longitude,latitude.  # noqa: E501
 
         :param from_points: The from_points of this MatrixRequest.  # noqa: E501
-        :type: str
+        :type: list[list[float]]
         """
 
         self._from_points = from_points
@@ -120,7 +120,7 @@ class MatrixRequest(object):
         The destination points for the routes. Is a string with the format longitude,latitude.  # noqa: E501
 
         :return: The to_points of this MatrixRequest.  # noqa: E501
-        :rtype: str
+        :rtype: list[list[float]]
         """
         return self._to_points
 
@@ -131,7 +131,7 @@ class MatrixRequest(object):
         The destination points for the routes. Is a string with the format longitude,latitude.  # noqa: E501
 
         :param to_points: The to_points of this MatrixRequest.  # noqa: E501
-        :type: str
+        :type: list[list[float]]
         """
 
         self._to_points = to_points

@@ -19,10 +19,10 @@ pub struct MatrixRequest {
   points: Option<Vec<Vec<f64>>>,
   /// The starting points for the routes. E.g. if you want to calculate the three routes A-&gt;1, A-&gt;2, A-&gt;3 then you have one from_point parameter and three to_point parameters. Is a string with the format longitude,latitude.
   #[serde(rename = "from_points")]
-  from_points: Option<String>,
+  from_points: Option<Vec<Vec<f64>>>,
   /// The destination points for the routes. Is a string with the format longitude,latitude.
   #[serde(rename = "to_points")]
-  to_points: Option<String>,
+  to_points: Option<Vec<Vec<f64>>>,
   /// Specifies which arrays should be included in the response. Specify one or more of the following options 'weights', 'times', 'distances'. To specify more than one array use e.g. out_array=times&amp;out_array=distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API.
   #[serde(rename = "out_arrays")]
   out_arrays: Option<Vec<String>>,
@@ -59,16 +59,16 @@ impl MatrixRequest {
     self.points = None;
   }
 
-  pub fn set_from_points(&mut self, from_points: String) {
+  pub fn set_from_points(&mut self, from_points: Vec<Vec<f64>>) {
     self.from_points = Some(from_points);
   }
 
-  pub fn with_from_points(mut self, from_points: String) -> MatrixRequest {
+  pub fn with_from_points(mut self, from_points: Vec<Vec<f64>>) -> MatrixRequest {
     self.from_points = Some(from_points);
     self
   }
 
-  pub fn from_points(&self) -> Option<&String> {
+  pub fn from_points(&self) -> Option<&Vec<Vec<f64>>> {
     self.from_points.as_ref()
   }
 
@@ -76,16 +76,16 @@ impl MatrixRequest {
     self.from_points = None;
   }
 
-  pub fn set_to_points(&mut self, to_points: String) {
+  pub fn set_to_points(&mut self, to_points: Vec<Vec<f64>>) {
     self.to_points = Some(to_points);
   }
 
-  pub fn with_to_points(mut self, to_points: String) -> MatrixRequest {
+  pub fn with_to_points(mut self, to_points: Vec<Vec<f64>>) -> MatrixRequest {
     self.to_points = Some(to_points);
     self
   }
 
-  pub fn to_points(&self) -> Option<&String> {
+  pub fn to_points(&self) -> Option<&Vec<Vec<f64>>> {
     self.to_points.as_ref()
   }
 

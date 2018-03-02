@@ -35,10 +35,10 @@ public class MatrixRequest {
   private List<List<Double>> points = null;
 
   @SerializedName("from_points")
-  private String fromPoints = null;
+  private List<List<Double>> fromPoints = null;
 
   @SerializedName("to_points")
-  private String toPoints = null;
+  private List<List<Double>> toPoints = null;
 
   @SerializedName("out_arrays")
   private List<String> outArrays = null;
@@ -72,8 +72,16 @@ public class MatrixRequest {
     this.points = points;
   }
 
-  public MatrixRequest fromPoints(String fromPoints) {
+  public MatrixRequest fromPoints(List<List<Double>> fromPoints) {
     this.fromPoints = fromPoints;
+    return this;
+  }
+
+  public MatrixRequest addFromPointsItem(List<Double> fromPointsItem) {
+    if (this.fromPoints == null) {
+      this.fromPoints = new ArrayList<List<Double>>();
+    }
+    this.fromPoints.add(fromPointsItem);
     return this;
   }
 
@@ -82,16 +90,24 @@ public class MatrixRequest {
    * @return fromPoints
   **/
   @ApiModelProperty(value = "The starting points for the routes. E.g. if you want to calculate the three routes A-&gt;1, A-&gt;2, A-&gt;3 then you have one from_point parameter and three to_point parameters. Is a string with the format longitude,latitude.")
-  public String getFromPoints() {
+  public List<List<Double>> getFromPoints() {
     return fromPoints;
   }
 
-  public void setFromPoints(String fromPoints) {
+  public void setFromPoints(List<List<Double>> fromPoints) {
     this.fromPoints = fromPoints;
   }
 
-  public MatrixRequest toPoints(String toPoints) {
+  public MatrixRequest toPoints(List<List<Double>> toPoints) {
     this.toPoints = toPoints;
+    return this;
+  }
+
+  public MatrixRequest addToPointsItem(List<Double> toPointsItem) {
+    if (this.toPoints == null) {
+      this.toPoints = new ArrayList<List<Double>>();
+    }
+    this.toPoints.add(toPointsItem);
     return this;
   }
 
@@ -100,11 +116,11 @@ public class MatrixRequest {
    * @return toPoints
   **/
   @ApiModelProperty(value = "The destination points for the routes. Is a string with the format longitude,latitude.")
-  public String getToPoints() {
+  public List<List<Double>> getToPoints() {
     return toPoints;
   }
 
-  public void setToPoints(String toPoints) {
+  public void setToPoints(List<List<Double>> toPoints) {
     this.toPoints = toPoints;
   }
 

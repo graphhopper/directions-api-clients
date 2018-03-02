@@ -27,11 +27,11 @@ MatrixRequest::__init()
 	//new std::list()std::list> points;
 	//
 	//
+	//new std::list()std::list> from_points;
 	//
-	//from_points = std::string();
 	//
+	//new std::list()std::list> to_points;
 	//
-	//to_points = std::string();
 	//
 	//new std::list()std::list> out_arrays;
 	//
@@ -50,12 +50,12 @@ MatrixRequest::__cleanup()
 	//points = NULL;
 	//}
 	//if(from_points != NULL) {
-	//
+	//from_points.RemoveAll(true);
 	//delete from_points;
 	//from_points = NULL;
 	//}
 	//if(to_points != NULL) {
-	//
+	//to_points.RemoveAll(true);
 	//delete to_points;
 	//to_points = NULL;
 	//}
@@ -105,23 +105,49 @@ MatrixRequest::fromJson(char* jsonStr)
 	node = json_object_get_member(pJsonObject, from_pointsKey);
 	if (node !=NULL) {
 	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&from_points, node, "std::string", "");
-		} else {
-			
+		{
+			JsonArray* arr = json_node_get_array(node);
+			JsonNode*  temp_json;
+			list<std::list> new_list;
+			std::list inst;
+			for (guint i=0;i<json_array_get_length(arr);i++) {
+				temp_json = json_array_get_element(arr,i);
+				if (isprimitive("std::list")) {
+					jsonToValue(&inst, temp_json, "std::list", "");
+				} else {
+					
+					inst.fromJson(json_to_string(temp_json, false));
+					
+				}
+				new_list.push_back(inst);
+			}
+			from_points = new_list;
 		}
+		
 	}
 	const gchar *to_pointsKey = "to_points";
 	node = json_object_get_member(pJsonObject, to_pointsKey);
 	if (node !=NULL) {
 	
-
-		if (isprimitive("std::string")) {
-			jsonToValue(&to_points, node, "std::string", "");
-		} else {
-			
+		{
+			JsonArray* arr = json_node_get_array(node);
+			JsonNode*  temp_json;
+			list<std::list> new_list;
+			std::list inst;
+			for (guint i=0;i<json_array_get_length(arr);i++) {
+				temp_json = json_array_get_element(arr,i);
+				if (isprimitive("std::list")) {
+					jsonToValue(&inst, temp_json, "std::list", "");
+				} else {
+					
+					inst.fromJson(json_to_string(temp_json, false));
+					
+				}
+				new_list.push_back(inst);
+			}
+			to_points = new_list;
 		}
+		
 	}
 	const gchar *out_arraysKey = "out_arrays";
 	node = json_object_get_member(pJsonObject, out_arraysKey);
@@ -193,22 +219,54 @@ MatrixRequest::toJson()
 	
 	const gchar *pointsKey = "points";
 	json_object_set_member(pJsonObject, pointsKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getFromPoints();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
+	if (isprimitive("std::list")) {
+		list<std::list> new_list = static_cast<list <std::list> > (getFromPoints());
+		node = converttoJson(&new_list, "std::list", "array");
+	} else {
+		node = json_node_alloc();
+		list<std::list> new_list = static_cast<list <std::list> > (getFromPoints());
+		JsonArray* json_array = json_array_new();
+		GError *mygerror;
+		
+		for (list<std::list>::iterator it = new_list.begin(); it != new_list.end(); it++) {
+			mygerror = NULL;
+			std::list obj = *it;
+			JsonNode *node_temp = json_from_string(obj.toJson(), &mygerror);
+			json_array_add_element(json_array, node_temp);
+			g_clear_error(&mygerror);
+		}
+		json_node_init_array(node, json_array);
+		json_array_unref(json_array);
 		
 	}
+
+
+	
 	const gchar *from_pointsKey = "from_points";
 	json_object_set_member(pJsonObject, from_pointsKey, node);
-	if (isprimitive("std::string")) {
-		std::string obj = getToPoints();
-		node = converttoJson(&obj, "std::string", "");
-	}
-	else {
+	if (isprimitive("std::list")) {
+		list<std::list> new_list = static_cast<list <std::list> > (getToPoints());
+		node = converttoJson(&new_list, "std::list", "array");
+	} else {
+		node = json_node_alloc();
+		list<std::list> new_list = static_cast<list <std::list> > (getToPoints());
+		JsonArray* json_array = json_array_new();
+		GError *mygerror;
+		
+		for (list<std::list>::iterator it = new_list.begin(); it != new_list.end(); it++) {
+			mygerror = NULL;
+			std::list obj = *it;
+			JsonNode *node_temp = json_from_string(obj.toJson(), &mygerror);
+			json_array_add_element(json_array, node_temp);
+			g_clear_error(&mygerror);
+		}
+		json_node_init_array(node, json_array);
+		json_array_unref(json_array);
 		
 	}
+
+
+	
 	const gchar *to_pointsKey = "to_points";
 	json_object_set_member(pJsonObject, to_pointsKey, node);
 	if (isprimitive("std::string")) {
@@ -255,26 +313,26 @@ MatrixRequest::setPoints(std::list <std::list> points)
 	this->points = points;
 }
 
-std::string
+std::list<std::list>
 MatrixRequest::getFromPoints()
 {
 	return from_points;
 }
 
 void
-MatrixRequest::setFromPoints(std::string  from_points)
+MatrixRequest::setFromPoints(std::list <std::list> from_points)
 {
 	this->from_points = from_points;
 }
 
-std::string
+std::list<std::list>
 MatrixRequest::getToPoints()
 {
 	return to_points;
 }
 
 void
-MatrixRequest::setToPoints(std::string  to_points)
+MatrixRequest::setToPoints(std::list <std::list> to_points)
 {
 	this->to_points = to_points;
 }
