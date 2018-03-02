@@ -7,3 +7,4 @@ nodejs-server/
 .idea/
 *iml
 csharp/nuget.exe
+java-examples/target

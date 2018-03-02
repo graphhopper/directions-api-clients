@@ -1,6 +1,6 @@
 {
     "name": "graphhopper/directions-api-client",
-    "version": "0.10-SNAPSHOT",
+    "version": "0.11-SNAPSHOT",
     "description": "",
     "keywords": [
         "swagger",
