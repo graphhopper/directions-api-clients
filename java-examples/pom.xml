@@ -5,16 +5,10 @@
 
     <groupId>com.graphhopper</groupId>
     <artifactId>directions-api-client-examples</artifactId>
-    <version>0.10-SNAPSHOT</version>
+    <version>0.11-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>GraphHopper Directions API examples</name>
      
-    <parent>
-        <groupId>com.graphhopper</groupId>
-        <artifactId>directions-api-client-parent</artifactId>    	
-        <version>0.10-SNAPSHOT</version>
-    </parent>  
-    
     <properties>
         <slf4j.version>1.7.21</slf4j.version>        
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -25,7 +19,14 @@
         <dependency>
             <groupId>com.graphhopper</groupId>
             <artifactId>directions-api-client</artifactId>
-            <version>${project.parent.version}</version>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
     <build>
