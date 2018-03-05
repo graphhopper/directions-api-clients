@@ -43,7 +43,10 @@ class Vehicle(object):
         'earliest_start': 'int',
         'latest_end': 'int',
         'skills': 'list[str]',
-        'max_distance': 'int'
+        'max_distance': 'int',
+        'max_driving_time': 'int',
+        'max_jobs': 'int',
+        'max_activities': 'int'
     }
 
     attribute_map = {
@@ -56,10 +59,13 @@ class Vehicle(object):
         'earliest_start': 'earliest_start',
         'latest_end': 'latest_end',
         'skills': 'skills',
-        'max_distance': 'max_distance'
+        'max_distance': 'max_distance',
+        'max_driving_time': 'max_driving_time',
+        'max_jobs': 'max_jobs',
+        'max_activities': 'max_activities'
     }
 
-    def __init__(self, vehicle_id=None, type_id=None, start_address=None, end_address=None, _break=None, return_to_depot=None, earliest_start=None, latest_end=None, skills=None, max_distance=None):  # noqa: E501
+    def __init__(self, vehicle_id=None, type_id=None, start_address=None, end_address=None, _break=None, return_to_depot=None, earliest_start=None, latest_end=None, skills=None, max_distance=None, max_driving_time=None, max_jobs=None, max_activities=None):  # noqa: E501
         """Vehicle - a model defined in Swagger"""  # noqa: E501
 
         self._vehicle_id = None
@@ -72,6 +78,9 @@ class Vehicle(object):
         self._latest_end = None
         self._skills = None
         self._max_distance = None
+        self._max_driving_time = None
+        self._max_jobs = None
+        self._max_activities = None
         self.discriminator = None
 
         if vehicle_id is not None:
@@ -94,6 +103,12 @@ class Vehicle(object):
             self.skills = skills
         if max_distance is not None:
             self.max_distance = max_distance
+        if max_driving_time is not None:
+            self.max_driving_time = max_driving_time
+        if max_jobs is not None:
+            self.max_jobs = max_jobs
+        if max_activities is not None:
+            self.max_activities = max_activities
 
     @property
     def vehicle_id(self):
@@ -318,6 +333,75 @@ class Vehicle(object):
         """
 
         self._max_distance = max_distance
+
+    @property
+    def max_driving_time(self):
+        """Gets the max_driving_time of this Vehicle.  # noqa: E501
+
+        max drive time of vehicle  # noqa: E501
+
+        :return: The max_driving_time of this Vehicle.  # noqa: E501
+        :rtype: int
+        """
+        return self._max_driving_time
+
+    @max_driving_time.setter
+    def max_driving_time(self, max_driving_time):
+        """Sets the max_driving_time of this Vehicle.
+
+        max drive time of vehicle  # noqa: E501
+
+        :param max_driving_time: The max_driving_time of this Vehicle.  # noqa: E501
+        :type: int
+        """
+
+        self._max_driving_time = max_driving_time
+
+    @property
+    def max_jobs(self):
+        """Gets the max_jobs of this Vehicle.  # noqa: E501
+
+        max number of jobs the vehicle can load  # noqa: E501
+
+        :return: The max_jobs of this Vehicle.  # noqa: E501
+        :rtype: int
+        """
+        return self._max_jobs
+
+    @max_jobs.setter
+    def max_jobs(self, max_jobs):
+        """Sets the max_jobs of this Vehicle.
+
+        max number of jobs the vehicle can load  # noqa: E501
+
+        :param max_jobs: The max_jobs of this Vehicle.  # noqa: E501
+        :type: int
+        """
+
+        self._max_jobs = max_jobs
+
+    @property
+    def max_activities(self):
+        """Gets the max_activities of this Vehicle.  # noqa: E501
+
+        max number of activities the vehicle can conduct  # noqa: E501
+
+        :return: The max_activities of this Vehicle.  # noqa: E501
+        :rtype: int
+        """
+        return self._max_activities
+
+    @max_activities.setter
+    def max_activities(self, max_activities):
+        """Sets the max_activities of this Vehicle.
+
+        max number of activities the vehicle can conduct  # noqa: E501
+
+        :param max_activities: The max_activities of this Vehicle.  # noqa: E501
+        :type: int
+        """
+
+        self._max_activities = max_activities
 
     def to_dict(self):
         """Returns the model properties as a dict"""

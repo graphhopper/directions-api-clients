@@ -36,4 +36,13 @@ type Vehicle struct {
 
 	// max distance of vehicle
 	MaxDistance int64 `json:"max_distance,omitempty"`
+
+	// max drive time of vehicle
+	MaxDrivingTime int64 `json:"max_driving_time,omitempty"`
+
+	// max number of jobs the vehicle can load
+	MaxJobs int32 `json:"max_jobs,omitempty"`
+
+	// max number of activities the vehicle can conduct
+	MaxActivities int32 `json:"max_activities,omitempty"`
 }

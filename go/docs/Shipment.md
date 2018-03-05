@@ -11,6 +11,8 @@ Name | Type | Description | Notes
 **Size** | **[]int32** | array of capacity dimensions | [optional] [default to null]
 **RequiredSkills** | **[]string** | array of required skills | [optional] [default to null]
 **AllowedVehicles** | **[]string** | array of allowed vehicle ids | [optional] [default to null]
+**DisallowedVehicles** | **[]string** | array of disallowed vehicle ids | [optional] [default to null]
+**MaxTimeInVehicle** | **int64** | max time shipment can stay in vehicle | [optional] [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -35,10 +35,10 @@ namespace IO.Swagger.Model
         /// </summary>
         /// <param name="Costs">overall costs of solution.</param>
         /// <param name="Distance">overall travel distance in meters.</param>
-        /// <param name="Time">overall transport time in ms.</param>
-        /// <param name="TransportTime">overall transport time in ms.</param>
-        /// <param name="MaxOperationTime">operation time of the longest route in ms.</param>
-        /// <param name="WaitingTime">total waiting time in ms.</param>
+        /// <param name="Time">overall transport time in seconds.</param>
+        /// <param name="TransportTime">overall transport time in seconds.</param>
+        /// <param name="MaxOperationTime">operation time of the longest route in seconds.</param>
+        /// <param name="WaitingTime">total waiting time in seconds.</param>
         /// <param name="NoVehicles">number of employed vehicles.</param>
         /// <param name="NoUnassigned">number of jobs that could not be assigned to final solution.</param>
         /// <param name="Routes">An array of routes.</param>
@@ -72,30 +72,30 @@ namespace IO.Swagger.Model
         public int? Distance { get; set; }
 
         /// <summary>
-        /// overall transport time in ms
+        /// overall transport time in seconds
         /// </summary>
-        /// <value>overall transport time in ms</value>
+        /// <value>overall transport time in seconds</value>
         [DataMember(Name="time", EmitDefaultValue=false)]
         public long? Time { get; set; }
 
         /// <summary>
-        /// overall transport time in ms
+        /// overall transport time in seconds
         /// </summary>
-        /// <value>overall transport time in ms</value>
+        /// <value>overall transport time in seconds</value>
         [DataMember(Name="transport_time", EmitDefaultValue=false)]
         public long? TransportTime { get; set; }
 
         /// <summary>
-        /// operation time of the longest route in ms
+        /// operation time of the longest route in seconds
         /// </summary>
-        /// <value>operation time of the longest route in ms</value>
+        /// <value>operation time of the longest route in seconds</value>
         [DataMember(Name="max_operation_time", EmitDefaultValue=false)]
         public long? MaxOperationTime { get; set; }
 
         /// <summary>
-        /// total waiting time in ms
+        /// total waiting time in seconds
         /// </summary>
-        /// <value>total waiting time in ms</value>
+        /// <value>total waiting time in seconds</value>
         [DataMember(Name="waiting_time", EmitDefaultValue=false)]
         public long? WaitingTime { get; set; }
 

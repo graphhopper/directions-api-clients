@@ -99,11 +99,11 @@ namespace IO.Swagger.Model
         /// <param name="Type">type of activity.</param>
         /// <param name="Id">id referring to the underlying service or shipment, i.e. the shipment or service this activity belongs to.</param>
         /// <param name="LocationId">id that refers to address.</param>
-        /// <param name="ArrTime">arrival time at this activity in ms.</param>
+        /// <param name="ArrTime">arrival time at this activity in seconds.</param>
         /// <param name="EndTime">end time of and thus departure time at this activity.</param>
-        /// <param name="WaitingTime">waiting time at this activity in ms.</param>
+        /// <param name="WaitingTime">waiting time at this activity in seconds.</param>
         /// <param name="Distance">cumulated distance from start to this activity in m.</param>
-        /// <param name="DrivingTime">driving time of driver in ms.</param>
+        /// <param name="DrivingTime">driving time of driver in seconds.</param>
         /// <param name="LoadBefore">Array with size/capacity dimensions before this activity.</param>
         /// <param name="LoadAfter">Array with size/capacity dimensions after this activity.</param>
         public Activity(TypeEnum? Type = default(TypeEnum?), string Id = default(string), string LocationId = default(string), long? ArrTime = default(long?), long? EndTime = default(long?), long? WaitingTime = default(long?), long? Distance = default(long?), long? DrivingTime = default(long?), List<int?> LoadBefore = default(List<int?>), List<int?> LoadAfter = default(List<int?>))
@@ -136,9 +136,9 @@ namespace IO.Swagger.Model
         public string LocationId { get; set; }
 
         /// <summary>
-        /// arrival time at this activity in ms
+        /// arrival time at this activity in seconds
         /// </summary>
-        /// <value>arrival time at this activity in ms</value>
+        /// <value>arrival time at this activity in seconds</value>
         [DataMember(Name="arr_time", EmitDefaultValue=false)]
         public long? ArrTime { get; set; }
 
@@ -150,9 +150,9 @@ namespace IO.Swagger.Model
         public long? EndTime { get; set; }
 
         /// <summary>
-        /// waiting time at this activity in ms
+        /// waiting time at this activity in seconds
         /// </summary>
-        /// <value>waiting time at this activity in ms</value>
+        /// <value>waiting time at this activity in seconds</value>
         [DataMember(Name="waiting_time", EmitDefaultValue=false)]
         public long? WaitingTime { get; set; }
 
@@ -164,9 +164,9 @@ namespace IO.Swagger.Model
         public long? Distance { get; set; }
 
         /// <summary>
-        /// driving time of driver in ms
+        /// driving time of driver in seconds
         /// </summary>
-        /// <value>driving time of driver in ms</value>
+        /// <value>driving time of driver in seconds</value>
         [DataMember(Name="driving_time", EmitDefaultValue=false)]
         public long? DrivingTime { get; set; }
 

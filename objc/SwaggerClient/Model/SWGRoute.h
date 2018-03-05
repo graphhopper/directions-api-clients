@@ -34,13 +34,13 @@
 /* distance of route in meter [optional]
  */
 @property(nonatomic) NSNumber* distance;
-/* transport time of route in ms [optional]
+/* transport time of route in seconds [optional]
  */
 @property(nonatomic) NSNumber* transportTime;
-/* completion time of route in ms [optional]
+/* completion time of route in seconds [optional]
  */
 @property(nonatomic) NSNumber* completionTime;
-/* waiting time of route in ms [optional]
+/* waiting time of route in seconds [optional]
  */
 @property(nonatomic) NSNumber* waitingTime;
 /* array of activities [optional]

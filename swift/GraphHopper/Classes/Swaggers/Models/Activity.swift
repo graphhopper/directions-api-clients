@@ -25,15 +25,15 @@ public class Activity: JSONEncodable {
     public var id: String?
     /** id that refers to address */
     public var locationId: String?
-    /** arrival time at this activity in ms */
+    /** arrival time at this activity in seconds */
     public var arrTime: Int64?
     /** end time of and thus departure time at this activity */
     public var endTime: Int64?
-    /** waiting time at this activity in ms */
+    /** waiting time at this activity in seconds */
     public var waitingTime: Int64?
     /** cumulated distance from start to this activity in m */
     public var distance: Int64?
-    /** driving time of driver in ms */
+    /** driving time of driver in seconds */
     public var drivingTime: Int64?
     /** Array with size/capacity dimensions before this activity */
     public var loadBefore: [Int32]?

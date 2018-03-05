@@ -59,6 +59,10 @@ SWGService::init() {
     m_required_skills_isSet = false;
     allowed_vehicles = new QList<QString*>();
     m_allowed_vehicles_isSet = false;
+    disallowed_vehicles = new QList<QString*>();
+    m_disallowed_vehicles_isSet = false;
+    max_time_in_vehicle = 0L;
+    m_max_time_in_vehicle_isSet = false;
 }
 
 void
@@ -100,6 +104,14 @@ SWGService::cleanup() {
         }
         delete allowed_vehicles;
     }
+    if(disallowed_vehicles != nullptr) { 
+        auto arr = disallowed_vehicles;
+        for(auto o: *arr) { 
+            delete o;
+        }
+        delete disallowed_vehicles;
+    }
+
 }
 
 SWGService*
@@ -135,6 +147,10 @@ SWGService::fromJsonObject(QJsonObject &pJson) {
     ::Swagger::setValue(&required_skills, pJson["required_skills"], "QList", "QString");
     
     ::Swagger::setValue(&allowed_vehicles, pJson["allowed_vehicles"], "QList", "QString");
+    
+    ::Swagger::setValue(&disallowed_vehicles, pJson["disallowed_vehicles"], "QList", "QString");
+    ::Swagger::setValue(&max_time_in_vehicle, pJson["max_time_in_vehicle"], "qint64", "");
+    
 }
 
 QString
@@ -193,6 +209,14 @@ SWGService::asJsonObject() {
     
     if(allowed_vehicles->size() > 0){
         toJsonArray((QList<void*>*)allowed_vehicles, obj, "allowed_vehicles", "QString");
+    }
+    
+    if(disallowed_vehicles->size() > 0){
+        toJsonArray((QList<void*>*)disallowed_vehicles, obj, "disallowed_vehicles", "QString");
+    }
+    
+    if(m_max_time_in_vehicle_isSet){
+        obj->insert("max_time_in_vehicle", QJsonValue(max_time_in_vehicle));
     }
 
     return obj;
@@ -308,6 +332,26 @@ SWGService::setAllowedVehicles(QList<QString*>* allowed_vehicles) {
     this->m_allowed_vehicles_isSet = true;
 }
 
+QList<QString*>*
+SWGService::getDisallowedVehicles() {
+    return disallowed_vehicles;
+}
+void
+SWGService::setDisallowedVehicles(QList<QString*>* disallowed_vehicles) {
+    this->disallowed_vehicles = disallowed_vehicles;
+    this->m_disallowed_vehicles_isSet = true;
+}
+
+qint64
+SWGService::getMaxTimeInVehicle() {
+    return max_time_in_vehicle;
+}
+void
+SWGService::setMaxTimeInVehicle(qint64 max_time_in_vehicle) {
+    this->max_time_in_vehicle = max_time_in_vehicle;
+    this->m_max_time_in_vehicle_isSet = true;
+}
+
 
 bool 
 SWGService::isSet(){
@@ -324,6 +368,8 @@ SWGService::isSet(){
         if(m_size_isSet){ isObjectUpdated = true; break;}if(size->size() > 0){ isObjectUpdated = true; break;}
         if(required_skills->size() > 0){ isObjectUpdated = true; break;}
         if(allowed_vehicles->size() > 0){ isObjectUpdated = true; break;}
+        if(disallowed_vehicles->size() > 0){ isObjectUpdated = true; break;}
+        if(m_max_time_in_vehicle_isSet){ isObjectUpdated = true; break;}
     }while(false);
     return isObjectUpdated;
 }

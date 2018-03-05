@@ -77,6 +77,12 @@ public:
     QList<QString*>* getAllowedVehicles();
     void setAllowedVehicles(QList<QString*>* allowed_vehicles);
 
+    QList<QString*>* getDisallowedVehicles();
+    void setDisallowedVehicles(QList<QString*>* disallowed_vehicles);
+
+    qint64 getMaxTimeInVehicle();
+    void setMaxTimeInVehicle(qint64 max_time_in_vehicle);
+
 
     virtual bool isSet() override;
 
@@ -113,6 +119,12 @@ private:
     
     QList<QString*>* allowed_vehicles;
     bool m_allowed_vehicles_isSet;
+    
+    QList<QString*>* disallowed_vehicles;
+    bool m_disallowed_vehicles_isSet;
+    
+    qint64 max_time_in_vehicle;
+    bool m_max_time_in_vehicle_isSet;
     
 };
 

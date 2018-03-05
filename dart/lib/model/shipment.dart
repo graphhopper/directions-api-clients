@@ -34,11 +34,19 @@ class Shipment {
   @Property(name: 'allowed_vehicles')
   List<String> allowedVehicles = [];
   
+/* array of disallowed vehicle ids */
+  @Property(name: 'disallowed_vehicles')
+  List<String> disallowedVehicles = [];
+  
+/* max time shipment can stay in vehicle */
+  @Property(name: 'max_time_in_vehicle')
+  int maxTimeInVehicle = null;
+  
   Shipment();
 
   @override
   String toString()  {
-    return 'Shipment[id=$id, name=$name, priority=$priority, pickup=$pickup, delivery=$delivery, size=$size, requiredSkills=$requiredSkills, allowedVehicles=$allowedVehicles, ]';
+    return 'Shipment[id=$id, name=$name, priority=$priority, pickup=$pickup, delivery=$delivery, size=$size, requiredSkills=$requiredSkills, allowedVehicles=$allowedVehicles, disallowedVehicles=$disallowedVehicles, maxTimeInVehicle=$maxTimeInVehicle, ]';
   }
 }
 

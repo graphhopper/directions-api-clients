@@ -13,6 +13,7 @@ public class VehicleType: JSONEncodable {
         case Car = "car"
         case Bike = "bike"
         case Foot = "foot"
+        case Hike = "hike"
         case Mtb = "mtb"
         case Racingbike = "racingbike"
         case Scooter = "scooter"

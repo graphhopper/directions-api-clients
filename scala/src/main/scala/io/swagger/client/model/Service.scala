@@ -23,7 +23,7 @@ case class Service (
   // name of service
   name: Option[String] = None,
   address: Option[Address] = None,
-  // duration of service, i.e. time in ms the corresponding activity takes
+  // duration of service, i.e. time in seconds the corresponding activity takes
   duration: Option[Long] = None,
   // preparation time of service, e.g. search for a parking space. it only falls due if the location of previous activity differs from this location
   preparationTime: Option[Long] = None,
@@ -34,6 +34,10 @@ case class Service (
   // array of required skills
   requiredSkills: Option[List[String]] = None,
   // array of allowed vehicle ids
-  allowedVehicles: Option[List[String]] = None
+  allowedVehicles: Option[List[String]] = None,
+  // array of disallowed vehicle ids
+  disallowedVehicles: Option[List[String]] = None,
+  // max time service can stay in vehicle
+  maxTimeInVehicle: Option[Long] = None
 )
 

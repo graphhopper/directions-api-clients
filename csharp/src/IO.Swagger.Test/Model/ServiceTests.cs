@@ -154,6 +154,22 @@ namespace IO.Swagger.Test
         {
             // TODO unit test for the property 'AllowedVehicles'
         }
+        /// <summary>
+        /// Test the property 'DisallowedVehicles'
+        /// </summary>
+        [Test]
+        public void DisallowedVehiclesTest()
+        {
+            // TODO unit test for the property 'DisallowedVehicles'
+        }
+        /// <summary>
+        /// Test the property 'MaxTimeInVehicle'
+        /// </summary>
+        [Test]
+        public void MaxTimeInVehicleTest()
+        {
+            // TODO unit test for the property 'MaxTimeInVehicle'
+        }
 
     }
 

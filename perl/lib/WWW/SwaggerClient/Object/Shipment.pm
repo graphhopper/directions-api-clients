@@ -200,6 +200,20 @@ __PACKAGE__->method_documentation({
     	format => '',
     	read_only => '',
     		},
+    'disallowed_vehicles' => {
+    	datatype => 'ARRAY[string]',
+    	base_name => 'disallowed_vehicles',
+    	description => 'array of disallowed vehicle ids',
+    	format => '',
+    	read_only => '',
+    		},
+    'max_time_in_vehicle' => {
+    	datatype => 'int',
+    	base_name => 'max_time_in_vehicle',
+    	description => 'max time shipment can stay in vehicle',
+    	format => '',
+    	read_only => '',
+    		},
 });
 
 __PACKAGE__->swagger_types( {
@@ -210,7 +224,9 @@ __PACKAGE__->swagger_types( {
     'delivery' => 'Stop',
     'size' => 'ARRAY[int]',
     'required_skills' => 'ARRAY[string]',
-    'allowed_vehicles' => 'ARRAY[string]'
+    'allowed_vehicles' => 'ARRAY[string]',
+    'disallowed_vehicles' => 'ARRAY[string]',
+    'max_time_in_vehicle' => 'int'
 } );
 
 __PACKAGE__->attribute_map( {
@@ -221,7 +237,9 @@ __PACKAGE__->attribute_map( {
     'delivery' => 'delivery',
     'size' => 'size',
     'required_skills' => 'required_skills',
-    'allowed_vehicles' => 'allowed_vehicles'
+    'allowed_vehicles' => 'allowed_vehicles',
+    'disallowed_vehicles' => 'disallowed_vehicles',
+    'max_time_in_vehicle' => 'max_time_in_vehicle'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

@@ -13,11 +13,11 @@ public class Route: JSONEncodable {
     public var vehicleId: String?
     /** distance of route in meter */
     public var distance: Int64?
-    /** transport time of route in ms */
+    /** transport time of route in seconds */
     public var transportTime: Int64?
-    /** completion time of route in ms */
+    /** completion time of route in seconds */
     public var completionTime: Int64?
-    /** waiting time of route in ms */
+    /** waiting time of route in seconds */
     public var waitingTime: Int64?
     /** array of activities */
     public var activities: [Activity]?

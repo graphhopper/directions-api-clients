@@ -155,7 +155,7 @@ __PACKAGE__->method_documentation({
     'duration' => {
     	datatype => 'int',
     	base_name => 'duration',
-    	description => 'duration of stop, i.e. time in ms the corresponding activity takes',
+    	description => 'duration of stop, i.e. time in seconds the corresponding activity takes',
     	format => '',
     	read_only => '',
     		},

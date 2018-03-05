@@ -13,6 +13,9 @@ Name | Type | Description | Notes
 **latestEnd** | **NSNumber*** | latest end of vehicle at its end location | [optional] 
 **skills** | **NSArray&lt;NSString*&gt;*** | array of skills | [optional] 
 **maxDistance** | **NSNumber*** | max distance of vehicle | [optional] 
+**maxDrivingTime** | **NSNumber*** | max drive time of vehicle | [optional] 
+**maxJobs** | **NSNumber*** | max number of jobs the vehicle can load | [optional] 
+**maxActivities** | **NSNumber*** | max number of activities the vehicle can conduct | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -106,10 +106,10 @@ Please follow the [installation procedure](#installation--usage) and then run th
 
 
 NSString* *key = @"key_example"; // Get your key at graphhopper.com
-NSString* *q = @"q_example"; // If you do forward geocoding, then this would be a textual description of the adress you are looking for. If you do reverse geocoding this would be in lat,lon. (optional)
+NSString* *q = @"q_example"; // If you do forward geocoding, then this would be a textual description of the address you are looking for (optional)
 NSString* *locale = @"locale_example"; // Display the search results for the specified locale. Currently French (fr), English (en), German (de) and Italian (it) are supported. If the locale wasn't found the default (en) is used. (optional)
 NSNumber* *limit = @56; // Specify the maximum number of returned results (optional)
-NSNumber* *reverse = @true; // Set to true to do a reverse Geocoding request (optional)
+NSNumber* *reverse = @true; // Set to true to do a reverse Geocoding request, see point parameter (optional)
 NSString* *point = @"point_example"; // The location bias in the format 'latitude,longitude' e.g. point=45.93272,11.58803 (optional)
 NSString* *provider = @"provider_example"; // Can be either, default, nominatim, opencagedata (optional)
 

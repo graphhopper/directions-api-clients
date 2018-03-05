@@ -16,16 +16,16 @@ type Solution struct {
 	// overall travel distance in meters
 	Distance int32 `json:"distance,omitempty"`
 
-	// overall transport time in ms
+	// overall transport time in seconds
 	Time int64 `json:"time,omitempty"`
 
-	// overall transport time in ms
+	// overall transport time in seconds
 	TransportTime int64 `json:"transport_time,omitempty"`
 
-	// operation time of the longest route in ms
+	// operation time of the longest route in seconds
 	MaxOperationTime int64 `json:"max_operation_time,omitempty"`
 
-	// total waiting time in ms
+	// total waiting time in seconds
 	WaitingTime int64 `json:"waiting_time,omitempty"`
 
 	// number of employed vehicles

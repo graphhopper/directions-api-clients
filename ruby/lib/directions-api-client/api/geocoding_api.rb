@@ -24,10 +24,10 @@ module DirectionsApiClient
     # This endpoint provides forward and reverse geocoding. For more details, review the official documentation at: https://graphhopper.com/api/1/docs/geocoding/ 
     # @param key Get your key at graphhopper.com
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :q If you do forward geocoding, then this would be a textual description of the adress you are looking for. If you do reverse geocoding this would be in lat,lon.
+    # @option opts [String] :q If you do forward geocoding, then this would be a textual description of the address you are looking for
     # @option opts [String] :locale Display the search results for the specified locale. Currently French (fr), English (en), German (de) and Italian (it) are supported. If the locale wasn&#39;t found the default (en) is used.
     # @option opts [Integer] :limit Specify the maximum number of returned results
-    # @option opts [BOOLEAN] :reverse Set to true to do a reverse Geocoding request
+    # @option opts [BOOLEAN] :reverse Set to true to do a reverse Geocoding request, see point parameter
     # @option opts [String] :point The location bias in the format &#39;latitude,longitude&#39; e.g. point&#x3D;45.93272,11.58803
     # @option opts [String] :provider Can be either, default, nominatim, opencagedata
     # @return [GeocodingResponse]
@@ -40,10 +40,10 @@ module DirectionsApiClient
     # This endpoint provides forward and reverse geocoding. For more details, review the official documentation at: https://graphhopper.com/api/1/docs/geocoding/ 
     # @param key Get your key at graphhopper.com
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :q If you do forward geocoding, then this would be a textual description of the adress you are looking for. If you do reverse geocoding this would be in lat,lon.
+    # @option opts [String] :q If you do forward geocoding, then this would be a textual description of the address you are looking for
     # @option opts [String] :locale Display the search results for the specified locale. Currently French (fr), English (en), German (de) and Italian (it) are supported. If the locale wasn&#39;t found the default (en) is used.
     # @option opts [Integer] :limit Specify the maximum number of returned results
-    # @option opts [BOOLEAN] :reverse Set to true to do a reverse Geocoding request
+    # @option opts [BOOLEAN] :reverse Set to true to do a reverse Geocoding request, see point parameter
     # @option opts [String] :point The location bias in the format &#39;latitude,longitude&#39; e.g. point&#x3D;45.93272,11.58803
     # @option opts [String] :provider Can be either, default, nominatim, opencagedata
     # @return [Array<(GeocodingResponse, Fixnum, Hash)>] GeocodingResponse data, response status code and response headers

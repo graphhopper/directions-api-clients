@@ -21,13 +21,13 @@ module DirectionsApiClient
     # distance of route in meter
     attr_accessor :distance
 
-    # transport time of route in ms
+    # transport time of route in seconds
     attr_accessor :transport_time
 
-    # completion time of route in ms
+    # completion time of route in seconds
     attr_accessor :completion_time
 
-    # waiting time of route in ms
+    # waiting time of route in seconds
     attr_accessor :waiting_time
 
     # array of activities

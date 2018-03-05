@@ -18,10 +18,10 @@ import io.swagger.client.models.Solution_unassigned
  * 
  * @param costs overall costs of solution
  * @param distance overall travel distance in meters
- * @param time overall transport time in ms
- * @param transport_time overall transport time in ms
- * @param max_operation_time operation time of the longest route in ms
- * @param waiting_time total waiting time in ms
+ * @param time overall transport time in seconds
+ * @param transport_time overall transport time in seconds
+ * @param max_operation_time operation time of the longest route in seconds
+ * @param waiting_time total waiting time in seconds
  * @param no_vehicles number of employed vehicles
  * @param no_unassigned number of jobs that could not be assigned to final solution
  * @param routes An array of routes
@@ -32,13 +32,13 @@ data class Solution (
     val costs: kotlin.Int? = null,
     /* overall travel distance in meters */
     val distance: kotlin.Int? = null,
-    /* overall transport time in ms */
+    /* overall transport time in seconds */
     val time: kotlin.Long? = null,
-    /* overall transport time in ms */
+    /* overall transport time in seconds */
     val transport_time: kotlin.Long? = null,
-    /* operation time of the longest route in ms */
+    /* operation time of the longest route in seconds */
     val max_operation_time: kotlin.Long? = null,
-    /* total waiting time in ms */
+    /* total waiting time in seconds */
     val waiting_time: kotlin.Long? = null,
     /* number of employed vehicles */
     val no_vehicles: kotlin.Int? = null,

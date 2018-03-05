@@ -57,6 +57,12 @@ Service::__init()
 	//new std::list()std::list> allowed_vehicles;
 	//
 	//
+	//new std::list()std::list> disallowed_vehicles;
+	//
+	//
+	//
+	//max_time_in_vehicle = long(0);
+	//
 }
 
 void
@@ -116,6 +122,16 @@ Service::__cleanup()
 	//allowed_vehicles.RemoveAll(true);
 	//delete allowed_vehicles;
 	//allowed_vehicles = NULL;
+	//}
+	//if(disallowed_vehicles != NULL) {
+	//disallowed_vehicles.RemoveAll(true);
+	//delete disallowed_vehicles;
+	//disallowed_vehicles = NULL;
+	//}
+	//if(max_time_in_vehicle != NULL) {
+	//
+	//delete max_time_in_vehicle;
+	//max_time_in_vehicle = NULL;
 	//}
 	//
 }
@@ -295,6 +311,39 @@ Service::fromJson(char* jsonStr)
 		}
 		
 	}
+	const gchar *disallowed_vehiclesKey = "disallowed_vehicles";
+	node = json_object_get_member(pJsonObject, disallowed_vehiclesKey);
+	if (node !=NULL) {
+	
+		{
+			JsonArray* arr = json_node_get_array(node);
+			JsonNode*  temp_json;
+			list<std::string> new_list;
+			std::string inst;
+			for (guint i=0;i<json_array_get_length(arr);i++) {
+				temp_json = json_array_get_element(arr,i);
+				if (isprimitive("std::string")) {
+					jsonToValue(&inst, temp_json, "std::string", "");
+				} else {
+					
+				}
+				new_list.push_back(inst);
+			}
+			disallowed_vehicles = new_list;
+		}
+		
+	}
+	const gchar *max_time_in_vehicleKey = "max_time_in_vehicle";
+	node = json_object_get_member(pJsonObject, max_time_in_vehicleKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("long long")) {
+			jsonToValue(&max_time_in_vehicle, node, "long long", "");
+		} else {
+			
+		}
+	}
 }
 
 Service::Service(char* json)
@@ -445,6 +494,30 @@ Service::toJson()
 	
 	const gchar *allowed_vehiclesKey = "allowed_vehicles";
 	json_object_set_member(pJsonObject, allowed_vehiclesKey, node);
+	if (isprimitive("std::string")) {
+		list<std::string> new_list = static_cast<list <std::string> > (getDisallowedVehicles());
+		node = converttoJson(&new_list, "std::string", "array");
+	} else {
+		node = json_node_alloc();
+		list<std::string> new_list = static_cast<list <std::string> > (getDisallowedVehicles());
+		JsonArray* json_array = json_array_new();
+		GError *mygerror;
+		
+	}
+
+
+	
+	const gchar *disallowed_vehiclesKey = "disallowed_vehicles";
+	json_object_set_member(pJsonObject, disallowed_vehiclesKey, node);
+	if (isprimitive("long long")) {
+		long long obj = getMaxTimeInVehicle();
+		node = converttoJson(&obj, "long long", "");
+	}
+	else {
+		
+	}
+	const gchar *max_time_in_vehicleKey = "max_time_in_vehicle";
+	json_object_set_member(pJsonObject, max_time_in_vehicleKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -583,6 +656,30 @@ void
 Service::setAllowedVehicles(std::list <std::string> allowed_vehicles)
 {
 	this->allowed_vehicles = allowed_vehicles;
+}
+
+std::list<std::string>
+Service::getDisallowedVehicles()
+{
+	return disallowed_vehicles;
+}
+
+void
+Service::setDisallowedVehicles(std::list <std::string> disallowed_vehicles)
+{
+	this->disallowed_vehicles = disallowed_vehicles;
+}
+
+long long
+Service::getMaxTimeInVehicle()
+{
+	return max_time_in_vehicle;
+}
+
+void
+Service::setMaxTimeInVehicle(long long  max_time_in_vehicle)
+{
+	this->max_time_in_vehicle = max_time_in_vehicle;
 }
 
 

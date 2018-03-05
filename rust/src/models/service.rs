@@ -28,7 +28,7 @@ pub struct Service {
   name: Option<String>,
   #[serde(rename = "address")]
   address: Option<::models::Address>,
-  /// duration of service, i.e. time in ms the corresponding activity takes
+  /// duration of service, i.e. time in seconds the corresponding activity takes
   #[serde(rename = "duration")]
   duration: Option<i64>,
   /// preparation time of service, e.g. search for a parking space. it only falls due if the location of previous activity differs from this location
@@ -45,7 +45,13 @@ pub struct Service {
   required_skills: Option<Vec<String>>,
   /// array of allowed vehicle ids
   #[serde(rename = "allowed_vehicles")]
-  allowed_vehicles: Option<Vec<String>>
+  allowed_vehicles: Option<Vec<String>>,
+  /// array of disallowed vehicle ids
+  #[serde(rename = "disallowed_vehicles")]
+  disallowed_vehicles: Option<Vec<String>>,
+  /// max time service can stay in vehicle
+  #[serde(rename = "max_time_in_vehicle")]
+  max_time_in_vehicle: Option<i64>
 }
 
 impl Service {
@@ -61,7 +67,9 @@ impl Service {
       time_windows: None,
       size: None,
       required_skills: None,
-      allowed_vehicles: None
+      allowed_vehicles: None,
+      disallowed_vehicles: None,
+      max_time_in_vehicle: None
     }
   }
 
@@ -250,6 +258,40 @@ impl Service {
 
   pub fn reset_allowed_vehicles(&mut self) {
     self.allowed_vehicles = None;
+  }
+
+  pub fn set_disallowed_vehicles(&mut self, disallowed_vehicles: Vec<String>) {
+    self.disallowed_vehicles = Some(disallowed_vehicles);
+  }
+
+  pub fn with_disallowed_vehicles(mut self, disallowed_vehicles: Vec<String>) -> Service {
+    self.disallowed_vehicles = Some(disallowed_vehicles);
+    self
+  }
+
+  pub fn disallowed_vehicles(&self) -> Option<&Vec<String>> {
+    self.disallowed_vehicles.as_ref()
+  }
+
+  pub fn reset_disallowed_vehicles(&mut self) {
+    self.disallowed_vehicles = None;
+  }
+
+  pub fn set_max_time_in_vehicle(&mut self, max_time_in_vehicle: i64) {
+    self.max_time_in_vehicle = Some(max_time_in_vehicle);
+  }
+
+  pub fn with_max_time_in_vehicle(mut self, max_time_in_vehicle: i64) -> Service {
+    self.max_time_in_vehicle = Some(max_time_in_vehicle);
+    self
+  }
+
+  pub fn max_time_in_vehicle(&self) -> Option<&i64> {
+    self.max_time_in_vehicle.as_ref()
+  }
+
+  pub fn reset_max_time_in_vehicle(&mut self) {
+    self.max_time_in_vehicle = None;
   }
 
 }

@@ -10,6 +10,9 @@
 #' Routing Class
 #'
 #' @field calc_points 
+#' @field consider_traffic 
+#' @field network_data_provider 
+#' @field fail_fast 
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -18,15 +21,37 @@ Routing <- R6::R6Class(
   'Routing',
   public = list(
     `calc_points` = NULL,
-    initialize = function(`calc_points`){
+    `consider_traffic` = NULL,
+    `network_data_provider` = NULL,
+    `fail_fast` = NULL,
+    initialize = function(`calc_points`, `consider_traffic`, `network_data_provider`, `fail_fast`){
       if (!missing(`calc_points`)) {
         self$`calc_points` <- `calc_points`
+      }
+      if (!missing(`consider_traffic`)) {
+        self$`consider_traffic` <- `consider_traffic`
+      }
+      if (!missing(`network_data_provider`)) {
+        stopifnot(is.character(`network_data_provider`), length(`network_data_provider`) == 1)
+        self$`network_data_provider` <- `network_data_provider`
+      }
+      if (!missing(`fail_fast`)) {
+        self$`fail_fast` <- `fail_fast`
       }
     },
     toJSON = function() {
       RoutingObject <- list()
       if (!is.null(self$`calc_points`)) {
         RoutingObject[['calc_points']] <- self$`calc_points`
+      }
+      if (!is.null(self$`consider_traffic`)) {
+        RoutingObject[['consider_traffic']] <- self$`consider_traffic`
+      }
+      if (!is.null(self$`network_data_provider`)) {
+        RoutingObject[['network_data_provider']] <- self$`network_data_provider`
+      }
+      if (!is.null(self$`fail_fast`)) {
+        RoutingObject[['fail_fast']] <- self$`fail_fast`
       }
 
       RoutingObject
@@ -36,18 +61,36 @@ Routing <- R6::R6Class(
       if (!is.null(RoutingObject$`calc_points`)) {
         self$`calc_points` <- RoutingObject$`calc_points`
       }
+      if (!is.null(RoutingObject$`consider_traffic`)) {
+        self$`consider_traffic` <- RoutingObject$`consider_traffic`
+      }
+      if (!is.null(RoutingObject$`network_data_provider`)) {
+        self$`network_data_provider` <- RoutingObject$`network_data_provider`
+      }
+      if (!is.null(RoutingObject$`fail_fast`)) {
+        self$`fail_fast` <- RoutingObject$`fail_fast`
+      }
     },
     toJSONString = function() {
        sprintf(
         '{
-           "calc_points": %s
+           "calc_points": %s,
+           "consider_traffic": %s,
+           "network_data_provider": %s,
+           "fail_fast": %s
         }',
-        self$`calc_points`
+        self$`calc_points`,
+        self$`consider_traffic`,
+        self$`network_data_provider`,
+        self$`fail_fast`
       )
     },
     fromJSONString = function(RoutingJson) {
       RoutingObject <- jsonlite::fromJSON(RoutingJson)
       self$`calc_points` <- RoutingObject$`calc_points`
+      self$`consider_traffic` <- RoutingObject$`consider_traffic`
+      self$`network_data_provider` <- RoutingObject$`network_data_provider`
+      self$`fail_fast` <- RoutingObject$`fail_fast`
     }
   )
 )

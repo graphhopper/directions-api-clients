@@ -45,6 +45,8 @@ public class VehicleType {
     
     FOOT("foot"),
     
+    HIKE("hike"),
+    
     MTB("mtb"),
     
     RACINGBIKE("racingbike"),

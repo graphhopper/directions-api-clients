@@ -125,7 +125,7 @@ class VehicleType(object):
         :param profile: The profile of this VehicleType.  # noqa: E501
         :type: str
         """
-        allowed_values = ["car", "bike", "foot", "mtb", "racingbike", "scooter", "truck", "small_truck"]  # noqa: E501
+        allowed_values = ["car", "bike", "foot", "hike", "mtb", "racingbike", "scooter", "truck", "small_truck"]  # noqa: E501
         if profile not in allowed_values:
             raise ValueError(
                 "Invalid value for `profile` ({0}), must be one of {1}"  # noqa: E501

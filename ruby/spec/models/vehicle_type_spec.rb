@@ -41,7 +41,7 @@ describe 'VehicleType' do
   describe 'test attribute "profile"' do
     it 'should work' do
        # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
-       #validator = Petstore::EnumTest::EnumAttributeValidator.new('String', ["car", "bike", "foot", "mtb", "racingbike", "scooter", "truck", "small_truck"])
+       #validator = Petstore::EnumTest::EnumAttributeValidator.new('String', ["car", "bike", "foot", "hike", "mtb", "racingbike", "scooter", "truck", "small_truck"])
        #validator.allowable_values.each do |value|
        #  expect { @instance.profile = value }.not_to raise_error
        #end

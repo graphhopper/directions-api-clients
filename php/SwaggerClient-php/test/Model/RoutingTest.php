@@ -82,4 +82,25 @@ class RoutingTest extends \PHPUnit_Framework_TestCase
     public function testPropertyCalcPoints()
     {
     }
+
+    /**
+     * Test attribute "consider_traffic"
+     */
+    public function testPropertyConsiderTraffic()
+    {
+    }
+
+    /**
+     * Test attribute "network_data_provider"
+     */
+    public function testPropertyNetworkDataProvider()
+    {
+    }
+
+    /**
+     * Test attribute "fail_fast"
+     */
+    public function testPropertyFailFast()
+    {
+    }
 }

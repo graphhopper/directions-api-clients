@@ -23,19 +23,19 @@ pub struct Activity {
   /// id that refers to address
   #[serde(rename = "location_id")]
   location_id: Option<String>,
-  /// arrival time at this activity in ms
+  /// arrival time at this activity in seconds
   #[serde(rename = "arr_time")]
   arr_time: Option<i64>,
   /// end time of and thus departure time at this activity
   #[serde(rename = "end_time")]
   end_time: Option<i64>,
-  /// waiting time at this activity in ms
+  /// waiting time at this activity in seconds
   #[serde(rename = "waiting_time")]
   waiting_time: Option<i64>,
   /// cumulated distance from start to this activity in m
   #[serde(rename = "distance")]
   distance: Option<i64>,
-  /// driving time of driver in ms
+  /// driving time of driver in seconds
   #[serde(rename = "driving_time")]
   driving_time: Option<i64>,
   /// Array with size/capacity dimensions before this activity

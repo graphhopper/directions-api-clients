@@ -215,6 +215,27 @@ __PACKAGE__->method_documentation({
     	format => '',
     	read_only => '',
     		},
+    'max_driving_time' => {
+    	datatype => 'int',
+    	base_name => 'max_driving_time',
+    	description => 'max drive time of vehicle',
+    	format => '',
+    	read_only => '',
+    		},
+    'max_jobs' => {
+    	datatype => 'int',
+    	base_name => 'max_jobs',
+    	description => 'max number of jobs the vehicle can load',
+    	format => '',
+    	read_only => '',
+    		},
+    'max_activities' => {
+    	datatype => 'int',
+    	base_name => 'max_activities',
+    	description => 'max number of activities the vehicle can conduct',
+    	format => '',
+    	read_only => '',
+    		},
 });
 
 __PACKAGE__->swagger_types( {
@@ -227,7 +248,10 @@ __PACKAGE__->swagger_types( {
     'earliest_start' => 'int',
     'latest_end' => 'int',
     'skills' => 'ARRAY[string]',
-    'max_distance' => 'int'
+    'max_distance' => 'int',
+    'max_driving_time' => 'int',
+    'max_jobs' => 'int',
+    'max_activities' => 'int'
 } );
 
 __PACKAGE__->attribute_map( {
@@ -240,7 +264,10 @@ __PACKAGE__->attribute_map( {
     'earliest_start' => 'earliest_start',
     'latest_end' => 'latest_end',
     'skills' => 'skills',
-    'max_distance' => 'max_distance'
+    'max_distance' => 'max_distance',
+    'max_driving_time' => 'max_driving_time',
+    'max_jobs' => 'max_jobs',
+    'max_activities' => 'max_activities'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

@@ -42,6 +42,15 @@ module DirectionsApiClient
     # max distance of vehicle
     attr_accessor :max_distance
 
+    # max drive time of vehicle
+    attr_accessor :max_driving_time
+
+    # max number of jobs the vehicle can load
+    attr_accessor :max_jobs
+
+    # max number of activities the vehicle can conduct
+    attr_accessor :max_activities
+
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -55,7 +64,10 @@ module DirectionsApiClient
         :'earliest_start' => :'earliest_start',
         :'latest_end' => :'latest_end',
         :'skills' => :'skills',
-        :'max_distance' => :'max_distance'
+        :'max_distance' => :'max_distance',
+        :'max_driving_time' => :'max_driving_time',
+        :'max_jobs' => :'max_jobs',
+        :'max_activities' => :'max_activities'
       }
     end
 
@@ -71,7 +83,10 @@ module DirectionsApiClient
         :'earliest_start' => :'Integer',
         :'latest_end' => :'Integer',
         :'skills' => :'Array<String>',
-        :'max_distance' => :'Integer'
+        :'max_distance' => :'Integer',
+        :'max_driving_time' => :'Integer',
+        :'max_jobs' => :'Integer',
+        :'max_activities' => :'Integer'
       }
     end
 
@@ -125,6 +140,18 @@ module DirectionsApiClient
         self.max_distance = attributes[:'max_distance']
       end
 
+      if attributes.has_key?(:'max_driving_time')
+        self.max_driving_time = attributes[:'max_driving_time']
+      end
+
+      if attributes.has_key?(:'max_jobs')
+        self.max_jobs = attributes[:'max_jobs']
+      end
+
+      if attributes.has_key?(:'max_activities')
+        self.max_activities = attributes[:'max_activities']
+      end
+
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -154,7 +181,10 @@ module DirectionsApiClient
           earliest_start == o.earliest_start &&
           latest_end == o.latest_end &&
           skills == o.skills &&
-          max_distance == o.max_distance
+          max_distance == o.max_distance &&
+          max_driving_time == o.max_driving_time &&
+          max_jobs == o.max_jobs &&
+          max_activities == o.max_activities
     end
 
     # @see the `==` method
@@ -166,7 +196,7 @@ module DirectionsApiClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [vehicle_id, type_id, start_address, end_address, _break, return_to_depot, earliest_start, latest_end, skills, max_distance].hash
+      [vehicle_id, type_id, start_address, end_address, _break, return_to_depot, earliest_start, latest_end, skills, max_distance, max_driving_time, max_jobs, max_activities].hash
     end
 
     # Builds the object from hash

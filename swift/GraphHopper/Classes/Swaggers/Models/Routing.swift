@@ -9,8 +9,18 @@ import Foundation
 
 
 public class Routing: JSONEncodable {
+    public enum NetworkDataProvider: String { 
+        case Openstreetmap = "openstreetmap"
+        case Tomtom = "tomtom"
+    }
     /** indicates whether solution should come with route geometries */
     public var calcPoints: Bool?
+    /** indicates whether historical traffic information should be considered */
+    public var considerTraffic: Bool?
+    /** specifies the data provider */
+    public var networkDataProvider: NetworkDataProvider?
+    /** indicates whether matrix calculation should fail fast when points cannot be connected */
+    public var failFast: Bool?
 
     public init() {}
 
@@ -18,6 +28,9 @@ public class Routing: JSONEncodable {
     func encodeToJSON() -> AnyObject {
         var nillableDictionary = [String:AnyObject?]()
         nillableDictionary["calc_points"] = self.calcPoints
+        nillableDictionary["consider_traffic"] = self.considerTraffic
+        nillableDictionary["network_data_provider"] = self.networkDataProvider?.rawValue
+        nillableDictionary["fail_fast"] = self.failFast
         let dictionary: [String:AnyObject] = APIHelper.rejectNil(nillableDictionary) ?? [:]
         return dictionary
     }

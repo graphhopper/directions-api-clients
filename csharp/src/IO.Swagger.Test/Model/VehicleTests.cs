@@ -146,6 +146,30 @@ namespace IO.Swagger.Test
         {
             // TODO unit test for the property 'MaxDistance'
         }
+        /// <summary>
+        /// Test the property 'MaxDrivingTime'
+        /// </summary>
+        [Test]
+        public void MaxDrivingTimeTest()
+        {
+            // TODO unit test for the property 'MaxDrivingTime'
+        }
+        /// <summary>
+        /// Test the property 'MaxJobs'
+        /// </summary>
+        [Test]
+        public void MaxJobsTest()
+        {
+            // TODO unit test for the property 'MaxJobs'
+        }
+        /// <summary>
+        /// Test the property 'MaxActivities'
+        /// </summary>
+        [Test]
+        public void MaxActivitiesTest()
+        {
+            // TODO unit test for the property 'MaxActivities'
+        }
 
     }
 

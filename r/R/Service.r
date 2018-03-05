@@ -20,6 +20,8 @@
 #' @field size 
 #' @field required_skills 
 #' @field allowed_vehicles 
+#' @field disallowed_vehicles 
+#' @field max_time_in_vehicle 
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -38,7 +40,9 @@ Service <- R6::R6Class(
     `size` = NULL,
     `required_skills` = NULL,
     `allowed_vehicles` = NULL,
-    initialize = function(`id`, `type`, `priority`, `name`, `address`, `duration`, `preparation_time`, `time_windows`, `size`, `required_skills`, `allowed_vehicles`){
+    `disallowed_vehicles` = NULL,
+    `max_time_in_vehicle` = NULL,
+    initialize = function(`id`, `type`, `priority`, `name`, `address`, `duration`, `preparation_time`, `time_windows`, `size`, `required_skills`, `allowed_vehicles`, `disallowed_vehicles`, `max_time_in_vehicle`){
       if (!missing(`id`)) {
         stopifnot(is.character(`id`), length(`id`) == 1)
         self$`id` <- `id`
@@ -87,6 +91,15 @@ Service <- R6::R6Class(
         lapply(`allowed_vehicles`, function(x) stopifnot(is.character(x)))
         self$`allowed_vehicles` <- `allowed_vehicles`
       }
+      if (!missing(`disallowed_vehicles`)) {
+        stopifnot(is.list(`disallowed_vehicles`), length(`disallowed_vehicles`) != 0)
+        lapply(`disallowed_vehicles`, function(x) stopifnot(is.character(x)))
+        self$`disallowed_vehicles` <- `disallowed_vehicles`
+      }
+      if (!missing(`max_time_in_vehicle`)) {
+        stopifnot(is.numeric(`max_time_in_vehicle`), length(`max_time_in_vehicle`) == 1)
+        self$`max_time_in_vehicle` <- `max_time_in_vehicle`
+      }
     },
     toJSON = function() {
       ServiceObject <- list()
@@ -122,6 +135,12 @@ Service <- R6::R6Class(
       }
       if (!is.null(self$`allowed_vehicles`)) {
         ServiceObject[['allowed_vehicles']] <- self$`allowed_vehicles`
+      }
+      if (!is.null(self$`disallowed_vehicles`)) {
+        ServiceObject[['disallowed_vehicles']] <- self$`disallowed_vehicles`
+      }
+      if (!is.null(self$`max_time_in_vehicle`)) {
+        ServiceObject[['max_time_in_vehicle']] <- self$`max_time_in_vehicle`
       }
 
       ServiceObject
@@ -167,6 +186,12 @@ Service <- R6::R6Class(
       if (!is.null(ServiceObject$`allowed_vehicles`)) {
         self$`allowed_vehicles` <- ServiceObject$`allowed_vehicles`
       }
+      if (!is.null(ServiceObject$`disallowed_vehicles`)) {
+        self$`disallowed_vehicles` <- ServiceObject$`disallowed_vehicles`
+      }
+      if (!is.null(ServiceObject$`max_time_in_vehicle`)) {
+        self$`max_time_in_vehicle` <- ServiceObject$`max_time_in_vehicle`
+      }
     },
     toJSONString = function() {
        sprintf(
@@ -181,7 +206,9 @@ Service <- R6::R6Class(
            "time_windows": [%s],
            "size": [%s],
            "required_skills": [%s],
-           "allowed_vehicles": [%s]
+           "allowed_vehicles": [%s],
+           "disallowed_vehicles": [%s],
+           "max_time_in_vehicle": %d
         }',
         self$`id`,
         self$`type`,
@@ -193,7 +220,9 @@ Service <- R6::R6Class(
         lapply(self$`time_windows`, function(x) paste(x$toJSON(), sep=",")),
         lapply(self$`size`, function(x) paste(paste0('"', x, '"'), sep=",")),
         lapply(self$`required_skills`, function(x) paste(paste0('"', x, '"'), sep=",")),
-        lapply(self$`allowed_vehicles`, function(x) paste(paste0('"', x, '"'), sep=","))
+        lapply(self$`allowed_vehicles`, function(x) paste(paste0('"', x, '"'), sep=",")),
+        lapply(self$`disallowed_vehicles`, function(x) paste(paste0('"', x, '"'), sep=",")),
+        self$`max_time_in_vehicle`
       )
     },
     fromJSONString = function(ServiceJson) {
@@ -210,6 +239,8 @@ Service <- R6::R6Class(
       self$`size` <- ServiceObject$`size`
       self$`required_skills` <- ServiceObject$`required_skills`
       self$`allowed_vehicles` <- ServiceObject$`allowed_vehicles`
+      self$`disallowed_vehicles` <- ServiceObject$`disallowed_vehicles`
+      self$`max_time_in_vehicle` <- ServiceObject$`max_time_in_vehicle`
     }
   )
 )

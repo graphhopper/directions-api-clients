@@ -22,7 +22,7 @@ class Service {
   @Property(name: 'address')
   Address address = null;
   
-/* duration of service, i.e. time in ms the corresponding activity takes */
+/* duration of service, i.e. time in seconds the corresponding activity takes */
   @Property(name: 'duration')
   int duration = null;
   
@@ -46,11 +46,19 @@ class Service {
   @Property(name: 'allowed_vehicles')
   List<String> allowedVehicles = [];
   
+/* array of disallowed vehicle ids */
+  @Property(name: 'disallowed_vehicles')
+  List<String> disallowedVehicles = [];
+  
+/* max time service can stay in vehicle */
+  @Property(name: 'max_time_in_vehicle')
+  int maxTimeInVehicle = null;
+  
   Service();
 
   @override
   String toString()  {
-    return 'Service[id=$id, type=$type, priority=$priority, name=$name, address=$address, duration=$duration, preparationTime=$preparationTime, timeWindows=$timeWindows, size=$size, requiredSkills=$requiredSkills, allowedVehicles=$allowedVehicles, ]';
+    return 'Service[id=$id, type=$type, priority=$priority, name=$name, address=$address, duration=$duration, preparationTime=$preparationTime, timeWindows=$timeWindows, size=$size, requiredSkills=$requiredSkills, allowedVehicles=$allowedVehicles, disallowedVehicles=$disallowedVehicles, maxTimeInVehicle=$maxTimeInVehicle, ]';
   }
 }
 

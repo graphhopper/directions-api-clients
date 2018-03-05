@@ -40,7 +40,9 @@ class Shipment(object):
         'delivery': 'Stop',
         'size': 'list[int]',
         'required_skills': 'list[str]',
-        'allowed_vehicles': 'list[str]'
+        'allowed_vehicles': 'list[str]',
+        'disallowed_vehicles': 'list[str]',
+        'max_time_in_vehicle': 'int'
     }
 
     attribute_map = {
@@ -51,10 +53,12 @@ class Shipment(object):
         'delivery': 'delivery',
         'size': 'size',
         'required_skills': 'required_skills',
-        'allowed_vehicles': 'allowed_vehicles'
+        'allowed_vehicles': 'allowed_vehicles',
+        'disallowed_vehicles': 'disallowed_vehicles',
+        'max_time_in_vehicle': 'max_time_in_vehicle'
     }
 
-    def __init__(self, id=None, name=None, priority=None, pickup=None, delivery=None, size=None, required_skills=None, allowed_vehicles=None):  # noqa: E501
+    def __init__(self, id=None, name=None, priority=None, pickup=None, delivery=None, size=None, required_skills=None, allowed_vehicles=None, disallowed_vehicles=None, max_time_in_vehicle=None):  # noqa: E501
         """Shipment - a model defined in Swagger"""  # noqa: E501
 
         self._id = None
@@ -65,6 +69,8 @@ class Shipment(object):
         self._size = None
         self._required_skills = None
         self._allowed_vehicles = None
+        self._disallowed_vehicles = None
+        self._max_time_in_vehicle = None
         self.discriminator = None
 
         if id is not None:
@@ -83,6 +89,10 @@ class Shipment(object):
             self.required_skills = required_skills
         if allowed_vehicles is not None:
             self.allowed_vehicles = allowed_vehicles
+        if disallowed_vehicles is not None:
+            self.disallowed_vehicles = disallowed_vehicles
+        if max_time_in_vehicle is not None:
+            self.max_time_in_vehicle = max_time_in_vehicle
 
     @property
     def id(self):
@@ -263,6 +273,52 @@ class Shipment(object):
         """
 
         self._allowed_vehicles = allowed_vehicles
+
+    @property
+    def disallowed_vehicles(self):
+        """Gets the disallowed_vehicles of this Shipment.  # noqa: E501
+
+        array of disallowed vehicle ids  # noqa: E501
+
+        :return: The disallowed_vehicles of this Shipment.  # noqa: E501
+        :rtype: list[str]
+        """
+        return self._disallowed_vehicles
+
+    @disallowed_vehicles.setter
+    def disallowed_vehicles(self, disallowed_vehicles):
+        """Sets the disallowed_vehicles of this Shipment.
+
+        array of disallowed vehicle ids  # noqa: E501
+
+        :param disallowed_vehicles: The disallowed_vehicles of this Shipment.  # noqa: E501
+        :type: list[str]
+        """
+
+        self._disallowed_vehicles = disallowed_vehicles
+
+    @property
+    def max_time_in_vehicle(self):
+        """Gets the max_time_in_vehicle of this Shipment.  # noqa: E501
+
+        max time shipment can stay in vehicle  # noqa: E501
+
+        :return: The max_time_in_vehicle of this Shipment.  # noqa: E501
+        :rtype: int
+        """
+        return self._max_time_in_vehicle
+
+    @max_time_in_vehicle.setter
+    def max_time_in_vehicle(self, max_time_in_vehicle):
+        """Sets the max_time_in_vehicle of this Shipment.
+
+        max time shipment can stay in vehicle  # noqa: E501
+
+        :param max_time_in_vehicle: The max_time_in_vehicle of this Shipment.  # noqa: E501
+        :type: int
+        """
+
+        self._max_time_in_vehicle = max_time_in_vehicle
 
     def to_dict(self):
         """Returns the model properties as a dict"""

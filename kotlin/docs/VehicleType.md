@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 ## Enum: profile
 Name | Value
 ---- | -----
-profile | car, bike, foot, mtb, racingbike, scooter, truck, small_truck
+profile | car, bike, foot, hike, mtb, racingbike, scooter, truck, small_truck
 
 
 

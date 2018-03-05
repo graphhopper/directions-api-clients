@@ -31,12 +31,45 @@ namespace IO.Swagger.Model
     public partial class Routing :  IEquatable<Routing>, IValidatableObject
     {
         /// <summary>
+        /// specifies the data provider
+        /// </summary>
+        /// <value>specifies the data provider</value>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum NetworkDataProviderEnum
+        {
+            
+            /// <summary>
+            /// Enum Openstreetmap for value: openstreetmap
+            /// </summary>
+            [EnumMember(Value = "openstreetmap")]
+            Openstreetmap = 1,
+            
+            /// <summary>
+            /// Enum Tomtom for value: tomtom
+            /// </summary>
+            [EnumMember(Value = "tomtom")]
+            Tomtom = 2
+        }
+
+        /// <summary>
+        /// specifies the data provider
+        /// </summary>
+        /// <value>specifies the data provider</value>
+        [DataMember(Name="network_data_provider", EmitDefaultValue=false)]
+        public NetworkDataProviderEnum? NetworkDataProvider { get; set; }
+        /// <summary>
         /// Initializes a new instance of the <see cref="Routing" /> class.
         /// </summary>
         /// <param name="CalcPoints">indicates whether solution should come with route geometries.</param>
-        public Routing(bool? CalcPoints = default(bool?))
+        /// <param name="ConsiderTraffic">indicates whether historical traffic information should be considered.</param>
+        /// <param name="NetworkDataProvider">specifies the data provider.</param>
+        /// <param name="FailFast">indicates whether matrix calculation should fail fast when points cannot be connected.</param>
+        public Routing(bool? CalcPoints = default(bool?), bool? ConsiderTraffic = default(bool?), NetworkDataProviderEnum? NetworkDataProvider = default(NetworkDataProviderEnum?), bool? FailFast = default(bool?))
         {
             this.CalcPoints = CalcPoints;
+            this.ConsiderTraffic = ConsiderTraffic;
+            this.NetworkDataProvider = NetworkDataProvider;
+            this.FailFast = FailFast;
         }
         
         /// <summary>
@@ -47,6 +80,21 @@ namespace IO.Swagger.Model
         public bool? CalcPoints { get; set; }
 
         /// <summary>
+        /// indicates whether historical traffic information should be considered
+        /// </summary>
+        /// <value>indicates whether historical traffic information should be considered</value>
+        [DataMember(Name="consider_traffic", EmitDefaultValue=false)]
+        public bool? ConsiderTraffic { get; set; }
+
+
+        /// <summary>
+        /// indicates whether matrix calculation should fail fast when points cannot be connected
+        /// </summary>
+        /// <value>indicates whether matrix calculation should fail fast when points cannot be connected</value>
+        [DataMember(Name="fail_fast", EmitDefaultValue=false)]
+        public bool? FailFast { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -55,6 +103,9 @@ namespace IO.Swagger.Model
             var sb = new StringBuilder();
             sb.Append("class Routing {\n");
             sb.Append("  CalcPoints: ").Append(CalcPoints).Append("\n");
+            sb.Append("  ConsiderTraffic: ").Append(ConsiderTraffic).Append("\n");
+            sb.Append("  NetworkDataProvider: ").Append(NetworkDataProvider).Append("\n");
+            sb.Append("  FailFast: ").Append(FailFast).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -93,6 +144,21 @@ namespace IO.Swagger.Model
                     this.CalcPoints == input.CalcPoints ||
                     (this.CalcPoints != null &&
                     this.CalcPoints.Equals(input.CalcPoints))
+                ) && 
+                (
+                    this.ConsiderTraffic == input.ConsiderTraffic ||
+                    (this.ConsiderTraffic != null &&
+                    this.ConsiderTraffic.Equals(input.ConsiderTraffic))
+                ) && 
+                (
+                    this.NetworkDataProvider == input.NetworkDataProvider ||
+                    (this.NetworkDataProvider != null &&
+                    this.NetworkDataProvider.Equals(input.NetworkDataProvider))
+                ) && 
+                (
+                    this.FailFast == input.FailFast ||
+                    (this.FailFast != null &&
+                    this.FailFast.Equals(input.FailFast))
                 );
         }
 
@@ -107,6 +173,12 @@ namespace IO.Swagger.Model
                 int hashCode = 41;
                 if (this.CalcPoints != null)
                     hashCode = hashCode * 59 + this.CalcPoints.GetHashCode();
+                if (this.ConsiderTraffic != null)
+                    hashCode = hashCode * 59 + this.ConsiderTraffic.GetHashCode();
+                if (this.NetworkDataProvider != null)
+                    hashCode = hashCode * 59 + this.NetworkDataProvider.GetHashCode();
+                if (this.FailFast != null)
+                    hashCode = hashCode * 59 + this.FailFast.GetHashCode();
                 return hashCode;
             }
         }

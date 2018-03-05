@@ -318,7 +318,7 @@ paths:
       - name: "vehicle"
         in: "query"
         description: "The vehicle for which the route should be calculated. Other\
-          \ vehicles are foot, small_truck etc, see here for the details."
+          \ vehicles are foot, small_truck etc"
         required: false
         type: "string"
         default: "car"
@@ -376,8 +376,7 @@ paths:
       - name: "q"
         in: "query"
         description: "If you do forward geocoding, then this would be a textual description\
-          \ of the adress you are looking for. If you do reverse geocoding this would\
-          \ be in lat,lon."
+          \ of the address you are looking for"
         required: false
         type: "string"
       - name: "locale"
@@ -395,7 +394,7 @@ paths:
         format: "int32"
       - name: "reverse"
         in: "query"
-        description: "Set to true to do a reverse Geocoding request"
+        description: "Set to true to do a reverse Geocoding request, see point parameter"
         required: false
         type: "boolean"
       - name: "point"
@@ -1008,32 +1007,32 @@ definitions:
       vehicle_types:
       - type_id: "type_id"
         profile: "car"
-        cost_per_meter: 1.4894159098541704
-        cost_per_second: 6.84685269835264
-        speed_factor: 1.2315135367772556
-        cost_per_activation: 7.457744773683766
-        service_time_factor: 1.0246457001441578
+        cost_per_meter: 1.1730742509559433
+        cost_per_second: 4.965218492984954
+        speed_factor: 6.84685269835264
+        cost_per_activation: 5.025004791520295
+        service_time_factor: 7.457744773683766
         capacity:
-        - 7
-        - 7
+        - 1
+        - 1
       - type_id: "type_id"
         profile: "car"
-        cost_per_meter: 1.4894159098541704
-        cost_per_second: 6.84685269835264
-        speed_factor: 1.2315135367772556
-        cost_per_activation: 7.457744773683766
-        service_time_factor: 1.0246457001441578
+        cost_per_meter: 1.1730742509559433
+        cost_per_second: 4.965218492984954
+        speed_factor: 6.84685269835264
+        cost_per_activation: 5.025004791520295
+        service_time_factor: 7.457744773683766
         capacity:
-        - 7
-        - 7
+        - 1
+        - 1
       configuration:
         routing:
+          network_data_provider: "openstreetmap"
+          fail_fast: true
           calc_points: true
+          consider_traffic: true
       vehicles:
-      - skills:
-        - "skills"
-        - "skills"
-        break:
+      - break:
           duration: 5
           initial_driving_time: 7
           possible_split:
@@ -1044,24 +1043,27 @@ definitions:
           latest: 5
         type_id: "type_id"
         return_to_depot: true
+        earliest_start: 3
+        skills:
+        - "skills"
+        - "skills"
         start_address:
           name: "name"
           lon: 0.8008281904610115
           location_id: "location_id"
           lat: 6.027456183070403
         latest_end: 2
+        max_driving_time: 7
         end_address:
           name: "name"
           lon: 0.8008281904610115
           location_id: "location_id"
           lat: 6.027456183070403
-        earliest_start: 3
+        max_activities: 1
         vehicle_id: "vehicle_id"
         max_distance: 4
-      - skills:
-        - "skills"
-        - "skills"
-        break:
+        max_jobs: 1
+      - break:
           duration: 5
           initial_driving_time: 7
           possible_split:
@@ -1072,37 +1074,45 @@ definitions:
           latest: 5
         type_id: "type_id"
         return_to_depot: true
+        earliest_start: 3
+        skills:
+        - "skills"
+        - "skills"
         start_address:
           name: "name"
           lon: 0.8008281904610115
           location_id: "location_id"
           lat: 6.027456183070403
         latest_end: 2
+        max_driving_time: 7
         end_address:
           name: "name"
           lon: 0.8008281904610115
           location_id: "location_id"
           lat: 6.027456183070403
-        earliest_start: 3
+        max_activities: 1
         vehicle_id: "vehicle_id"
         max_distance: 4
+        max_jobs: 1
       objectives:
       - type: "min"
         value: "completion_time"
       - type: "min"
         value: "completion_time"
       services:
-      - duration: 4
-        time_windows:
-        - earliest: 9
+      - time_windows:
+        - earliest: 8
           latest: 9
-        - earliest: 9
+        - earliest: 8
           latest: 9
         address:
           name: "name"
           lon: 0.8008281904610115
           location_id: "location_id"
           lat: 6.027456183070403
+        type: "service"
+        priority: 9
+        duration: 9
         size:
         - 6
         - 6
@@ -1112,22 +1122,26 @@ definitions:
         required_skills:
         - "required_skills"
         - "required_skills"
+        disallowed_vehicles:
+        - "disallowed_vehicles"
+        - "disallowed_vehicles"
         name: "name"
-        preparation_time: 5
+        preparation_time: 6
+        max_time_in_vehicle: 3
         id: "id"
-        type: "service"
-        priority: 1
-      - duration: 4
-        time_windows:
-        - earliest: 9
+      - time_windows:
+        - earliest: 8
           latest: 9
-        - earliest: 9
+        - earliest: 8
           latest: 9
         address:
           name: "name"
           lon: 0.8008281904610115
           location_id: "location_id"
           lat: 6.027456183070403
+        type: "service"
+        priority: 9
+        duration: 9
         size:
         - 6
         - 6
@@ -1137,11 +1151,13 @@ definitions:
         required_skills:
         - "required_skills"
         - "required_skills"
+        disallowed_vehicles:
+        - "disallowed_vehicles"
+        - "disallowed_vehicles"
         name: "name"
-        preparation_time: 5
+        preparation_time: 6
+        max_time_in_vehicle: 3
         id: "id"
-        type: "service"
-        priority: 1
       relations:
       - ids:
         - "ids"
@@ -1155,95 +1171,103 @@ definitions:
         vehicle_id: "vehicle_id"
       shipments:
       - delivery:
-          duration: 9
+          duration: 1
           time_windows:
-          - earliest: 9
+          - earliest: 8
             latest: 9
-          - earliest: 9
+          - earliest: 8
             latest: 9
           address:
             name: "name"
             lon: 0.8008281904610115
             location_id: "location_id"
             lat: 6.027456183070403
-          preparation_time: 6
+          preparation_time: 2
         size:
-        - 3
-        - 3
+        - 6
+        - 6
         allowed_vehicles:
         - "allowed_vehicles"
         - "allowed_vehicles"
         required_skills:
         - "required_skills"
         - "required_skills"
+        disallowed_vehicles:
+        - "disallowed_vehicles"
+        - "disallowed_vehicles"
         name: "name"
         pickup:
-          duration: 9
+          duration: 1
           time_windows:
-          - earliest: 9
+          - earliest: 8
             latest: 9
-          - earliest: 9
+          - earliest: 8
             latest: 9
           address:
             name: "name"
             lon: 0.8008281904610115
             location_id: "location_id"
             lat: 6.027456183070403
-          preparation_time: 6
+          preparation_time: 2
+        max_time_in_vehicle: 6
         id: "id"
-        priority: 8
+        priority: 6
       - delivery:
-          duration: 9
+          duration: 1
           time_windows:
-          - earliest: 9
+          - earliest: 8
             latest: 9
-          - earliest: 9
+          - earliest: 8
             latest: 9
           address:
             name: "name"
             lon: 0.8008281904610115
             location_id: "location_id"
             lat: 6.027456183070403
-          preparation_time: 6
+          preparation_time: 2
         size:
-        - 3
-        - 3
+        - 6
+        - 6
         allowed_vehicles:
         - "allowed_vehicles"
         - "allowed_vehicles"
         required_skills:
         - "required_skills"
         - "required_skills"
+        disallowed_vehicles:
+        - "disallowed_vehicles"
+        - "disallowed_vehicles"
         name: "name"
         pickup:
-          duration: 9
+          duration: 1
           time_windows:
-          - earliest: 9
+          - earliest: 8
             latest: 9
-          - earliest: 9
+          - earliest: 8
             latest: 9
           address:
             name: "name"
             lon: 0.8008281904610115
             location_id: "location_id"
             lat: 6.027456183070403
-          preparation_time: 6
+          preparation_time: 2
+        max_time_in_vehicle: 6
         id: "id"
-        priority: 8
+        priority: 6
       cost_matrices:
       - data:
           distances:
-          - - 1.284659006116532
-            - 1.284659006116532
-          - - 1.284659006116532
-            - 1.284659006116532
+          - - 6.704019297950036
+            - 6.704019297950036
+          - - 6.704019297950036
+            - 6.704019297950036
           times:
-          - - 6
-            - 6
-          - - 6
-            - 6
+          - - 5
+            - 5
+          - - 5
+            - 5
           info:
-            took: 2.8841621266687802
+            took: 3.353193347011243
             copyrights:
             - "copyrights"
             - "copyrights"
@@ -1255,17 +1279,17 @@ definitions:
         url: "url"
       - data:
           distances:
-          - - 1.284659006116532
-            - 1.284659006116532
-          - - 1.284659006116532
-            - 1.284659006116532
+          - - 6.704019297950036
+            - 6.704019297950036
+          - - 6.704019297950036
+            - 6.704019297950036
           times:
-          - - 6
-            - 6
-          - - 6
-            - 6
+          - - 5
+            - 5
+          - - 5
+            - 5
           info:
-            took: 2.8841621266687802
+            took: 3.353193347011243
             copyrights:
             - "copyrights"
             - "copyrights"
@@ -1314,10 +1338,19 @@ definitions:
         type: "integer"
         format: "int64"
         description: "max distance of vehicle"
+      max_driving_time:
+        type: "integer"
+        format: "int64"
+        description: "max drive time of vehicle"
+      max_jobs:
+        type: "integer"
+        format: "int32"
+        description: "max number of jobs the vehicle can load"
+      max_activities:
+        type: "integer"
+        format: "int32"
+        description: "max number of activities the vehicle can conduct"
     example:
-      skills:
-      - "skills"
-      - "skills"
       break:
         duration: 5
         initial_driving_time: 7
@@ -1329,20 +1362,26 @@ definitions:
         latest: 5
       type_id: "type_id"
       return_to_depot: true
+      earliest_start: 3
+      skills:
+      - "skills"
+      - "skills"
       start_address:
         name: "name"
         lon: 0.8008281904610115
         location_id: "location_id"
         lat: 6.027456183070403
       latest_end: 2
+      max_driving_time: 7
       end_address:
         name: "name"
         lon: 0.8008281904610115
         location_id: "location_id"
         lat: 6.027456183070403
-      earliest_start: 3
+      max_activities: 1
       vehicle_id: "vehicle_id"
       max_distance: 4
+      max_jobs: 1
   Algorithm:
     type: "object"
     properties:
@@ -1434,6 +1473,7 @@ definitions:
         - "car"
         - "bike"
         - "foot"
+        - "hike"
         - "mtb"
         - "racingbike"
         - "scooter"
@@ -1468,14 +1508,14 @@ definitions:
     example:
       type_id: "type_id"
       profile: "car"
-      cost_per_meter: 1.4894159098541704
-      cost_per_second: 6.84685269835264
-      speed_factor: 1.2315135367772556
-      cost_per_activation: 7.457744773683766
-      service_time_factor: 1.0246457001441578
+      cost_per_meter: 1.1730742509559433
+      cost_per_second: 4.965218492984954
+      speed_factor: 6.84685269835264
+      cost_per_activation: 5.025004791520295
+      service_time_factor: 7.457744773683766
       capacity:
-      - 7
-      - 7
+      - 1
+      - 1
   Service:
     type: "object"
     properties:
@@ -1501,8 +1541,8 @@ definitions:
       duration:
         type: "integer"
         format: "int64"
-        description: "duration of service, i.e. time in ms the corresponding activity\
-          \ takes"
+        description: "duration of service, i.e. time in seconds the corresponding\
+          \ activity takes"
       preparation_time:
         type: "integer"
         format: "int64"
@@ -1531,18 +1571,29 @@ definitions:
         description: "array of allowed vehicle ids"
         items:
           type: "string"
+      disallowed_vehicles:
+        type: "array"
+        description: "array of disallowed vehicle ids"
+        items:
+          type: "string"
+      max_time_in_vehicle:
+        type: "integer"
+        format: "int64"
+        description: "max time service can stay in vehicle"
     example:
-      duration: 4
       time_windows:
-      - earliest: 9
+      - earliest: 8
         latest: 9
-      - earliest: 9
+      - earliest: 8
         latest: 9
       address:
         name: "name"
         lon: 0.8008281904610115
         location_id: "location_id"
         lat: 6.027456183070403
+      type: "service"
+      priority: 9
+      duration: 9
       size:
       - 6
       - 6
@@ -1552,11 +1603,13 @@ definitions:
       required_skills:
       - "required_skills"
       - "required_skills"
+      disallowed_vehicles:
+      - "disallowed_vehicles"
+      - "disallowed_vehicles"
       name: "name"
-      preparation_time: 5
+      preparation_time: 6
+      max_time_in_vehicle: 3
       id: "id"
-      type: "service"
-      priority: 1
   Shipment:
     type: "object"
     properties:
@@ -1591,45 +1644,58 @@ definitions:
         description: "array of allowed vehicle ids"
         items:
           type: "string"
+      disallowed_vehicles:
+        type: "array"
+        description: "array of disallowed vehicle ids"
+        items:
+          type: "string"
+      max_time_in_vehicle:
+        type: "integer"
+        format: "int64"
+        description: "max time shipment can stay in vehicle"
     example:
       delivery:
-        duration: 9
+        duration: 1
         time_windows:
-        - earliest: 9
+        - earliest: 8
           latest: 9
-        - earliest: 9
+        - earliest: 8
           latest: 9
         address:
           name: "name"
           lon: 0.8008281904610115
           location_id: "location_id"
           lat: 6.027456183070403
-        preparation_time: 6
+        preparation_time: 2
       size:
-      - 3
-      - 3
+      - 6
+      - 6
       allowed_vehicles:
       - "allowed_vehicles"
       - "allowed_vehicles"
       required_skills:
       - "required_skills"
       - "required_skills"
+      disallowed_vehicles:
+      - "disallowed_vehicles"
+      - "disallowed_vehicles"
       name: "name"
       pickup:
-        duration: 9
+        duration: 1
         time_windows:
-        - earliest: 9
+        - earliest: 8
           latest: 9
-        - earliest: 9
+        - earliest: 8
           latest: 9
         address:
           name: "name"
           lon: 0.8008281904610115
           location_id: "location_id"
           lat: 6.027456183070403
-        preparation_time: 6
+        preparation_time: 2
+      max_time_in_vehicle: 6
       id: "id"
-      priority: 8
+      priority: 6
   Stop:
     type: "object"
     properties:
@@ -1638,7 +1704,7 @@ definitions:
       duration:
         type: "integer"
         format: "int64"
-        description: "duration of stop, i.e. time in ms the corresponding activity\
+        description: "duration of stop, i.e. time in seconds the corresponding activity\
           \ takes"
       preparation_time:
         type: "integer"
@@ -1653,18 +1719,18 @@ definitions:
         items:
           $ref: "#/definitions/TimeWindow"
     example:
-      duration: 9
+      duration: 1
       time_windows:
-      - earliest: 9
+      - earliest: 8
         latest: 9
-      - earliest: 9
+      - earliest: 8
         latest: 9
       address:
         name: "name"
         lon: 0.8008281904610115
         location_id: "location_id"
         lat: 6.027456183070403
-      preparation_time: 6
+      preparation_time: 2
   TimeWindow:
     type: "object"
     properties:
@@ -1677,7 +1743,7 @@ definitions:
         format: "int64"
         description: "latest start time of corresponding activity"
     example:
-      earliest: 9
+      earliest: 8
       latest: 9
   Location:
     type: "object"
@@ -1697,15 +1763,34 @@ definitions:
         $ref: "#/definitions/Routing"
     example:
       routing:
+        network_data_provider: "openstreetmap"
+        fail_fast: true
         calc_points: true
+        consider_traffic: true
   Routing:
     type: "object"
     properties:
       calc_points:
         type: "boolean"
         description: "indicates whether solution should come with route geometries"
+      consider_traffic:
+        type: "boolean"
+        description: "indicates whether historical traffic information should be considered"
+      network_data_provider:
+        type: "string"
+        description: "specifies the data provider"
+        enum:
+        - "openstreetmap"
+        - "tomtom"
+      fail_fast:
+        type: "boolean"
+        description: "indicates whether matrix calculation should fail fast when points\
+          \ cannot be connected"
     example:
+      network_data_provider: "openstreetmap"
+      fail_fast: true
       calc_points: true
+      consider_traffic: true
   Objective:
     type: "object"
     properties:
@@ -1749,17 +1834,17 @@ definitions:
     example:
       data:
         distances:
-        - - 1.284659006116532
-          - 1.284659006116532
-        - - 1.284659006116532
-          - 1.284659006116532
+        - - 6.704019297950036
+          - 6.704019297950036
+        - - 6.704019297950036
+          - 6.704019297950036
         times:
-        - - 6
-          - 6
-        - - 6
-          - 6
+        - - 5
+          - 5
+        - - 5
+          - 5
         info:
-          took: 2.8841621266687802
+          took: 3.353193347011243
           copyrights:
           - "copyrights"
           - "copyrights"
@@ -1946,19 +2031,19 @@ definitions:
       time:
         type: "integer"
         format: "int64"
-        description: "overall transport time in ms"
+        description: "overall transport time in seconds"
       transport_time:
         type: "integer"
         format: "int64"
-        description: "overall transport time in ms"
+        description: "overall transport time in seconds"
       max_operation_time:
         type: "integer"
         format: "int64"
-        description: "operation time of the longest route in ms"
+        description: "operation time of the longest route in seconds"
       waiting_time:
         type: "integer"
         format: "int64"
-        description: "total waiting time in ms"
+        description: "total waiting time in seconds"
       no_vehicles:
         type: "integer"
         format: "int32"
@@ -2090,15 +2175,15 @@ definitions:
       transport_time:
         type: "integer"
         format: "int64"
-        description: "transport time of route in ms"
+        description: "transport time of route in seconds"
       completion_time:
         type: "integer"
         format: "int64"
-        description: "completion time of route in ms"
+        description: "completion time of route in seconds"
       waiting_time:
         type: "integer"
         format: "int64"
-        description: "waiting time of route in ms"
+        description: "waiting time of route in seconds"
       activities:
         type: "array"
         description: "array of activities"
@@ -2193,7 +2278,7 @@ definitions:
       arr_time:
         type: "integer"
         format: "int64"
-        description: "arrival time at this activity in ms"
+        description: "arrival time at this activity in seconds"
       end_time:
         type: "integer"
         format: "int64"
@@ -2201,7 +2286,7 @@ definitions:
       waiting_time:
         type: "integer"
         format: "int64"
-        description: "waiting time at this activity in ms"
+        description: "waiting time at this activity in seconds"
       distance:
         type: "integer"
         format: "int64"
@@ -2209,7 +2294,7 @@ definitions:
       driving_time:
         type: "integer"
         format: "int64"
-        description: "driving time of driver in ms"
+        description: "driving time of driver in seconds"
       load_before:
         type: "array"
         description: "Array with size/capacity dimensions before this activity"
@@ -2274,7 +2359,7 @@ definitions:
         format: "double"
     description: "Additional information for your request"
     example:
-      took: 2.8841621266687802
+      took: 3.353193347011243
       copyrights:
       - "copyrights"
       - "copyrights"
@@ -2301,17 +2386,17 @@ definitions:
     description: "JSON data of matrix response"
     example:
       distances:
-      - - 1.284659006116532
-        - 1.284659006116532
-      - - 1.284659006116532
-        - 1.284659006116532
+      - - 6.704019297950036
+        - 6.704019297950036
+      - - 6.704019297950036
+        - 6.704019297950036
       times:
-      - - 6
-        - 6
-      - - 6
-        - 6
+      - - 5
+        - 5
+      - - 5
+        - 5
       info:
-        took: 2.8841621266687802
+        took: 3.353193347011243
         copyrights:
         - "copyrights"
         - "copyrights"

@@ -23,6 +23,10 @@ public class Shipment: JSONEncodable {
     public var requiredSkills: [String]?
     /** array of allowed vehicle ids */
     public var allowedVehicles: [String]?
+    /** array of disallowed vehicle ids */
+    public var disallowedVehicles: [String]?
+    /** max time shipment can stay in vehicle */
+    public var maxTimeInVehicle: Int64?
 
     public init() {}
 
@@ -37,6 +41,8 @@ public class Shipment: JSONEncodable {
         nillableDictionary["size"] = self.size?.encodeToJSON()
         nillableDictionary["required_skills"] = self.requiredSkills?.encodeToJSON()
         nillableDictionary["allowed_vehicles"] = self.allowedVehicles?.encodeToJSON()
+        nillableDictionary["disallowed_vehicles"] = self.disallowedVehicles?.encodeToJSON()
+        nillableDictionary["max_time_in_vehicle"] = self.maxTimeInVehicle?.encodeToJSON()
         let dictionary: [String:AnyObject] = APIHelper.rejectNil(nillableDictionary) ?? [:]
         return dictionary
     }

@@ -55,13 +55,13 @@ NSInteger kSWGGeocodingApiMissingParamErrorCode = 234513;
 /// This endpoint provides forward and reverse geocoding. For more details, review the official documentation at: https://graphhopper.com/api/1/docs/geocoding/ 
 ///  @param key Get your key at graphhopper.com 
 ///
-///  @param q If you do forward geocoding, then this would be a textual description of the adress you are looking for. If you do reverse geocoding this would be in lat,lon. (optional)
+///  @param q If you do forward geocoding, then this would be a textual description of the address you are looking for (optional)
 ///
 ///  @param locale Display the search results for the specified locale. Currently French (fr), English (en), German (de) and Italian (it) are supported. If the locale wasn't found the default (en) is used. (optional)
 ///
 ///  @param limit Specify the maximum number of returned results (optional)
 ///
-///  @param reverse Set to true to do a reverse Geocoding request (optional)
+///  @param reverse Set to true to do a reverse Geocoding request, see point parameter (optional)
 ///
 ///  @param point The location bias in the format 'latitude,longitude' e.g. point=45.93272,11.58803 (optional)
 ///

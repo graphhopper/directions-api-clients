@@ -83,11 +83,11 @@ public:
 	/*! \brief Set 
 	 */
 	void setAddress(Address  address);
-	/*! \brief Get duration of service, i.e. time in ms the corresponding activity takes
+	/*! \brief Get duration of service, i.e. time in seconds the corresponding activity takes
 	 */
 	long long getDuration();
 
-	/*! \brief Set duration of service, i.e. time in ms the corresponding activity takes
+	/*! \brief Set duration of service, i.e. time in seconds the corresponding activity takes
 	 */
 	void setDuration(long long  duration);
 	/*! \brief Get preparation time of service, e.g. search for a parking space. it only falls due if the location of previous activity differs from this location
@@ -125,6 +125,20 @@ public:
 	/*! \brief Set array of allowed vehicle ids
 	 */
 	void setAllowedVehicles(std::list <std::string> allowed_vehicles);
+	/*! \brief Get array of disallowed vehicle ids
+	 */
+	std::list<std::string> getDisallowedVehicles();
+
+	/*! \brief Set array of disallowed vehicle ids
+	 */
+	void setDisallowedVehicles(std::list <std::string> disallowed_vehicles);
+	/*! \brief Get max time service can stay in vehicle
+	 */
+	long long getMaxTimeInVehicle();
+
+	/*! \brief Set max time service can stay in vehicle
+	 */
+	void setMaxTimeInVehicle(long long  max_time_in_vehicle);
 
 private:
 	std::string id;
@@ -138,6 +152,8 @@ private:
 	std::list <int>size;
 	std::list <std::string>required_skills;
 	std::list <std::string>allowed_vehicles;
+	std::list <std::string>disallowed_vehicles;
+	long long max_time_in_vehicle;
 	void __init();
 	void __cleanup();
 

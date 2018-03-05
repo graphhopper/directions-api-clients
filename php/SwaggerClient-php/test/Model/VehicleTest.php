@@ -145,4 +145,25 @@ class VehicleTest extends \PHPUnit_Framework_TestCase
     public function testPropertyMaxDistance()
     {
     }
+
+    /**
+     * Test attribute "max_driving_time"
+     */
+    public function testPropertyMaxDrivingTime()
+    {
+    }
+
+    /**
+     * Test attribute "max_jobs"
+     */
+    public function testPropertyMaxJobs()
+    {
+    }
+
+    /**
+     * Test attribute "max_activities"
+     */
+    public function testPropertyMaxActivities()
+    {
+    }
 }

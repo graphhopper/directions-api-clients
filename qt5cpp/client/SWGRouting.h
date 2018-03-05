@@ -22,6 +22,7 @@
 #include <QJsonObject>
 
 
+#include <QString>
 
 #include "SWGObject.h"
 
@@ -43,12 +44,30 @@ public:
     bool isCalcPoints();
     void setCalcPoints(bool calc_points);
 
+    bool isConsiderTraffic();
+    void setConsiderTraffic(bool consider_traffic);
+
+    QString* getNetworkDataProvider();
+    void setNetworkDataProvider(QString* network_data_provider);
+
+    bool isFailFast();
+    void setFailFast(bool fail_fast);
+
 
     virtual bool isSet() override;
 
 private:
     bool calc_points;
     bool m_calc_points_isSet;
+    
+    bool consider_traffic;
+    bool m_consider_traffic_isSet;
+    
+    QString* network_data_provider;
+    bool m_network_data_provider_isSet;
+    
+    bool fail_fast;
+    bool m_fail_fast_isSet;
     
 };
 

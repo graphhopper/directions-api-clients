@@ -13,13 +13,13 @@ public class Solution: JSONEncodable {
     public var costs: Int32?
     /** overall travel distance in meters */
     public var distance: Int32?
-    /** overall transport time in ms */
+    /** overall transport time in seconds */
     public var time: Int64?
-    /** overall transport time in ms */
+    /** overall transport time in seconds */
     public var transportTime: Int64?
-    /** operation time of the longest route in ms */
+    /** operation time of the longest route in seconds */
     public var maxOperationTime: Int64?
-    /** total waiting time in ms */
+    /** total waiting time in seconds */
     public var waitingTime: Int64?
     /** number of employed vehicles */
     public var noVehicles: Int32?

@@ -34,7 +34,7 @@ public:
  * \param fromPoint The starting points for the routes. E.g. if you want to calculate the three routes A-&gt;1, A-&gt;2, A-&gt;3 then you have one from_point parameter and three to_point parameters. Is a string with the format latitude,longitude.
  * \param toPoint The destination points for the routes. Is a string with the format latitude,longitude.
  * \param outArray Specifies which arrays should be included in the response. Specify one or more of the following options 'weights', 'times', 'distances'. To specify more than one array use e.g. out_array=times&out_array=distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API.
- * \param vehicle The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc, see here for the details.
+ * \param vehicle The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
@@ -52,7 +52,7 @@ bool matrixGetSync(char * accessToken,
  * \param fromPoint The starting points for the routes. E.g. if you want to calculate the three routes A-&gt;1, A-&gt;2, A-&gt;3 then you have one from_point parameter and three to_point parameters. Is a string with the format latitude,longitude.
  * \param toPoint The destination points for the routes. Is a string with the format latitude,longitude.
  * \param outArray Specifies which arrays should be included in the response. Specify one or more of the following options 'weights', 'times', 'distances'. To specify more than one array use e.g. out_array=times&out_array=distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API.
- * \param vehicle The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc, see here for the details.
+ * \param vehicle The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.

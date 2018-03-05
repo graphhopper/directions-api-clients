@@ -71,13 +71,15 @@ namespace IO.Swagger.Model
         /// <param name="Priority">priority of service.</param>
         /// <param name="Name">name of service.</param>
         /// <param name="Address">Address.</param>
-        /// <param name="Duration">duration of service, i.e. time in ms the corresponding activity takes.</param>
+        /// <param name="Duration">duration of service, i.e. time in seconds the corresponding activity takes.</param>
         /// <param name="PreparationTime">preparation time of service, e.g. search for a parking space. it only falls due if the location of previous activity differs from this location.</param>
         /// <param name="TimeWindows">array of time windows. currently, only a single time window is allowed.</param>
         /// <param name="Size">array of capacity dimensions.</param>
         /// <param name="RequiredSkills">array of required skills.</param>
         /// <param name="AllowedVehicles">array of allowed vehicle ids.</param>
-        public Service(string Id = default(string), TypeEnum? Type = default(TypeEnum?), int? Priority = default(int?), string Name = default(string), Address Address = default(Address), long? Duration = default(long?), long? PreparationTime = default(long?), List<TimeWindow> TimeWindows = default(List<TimeWindow>), List<int?> Size = default(List<int?>), List<string> RequiredSkills = default(List<string>), List<string> AllowedVehicles = default(List<string>))
+        /// <param name="DisallowedVehicles">array of disallowed vehicle ids.</param>
+        /// <param name="MaxTimeInVehicle">max time service can stay in vehicle.</param>
+        public Service(string Id = default(string), TypeEnum? Type = default(TypeEnum?), int? Priority = default(int?), string Name = default(string), Address Address = default(Address), long? Duration = default(long?), long? PreparationTime = default(long?), List<TimeWindow> TimeWindows = default(List<TimeWindow>), List<int?> Size = default(List<int?>), List<string> RequiredSkills = default(List<string>), List<string> AllowedVehicles = default(List<string>), List<string> DisallowedVehicles = default(List<string>), long? MaxTimeInVehicle = default(long?))
         {
             this.Id = Id;
             this.Type = Type;
@@ -90,6 +92,8 @@ namespace IO.Swagger.Model
             this.Size = Size;
             this.RequiredSkills = RequiredSkills;
             this.AllowedVehicles = AllowedVehicles;
+            this.DisallowedVehicles = DisallowedVehicles;
+            this.MaxTimeInVehicle = MaxTimeInVehicle;
         }
         
         /// <summary>
@@ -121,9 +125,9 @@ namespace IO.Swagger.Model
         public Address Address { get; set; }
 
         /// <summary>
-        /// duration of service, i.e. time in ms the corresponding activity takes
+        /// duration of service, i.e. time in seconds the corresponding activity takes
         /// </summary>
-        /// <value>duration of service, i.e. time in ms the corresponding activity takes</value>
+        /// <value>duration of service, i.e. time in seconds the corresponding activity takes</value>
         [DataMember(Name="duration", EmitDefaultValue=false)]
         public long? Duration { get; set; }
 
@@ -163,6 +167,20 @@ namespace IO.Swagger.Model
         public List<string> AllowedVehicles { get; set; }
 
         /// <summary>
+        /// array of disallowed vehicle ids
+        /// </summary>
+        /// <value>array of disallowed vehicle ids</value>
+        [DataMember(Name="disallowed_vehicles", EmitDefaultValue=false)]
+        public List<string> DisallowedVehicles { get; set; }
+
+        /// <summary>
+        /// max time service can stay in vehicle
+        /// </summary>
+        /// <value>max time service can stay in vehicle</value>
+        [DataMember(Name="max_time_in_vehicle", EmitDefaultValue=false)]
+        public long? MaxTimeInVehicle { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -181,6 +199,8 @@ namespace IO.Swagger.Model
             sb.Append("  Size: ").Append(Size).Append("\n");
             sb.Append("  RequiredSkills: ").Append(RequiredSkills).Append("\n");
             sb.Append("  AllowedVehicles: ").Append(AllowedVehicles).Append("\n");
+            sb.Append("  DisallowedVehicles: ").Append(DisallowedVehicles).Append("\n");
+            sb.Append("  MaxTimeInVehicle: ").Append(MaxTimeInVehicle).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -269,6 +289,16 @@ namespace IO.Swagger.Model
                     this.AllowedVehicles == input.AllowedVehicles ||
                     this.AllowedVehicles != null &&
                     this.AllowedVehicles.SequenceEqual(input.AllowedVehicles)
+                ) && 
+                (
+                    this.DisallowedVehicles == input.DisallowedVehicles ||
+                    this.DisallowedVehicles != null &&
+                    this.DisallowedVehicles.SequenceEqual(input.DisallowedVehicles)
+                ) && 
+                (
+                    this.MaxTimeInVehicle == input.MaxTimeInVehicle ||
+                    (this.MaxTimeInVehicle != null &&
+                    this.MaxTimeInVehicle.Equals(input.MaxTimeInVehicle))
                 );
         }
 
@@ -303,6 +333,10 @@ namespace IO.Swagger.Model
                     hashCode = hashCode * 59 + this.RequiredSkills.GetHashCode();
                 if (this.AllowedVehicles != null)
                     hashCode = hashCode * 59 + this.AllowedVehicles.GetHashCode();
+                if (this.DisallowedVehicles != null)
+                    hashCode = hashCode * 59 + this.DisallowedVehicles.GetHashCode();
+                if (this.MaxTimeInVehicle != null)
+                    hashCode = hashCode * 59 + this.MaxTimeInVehicle.GetHashCode();
                 return hashCode;
             }
         }

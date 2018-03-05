@@ -69,10 +69,10 @@ public class Stop {
   }
 
    /**
-   * duration of stop, i.e. time in ms the corresponding activity takes
+   * duration of stop, i.e. time in seconds the corresponding activity takes
    * @return duration
   **/
-  @ApiModelProperty(value = "duration of stop, i.e. time in ms the corresponding activity takes")
+  @ApiModelProperty(value = "duration of stop, i.e. time in seconds the corresponding activity takes")
   public Long getDuration() {
     return duration;
   }

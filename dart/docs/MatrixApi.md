@@ -30,7 +30,7 @@ var point = []; // List<String> | Specifiy multiple points for which the weight-
 var fromPoint = fromPoint_example; // String | The starting points for the routes. E.g. if you want to calculate the three routes A-&gt;1, A-&gt;2, A-&gt;3 then you have one from_point parameter and three to_point parameters. Is a string with the format latitude,longitude.
 var toPoint = toPoint_example; // String | The destination points for the routes. Is a string with the format latitude,longitude.
 var outArray = []; // List<String> | Specifies which arrays should be included in the response. Specify one or more of the following options 'weights', 'times', 'distances'. To specify more than one array use e.g. out_array=times&out_array=distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API.
-var vehicle = vehicle_example; // String | The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc, see here for the details.
+var vehicle = vehicle_example; // String | The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc
 
 try { 
     var result = api_instance.matrixGet(key, point, fromPoint, toPoint, outArray, vehicle);
@@ -49,7 +49,7 @@ Name | Type | Description  | Notes
  **fromPoint** | **String**| The starting points for the routes. E.g. if you want to calculate the three routes A-&amp;gt;1, A-&amp;gt;2, A-&amp;gt;3 then you have one from_point parameter and three to_point parameters. Is a string with the format latitude,longitude. | [optional] 
  **toPoint** | **String**| The destination points for the routes. Is a string with the format latitude,longitude. | [optional] 
  **outArray** | [**List&lt;String&gt;**](String.md)| Specifies which arrays should be included in the response. Specify one or more of the following options &#39;weights&#39;, &#39;times&#39;, &#39;distances&#39;. To specify more than one array use e.g. out_array&#x3D;times&amp;out_array&#x3D;distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API. | [optional] 
- **vehicle** | **String**| The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc, see here for the details. | [optional] [default to car]
+ **vehicle** | **String**| The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc | [optional] [default to car]
 
 ### Return type
 

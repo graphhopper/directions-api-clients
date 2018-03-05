@@ -180,10 +180,10 @@ public class Activity {
   }
 
    /**
-   * arrival time at this activity in ms
+   * arrival time at this activity in seconds
    * @return arrTime
   **/
-  @ApiModelProperty(value = "arrival time at this activity in ms")
+  @ApiModelProperty(value = "arrival time at this activity in seconds")
   public Long getArrTime() {
     return arrTime;
   }
@@ -216,10 +216,10 @@ public class Activity {
   }
 
    /**
-   * waiting time at this activity in ms
+   * waiting time at this activity in seconds
    * @return waitingTime
   **/
-  @ApiModelProperty(value = "waiting time at this activity in ms")
+  @ApiModelProperty(value = "waiting time at this activity in seconds")
   public Long getWaitingTime() {
     return waitingTime;
   }
@@ -252,10 +252,10 @@ public class Activity {
   }
 
    /**
-   * driving time of driver in ms
+   * driving time of driver in seconds
    * @return drivingTime
   **/
-  @ApiModelProperty(value = "driving time of driver in ms")
+  @ApiModelProperty(value = "driving time of driver in seconds")
   public Long getDrivingTime() {
     return drivingTime;
   }

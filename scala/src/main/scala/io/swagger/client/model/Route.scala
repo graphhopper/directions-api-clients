@@ -18,11 +18,11 @@ case class Route (
   vehicleId: Option[String] = None,
   // distance of route in meter
   distance: Option[Long] = None,
-  // transport time of route in ms
+  // transport time of route in seconds
   transportTime: Option[Long] = None,
-  // completion time of route in ms
+  // completion time of route in seconds
   completionTime: Option[Long] = None,
-  // waiting time of route in ms
+  // waiting time of route in seconds
   waitingTime: Option[Long] = None,
   // array of activities
   activities: Option[List[Activity]] = None,

@@ -64,7 +64,9 @@ class Shipment implements ModelInterface, ArrayAccess
         'delivery' => '\Swagger\Client\Model\Stop',
         'size' => 'int[]',
         'required_skills' => 'string[]',
-        'allowed_vehicles' => 'string[]'
+        'allowed_vehicles' => 'string[]',
+        'disallowed_vehicles' => 'string[]',
+        'max_time_in_vehicle' => 'int'
     ];
 
     /**
@@ -80,7 +82,9 @@ class Shipment implements ModelInterface, ArrayAccess
         'delivery' => null,
         'size' => 'int32',
         'required_skills' => null,
-        'allowed_vehicles' => null
+        'allowed_vehicles' => null,
+        'disallowed_vehicles' => null,
+        'max_time_in_vehicle' => 'int64'
     ];
 
     /**
@@ -117,7 +121,9 @@ class Shipment implements ModelInterface, ArrayAccess
         'delivery' => 'delivery',
         'size' => 'size',
         'required_skills' => 'required_skills',
-        'allowed_vehicles' => 'allowed_vehicles'
+        'allowed_vehicles' => 'allowed_vehicles',
+        'disallowed_vehicles' => 'disallowed_vehicles',
+        'max_time_in_vehicle' => 'max_time_in_vehicle'
     ];
 
     /**
@@ -133,7 +139,9 @@ class Shipment implements ModelInterface, ArrayAccess
         'delivery' => 'setDelivery',
         'size' => 'setSize',
         'required_skills' => 'setRequiredSkills',
-        'allowed_vehicles' => 'setAllowedVehicles'
+        'allowed_vehicles' => 'setAllowedVehicles',
+        'disallowed_vehicles' => 'setDisallowedVehicles',
+        'max_time_in_vehicle' => 'setMaxTimeInVehicle'
     ];
 
     /**
@@ -149,7 +157,9 @@ class Shipment implements ModelInterface, ArrayAccess
         'delivery' => 'getDelivery',
         'size' => 'getSize',
         'required_skills' => 'getRequiredSkills',
-        'allowed_vehicles' => 'getAllowedVehicles'
+        'allowed_vehicles' => 'getAllowedVehicles',
+        'disallowed_vehicles' => 'getDisallowedVehicles',
+        'max_time_in_vehicle' => 'getMaxTimeInVehicle'
     ];
 
     /**
@@ -220,6 +230,8 @@ class Shipment implements ModelInterface, ArrayAccess
         $this->container['size'] = isset($data['size']) ? $data['size'] : null;
         $this->container['required_skills'] = isset($data['required_skills']) ? $data['required_skills'] : null;
         $this->container['allowed_vehicles'] = isset($data['allowed_vehicles']) ? $data['allowed_vehicles'] : null;
+        $this->container['disallowed_vehicles'] = isset($data['disallowed_vehicles']) ? $data['disallowed_vehicles'] : null;
+        $this->container['max_time_in_vehicle'] = isset($data['max_time_in_vehicle']) ? $data['max_time_in_vehicle'] : null;
     }
 
     /**
@@ -435,6 +447,54 @@ class Shipment implements ModelInterface, ArrayAccess
     public function setAllowedVehicles($allowed_vehicles)
     {
         $this->container['allowed_vehicles'] = $allowed_vehicles;
+
+        return $this;
+    }
+
+    /**
+     * Gets disallowed_vehicles
+     *
+     * @return string[]
+     */
+    public function getDisallowedVehicles()
+    {
+        return $this->container['disallowed_vehicles'];
+    }
+
+    /**
+     * Sets disallowed_vehicles
+     *
+     * @param string[] $disallowed_vehicles array of disallowed vehicle ids
+     *
+     * @return $this
+     */
+    public function setDisallowedVehicles($disallowed_vehicles)
+    {
+        $this->container['disallowed_vehicles'] = $disallowed_vehicles;
+
+        return $this;
+    }
+
+    /**
+     * Gets max_time_in_vehicle
+     *
+     * @return int
+     */
+    public function getMaxTimeInVehicle()
+    {
+        return $this->container['max_time_in_vehicle'];
+    }
+
+    /**
+     * Sets max_time_in_vehicle
+     *
+     * @param int $max_time_in_vehicle max time shipment can stay in vehicle
+     *
+     * @return $this
+     */
+    public function setMaxTimeInVehicle($max_time_in_vehicle)
+    {
+        $this->container['max_time_in_vehicle'] = $max_time_in_vehicle;
 
         return $this;
     }

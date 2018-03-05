@@ -10,15 +10,15 @@ class Route {
   @Property(name: 'distance')
   int distance = null;
   
-/* transport time of route in ms */
+/* transport time of route in seconds */
   @Property(name: 'transport_time')
   int transportTime = null;
   
-/* completion time of route in ms */
+/* completion time of route in seconds */
   @Property(name: 'completion_time')
   int completionTime = null;
   
-/* waiting time of route in ms */
+/* waiting time of route in seconds */
   @Property(name: 'waiting_time')
   int waitingTime = null;
   

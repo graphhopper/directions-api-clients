@@ -130,7 +130,7 @@ class Route(object):
     def transport_time(self):
         """Gets the transport_time of this Route.  # noqa: E501
 
-        transport time of route in ms  # noqa: E501
+        transport time of route in seconds  # noqa: E501
 
         :return: The transport_time of this Route.  # noqa: E501
         :rtype: int
@@ -141,7 +141,7 @@ class Route(object):
     def transport_time(self, transport_time):
         """Sets the transport_time of this Route.
 
-        transport time of route in ms  # noqa: E501
+        transport time of route in seconds  # noqa: E501
 
         :param transport_time: The transport_time of this Route.  # noqa: E501
         :type: int
@@ -153,7 +153,7 @@ class Route(object):
     def completion_time(self):
         """Gets the completion_time of this Route.  # noqa: E501
 
-        completion time of route in ms  # noqa: E501
+        completion time of route in seconds  # noqa: E501
 
         :return: The completion_time of this Route.  # noqa: E501
         :rtype: int
@@ -164,7 +164,7 @@ class Route(object):
     def completion_time(self, completion_time):
         """Sets the completion_time of this Route.
 
-        completion time of route in ms  # noqa: E501
+        completion time of route in seconds  # noqa: E501
 
         :param completion_time: The completion_time of this Route.  # noqa: E501
         :type: int
@@ -176,7 +176,7 @@ class Route(object):
     def waiting_time(self):
         """Gets the waiting_time of this Route.  # noqa: E501
 
-        waiting time of route in ms  # noqa: E501
+        waiting time of route in seconds  # noqa: E501
 
         :return: The waiting_time of this Route.  # noqa: E501
         :rtype: int
@@ -187,7 +187,7 @@ class Route(object):
     def waiting_time(self, waiting_time):
         """Sets the waiting_time of this Route.
 
-        waiting time of route in ms  # noqa: E501
+        waiting time of route in seconds  # noqa: E501
 
         :param waiting_time: The waiting_time of this Route.  # noqa: E501
         :type: int

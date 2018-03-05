@@ -16,13 +16,13 @@ type Route struct {
 	// distance of route in meter
 	Distance int64 `json:"distance,omitempty"`
 
-	// transport time of route in ms
+	// transport time of route in seconds
 	TransportTime int64 `json:"transport_time,omitempty"`
 
-	// completion time of route in ms
+	// completion time of route in seconds
 	CompletionTime int64 `json:"completion_time,omitempty"`
 
-	// waiting time of route in ms
+	// waiting time of route in seconds
 	WaitingTime int64 `json:"waiting_time,omitempty"`
 
 	// array of activities

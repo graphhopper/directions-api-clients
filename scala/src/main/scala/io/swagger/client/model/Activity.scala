@@ -20,15 +20,15 @@ case class Activity (
   id: Option[String] = None,
   // id that refers to address
   locationId: Option[String] = None,
-  // arrival time at this activity in ms
+  // arrival time at this activity in seconds
   arrTime: Option[Long] = None,
   // end time of and thus departure time at this activity
   endTime: Option[Long] = None,
-  // waiting time at this activity in ms
+  // waiting time at this activity in seconds
   waitingTime: Option[Long] = None,
   // cumulated distance from start to this activity in m
   distance: Option[Long] = None,
-  // driving time of driver in ms
+  // driving time of driver in seconds
   drivingTime: Option[Long] = None,
   // Array with size/capacity dimensions before this activity
   loadBefore: Option[List[Integer]] = None,

@@ -72,10 +72,10 @@ namespace Example
 
             var apiInstance = new GeocodingApi();
             var key = key_example;  // string | Get your key at graphhopper.com
-            var q = q_example;  // string | If you do forward geocoding, then this would be a textual description of the adress you are looking for. If you do reverse geocoding this would be in lat,lon. (optional) 
+            var q = q_example;  // string | If you do forward geocoding, then this would be a textual description of the address you are looking for (optional) 
             var locale = locale_example;  // string | Display the search results for the specified locale. Currently French (fr), English (en), German (de) and Italian (it) are supported. If the locale wasn't found the default (en) is used. (optional) 
             var limit = 56;  // int? | Specify the maximum number of returned results (optional) 
-            var reverse = true;  // bool? | Set to true to do a reverse Geocoding request (optional) 
+            var reverse = true;  // bool? | Set to true to do a reverse Geocoding request, see point parameter (optional) 
             var point = point_example;  // string | The location bias in the format 'latitude,longitude' e.g. point=45.93272,11.58803 (optional) 
             var provider = provider_example;  // string | Can be either, default, nominatim, opencagedata (optional) 
 

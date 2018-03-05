@@ -18,13 +18,13 @@ case class Solution (
   costs: Option[Integer] = None,
   // overall travel distance in meters
   distance: Option[Integer] = None,
-  // overall transport time in ms
+  // overall transport time in seconds
   time: Option[Long] = None,
-  // overall transport time in ms
+  // overall transport time in seconds
   transportTime: Option[Long] = None,
-  // operation time of the longest route in ms
+  // operation time of the longest route in seconds
   maxOperationTime: Option[Long] = None,
-  // total waiting time in ms
+  // total waiting time in seconds
   waitingTime: Option[Long] = None,
   // number of employed vehicles
   noVehicles: Option[Integer] = None,

@@ -21,12 +21,14 @@ import io.swagger.client.models.TimeWindow
  * @param priority priority of service
  * @param name name of service
  * @param address 
- * @param duration duration of service, i.e. time in ms the corresponding activity takes
+ * @param duration duration of service, i.e. time in seconds the corresponding activity takes
  * @param preparation_time preparation time of service, e.g. search for a parking space. it only falls due if the location of previous activity differs from this location
  * @param time_windows array of time windows. currently, only a single time window is allowed
  * @param size array of capacity dimensions
  * @param required_skills array of required skills
  * @param allowed_vehicles array of allowed vehicle ids
+ * @param disallowed_vehicles array of disallowed vehicle ids
+ * @param max_time_in_vehicle max time service can stay in vehicle
  */
 data class Service (
     /* Unique identifier of service */
@@ -38,7 +40,7 @@ data class Service (
     /* name of service */
     val name: kotlin.String? = null,
     val address: Address? = null,
-    /* duration of service, i.e. time in ms the corresponding activity takes */
+    /* duration of service, i.e. time in seconds the corresponding activity takes */
     val duration: kotlin.Long? = null,
     /* preparation time of service, e.g. search for a parking space. it only falls due if the location of previous activity differs from this location */
     val preparation_time: kotlin.Long? = null,
@@ -49,7 +51,11 @@ data class Service (
     /* array of required skills */
     val required_skills: kotlin.Array<kotlin.String>? = null,
     /* array of allowed vehicle ids */
-    val allowed_vehicles: kotlin.Array<kotlin.String>? = null
+    val allowed_vehicles: kotlin.Array<kotlin.String>? = null,
+    /* array of disallowed vehicle ids */
+    val disallowed_vehicles: kotlin.Array<kotlin.String>? = null,
+    /* max time service can stay in vehicle */
+    val max_time_in_vehicle: kotlin.Long? = null
 ) {
 
     /**

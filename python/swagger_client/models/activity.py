@@ -171,7 +171,7 @@ class Activity(object):
     def arr_time(self):
         """Gets the arr_time of this Activity.  # noqa: E501
 
-        arrival time at this activity in ms  # noqa: E501
+        arrival time at this activity in seconds  # noqa: E501
 
         :return: The arr_time of this Activity.  # noqa: E501
         :rtype: int
@@ -182,7 +182,7 @@ class Activity(object):
     def arr_time(self, arr_time):
         """Sets the arr_time of this Activity.
 
-        arrival time at this activity in ms  # noqa: E501
+        arrival time at this activity in seconds  # noqa: E501
 
         :param arr_time: The arr_time of this Activity.  # noqa: E501
         :type: int
@@ -217,7 +217,7 @@ class Activity(object):
     def waiting_time(self):
         """Gets the waiting_time of this Activity.  # noqa: E501
 
-        waiting time at this activity in ms  # noqa: E501
+        waiting time at this activity in seconds  # noqa: E501
 
         :return: The waiting_time of this Activity.  # noqa: E501
         :rtype: int
@@ -228,7 +228,7 @@ class Activity(object):
     def waiting_time(self, waiting_time):
         """Sets the waiting_time of this Activity.
 
-        waiting time at this activity in ms  # noqa: E501
+        waiting time at this activity in seconds  # noqa: E501
 
         :param waiting_time: The waiting_time of this Activity.  # noqa: E501
         :type: int
@@ -263,7 +263,7 @@ class Activity(object):
     def driving_time(self):
         """Gets the driving_time of this Activity.  # noqa: E501
 
-        driving time of driver in ms  # noqa: E501
+        driving time of driver in seconds  # noqa: E501
 
         :return: The driving_time of this Activity.  # noqa: E501
         :rtype: int
@@ -274,7 +274,7 @@ class Activity(object):
     def driving_time(self, driving_time):
         """Sets the driving_time of this Activity.
 
-        driving time of driver in ms  # noqa: E501
+        driving time of driver in seconds  # noqa: E501
 
         :param driving_time: The driving_time of this Activity.  # noqa: E501
         :type: int

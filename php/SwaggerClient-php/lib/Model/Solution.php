@@ -320,7 +320,7 @@ class Solution implements ModelInterface, ArrayAccess
     /**
      * Sets time
      *
-     * @param int $time overall transport time in ms
+     * @param int $time overall transport time in seconds
      *
      * @return $this
      */
@@ -344,7 +344,7 @@ class Solution implements ModelInterface, ArrayAccess
     /**
      * Sets transport_time
      *
-     * @param int $transport_time overall transport time in ms
+     * @param int $transport_time overall transport time in seconds
      *
      * @return $this
      */
@@ -368,7 +368,7 @@ class Solution implements ModelInterface, ArrayAccess
     /**
      * Sets max_operation_time
      *
-     * @param int $max_operation_time operation time of the longest route in ms
+     * @param int $max_operation_time operation time of the longest route in seconds
      *
      * @return $this
      */
@@ -392,7 +392,7 @@ class Solution implements ModelInterface, ArrayAccess
     /**
      * Sets waiting_time
      *
-     * @param int $waiting_time total waiting time in ms
+     * @param int $waiting_time total waiting time in seconds
      *
      * @return $this
      */

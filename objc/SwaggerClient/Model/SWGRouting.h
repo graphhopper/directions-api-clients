@@ -25,5 +25,14 @@
 /* indicates whether solution should come with route geometries [optional]
  */
 @property(nonatomic) NSNumber* calcPoints;
+/* indicates whether historical traffic information should be considered [optional]
+ */
+@property(nonatomic) NSNumber* considerTraffic;
+/* specifies the data provider [optional]
+ */
+@property(nonatomic) NSString* networkDataProvider;
+/* indicates whether matrix calculation should fail fast when points cannot be connected [optional]
+ */
+@property(nonatomic) NSNumber* failFast;
 
 @end

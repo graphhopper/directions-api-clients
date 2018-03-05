@@ -42,11 +42,23 @@ class Vehicle {
   @Property(name: 'max_distance')
   int maxDistance = null;
   
+/* max drive time of vehicle */
+  @Property(name: 'max_driving_time')
+  int maxDrivingTime = null;
+  
+/* max number of jobs the vehicle can load */
+  @Property(name: 'max_jobs')
+  int maxJobs = null;
+  
+/* max number of activities the vehicle can conduct */
+  @Property(name: 'max_activities')
+  int maxActivities = null;
+  
   Vehicle();
 
   @override
   String toString()  {
-    return 'Vehicle[vehicleId=$vehicleId, typeId=$typeId, startAddress=$startAddress, endAddress=$endAddress, break_=$break_, returnToDepot=$returnToDepot, earliestStart=$earliestStart, latestEnd=$latestEnd, skills=$skills, maxDistance=$maxDistance, ]';
+    return 'Vehicle[vehicleId=$vehicleId, typeId=$typeId, startAddress=$startAddress, endAddress=$endAddress, break_=$break_, returnToDepot=$returnToDepot, earliestStart=$earliestStart, latestEnd=$latestEnd, skills=$skills, maxDistance=$maxDistance, maxDrivingTime=$maxDrivingTime, maxJobs=$maxJobs, maxActivities=$maxActivities, ]';
   }
 }
 

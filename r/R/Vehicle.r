@@ -19,6 +19,9 @@
 #' @field latest_end 
 #' @field skills 
 #' @field max_distance 
+#' @field max_driving_time 
+#' @field max_jobs 
+#' @field max_activities 
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -36,7 +39,10 @@ Vehicle <- R6::R6Class(
     `latest_end` = NULL,
     `skills` = NULL,
     `max_distance` = NULL,
-    initialize = function(`vehicle_id`, `type_id`, `start_address`, `end_address`, `break`, `return_to_depot`, `earliest_start`, `latest_end`, `skills`, `max_distance`){
+    `max_driving_time` = NULL,
+    `max_jobs` = NULL,
+    `max_activities` = NULL,
+    initialize = function(`vehicle_id`, `type_id`, `start_address`, `end_address`, `break`, `return_to_depot`, `earliest_start`, `latest_end`, `skills`, `max_distance`, `max_driving_time`, `max_jobs`, `max_activities`){
       if (!missing(`vehicle_id`)) {
         stopifnot(is.character(`vehicle_id`), length(`vehicle_id`) == 1)
         self$`vehicle_id` <- `vehicle_id`
@@ -77,6 +83,18 @@ Vehicle <- R6::R6Class(
         stopifnot(is.numeric(`max_distance`), length(`max_distance`) == 1)
         self$`max_distance` <- `max_distance`
       }
+      if (!missing(`max_driving_time`)) {
+        stopifnot(is.numeric(`max_driving_time`), length(`max_driving_time`) == 1)
+        self$`max_driving_time` <- `max_driving_time`
+      }
+      if (!missing(`max_jobs`)) {
+        stopifnot(is.numeric(`max_jobs`), length(`max_jobs`) == 1)
+        self$`max_jobs` <- `max_jobs`
+      }
+      if (!missing(`max_activities`)) {
+        stopifnot(is.numeric(`max_activities`), length(`max_activities`) == 1)
+        self$`max_activities` <- `max_activities`
+      }
     },
     toJSON = function() {
       VehicleObject <- list()
@@ -109,6 +127,15 @@ Vehicle <- R6::R6Class(
       }
       if (!is.null(self$`max_distance`)) {
         VehicleObject[['max_distance']] <- self$`max_distance`
+      }
+      if (!is.null(self$`max_driving_time`)) {
+        VehicleObject[['max_driving_time']] <- self$`max_driving_time`
+      }
+      if (!is.null(self$`max_jobs`)) {
+        VehicleObject[['max_jobs']] <- self$`max_jobs`
+      }
+      if (!is.null(self$`max_activities`)) {
+        VehicleObject[['max_activities']] <- self$`max_activities`
       }
 
       VehicleObject
@@ -151,6 +178,15 @@ Vehicle <- R6::R6Class(
       if (!is.null(VehicleObject$`max_distance`)) {
         self$`max_distance` <- VehicleObject$`max_distance`
       }
+      if (!is.null(VehicleObject$`max_driving_time`)) {
+        self$`max_driving_time` <- VehicleObject$`max_driving_time`
+      }
+      if (!is.null(VehicleObject$`max_jobs`)) {
+        self$`max_jobs` <- VehicleObject$`max_jobs`
+      }
+      if (!is.null(VehicleObject$`max_activities`)) {
+        self$`max_activities` <- VehicleObject$`max_activities`
+      }
     },
     toJSONString = function() {
        sprintf(
@@ -164,7 +200,10 @@ Vehicle <- R6::R6Class(
            "earliest_start": %d,
            "latest_end": %d,
            "skills": [%s],
-           "max_distance": %d
+           "max_distance": %d,
+           "max_driving_time": %d,
+           "max_jobs": %s,
+           "max_activities": %s
         }',
         self$`vehicle_id`,
         self$`type_id`,
@@ -175,7 +214,10 @@ Vehicle <- R6::R6Class(
         self$`earliest_start`,
         self$`latest_end`,
         lapply(self$`skills`, function(x) paste(paste0('"', x, '"'), sep=",")),
-        self$`max_distance`
+        self$`max_distance`,
+        self$`max_driving_time`,
+        self$`max_jobs`,
+        self$`max_activities`
       )
     },
     fromJSONString = function(VehicleJson) {
@@ -193,6 +235,9 @@ Vehicle <- R6::R6Class(
       self$`latest_end` <- VehicleObject$`latest_end`
       self$`skills` <- VehicleObject$`skills`
       self$`max_distance` <- VehicleObject$`max_distance`
+      self$`max_driving_time` <- VehicleObject$`max_driving_time`
+      self$`max_jobs` <- VehicleObject$`max_jobs`
+      self$`max_activities` <- VehicleObject$`max_activities`
     }
   )
 )

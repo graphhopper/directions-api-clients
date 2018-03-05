@@ -57,7 +57,10 @@ class Routing implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'calc_points' => 'bool'
+        'calc_points' => 'bool',
+        'consider_traffic' => 'bool',
+        'network_data_provider' => 'string',
+        'fail_fast' => 'bool'
     ];
 
     /**
@@ -66,7 +69,10 @@ class Routing implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'calc_points' => null
+        'calc_points' => null,
+        'consider_traffic' => null,
+        'network_data_provider' => null,
+        'fail_fast' => null
     ];
 
     /**
@@ -96,7 +102,10 @@ class Routing implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'calc_points' => 'calc_points'
+        'calc_points' => 'calc_points',
+        'consider_traffic' => 'consider_traffic',
+        'network_data_provider' => 'network_data_provider',
+        'fail_fast' => 'fail_fast'
     ];
 
     /**
@@ -105,7 +114,10 @@ class Routing implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'calc_points' => 'setCalcPoints'
+        'calc_points' => 'setCalcPoints',
+        'consider_traffic' => 'setConsiderTraffic',
+        'network_data_provider' => 'setNetworkDataProvider',
+        'fail_fast' => 'setFailFast'
     ];
 
     /**
@@ -114,7 +126,10 @@ class Routing implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'calc_points' => 'getCalcPoints'
+        'calc_points' => 'getCalcPoints',
+        'consider_traffic' => 'getConsiderTraffic',
+        'network_data_provider' => 'getNetworkDataProvider',
+        'fail_fast' => 'getFailFast'
     ];
 
     /**
@@ -158,8 +173,23 @@ class Routing implements ModelInterface, ArrayAccess
         return self::$swaggerModelName;
     }
 
+    const NETWORK_DATA_PROVIDER_OPENSTREETMAP = 'openstreetmap';
+    const NETWORK_DATA_PROVIDER_TOMTOM = 'tomtom';
     
 
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getNetworkDataProviderAllowableValues()
+    {
+        return [
+            self::NETWORK_DATA_PROVIDER_OPENSTREETMAP,
+            self::NETWORK_DATA_PROVIDER_TOMTOM,
+        ];
+    }
     
 
     /**
@@ -178,6 +208,9 @@ class Routing implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['calc_points'] = isset($data['calc_points']) ? $data['calc_points'] : null;
+        $this->container['consider_traffic'] = isset($data['consider_traffic']) ? $data['consider_traffic'] : null;
+        $this->container['network_data_provider'] = isset($data['network_data_provider']) ? $data['network_data_provider'] : null;
+        $this->container['fail_fast'] = isset($data['fail_fast']) ? $data['fail_fast'] : null;
     }
 
     /**
@@ -188,6 +221,14 @@ class Routing implements ModelInterface, ArrayAccess
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        $allowedValues = $this->getNetworkDataProviderAllowableValues();
+        if (!in_array($this->container['network_data_provider'], $allowedValues)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'network_data_provider', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
 
         return $invalidProperties;
     }
@@ -201,6 +242,10 @@ class Routing implements ModelInterface, ArrayAccess
     public function valid()
     {
 
+        $allowedValues = $this->getNetworkDataProviderAllowableValues();
+        if (!in_array($this->container['network_data_provider'], $allowedValues)) {
+            return false;
+        }
         return true;
     }
 
@@ -225,6 +270,87 @@ class Routing implements ModelInterface, ArrayAccess
     public function setCalcPoints($calc_points)
     {
         $this->container['calc_points'] = $calc_points;
+
+        return $this;
+    }
+
+    /**
+     * Gets consider_traffic
+     *
+     * @return bool
+     */
+    public function getConsiderTraffic()
+    {
+        return $this->container['consider_traffic'];
+    }
+
+    /**
+     * Sets consider_traffic
+     *
+     * @param bool $consider_traffic indicates whether historical traffic information should be considered
+     *
+     * @return $this
+     */
+    public function setConsiderTraffic($consider_traffic)
+    {
+        $this->container['consider_traffic'] = $consider_traffic;
+
+        return $this;
+    }
+
+    /**
+     * Gets network_data_provider
+     *
+     * @return string
+     */
+    public function getNetworkDataProvider()
+    {
+        return $this->container['network_data_provider'];
+    }
+
+    /**
+     * Sets network_data_provider
+     *
+     * @param string $network_data_provider specifies the data provider
+     *
+     * @return $this
+     */
+    public function setNetworkDataProvider($network_data_provider)
+    {
+        $allowedValues = $this->getNetworkDataProviderAllowableValues();
+        if (!is_null($network_data_provider) && !in_array($network_data_provider, $allowedValues)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'network_data_provider', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['network_data_provider'] = $network_data_provider;
+
+        return $this;
+    }
+
+    /**
+     * Gets fail_fast
+     *
+     * @return bool
+     */
+    public function getFailFast()
+    {
+        return $this->container['fail_fast'];
+    }
+
+    /**
+     * Sets fail_fast
+     *
+     * @param bool $fail_fast indicates whether matrix calculation should fail fast when points cannot be connected
+     *
+     * @return $this
+     */
+    public function setFailFast($fail_fast)
+    {
+        $this->container['fail_fast'] = $fail_fast;
 
         return $this;
     }

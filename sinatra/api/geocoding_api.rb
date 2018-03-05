@@ -11,7 +11,7 @@ MyApp.add_route('GET', '/api/1/geocode', {
   "parameters" => [
     {
       "name" => "q",
-      "description" => "If you do forward geocoding, then this would be a textual description of the adress you are looking for. If you do reverse geocoding this would be in lat,lon.",
+      "description" => "If you do forward geocoding, then this would be a textual description of the address you are looking for",
       "dataType" => "string",
       "paramType" => "query",
       
@@ -38,7 +38,7 @@ MyApp.add_route('GET', '/api/1/geocode', {
     },
     {
       "name" => "reverse",
-      "description" => "Set to true to do a reverse Geocoding request",
+      "description" => "Set to true to do a reverse Geocoding request, see point parameter",
       "dataType" => "boolean",
       "paramType" => "query",
       

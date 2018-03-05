@@ -66,7 +66,10 @@ class Vehicle implements ModelInterface, ArrayAccess
         'earliest_start' => 'int',
         'latest_end' => 'int',
         'skills' => 'string[]',
-        'max_distance' => 'int'
+        'max_distance' => 'int',
+        'max_driving_time' => 'int',
+        'max_jobs' => 'int',
+        'max_activities' => 'int'
     ];
 
     /**
@@ -84,7 +87,10 @@ class Vehicle implements ModelInterface, ArrayAccess
         'earliest_start' => 'int64',
         'latest_end' => 'int64',
         'skills' => null,
-        'max_distance' => 'int64'
+        'max_distance' => 'int64',
+        'max_driving_time' => 'int64',
+        'max_jobs' => 'int32',
+        'max_activities' => 'int32'
     ];
 
     /**
@@ -123,7 +129,10 @@ class Vehicle implements ModelInterface, ArrayAccess
         'earliest_start' => 'earliest_start',
         'latest_end' => 'latest_end',
         'skills' => 'skills',
-        'max_distance' => 'max_distance'
+        'max_distance' => 'max_distance',
+        'max_driving_time' => 'max_driving_time',
+        'max_jobs' => 'max_jobs',
+        'max_activities' => 'max_activities'
     ];
 
     /**
@@ -141,7 +150,10 @@ class Vehicle implements ModelInterface, ArrayAccess
         'earliest_start' => 'setEarliestStart',
         'latest_end' => 'setLatestEnd',
         'skills' => 'setSkills',
-        'max_distance' => 'setMaxDistance'
+        'max_distance' => 'setMaxDistance',
+        'max_driving_time' => 'setMaxDrivingTime',
+        'max_jobs' => 'setMaxJobs',
+        'max_activities' => 'setMaxActivities'
     ];
 
     /**
@@ -159,7 +171,10 @@ class Vehicle implements ModelInterface, ArrayAccess
         'earliest_start' => 'getEarliestStart',
         'latest_end' => 'getLatestEnd',
         'skills' => 'getSkills',
-        'max_distance' => 'getMaxDistance'
+        'max_distance' => 'getMaxDistance',
+        'max_driving_time' => 'getMaxDrivingTime',
+        'max_jobs' => 'getMaxJobs',
+        'max_activities' => 'getMaxActivities'
     ];
 
     /**
@@ -232,6 +247,9 @@ class Vehicle implements ModelInterface, ArrayAccess
         $this->container['latest_end'] = isset($data['latest_end']) ? $data['latest_end'] : null;
         $this->container['skills'] = isset($data['skills']) ? $data['skills'] : null;
         $this->container['max_distance'] = isset($data['max_distance']) ? $data['max_distance'] : null;
+        $this->container['max_driving_time'] = isset($data['max_driving_time']) ? $data['max_driving_time'] : null;
+        $this->container['max_jobs'] = isset($data['max_jobs']) ? $data['max_jobs'] : null;
+        $this->container['max_activities'] = isset($data['max_activities']) ? $data['max_activities'] : null;
     }
 
     /**
@@ -495,6 +513,78 @@ class Vehicle implements ModelInterface, ArrayAccess
     public function setMaxDistance($max_distance)
     {
         $this->container['max_distance'] = $max_distance;
+
+        return $this;
+    }
+
+    /**
+     * Gets max_driving_time
+     *
+     * @return int
+     */
+    public function getMaxDrivingTime()
+    {
+        return $this->container['max_driving_time'];
+    }
+
+    /**
+     * Sets max_driving_time
+     *
+     * @param int $max_driving_time max drive time of vehicle
+     *
+     * @return $this
+     */
+    public function setMaxDrivingTime($max_driving_time)
+    {
+        $this->container['max_driving_time'] = $max_driving_time;
+
+        return $this;
+    }
+
+    /**
+     * Gets max_jobs
+     *
+     * @return int
+     */
+    public function getMaxJobs()
+    {
+        return $this->container['max_jobs'];
+    }
+
+    /**
+     * Sets max_jobs
+     *
+     * @param int $max_jobs max number of jobs the vehicle can load
+     *
+     * @return $this
+     */
+    public function setMaxJobs($max_jobs)
+    {
+        $this->container['max_jobs'] = $max_jobs;
+
+        return $this;
+    }
+
+    /**
+     * Gets max_activities
+     *
+     * @return int
+     */
+    public function getMaxActivities()
+    {
+        return $this->container['max_activities'];
+    }
+
+    /**
+     * Sets max_activities
+     *
+     * @param int $max_activities max number of activities the vehicle can conduct
+     *
+     * @return $this
+     */
+    public function setMaxActivities($max_activities)
+    {
+        $this->container['max_activities'] = $max_activities;
 
         return $this;
     }

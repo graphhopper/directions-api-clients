@@ -5,9 +5,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **vehicleId** | **NSString*** | id of vehicle that operates route | [optional] 
 **distance** | **NSNumber*** | distance of route in meter | [optional] 
-**transportTime** | **NSNumber*** | transport time of route in ms | [optional] 
-**completionTime** | **NSNumber*** | completion time of route in ms | [optional] 
-**waitingTime** | **NSNumber*** | waiting time of route in ms | [optional] 
+**transportTime** | **NSNumber*** | transport time of route in seconds | [optional] 
+**completionTime** | **NSNumber*** | completion time of route in seconds | [optional] 
+**waitingTime** | **NSNumber*** | waiting time of route in seconds | [optional] 
 **activities** | [**NSArray&lt;SWGActivity&gt;***](SWGActivity.md) | array of activities | [optional] 
 **points** | [**NSArray&lt;SWGRoutePoint&gt;***](SWGRoutePoint.md) | array of route planning points | [optional] 
 

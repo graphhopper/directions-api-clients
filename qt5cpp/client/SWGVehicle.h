@@ -74,6 +74,15 @@ public:
     qint64 getMaxDistance();
     void setMaxDistance(qint64 max_distance);
 
+    qint64 getMaxDrivingTime();
+    void setMaxDrivingTime(qint64 max_driving_time);
+
+    qint32 getMaxJobs();
+    void setMaxJobs(qint32 max_jobs);
+
+    qint32 getMaxActivities();
+    void setMaxActivities(qint32 max_activities);
+
 
     virtual bool isSet() override;
 
@@ -107,6 +116,15 @@ private:
     
     qint64 max_distance;
     bool m_max_distance_isSet;
+    
+    qint64 max_driving_time;
+    bool m_max_driving_time_isSet;
+    
+    qint32 max_jobs;
+    bool m_max_jobs_isSet;
+    
+    qint32 max_activities;
+    bool m_max_activities_isSet;
     
 };
 

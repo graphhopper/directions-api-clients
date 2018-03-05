@@ -31,4 +31,10 @@ type Shipment struct {
 
 	// array of allowed vehicle ids
 	AllowedVehicles []string `json:"allowed_vehicles,omitempty"`
+
+	// array of disallowed vehicle ids
+	DisallowedVehicles []string `json:"disallowed_vehicles,omitempty"`
+
+	// max time shipment can stay in vehicle
+	MaxTimeInVehicle int64 `json:"max_time_in_vehicle,omitempty"`
 }

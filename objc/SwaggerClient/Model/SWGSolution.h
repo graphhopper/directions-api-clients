@@ -34,16 +34,16 @@
 /* overall travel distance in meters [optional]
  */
 @property(nonatomic) NSNumber* distance;
-/* overall transport time in ms [optional]
+/* overall transport time in seconds [optional]
  */
 @property(nonatomic) NSNumber* time;
-/* overall transport time in ms [optional]
+/* overall transport time in seconds [optional]
  */
 @property(nonatomic) NSNumber* transportTime;
-/* operation time of the longest route in ms [optional]
+/* operation time of the longest route in seconds [optional]
  */
 @property(nonatomic) NSNumber* maxOperationTime;
-/* total waiting time in ms [optional]
+/* total waiting time in seconds [optional]
  */
 @property(nonatomic) NSNumber* waitingTime;
 /* number of employed vehicles [optional]

@@ -38,5 +38,27 @@ describe 'Routing' do
     end
   end
 
+  describe 'test attribute "consider_traffic"' do
+    it 'should work' do
+       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  describe 'test attribute "network_data_provider"' do
+    it 'should work' do
+       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+       #validator = Petstore::EnumTest::EnumAttributeValidator.new('String', ["openstreetmap", "tomtom"])
+       #validator.allowable_values.each do |value|
+       #  expect { @instance.network_data_provider = value }.not_to raise_error
+       #end
+    end
+  end
+
+  describe 'test attribute "fail_fast"' do
+    it 'should work' do
+       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
 end
 

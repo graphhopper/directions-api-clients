@@ -21,16 +21,16 @@ module DirectionsApiClient
     # overall travel distance in meters
     attr_accessor :distance
 
-    # overall transport time in ms
+    # overall transport time in seconds
     attr_accessor :time
 
-    # overall transport time in ms
+    # overall transport time in seconds
     attr_accessor :transport_time
 
-    # operation time of the longest route in ms
+    # operation time of the longest route in seconds
     attr_accessor :max_operation_time
 
-    # total waiting time in ms
+    # total waiting time in seconds
     attr_accessor :waiting_time
 
     # number of employed vehicles

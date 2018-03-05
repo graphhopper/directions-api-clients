@@ -31,19 +31,19 @@
 /* id that refers to address [optional]
  */
 @property(nonatomic) NSString* locationId;
-/* arrival time at this activity in ms [optional]
+/* arrival time at this activity in seconds [optional]
  */
 @property(nonatomic) NSNumber* arrTime;
 /* end time of and thus departure time at this activity [optional]
  */
 @property(nonatomic) NSNumber* endTime;
-/* waiting time at this activity in ms [optional]
+/* waiting time at this activity in seconds [optional]
  */
 @property(nonatomic) NSNumber* waitingTime;
 /* cumulated distance from start to this activity in m [optional]
  */
 @property(nonatomic) NSNumber* distance;
-/* driving time of driver in ms [optional]
+/* driving time of driver in seconds [optional]
  */
 @property(nonatomic) NSNumber* drivingTime;
 /* Array with size/capacity dimensions before this activity [optional]

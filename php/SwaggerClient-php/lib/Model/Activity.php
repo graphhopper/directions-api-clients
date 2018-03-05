@@ -392,7 +392,7 @@ class Activity implements ModelInterface, ArrayAccess
     /**
      * Sets arr_time
      *
-     * @param int $arr_time arrival time at this activity in ms
+     * @param int $arr_time arrival time at this activity in seconds
      *
      * @return $this
      */
@@ -440,7 +440,7 @@ class Activity implements ModelInterface, ArrayAccess
     /**
      * Sets waiting_time
      *
-     * @param int $waiting_time waiting time at this activity in ms
+     * @param int $waiting_time waiting time at this activity in seconds
      *
      * @return $this
      */
@@ -488,7 +488,7 @@ class Activity implements ModelInterface, ArrayAccess
     /**
      * Sets driving_time
      *
-     * @param int $driving_time driving time of driver in ms
+     * @param int $driving_time driving time of driver in seconds
      *
      * @return $this
      */

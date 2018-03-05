@@ -41,7 +41,9 @@ namespace IO.Swagger.Model
         /// <param name="Size">array of capacity dimensions.</param>
         /// <param name="RequiredSkills">array of required skills.</param>
         /// <param name="AllowedVehicles">array of allowed vehicle ids.</param>
-        public Shipment(string Id = default(string), string Name = default(string), int? Priority = default(int?), Stop Pickup = default(Stop), Stop Delivery = default(Stop), List<int?> Size = default(List<int?>), List<string> RequiredSkills = default(List<string>), List<string> AllowedVehicles = default(List<string>))
+        /// <param name="DisallowedVehicles">array of disallowed vehicle ids.</param>
+        /// <param name="MaxTimeInVehicle">max time shipment can stay in vehicle.</param>
+        public Shipment(string Id = default(string), string Name = default(string), int? Priority = default(int?), Stop Pickup = default(Stop), Stop Delivery = default(Stop), List<int?> Size = default(List<int?>), List<string> RequiredSkills = default(List<string>), List<string> AllowedVehicles = default(List<string>), List<string> DisallowedVehicles = default(List<string>), long? MaxTimeInVehicle = default(long?))
         {
             this.Id = Id;
             this.Name = Name;
@@ -51,6 +53,8 @@ namespace IO.Swagger.Model
             this.Size = Size;
             this.RequiredSkills = RequiredSkills;
             this.AllowedVehicles = AllowedVehicles;
+            this.DisallowedVehicles = DisallowedVehicles;
+            this.MaxTimeInVehicle = MaxTimeInVehicle;
         }
         
         /// <summary>
@@ -108,6 +112,20 @@ namespace IO.Swagger.Model
         public List<string> AllowedVehicles { get; set; }
 
         /// <summary>
+        /// array of disallowed vehicle ids
+        /// </summary>
+        /// <value>array of disallowed vehicle ids</value>
+        [DataMember(Name="disallowed_vehicles", EmitDefaultValue=false)]
+        public List<string> DisallowedVehicles { get; set; }
+
+        /// <summary>
+        /// max time shipment can stay in vehicle
+        /// </summary>
+        /// <value>max time shipment can stay in vehicle</value>
+        [DataMember(Name="max_time_in_vehicle", EmitDefaultValue=false)]
+        public long? MaxTimeInVehicle { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -123,6 +141,8 @@ namespace IO.Swagger.Model
             sb.Append("  Size: ").Append(Size).Append("\n");
             sb.Append("  RequiredSkills: ").Append(RequiredSkills).Append("\n");
             sb.Append("  AllowedVehicles: ").Append(AllowedVehicles).Append("\n");
+            sb.Append("  DisallowedVehicles: ").Append(DisallowedVehicles).Append("\n");
+            sb.Append("  MaxTimeInVehicle: ").Append(MaxTimeInVehicle).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -196,6 +216,16 @@ namespace IO.Swagger.Model
                     this.AllowedVehicles == input.AllowedVehicles ||
                     this.AllowedVehicles != null &&
                     this.AllowedVehicles.SequenceEqual(input.AllowedVehicles)
+                ) && 
+                (
+                    this.DisallowedVehicles == input.DisallowedVehicles ||
+                    this.DisallowedVehicles != null &&
+                    this.DisallowedVehicles.SequenceEqual(input.DisallowedVehicles)
+                ) && 
+                (
+                    this.MaxTimeInVehicle == input.MaxTimeInVehicle ||
+                    (this.MaxTimeInVehicle != null &&
+                    this.MaxTimeInVehicle.Equals(input.MaxTimeInVehicle))
                 );
         }
 
@@ -224,6 +254,10 @@ namespace IO.Swagger.Model
                     hashCode = hashCode * 59 + this.RequiredSkills.GetHashCode();
                 if (this.AllowedVehicles != null)
                     hashCode = hashCode * 59 + this.AllowedVehicles.GetHashCode();
+                if (this.DisallowedVehicles != null)
+                    hashCode = hashCode * 59 + this.DisallowedVehicles.GetHashCode();
+                if (this.MaxTimeInVehicle != null)
+                    hashCode = hashCode * 59 + this.MaxTimeInVehicle.GetHashCode();
                 return hashCode;
             }
         }

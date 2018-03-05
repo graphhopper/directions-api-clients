@@ -96,10 +96,10 @@ public class Route {
   }
 
    /**
-   * transport time of route in ms
+   * transport time of route in seconds
    * @return transportTime
   **/
-  @ApiModelProperty(value = "transport time of route in ms")
+  @ApiModelProperty(value = "transport time of route in seconds")
   public Long getTransportTime() {
     return transportTime;
   }
@@ -114,10 +114,10 @@ public class Route {
   }
 
    /**
-   * completion time of route in ms
+   * completion time of route in seconds
    * @return completionTime
   **/
-  @ApiModelProperty(value = "completion time of route in ms")
+  @ApiModelProperty(value = "completion time of route in seconds")
   public Long getCompletionTime() {
     return completionTime;
   }
@@ -132,10 +132,10 @@ public class Route {
   }
 
    /**
-   * waiting time of route in ms
+   * waiting time of route in seconds
    * @return waitingTime
   **/
-  @ApiModelProperty(value = "waiting time of route in ms")
+  @ApiModelProperty(value = "waiting time of route in seconds")
   public Long getWaitingTime() {
     return waitingTime;
   }

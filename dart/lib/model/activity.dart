@@ -14,7 +14,7 @@ class Activity {
   @Property(name: 'location_id')
   String locationId = null;
   
-/* arrival time at this activity in ms */
+/* arrival time at this activity in seconds */
   @Property(name: 'arr_time')
   int arrTime = null;
   
@@ -22,7 +22,7 @@ class Activity {
   @Property(name: 'end_time')
   int endTime = null;
   
-/* waiting time at this activity in ms */
+/* waiting time at this activity in seconds */
   @Property(name: 'waiting_time')
   int waitingTime = null;
   
@@ -30,7 +30,7 @@ class Activity {
   @Property(name: 'distance')
   int distance = null;
   
-/* driving time of driver in ms */
+/* driving time of driver in seconds */
   @Property(name: 'driving_time')
   int drivingTime = null;
   

@@ -47,7 +47,7 @@ MyApp.add_route('GET', '/api/1/matrix', {
     },
     {
       "name" => "vehicle",
-      "description" => "The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc, see here for the details.",
+      "description" => "The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc",
       "dataType" => "string",
       "paramType" => "query",
       

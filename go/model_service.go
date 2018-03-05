@@ -24,7 +24,7 @@ type Service struct {
 
 	Address *Address `json:"address,omitempty"`
 
-	// duration of service, i.e. time in ms the corresponding activity takes
+	// duration of service, i.e. time in seconds the corresponding activity takes
 	Duration int64 `json:"duration,omitempty"`
 
 	// preparation time of service, e.g. search for a parking space. it only falls due if the location of previous activity differs from this location
@@ -41,4 +41,10 @@ type Service struct {
 
 	// array of allowed vehicle ids
 	AllowedVehicles []string `json:"allowed_vehicles,omitempty"`
+
+	// array of disallowed vehicle ids
+	DisallowedVehicles []string `json:"disallowed_vehicles,omitempty"`
+
+	// max time service can stay in vehicle
+	MaxTimeInVehicle int64 `json:"max_time_in_vehicle,omitempty"`
 }
