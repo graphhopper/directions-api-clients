@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 <a name="routeGet"></a>
 # **routeGet**
-> RouteResponse routeGet(point, pointsEncoded, key, locale, instructions, vehicle, elevation, calcPoints, pointHint, chDisable, weighting, edgeTraversal, algorithm, heading, headingPenalty, passThrough, roundTripDistance, roundTripSeed, alternativeRouteMaxPaths, alternativeRouteMaxWeightFactor, alternativeRouteMaxShareFactor)
+> RouteResponse routeGet(point, pointsEncoded, key, locale, instructions, vehicle, elevation, calcPoints, pointHint, chDisable, weighting, edgeTraversal, algorithm, heading, headingPenalty, passThrough, roundTripDistance, roundTripSeed, alternativeRouteMaxPaths, alternativeRouteMaxWeightFactor, alternativeRouteMaxShareFactor, avoid)
 
 Routing Request
 
@@ -44,8 +44,9 @@ Long roundTripSeed = 789L; // Long | If `algorithm=round_trip` this parameter in
 Integer alternativeRouteMaxPaths = 56; // Integer | If `algorithm=alternative_route` this parameter sets the number of maximum paths which should be calculated. Increasing can lead to worse alternatives.
 Integer alternativeRouteMaxWeightFactor = 56; // Integer | If `algorithm=alternative_route` this parameter sets the factor by which the alternatives routes can be longer than the optimal route. Increasing can lead to worse alternatives.
 Integer alternativeRouteMaxShareFactor = 56; // Integer | If `algorithm=alternative_route` this parameter specifies how much alternatives routes can have maximum in common with the optimal route. Increasing can lead to worse alternatives.
+String avoid = "avoid_example"; // String | comma separate list to avoid certain roads. You can avoid motorway, ferry, tunnel or track
 try {
-    RouteResponse result = apiInstance.routeGet(point, pointsEncoded, key, locale, instructions, vehicle, elevation, calcPoints, pointHint, chDisable, weighting, edgeTraversal, algorithm, heading, headingPenalty, passThrough, roundTripDistance, roundTripSeed, alternativeRouteMaxPaths, alternativeRouteMaxWeightFactor, alternativeRouteMaxShareFactor);
+    RouteResponse result = apiInstance.routeGet(point, pointsEncoded, key, locale, instructions, vehicle, elevation, calcPoints, pointHint, chDisable, weighting, edgeTraversal, algorithm, heading, headingPenalty, passThrough, roundTripDistance, roundTripSeed, alternativeRouteMaxPaths, alternativeRouteMaxWeightFactor, alternativeRouteMaxShareFactor, avoid);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling RoutingApi#routeGet");
@@ -78,6 +79,7 @@ Name | Type | Description  | Notes
  **alternativeRouteMaxPaths** | **Integer**| If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the number of maximum paths which should be calculated. Increasing can lead to worse alternatives. | [optional]
  **alternativeRouteMaxWeightFactor** | **Integer**| If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the factor by which the alternatives routes can be longer than the optimal route. Increasing can lead to worse alternatives. | [optional]
  **alternativeRouteMaxShareFactor** | **Integer**| If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter specifies how much alternatives routes can have maximum in common with the optimal route. Increasing can lead to worse alternatives. | [optional]
+ **avoid** | **String**| comma separate list to avoid certain roads. You can avoid motorway, ferry, tunnel or track | [optional]
 
 ### Return type
 

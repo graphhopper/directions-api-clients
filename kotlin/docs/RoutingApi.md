@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 <a name="routeGet"></a>
 # **routeGet**
-> RouteResponse routeGet(point, pointsEncoded, key, locale, instructions, vehicle, elevation, calcPoints, pointHint, ch.disable, weighting, edgeTraversal, algorithm, heading, headingPenalty, passThrough, roundTrip.distance, roundTrip.seed, alternativeRoute.maxPaths, alternativeRoute.maxWeightFactor, alternativeRoute.maxShareFactor)
+> RouteResponse routeGet(point, pointsEncoded, key, locale, instructions, vehicle, elevation, calcPoints, pointHint, ch.disable, weighting, edgeTraversal, algorithm, heading, headingPenalty, passThrough, roundTrip.distance, roundTrip.seed, alternativeRoute.maxPaths, alternativeRoute.maxWeightFactor, alternativeRoute.maxShareFactor, avoid)
 
 Routing Request
 
@@ -43,8 +43,9 @@ val roundTrip.seed : kotlin.Long = 789 // kotlin.Long | If `algorithm=round_trip
 val alternativeRoute.maxPaths : kotlin.Int = 56 // kotlin.Int | If `algorithm=alternative_route` this parameter sets the number of maximum paths which should be calculated. Increasing can lead to worse alternatives.
 val alternativeRoute.maxWeightFactor : kotlin.Int = 56 // kotlin.Int | If `algorithm=alternative_route` this parameter sets the factor by which the alternatives routes can be longer than the optimal route. Increasing can lead to worse alternatives.
 val alternativeRoute.maxShareFactor : kotlin.Int = 56 // kotlin.Int | If `algorithm=alternative_route` this parameter specifies how much alternatives routes can have maximum in common with the optimal route. Increasing can lead to worse alternatives.
+val avoid : kotlin.String = avoid_example // kotlin.String | comma separate list to avoid certain roads. You can avoid motorway, ferry, tunnel or track
 try {
-    val result : RouteResponse = apiInstance.routeGet(point, pointsEncoded, key, locale, instructions, vehicle, elevation, calcPoints, pointHint, ch.disable, weighting, edgeTraversal, algorithm, heading, headingPenalty, passThrough, roundTrip.distance, roundTrip.seed, alternativeRoute.maxPaths, alternativeRoute.maxWeightFactor, alternativeRoute.maxShareFactor)
+    val result : RouteResponse = apiInstance.routeGet(point, pointsEncoded, key, locale, instructions, vehicle, elevation, calcPoints, pointHint, ch.disable, weighting, edgeTraversal, algorithm, heading, headingPenalty, passThrough, roundTrip.distance, roundTrip.seed, alternativeRoute.maxPaths, alternativeRoute.maxWeightFactor, alternativeRoute.maxShareFactor, avoid)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling RoutingApi#routeGet")
@@ -80,6 +81,7 @@ Name | Type | Description  | Notes
  **alternativeRoute.maxPaths** | **kotlin.Int**| If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the number of maximum paths which should be calculated. Increasing can lead to worse alternatives. | [optional]
  **alternativeRoute.maxWeightFactor** | **kotlin.Int**| If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the factor by which the alternatives routes can be longer than the optimal route. Increasing can lead to worse alternatives. | [optional]
  **alternativeRoute.maxShareFactor** | **kotlin.Int**| If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter specifies how much alternatives routes can have maximum in common with the optimal route. Increasing can lead to worse alternatives. | [optional]
+ **avoid** | **kotlin.String**| comma separate list to avoid certain roads. You can avoid motorway, ferry, tunnel or track | [optional]
 
 ### Return type
 

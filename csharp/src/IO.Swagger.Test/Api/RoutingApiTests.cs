@@ -92,7 +92,8 @@ namespace IO.Swagger.Test
             //int? alternativeRouteMaxPaths = null;
             //int? alternativeRouteMaxWeightFactor = null;
             //int? alternativeRouteMaxShareFactor = null;
-            //var response = instance.RouteGet(point, pointsEncoded, key, locale, instructions, vehicle, elevation, calcPoints, pointHint, chDisable, weighting, edgeTraversal, algorithm, heading, headingPenalty, passThrough, roundTripDistance, roundTripSeed, alternativeRouteMaxPaths, alternativeRouteMaxWeightFactor, alternativeRouteMaxShareFactor);
+            //string avoid = null;
+            //var response = instance.RouteGet(point, pointsEncoded, key, locale, instructions, vehicle, elevation, calcPoints, pointHint, chDisable, weighting, edgeTraversal, algorithm, heading, headingPenalty, passThrough, roundTripDistance, roundTripSeed, alternativeRouteMaxPaths, alternativeRouteMaxWeightFactor, alternativeRouteMaxShareFactor, avoid);
             //Assert.IsInstanceOf<RouteResponse> (response, "response is RouteResponse");
         }
         

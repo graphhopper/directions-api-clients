@@ -30,6 +30,7 @@ Method | HTTP request | Description
     alternativeRouteMaxPaths: (NSNumber*) alternativeRouteMaxPaths
     alternativeRouteMaxWeightFactor: (NSNumber*) alternativeRouteMaxWeightFactor
     alternativeRouteMaxShareFactor: (NSNumber*) alternativeRouteMaxShareFactor
+    avoid: (NSString*) avoid
         completionHandler: (void (^)(SWGRouteResponse* output, NSError* error)) handler;
 ```
 
@@ -61,6 +62,7 @@ NSNumber* roundTripSeed = @789; // If `algorithm=round_trip` this parameter intr
 NSNumber* alternativeRouteMaxPaths = @56; // If `algorithm=alternative_route` this parameter sets the number of maximum paths which should be calculated. Increasing can lead to worse alternatives. (optional)
 NSNumber* alternativeRouteMaxWeightFactor = @56; // If `algorithm=alternative_route` this parameter sets the factor by which the alternatives routes can be longer than the optimal route. Increasing can lead to worse alternatives. (optional)
 NSNumber* alternativeRouteMaxShareFactor = @56; // If `algorithm=alternative_route` this parameter specifies how much alternatives routes can have maximum in common with the optimal route. Increasing can lead to worse alternatives. (optional)
+NSString* avoid = @"avoid_example"; // comma separate list to avoid certain roads. You can avoid motorway, ferry, tunnel or track (optional)
 
 SWGRoutingApi*apiInstance = [[SWGRoutingApi alloc] init];
 
@@ -86,6 +88,7 @@ SWGRoutingApi*apiInstance = [[SWGRoutingApi alloc] init];
               alternativeRouteMaxPaths:alternativeRouteMaxPaths
               alternativeRouteMaxWeightFactor:alternativeRouteMaxWeightFactor
               alternativeRouteMaxShareFactor:alternativeRouteMaxShareFactor
+              avoid:avoid
           completionHandler: ^(SWGRouteResponse* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
@@ -121,6 +124,7 @@ Name | Type | Description  | Notes
  **alternativeRouteMaxPaths** | **NSNumber***| If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the number of maximum paths which should be calculated. Increasing can lead to worse alternatives. | [optional] 
  **alternativeRouteMaxWeightFactor** | **NSNumber***| If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the factor by which the alternatives routes can be longer than the optimal route. Increasing can lead to worse alternatives. | [optional] 
  **alternativeRouteMaxShareFactor** | **NSNumber***| If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter specifies how much alternatives routes can have maximum in common with the optimal route. Increasing can lead to worse alternatives. | [optional] 
+ **avoid** | **NSString***| comma separate list to avoid certain roads. You can avoid motorway, ferry, tunnel or track | [optional] 
 
 ### Return type
 

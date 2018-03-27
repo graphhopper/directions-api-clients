@@ -45,7 +45,8 @@ opts = {
   round_trip_seed: 789, # Integer | If `algorithm=round_trip` this parameter introduces randomness if e.g. the first try wasn't good.
   alternative_route_max_paths: 56, # Integer | If `algorithm=alternative_route` this parameter sets the number of maximum paths which should be calculated. Increasing can lead to worse alternatives.
   alternative_route_max_weight_factor: 56, # Integer | If `algorithm=alternative_route` this parameter sets the factor by which the alternatives routes can be longer than the optimal route. Increasing can lead to worse alternatives.
-  alternative_route_max_share_factor: 56 # Integer | If `algorithm=alternative_route` this parameter specifies how much alternatives routes can have maximum in common with the optimal route. Increasing can lead to worse alternatives.
+  alternative_route_max_share_factor: 56, # Integer | If `algorithm=alternative_route` this parameter specifies how much alternatives routes can have maximum in common with the optimal route. Increasing can lead to worse alternatives.
+  avoid: "avoid_example" # String | comma separate list to avoid certain roads. You can avoid motorway, ferry, tunnel or track
 }
 
 begin
@@ -82,6 +83,7 @@ Name | Type | Description  | Notes
  **alternative_route_max_paths** | **Integer**| If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the number of maximum paths which should be calculated. Increasing can lead to worse alternatives. | [optional] 
  **alternative_route_max_weight_factor** | **Integer**| If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the factor by which the alternatives routes can be longer than the optimal route. Increasing can lead to worse alternatives. | [optional] 
  **alternative_route_max_share_factor** | **Integer**| If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter specifies how much alternatives routes can have maximum in common with the optimal route. Increasing can lead to worse alternatives. | [optional] 
+ **avoid** | **String**| comma separate list to avoid certain roads. You can avoid motorway, ferry, tunnel or track | [optional] 
 
 ### Return type
 

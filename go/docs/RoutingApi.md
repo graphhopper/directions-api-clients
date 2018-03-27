@@ -49,6 +49,7 @@ Name | Type | Description  | Notes
  **alternativeRouteMaxPaths** | **int32**| If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the number of maximum paths which should be calculated. Increasing can lead to worse alternatives. | 
  **alternativeRouteMaxWeightFactor** | **int32**| If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the factor by which the alternatives routes can be longer than the optimal route. Increasing can lead to worse alternatives. | 
  **alternativeRouteMaxShareFactor** | **int32**| If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter specifies how much alternatives routes can have maximum in common with the optimal route. Increasing can lead to worse alternatives. | 
+ **avoid** | **string**| comma separate list to avoid certain roads. You can avoid motorway, ferry, tunnel or track | 
 
 ### Return type
 

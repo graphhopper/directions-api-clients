@@ -50,6 +50,7 @@ The GraphHopper Routing API allows to calculate route and implement navigation v
     @param "alternativeRouteMaxPaths" (int32) If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the number of maximum paths which should be calculated. Increasing can lead to worse alternatives.
     @param "alternativeRouteMaxWeightFactor" (int32) If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the factor by which the alternatives routes can be longer than the optimal route. Increasing can lead to worse alternatives.
     @param "alternativeRouteMaxShareFactor" (int32) If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter specifies how much alternatives routes can have maximum in common with the optimal route. Increasing can lead to worse alternatives.
+    @param "avoid" (string) comma separate list to avoid certain roads. You can avoid motorway, ferry, tunnel or track
 @return RouteResponse*/
 func (a *RoutingApiService) RouteGet(ctx context.Context, point []string, pointsEncoded bool, key string, localVarOptionals map[string]interface{}) (RouteResponse, *http.Response, error) {
 	var (
@@ -117,6 +118,9 @@ func (a *RoutingApiService) RouteGet(ctx context.Context, point []string, points
 	if err := typeCheckParameter(localVarOptionals["alternativeRouteMaxShareFactor"], "int32", "alternativeRouteMaxShareFactor"); err != nil {
 		return successPayload, nil, err
 	}
+	if err := typeCheckParameter(localVarOptionals["avoid"], "string", "avoid"); err != nil {
+		return successPayload, nil, err
+	}
 
 	localVarQueryParams.Add("point", parameterToString(point, "multi"))
 	if localVarTempParam, localVarOk := localVarOptionals["locale"].(string); localVarOk {
@@ -173,6 +177,9 @@ func (a *RoutingApiService) RouteGet(ctx context.Context, point []string, points
 	}
 	if localVarTempParam, localVarOk := localVarOptionals["alternativeRouteMaxShareFactor"].(int32); localVarOk {
 		localVarQueryParams.Add("alternative_route.max_share_factor", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["avoid"].(string); localVarOk {
+		localVarQueryParams.Add("avoid", parameterToString(localVarTempParam, ""))
 	}
 	localVarQueryParams.Add("key", parameterToString(key, ""))
 	// to determine the Content-Type header

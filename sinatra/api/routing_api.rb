@@ -190,6 +190,15 @@ MyApp.add_route('GET', '/api/1/route', {
       
     },
     {
+      "name" => "avoid",
+      "description" => "comma separate list to avoid certain roads. You can avoid motorway, ferry, tunnel or track",
+      "dataType" => "string",
+      "paramType" => "query",
+      
+      "allowableValues" => "",
+      
+    },
+    {
       "name" => "key",
       "description" => "Get your key at graphhopper.com",
       "dataType" => "string",

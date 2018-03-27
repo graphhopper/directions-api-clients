@@ -44,6 +44,7 @@ module DirectionsApiClient
     # @option opts [Integer] :alternative_route_max_paths If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the number of maximum paths which should be calculated. Increasing can lead to worse alternatives.
     # @option opts [Integer] :alternative_route_max_weight_factor If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the factor by which the alternatives routes can be longer than the optimal route. Increasing can lead to worse alternatives.
     # @option opts [Integer] :alternative_route_max_share_factor If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter specifies how much alternatives routes can have maximum in common with the optimal route. Increasing can lead to worse alternatives.
+    # @option opts [String] :avoid comma separate list to avoid certain roads. You can avoid motorway, ferry, tunnel or track
     # @return [RouteResponse]
     def route_get(point, points_encoded, key, opts = {})
       data, _status_code, _headers = route_get_with_http_info(point, points_encoded, key, opts)
@@ -74,6 +75,7 @@ module DirectionsApiClient
     # @option opts [Integer] :alternative_route_max_paths If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the number of maximum paths which should be calculated. Increasing can lead to worse alternatives.
     # @option opts [Integer] :alternative_route_max_weight_factor If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the factor by which the alternatives routes can be longer than the optimal route. Increasing can lead to worse alternatives.
     # @option opts [Integer] :alternative_route_max_share_factor If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter specifies how much alternatives routes can have maximum in common with the optimal route. Increasing can lead to worse alternatives.
+    # @option opts [String] :avoid comma separate list to avoid certain roads. You can avoid motorway, ferry, tunnel or track
     # @return [Array<(RouteResponse, Fixnum, Hash)>] RouteResponse data, response status code and response headers
     def route_get_with_http_info(point, points_encoded, key, opts = {})
       if @api_client.config.debugging
@@ -117,6 +119,7 @@ module DirectionsApiClient
       query_params[:'alternative_route.max_paths'] = opts[:'alternative_route_max_paths'] if !opts[:'alternative_route_max_paths'].nil?
       query_params[:'alternative_route.max_weight_factor'] = opts[:'alternative_route_max_weight_factor'] if !opts[:'alternative_route_max_weight_factor'].nil?
       query_params[:'alternative_route.max_share_factor'] = opts[:'alternative_route_max_share_factor'] if !opts[:'alternative_route_max_share_factor'].nil?
+      query_params[:'avoid'] = opts[:'avoid'] if !opts[:'avoid'].nil?
 
       # header parameters
       header_params = {}

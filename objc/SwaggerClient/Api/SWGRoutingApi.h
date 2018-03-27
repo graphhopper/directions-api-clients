@@ -48,6 +48,7 @@ extern NSInteger kSWGRoutingApiMissingParamErrorCode;
 /// @param alternativeRouteMaxPaths If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the number of maximum paths which should be calculated. Increasing can lead to worse alternatives. (optional)
 /// @param alternativeRouteMaxWeightFactor If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the factor by which the alternatives routes can be longer than the optimal route. Increasing can lead to worse alternatives. (optional)
 /// @param alternativeRouteMaxShareFactor If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter specifies how much alternatives routes can have maximum in common with the optimal route. Increasing can lead to worse alternatives. (optional)
+/// @param avoid comma separate list to avoid certain roads. You can avoid motorway, ferry, tunnel or track (optional)
 /// 
 ///  code:200 message:"Routing Result",
 ///  code:0 message:"Unexpected Error"
@@ -74,6 +75,7 @@ extern NSInteger kSWGRoutingApiMissingParamErrorCode;
     alternativeRouteMaxPaths: (NSNumber*) alternativeRouteMaxPaths
     alternativeRouteMaxWeightFactor: (NSNumber*) alternativeRouteMaxWeightFactor
     alternativeRouteMaxShareFactor: (NSNumber*) alternativeRouteMaxShareFactor
+    avoid: (NSString*) avoid
     completionHandler: (void (^)(SWGRouteResponse* output, NSError* error)) handler;
 
 

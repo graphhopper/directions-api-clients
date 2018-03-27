@@ -105,10 +105,11 @@ class RoutingApi(
    * @param alternativeRouteMaxPaths If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the number of maximum paths which should be calculated. Increasing can lead to worse alternatives. (optional)
    * @param alternativeRouteMaxWeightFactor If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the factor by which the alternatives routes can be longer than the optimal route. Increasing can lead to worse alternatives. (optional)
    * @param alternativeRouteMaxShareFactor If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter specifies how much alternatives routes can have maximum in common with the optimal route. Increasing can lead to worse alternatives. (optional)
+   * @param avoid comma separate list to avoid certain roads. You can avoid motorway, ferry, tunnel or track (optional)
    * @return RouteResponse
    */
-  def routeGet(point: List[String], pointsEncoded: Boolean, key: String, locale: Option[String] = None, instructions: Option[Boolean] = None, vehicle: Option[String] = None, elevation: Option[Boolean] = None, calcPoints: Option[Boolean] = None, pointHint: Option[List[String]] = None, chDisable: Option[Boolean] = None, weighting: Option[String] = None, edgeTraversal: Option[Boolean] = None, algorithm: Option[String] = None, heading: Option[Integer] = None, headingPenalty: Option[Integer] = None, passThrough: Option[Boolean] = None, roundTripDistance: Option[Integer] = None, roundTripSeed: Option[Long] = None, alternativeRouteMaxPaths: Option[Integer] = None, alternativeRouteMaxWeightFactor: Option[Integer] = None, alternativeRouteMaxShareFactor: Option[Integer] = None): Option[RouteResponse] = {
-    val await = Try(Await.result(routeGetAsync(point, pointsEncoded, key, locale, instructions, vehicle, elevation, calcPoints, pointHint, chDisable, weighting, edgeTraversal, algorithm, heading, headingPenalty, passThrough, roundTripDistance, roundTripSeed, alternativeRouteMaxPaths, alternativeRouteMaxWeightFactor, alternativeRouteMaxShareFactor), Duration.Inf))
+  def routeGet(point: List[String], pointsEncoded: Boolean, key: String, locale: Option[String] = None, instructions: Option[Boolean] = None, vehicle: Option[String] = None, elevation: Option[Boolean] = None, calcPoints: Option[Boolean] = None, pointHint: Option[List[String]] = None, chDisable: Option[Boolean] = None, weighting: Option[String] = None, edgeTraversal: Option[Boolean] = None, algorithm: Option[String] = None, heading: Option[Integer] = None, headingPenalty: Option[Integer] = None, passThrough: Option[Boolean] = None, roundTripDistance: Option[Integer] = None, roundTripSeed: Option[Long] = None, alternativeRouteMaxPaths: Option[Integer] = None, alternativeRouteMaxWeightFactor: Option[Integer] = None, alternativeRouteMaxShareFactor: Option[Integer] = None, avoid: Option[String] = None): Option[RouteResponse] = {
+    val await = Try(Await.result(routeGetAsync(point, pointsEncoded, key, locale, instructions, vehicle, elevation, calcPoints, pointHint, chDisable, weighting, edgeTraversal, algorithm, heading, headingPenalty, passThrough, roundTripDistance, roundTripSeed, alternativeRouteMaxPaths, alternativeRouteMaxWeightFactor, alternativeRouteMaxShareFactor, avoid), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -140,10 +141,11 @@ class RoutingApi(
    * @param alternativeRouteMaxPaths If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the number of maximum paths which should be calculated. Increasing can lead to worse alternatives. (optional)
    * @param alternativeRouteMaxWeightFactor If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the factor by which the alternatives routes can be longer than the optimal route. Increasing can lead to worse alternatives. (optional)
    * @param alternativeRouteMaxShareFactor If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter specifies how much alternatives routes can have maximum in common with the optimal route. Increasing can lead to worse alternatives. (optional)
+   * @param avoid comma separate list to avoid certain roads. You can avoid motorway, ferry, tunnel or track (optional)
    * @return Future(RouteResponse)
    */
-  def routeGetAsync(point: List[String], pointsEncoded: Boolean, key: String, locale: Option[String] = None, instructions: Option[Boolean] = None, vehicle: Option[String] = None, elevation: Option[Boolean] = None, calcPoints: Option[Boolean] = None, pointHint: Option[List[String]] = None, chDisable: Option[Boolean] = None, weighting: Option[String] = None, edgeTraversal: Option[Boolean] = None, algorithm: Option[String] = None, heading: Option[Integer] = None, headingPenalty: Option[Integer] = None, passThrough: Option[Boolean] = None, roundTripDistance: Option[Integer] = None, roundTripSeed: Option[Long] = None, alternativeRouteMaxPaths: Option[Integer] = None, alternativeRouteMaxWeightFactor: Option[Integer] = None, alternativeRouteMaxShareFactor: Option[Integer] = None): Future[RouteResponse] = {
-      helper.routeGet(point, pointsEncoded, key, locale, instructions, vehicle, elevation, calcPoints, pointHint, chDisable, weighting, edgeTraversal, algorithm, heading, headingPenalty, passThrough, roundTripDistance, roundTripSeed, alternativeRouteMaxPaths, alternativeRouteMaxWeightFactor, alternativeRouteMaxShareFactor)
+  def routeGetAsync(point: List[String], pointsEncoded: Boolean, key: String, locale: Option[String] = None, instructions: Option[Boolean] = None, vehicle: Option[String] = None, elevation: Option[Boolean] = None, calcPoints: Option[Boolean] = None, pointHint: Option[List[String]] = None, chDisable: Option[Boolean] = None, weighting: Option[String] = None, edgeTraversal: Option[Boolean] = None, algorithm: Option[String] = None, heading: Option[Integer] = None, headingPenalty: Option[Integer] = None, passThrough: Option[Boolean] = None, roundTripDistance: Option[Integer] = None, roundTripSeed: Option[Long] = None, alternativeRouteMaxPaths: Option[Integer] = None, alternativeRouteMaxWeightFactor: Option[Integer] = None, alternativeRouteMaxShareFactor: Option[Integer] = None, avoid: Option[String] = None): Future[RouteResponse] = {
+      helper.routeGet(point, pointsEncoded, key, locale, instructions, vehicle, elevation, calcPoints, pointHint, chDisable, weighting, edgeTraversal, algorithm, heading, headingPenalty, passThrough, roundTripDistance, roundTripSeed, alternativeRouteMaxPaths, alternativeRouteMaxWeightFactor, alternativeRouteMaxShareFactor, avoid)
   }
 
 }
@@ -170,7 +172,8 @@ class RoutingApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     roundTripSeed: Option[Long] = None,
     alternativeRouteMaxPaths: Option[Integer] = None,
     alternativeRouteMaxWeightFactor: Option[Integer] = None,
-    alternativeRouteMaxShareFactor: Option[Integer] = None
+    alternativeRouteMaxShareFactor: Option[Integer] = None,
+    avoid: Option[String] = None
     )(implicit reader: ClientResponseReader[RouteResponse]): Future[RouteResponse] = {
     // create path and map variables
     val path = (addFmt("/route"))
@@ -254,6 +257,10 @@ class RoutingApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     }
     alternativeRouteMaxShareFactor match {
       case Some(param) => queryParams += "alternative_route.max_share_factor" -> param.toString
+      case _ => queryParams
+    }
+    avoid match {
+      case Some(param) => queryParams += "avoid" -> param.toString
       case _ => queryParams
     }
     queryParams += "key" -> key.toString

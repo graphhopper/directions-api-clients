@@ -74,6 +74,7 @@ sub new {
 # @param int $alternative_route/max_paths If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the number of maximum paths which should be calculated. Increasing can lead to worse alternatives. (optional)
 # @param int $alternative_route/max_weight_factor If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the factor by which the alternatives routes can be longer than the optimal route. Increasing can lead to worse alternatives. (optional)
 # @param int $alternative_route/max_share_factor If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter specifies how much alternatives routes can have maximum in common with the optimal route. Increasing can lead to worse alternatives. (optional)
+# @param string $avoid comma separate list to avoid certain roads. You can avoid motorway, ferry, tunnel or track (optional)
 {
     my $params = {
     'point' => {
@@ -179,6 +180,11 @@ sub new {
     'alternative_route/max_share_factor' => {
         data_type => 'int',
         description => 'If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter specifies how much alternatives routes can have maximum in common with the optimal route. Increasing can lead to worse alternatives.',
+        required => '0',
+    },
+    'avoid' => {
+        data_type => 'string',
+        description => 'comma separate list to avoid certain roads. You can avoid motorway, ferry, tunnel or track',
         required => '0',
     },
     };
@@ -321,6 +327,11 @@ sub route_get {
     # query params
     if ( exists $args{'alternative_route/max_share_factor'}) {
         $query_params->{'alternative_route.max_share_factor'} = $self->{api_client}->to_query_value($args{'alternative_route/max_share_factor'});
+    }
+
+    # query params
+    if ( exists $args{'avoid'}) {
+        $query_params->{'avoid'} = $self->{api_client}->to_query_value($args{'avoid'});
     }
 
     # query params

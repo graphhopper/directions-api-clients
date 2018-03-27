@@ -29,7 +29,7 @@ SWGRoutingApi::SWGRoutingApi(QString host, QString basePath) {
 }
 
 void
-SWGRoutingApi::routeGet(QList<QString*>* point, bool points_encoded, QString* key, QString* locale, bool instructions, QString* vehicle, bool elevation, bool calc_points, QList<QString*>* point_hint, bool ch_disable, QString* weighting, bool edge_traversal, QString* algorithm, qint32 heading, qint32 heading_penalty, bool pass_through, qint32 round_trip_distance, qint64 round_trip_seed, qint32 alternative_route_max_paths, qint32 alternative_route_max_weight_factor, qint32 alternative_route_max_share_factor) {
+SWGRoutingApi::routeGet(QList<QString*>* point, bool points_encoded, QString* key, QString* locale, bool instructions, QString* vehicle, bool elevation, bool calc_points, QList<QString*>* point_hint, bool ch_disable, QString* weighting, bool edge_traversal, QString* algorithm, qint32 heading, qint32 heading_penalty, bool pass_through, qint32 round_trip_distance, qint64 round_trip_seed, qint32 alternative_route_max_paths, qint32 alternative_route_max_weight_factor, qint32 alternative_route_max_share_factor, QString* avoid) {
     QString fullPath;
     fullPath.append(this->host).append(this->basePath).append("/route");
 
@@ -261,6 +261,14 @@ SWGRoutingApi::routeGet(QList<QString*>* point, bool points_encoded, QString* ke
     fullPath.append(QUrl::toPercentEncoding("alternative_route.max_share_factor"))
         .append("=")
         .append(QUrl::toPercentEncoding(stringValue(alternative_route_max_share_factor)));
+
+    if (fullPath.indexOf("?") > 0) 
+      fullPath.append("&");
+    else 
+      fullPath.append("?");
+    fullPath.append(QUrl::toPercentEncoding("avoid"))
+        .append("=")
+        .append(QUrl::toPercentEncoding(stringValue(avoid)));
 
     if (fullPath.indexOf("?") > 0) 
       fullPath.append("&");

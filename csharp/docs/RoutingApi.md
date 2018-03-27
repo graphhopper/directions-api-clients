@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 <a name="routeget"></a>
 # **RouteGet**
-> RouteResponse RouteGet (List<string> point, bool? pointsEncoded, string key, string locale = null, bool? instructions = null, string vehicle = null, bool? elevation = null, bool? calcPoints = null, List<string> pointHint = null, bool? chDisable = null, string weighting = null, bool? edgeTraversal = null, string algorithm = null, int? heading = null, int? headingPenalty = null, bool? passThrough = null, int? roundTripDistance = null, long? roundTripSeed = null, int? alternativeRouteMaxPaths = null, int? alternativeRouteMaxWeightFactor = null, int? alternativeRouteMaxShareFactor = null)
+> RouteResponse RouteGet (List<string> point, bool? pointsEncoded, string key, string locale = null, bool? instructions = null, string vehicle = null, bool? elevation = null, bool? calcPoints = null, List<string> pointHint = null, bool? chDisable = null, string weighting = null, bool? edgeTraversal = null, string algorithm = null, int? heading = null, int? headingPenalty = null, bool? passThrough = null, int? roundTripDistance = null, long? roundTripSeed = null, int? alternativeRouteMaxPaths = null, int? alternativeRouteMaxWeightFactor = null, int? alternativeRouteMaxShareFactor = null, string avoid = null)
 
 Routing Request
 
@@ -51,11 +51,12 @@ namespace Example
             var alternativeRouteMaxPaths = 56;  // int? | If `algorithm=alternative_route` this parameter sets the number of maximum paths which should be calculated. Increasing can lead to worse alternatives. (optional) 
             var alternativeRouteMaxWeightFactor = 56;  // int? | If `algorithm=alternative_route` this parameter sets the factor by which the alternatives routes can be longer than the optimal route. Increasing can lead to worse alternatives. (optional) 
             var alternativeRouteMaxShareFactor = 56;  // int? | If `algorithm=alternative_route` this parameter specifies how much alternatives routes can have maximum in common with the optimal route. Increasing can lead to worse alternatives. (optional) 
+            var avoid = avoid_example;  // string | comma separate list to avoid certain roads. You can avoid motorway, ferry, tunnel or track (optional) 
 
             try
             {
                 // Routing Request
-                RouteResponse result = apiInstance.RouteGet(point, pointsEncoded, key, locale, instructions, vehicle, elevation, calcPoints, pointHint, chDisable, weighting, edgeTraversal, algorithm, heading, headingPenalty, passThrough, roundTripDistance, roundTripSeed, alternativeRouteMaxPaths, alternativeRouteMaxWeightFactor, alternativeRouteMaxShareFactor);
+                RouteResponse result = apiInstance.RouteGet(point, pointsEncoded, key, locale, instructions, vehicle, elevation, calcPoints, pointHint, chDisable, weighting, edgeTraversal, algorithm, heading, headingPenalty, passThrough, roundTripDistance, roundTripSeed, alternativeRouteMaxPaths, alternativeRouteMaxWeightFactor, alternativeRouteMaxShareFactor, avoid);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -92,6 +93,7 @@ Name | Type | Description  | Notes
  **alternativeRouteMaxPaths** | **int?**| If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the number of maximum paths which should be calculated. Increasing can lead to worse alternatives. | [optional] 
  **alternativeRouteMaxWeightFactor** | **int?**| If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the factor by which the alternatives routes can be longer than the optimal route. Increasing can lead to worse alternatives. | [optional] 
  **alternativeRouteMaxShareFactor** | **int?**| If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter specifies how much alternatives routes can have maximum in common with the optimal route. Increasing can lead to worse alternatives. | [optional] 
+ **avoid** | **string**| comma separate list to avoid certain roads. You can avoid motorway, ferry, tunnel or track | [optional] 
 
 ### Return type
 

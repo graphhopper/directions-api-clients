@@ -57,6 +57,7 @@ describe 'RoutingApi' do
   # @option opts [Integer] :alternative_route_max_paths If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the number of maximum paths which should be calculated. Increasing can lead to worse alternatives.
   # @option opts [Integer] :alternative_route_max_weight_factor If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the factor by which the alternatives routes can be longer than the optimal route. Increasing can lead to worse alternatives.
   # @option opts [Integer] :alternative_route_max_share_factor If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter specifies how much alternatives routes can have maximum in common with the optimal route. Increasing can lead to worse alternatives.
+  # @option opts [String] :avoid comma separate list to avoid certain roads. You can avoid motorway, ferry, tunnel or track
   # @return [RouteResponse]
   describe 'route_get test' do
     it "should work" do

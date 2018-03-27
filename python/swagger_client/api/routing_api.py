@@ -64,6 +64,7 @@ class RoutingApi(object):
         :param int alternative_route_max_paths: If `algorithm=alternative_route` this parameter sets the number of maximum paths which should be calculated. Increasing can lead to worse alternatives.
         :param int alternative_route_max_weight_factor: If `algorithm=alternative_route` this parameter sets the factor by which the alternatives routes can be longer than the optimal route. Increasing can lead to worse alternatives.
         :param int alternative_route_max_share_factor: If `algorithm=alternative_route` this parameter specifies how much alternatives routes can have maximum in common with the optimal route. Increasing can lead to worse alternatives.
+        :param str avoid: comma separate list to avoid certain roads. You can avoid motorway, ferry, tunnel or track
         :return: RouteResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -106,12 +107,13 @@ class RoutingApi(object):
         :param int alternative_route_max_paths: If `algorithm=alternative_route` this parameter sets the number of maximum paths which should be calculated. Increasing can lead to worse alternatives.
         :param int alternative_route_max_weight_factor: If `algorithm=alternative_route` this parameter sets the factor by which the alternatives routes can be longer than the optimal route. Increasing can lead to worse alternatives.
         :param int alternative_route_max_share_factor: If `algorithm=alternative_route` this parameter specifies how much alternatives routes can have maximum in common with the optimal route. Increasing can lead to worse alternatives.
+        :param str avoid: comma separate list to avoid certain roads. You can avoid motorway, ferry, tunnel or track
         :return: RouteResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['point', 'points_encoded', 'key', 'locale', 'instructions', 'vehicle', 'elevation', 'calc_points', 'point_hint', 'ch_disable', 'weighting', 'edge_traversal', 'algorithm', 'heading', 'heading_penalty', 'pass_through', 'round_trip_distance', 'round_trip_seed', 'alternative_route_max_paths', 'alternative_route_max_weight_factor', 'alternative_route_max_share_factor']  # noqa: E501
+        all_params = ['point', 'points_encoded', 'key', 'locale', 'instructions', 'vehicle', 'elevation', 'calc_points', 'point_hint', 'ch_disable', 'weighting', 'edge_traversal', 'algorithm', 'heading', 'heading_penalty', 'pass_through', 'round_trip_distance', 'round_trip_seed', 'alternative_route_max_paths', 'alternative_route_max_weight_factor', 'alternative_route_max_share_factor', 'avoid']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -186,6 +188,8 @@ class RoutingApi(object):
             query_params.append(('alternative_route.max_weight_factor', params['alternative_route_max_weight_factor']))  # noqa: E501
         if 'alternative_route_max_share_factor' in params:
             query_params.append(('alternative_route.max_share_factor', params['alternative_route_max_share_factor']))  # noqa: E501
+        if 'avoid' in params:
+            query_params.append(('avoid', params['avoid']))  # noqa: E501
         if 'key' in params:
             query_params.append(('key', params['key']))  # noqa: E501
 

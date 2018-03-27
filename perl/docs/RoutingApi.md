@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 
 # **route_get**
-> RouteResponse route_get(point => $point, points_encoded => $points_encoded, key => $key, locale => $locale, instructions => $instructions, vehicle => $vehicle, elevation => $elevation, calc_points => $calc_points, point_hint => $point_hint, ch/disable => $ch/disable, weighting => $weighting, edge_traversal => $edge_traversal, algorithm => $algorithm, heading => $heading, heading_penalty => $heading_penalty, pass_through => $pass_through, round_trip/distance => $round_trip/distance, round_trip/seed => $round_trip/seed, alternative_route/max_paths => $alternative_route/max_paths, alternative_route/max_weight_factor => $alternative_route/max_weight_factor, alternative_route/max_share_factor => $alternative_route/max_share_factor)
+> RouteResponse route_get(point => $point, points_encoded => $points_encoded, key => $key, locale => $locale, instructions => $instructions, vehicle => $vehicle, elevation => $elevation, calc_points => $calc_points, point_hint => $point_hint, ch/disable => $ch/disable, weighting => $weighting, edge_traversal => $edge_traversal, algorithm => $algorithm, heading => $heading, heading_penalty => $heading_penalty, pass_through => $pass_through, round_trip/distance => $round_trip/distance, round_trip/seed => $round_trip/seed, alternative_route/max_paths => $alternative_route/max_paths, alternative_route/max_weight_factor => $alternative_route/max_weight_factor, alternative_route/max_share_factor => $alternative_route/max_share_factor, avoid => $avoid)
 
 Routing Request
 
@@ -47,9 +47,10 @@ my $round_trip/seed = 789; # int | If `algorithm=round_trip` this parameter intr
 my $alternative_route/max_paths = 56; # int | If `algorithm=alternative_route` this parameter sets the number of maximum paths which should be calculated. Increasing can lead to worse alternatives.
 my $alternative_route/max_weight_factor = 56; # int | If `algorithm=alternative_route` this parameter sets the factor by which the alternatives routes can be longer than the optimal route. Increasing can lead to worse alternatives.
 my $alternative_route/max_share_factor = 56; # int | If `algorithm=alternative_route` this parameter specifies how much alternatives routes can have maximum in common with the optimal route. Increasing can lead to worse alternatives.
+my $avoid = 'avoid_example'; # string | comma separate list to avoid certain roads. You can avoid motorway, ferry, tunnel or track
 
 eval { 
-    my $result = $api_instance->route_get(point => $point, points_encoded => $points_encoded, key => $key, locale => $locale, instructions => $instructions, vehicle => $vehicle, elevation => $elevation, calc_points => $calc_points, point_hint => $point_hint, ch/disable => $ch/disable, weighting => $weighting, edge_traversal => $edge_traversal, algorithm => $algorithm, heading => $heading, heading_penalty => $heading_penalty, pass_through => $pass_through, round_trip/distance => $round_trip/distance, round_trip/seed => $round_trip/seed, alternative_route/max_paths => $alternative_route/max_paths, alternative_route/max_weight_factor => $alternative_route/max_weight_factor, alternative_route/max_share_factor => $alternative_route/max_share_factor);
+    my $result = $api_instance->route_get(point => $point, points_encoded => $points_encoded, key => $key, locale => $locale, instructions => $instructions, vehicle => $vehicle, elevation => $elevation, calc_points => $calc_points, point_hint => $point_hint, ch/disable => $ch/disable, weighting => $weighting, edge_traversal => $edge_traversal, algorithm => $algorithm, heading => $heading, heading_penalty => $heading_penalty, pass_through => $pass_through, round_trip/distance => $round_trip/distance, round_trip/seed => $round_trip/seed, alternative_route/max_paths => $alternative_route/max_paths, alternative_route/max_weight_factor => $alternative_route/max_weight_factor, alternative_route/max_share_factor => $alternative_route/max_share_factor, avoid => $avoid);
     print Dumper($result);
 };
 if ($@) {
@@ -82,6 +83,7 @@ Name | Type | Description  | Notes
  **alternative_route/max_paths** | **int**| If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the number of maximum paths which should be calculated. Increasing can lead to worse alternatives. | [optional] 
  **alternative_route/max_weight_factor** | **int**| If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the factor by which the alternatives routes can be longer than the optimal route. Increasing can lead to worse alternatives. | [optional] 
  **alternative_route/max_share_factor** | **int**| If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter specifies how much alternatives routes can have maximum in common with the optimal route. Increasing can lead to worse alternatives. | [optional] 
+ **avoid** | **string**| comma separate list to avoid certain roads. You can avoid motorway, ferry, tunnel or track | [optional] 
 
 ### Return type
 

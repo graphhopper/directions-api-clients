@@ -95,6 +95,8 @@ NSInteger kSWGRoutingApiMissingParamErrorCode = 234513;
 ///
 ///  @param alternativeRouteMaxShareFactor If `algorithm=alternative_route` this parameter specifies how much alternatives routes can have maximum in common with the optimal route. Increasing can lead to worse alternatives. (optional)
 ///
+///  @param avoid comma separate list to avoid certain roads. You can avoid motorway, ferry, tunnel or track (optional)
+///
 ///  @returns SWGRouteResponse*
 ///
 -(NSURLSessionTask*) routeGetWithPoint: (NSArray<NSString*>*) point
@@ -118,6 +120,7 @@ NSInteger kSWGRoutingApiMissingParamErrorCode = 234513;
     alternativeRouteMaxPaths: (NSNumber*) alternativeRouteMaxPaths
     alternativeRouteMaxWeightFactor: (NSNumber*) alternativeRouteMaxWeightFactor
     alternativeRouteMaxShareFactor: (NSNumber*) alternativeRouteMaxShareFactor
+    avoid: (NSString*) avoid
     completionHandler: (void (^)(SWGRouteResponse* output, NSError* error)) handler {
     // verify the required parameter 'point' is set
     if (point == nil) {
@@ -216,6 +219,9 @@ NSInteger kSWGRoutingApiMissingParamErrorCode = 234513;
     }
     if (alternativeRouteMaxShareFactor != nil) {
         queryParams[@"alternative_route.max_share_factor"] = alternativeRouteMaxShareFactor;
+    }
+    if (avoid != nil) {
+        queryParams[@"avoid"] = avoid;
     }
     if (key != nil) {
         queryParams[@"key"] = key;

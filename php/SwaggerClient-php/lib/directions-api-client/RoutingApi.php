@@ -108,14 +108,15 @@ class RoutingApi
      * @param  int $alternative_route_max_paths If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the number of maximum paths which should be calculated. Increasing can lead to worse alternatives. (optional)
      * @param  int $alternative_route_max_weight_factor If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the factor by which the alternatives routes can be longer than the optimal route. Increasing can lead to worse alternatives. (optional)
      * @param  int $alternative_route_max_share_factor If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter specifies how much alternatives routes can have maximum in common with the optimal route. Increasing can lead to worse alternatives. (optional)
+     * @param  string $avoid comma separate list to avoid certain roads. You can avoid motorway, ferry, tunnel or track (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\RouteResponse
      */
-    public function routeGet($point, $points_encoded, $key, $locale = null, $instructions = null, $vehicle = null, $elevation = null, $calc_points = null, $point_hint = null, $ch_disable = null, $weighting = null, $edge_traversal = null, $algorithm = null, $heading = null, $heading_penalty = null, $pass_through = null, $round_trip_distance = null, $round_trip_seed = null, $alternative_route_max_paths = null, $alternative_route_max_weight_factor = null, $alternative_route_max_share_factor = null)
+    public function routeGet($point, $points_encoded, $key, $locale = null, $instructions = null, $vehicle = null, $elevation = null, $calc_points = null, $point_hint = null, $ch_disable = null, $weighting = null, $edge_traversal = null, $algorithm = null, $heading = null, $heading_penalty = null, $pass_through = null, $round_trip_distance = null, $round_trip_seed = null, $alternative_route_max_paths = null, $alternative_route_max_weight_factor = null, $alternative_route_max_share_factor = null, $avoid = null)
     {
-        list($response) = $this->routeGetWithHttpInfo($point, $points_encoded, $key, $locale, $instructions, $vehicle, $elevation, $calc_points, $point_hint, $ch_disable, $weighting, $edge_traversal, $algorithm, $heading, $heading_penalty, $pass_through, $round_trip_distance, $round_trip_seed, $alternative_route_max_paths, $alternative_route_max_weight_factor, $alternative_route_max_share_factor);
+        list($response) = $this->routeGetWithHttpInfo($point, $points_encoded, $key, $locale, $instructions, $vehicle, $elevation, $calc_points, $point_hint, $ch_disable, $weighting, $edge_traversal, $algorithm, $heading, $heading_penalty, $pass_through, $round_trip_distance, $round_trip_seed, $alternative_route_max_paths, $alternative_route_max_weight_factor, $alternative_route_max_share_factor, $avoid);
         return $response;
     }
 
@@ -145,15 +146,16 @@ class RoutingApi
      * @param  int $alternative_route_max_paths If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the number of maximum paths which should be calculated. Increasing can lead to worse alternatives. (optional)
      * @param  int $alternative_route_max_weight_factor If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the factor by which the alternatives routes can be longer than the optimal route. Increasing can lead to worse alternatives. (optional)
      * @param  int $alternative_route_max_share_factor If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter specifies how much alternatives routes can have maximum in common with the optimal route. Increasing can lead to worse alternatives. (optional)
+     * @param  string $avoid comma separate list to avoid certain roads. You can avoid motorway, ferry, tunnel or track (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\RouteResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function routeGetWithHttpInfo($point, $points_encoded, $key, $locale = null, $instructions = null, $vehicle = null, $elevation = null, $calc_points = null, $point_hint = null, $ch_disable = null, $weighting = null, $edge_traversal = null, $algorithm = null, $heading = null, $heading_penalty = null, $pass_through = null, $round_trip_distance = null, $round_trip_seed = null, $alternative_route_max_paths = null, $alternative_route_max_weight_factor = null, $alternative_route_max_share_factor = null)
+    public function routeGetWithHttpInfo($point, $points_encoded, $key, $locale = null, $instructions = null, $vehicle = null, $elevation = null, $calc_points = null, $point_hint = null, $ch_disable = null, $weighting = null, $edge_traversal = null, $algorithm = null, $heading = null, $heading_penalty = null, $pass_through = null, $round_trip_distance = null, $round_trip_seed = null, $alternative_route_max_paths = null, $alternative_route_max_weight_factor = null, $alternative_route_max_share_factor = null, $avoid = null)
     {
         $returnType = '\Swagger\Client\Model\RouteResponse';
-        $request = $this->routeGetRequest($point, $points_encoded, $key, $locale, $instructions, $vehicle, $elevation, $calc_points, $point_hint, $ch_disable, $weighting, $edge_traversal, $algorithm, $heading, $heading_penalty, $pass_through, $round_trip_distance, $round_trip_seed, $alternative_route_max_paths, $alternative_route_max_weight_factor, $alternative_route_max_share_factor);
+        $request = $this->routeGetRequest($point, $points_encoded, $key, $locale, $instructions, $vehicle, $elevation, $calc_points, $point_hint, $ch_disable, $weighting, $edge_traversal, $algorithm, $heading, $heading_penalty, $pass_through, $round_trip_distance, $round_trip_seed, $alternative_route_max_paths, $alternative_route_max_weight_factor, $alternative_route_max_share_factor, $avoid);
 
         try {
             $options = $this->createHttpClientOption();
@@ -248,13 +250,14 @@ class RoutingApi
      * @param  int $alternative_route_max_paths If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the number of maximum paths which should be calculated. Increasing can lead to worse alternatives. (optional)
      * @param  int $alternative_route_max_weight_factor If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the factor by which the alternatives routes can be longer than the optimal route. Increasing can lead to worse alternatives. (optional)
      * @param  int $alternative_route_max_share_factor If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter specifies how much alternatives routes can have maximum in common with the optimal route. Increasing can lead to worse alternatives. (optional)
+     * @param  string $avoid comma separate list to avoid certain roads. You can avoid motorway, ferry, tunnel or track (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function routeGetAsync($point, $points_encoded, $key, $locale = null, $instructions = null, $vehicle = null, $elevation = null, $calc_points = null, $point_hint = null, $ch_disable = null, $weighting = null, $edge_traversal = null, $algorithm = null, $heading = null, $heading_penalty = null, $pass_through = null, $round_trip_distance = null, $round_trip_seed = null, $alternative_route_max_paths = null, $alternative_route_max_weight_factor = null, $alternative_route_max_share_factor = null)
+    public function routeGetAsync($point, $points_encoded, $key, $locale = null, $instructions = null, $vehicle = null, $elevation = null, $calc_points = null, $point_hint = null, $ch_disable = null, $weighting = null, $edge_traversal = null, $algorithm = null, $heading = null, $heading_penalty = null, $pass_through = null, $round_trip_distance = null, $round_trip_seed = null, $alternative_route_max_paths = null, $alternative_route_max_weight_factor = null, $alternative_route_max_share_factor = null, $avoid = null)
     {
-        return $this->routeGetAsyncWithHttpInfo($point, $points_encoded, $key, $locale, $instructions, $vehicle, $elevation, $calc_points, $point_hint, $ch_disable, $weighting, $edge_traversal, $algorithm, $heading, $heading_penalty, $pass_through, $round_trip_distance, $round_trip_seed, $alternative_route_max_paths, $alternative_route_max_weight_factor, $alternative_route_max_share_factor)
+        return $this->routeGetAsyncWithHttpInfo($point, $points_encoded, $key, $locale, $instructions, $vehicle, $elevation, $calc_points, $point_hint, $ch_disable, $weighting, $edge_traversal, $algorithm, $heading, $heading_penalty, $pass_through, $round_trip_distance, $round_trip_seed, $alternative_route_max_paths, $alternative_route_max_weight_factor, $alternative_route_max_share_factor, $avoid)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -288,14 +291,15 @@ class RoutingApi
      * @param  int $alternative_route_max_paths If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the number of maximum paths which should be calculated. Increasing can lead to worse alternatives. (optional)
      * @param  int $alternative_route_max_weight_factor If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the factor by which the alternatives routes can be longer than the optimal route. Increasing can lead to worse alternatives. (optional)
      * @param  int $alternative_route_max_share_factor If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter specifies how much alternatives routes can have maximum in common with the optimal route. Increasing can lead to worse alternatives. (optional)
+     * @param  string $avoid comma separate list to avoid certain roads. You can avoid motorway, ferry, tunnel or track (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function routeGetAsyncWithHttpInfo($point, $points_encoded, $key, $locale = null, $instructions = null, $vehicle = null, $elevation = null, $calc_points = null, $point_hint = null, $ch_disable = null, $weighting = null, $edge_traversal = null, $algorithm = null, $heading = null, $heading_penalty = null, $pass_through = null, $round_trip_distance = null, $round_trip_seed = null, $alternative_route_max_paths = null, $alternative_route_max_weight_factor = null, $alternative_route_max_share_factor = null)
+    public function routeGetAsyncWithHttpInfo($point, $points_encoded, $key, $locale = null, $instructions = null, $vehicle = null, $elevation = null, $calc_points = null, $point_hint = null, $ch_disable = null, $weighting = null, $edge_traversal = null, $algorithm = null, $heading = null, $heading_penalty = null, $pass_through = null, $round_trip_distance = null, $round_trip_seed = null, $alternative_route_max_paths = null, $alternative_route_max_weight_factor = null, $alternative_route_max_share_factor = null, $avoid = null)
     {
         $returnType = '\Swagger\Client\Model\RouteResponse';
-        $request = $this->routeGetRequest($point, $points_encoded, $key, $locale, $instructions, $vehicle, $elevation, $calc_points, $point_hint, $ch_disable, $weighting, $edge_traversal, $algorithm, $heading, $heading_penalty, $pass_through, $round_trip_distance, $round_trip_seed, $alternative_route_max_paths, $alternative_route_max_weight_factor, $alternative_route_max_share_factor);
+        $request = $this->routeGetRequest($point, $points_encoded, $key, $locale, $instructions, $vehicle, $elevation, $calc_points, $point_hint, $ch_disable, $weighting, $edge_traversal, $algorithm, $heading, $heading_penalty, $pass_through, $round_trip_distance, $round_trip_seed, $alternative_route_max_paths, $alternative_route_max_weight_factor, $alternative_route_max_share_factor, $avoid);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -358,11 +362,12 @@ class RoutingApi
      * @param  int $alternative_route_max_paths If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the number of maximum paths which should be calculated. Increasing can lead to worse alternatives. (optional)
      * @param  int $alternative_route_max_weight_factor If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the factor by which the alternatives routes can be longer than the optimal route. Increasing can lead to worse alternatives. (optional)
      * @param  int $alternative_route_max_share_factor If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter specifies how much alternatives routes can have maximum in common with the optimal route. Increasing can lead to worse alternatives. (optional)
+     * @param  string $avoid comma separate list to avoid certain roads. You can avoid motorway, ferry, tunnel or track (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function routeGetRequest($point, $points_encoded, $key, $locale = null, $instructions = null, $vehicle = null, $elevation = null, $calc_points = null, $point_hint = null, $ch_disable = null, $weighting = null, $edge_traversal = null, $algorithm = null, $heading = null, $heading_penalty = null, $pass_through = null, $round_trip_distance = null, $round_trip_seed = null, $alternative_route_max_paths = null, $alternative_route_max_weight_factor = null, $alternative_route_max_share_factor = null)
+    protected function routeGetRequest($point, $points_encoded, $key, $locale = null, $instructions = null, $vehicle = null, $elevation = null, $calc_points = null, $point_hint = null, $ch_disable = null, $weighting = null, $edge_traversal = null, $algorithm = null, $heading = null, $heading_penalty = null, $pass_through = null, $round_trip_distance = null, $round_trip_seed = null, $alternative_route_max_paths = null, $alternative_route_max_weight_factor = null, $alternative_route_max_share_factor = null, $avoid = null)
     {
         // verify the required parameter 'point' is set
         if ($point === null) {
@@ -475,6 +480,10 @@ class RoutingApi
         // query params
         if ($alternative_route_max_share_factor !== null) {
             $queryParams['alternative_route.max_share_factor'] = ObjectSerializer::toQueryValue($alternative_route_max_share_factor);
+        }
+        // query params
+        if ($avoid !== null) {
+            $queryParams['avoid'] = ObjectSerializer::toQueryValue($avoid);
         }
         // query params
         if ($key !== null) {

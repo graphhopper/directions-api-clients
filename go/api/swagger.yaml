@@ -199,6 +199,13 @@ paths:
         type: "integer"
         format: "int32"
         x-exportParamName: "AlternativeRouteMaxShareFactor"
+      - name: "avoid"
+        in: "query"
+        description: "comma separate list to avoid certain roads. You can avoid motorway,\
+          \ ferry, tunnel or track"
+        required: false
+        type: "string"
+        x-exportParamName: "Avoid"
       - name: "key"
         in: "query"
         description: "Get your key at graphhopper.com"

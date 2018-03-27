@@ -49,12 +49,13 @@ public:
  * \param alternativeRoute.maxPaths If `algorithm=alternative_route` this parameter sets the number of maximum paths which should be calculated. Increasing can lead to worse alternatives.
  * \param alternativeRoute.maxWeightFactor If `algorithm=alternative_route` this parameter sets the factor by which the alternatives routes can be longer than the optimal route. Increasing can lead to worse alternatives.
  * \param alternativeRoute.maxShareFactor If `algorithm=alternative_route` this parameter specifies how much alternatives routes can have maximum in common with the optimal route. Increasing can lead to worse alternatives.
+ * \param avoid comma separate list to avoid certain roads. You can avoid motorway, ferry, tunnel or track
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool routeGetSync(char * accessToken,
-	std::list<std::string> point, bool pointsEncoded, std::string key, std::string locale, bool instructions, std::string vehicle, bool elevation, bool calcPoints, std::list<std::string> pointHint, bool ch.disable, std::string weighting, bool edgeTraversal, std::string algorithm, int heading, int headingPenalty, bool passThrough, int roundTrip.distance, long long roundTrip.seed, int alternativeRoute.maxPaths, int alternativeRoute.maxWeightFactor, int alternativeRoute.maxShareFactor, 
+	std::list<std::string> point, bool pointsEncoded, std::string key, std::string locale, bool instructions, std::string vehicle, bool elevation, bool calcPoints, std::list<std::string> pointHint, bool ch.disable, std::string weighting, bool edgeTraversal, std::string algorithm, int heading, int headingPenalty, bool passThrough, int roundTrip.distance, long long roundTrip.seed, int alternativeRoute.maxPaths, int alternativeRoute.maxWeightFactor, int alternativeRoute.maxShareFactor, std::string avoid, 
 	void(* handler)(RouteResponse, Error, void* )
 	, void* userData);
 
@@ -82,12 +83,13 @@ bool routeGetSync(char * accessToken,
  * \param alternativeRoute.maxPaths If `algorithm=alternative_route` this parameter sets the number of maximum paths which should be calculated. Increasing can lead to worse alternatives.
  * \param alternativeRoute.maxWeightFactor If `algorithm=alternative_route` this parameter sets the factor by which the alternatives routes can be longer than the optimal route. Increasing can lead to worse alternatives.
  * \param alternativeRoute.maxShareFactor If `algorithm=alternative_route` this parameter specifies how much alternatives routes can have maximum in common with the optimal route. Increasing can lead to worse alternatives.
+ * \param avoid comma separate list to avoid certain roads. You can avoid motorway, ferry, tunnel or track
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool routeGetAsync(char * accessToken,
-	std::list<std::string> point, bool pointsEncoded, std::string key, std::string locale, bool instructions, std::string vehicle, bool elevation, bool calcPoints, std::list<std::string> pointHint, bool ch.disable, std::string weighting, bool edgeTraversal, std::string algorithm, int heading, int headingPenalty, bool passThrough, int roundTrip.distance, long long roundTrip.seed, int alternativeRoute.maxPaths, int alternativeRoute.maxWeightFactor, int alternativeRoute.maxShareFactor, 
+	std::list<std::string> point, bool pointsEncoded, std::string key, std::string locale, bool instructions, std::string vehicle, bool elevation, bool calcPoints, std::list<std::string> pointHint, bool ch.disable, std::string weighting, bool edgeTraversal, std::string algorithm, int heading, int headingPenalty, bool passThrough, int roundTrip.distance, long long roundTrip.seed, int alternativeRoute.maxPaths, int alternativeRoute.maxWeightFactor, int alternativeRoute.maxShareFactor, std::string avoid, 
 	void(* handler)(RouteResponse, Error, void* )
 	, void* userData);
 

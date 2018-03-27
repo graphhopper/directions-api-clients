@@ -10,7 +10,7 @@ class RoutingApi {
   /// Routing Request
   ///
   /// The GraphHopper Routing API allows to calculate route and implement navigation via the turn instructions
-  Future<RouteResponse> routeGet(List<String> point, bool pointsEncoded, String key, { String locale, bool instructions, String vehicle, bool elevation, bool calcPoints, List<String> pointHint, bool chDisable, String weighting, bool edgeTraversal, String algorithm, int heading, int headingPenalty, bool passThrough, int roundTripDistance, int roundTripSeed, int alternativeRouteMaxPaths, int alternativeRouteMaxWeightFactor, int alternativeRouteMaxShareFactor }) async {
+  Future<RouteResponse> routeGet(List<String> point, bool pointsEncoded, String key, { String locale, bool instructions, String vehicle, bool elevation, bool calcPoints, List<String> pointHint, bool chDisable, String weighting, bool edgeTraversal, String algorithm, int heading, int headingPenalty, bool passThrough, int roundTripDistance, int roundTripSeed, int alternativeRouteMaxPaths, int alternativeRouteMaxWeightFactor, int alternativeRouteMaxShareFactor, String avoid }) async {
     Object postBody = null;
 
     // verify required params are set
@@ -86,6 +86,9 @@ class RoutingApi {
     }
     if(alternativeRouteMaxShareFactor != null) {
       queryParams.addAll(_convertParametersForCollectionFormat("", "alternative_route.max_share_factor", alternativeRouteMaxShareFactor));
+    }
+    if(avoid != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat("", "avoid", avoid));
     }
       queryParams.addAll(_convertParametersForCollectionFormat("", "key", key));
     

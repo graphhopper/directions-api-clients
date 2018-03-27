@@ -179,6 +179,12 @@ paths:
         required: false
         type: "integer"
         format: "int32"
+      - name: "avoid"
+        in: "query"
+        description: "comma separate list to avoid certain roads. You can avoid motorway,\
+          \ ferry, tunnel or track"
+        required: false
+        type: "string"
       - name: "key"
         in: "query"
         description: "Get your key at graphhopper.com"
