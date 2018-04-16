@@ -12,7 +12,7 @@ Swagger Codegen version: 2.4.0-SNAPSHOT
 
 require 'date'
 
-module DirectionsApiClient
+module graphhopper_directions_api_client
 
   class IsochroneResponse
     attr_accessor :polygons
@@ -149,7 +149,7 @@ module DirectionsApiClient
           end
         end
       else # model
-        temp_model = DirectionsApiClient.const_get(type).new
+        temp_model = graphhopper_directions_api_client.const_get(type).new
         temp_model.build_from_hash(value)
       end
     end

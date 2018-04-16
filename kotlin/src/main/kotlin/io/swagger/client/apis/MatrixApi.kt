@@ -31,9 +31,9 @@ class MatrixApi(basePath: kotlin.String = "https://graphhopper.com/api/1") : Api
     * @return MatrixResponse
     */
     @Suppress("UNCHECKED_CAST")
-    fun matrixGet(key: kotlin.String, point: kotlin.Array<kotlin.String>, fromPoint: kotlin.String, toPoint: kotlin.String, outArray: kotlin.Array<kotlin.String>, vehicle: kotlin.String) : MatrixResponse {
+    fun matrixGet(key: kotlin.String, point: kotlin.Array<kotlin.String>, fromPoint: kotlin.Array<kotlin.String>, toPoint: kotlin.Array<kotlin.String>, outArray: kotlin.Array<kotlin.String>, vehicle: kotlin.String) : MatrixResponse {
         val localVariableBody: kotlin.Any? = null
-        val localVariableQuery: MultiValueMap = mapOf("point" to toMultiValue(point.toList(), "multi"), "from_point" to listOf("$fromPoint"), "to_point" to listOf("$toPoint"), "out_array" to toMultiValue(outArray.toList(), "multi"), "vehicle" to listOf("$vehicle"), "key" to listOf("$key"))
+        val localVariableQuery: MultiValueMap = mapOf("point" to toMultiValue(point.toList(), "multi"), "from_point" to toMultiValue(fromPoint.toList(), "multi"), "to_point" to toMultiValue(toPoint.toList(), "multi"), "out_array" to toMultiValue(outArray.toList(), "multi"), "vehicle" to listOf("$vehicle"), "key" to listOf("$key"))
         val localVariableHeaders: kotlin.collections.Map<kotlin.String,kotlin.String> = mapOf()
         val localVariableConfig = RequestConfig(
             RequestMethod.GET,

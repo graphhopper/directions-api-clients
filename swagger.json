@@ -293,13 +293,24 @@
                         "name": "from_point",
                         "in": "query",
                         "description": "The starting points for the routes. E.g. if you want to calculate the three routes A-&gt;1, A-&gt;2, A-&gt;3 then you have one from_point parameter and three to_point parameters. Is a string with the format latitude,longitude.",
-                        "type": "string"
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi"
                     },
                     {
                         "name": "to_point",
                         "in": "query",
                         "description": "The destination points for the routes. Is a string with the format latitude,longitude.",
-                        "type": "string"
+                        "type": "string",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                             "type": "string"
+                        },
+                        "collectionFormat": "multi"
                     },
                     {
                         "name": "out_array",

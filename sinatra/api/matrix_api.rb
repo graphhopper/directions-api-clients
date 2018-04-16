@@ -21,18 +21,18 @@ MyApp.add_route('GET', '/api/1/matrix', {
     {
       "name" => "from_point",
       "description" => "The starting points for the routes. E.g. if you want to calculate the three routes A-&amp;gt;1, A-&amp;gt;2, A-&amp;gt;3 then you have one from_point parameter and three to_point parameters. Is a string with the format latitude,longitude.",
-      "dataType" => "string",
+      "dataType" => "array[string]",
       "paramType" => "query",
-      
+      "collectionFormat" => "multi",
       "allowableValues" => "",
       
     },
     {
       "name" => "to_point",
       "description" => "The destination points for the routes. Is a string with the format latitude,longitude.",
-      "dataType" => "string",
+      "dataType" => "array[string]",
       "paramType" => "query",
-      
+      "collectionFormat" => "multi",
       "allowableValues" => "",
       
     },

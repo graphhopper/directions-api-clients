@@ -1,4 +1,4 @@
-# DirectionsApiClient::IsochroneResponse
+# graphhopper_directions_api_client::IsochroneResponse
 
 ## Properties
 Name | Type | Description | Notes

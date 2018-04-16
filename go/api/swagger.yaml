@@ -331,14 +331,20 @@ paths:
           \ the three routes A-&gt;1, A-&gt;2, A-&gt;3 then you have one from_point\
           \ parameter and three to_point parameters. Is a string with the format latitude,longitude."
         required: false
-        type: "string"
+        type: "array"
+        items:
+          type: "string"
+        collectionFormat: "multi"
         x-exportParamName: "FromPoint"
       - name: "to_point"
         in: "query"
         description: "The destination points for the routes. Is a string with the\
           \ format latitude,longitude."
         required: false
-        type: "string"
+        type: "array"
+        items:
+          type: "string"
+        collectionFormat: "multi"
         x-exportParamName: "ToPoint"
       - name: "out_array"
         in: "query"

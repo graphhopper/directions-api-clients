@@ -1,4 +1,4 @@
-# DirectionsApiClient::ModelBreak
+# graphhopper_directions_api_client::ModelBreak
 
 ## Properties
 Name | Type | Description | Notes

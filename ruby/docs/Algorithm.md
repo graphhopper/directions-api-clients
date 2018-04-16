@@ -1,4 +1,4 @@
-# DirectionsApiClient::Algorithm
+# graphhopper_directions_api_client::Algorithm
 
 ## Properties
 Name | Type | Description | Notes

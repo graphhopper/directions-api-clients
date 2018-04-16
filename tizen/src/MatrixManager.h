@@ -40,7 +40,7 @@ public:
  * \param userData The user data to be passed to the callback function.
  */
 bool matrixGetSync(char * accessToken,
-	std::string key, std::list<std::string> point, std::string fromPoint, std::string toPoint, std::list<std::string> outArray, std::string vehicle, 
+	std::string key, std::list<std::string> point, std::list<std::string> fromPoint, std::list<std::string> toPoint, std::list<std::string> outArray, std::string vehicle, 
 	void(* handler)(MatrixResponse, Error, void* )
 	, void* userData);
 
@@ -58,7 +58,7 @@ bool matrixGetSync(char * accessToken,
  * \param userData The user data to be passed to the callback function.
  */
 bool matrixGetAsync(char * accessToken,
-	std::string key, std::list<std::string> point, std::string fromPoint, std::string toPoint, std::list<std::string> outArray, std::string vehicle, 
+	std::string key, std::list<std::string> point, std::list<std::string> fromPoint, std::list<std::string> toPoint, std::list<std::string> outArray, std::string vehicle, 
 	void(* handler)(MatrixResponse, Error, void* )
 	, void* userData);
 

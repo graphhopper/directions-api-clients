@@ -1,4 +1,4 @@
-# DirectionsApiClient::GeocodingApi
+# graphhopper_directions_api_client::GeocodingApi
 
 All URIs are relative to *https://graphhopper.com/api/1*
 
@@ -19,7 +19,7 @@ This endpoint provides forward and reverse geocoding. For more details, review t
 # load the gem
 require 'directions-api-client'
 
-api_instance = DirectionsApiClient::GeocodingApi.new
+api_instance = graphhopper_directions_api_client::GeocodingApi.new
 
 key = "key_example" # String | Get your key at graphhopper.com
 
@@ -36,7 +36,7 @@ begin
   #Execute a Geocoding request
   result = api_instance.geocode_get(key, opts)
   p result
-rescue DirectionsApiClient::ApiError => e
+rescue graphhopper_directions_api_client::ApiError => e
   puts "Exception when calling GeocodingApi->geocode_get: #{e}"
 end
 ```

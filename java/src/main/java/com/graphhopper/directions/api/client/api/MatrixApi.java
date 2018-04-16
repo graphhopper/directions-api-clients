@@ -69,7 +69,7 @@ public class MatrixApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call matrixGetCall(String key, List<String> point, String fromPoint, String toPoint, List<String> outArray, String vehicle, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call matrixGetCall(String key, List<String> point, List<String> fromPoint, List<String> toPoint, List<String> outArray, String vehicle, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -80,9 +80,9 @@ public class MatrixApi {
         if (point != null)
         localVarCollectionQueryParams.addAll(apiClient.parameterToPairs("multi", "point", point));
         if (fromPoint != null)
-        localVarQueryParams.addAll(apiClient.parameterToPair("from_point", fromPoint));
+        localVarCollectionQueryParams.addAll(apiClient.parameterToPairs("multi", "from_point", fromPoint));
         if (toPoint != null)
-        localVarQueryParams.addAll(apiClient.parameterToPair("to_point", toPoint));
+        localVarCollectionQueryParams.addAll(apiClient.parameterToPairs("multi", "to_point", toPoint));
         if (outArray != null)
         localVarCollectionQueryParams.addAll(apiClient.parameterToPairs("multi", "out_array", outArray));
         if (vehicle != null)
@@ -123,7 +123,7 @@ public class MatrixApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call matrixGetValidateBeforeCall(String key, List<String> point, String fromPoint, String toPoint, List<String> outArray, String vehicle, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call matrixGetValidateBeforeCall(String key, List<String> point, List<String> fromPoint, List<String> toPoint, List<String> outArray, String vehicle, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'key' is set
         if (key == null) {
@@ -148,7 +148,7 @@ public class MatrixApi {
      * @return MatrixResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public MatrixResponse matrixGet(String key, List<String> point, String fromPoint, String toPoint, List<String> outArray, String vehicle) throws ApiException {
+    public MatrixResponse matrixGet(String key, List<String> point, List<String> fromPoint, List<String> toPoint, List<String> outArray, String vehicle) throws ApiException {
         ApiResponse<MatrixResponse> resp = matrixGetWithHttpInfo(key, point, fromPoint, toPoint, outArray, vehicle);
         return resp.getData();
     }
@@ -165,7 +165,7 @@ public class MatrixApi {
      * @return ApiResponse&lt;MatrixResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<MatrixResponse> matrixGetWithHttpInfo(String key, List<String> point, String fromPoint, String toPoint, List<String> outArray, String vehicle) throws ApiException {
+    public ApiResponse<MatrixResponse> matrixGetWithHttpInfo(String key, List<String> point, List<String> fromPoint, List<String> toPoint, List<String> outArray, String vehicle) throws ApiException {
         com.squareup.okhttp.Call call = matrixGetValidateBeforeCall(key, point, fromPoint, toPoint, outArray, vehicle, null, null);
         Type localVarReturnType = new TypeToken<MatrixResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -184,7 +184,7 @@ public class MatrixApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call matrixGetAsync(String key, List<String> point, String fromPoint, String toPoint, List<String> outArray, String vehicle, final ApiCallback<MatrixResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call matrixGetAsync(String key, List<String> point, List<String> fromPoint, List<String> toPoint, List<String> outArray, String vehicle, final ApiCallback<MatrixResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;

@@ -21,7 +21,7 @@ public class MatrixAPI: APIBase {
      - parameter vehicle: (query) The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc (optional, default to car)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    public class func matrixGet(key key: String, point: [String]? = nil, fromPoint: String? = nil, toPoint: String? = nil, outArray: [String]? = nil, vehicle: String? = nil, completion: ((data: MatrixResponse?, error: ErrorType?) -> Void)) {
+    public class func matrixGet(key key: String, point: [String]? = nil, fromPoint: [String]? = nil, toPoint: [String]? = nil, outArray: [String]? = nil, vehicle: String? = nil, completion: ((data: MatrixResponse?, error: ErrorType?) -> Void)) {
         matrixGetWithRequestBuilder(key: key, point: point, fromPoint: fromPoint, toPoint: toPoint, outArray: outArray, vehicle: vehicle).execute { (response, error) -> Void in
             completion(data: response?.body, error: error);
         }
@@ -51,7 +51,7 @@ public class MatrixAPI: APIBase {
 
      - returns: RequestBuilder<MatrixResponse> 
      */
-    public class func matrixGetWithRequestBuilder(key key: String, point: [String]? = nil, fromPoint: String? = nil, toPoint: String? = nil, outArray: [String]? = nil, vehicle: String? = nil) -> RequestBuilder<MatrixResponse> {
+    public class func matrixGetWithRequestBuilder(key key: String, point: [String]? = nil, fromPoint: [String]? = nil, toPoint: [String]? = nil, outArray: [String]? = nil, vehicle: String? = nil) -> RequestBuilder<MatrixResponse> {
         let path = "/matrix"
         let URLString = GraphHopperAPI.basePath + path
 

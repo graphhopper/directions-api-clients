@@ -69,10 +69,10 @@ require 'directions-api-client/api/routing_api'
 require 'directions-api-client/api/solution_api'
 require 'directions-api-client/api/vrp_api'
 
-module DirectionsApiClient
+module graphhopper_directions_api_client
   class << self
     # Customize default settings for the SDK using block.
-    #   DirectionsApiClient.configure do |config|
+    #   graphhopper_directions_api_client.configure do |config|
     #     config.username = "xxx"
     #     config.password = "xxx"
     #   end

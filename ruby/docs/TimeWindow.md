@@ -1,4 +1,4 @@
-# DirectionsApiClient::TimeWindow
+# graphhopper_directions_api_client::TimeWindow
 
 ## Properties
 Name | Type | Description | Notes

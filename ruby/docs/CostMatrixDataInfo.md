@@ -1,4 +1,4 @@
-# DirectionsApiClient::CostMatrixDataInfo
+# graphhopper_directions_api_client::CostMatrixDataInfo
 
 ## Properties
 Name | Type | Description | Notes

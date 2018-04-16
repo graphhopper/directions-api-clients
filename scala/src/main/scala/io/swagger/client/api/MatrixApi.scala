@@ -93,7 +93,7 @@ class MatrixApi(
    * @param vehicle The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc (optional, default to car)
    * @return MatrixResponse
    */
-  def matrixGet(key: String, point: Option[List[String]] = None, fromPoint: Option[String] = None, toPoint: Option[String] = None, outArray: Option[List[String]] = None, vehicle: Option[String] = Option("car")): Option[MatrixResponse] = {
+  def matrixGet(key: String, point: Option[List[String]] = None, fromPoint: Option[List[String]] = None, toPoint: Option[List[String]] = None, outArray: Option[List[String]] = None, vehicle: Option[String] = Option("car")): Option[MatrixResponse] = {
     val await = Try(Await.result(matrixGetAsync(key, point, fromPoint, toPoint, outArray, vehicle), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -113,7 +113,7 @@ class MatrixApi(
    * @param vehicle The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc (optional, default to car)
    * @return Future(MatrixResponse)
    */
-  def matrixGetAsync(key: String, point: Option[List[String]] = None, fromPoint: Option[String] = None, toPoint: Option[String] = None, outArray: Option[List[String]] = None, vehicle: Option[String] = Option("car")): Future[MatrixResponse] = {
+  def matrixGetAsync(key: String, point: Option[List[String]] = None, fromPoint: Option[List[String]] = None, toPoint: Option[List[String]] = None, outArray: Option[List[String]] = None, vehicle: Option[String] = Option("car")): Future[MatrixResponse] = {
       helper.matrixGet(key, point, fromPoint, toPoint, outArray, vehicle)
   }
 
@@ -151,8 +151,8 @@ class MatrixApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exten
 
   def matrixGet(key: String,
     point: Option[List[String]] = None,
-    fromPoint: Option[String] = None,
-    toPoint: Option[String] = None,
+    fromPoint: Option[List[String]] = None,
+    toPoint: Option[List[String]] = None,
     outArray: Option[List[String]] = None,
     vehicle: Option[String] = Option("car")
     )(implicit reader: ClientResponseReader[MatrixResponse]): Future[MatrixResponse] = {

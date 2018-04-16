@@ -1,4 +1,4 @@
-# DirectionsApiClient::VehicleType
+# graphhopper_directions_api_client::VehicleType
 
 ## Properties
 Name | Type | Description | Notes

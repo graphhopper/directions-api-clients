@@ -73,8 +73,8 @@ namespace IO.Swagger.Test
             // TODO uncomment below to test the method and replace null with proper value
             //string key = null;
             //List<string> point = null;
-            //string fromPoint = null;
-            //string toPoint = null;
+            //List<string> fromPoint = null;
+            //List<string> toPoint = null;
             //List<string> outArray = null;
             //string vehicle = null;
             //var response = instance.MatrixGet(key, point, fromPoint, toPoint, outArray, vehicle);

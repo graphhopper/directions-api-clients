@@ -41,8 +41,8 @@ extern NSInteger kSWGMatrixApiMissingParamErrorCode;
 /// @return SWGMatrixResponse*
 -(NSURLSessionTask*) matrixGetWithKey: (NSString*) key
     point: (NSArray<NSString*>*) point
-    fromPoint: (NSString*) fromPoint
-    toPoint: (NSString*) toPoint
+    fromPoint: (NSArray<NSString*>*) fromPoint
+    toPoint: (NSArray<NSString*>*) toPoint
     outArray: (NSArray<NSString*>*) outArray
     vehicle: (NSString*) vehicle
     completionHandler: (void (^)(SWGMatrixResponse* output, NSError* error)) handler;

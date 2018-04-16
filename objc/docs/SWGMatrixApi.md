@@ -12,8 +12,8 @@ Method | HTTP request | Description
 ```objc
 -(NSURLSessionTask*) matrixGetWithKey: (NSString*) key
     point: (NSArray<NSString*>*) point
-    fromPoint: (NSString*) fromPoint
-    toPoint: (NSString*) toPoint
+    fromPoint: (NSArray<NSString*>*) fromPoint
+    toPoint: (NSArray<NSString*>*) toPoint
     outArray: (NSArray<NSString*>*) outArray
     vehicle: (NSString*) vehicle
         completionHandler: (void (^)(SWGMatrixResponse* output, NSError* error)) handler;
@@ -28,8 +28,8 @@ The Matrix API is part of the GraphHopper Directions API and with this API you c
 
 NSString* key = @"key_example"; // Get your key at graphhopper.com
 NSArray<NSString*>* point = @[@"point_example"]; // Specifiy multiple points for which the weight-, route-, time- or distance-matrix should be calculated. In this case the starts are identical to the destinations. If there are N points, then NxN entries will be calculated. The order of the point parameter is important. Specify at least three points. Cannot be used together with from_point or to_point. Is a string with the format latitude,longitude. (optional)
-NSString* fromPoint = @"fromPoint_example"; // The starting points for the routes. E.g. if you want to calculate the three routes A-&gt;1, A-&gt;2, A-&gt;3 then you have one from_point parameter and three to_point parameters. Is a string with the format latitude,longitude. (optional)
-NSString* toPoint = @"toPoint_example"; // The destination points for the routes. Is a string with the format latitude,longitude. (optional)
+NSArray<NSString*>* fromPoint = @[@"fromPoint_example"]; // The starting points for the routes. E.g. if you want to calculate the three routes A-&gt;1, A-&gt;2, A-&gt;3 then you have one from_point parameter and three to_point parameters. Is a string with the format latitude,longitude. (optional)
+NSArray<NSString*>* toPoint = @[@"toPoint_example"]; // The destination points for the routes. Is a string with the format latitude,longitude. (optional)
 NSArray<NSString*>* outArray = @[@"outArray_example"]; // Specifies which arrays should be included in the response. Specify one or more of the following options 'weights', 'times', 'distances'. To specify more than one array use e.g. out_array=times&out_array=distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API. (optional)
 NSString* vehicle = @"car"; // The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc (optional) (default to car)
 
@@ -58,8 +58,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **key** | **NSString***| Get your key at graphhopper.com | 
  **point** | [**NSArray&lt;NSString*&gt;***](NSString*.md)| Specifiy multiple points for which the weight-, route-, time- or distance-matrix should be calculated. In this case the starts are identical to the destinations. If there are N points, then NxN entries will be calculated. The order of the point parameter is important. Specify at least three points. Cannot be used together with from_point or to_point. Is a string with the format latitude,longitude. | [optional] 
- **fromPoint** | **NSString***| The starting points for the routes. E.g. if you want to calculate the three routes A-&amp;gt;1, A-&amp;gt;2, A-&amp;gt;3 then you have one from_point parameter and three to_point parameters. Is a string with the format latitude,longitude. | [optional] 
- **toPoint** | **NSString***| The destination points for the routes. Is a string with the format latitude,longitude. | [optional] 
+ **fromPoint** | [**NSArray&lt;NSString*&gt;***](NSString*.md)| The starting points for the routes. E.g. if you want to calculate the three routes A-&amp;gt;1, A-&amp;gt;2, A-&amp;gt;3 then you have one from_point parameter and three to_point parameters. Is a string with the format latitude,longitude. | [optional] 
+ **toPoint** | [**NSArray&lt;NSString*&gt;***](NSString*.md)| The destination points for the routes. Is a string with the format latitude,longitude. | [optional] 
  **outArray** | [**NSArray&lt;NSString*&gt;***](NSString*.md)| Specifies which arrays should be included in the response. Specify one or more of the following options &#39;weights&#39;, &#39;times&#39;, &#39;distances&#39;. To specify more than one array use e.g. out_array&#x3D;times&amp;out_array&#x3D;distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API. | [optional] 
  **vehicle** | **NSString***| The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc | [optional] [default to car]
 

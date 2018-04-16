@@ -1,6 +1,6 @@
 # directions-api-client
 
-DirectionsApiClient - the Ruby gem for the GraphHopper Directions API
+graphhopper_directions_api_client - the Ruby gem for the GraphHopper Directions API
 
 You use the GraphHopper Directions API to add route planning, navigation and route optimization to your software. E.g. the Routing API has turn instructions and elevation data and the Route Optimization API solves your logistic problems and supports various constraints like time window and capacity restrictions. Also it is possible to get all distances between all locations with our fast Matrix API.
 
@@ -54,7 +54,7 @@ Please follow the [installation](#installation) procedure and then run the follo
 # Load the gem
 require 'directions-api-client'
 
-api_instance = DirectionsApiClient::GeocodingApi.new
+api_instance = graphhopper_directions_api_client::GeocodingApi.new
 
 key = "key_example" # String | Get your key at graphhopper.com
 
@@ -71,7 +71,7 @@ begin
   #Execute a Geocoding request
   result = api_instance.geocode_get(key, opts)
   p result
-rescue DirectionsApiClient::ApiError => e
+rescue graphhopper_directions_api_client::ApiError => e
   puts "Exception when calling GeocodingApi->geocode_get: #{e}"
 end
 
@@ -83,60 +83,60 @@ All URIs are relative to *https://graphhopper.com/api/1*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*DirectionsApiClient::GeocodingApi* | [**geocode_get**](docs/GeocodingApi.md#geocode_get) | **GET** /geocode | Execute a Geocoding request
-*DirectionsApiClient::IsochroneApi* | [**isochrone_get**](docs/IsochroneApi.md#isochrone_get) | **GET** /isochrone | Isochrone Request
-*DirectionsApiClient::MatrixApi* | [**matrix_get**](docs/MatrixApi.md#matrix_get) | **GET** /matrix | Matrix API
-*DirectionsApiClient::MatrixApi* | [**matrix_post**](docs/MatrixApi.md#matrix_post) | **POST** /matrix | Matrix API Post
-*DirectionsApiClient::RoutingApi* | [**route_get**](docs/RoutingApi.md#route_get) | **GET** /route | Routing Request
-*DirectionsApiClient::SolutionApi* | [**get_solution**](docs/SolutionApi.md#get_solution) | **GET** /vrp/solution/{jobId} | Return the solution associated to the jobId
-*DirectionsApiClient::VrpApi* | [**post_vrp**](docs/VrpApi.md#post_vrp) | **POST** /vrp/optimize | Solves vehicle routing problems
+*graphhopper_directions_api_client::GeocodingApi* | [**geocode_get**](docs/GeocodingApi.md#geocode_get) | **GET** /geocode | Execute a Geocoding request
+*graphhopper_directions_api_client::IsochroneApi* | [**isochrone_get**](docs/IsochroneApi.md#isochrone_get) | **GET** /isochrone | Isochrone Request
+*graphhopper_directions_api_client::MatrixApi* | [**matrix_get**](docs/MatrixApi.md#matrix_get) | **GET** /matrix | Matrix API
+*graphhopper_directions_api_client::MatrixApi* | [**matrix_post**](docs/MatrixApi.md#matrix_post) | **POST** /matrix | Matrix API Post
+*graphhopper_directions_api_client::RoutingApi* | [**route_get**](docs/RoutingApi.md#route_get) | **GET** /route | Routing Request
+*graphhopper_directions_api_client::SolutionApi* | [**get_solution**](docs/SolutionApi.md#get_solution) | **GET** /vrp/solution/{jobId} | Return the solution associated to the jobId
+*graphhopper_directions_api_client::VrpApi* | [**post_vrp**](docs/VrpApi.md#post_vrp) | **POST** /vrp/optimize | Solves vehicle routing problems
 
 
 ## Documentation for Models
 
- - [DirectionsApiClient::Activity](docs/Activity.md)
- - [DirectionsApiClient::Address](docs/Address.md)
- - [DirectionsApiClient::Algorithm](docs/Algorithm.md)
- - [DirectionsApiClient::Configuration](docs/Configuration.md)
- - [DirectionsApiClient::CostMatrix](docs/CostMatrix.md)
- - [DirectionsApiClient::CostMatrixData](docs/CostMatrixData.md)
- - [DirectionsApiClient::CostMatrixDataInfo](docs/CostMatrixDataInfo.md)
- - [DirectionsApiClient::GHError](docs/GHError.md)
- - [DirectionsApiClient::GHErrorHints](docs/GHErrorHints.md)
- - [DirectionsApiClient::GeocodingLocation](docs/GeocodingLocation.md)
- - [DirectionsApiClient::GeocodingPoint](docs/GeocodingPoint.md)
- - [DirectionsApiClient::GeocodingResponse](docs/GeocodingResponse.md)
- - [DirectionsApiClient::IsochroneResponse](docs/IsochroneResponse.md)
- - [DirectionsApiClient::IsochroneResponsePolygon](docs/IsochroneResponsePolygon.md)
- - [DirectionsApiClient::IsochroneResponsePolygonGeometry](docs/IsochroneResponsePolygonGeometry.md)
- - [DirectionsApiClient::IsochroneResponsePolygonProperties](docs/IsochroneResponsePolygonProperties.md)
- - [DirectionsApiClient::JobId](docs/JobId.md)
- - [DirectionsApiClient::Location](docs/Location.md)
- - [DirectionsApiClient::MatrixRequest](docs/MatrixRequest.md)
- - [DirectionsApiClient::MatrixResponse](docs/MatrixResponse.md)
- - [DirectionsApiClient::ModelBreak](docs/ModelBreak.md)
- - [DirectionsApiClient::Objective](docs/Objective.md)
- - [DirectionsApiClient::Relation](docs/Relation.md)
- - [DirectionsApiClient::Request](docs/Request.md)
- - [DirectionsApiClient::Response](docs/Response.md)
- - [DirectionsApiClient::ResponseCoordinates](docs/ResponseCoordinates.md)
- - [DirectionsApiClient::ResponseCoordinatesArray](docs/ResponseCoordinatesArray.md)
- - [DirectionsApiClient::ResponseInfo](docs/ResponseInfo.md)
- - [DirectionsApiClient::ResponseInstruction](docs/ResponseInstruction.md)
- - [DirectionsApiClient::ResponseInstructions](docs/ResponseInstructions.md)
- - [DirectionsApiClient::Route](docs/Route.md)
- - [DirectionsApiClient::RoutePoint](docs/RoutePoint.md)
- - [DirectionsApiClient::RouteResponse](docs/RouteResponse.md)
- - [DirectionsApiClient::RouteResponsePath](docs/RouteResponsePath.md)
- - [DirectionsApiClient::Routing](docs/Routing.md)
- - [DirectionsApiClient::Service](docs/Service.md)
- - [DirectionsApiClient::Shipment](docs/Shipment.md)
- - [DirectionsApiClient::Solution](docs/Solution.md)
- - [DirectionsApiClient::SolutionUnassigned](docs/SolutionUnassigned.md)
- - [DirectionsApiClient::Stop](docs/Stop.md)
- - [DirectionsApiClient::TimeWindow](docs/TimeWindow.md)
- - [DirectionsApiClient::Vehicle](docs/Vehicle.md)
- - [DirectionsApiClient::VehicleType](docs/VehicleType.md)
+ - [graphhopper_directions_api_client::Activity](docs/Activity.md)
+ - [graphhopper_directions_api_client::Address](docs/Address.md)
+ - [graphhopper_directions_api_client::Algorithm](docs/Algorithm.md)
+ - [graphhopper_directions_api_client::Configuration](docs/Configuration.md)
+ - [graphhopper_directions_api_client::CostMatrix](docs/CostMatrix.md)
+ - [graphhopper_directions_api_client::CostMatrixData](docs/CostMatrixData.md)
+ - [graphhopper_directions_api_client::CostMatrixDataInfo](docs/CostMatrixDataInfo.md)
+ - [graphhopper_directions_api_client::GHError](docs/GHError.md)
+ - [graphhopper_directions_api_client::GHErrorHints](docs/GHErrorHints.md)
+ - [graphhopper_directions_api_client::GeocodingLocation](docs/GeocodingLocation.md)
+ - [graphhopper_directions_api_client::GeocodingPoint](docs/GeocodingPoint.md)
+ - [graphhopper_directions_api_client::GeocodingResponse](docs/GeocodingResponse.md)
+ - [graphhopper_directions_api_client::IsochroneResponse](docs/IsochroneResponse.md)
+ - [graphhopper_directions_api_client::IsochroneResponsePolygon](docs/IsochroneResponsePolygon.md)
+ - [graphhopper_directions_api_client::IsochroneResponsePolygonGeometry](docs/IsochroneResponsePolygonGeometry.md)
+ - [graphhopper_directions_api_client::IsochroneResponsePolygonProperties](docs/IsochroneResponsePolygonProperties.md)
+ - [graphhopper_directions_api_client::JobId](docs/JobId.md)
+ - [graphhopper_directions_api_client::Location](docs/Location.md)
+ - [graphhopper_directions_api_client::MatrixRequest](docs/MatrixRequest.md)
+ - [graphhopper_directions_api_client::MatrixResponse](docs/MatrixResponse.md)
+ - [graphhopper_directions_api_client::ModelBreak](docs/ModelBreak.md)
+ - [graphhopper_directions_api_client::Objective](docs/Objective.md)
+ - [graphhopper_directions_api_client::Relation](docs/Relation.md)
+ - [graphhopper_directions_api_client::Request](docs/Request.md)
+ - [graphhopper_directions_api_client::Response](docs/Response.md)
+ - [graphhopper_directions_api_client::ResponseCoordinates](docs/ResponseCoordinates.md)
+ - [graphhopper_directions_api_client::ResponseCoordinatesArray](docs/ResponseCoordinatesArray.md)
+ - [graphhopper_directions_api_client::ResponseInfo](docs/ResponseInfo.md)
+ - [graphhopper_directions_api_client::ResponseInstruction](docs/ResponseInstruction.md)
+ - [graphhopper_directions_api_client::ResponseInstructions](docs/ResponseInstructions.md)
+ - [graphhopper_directions_api_client::Route](docs/Route.md)
+ - [graphhopper_directions_api_client::RoutePoint](docs/RoutePoint.md)
+ - [graphhopper_directions_api_client::RouteResponse](docs/RouteResponse.md)
+ - [graphhopper_directions_api_client::RouteResponsePath](docs/RouteResponsePath.md)
+ - [graphhopper_directions_api_client::Routing](docs/Routing.md)
+ - [graphhopper_directions_api_client::Service](docs/Service.md)
+ - [graphhopper_directions_api_client::Shipment](docs/Shipment.md)
+ - [graphhopper_directions_api_client::Solution](docs/Solution.md)
+ - [graphhopper_directions_api_client::SolutionUnassigned](docs/SolutionUnassigned.md)
+ - [graphhopper_directions_api_client::Stop](docs/Stop.md)
+ - [graphhopper_directions_api_client::TimeWindow](docs/TimeWindow.md)
+ - [graphhopper_directions_api_client::Vehicle](docs/Vehicle.md)
+ - [graphhopper_directions_api_client::VehicleType](docs/VehicleType.md)
 
 
 ## Documentation for Authorization

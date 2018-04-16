@@ -70,8 +70,8 @@ NSInteger kSWGMatrixApiMissingParamErrorCode = 234513;
 ///
 -(NSURLSessionTask*) matrixGetWithKey: (NSString*) key
     point: (NSArray<NSString*>*) point
-    fromPoint: (NSString*) fromPoint
-    toPoint: (NSString*) toPoint
+    fromPoint: (NSArray<NSString*>*) fromPoint
+    toPoint: (NSArray<NSString*>*) toPoint
     outArray: (NSArray<NSString*>*) outArray
     vehicle: (NSString*) vehicle
     completionHandler: (void (^)(SWGMatrixResponse* output, NSError* error)) handler {
@@ -95,10 +95,10 @@ NSInteger kSWGMatrixApiMissingParamErrorCode = 234513;
         queryParams[@"point"] = [[SWGQueryParamCollection alloc] initWithValuesAndFormat: point format: @"multi"];
     }
     if (fromPoint != nil) {
-        queryParams[@"from_point"] = fromPoint;
+        queryParams[@"from_point"] = [[SWGQueryParamCollection alloc] initWithValuesAndFormat: fromPoint format: @"multi"];
     }
     if (toPoint != nil) {
-        queryParams[@"to_point"] = toPoint;
+        queryParams[@"to_point"] = [[SWGQueryParamCollection alloc] initWithValuesAndFormat: toPoint format: @"multi"];
     }
     if (outArray != nil) {
         queryParams[@"out_array"] = [[SWGQueryParamCollection alloc] initWithValuesAndFormat: outArray format: @"multi"];

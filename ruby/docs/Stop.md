@@ -1,4 +1,4 @@
-# DirectionsApiClient::Stop
+# graphhopper_directions_api_client::Stop
 
 ## Properties
 Name | Type | Description | Notes

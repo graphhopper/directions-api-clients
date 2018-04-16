@@ -12,7 +12,7 @@ In the Routing API we support multiple points, so called 'via points', which res
    (call-api "/matrix" :get
              {:path-params   {}
               :header-params {}
-              :query-params  {"point" (with-collection-format point :multi) "from_point" from-point "to_point" to-point "out_array" (with-collection-format out-array :multi) "vehicle" vehicle "key" key }
+              :query-params  {"point" (with-collection-format point :multi) "from_point" (with-collection-format from-point :multi) "to_point" (with-collection-format to-point :multi) "out_array" (with-collection-format out-array :multi) "vehicle" vehicle "key" key }
               :form-params   {}
               :content-types []
               :accepts       ["application/json"]

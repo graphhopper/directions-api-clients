@@ -1,4 +1,4 @@
-# DirectionsApiClient::GeocodingPoint
+# graphhopper_directions_api_client::GeocodingPoint
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# DirectionsApiClient::RoutePoint
+# graphhopper_directions_api_client::RoutePoint
 
 ## Properties
 Name | Type | Description | Notes

@@ -81,7 +81,7 @@ OpenAPI spec version: 1.0.0
   <Import Project="$(MsBuildToolsPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
       <ProjectReference Include="..\IO.Swagger\IO.Swagger.csproj">
-          <Project>{B545D199-450E-4EA5-A2EC-80076EBED182}</Project>
+          <Project>{FA329004-B8FB-425F-A105-541EBAC09EFF}</Project>
           <Name>IO.Swagger</Name>
       </ProjectReference>
   </ItemGroup>
