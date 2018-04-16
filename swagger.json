@@ -304,7 +304,6 @@
                         "name": "to_point",
                         "in": "query",
                         "description": "The destination points for the routes. Is a string with the format latitude,longitude.",
-                        "type": "string",
                         "required": false,
                         "type": "array",
                         "items": {
