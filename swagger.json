@@ -129,6 +129,16 @@
                         "type": "boolean"
                     },
                     {
+                        "name": "details",
+                        "in": "query",
+                        "description": "List of additional route attributes to be returned. Currently available: average_speed, street_name, edge_id, time",
+                        "type": "array",
+                        "items": {
+                          "type": "boolean"
+                        },
+                        "collectionFormat": "multi"
+                    },
+                    {
                         "name": "round_trip.distance",
                         "in": "query",
                         "description": "If `algorithm=round_trip` this parameter configures approximative length of the resulting round trip",
@@ -777,6 +787,9 @@
                 },
                 "instructions": {
                     "$ref": "#/definitions/ResponseInstructions"
+                },
+                "details": {
+                  "type": "object"
                 }
             }
         },
