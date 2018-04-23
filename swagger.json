@@ -131,10 +131,10 @@
                     {
                         "name": "details",
                         "in": "query",
-                        "description": "List of additional route attributes to be returned. Currently available: average_speed, street_name, edge_id, time",
+                        "description": "List of additional trip attributes to be returned. Try some of the following: average_speed, street_name, edge_id, time",
                         "type": "array",
                         "items": {
-                          "type": "boolean"
+                          "type": "string"
                         },
                         "collectionFormat": "multi"
                     },
