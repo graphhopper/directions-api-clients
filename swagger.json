@@ -20,6 +20,9 @@
             "in": "query"
         }
     },
+    "security": {
+        "api_key": []
+    },
     "paths": {
         "/route": {
             "get": {
@@ -178,13 +181,6 @@
                         "in": "query",
                         "description": "comma separate list to avoid certain roads. You can avoid motorway, ferry, tunnel or track",
                         "type": "string"
-                    },
-                    {
-                        "name": "key",
-                        "in": "query",
-                        "description": "Get your key at graphhopper.com",
-                        "required": true,
-                        "type": "string"
                     }
                 ],
                 "tags": [
@@ -255,13 +251,6 @@
                         "description": "If `false` the flow goes from point to the polygon, if `true` the flow goes from the polygon \"inside\" to the point. Example usage for `false`&#58; *How many potential customer can be reached within 30min travel time from your store* vs. `true`&#58; *How many customers can reach your store within 30min travel time.*",
                         "default": false,
                         "type": "boolean"
-                    },
-                    {
-                        "name": "key",
-                        "in": "query",
-                        "description": "Get your key at graphhopper.com",
-                        "required": true,
-                        "type": "string"
                     }
                 ],
                 "tags": [
@@ -338,13 +327,6 @@
                         "description": "The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc",
                         "default": "car",
                         "type": "string"
-                    },
-                    {
-                        "name": "key",
-                        "in": "query",
-                        "description": "Get your key at graphhopper.com",
-                        "required": true,
-                        "type": "string"
                     }
                 ],
                 "tags": [
@@ -375,13 +357,6 @@
                         "schema": {
                             "$ref": "#/definitions/MatrixRequest"
                         }
-                    },
-                    {
-                        "name": "key",
-                        "in": "query",
-                        "description": "Get your key at graphhopper.com",
-                        "required": true,
-                        "type": "string"
                     }
                 ],
                 "tags": [
@@ -450,13 +425,6 @@
                         "description": "Can be either, default, nominatim, opencagedata",
                         "required": false,
                         "type": "string"
-                    },
-                    {
-                        "name": "key",
-                        "in": "query",
-                        "description": "Get your key at graphhopper.com",
-                        "required": true,
-                        "type": "string"
                     }
                 ],
                 "tags": [
@@ -490,13 +458,6 @@
                     "application/json"
                 ],
                 "parameters": [
-                    {
-                        "in": "query",
-                        "name": "key",
-                        "description": "your API key",
-                        "required": true,
-                        "type": "string"
-                    },
                     {
                         "in": "body",
                         "name": "body",
@@ -538,13 +499,6 @@
                     "application/json"
                 ],
                 "parameters": [
-                    {
-                        "in": "query",
-                        "name": "key",
-                        "description": "your API key",
-                        "required": true,
-                        "type": "string"
-                    },
                     {
                         "in": "path",
                         "name": "jobId",
