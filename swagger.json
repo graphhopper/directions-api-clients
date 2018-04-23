@@ -20,9 +20,11 @@
             "in": "query"
         }
     },
-    "security": {
-        "api_key": []
-    },
+    "security": [
+        {
+            "api_key": []
+        }
+    ],
     "paths": {
         "/route": {
             "get": {
