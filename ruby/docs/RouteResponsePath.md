@@ -1,4 +1,4 @@
-# graphhopper_directions_api_client::RouteResponsePath
+# GraphHopperClient::RouteResponsePath
 
 ## Properties
 Name | Type | Description | Notes
@@ -12,5 +12,6 @@ Name | Type | Description | Notes
 **bbox** | **Array&lt;Float&gt;** | The bounding box of the route, format &lt;br&gt; minLon, minLat, maxLon, maxLat | [optional] 
 **snapped_waypoints** | [**ResponseCoordinates**](ResponseCoordinates.md) |  | [optional] 
 **instructions** | [**ResponseInstructions**](ResponseInstructions.md) |  | [optional] 
+**details** | **Object** |  | [optional] 
 
 

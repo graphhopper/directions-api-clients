@@ -10,6 +10,6 @@ Swagger Codegen version: 2.4.0-SNAPSHOT
 
 =end
 
-module graphhopper_directions_api_client
+module GraphHopperClient
   VERSION = "0.11-SNAPSHOT"
 end

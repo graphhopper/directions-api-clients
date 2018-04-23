@@ -1,4 +1,4 @@
-# graphhopper_directions_api_client::IsochroneApi
+# GraphHopperClient::IsochroneApi
 
 All URIs are relative to *https://graphhopper.com/api/1*
 
@@ -19,7 +19,7 @@ The GraphHopper Isochrone API allows calculating an isochrone of a locations mea
 # load the gem
 require 'directions-api-client'
 
-api_instance = graphhopper_directions_api_client::IsochroneApi.new
+api_instance = GraphHopperClient::IsochroneApi.new
 
 point = "point_example" # String | Specify the start coordinate
 
@@ -37,7 +37,7 @@ begin
   #Isochrone Request
   result = api_instance.isochrone_get(point, key, opts)
   p result
-rescue graphhopper_directions_api_client::ApiError => e
+rescue GraphHopperClient::ApiError => e
   puts "Exception when calling IsochroneApi->isochrone_get: #{e}"
 end
 ```

@@ -1,4 +1,4 @@
-# graphhopper_directions_api_client::MatrixApi
+# GraphHopperClient::MatrixApi
 
 All URIs are relative to *https://graphhopper.com/api/1*
 
@@ -20,7 +20,7 @@ The Matrix API is part of the GraphHopper Directions API and with this API you c
 # load the gem
 require 'directions-api-client'
 
-api_instance = graphhopper_directions_api_client::MatrixApi.new
+api_instance = GraphHopperClient::MatrixApi.new
 
 key = "key_example" # String | Get your key at graphhopper.com
 
@@ -36,7 +36,7 @@ begin
   #Matrix API
   result = api_instance.matrix_get(key, opts)
   p result
-rescue graphhopper_directions_api_client::ApiError => e
+rescue GraphHopperClient::ApiError => e
   puts "Exception when calling MatrixApi->matrix_get: #{e}"
 end
 ```
@@ -79,19 +79,19 @@ The GET request has an URL length limitation, which hurts for many locations per
 # load the gem
 require 'directions-api-client'
 
-api_instance = graphhopper_directions_api_client::MatrixApi.new
+api_instance = GraphHopperClient::MatrixApi.new
 
 key = "key_example" # String | Get your key at graphhopper.com
 
 opts = { 
-  body: graphhopper_directions_api_client::MatrixRequest.new # MatrixRequest | 
+  body: GraphHopperClient::MatrixRequest.new # MatrixRequest | 
 }
 
 begin
   #Matrix API Post
   result = api_instance.matrix_post(key, opts)
   p result
-rescue graphhopper_directions_api_client::ApiError => e
+rescue GraphHopperClient::ApiError => e
   puts "Exception when calling MatrixApi->matrix_post: #{e}"
 end
 ```

@@ -12,7 +12,7 @@ Swagger Codegen version: 2.4.0-SNAPSHOT
 
 require "uri"
 
-module graphhopper_directions_api_client
+module GraphHopperClient
   class SolutionApi
     attr_accessor :api_client
 

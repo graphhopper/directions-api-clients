@@ -1,4 +1,4 @@
-# graphhopper_directions_api_client::JobId
+# GraphHopperClient::JobId
 
 ## Properties
 Name | Type | Description | Notes

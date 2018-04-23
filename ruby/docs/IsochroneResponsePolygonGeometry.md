@@ -1,4 +1,4 @@
-# graphhopper_directions_api_client::IsochroneResponsePolygonGeometry
+# GraphHopperClient::IsochroneResponsePolygonGeometry
 
 ## Properties
 Name | Type | Description | Notes

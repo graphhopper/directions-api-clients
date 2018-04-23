@@ -1,4 +1,4 @@
-# graphhopper_directions_api_client::Objective
+# GraphHopperClient::Objective
 
 ## Properties
 Name | Type | Description | Notes

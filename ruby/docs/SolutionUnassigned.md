@@ -1,4 +1,4 @@
-# graphhopper_directions_api_client::SolutionUnassigned
+# GraphHopperClient::SolutionUnassigned
 
 ## Properties
 Name | Type | Description | Notes

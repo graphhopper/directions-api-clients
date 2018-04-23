@@ -12,7 +12,7 @@ Swagger Codegen version: 2.4.0-SNAPSHOT
 
 require "uri"
 
-module graphhopper_directions_api_client
+module GraphHopperClient
   class RoutingApi
     attr_accessor :api_client
 
@@ -39,6 +39,7 @@ module graphhopper_directions_api_client
     # @option opts [Integer] :heading Favour a heading direction for a certain point. Specify either one heading for the start point or as many as there are points. In this case headings are associated by their order to the specific points. Headings are given as north based clockwise angle between 0 and 360 degree. This parameter also influences the tour generated with &#x60;algorithm&#x3D;round_trip&#x60; and force the initial direction.
     # @option opts [Integer] :heading_penalty Penalty for omitting a specified heading. The penalty corresponds to the accepted time delay in seconds in comparison to the route without a heading.
     # @option opts [BOOLEAN] :pass_through If &#x60;true&#x60; u-turns are avoided at via-points with regard to the &#x60;heading_penalty&#x60;.
+    # @option opts [Array<String>] :details List of additional trip attributes to be returned. Try some of the following: &#x60;average_speed&#x60;, &#x60;street_name&#x60;, &#x60;edge_id&#x60;, &#x60;time&#x60;, &#x60;distance&#x60;.
     # @option opts [Integer] :round_trip_distance If &#x60;algorithm&#x3D;round_trip&#x60; this parameter configures approximative length of the resulting round trip
     # @option opts [Integer] :round_trip_seed If &#x60;algorithm&#x3D;round_trip&#x60; this parameter introduces randomness if e.g. the first try wasn&#39;t good.
     # @option opts [Integer] :alternative_route_max_paths If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the number of maximum paths which should be calculated. Increasing can lead to worse alternatives.
@@ -70,6 +71,7 @@ module graphhopper_directions_api_client
     # @option opts [Integer] :heading Favour a heading direction for a certain point. Specify either one heading for the start point or as many as there are points. In this case headings are associated by their order to the specific points. Headings are given as north based clockwise angle between 0 and 360 degree. This parameter also influences the tour generated with &#x60;algorithm&#x3D;round_trip&#x60; and force the initial direction.
     # @option opts [Integer] :heading_penalty Penalty for omitting a specified heading. The penalty corresponds to the accepted time delay in seconds in comparison to the route without a heading.
     # @option opts [BOOLEAN] :pass_through If &#x60;true&#x60; u-turns are avoided at via-points with regard to the &#x60;heading_penalty&#x60;.
+    # @option opts [Array<String>] :details List of additional trip attributes to be returned. Try some of the following: &#x60;average_speed&#x60;, &#x60;street_name&#x60;, &#x60;edge_id&#x60;, &#x60;time&#x60;, &#x60;distance&#x60;.
     # @option opts [Integer] :round_trip_distance If &#x60;algorithm&#x3D;round_trip&#x60; this parameter configures approximative length of the resulting round trip
     # @option opts [Integer] :round_trip_seed If &#x60;algorithm&#x3D;round_trip&#x60; this parameter introduces randomness if e.g. the first try wasn&#39;t good.
     # @option opts [Integer] :alternative_route_max_paths If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the number of maximum paths which should be calculated. Increasing can lead to worse alternatives.
@@ -114,6 +116,7 @@ module graphhopper_directions_api_client
       query_params[:'heading'] = opts[:'heading'] if !opts[:'heading'].nil?
       query_params[:'heading_penalty'] = opts[:'heading_penalty'] if !opts[:'heading_penalty'].nil?
       query_params[:'pass_through'] = opts[:'pass_through'] if !opts[:'pass_through'].nil?
+      query_params[:'details'] = @api_client.build_collection_param(opts[:'details'], :multi) if !opts[:'details'].nil?
       query_params[:'round_trip.distance'] = opts[:'round_trip_distance'] if !opts[:'round_trip_distance'].nil?
       query_params[:'round_trip.seed'] = opts[:'round_trip_seed'] if !opts[:'round_trip_seed'].nil?
       query_params[:'alternative_route.max_paths'] = opts[:'alternative_route_max_paths'] if !opts[:'alternative_route_max_paths'].nil?

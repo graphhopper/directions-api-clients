@@ -12,7 +12,7 @@ Swagger Codegen version: 2.4.0-SNAPSHOT
 
 require 'date'
 
-module graphhopper_directions_api_client
+module GraphHopperClient
 
   class Algorithm
     attr_accessor :problem_type
@@ -190,7 +190,7 @@ module graphhopper_directions_api_client
           end
         end
       else # model
-        temp_model = graphhopper_directions_api_client.const_get(type).new
+        temp_model = GraphHopperClient.const_get(type).new
         temp_model.build_from_hash(value)
       end
     end

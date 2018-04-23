@@ -1,4 +1,4 @@
-# graphhopper_directions_api_client::Address
+# GraphHopperClient::Address
 
 ## Properties
 Name | Type | Description | Notes

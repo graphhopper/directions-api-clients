@@ -1,4 +1,4 @@
-# graphhopper_directions_api_client::GHErrorHints
+# GraphHopperClient::GHErrorHints
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# graphhopper_directions_api_client::RoutingApi
+# GraphHopperClient::RoutingApi
 
 All URIs are relative to *https://graphhopper.com/api/1*
 
@@ -19,7 +19,7 @@ The GraphHopper Routing API allows to calculate route and implement navigation v
 # load the gem
 require 'directions-api-client'
 
-api_instance = graphhopper_directions_api_client::RoutingApi.new
+api_instance = GraphHopperClient::RoutingApi.new
 
 point = ["point_example"] # Array<String> | Specify multiple points for which the route should be calculated. The order is important. Specify at least two points.
 
@@ -41,6 +41,7 @@ opts = {
   heading: 56, # Integer | Favour a heading direction for a certain point. Specify either one heading for the start point or as many as there are points. In this case headings are associated by their order to the specific points. Headings are given as north based clockwise angle between 0 and 360 degree. This parameter also influences the tour generated with `algorithm=round_trip` and force the initial direction.
   heading_penalty: 56, # Integer | Penalty for omitting a specified heading. The penalty corresponds to the accepted time delay in seconds in comparison to the route without a heading.
   pass_through: true, # BOOLEAN | If `true` u-turns are avoided at via-points with regard to the `heading_penalty`.
+  details: ["details_example"], # Array<String> | List of additional trip attributes to be returned. Try some of the following: `average_speed`, `street_name`, `edge_id`, `time`, `distance`.
   round_trip_distance: 56, # Integer | If `algorithm=round_trip` this parameter configures approximative length of the resulting round trip
   round_trip_seed: 789, # Integer | If `algorithm=round_trip` this parameter introduces randomness if e.g. the first try wasn't good.
   alternative_route_max_paths: 56, # Integer | If `algorithm=alternative_route` this parameter sets the number of maximum paths which should be calculated. Increasing can lead to worse alternatives.
@@ -53,7 +54,7 @@ begin
   #Routing Request
   result = api_instance.route_get(point, points_encoded, key, opts)
   p result
-rescue graphhopper_directions_api_client::ApiError => e
+rescue GraphHopperClient::ApiError => e
   puts "Exception when calling RoutingApi->route_get: #{e}"
 end
 ```
@@ -78,6 +79,7 @@ Name | Type | Description  | Notes
  **heading** | **Integer**| Favour a heading direction for a certain point. Specify either one heading for the start point or as many as there are points. In this case headings are associated by their order to the specific points. Headings are given as north based clockwise angle between 0 and 360 degree. This parameter also influences the tour generated with &#x60;algorithm&#x3D;round_trip&#x60; and force the initial direction. | [optional] 
  **heading_penalty** | **Integer**| Penalty for omitting a specified heading. The penalty corresponds to the accepted time delay in seconds in comparison to the route without a heading. | [optional] 
  **pass_through** | **BOOLEAN**| If &#x60;true&#x60; u-turns are avoided at via-points with regard to the &#x60;heading_penalty&#x60;. | [optional] 
+ **details** | [**Array&lt;String&gt;**](String.md)| List of additional trip attributes to be returned. Try some of the following: &#x60;average_speed&#x60;, &#x60;street_name&#x60;, &#x60;edge_id&#x60;, &#x60;time&#x60;, &#x60;distance&#x60;. | [optional] 
  **round_trip_distance** | **Integer**| If &#x60;algorithm&#x3D;round_trip&#x60; this parameter configures approximative length of the resulting round trip | [optional] 
  **round_trip_seed** | **Integer**| If &#x60;algorithm&#x3D;round_trip&#x60; this parameter introduces randomness if e.g. the first try wasn&#39;t good. | [optional] 
  **alternative_route_max_paths** | **Integer**| If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the number of maximum paths which should be calculated. Increasing can lead to worse alternatives. | [optional] 

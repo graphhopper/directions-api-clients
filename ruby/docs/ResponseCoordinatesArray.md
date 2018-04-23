@@ -1,4 +1,4 @@
-# graphhopper_directions_api_client::ResponseCoordinatesArray
+# GraphHopperClient::ResponseCoordinatesArray
 
 ## Properties
 Name | Type | Description | Notes

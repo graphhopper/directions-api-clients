@@ -1,4 +1,4 @@
-# graphhopper_directions_api_client::MatrixResponse
+# GraphHopperClient::MatrixResponse
 
 ## Properties
 Name | Type | Description | Notes
