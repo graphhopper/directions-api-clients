@@ -983,7 +983,7 @@
                     }
                 },
                 "configuration": {
-                    "$ref": "#/definitions/Configuration"
+                    "$ref": "#/definitions/VRPConfiguration"
                 }
             }
         },
@@ -1382,7 +1382,7 @@
                 }
             }
         },
-        "Configuration": {
+        "VRPConfiguration": {
             "type": "object",
             "properties": {
                 "routing": {
