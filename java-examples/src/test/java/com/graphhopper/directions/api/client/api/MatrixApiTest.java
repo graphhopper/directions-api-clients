@@ -29,11 +29,12 @@ import static org.junit.Assert.assertEquals;
  * API tests for MatrixApi
  */
 @Ignore
-public class MatrixApiTest {
+public class
+MatrixApiTest {
 
     private final MatrixApi api = new MatrixApi();
 
-    public static final String KEY = "614b8305-b4db-48c9-bf4a-40de90919939";
+    public static final String KEY = System.getProperty("graphhopper.key", "");
 
     /**
      * Matrix API
@@ -46,8 +47,8 @@ public class MatrixApiTest {
     public void matrixGetTest() throws ApiException {
         String key = KEY;
         List<String> point = Arrays.asList(new String[]{"49.932707,11.588051", "50.241935,10.747375", "50.118817,11.983337"});
-        String fromPoint = null;
-        String toPoint = null;
+        List<String> fromPoint = null;
+        List<String> toPoint = null;
         List<String> outArray = Arrays.asList("weights", "distances", "times");
         String vehicle = null;
         MatrixResponse response = api.matrixGet(key, point, fromPoint, toPoint, outArray, vehicle);

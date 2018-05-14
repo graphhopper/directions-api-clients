@@ -29,7 +29,7 @@ public class IsochroneApiTest {
 
     private final IsochroneApi api = new IsochroneApi();
 
-    public static final String KEY = "614b8305-b4db-48c9-bf4a-40de90919939";
+    public static final String KEY = System.getProperty("graphhopper.key", "");
 
     /**
      * Isochrone Request
