@@ -1680,8 +1680,41 @@
                                 "type": "string",
                                 "description": "id of unassigned shipments"
                             }
+                        },
+                        "breaks": {
+                            "type": "array",
+                            "description": "An array of ids of unassigned breaks",
+                            "items": {
+                                "type": "string",
+                                "description": "id of unassigned breaks"
+                            }
+                        },
+                        "details": {
+                            "type": "array",
+                            "description": "An array of details, i.e. reason for unassigned services or shipments",
+                            "items": {
+                                "$ref": "#/definitions/Detail"
+                            }
                         }
                     }
+                }
+            }
+        },
+        "Detail": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "id of unassigned service/shipment"
+                },
+                "code": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "reason code"
+                },
+                "reason": {
+                    "type": "string",
+                    "description": "human readable reason"
                 }
             }
         },
