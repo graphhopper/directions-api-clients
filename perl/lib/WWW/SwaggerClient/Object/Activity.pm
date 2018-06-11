@@ -167,7 +167,7 @@ __PACKAGE__->method_documentation({
     'arr_time' => {
     	datatype => 'int',
     	base_name => 'arr_time',
-    	description => 'arrival time at this activity in ms',
+    	description => 'arrival time at this activity in seconds',
     	format => '',
     	read_only => '',
     		},
@@ -181,7 +181,7 @@ __PACKAGE__->method_documentation({
     'waiting_time' => {
     	datatype => 'int',
     	base_name => 'waiting_time',
-    	description => 'waiting time at this activity in ms',
+    	description => 'waiting time at this activity in seconds',
     	format => '',
     	read_only => '',
     		},
@@ -195,7 +195,7 @@ __PACKAGE__->method_documentation({
     'driving_time' => {
     	datatype => 'int',
     	base_name => 'driving_time',
-    	description => 'driving time of driver in ms',
+    	description => 'driving time of driver in seconds',
     	format => '',
     	read_only => '',
     		},

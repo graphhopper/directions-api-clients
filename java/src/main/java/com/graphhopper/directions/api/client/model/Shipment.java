@@ -56,6 +56,12 @@ public class Shipment {
   @SerializedName("allowed_vehicles")
   private List<String> allowedVehicles = null;
 
+  @SerializedName("disallowed_vehicles")
+  private List<String> disallowedVehicles = null;
+
+  @SerializedName("max_time_in_vehicle")
+  private Long maxTimeInVehicle = null;
+
   public Shipment id(String id) {
     this.id = id;
     return this;
@@ -224,6 +230,50 @@ public class Shipment {
     this.allowedVehicles = allowedVehicles;
   }
 
+  public Shipment disallowedVehicles(List<String> disallowedVehicles) {
+    this.disallowedVehicles = disallowedVehicles;
+    return this;
+  }
+
+  public Shipment addDisallowedVehiclesItem(String disallowedVehiclesItem) {
+    if (this.disallowedVehicles == null) {
+      this.disallowedVehicles = new ArrayList<String>();
+    }
+    this.disallowedVehicles.add(disallowedVehiclesItem);
+    return this;
+  }
+
+   /**
+   * array of disallowed vehicle ids
+   * @return disallowedVehicles
+  **/
+  @ApiModelProperty(value = "array of disallowed vehicle ids")
+  public List<String> getDisallowedVehicles() {
+    return disallowedVehicles;
+  }
+
+  public void setDisallowedVehicles(List<String> disallowedVehicles) {
+    this.disallowedVehicles = disallowedVehicles;
+  }
+
+  public Shipment maxTimeInVehicle(Long maxTimeInVehicle) {
+    this.maxTimeInVehicle = maxTimeInVehicle;
+    return this;
+  }
+
+   /**
+   * max time shipment can stay in vehicle
+   * @return maxTimeInVehicle
+  **/
+  @ApiModelProperty(value = "max time shipment can stay in vehicle")
+  public Long getMaxTimeInVehicle() {
+    return maxTimeInVehicle;
+  }
+
+  public void setMaxTimeInVehicle(Long maxTimeInVehicle) {
+    this.maxTimeInVehicle = maxTimeInVehicle;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -241,12 +291,14 @@ public class Shipment {
         Objects.equals(this.delivery, shipment.delivery) &&
         Objects.equals(this.size, shipment.size) &&
         Objects.equals(this.requiredSkills, shipment.requiredSkills) &&
-        Objects.equals(this.allowedVehicles, shipment.allowedVehicles);
+        Objects.equals(this.allowedVehicles, shipment.allowedVehicles) &&
+        Objects.equals(this.disallowedVehicles, shipment.disallowedVehicles) &&
+        Objects.equals(this.maxTimeInVehicle, shipment.maxTimeInVehicle);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, priority, pickup, delivery, size, requiredSkills, allowedVehicles);
+    return Objects.hash(id, name, priority, pickup, delivery, size, requiredSkills, allowedVehicles, disallowedVehicles, maxTimeInVehicle);
   }
 
 
@@ -263,6 +315,8 @@ public class Shipment {
     sb.append("    size: ").append(toIndentedString(size)).append("\n");
     sb.append("    requiredSkills: ").append(toIndentedString(requiredSkills)).append("\n");
     sb.append("    allowedVehicles: ").append(toIndentedString(allowedVehicles)).append("\n");
+    sb.append("    disallowedVehicles: ").append(toIndentedString(disallowedVehicles)).append("\n");
+    sb.append("    maxTimeInVehicle: ").append(toIndentedString(maxTimeInVehicle)).append("\n");
     sb.append("}");
     return sb.toString();
   }

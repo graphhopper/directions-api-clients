@@ -1,4 +1,4 @@
-# DirectionsApiClient::MatrixRequest
+# GraphHopperClient::MatrixRequest
 
 ## Properties
 Name | Type | Description | Notes

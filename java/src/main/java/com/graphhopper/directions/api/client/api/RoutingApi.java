@@ -73,17 +73,19 @@ public class RoutingApi {
      * @param heading Favour a heading direction for a certain point. Specify either one heading for the start point or as many as there are points. In this case headings are associated by their order to the specific points. Headings are given as north based clockwise angle between 0 and 360 degree. This parameter also influences the tour generated with &#x60;algorithm&#x3D;round_trip&#x60; and force the initial direction. (optional)
      * @param headingPenalty Penalty for omitting a specified heading. The penalty corresponds to the accepted time delay in seconds in comparison to the route without a heading. (optional)
      * @param passThrough If &#x60;true&#x60; u-turns are avoided at via-points with regard to the &#x60;heading_penalty&#x60;. (optional)
+     * @param details List of additional trip attributes to be returned. Try some of the following: &#x60;average_speed&#x60;, &#x60;street_name&#x60;, &#x60;edge_id&#x60;, &#x60;time&#x60;, &#x60;distance&#x60;. (optional)
      * @param roundTripDistance If &#x60;algorithm&#x3D;round_trip&#x60; this parameter configures approximative length of the resulting round trip (optional)
      * @param roundTripSeed If &#x60;algorithm&#x3D;round_trip&#x60; this parameter introduces randomness if e.g. the first try wasn&#39;t good. (optional)
      * @param alternativeRouteMaxPaths If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the number of maximum paths which should be calculated. Increasing can lead to worse alternatives. (optional)
      * @param alternativeRouteMaxWeightFactor If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the factor by which the alternatives routes can be longer than the optimal route. Increasing can lead to worse alternatives. (optional)
      * @param alternativeRouteMaxShareFactor If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter specifies how much alternatives routes can have maximum in common with the optimal route. Increasing can lead to worse alternatives. (optional)
+     * @param avoid comma separate list to avoid certain roads. You can avoid motorway, ferry, tunnel or track (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call routeGetCall(List<String> point, Boolean pointsEncoded, String key, String locale, Boolean instructions, String vehicle, Boolean elevation, Boolean calcPoints, List<String> pointHint, Boolean chDisable, String weighting, Boolean edgeTraversal, String algorithm, Integer heading, Integer headingPenalty, Boolean passThrough, Integer roundTripDistance, Long roundTripSeed, Integer alternativeRouteMaxPaths, Integer alternativeRouteMaxWeightFactor, Integer alternativeRouteMaxShareFactor, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call routeGetCall(List<String> point, Boolean pointsEncoded, String key, String locale, Boolean instructions, String vehicle, Boolean elevation, Boolean calcPoints, List<String> pointHint, Boolean chDisable, String weighting, Boolean edgeTraversal, String algorithm, Integer heading, Integer headingPenalty, Boolean passThrough, List<String> details, Integer roundTripDistance, Long roundTripSeed, Integer alternativeRouteMaxPaths, Integer alternativeRouteMaxWeightFactor, Integer alternativeRouteMaxShareFactor, String avoid, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -121,6 +123,8 @@ public class RoutingApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("heading_penalty", headingPenalty));
         if (passThrough != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("pass_through", passThrough));
+        if (details != null)
+        localVarCollectionQueryParams.addAll(apiClient.parameterToPairs("multi", "details", details));
         if (roundTripDistance != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("round_trip.distance", roundTripDistance));
         if (roundTripSeed != null)
@@ -131,6 +135,8 @@ public class RoutingApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("alternative_route.max_weight_factor", alternativeRouteMaxWeightFactor));
         if (alternativeRouteMaxShareFactor != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("alternative_route.max_share_factor", alternativeRouteMaxShareFactor));
+        if (avoid != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("avoid", avoid));
         if (key != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("key", key));
 
@@ -167,7 +173,7 @@ public class RoutingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call routeGetValidateBeforeCall(List<String> point, Boolean pointsEncoded, String key, String locale, Boolean instructions, String vehicle, Boolean elevation, Boolean calcPoints, List<String> pointHint, Boolean chDisable, String weighting, Boolean edgeTraversal, String algorithm, Integer heading, Integer headingPenalty, Boolean passThrough, Integer roundTripDistance, Long roundTripSeed, Integer alternativeRouteMaxPaths, Integer alternativeRouteMaxWeightFactor, Integer alternativeRouteMaxShareFactor, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call routeGetValidateBeforeCall(List<String> point, Boolean pointsEncoded, String key, String locale, Boolean instructions, String vehicle, Boolean elevation, Boolean calcPoints, List<String> pointHint, Boolean chDisable, String weighting, Boolean edgeTraversal, String algorithm, Integer heading, Integer headingPenalty, Boolean passThrough, List<String> details, Integer roundTripDistance, Long roundTripSeed, Integer alternativeRouteMaxPaths, Integer alternativeRouteMaxWeightFactor, Integer alternativeRouteMaxShareFactor, String avoid, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'point' is set
         if (point == null) {
@@ -185,7 +191,7 @@ public class RoutingApi {
         }
         
 
-        com.squareup.okhttp.Call call = routeGetCall(point, pointsEncoded, key, locale, instructions, vehicle, elevation, calcPoints, pointHint, chDisable, weighting, edgeTraversal, algorithm, heading, headingPenalty, passThrough, roundTripDistance, roundTripSeed, alternativeRouteMaxPaths, alternativeRouteMaxWeightFactor, alternativeRouteMaxShareFactor, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = routeGetCall(point, pointsEncoded, key, locale, instructions, vehicle, elevation, calcPoints, pointHint, chDisable, weighting, edgeTraversal, algorithm, heading, headingPenalty, passThrough, details, roundTripDistance, roundTripSeed, alternativeRouteMaxPaths, alternativeRouteMaxWeightFactor, alternativeRouteMaxShareFactor, avoid, progressListener, progressRequestListener);
         return call;
 
     }
@@ -209,16 +215,18 @@ public class RoutingApi {
      * @param heading Favour a heading direction for a certain point. Specify either one heading for the start point or as many as there are points. In this case headings are associated by their order to the specific points. Headings are given as north based clockwise angle between 0 and 360 degree. This parameter also influences the tour generated with &#x60;algorithm&#x3D;round_trip&#x60; and force the initial direction. (optional)
      * @param headingPenalty Penalty for omitting a specified heading. The penalty corresponds to the accepted time delay in seconds in comparison to the route without a heading. (optional)
      * @param passThrough If &#x60;true&#x60; u-turns are avoided at via-points with regard to the &#x60;heading_penalty&#x60;. (optional)
+     * @param details List of additional trip attributes to be returned. Try some of the following: &#x60;average_speed&#x60;, &#x60;street_name&#x60;, &#x60;edge_id&#x60;, &#x60;time&#x60;, &#x60;distance&#x60;. (optional)
      * @param roundTripDistance If &#x60;algorithm&#x3D;round_trip&#x60; this parameter configures approximative length of the resulting round trip (optional)
      * @param roundTripSeed If &#x60;algorithm&#x3D;round_trip&#x60; this parameter introduces randomness if e.g. the first try wasn&#39;t good. (optional)
      * @param alternativeRouteMaxPaths If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the number of maximum paths which should be calculated. Increasing can lead to worse alternatives. (optional)
      * @param alternativeRouteMaxWeightFactor If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the factor by which the alternatives routes can be longer than the optimal route. Increasing can lead to worse alternatives. (optional)
      * @param alternativeRouteMaxShareFactor If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter specifies how much alternatives routes can have maximum in common with the optimal route. Increasing can lead to worse alternatives. (optional)
+     * @param avoid comma separate list to avoid certain roads. You can avoid motorway, ferry, tunnel or track (optional)
      * @return RouteResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public RouteResponse routeGet(List<String> point, Boolean pointsEncoded, String key, String locale, Boolean instructions, String vehicle, Boolean elevation, Boolean calcPoints, List<String> pointHint, Boolean chDisable, String weighting, Boolean edgeTraversal, String algorithm, Integer heading, Integer headingPenalty, Boolean passThrough, Integer roundTripDistance, Long roundTripSeed, Integer alternativeRouteMaxPaths, Integer alternativeRouteMaxWeightFactor, Integer alternativeRouteMaxShareFactor) throws ApiException {
-        ApiResponse<RouteResponse> resp = routeGetWithHttpInfo(point, pointsEncoded, key, locale, instructions, vehicle, elevation, calcPoints, pointHint, chDisable, weighting, edgeTraversal, algorithm, heading, headingPenalty, passThrough, roundTripDistance, roundTripSeed, alternativeRouteMaxPaths, alternativeRouteMaxWeightFactor, alternativeRouteMaxShareFactor);
+    public RouteResponse routeGet(List<String> point, Boolean pointsEncoded, String key, String locale, Boolean instructions, String vehicle, Boolean elevation, Boolean calcPoints, List<String> pointHint, Boolean chDisable, String weighting, Boolean edgeTraversal, String algorithm, Integer heading, Integer headingPenalty, Boolean passThrough, List<String> details, Integer roundTripDistance, Long roundTripSeed, Integer alternativeRouteMaxPaths, Integer alternativeRouteMaxWeightFactor, Integer alternativeRouteMaxShareFactor, String avoid) throws ApiException {
+        ApiResponse<RouteResponse> resp = routeGetWithHttpInfo(point, pointsEncoded, key, locale, instructions, vehicle, elevation, calcPoints, pointHint, chDisable, weighting, edgeTraversal, algorithm, heading, headingPenalty, passThrough, details, roundTripDistance, roundTripSeed, alternativeRouteMaxPaths, alternativeRouteMaxWeightFactor, alternativeRouteMaxShareFactor, avoid);
         return resp.getData();
     }
 
@@ -241,16 +249,18 @@ public class RoutingApi {
      * @param heading Favour a heading direction for a certain point. Specify either one heading for the start point or as many as there are points. In this case headings are associated by their order to the specific points. Headings are given as north based clockwise angle between 0 and 360 degree. This parameter also influences the tour generated with &#x60;algorithm&#x3D;round_trip&#x60; and force the initial direction. (optional)
      * @param headingPenalty Penalty for omitting a specified heading. The penalty corresponds to the accepted time delay in seconds in comparison to the route without a heading. (optional)
      * @param passThrough If &#x60;true&#x60; u-turns are avoided at via-points with regard to the &#x60;heading_penalty&#x60;. (optional)
+     * @param details List of additional trip attributes to be returned. Try some of the following: &#x60;average_speed&#x60;, &#x60;street_name&#x60;, &#x60;edge_id&#x60;, &#x60;time&#x60;, &#x60;distance&#x60;. (optional)
      * @param roundTripDistance If &#x60;algorithm&#x3D;round_trip&#x60; this parameter configures approximative length of the resulting round trip (optional)
      * @param roundTripSeed If &#x60;algorithm&#x3D;round_trip&#x60; this parameter introduces randomness if e.g. the first try wasn&#39;t good. (optional)
      * @param alternativeRouteMaxPaths If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the number of maximum paths which should be calculated. Increasing can lead to worse alternatives. (optional)
      * @param alternativeRouteMaxWeightFactor If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the factor by which the alternatives routes can be longer than the optimal route. Increasing can lead to worse alternatives. (optional)
      * @param alternativeRouteMaxShareFactor If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter specifies how much alternatives routes can have maximum in common with the optimal route. Increasing can lead to worse alternatives. (optional)
+     * @param avoid comma separate list to avoid certain roads. You can avoid motorway, ferry, tunnel or track (optional)
      * @return ApiResponse&lt;RouteResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<RouteResponse> routeGetWithHttpInfo(List<String> point, Boolean pointsEncoded, String key, String locale, Boolean instructions, String vehicle, Boolean elevation, Boolean calcPoints, List<String> pointHint, Boolean chDisable, String weighting, Boolean edgeTraversal, String algorithm, Integer heading, Integer headingPenalty, Boolean passThrough, Integer roundTripDistance, Long roundTripSeed, Integer alternativeRouteMaxPaths, Integer alternativeRouteMaxWeightFactor, Integer alternativeRouteMaxShareFactor) throws ApiException {
-        com.squareup.okhttp.Call call = routeGetValidateBeforeCall(point, pointsEncoded, key, locale, instructions, vehicle, elevation, calcPoints, pointHint, chDisable, weighting, edgeTraversal, algorithm, heading, headingPenalty, passThrough, roundTripDistance, roundTripSeed, alternativeRouteMaxPaths, alternativeRouteMaxWeightFactor, alternativeRouteMaxShareFactor, null, null);
+    public ApiResponse<RouteResponse> routeGetWithHttpInfo(List<String> point, Boolean pointsEncoded, String key, String locale, Boolean instructions, String vehicle, Boolean elevation, Boolean calcPoints, List<String> pointHint, Boolean chDisable, String weighting, Boolean edgeTraversal, String algorithm, Integer heading, Integer headingPenalty, Boolean passThrough, List<String> details, Integer roundTripDistance, Long roundTripSeed, Integer alternativeRouteMaxPaths, Integer alternativeRouteMaxWeightFactor, Integer alternativeRouteMaxShareFactor, String avoid) throws ApiException {
+        com.squareup.okhttp.Call call = routeGetValidateBeforeCall(point, pointsEncoded, key, locale, instructions, vehicle, elevation, calcPoints, pointHint, chDisable, weighting, edgeTraversal, algorithm, heading, headingPenalty, passThrough, details, roundTripDistance, roundTripSeed, alternativeRouteMaxPaths, alternativeRouteMaxWeightFactor, alternativeRouteMaxShareFactor, avoid, null, null);
         Type localVarReturnType = new TypeToken<RouteResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -274,16 +284,18 @@ public class RoutingApi {
      * @param heading Favour a heading direction for a certain point. Specify either one heading for the start point or as many as there are points. In this case headings are associated by their order to the specific points. Headings are given as north based clockwise angle between 0 and 360 degree. This parameter also influences the tour generated with &#x60;algorithm&#x3D;round_trip&#x60; and force the initial direction. (optional)
      * @param headingPenalty Penalty for omitting a specified heading. The penalty corresponds to the accepted time delay in seconds in comparison to the route without a heading. (optional)
      * @param passThrough If &#x60;true&#x60; u-turns are avoided at via-points with regard to the &#x60;heading_penalty&#x60;. (optional)
+     * @param details List of additional trip attributes to be returned. Try some of the following: &#x60;average_speed&#x60;, &#x60;street_name&#x60;, &#x60;edge_id&#x60;, &#x60;time&#x60;, &#x60;distance&#x60;. (optional)
      * @param roundTripDistance If &#x60;algorithm&#x3D;round_trip&#x60; this parameter configures approximative length of the resulting round trip (optional)
      * @param roundTripSeed If &#x60;algorithm&#x3D;round_trip&#x60; this parameter introduces randomness if e.g. the first try wasn&#39;t good. (optional)
      * @param alternativeRouteMaxPaths If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the number of maximum paths which should be calculated. Increasing can lead to worse alternatives. (optional)
      * @param alternativeRouteMaxWeightFactor If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the factor by which the alternatives routes can be longer than the optimal route. Increasing can lead to worse alternatives. (optional)
      * @param alternativeRouteMaxShareFactor If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter specifies how much alternatives routes can have maximum in common with the optimal route. Increasing can lead to worse alternatives. (optional)
+     * @param avoid comma separate list to avoid certain roads. You can avoid motorway, ferry, tunnel or track (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call routeGetAsync(List<String> point, Boolean pointsEncoded, String key, String locale, Boolean instructions, String vehicle, Boolean elevation, Boolean calcPoints, List<String> pointHint, Boolean chDisable, String weighting, Boolean edgeTraversal, String algorithm, Integer heading, Integer headingPenalty, Boolean passThrough, Integer roundTripDistance, Long roundTripSeed, Integer alternativeRouteMaxPaths, Integer alternativeRouteMaxWeightFactor, Integer alternativeRouteMaxShareFactor, final ApiCallback<RouteResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call routeGetAsync(List<String> point, Boolean pointsEncoded, String key, String locale, Boolean instructions, String vehicle, Boolean elevation, Boolean calcPoints, List<String> pointHint, Boolean chDisable, String weighting, Boolean edgeTraversal, String algorithm, Integer heading, Integer headingPenalty, Boolean passThrough, List<String> details, Integer roundTripDistance, Long roundTripSeed, Integer alternativeRouteMaxPaths, Integer alternativeRouteMaxWeightFactor, Integer alternativeRouteMaxShareFactor, String avoid, final ApiCallback<RouteResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -304,7 +316,7 @@ public class RoutingApi {
             };
         }
 
-        com.squareup.okhttp.Call call = routeGetValidateBeforeCall(point, pointsEncoded, key, locale, instructions, vehicle, elevation, calcPoints, pointHint, chDisable, weighting, edgeTraversal, algorithm, heading, headingPenalty, passThrough, roundTripDistance, roundTripSeed, alternativeRouteMaxPaths, alternativeRouteMaxWeightFactor, alternativeRouteMaxShareFactor, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = routeGetValidateBeforeCall(point, pointsEncoded, key, locale, instructions, vehicle, elevation, calcPoints, pointHint, chDisable, weighting, edgeTraversal, algorithm, heading, headingPenalty, passThrough, details, roundTripDistance, roundTripSeed, alternativeRouteMaxPaths, alternativeRouteMaxWeightFactor, alternativeRouteMaxShareFactor, avoid, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<RouteResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

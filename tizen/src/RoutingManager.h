@@ -44,17 +44,19 @@ public:
  * \param heading Favour a heading direction for a certain point. Specify either one heading for the start point or as many as there are points. In this case headings are associated by their order to the specific points. Headings are given as north based clockwise angle between 0 and 360 degree. This parameter also influences the tour generated with `algorithm=round_trip` and force the initial direction.
  * \param headingPenalty Penalty for omitting a specified heading. The penalty corresponds to the accepted time delay in seconds in comparison to the route without a heading.
  * \param passThrough If `true` u-turns are avoided at via-points with regard to the `heading_penalty`.
+ * \param details List of additional trip attributes to be returned. Try some of the following: `average_speed`, `street_name`, `edge_id`, `time`, `distance`.
  * \param roundTrip.distance If `algorithm=round_trip` this parameter configures approximative length of the resulting round trip
  * \param roundTrip.seed If `algorithm=round_trip` this parameter introduces randomness if e.g. the first try wasn't good.
  * \param alternativeRoute.maxPaths If `algorithm=alternative_route` this parameter sets the number of maximum paths which should be calculated. Increasing can lead to worse alternatives.
  * \param alternativeRoute.maxWeightFactor If `algorithm=alternative_route` this parameter sets the factor by which the alternatives routes can be longer than the optimal route. Increasing can lead to worse alternatives.
  * \param alternativeRoute.maxShareFactor If `algorithm=alternative_route` this parameter specifies how much alternatives routes can have maximum in common with the optimal route. Increasing can lead to worse alternatives.
+ * \param avoid comma separate list to avoid certain roads. You can avoid motorway, ferry, tunnel or track
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool routeGetSync(char * accessToken,
-	std::list<std::string> point, bool pointsEncoded, std::string key, std::string locale, bool instructions, std::string vehicle, bool elevation, bool calcPoints, std::list<std::string> pointHint, bool ch.disable, std::string weighting, bool edgeTraversal, std::string algorithm, int heading, int headingPenalty, bool passThrough, int roundTrip.distance, long long roundTrip.seed, int alternativeRoute.maxPaths, int alternativeRoute.maxWeightFactor, int alternativeRoute.maxShareFactor, 
+	std::list<std::string> point, bool pointsEncoded, std::string key, std::string locale, bool instructions, std::string vehicle, bool elevation, bool calcPoints, std::list<std::string> pointHint, bool ch.disable, std::string weighting, bool edgeTraversal, std::string algorithm, int heading, int headingPenalty, bool passThrough, std::list<std::string> details, int roundTrip.distance, long long roundTrip.seed, int alternativeRoute.maxPaths, int alternativeRoute.maxWeightFactor, int alternativeRoute.maxShareFactor, std::string avoid, 
 	void(* handler)(RouteResponse, Error, void* )
 	, void* userData);
 
@@ -77,17 +79,19 @@ bool routeGetSync(char * accessToken,
  * \param heading Favour a heading direction for a certain point. Specify either one heading for the start point or as many as there are points. In this case headings are associated by their order to the specific points. Headings are given as north based clockwise angle between 0 and 360 degree. This parameter also influences the tour generated with `algorithm=round_trip` and force the initial direction.
  * \param headingPenalty Penalty for omitting a specified heading. The penalty corresponds to the accepted time delay in seconds in comparison to the route without a heading.
  * \param passThrough If `true` u-turns are avoided at via-points with regard to the `heading_penalty`.
+ * \param details List of additional trip attributes to be returned. Try some of the following: `average_speed`, `street_name`, `edge_id`, `time`, `distance`.
  * \param roundTrip.distance If `algorithm=round_trip` this parameter configures approximative length of the resulting round trip
  * \param roundTrip.seed If `algorithm=round_trip` this parameter introduces randomness if e.g. the first try wasn't good.
  * \param alternativeRoute.maxPaths If `algorithm=alternative_route` this parameter sets the number of maximum paths which should be calculated. Increasing can lead to worse alternatives.
  * \param alternativeRoute.maxWeightFactor If `algorithm=alternative_route` this parameter sets the factor by which the alternatives routes can be longer than the optimal route. Increasing can lead to worse alternatives.
  * \param alternativeRoute.maxShareFactor If `algorithm=alternative_route` this parameter specifies how much alternatives routes can have maximum in common with the optimal route. Increasing can lead to worse alternatives.
+ * \param avoid comma separate list to avoid certain roads. You can avoid motorway, ferry, tunnel or track
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool routeGetAsync(char * accessToken,
-	std::list<std::string> point, bool pointsEncoded, std::string key, std::string locale, bool instructions, std::string vehicle, bool elevation, bool calcPoints, std::list<std::string> pointHint, bool ch.disable, std::string weighting, bool edgeTraversal, std::string algorithm, int heading, int headingPenalty, bool passThrough, int roundTrip.distance, long long roundTrip.seed, int alternativeRoute.maxPaths, int alternativeRoute.maxWeightFactor, int alternativeRoute.maxShareFactor, 
+	std::list<std::string> point, bool pointsEncoded, std::string key, std::string locale, bool instructions, std::string vehicle, bool elevation, bool calcPoints, std::list<std::string> pointHint, bool ch.disable, std::string weighting, bool edgeTraversal, std::string algorithm, int heading, int headingPenalty, bool passThrough, std::list<std::string> details, int roundTrip.distance, long long roundTrip.seed, int alternativeRoute.maxPaths, int alternativeRoute.maxWeightFactor, int alternativeRoute.maxShareFactor, std::string avoid, 
 	void(* handler)(RouteResponse, Error, void* )
 	, void* userData);
 

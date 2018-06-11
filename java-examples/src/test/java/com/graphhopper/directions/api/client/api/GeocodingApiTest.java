@@ -29,11 +29,11 @@ public class GeocodingApiTest {
 
     private final GeocodingApi api = new GeocodingApi();
 
-    private final String ghKey = "614b8305-b4db-48c9-bf4a-40de90919939";
+    public static final String KEY = System.getProperty("graphhopper.key", "");
 
     @Test
     public void geocodeGetTestMinimal() throws ApiException {
-        String key = this.ghKey;
+        String key = KEY;
         String q = "Wernau Neckar";
         String locale = null;
         Integer limit = null;
@@ -54,7 +54,7 @@ public class GeocodingApiTest {
 
     @Test
     public void geocodeGetTestReverse() throws ApiException {
-        String key = this.ghKey;
+        String key = KEY;
         String q = null;
         String locale = null;
         Integer limit = null;
@@ -74,7 +74,7 @@ public class GeocodingApiTest {
 
     @Test
     public void geocodeGetTestFullParameter() throws ApiException {
-        String key = this.ghKey;
+        String key = KEY;
         String q = "Wernau Neckar";
         String locale = "de";
         Integer limit = 1;
@@ -93,7 +93,7 @@ public class GeocodingApiTest {
 
     @Test
     public void geocodeGetTestNominatim() throws ApiException {
-        String key = this.ghKey;
+        String key = KEY;
         String q = "Wernau Neckar";
         String locale = "de";
         Integer limit = 1;
@@ -126,7 +126,7 @@ public class GeocodingApiTest {
 
     @Test(expected = ApiException.class)
     public void geocodeGetTestNoQ() throws ApiException {
-        String key = this.ghKey;
+        String key = KEY;
         String q = null;
         String locale = null;
         Integer limit = null;
@@ -139,7 +139,7 @@ public class GeocodingApiTest {
 
     @Test(expected = ApiException.class)
     public void geocodeGetTestNoPointException() throws ApiException {
-        String key = this.ghKey;
+        String key = KEY;
         String q = null;
         String locale = null;
         Integer limit = null;

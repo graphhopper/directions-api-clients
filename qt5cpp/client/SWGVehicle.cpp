@@ -57,6 +57,12 @@ SWGVehicle::init() {
     m_skills_isSet = false;
     max_distance = 0L;
     m_max_distance_isSet = false;
+    max_driving_time = 0L;
+    m_max_driving_time_isSet = false;
+    max_jobs = 0;
+    m_max_jobs_isSet = false;
+    max_activities = 0;
+    m_max_activities_isSet = false;
 }
 
 void
@@ -86,6 +92,9 @@ SWGVehicle::cleanup() {
         }
         delete skills;
     }
+
+
+
 
 }
 
@@ -119,6 +128,12 @@ SWGVehicle::fromJsonObject(QJsonObject &pJson) {
     
     ::Swagger::setValue(&skills, pJson["skills"], "QList", "QString");
     ::Swagger::setValue(&max_distance, pJson["max_distance"], "qint64", "");
+    
+    ::Swagger::setValue(&max_driving_time, pJson["max_driving_time"], "qint64", "");
+    
+    ::Swagger::setValue(&max_jobs, pJson["max_jobs"], "qint32", "");
+    
+    ::Swagger::setValue(&max_activities, pJson["max_activities"], "qint32", "");
     
 }
 
@@ -174,6 +189,18 @@ SWGVehicle::asJsonObject() {
     
     if(m_max_distance_isSet){
         obj->insert("max_distance", QJsonValue(max_distance));
+    }
+    
+    if(m_max_driving_time_isSet){
+        obj->insert("max_driving_time", QJsonValue(max_driving_time));
+    }
+    
+    if(m_max_jobs_isSet){
+        obj->insert("max_jobs", QJsonValue(max_jobs));
+    }
+    
+    if(m_max_activities_isSet){
+        obj->insert("max_activities", QJsonValue(max_activities));
     }
 
     return obj;
@@ -279,6 +306,36 @@ SWGVehicle::setMaxDistance(qint64 max_distance) {
     this->m_max_distance_isSet = true;
 }
 
+qint64
+SWGVehicle::getMaxDrivingTime() {
+    return max_driving_time;
+}
+void
+SWGVehicle::setMaxDrivingTime(qint64 max_driving_time) {
+    this->max_driving_time = max_driving_time;
+    this->m_max_driving_time_isSet = true;
+}
+
+qint32
+SWGVehicle::getMaxJobs() {
+    return max_jobs;
+}
+void
+SWGVehicle::setMaxJobs(qint32 max_jobs) {
+    this->max_jobs = max_jobs;
+    this->m_max_jobs_isSet = true;
+}
+
+qint32
+SWGVehicle::getMaxActivities() {
+    return max_activities;
+}
+void
+SWGVehicle::setMaxActivities(qint32 max_activities) {
+    this->max_activities = max_activities;
+    this->m_max_activities_isSet = true;
+}
+
 
 bool 
 SWGVehicle::isSet(){
@@ -294,6 +351,9 @@ SWGVehicle::isSet(){
         if(m_latest_end_isSet){ isObjectUpdated = true; break;}
         if(skills->size() > 0){ isObjectUpdated = true; break;}
         if(m_max_distance_isSet){ isObjectUpdated = true; break;}
+        if(m_max_driving_time_isSet){ isObjectUpdated = true; break;}
+        if(m_max_jobs_isSet){ isObjectUpdated = true; break;}
+        if(m_max_activities_isSet){ isObjectUpdated = true; break;}
     }while(false);
     return isObjectUpdated;
 }

@@ -12,6 +12,8 @@ mod cost_matrix_data;
 pub use self::cost_matrix_data::CostMatrixData;
 mod cost_matrix_data_info;
 pub use self::cost_matrix_data_info::CostMatrixDataInfo;
+mod detail;
+pub use self::detail::Detail;
 mod geocoding_location;
 pub use self::geocoding_location::GeocodingLocation;
 mod geocoding_point;

@@ -26,6 +26,9 @@ import io.swagger.client.models.Break
  * @param latest_end latest end of vehicle at its end location
  * @param skills array of skills
  * @param max_distance max distance of vehicle
+ * @param max_driving_time max drive time of vehicle
+ * @param max_jobs max number of jobs the vehicle can load
+ * @param max_activities max number of activities the vehicle can conduct
  */
 data class Vehicle (
     /* Unique identifier of vehicle */
@@ -44,7 +47,13 @@ data class Vehicle (
     /* array of skills */
     val skills: kotlin.Array<kotlin.String>? = null,
     /* max distance of vehicle */
-    val max_distance: kotlin.Long? = null
+    val max_distance: kotlin.Long? = null,
+    /* max drive time of vehicle */
+    val max_driving_time: kotlin.Long? = null,
+    /* max number of jobs the vehicle can load */
+    val max_jobs: kotlin.Int? = null,
+    /* max number of activities the vehicle can conduct */
+    val max_activities: kotlin.Int? = null
 ) {
 
 }

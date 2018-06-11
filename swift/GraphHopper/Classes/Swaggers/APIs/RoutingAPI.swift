@@ -29,15 +29,17 @@ public class RoutingAPI: APIBase {
      - parameter heading: (query) Favour a heading direction for a certain point. Specify either one heading for the start point or as many as there are points. In this case headings are associated by their order to the specific points. Headings are given as north based clockwise angle between 0 and 360 degree. This parameter also influences the tour generated with &#x60;algorithm&#x3D;round_trip&#x60; and force the initial direction. (optional)
      - parameter headingPenalty: (query) Penalty for omitting a specified heading. The penalty corresponds to the accepted time delay in seconds in comparison to the route without a heading. (optional)
      - parameter passThrough: (query) If &#x60;true&#x60; u-turns are avoided at via-points with regard to the &#x60;heading_penalty&#x60;. (optional)
+     - parameter details: (query) List of additional trip attributes to be returned. Try some of the following: &#x60;average_speed&#x60;, &#x60;street_name&#x60;, &#x60;edge_id&#x60;, &#x60;time&#x60;, &#x60;distance&#x60;. (optional)
      - parameter roundTripDistance: (query) If &#x60;algorithm&#x3D;round_trip&#x60; this parameter configures approximative length of the resulting round trip (optional)
      - parameter roundTripSeed: (query) If &#x60;algorithm&#x3D;round_trip&#x60; this parameter introduces randomness if e.g. the first try wasn&#39;t good. (optional)
      - parameter alternativeRouteMaxPaths: (query) If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the number of maximum paths which should be calculated. Increasing can lead to worse alternatives. (optional)
      - parameter alternativeRouteMaxWeightFactor: (query) If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the factor by which the alternatives routes can be longer than the optimal route. Increasing can lead to worse alternatives. (optional)
      - parameter alternativeRouteMaxShareFactor: (query) If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter specifies how much alternatives routes can have maximum in common with the optimal route. Increasing can lead to worse alternatives. (optional)
+     - parameter avoid: (query) comma separate list to avoid certain roads. You can avoid motorway, ferry, tunnel or track (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    public class func routeGet(point point: [String], pointsEncoded: Bool, key: String, locale: String? = nil, instructions: Bool? = nil, vehicle: String? = nil, elevation: Bool? = nil, calcPoints: Bool? = nil, pointHint: [String]? = nil, chDisable: Bool? = nil, weighting: String? = nil, edgeTraversal: Bool? = nil, algorithm: String? = nil, heading: Int32? = nil, headingPenalty: Int32? = nil, passThrough: Bool? = nil, roundTripDistance: Int32? = nil, roundTripSeed: Int64? = nil, alternativeRouteMaxPaths: Int32? = nil, alternativeRouteMaxWeightFactor: Int32? = nil, alternativeRouteMaxShareFactor: Int32? = nil, completion: ((data: RouteResponse?, error: ErrorType?) -> Void)) {
-        routeGetWithRequestBuilder(point: point, pointsEncoded: pointsEncoded, key: key, locale: locale, instructions: instructions, vehicle: vehicle, elevation: elevation, calcPoints: calcPoints, pointHint: pointHint, chDisable: chDisable, weighting: weighting, edgeTraversal: edgeTraversal, algorithm: algorithm, heading: heading, headingPenalty: headingPenalty, passThrough: passThrough, roundTripDistance: roundTripDistance, roundTripSeed: roundTripSeed, alternativeRouteMaxPaths: alternativeRouteMaxPaths, alternativeRouteMaxWeightFactor: alternativeRouteMaxWeightFactor, alternativeRouteMaxShareFactor: alternativeRouteMaxShareFactor).execute { (response, error) -> Void in
+    public class func routeGet(point point: [String], pointsEncoded: Bool, key: String, locale: String? = nil, instructions: Bool? = nil, vehicle: String? = nil, elevation: Bool? = nil, calcPoints: Bool? = nil, pointHint: [String]? = nil, chDisable: Bool? = nil, weighting: String? = nil, edgeTraversal: Bool? = nil, algorithm: String? = nil, heading: Int32? = nil, headingPenalty: Int32? = nil, passThrough: Bool? = nil, details: [String]? = nil, roundTripDistance: Int32? = nil, roundTripSeed: Int64? = nil, alternativeRouteMaxPaths: Int32? = nil, alternativeRouteMaxWeightFactor: Int32? = nil, alternativeRouteMaxShareFactor: Int32? = nil, avoid: String? = nil, completion: ((data: RouteResponse?, error: ErrorType?) -> Void)) {
+        routeGetWithRequestBuilder(point: point, pointsEncoded: pointsEncoded, key: key, locale: locale, instructions: instructions, vehicle: vehicle, elevation: elevation, calcPoints: calcPoints, pointHint: pointHint, chDisable: chDisable, weighting: weighting, edgeTraversal: edgeTraversal, algorithm: algorithm, heading: heading, headingPenalty: headingPenalty, passThrough: passThrough, details: details, roundTripDistance: roundTripDistance, roundTripSeed: roundTripSeed, alternativeRouteMaxPaths: alternativeRouteMaxPaths, alternativeRouteMaxWeightFactor: alternativeRouteMaxWeightFactor, alternativeRouteMaxShareFactor: alternativeRouteMaxShareFactor, avoid: avoid).execute { (response, error) -> Void in
             completion(data: response?.body, error: error);
         }
     }
@@ -54,6 +56,7 @@ public class RoutingAPI: APIBase {
     "ascend" : 1.4658129805029452,
     "distance" : 0.8008281904610115,
     "bbox" : [ 5.637376656633329, 5.637376656633329 ],
+    "details" : "{}",
     "time" : 6,
     "points_encoded" : true,
     "points" : {
@@ -68,6 +71,7 @@ public class RoutingAPI: APIBase {
     "ascend" : 1.4658129805029452,
     "distance" : 0.8008281904610115,
     "bbox" : [ 5.637376656633329, 5.637376656633329 ],
+    "details" : "{}",
     "time" : 6,
     "points_encoded" : true,
     "points" : {
@@ -99,15 +103,17 @@ public class RoutingAPI: APIBase {
      - parameter heading: (query) Favour a heading direction for a certain point. Specify either one heading for the start point or as many as there are points. In this case headings are associated by their order to the specific points. Headings are given as north based clockwise angle between 0 and 360 degree. This parameter also influences the tour generated with &#x60;algorithm&#x3D;round_trip&#x60; and force the initial direction. (optional)
      - parameter headingPenalty: (query) Penalty for omitting a specified heading. The penalty corresponds to the accepted time delay in seconds in comparison to the route without a heading. (optional)
      - parameter passThrough: (query) If &#x60;true&#x60; u-turns are avoided at via-points with regard to the &#x60;heading_penalty&#x60;. (optional)
+     - parameter details: (query) List of additional trip attributes to be returned. Try some of the following: &#x60;average_speed&#x60;, &#x60;street_name&#x60;, &#x60;edge_id&#x60;, &#x60;time&#x60;, &#x60;distance&#x60;. (optional)
      - parameter roundTripDistance: (query) If &#x60;algorithm&#x3D;round_trip&#x60; this parameter configures approximative length of the resulting round trip (optional)
      - parameter roundTripSeed: (query) If &#x60;algorithm&#x3D;round_trip&#x60; this parameter introduces randomness if e.g. the first try wasn&#39;t good. (optional)
      - parameter alternativeRouteMaxPaths: (query) If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the number of maximum paths which should be calculated. Increasing can lead to worse alternatives. (optional)
      - parameter alternativeRouteMaxWeightFactor: (query) If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the factor by which the alternatives routes can be longer than the optimal route. Increasing can lead to worse alternatives. (optional)
      - parameter alternativeRouteMaxShareFactor: (query) If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter specifies how much alternatives routes can have maximum in common with the optimal route. Increasing can lead to worse alternatives. (optional)
+     - parameter avoid: (query) comma separate list to avoid certain roads. You can avoid motorway, ferry, tunnel or track (optional)
 
      - returns: RequestBuilder<RouteResponse> 
      */
-    public class func routeGetWithRequestBuilder(point point: [String], pointsEncoded: Bool, key: String, locale: String? = nil, instructions: Bool? = nil, vehicle: String? = nil, elevation: Bool? = nil, calcPoints: Bool? = nil, pointHint: [String]? = nil, chDisable: Bool? = nil, weighting: String? = nil, edgeTraversal: Bool? = nil, algorithm: String? = nil, heading: Int32? = nil, headingPenalty: Int32? = nil, passThrough: Bool? = nil, roundTripDistance: Int32? = nil, roundTripSeed: Int64? = nil, alternativeRouteMaxPaths: Int32? = nil, alternativeRouteMaxWeightFactor: Int32? = nil, alternativeRouteMaxShareFactor: Int32? = nil) -> RequestBuilder<RouteResponse> {
+    public class func routeGetWithRequestBuilder(point point: [String], pointsEncoded: Bool, key: String, locale: String? = nil, instructions: Bool? = nil, vehicle: String? = nil, elevation: Bool? = nil, calcPoints: Bool? = nil, pointHint: [String]? = nil, chDisable: Bool? = nil, weighting: String? = nil, edgeTraversal: Bool? = nil, algorithm: String? = nil, heading: Int32? = nil, headingPenalty: Int32? = nil, passThrough: Bool? = nil, details: [String]? = nil, roundTripDistance: Int32? = nil, roundTripSeed: Int64? = nil, alternativeRouteMaxPaths: Int32? = nil, alternativeRouteMaxWeightFactor: Int32? = nil, alternativeRouteMaxShareFactor: Int32? = nil, avoid: String? = nil) -> RequestBuilder<RouteResponse> {
         let path = "/route"
         let URLString = GraphHopperAPI.basePath + path
 
@@ -127,11 +133,13 @@ public class RoutingAPI: APIBase {
             "heading": heading?.encodeToJSON(),
             "heading_penalty": headingPenalty?.encodeToJSON(),
             "pass_through": passThrough,
+            "details": details,
             "round_trip.distance": roundTripDistance?.encodeToJSON(),
             "round_trip.seed": roundTripSeed?.encodeToJSON(),
             "alternative_route.max_paths": alternativeRouteMaxPaths?.encodeToJSON(),
             "alternative_route.max_weight_factor": alternativeRouteMaxWeightFactor?.encodeToJSON(),
             "alternative_route.max_share_factor": alternativeRouteMaxShareFactor?.encodeToJSON(),
+            "avoid": avoid,
             "key": key
         ]
  

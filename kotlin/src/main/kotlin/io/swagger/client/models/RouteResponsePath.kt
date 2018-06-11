@@ -25,6 +25,7 @@ import io.swagger.client.models.ResponseInstructions
  * @param bbox The bounding box of the route, format <br> minLon, minLat, maxLon, maxLat
  * @param snapped_waypoints 
  * @param instructions 
+ * @param details 
  */
 data class RouteResponsePath (
     /* The total distance of the route, in meter */
@@ -40,7 +41,8 @@ data class RouteResponsePath (
     /* The bounding box of the route, format <br> minLon, minLat, maxLon, maxLat */
     val bbox: kotlin.Array<kotlin.Double>? = null,
     val snapped_waypoints: ResponseCoordinates? = null,
-    val instructions: ResponseInstructions? = null
+    val instructions: ResponseInstructions? = null,
+    val details: kotlin.Any? = null
 ) {
 
 }

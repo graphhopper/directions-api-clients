@@ -14,10 +14,10 @@ public class GeocodingAPI: APIBase {
      Execute a Geocoding request
      
      - parameter key: (query) Get your key at graphhopper.com 
-     - parameter q: (query) If you do forward geocoding, then this would be a textual description of the adress you are looking for. If you do reverse geocoding this would be in lat,lon. (optional)
+     - parameter q: (query) If you do forward geocoding, then this would be a textual description of the address you are looking for (optional)
      - parameter locale: (query) Display the search results for the specified locale. Currently French (fr), English (en), German (de) and Italian (it) are supported. If the locale wasn&#39;t found the default (en) is used. (optional)
      - parameter limit: (query) Specify the maximum number of returned results (optional)
-     - parameter reverse: (query) Set to true to do a reverse Geocoding request (optional)
+     - parameter reverse: (query) Set to true to do a reverse Geocoding request, see point parameter (optional)
      - parameter point: (query) The location bias in the format &#39;latitude,longitude&#39; e.g. point&#x3D;45.93272,11.58803 (optional)
      - parameter provider: (query) Can be either, default, nominatim, opencagedata (optional)
      - parameter completion: completion handler to receive the data and the error objects
@@ -69,10 +69,10 @@ public class GeocodingAPI: APIBase {
 }}]
      
      - parameter key: (query) Get your key at graphhopper.com 
-     - parameter q: (query) If you do forward geocoding, then this would be a textual description of the adress you are looking for. If you do reverse geocoding this would be in lat,lon. (optional)
+     - parameter q: (query) If you do forward geocoding, then this would be a textual description of the address you are looking for (optional)
      - parameter locale: (query) Display the search results for the specified locale. Currently French (fr), English (en), German (de) and Italian (it) are supported. If the locale wasn&#39;t found the default (en) is used. (optional)
      - parameter limit: (query) Specify the maximum number of returned results (optional)
-     - parameter reverse: (query) Set to true to do a reverse Geocoding request (optional)
+     - parameter reverse: (query) Set to true to do a reverse Geocoding request, see point parameter (optional)
      - parameter point: (query) The location bias in the format &#39;latitude,longitude&#39; e.g. point&#x3D;45.93272,11.58803 (optional)
      - parameter provider: (query) Can be either, default, nominatim, opencagedata (optional)
 

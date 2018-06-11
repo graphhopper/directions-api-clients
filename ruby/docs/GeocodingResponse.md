@@ -1,4 +1,4 @@
-# DirectionsApiClient::GeocodingResponse
+# GraphHopperClient::GeocodingResponse
 
 ## Properties
 Name | Type | Description | Notes

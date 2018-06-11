@@ -17,7 +17,7 @@ require 'tempfile'
 require 'typhoeus'
 require 'uri'
 
-module DirectionsApiClient
+module GraphHopperClient
   class ApiClient
     # The Configuration object holding settings to be used in the API client.
     attr_accessor :config
@@ -210,7 +210,7 @@ module DirectionsApiClient
         end
       else
         # models, e.g. Pet
-        DirectionsApiClient.const_get(return_type).new.tap do |model|
+        GraphHopperClient.const_get(return_type).new.tap do |model|
           model.build_from_hash data
         end
       end

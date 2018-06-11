@@ -30,6 +30,7 @@ part 'model/configuration.dart';
 part 'model/cost_matrix.dart';
 part 'model/cost_matrix_data.dart';
 part 'model/cost_matrix_data_info.dart';
+part 'model/detail.dart';
 part 'model/gh_error.dart';
 part 'model/gh_error_hints.dart';
 part 'model/geocoding_location.dart';

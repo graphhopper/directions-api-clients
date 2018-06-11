@@ -11,6 +11,8 @@
 #'
 #' @field services 
 #' @field shipments 
+#' @field breaks 
+#' @field details 
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -20,7 +22,9 @@ SolutionUnassigned <- R6::R6Class(
   public = list(
     `services` = NULL,
     `shipments` = NULL,
-    initialize = function(`services`, `shipments`){
+    `breaks` = NULL,
+    `details` = NULL,
+    initialize = function(`services`, `shipments`, `breaks`, `details`){
       if (!missing(`services`)) {
         stopifnot(is.list(`services`), length(`services`) != 0)
         lapply(`services`, function(x) stopifnot(is.character(x)))
@@ -31,6 +35,16 @@ SolutionUnassigned <- R6::R6Class(
         lapply(`shipments`, function(x) stopifnot(is.character(x)))
         self$`shipments` <- `shipments`
       }
+      if (!missing(`breaks`)) {
+        stopifnot(is.list(`breaks`), length(`breaks`) != 0)
+        lapply(`breaks`, function(x) stopifnot(is.character(x)))
+        self$`breaks` <- `breaks`
+      }
+      if (!missing(`details`)) {
+        stopifnot(is.list(`details`), length(`details`) != 0)
+        lapply(`details`, function(x) stopifnot(R6::is.R6(x)))
+        self$`details` <- `details`
+      }
     },
     toJSON = function() {
       SolutionUnassignedObject <- list()
@@ -39,6 +53,12 @@ SolutionUnassigned <- R6::R6Class(
       }
       if (!is.null(self$`shipments`)) {
         SolutionUnassignedObject[['shipments']] <- self$`shipments`
+      }
+      if (!is.null(self$`breaks`)) {
+        SolutionUnassignedObject[['breaks']] <- self$`breaks`
+      }
+      if (!is.null(self$`details`)) {
+        SolutionUnassignedObject[['details']] <- lapply(self$`details`, function(x) x$toJSON())
       }
 
       SolutionUnassignedObject
@@ -51,21 +71,37 @@ SolutionUnassigned <- R6::R6Class(
       if (!is.null(SolutionUnassignedObject$`shipments`)) {
         self$`shipments` <- SolutionUnassignedObject$`shipments`
       }
+      if (!is.null(SolutionUnassignedObject$`breaks`)) {
+        self$`breaks` <- SolutionUnassignedObject$`breaks`
+      }
+      if (!is.null(SolutionUnassignedObject$`details`)) {
+        self$`details` <- lapply(SolutionUnassignedObject$`details`, function(x) {
+          detailsObject <- Detail$new()
+          detailsObject$fromJSON(jsonlite::toJSON(x, auto_unbox = TRUE))
+          detailsObject
+        })
+      }
     },
     toJSONString = function() {
        sprintf(
         '{
            "services": [%s],
-           "shipments": [%s]
+           "shipments": [%s],
+           "breaks": [%s],
+           "details": [%s]
         }',
         lapply(self$`services`, function(x) paste(paste0('"', x, '"'), sep=",")),
-        lapply(self$`shipments`, function(x) paste(paste0('"', x, '"'), sep=","))
+        lapply(self$`shipments`, function(x) paste(paste0('"', x, '"'), sep=",")),
+        lapply(self$`breaks`, function(x) paste(paste0('"', x, '"'), sep=",")),
+        lapply(self$`details`, function(x) paste(x$toJSON(), sep=","))
       )
     },
     fromJSONString = function(SolutionUnassignedJson) {
       SolutionUnassignedObject <- jsonlite::fromJSON(SolutionUnassignedJson)
       self$`services` <- SolutionUnassignedObject$`services`
       self$`shipments` <- SolutionUnassignedObject$`shipments`
+      self$`breaks` <- SolutionUnassignedObject$`breaks`
+      self$`details` <- lapply(SolutionUnassignedObject$`details`, function(x) Detail$new()$fromJSON(jsonlite::toJSON(x, auto_unbox = TRUE)))
     }
   )
 )

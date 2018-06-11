@@ -15,6 +15,12 @@ package io.swagger.client.model
 
 case class Routing (
   // indicates whether solution should come with route geometries
-  calcPoints: Option[Boolean] = None
+  calcPoints: Option[Boolean] = None,
+  // indicates whether historical traffic information should be considered
+  considerTraffic: Option[Boolean] = None,
+  // specifies the data provider
+  networkDataProvider: Option[String] = None,
+  // indicates whether matrix calculation should fail fast when points cannot be connected
+  failFast: Option[Boolean] = None
 )
 

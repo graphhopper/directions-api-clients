@@ -12,6 +12,8 @@ Name | Type | Description | Notes
 **size** | **kotlin.Array&lt;kotlin.Int&gt;** | array of capacity dimensions |  [optional]
 **required_skills** | **kotlin.Array&lt;kotlin.String&gt;** | array of required skills |  [optional]
 **allowed_vehicles** | **kotlin.Array&lt;kotlin.String&gt;** | array of allowed vehicle ids |  [optional]
+**disallowed_vehicles** | **kotlin.Array&lt;kotlin.String&gt;** | array of disallowed vehicle ids |  [optional]
+**max_time_in_vehicle** | **kotlin.Long** | max time shipment can stay in vehicle |  [optional]
 
 
 

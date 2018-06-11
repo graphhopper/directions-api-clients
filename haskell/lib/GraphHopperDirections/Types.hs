@@ -11,6 +11,7 @@ module GraphHopperDirections.Types (
   CostMatrix (..),
   CostMatrix_data (..),
   CostMatrix_data_info (..),
+  Detail (..),
   GHError (..),
   GHError_hints (..),
   GeocodingLocation (..),
@@ -64,11 +65,11 @@ data Activity = Activity
   { activityType :: Text -- ^ type of activity
   , activityId :: Text -- ^ id referring to the underlying service or shipment, i.e. the shipment or service this activity belongs to
   , activityLocation'Underscoreid :: Text -- ^ id that refers to address
-  , activityArr'Underscoretime :: Integer -- ^ arrival time at this activity in ms
+  , activityArr'Underscoretime :: Integer -- ^ arrival time at this activity in seconds
   , activityEnd'Underscoretime :: Integer -- ^ end time of and thus departure time at this activity
-  , activityWaiting'Underscoretime :: Integer -- ^ waiting time at this activity in ms
+  , activityWaiting'Underscoretime :: Integer -- ^ waiting time at this activity in seconds
   , activityDistance :: Integer -- ^ cumulated distance from start to this activity in m
-  , activityDriving'Underscoretime :: Integer -- ^ driving time of driver in ms
+  , activityDriving'Underscoretime :: Integer -- ^ driving time of driver in seconds
   , activityLoad'Underscorebefore :: [Int] -- ^ Array with size/capacity dimensions before this activity
   , activityLoad'Underscoreafter :: [Int] -- ^ Array with size/capacity dimensions after this activity
   } deriving (Show, Eq, Generic)
@@ -163,6 +164,18 @@ instance FromJSON CostMatrix_data_info where
   parseJSON = genericParseJSON (removeFieldLabelPrefix True "costMatrixDataInfo")
 instance ToJSON CostMatrix_data_info where
   toJSON = genericToJSON (removeFieldLabelPrefix False "costMatrixDataInfo")
+
+-- | 
+data Detail = Detail
+  { detailId :: Text -- ^ id of unassigned service/shipment
+  , detailCode :: Int -- ^ reason code
+  , detailReason :: Text -- ^ human readable reason
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON Detail where
+  parseJSON = genericParseJSON (removeFieldLabelPrefix True "detail")
+instance ToJSON Detail where
+  toJSON = genericToJSON (removeFieldLabelPrefix False "detail")
 
 -- | 
 data GHError = GHError
@@ -428,9 +441,9 @@ newtype ResponseInstructions = ResponseInstructions { unResponseInstructions :: 
 data Route = Route
   { routeVehicle'Underscoreid :: Text -- ^ id of vehicle that operates route
   , routeDistance :: Integer -- ^ distance of route in meter
-  , routeTransport'Underscoretime :: Integer -- ^ transport time of route in ms
-  , routeCompletion'Underscoretime :: Integer -- ^ completion time of route in ms
-  , routeWaiting'Underscoretime :: Integer -- ^ waiting time of route in ms
+  , routeTransport'Underscoretime :: Integer -- ^ transport time of route in seconds
+  , routeCompletion'Underscoretime :: Integer -- ^ completion time of route in seconds
+  , routeWaiting'Underscoretime :: Integer -- ^ waiting time of route in seconds
   , routeActivities :: [Activity] -- ^ array of activities
   , routePoints :: [RoutePoint] -- ^ array of route planning points
   } deriving (Show, Eq, Generic)
@@ -473,6 +486,7 @@ data RouteResponsePath = RouteResponsePath
   , routeResponsePathBbox :: [Double] -- ^ The bounding box of the route, format <br> minLon, minLat, maxLon, maxLat
   , routeResponsePathSnapped'Underscorewaypoints :: ResponseCoordinates -- ^ 
   , routeResponsePathInstructions :: ResponseInstructions -- ^ 
+  , routeResponsePathDetails :: Value -- ^ 
   } deriving (Show, Eq, Generic)
 
 instance FromJSON RouteResponsePath where
@@ -483,6 +497,9 @@ instance ToJSON RouteResponsePath where
 -- | 
 data Routing = Routing
   { routingCalc'Underscorepoints :: Bool -- ^ indicates whether solution should come with route geometries
+  , routingConsider'Underscoretraffic :: Bool -- ^ indicates whether historical traffic information should be considered
+  , routingNetwork'Underscoredata'Underscoreprovider :: Text -- ^ specifies the data provider
+  , routingFail'Underscorefast :: Bool -- ^ indicates whether matrix calculation should fail fast when points cannot be connected
   } deriving (Show, Eq, Generic)
 
 instance FromJSON Routing where
@@ -497,12 +514,14 @@ data Service = Service
   , servicePriority :: Int -- ^ priority of service
   , serviceName :: Text -- ^ name of service
   , serviceAddress :: Address -- ^ 
-  , serviceDuration :: Integer -- ^ duration of service, i.e. time in ms the corresponding activity takes
+  , serviceDuration :: Integer -- ^ duration of service, i.e. time in seconds the corresponding activity takes
   , servicePreparation'Underscoretime :: Integer -- ^ preparation time of service, e.g. search for a parking space. it only falls due if the location of previous activity differs from this location
   , serviceTime'Underscorewindows :: [TimeWindow] -- ^ array of time windows. currently, only a single time window is allowed
   , serviceSize :: [Int] -- ^ array of capacity dimensions
   , serviceRequired'Underscoreskills :: [Text] -- ^ array of required skills
   , serviceAllowed'Underscorevehicles :: [Text] -- ^ array of allowed vehicle ids
+  , serviceDisallowed'Underscorevehicles :: [Text] -- ^ array of disallowed vehicle ids
+  , serviceMax'Underscoretime'Underscorein'Underscorevehicle :: Integer -- ^ max time service can stay in vehicle
   } deriving (Show, Eq, Generic)
 
 instance FromJSON Service where
@@ -520,6 +539,8 @@ data Shipment = Shipment
   , shipmentSize :: [Int] -- ^ array of capacity dimensions
   , shipmentRequired'Underscoreskills :: [Text] -- ^ array of required skills
   , shipmentAllowed'Underscorevehicles :: [Text] -- ^ array of allowed vehicle ids
+  , shipmentDisallowed'Underscorevehicles :: [Text] -- ^ array of disallowed vehicle ids
+  , shipmentMax'Underscoretime'Underscorein'Underscorevehicle :: Integer -- ^ max time shipment can stay in vehicle
   } deriving (Show, Eq, Generic)
 
 instance FromJSON Shipment where
@@ -531,10 +552,10 @@ instance ToJSON Shipment where
 data Solution = Solution
   { solutionCosts :: Int -- ^ overall costs of solution
   , solutionDistance :: Int -- ^ overall travel distance in meters
-  , solutionTime :: Integer -- ^ overall transport time in ms
-  , solutionTransport'Underscoretime :: Integer -- ^ overall transport time in ms
-  , solutionMax'Underscoreoperation'Underscoretime :: Integer -- ^ operation time of the longest route in ms
-  , solutionWaiting'Underscoretime :: Integer -- ^ total waiting time in ms
+  , solutionTime :: Integer -- ^ overall transport time in seconds
+  , solutionTransport'Underscoretime :: Integer -- ^ overall transport time in seconds
+  , solutionMax'Underscoreoperation'Underscoretime :: Integer -- ^ operation time of the longest route in seconds
+  , solutionWaiting'Underscoretime :: Integer -- ^ total waiting time in seconds
   , solutionNo'Underscorevehicles :: Int -- ^ number of employed vehicles
   , solutionNo'Underscoreunassigned :: Int -- ^ number of jobs that could not be assigned to final solution
   , solutionRoutes :: [Route] -- ^ An array of routes
@@ -550,6 +571,8 @@ instance ToJSON Solution where
 data Solution_unassigned = Solution_unassigned
   { solutionUnassignedServices :: [Text] -- ^ An array of ids of unassigned services
   , solutionUnassignedShipments :: [Text] -- ^ An array of ids of unassigned shipments
+  , solutionUnassignedBreaks :: [Text] -- ^ An array of ids of unassigned breaks
+  , solutionUnassignedDetails :: [Detail] -- ^ An array of details, i.e. reason for unassigned services or shipments
   } deriving (Show, Eq, Generic)
 
 instance FromJSON Solution_unassigned where
@@ -560,7 +583,7 @@ instance ToJSON Solution_unassigned where
 -- | 
 data Stop = Stop
   { stopAddress :: Address -- ^ 
-  , stopDuration :: Integer -- ^ duration of stop, i.e. time in ms the corresponding activity takes
+  , stopDuration :: Integer -- ^ duration of stop, i.e. time in seconds the corresponding activity takes
   , stopPreparation'Underscoretime :: Integer -- ^ preparation time of service, e.g. search for a parking space. it only falls due if the location of previous activity differs from this location
   , stopTime'Underscorewindows :: [TimeWindow] -- ^ array of time windows. currently, only a single time window is allowed
   } deriving (Show, Eq, Generic)
@@ -593,6 +616,9 @@ data Vehicle = Vehicle
   , vehicleLatest'Underscoreend :: Integer -- ^ latest end of vehicle at its end location
   , vehicleSkills :: [Text] -- ^ array of skills
   , vehicleMax'Underscoredistance :: Integer -- ^ max distance of vehicle
+  , vehicleMax'Underscoredriving'Underscoretime :: Integer -- ^ max drive time of vehicle
+  , vehicleMax'Underscorejobs :: Int -- ^ max number of jobs the vehicle can load
+  , vehicleMax'Underscoreactivities :: Int -- ^ max number of activities the vehicle can conduct
   } deriving (Show, Eq, Generic)
 
 instance FromJSON Vehicle where

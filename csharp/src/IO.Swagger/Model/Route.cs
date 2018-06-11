@@ -35,9 +35,9 @@ namespace IO.Swagger.Model
         /// </summary>
         /// <param name="VehicleId">id of vehicle that operates route.</param>
         /// <param name="Distance">distance of route in meter.</param>
-        /// <param name="TransportTime">transport time of route in ms.</param>
-        /// <param name="CompletionTime">completion time of route in ms.</param>
-        /// <param name="WaitingTime">waiting time of route in ms.</param>
+        /// <param name="TransportTime">transport time of route in seconds.</param>
+        /// <param name="CompletionTime">completion time of route in seconds.</param>
+        /// <param name="WaitingTime">waiting time of route in seconds.</param>
         /// <param name="Activities">array of activities.</param>
         /// <param name="Points">array of route planning points.</param>
         public Route(string VehicleId = default(string), long? Distance = default(long?), long? TransportTime = default(long?), long? CompletionTime = default(long?), long? WaitingTime = default(long?), List<Activity> Activities = default(List<Activity>), List<RoutePoint> Points = default(List<RoutePoint>))
@@ -66,23 +66,23 @@ namespace IO.Swagger.Model
         public long? Distance { get; set; }
 
         /// <summary>
-        /// transport time of route in ms
+        /// transport time of route in seconds
         /// </summary>
-        /// <value>transport time of route in ms</value>
+        /// <value>transport time of route in seconds</value>
         [DataMember(Name="transport_time", EmitDefaultValue=false)]
         public long? TransportTime { get; set; }
 
         /// <summary>
-        /// completion time of route in ms
+        /// completion time of route in seconds
         /// </summary>
-        /// <value>completion time of route in ms</value>
+        /// <value>completion time of route in seconds</value>
         [DataMember(Name="completion_time", EmitDefaultValue=false)]
         public long? CompletionTime { get; set; }
 
         /// <summary>
-        /// waiting time of route in ms
+        /// waiting time of route in seconds
         /// </summary>
-        /// <value>waiting time of route in ms</value>
+        /// <value>waiting time of route in seconds</value>
         [DataMember(Name="waiting_time", EmitDefaultValue=false)]
         public long? WaitingTime { get; set; }
 

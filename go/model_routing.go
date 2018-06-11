@@ -12,4 +12,13 @@ package graphhopper
 type Routing struct {
 	// indicates whether solution should come with route geometries
 	CalcPoints bool `json:"calc_points,omitempty"`
+
+	// indicates whether historical traffic information should be considered
+	ConsiderTraffic bool `json:"consider_traffic,omitempty"`
+
+	// specifies the data provider
+	NetworkDataProvider string `json:"network_data_provider,omitempty"`
+
+	// indicates whether matrix calculation should fail fast when points cannot be connected
+	FailFast bool `json:"fail_fast,omitempty"`
 }

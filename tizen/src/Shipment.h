@@ -103,6 +103,20 @@ public:
 	/*! \brief Set array of allowed vehicle ids
 	 */
 	void setAllowedVehicles(std::list <std::string> allowed_vehicles);
+	/*! \brief Get array of disallowed vehicle ids
+	 */
+	std::list<std::string> getDisallowedVehicles();
+
+	/*! \brief Set array of disallowed vehicle ids
+	 */
+	void setDisallowedVehicles(std::list <std::string> disallowed_vehicles);
+	/*! \brief Get max time shipment can stay in vehicle
+	 */
+	long long getMaxTimeInVehicle();
+
+	/*! \brief Set max time shipment can stay in vehicle
+	 */
+	void setMaxTimeInVehicle(long long  max_time_in_vehicle);
 
 private:
 	std::string id;
@@ -113,6 +127,8 @@ private:
 	std::list <int>size;
 	std::list <std::string>required_skills;
 	std::list <std::string>allowed_vehicles;
+	std::list <std::string>disallowed_vehicles;
+	long long max_time_in_vehicle;
 	void __init();
 	void __cleanup();
 

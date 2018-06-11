@@ -52,9 +52,33 @@ public:
 	/*! \brief Set indicates whether solution should come with route geometries
 	 */
 	void setCalcPoints(bool  calc_points);
+	/*! \brief Get indicates whether historical traffic information should be considered
+	 */
+	bool getConsiderTraffic();
+
+	/*! \brief Set indicates whether historical traffic information should be considered
+	 */
+	void setConsiderTraffic(bool  consider_traffic);
+	/*! \brief Get specifies the data provider
+	 */
+	std::string getNetworkDataProvider();
+
+	/*! \brief Set specifies the data provider
+	 */
+	void setNetworkDataProvider(std::string  network_data_provider);
+	/*! \brief Get indicates whether matrix calculation should fail fast when points cannot be connected
+	 */
+	bool getFailFast();
+
+	/*! \brief Set indicates whether matrix calculation should fail fast when points cannot be connected
+	 */
+	void setFailFast(bool  fail_fast);
 
 private:
 	bool calc_points;
+	bool consider_traffic;
+	std::string network_data_provider;
+	bool fail_fast;
 	void __init();
 	void __cleanup();
 

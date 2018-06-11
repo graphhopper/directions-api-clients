@@ -22,8 +22,8 @@ public class RoutingExample {
         try {
             RouteResponse rsp = routing.routeGet(Arrays.asList("48.58467,11.57753", "48.572859,11.592464"), false, key,
                     "en", true, "car", true, true, Arrays.<String>asList(), false,
-                    "fastest", null, null, null, null, null,
-                    null, null, null, null, null);
+                    "fastest", null, null, null, null, null, null,
+                    null, null, null, null, null, null);
             RouteResponsePath path = rsp.getPaths().get(0);
             ResponseInstruction instr = path.getInstructions().get(0);
             System.out.println(instr.getText());

@@ -1,4 +1,4 @@
-# DirectionsApiClient::ResponseInfo
+# GraphHopperClient::ResponseInfo
 
 ## Properties
 Name | Type | Description | Notes

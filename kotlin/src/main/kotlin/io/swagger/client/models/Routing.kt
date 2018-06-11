@@ -15,11 +15,32 @@ package io.swagger.client.models
 /**
  * 
  * @param calc_points indicates whether solution should come with route geometries
+ * @param consider_traffic indicates whether historical traffic information should be considered
+ * @param network_data_provider specifies the data provider
+ * @param fail_fast indicates whether matrix calculation should fail fast when points cannot be connected
  */
 data class Routing (
     /* indicates whether solution should come with route geometries */
-    val calc_points: kotlin.Boolean? = null
+    val calc_points: kotlin.Boolean? = null,
+    /* indicates whether historical traffic information should be considered */
+    val consider_traffic: kotlin.Boolean? = null,
+    /* specifies the data provider */
+    val network_data_provider: Routing.NetworkDataProvider? = null,
+    /* indicates whether matrix calculation should fail fast when points cannot be connected */
+    val fail_fast: kotlin.Boolean? = null
 ) {
+
+    /**
+    * specifies the data provider
+    * Values: openstreetmap,tomtom
+    */
+    enum class NetworkDataProvider(val value: kotlin.Any){
+    
+        openstreetmap("openstreetmap"),
+    
+        tomtom("tomtom");
+    
+    }
 
 }
 

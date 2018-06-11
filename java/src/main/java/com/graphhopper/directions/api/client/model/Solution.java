@@ -105,10 +105,10 @@ public class Solution {
   }
 
    /**
-   * overall transport time in ms
+   * overall transport time in seconds
    * @return time
   **/
-  @ApiModelProperty(value = "overall transport time in ms")
+  @ApiModelProperty(value = "overall transport time in seconds")
   public Long getTime() {
     return time;
   }
@@ -123,10 +123,10 @@ public class Solution {
   }
 
    /**
-   * overall transport time in ms
+   * overall transport time in seconds
    * @return transportTime
   **/
-  @ApiModelProperty(value = "overall transport time in ms")
+  @ApiModelProperty(value = "overall transport time in seconds")
   public Long getTransportTime() {
     return transportTime;
   }
@@ -141,10 +141,10 @@ public class Solution {
   }
 
    /**
-   * operation time of the longest route in ms
+   * operation time of the longest route in seconds
    * @return maxOperationTime
   **/
-  @ApiModelProperty(value = "operation time of the longest route in ms")
+  @ApiModelProperty(value = "operation time of the longest route in seconds")
   public Long getMaxOperationTime() {
     return maxOperationTime;
   }
@@ -159,10 +159,10 @@ public class Solution {
   }
 
    /**
-   * total waiting time in ms
+   * total waiting time in seconds
    * @return waitingTime
   **/
-  @ApiModelProperty(value = "total waiting time in ms")
+  @ApiModelProperty(value = "total waiting time in seconds")
   public Long getWaitingTime() {
     return waitingTime;
   }

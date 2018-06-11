@@ -260,7 +260,7 @@ class Stop implements ModelInterface, ArrayAccess
     /**
      * Sets duration
      *
-     * @param int $duration duration of stop, i.e. time in ms the corresponding activity takes
+     * @param int $duration duration of stop, i.e. time in seconds the corresponding activity takes
      *
      * @return $this
      */

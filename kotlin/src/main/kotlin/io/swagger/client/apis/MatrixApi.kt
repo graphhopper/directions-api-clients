@@ -27,13 +27,13 @@ class MatrixApi(basePath: kotlin.String = "https://graphhopper.com/api/1") : Api
     * @param fromPoint The starting points for the routes. E.g. if you want to calculate the three routes A-&amp;gt;1, A-&amp;gt;2, A-&amp;gt;3 then you have one from_point parameter and three to_point parameters. Is a string with the format latitude,longitude. (optional)
     * @param toPoint The destination points for the routes. Is a string with the format latitude,longitude. (optional)
     * @param outArray Specifies which arrays should be included in the response. Specify one or more of the following options &#39;weights&#39;, &#39;times&#39;, &#39;distances&#39;. To specify more than one array use e.g. out_array&#x3D;times&amp;out_array&#x3D;distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API. (optional)
-    * @param vehicle The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc, see here for the details. (optional, default to car)
+    * @param vehicle The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc (optional, default to car)
     * @return MatrixResponse
     */
     @Suppress("UNCHECKED_CAST")
-    fun matrixGet(key: kotlin.String, point: kotlin.Array<kotlin.String>, fromPoint: kotlin.String, toPoint: kotlin.String, outArray: kotlin.Array<kotlin.String>, vehicle: kotlin.String) : MatrixResponse {
+    fun matrixGet(key: kotlin.String, point: kotlin.Array<kotlin.String>, fromPoint: kotlin.Array<kotlin.String>, toPoint: kotlin.Array<kotlin.String>, outArray: kotlin.Array<kotlin.String>, vehicle: kotlin.String) : MatrixResponse {
         val localVariableBody: kotlin.Any? = null
-        val localVariableQuery: MultiValueMap = mapOf("point" to toMultiValue(point.toList(), "multi"), "from_point" to listOf("$fromPoint"), "to_point" to listOf("$toPoint"), "out_array" to toMultiValue(outArray.toList(), "multi"), "vehicle" to listOf("$vehicle"), "key" to listOf("$key"))
+        val localVariableQuery: MultiValueMap = mapOf("point" to toMultiValue(point.toList(), "multi"), "from_point" to toMultiValue(fromPoint.toList(), "multi"), "to_point" to toMultiValue(toPoint.toList(), "multi"), "out_array" to toMultiValue(outArray.toList(), "multi"), "vehicle" to listOf("$vehicle"), "key" to listOf("$key"))
         val localVariableHeaders: kotlin.collections.Map<kotlin.String,kotlin.String> = mapOf()
         val localVariableConfig = RequestConfig(
             RequestMethod.GET,

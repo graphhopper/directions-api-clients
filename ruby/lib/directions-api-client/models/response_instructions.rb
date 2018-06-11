@@ -12,7 +12,7 @@ Swagger Codegen version: 2.4.0-SNAPSHOT
 
 require 'date'
 
-module DirectionsApiClient
+module GraphHopperClient
   # Contains information about the instructions for this route. The last instruction is always the Finish instruction and takes 0ms and 0meter. Keep in mind that instructions are currently under active development and can sometimes contain misleading information, so, make sure you always show an image of the map at the same time when navigating your users!
   class ResponseInstructions
 
@@ -127,7 +127,7 @@ module DirectionsApiClient
           end
         end
       else # model
-        temp_model = DirectionsApiClient.const_get(type).new
+        temp_model = GraphHopperClient.const_get(type).new
         temp_model.build_from_hash(value)
       end
     end

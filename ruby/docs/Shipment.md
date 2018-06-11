@@ -1,4 +1,4 @@
-# DirectionsApiClient::Shipment
+# GraphHopperClient::Shipment
 
 ## Properties
 Name | Type | Description | Notes
@@ -11,5 +11,7 @@ Name | Type | Description | Notes
 **size** | **Array&lt;Integer&gt;** | array of capacity dimensions | [optional] 
 **required_skills** | **Array&lt;String&gt;** | array of required skills | [optional] 
 **allowed_vehicles** | **Array&lt;String&gt;** | array of allowed vehicle ids | [optional] 
+**disallowed_vehicles** | **Array&lt;String&gt;** | array of disallowed vehicle ids | [optional] 
+**max_time_in_vehicle** | **Integer** | max time shipment can stay in vehicle | [optional] 
 
 

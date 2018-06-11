@@ -1,4 +1,4 @@
-# DirectionsApiClient::Objective
+# GraphHopperClient::Objective
 
 ## Properties
 Name | Type | Description | Notes

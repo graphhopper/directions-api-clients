@@ -32,10 +32,10 @@ namespace IO.Swagger.Api
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="key">Get your key at graphhopper.com</param>
-        /// <param name="q">If you do forward geocoding, then this would be a textual description of the adress you are looking for. If you do reverse geocoding this would be in lat,lon. (optional)</param>
+        /// <param name="q">If you do forward geocoding, then this would be a textual description of the address you are looking for (optional)</param>
         /// <param name="locale">Display the search results for the specified locale. Currently French (fr), English (en), German (de) and Italian (it) are supported. If the locale wasn&#39;t found the default (en) is used. (optional)</param>
         /// <param name="limit">Specify the maximum number of returned results (optional)</param>
-        /// <param name="reverse">Set to true to do a reverse Geocoding request (optional)</param>
+        /// <param name="reverse">Set to true to do a reverse Geocoding request, see point parameter (optional)</param>
         /// <param name="point">The location bias in the format &#39;latitude,longitude&#39; e.g. point&#x3D;45.93272,11.58803 (optional)</param>
         /// <param name="provider">Can be either, default, nominatim, opencagedata (optional)</param>
         /// <returns>GeocodingResponse</returns>
@@ -49,10 +49,10 @@ namespace IO.Swagger.Api
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="key">Get your key at graphhopper.com</param>
-        /// <param name="q">If you do forward geocoding, then this would be a textual description of the adress you are looking for. If you do reverse geocoding this would be in lat,lon. (optional)</param>
+        /// <param name="q">If you do forward geocoding, then this would be a textual description of the address you are looking for (optional)</param>
         /// <param name="locale">Display the search results for the specified locale. Currently French (fr), English (en), German (de) and Italian (it) are supported. If the locale wasn&#39;t found the default (en) is used. (optional)</param>
         /// <param name="limit">Specify the maximum number of returned results (optional)</param>
-        /// <param name="reverse">Set to true to do a reverse Geocoding request (optional)</param>
+        /// <param name="reverse">Set to true to do a reverse Geocoding request, see point parameter (optional)</param>
         /// <param name="point">The location bias in the format &#39;latitude,longitude&#39; e.g. point&#x3D;45.93272,11.58803 (optional)</param>
         /// <param name="provider">Can be either, default, nominatim, opencagedata (optional)</param>
         /// <returns>ApiResponse of GeocodingResponse</returns>
@@ -67,10 +67,10 @@ namespace IO.Swagger.Api
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="key">Get your key at graphhopper.com</param>
-        /// <param name="q">If you do forward geocoding, then this would be a textual description of the adress you are looking for. If you do reverse geocoding this would be in lat,lon. (optional)</param>
+        /// <param name="q">If you do forward geocoding, then this would be a textual description of the address you are looking for (optional)</param>
         /// <param name="locale">Display the search results for the specified locale. Currently French (fr), English (en), German (de) and Italian (it) are supported. If the locale wasn&#39;t found the default (en) is used. (optional)</param>
         /// <param name="limit">Specify the maximum number of returned results (optional)</param>
-        /// <param name="reverse">Set to true to do a reverse Geocoding request (optional)</param>
+        /// <param name="reverse">Set to true to do a reverse Geocoding request, see point parameter (optional)</param>
         /// <param name="point">The location bias in the format &#39;latitude,longitude&#39; e.g. point&#x3D;45.93272,11.58803 (optional)</param>
         /// <param name="provider">Can be either, default, nominatim, opencagedata (optional)</param>
         /// <returns>Task of GeocodingResponse</returns>
@@ -84,10 +84,10 @@ namespace IO.Swagger.Api
         /// </remarks>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="key">Get your key at graphhopper.com</param>
-        /// <param name="q">If you do forward geocoding, then this would be a textual description of the adress you are looking for. If you do reverse geocoding this would be in lat,lon. (optional)</param>
+        /// <param name="q">If you do forward geocoding, then this would be a textual description of the address you are looking for (optional)</param>
         /// <param name="locale">Display the search results for the specified locale. Currently French (fr), English (en), German (de) and Italian (it) are supported. If the locale wasn&#39;t found the default (en) is used. (optional)</param>
         /// <param name="limit">Specify the maximum number of returned results (optional)</param>
-        /// <param name="reverse">Set to true to do a reverse Geocoding request (optional)</param>
+        /// <param name="reverse">Set to true to do a reverse Geocoding request, see point parameter (optional)</param>
         /// <param name="point">The location bias in the format &#39;latitude,longitude&#39; e.g. point&#x3D;45.93272,11.58803 (optional)</param>
         /// <param name="provider">Can be either, default, nominatim, opencagedata (optional)</param>
         /// <returns>Task of ApiResponse (GeocodingResponse)</returns>
@@ -197,10 +197,10 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="key">Get your key at graphhopper.com</param>
-        /// <param name="q">If you do forward geocoding, then this would be a textual description of the adress you are looking for. If you do reverse geocoding this would be in lat,lon. (optional)</param>
+        /// <param name="q">If you do forward geocoding, then this would be a textual description of the address you are looking for (optional)</param>
         /// <param name="locale">Display the search results for the specified locale. Currently French (fr), English (en), German (de) and Italian (it) are supported. If the locale wasn&#39;t found the default (en) is used. (optional)</param>
         /// <param name="limit">Specify the maximum number of returned results (optional)</param>
-        /// <param name="reverse">Set to true to do a reverse Geocoding request (optional)</param>
+        /// <param name="reverse">Set to true to do a reverse Geocoding request, see point parameter (optional)</param>
         /// <param name="point">The location bias in the format &#39;latitude,longitude&#39; e.g. point&#x3D;45.93272,11.58803 (optional)</param>
         /// <param name="provider">Can be either, default, nominatim, opencagedata (optional)</param>
         /// <returns>GeocodingResponse</returns>
@@ -215,10 +215,10 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="key">Get your key at graphhopper.com</param>
-        /// <param name="q">If you do forward geocoding, then this would be a textual description of the adress you are looking for. If you do reverse geocoding this would be in lat,lon. (optional)</param>
+        /// <param name="q">If you do forward geocoding, then this would be a textual description of the address you are looking for (optional)</param>
         /// <param name="locale">Display the search results for the specified locale. Currently French (fr), English (en), German (de) and Italian (it) are supported. If the locale wasn&#39;t found the default (en) is used. (optional)</param>
         /// <param name="limit">Specify the maximum number of returned results (optional)</param>
-        /// <param name="reverse">Set to true to do a reverse Geocoding request (optional)</param>
+        /// <param name="reverse">Set to true to do a reverse Geocoding request, see point parameter (optional)</param>
         /// <param name="point">The location bias in the format &#39;latitude,longitude&#39; e.g. point&#x3D;45.93272,11.58803 (optional)</param>
         /// <param name="provider">Can be either, default, nominatim, opencagedata (optional)</param>
         /// <returns>ApiResponse of GeocodingResponse</returns>
@@ -281,10 +281,10 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="key">Get your key at graphhopper.com</param>
-        /// <param name="q">If you do forward geocoding, then this would be a textual description of the adress you are looking for. If you do reverse geocoding this would be in lat,lon. (optional)</param>
+        /// <param name="q">If you do forward geocoding, then this would be a textual description of the address you are looking for (optional)</param>
         /// <param name="locale">Display the search results for the specified locale. Currently French (fr), English (en), German (de) and Italian (it) are supported. If the locale wasn&#39;t found the default (en) is used. (optional)</param>
         /// <param name="limit">Specify the maximum number of returned results (optional)</param>
-        /// <param name="reverse">Set to true to do a reverse Geocoding request (optional)</param>
+        /// <param name="reverse">Set to true to do a reverse Geocoding request, see point parameter (optional)</param>
         /// <param name="point">The location bias in the format &#39;latitude,longitude&#39; e.g. point&#x3D;45.93272,11.58803 (optional)</param>
         /// <param name="provider">Can be either, default, nominatim, opencagedata (optional)</param>
         /// <returns>Task of GeocodingResponse</returns>
@@ -300,10 +300,10 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <exception cref="IO.Swagger.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="key">Get your key at graphhopper.com</param>
-        /// <param name="q">If you do forward geocoding, then this would be a textual description of the adress you are looking for. If you do reverse geocoding this would be in lat,lon. (optional)</param>
+        /// <param name="q">If you do forward geocoding, then this would be a textual description of the address you are looking for (optional)</param>
         /// <param name="locale">Display the search results for the specified locale. Currently French (fr), English (en), German (de) and Italian (it) are supported. If the locale wasn&#39;t found the default (en) is used. (optional)</param>
         /// <param name="limit">Specify the maximum number of returned results (optional)</param>
-        /// <param name="reverse">Set to true to do a reverse Geocoding request (optional)</param>
+        /// <param name="reverse">Set to true to do a reverse Geocoding request, see point parameter (optional)</param>
         /// <param name="point">The location bias in the format &#39;latitude,longitude&#39; e.g. point&#x3D;45.93272,11.58803 (optional)</param>
         /// <param name="provider">Can be either, default, nominatim, opencagedata (optional)</param>
         /// <returns>Task of ApiResponse (GeocodingResponse)</returns>

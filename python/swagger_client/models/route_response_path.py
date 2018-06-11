@@ -42,7 +42,8 @@ class RouteResponsePath(object):
         'points_encoded': 'bool',
         'bbox': 'list[float]',
         'snapped_waypoints': 'ResponseCoordinates',
-        'instructions': 'ResponseInstructions'
+        'instructions': 'ResponseInstructions',
+        'details': 'object'
     }
 
     attribute_map = {
@@ -54,10 +55,11 @@ class RouteResponsePath(object):
         'points_encoded': 'points_encoded',
         'bbox': 'bbox',
         'snapped_waypoints': 'snapped_waypoints',
-        'instructions': 'instructions'
+        'instructions': 'instructions',
+        'details': 'details'
     }
 
-    def __init__(self, distance=None, time=None, ascend=None, descend=None, points=None, points_encoded=None, bbox=None, snapped_waypoints=None, instructions=None):  # noqa: E501
+    def __init__(self, distance=None, time=None, ascend=None, descend=None, points=None, points_encoded=None, bbox=None, snapped_waypoints=None, instructions=None, details=None):  # noqa: E501
         """RouteResponsePath - a model defined in Swagger"""  # noqa: E501
 
         self._distance = None
@@ -69,6 +71,7 @@ class RouteResponsePath(object):
         self._bbox = None
         self._snapped_waypoints = None
         self._instructions = None
+        self._details = None
         self.discriminator = None
 
         if distance is not None:
@@ -89,6 +92,8 @@ class RouteResponsePath(object):
             self.snapped_waypoints = snapped_waypoints
         if instructions is not None:
             self.instructions = instructions
+        if details is not None:
+            self.details = details
 
     @property
     def distance(self):
@@ -288,6 +293,27 @@ class RouteResponsePath(object):
         """
 
         self._instructions = instructions
+
+    @property
+    def details(self):
+        """Gets the details of this RouteResponsePath.  # noqa: E501
+
+
+        :return: The details of this RouteResponsePath.  # noqa: E501
+        :rtype: object
+        """
+        return self._details
+
+    @details.setter
+    def details(self, details):
+        """Sets the details of this RouteResponsePath.
+
+
+        :param details: The details of this RouteResponsePath.  # noqa: E501
+        :type: object
+        """
+
+        self._details = details
 
     def to_dict(self):
         """Returns the model properties as a dict"""

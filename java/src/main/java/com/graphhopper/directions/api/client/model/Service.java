@@ -115,6 +115,12 @@ public class Service {
   @SerializedName("allowed_vehicles")
   private List<String> allowedVehicles = null;
 
+  @SerializedName("disallowed_vehicles")
+  private List<String> disallowedVehicles = null;
+
+  @SerializedName("max_time_in_vehicle")
+  private Long maxTimeInVehicle = null;
+
   public Service id(String id) {
     this.id = id;
     return this;
@@ -211,10 +217,10 @@ public class Service {
   }
 
    /**
-   * duration of service, i.e. time in ms the corresponding activity takes
+   * duration of service, i.e. time in seconds the corresponding activity takes
    * @return duration
   **/
-  @ApiModelProperty(value = "duration of service, i.e. time in ms the corresponding activity takes")
+  @ApiModelProperty(value = "duration of service, i.e. time in seconds the corresponding activity takes")
   public Long getDuration() {
     return duration;
   }
@@ -345,6 +351,50 @@ public class Service {
     this.allowedVehicles = allowedVehicles;
   }
 
+  public Service disallowedVehicles(List<String> disallowedVehicles) {
+    this.disallowedVehicles = disallowedVehicles;
+    return this;
+  }
+
+  public Service addDisallowedVehiclesItem(String disallowedVehiclesItem) {
+    if (this.disallowedVehicles == null) {
+      this.disallowedVehicles = new ArrayList<String>();
+    }
+    this.disallowedVehicles.add(disallowedVehiclesItem);
+    return this;
+  }
+
+   /**
+   * array of disallowed vehicle ids
+   * @return disallowedVehicles
+  **/
+  @ApiModelProperty(value = "array of disallowed vehicle ids")
+  public List<String> getDisallowedVehicles() {
+    return disallowedVehicles;
+  }
+
+  public void setDisallowedVehicles(List<String> disallowedVehicles) {
+    this.disallowedVehicles = disallowedVehicles;
+  }
+
+  public Service maxTimeInVehicle(Long maxTimeInVehicle) {
+    this.maxTimeInVehicle = maxTimeInVehicle;
+    return this;
+  }
+
+   /**
+   * max time service can stay in vehicle
+   * @return maxTimeInVehicle
+  **/
+  @ApiModelProperty(value = "max time service can stay in vehicle")
+  public Long getMaxTimeInVehicle() {
+    return maxTimeInVehicle;
+  }
+
+  public void setMaxTimeInVehicle(Long maxTimeInVehicle) {
+    this.maxTimeInVehicle = maxTimeInVehicle;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -365,12 +415,14 @@ public class Service {
         Objects.equals(this.timeWindows, service.timeWindows) &&
         Objects.equals(this.size, service.size) &&
         Objects.equals(this.requiredSkills, service.requiredSkills) &&
-        Objects.equals(this.allowedVehicles, service.allowedVehicles);
+        Objects.equals(this.allowedVehicles, service.allowedVehicles) &&
+        Objects.equals(this.disallowedVehicles, service.disallowedVehicles) &&
+        Objects.equals(this.maxTimeInVehicle, service.maxTimeInVehicle);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, type, priority, name, address, duration, preparationTime, timeWindows, size, requiredSkills, allowedVehicles);
+    return Objects.hash(id, type, priority, name, address, duration, preparationTime, timeWindows, size, requiredSkills, allowedVehicles, disallowedVehicles, maxTimeInVehicle);
   }
 
 
@@ -390,6 +442,8 @@ public class Service {
     sb.append("    size: ").append(toIndentedString(size)).append("\n");
     sb.append("    requiredSkills: ").append(toIndentedString(requiredSkills)).append("\n");
     sb.append("    allowedVehicles: ").append(toIndentedString(allowedVehicles)).append("\n");
+    sb.append("    disallowedVehicles: ").append(toIndentedString(disallowedVehicles)).append("\n");
+    sb.append("    maxTimeInVehicle: ").append(toIndentedString(maxTimeInVehicle)).append("\n");
     sb.append("}");
     return sb.toString();
   }

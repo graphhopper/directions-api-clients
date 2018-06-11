@@ -33,4 +33,6 @@ type RouteResponsePath struct {
 	SnappedWaypoints *ResponseCoordinates `json:"snapped_waypoints,omitempty"`
 
 	Instructions *ResponseInstructions `json:"instructions,omitempty"`
+
+	Details *interface{} `json:"details,omitempty"`
 }

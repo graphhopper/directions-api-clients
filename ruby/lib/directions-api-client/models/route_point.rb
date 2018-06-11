@@ -12,7 +12,7 @@ Swagger Codegen version: 2.4.0-SNAPSHOT
 
 require 'date'
 
-module DirectionsApiClient
+module GraphHopperClient
 
   class RoutePoint
     attr_accessor :type
@@ -147,7 +147,7 @@ module DirectionsApiClient
           end
         end
       else # model
-        temp_model = DirectionsApiClient.const_get(type).new
+        temp_model = GraphHopperClient.const_get(type).new
         temp_model.build_from_hash(value)
       end
     end

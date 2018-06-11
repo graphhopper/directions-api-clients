@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **bbox** | **NSArray&lt;NSNumber*&gt;*** | The bounding box of the route, format &lt;br&gt; minLon, minLat, maxLon, maxLat | [optional] 
 **snappedWaypoints** | [**SWGResponseCoordinates***](SWGResponseCoordinates.md) |  | [optional] 
 **instructions** | [**SWGResponseInstructions***](SWGResponseInstructions.md) |  | [optional] 
+**details** | **NSObject*** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

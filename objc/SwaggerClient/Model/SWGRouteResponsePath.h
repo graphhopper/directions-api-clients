@@ -52,4 +52,6 @@
 
 @property(nonatomic) SWGResponseInstructions* instructions;
 
+@property(nonatomic) NSObject* details;
+
 @end

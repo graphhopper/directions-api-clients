@@ -1,4 +1,4 @@
-# DirectionsApiClient::GHError
+# GraphHopperClient::GHError
 
 ## Properties
 Name | Type | Description | Notes

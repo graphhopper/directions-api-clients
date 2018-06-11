@@ -12,7 +12,7 @@ package graphhopper
 type Stop struct {
 	Address *Address `json:"address,omitempty"`
 
-	// duration of stop, i.e. time in ms the corresponding activity takes
+	// duration of stop, i.e. time in seconds the corresponding activity takes
 	Duration int64 `json:"duration,omitempty"`
 
 	// preparation time of service, e.g. search for a parking space. it only falls due if the location of previous activity differs from this location

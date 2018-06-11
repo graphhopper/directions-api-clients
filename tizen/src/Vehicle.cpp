@@ -54,6 +54,15 @@ Vehicle::__init()
 	//
 	//max_distance = long(0);
 	//
+	//
+	//max_driving_time = long(0);
+	//
+	//
+	//max_jobs = int(0);
+	//
+	//
+	//max_activities = int(0);
+	//
 }
 
 void
@@ -108,6 +117,21 @@ Vehicle::__cleanup()
 	//
 	//delete max_distance;
 	//max_distance = NULL;
+	//}
+	//if(max_driving_time != NULL) {
+	//
+	//delete max_driving_time;
+	//max_driving_time = NULL;
+	//}
+	//if(max_jobs != NULL) {
+	//
+	//delete max_jobs;
+	//max_jobs = NULL;
+	//}
+	//if(max_activities != NULL) {
+	//
+	//delete max_activities;
+	//max_activities = NULL;
 	//}
 	//
 }
@@ -247,6 +271,39 @@ Vehicle::fromJson(char* jsonStr)
 			
 		}
 	}
+	const gchar *max_driving_timeKey = "max_driving_time";
+	node = json_object_get_member(pJsonObject, max_driving_timeKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("long long")) {
+			jsonToValue(&max_driving_time, node, "long long", "");
+		} else {
+			
+		}
+	}
+	const gchar *max_jobsKey = "max_jobs";
+	node = json_object_get_member(pJsonObject, max_jobsKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("int")) {
+			jsonToValue(&max_jobs, node, "int", "");
+		} else {
+			
+		}
+	}
+	const gchar *max_activitiesKey = "max_activities";
+	node = json_object_get_member(pJsonObject, max_activitiesKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("int")) {
+			jsonToValue(&max_activities, node, "int", "");
+		} else {
+			
+		}
+	}
 }
 
 Vehicle::Vehicle(char* json)
@@ -370,6 +427,33 @@ Vehicle::toJson()
 	}
 	const gchar *max_distanceKey = "max_distance";
 	json_object_set_member(pJsonObject, max_distanceKey, node);
+	if (isprimitive("long long")) {
+		long long obj = getMaxDrivingTime();
+		node = converttoJson(&obj, "long long", "");
+	}
+	else {
+		
+	}
+	const gchar *max_driving_timeKey = "max_driving_time";
+	json_object_set_member(pJsonObject, max_driving_timeKey, node);
+	if (isprimitive("int")) {
+		int obj = getMaxJobs();
+		node = converttoJson(&obj, "int", "");
+	}
+	else {
+		
+	}
+	const gchar *max_jobsKey = "max_jobs";
+	json_object_set_member(pJsonObject, max_jobsKey, node);
+	if (isprimitive("int")) {
+		int obj = getMaxActivities();
+		node = converttoJson(&obj, "int", "");
+	}
+	else {
+		
+	}
+	const gchar *max_activitiesKey = "max_activities";
+	json_object_set_member(pJsonObject, max_activitiesKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -496,6 +580,42 @@ void
 Vehicle::setMaxDistance(long long  max_distance)
 {
 	this->max_distance = max_distance;
+}
+
+long long
+Vehicle::getMaxDrivingTime()
+{
+	return max_driving_time;
+}
+
+void
+Vehicle::setMaxDrivingTime(long long  max_driving_time)
+{
+	this->max_driving_time = max_driving_time;
+}
+
+int
+Vehicle::getMaxJobs()
+{
+	return max_jobs;
+}
+
+void
+Vehicle::setMaxJobs(int  max_jobs)
+{
+	this->max_jobs = max_jobs;
+}
+
+int
+Vehicle::getMaxActivities()
+{
+	return max_activities;
+}
+
+void
+Vehicle::setMaxActivities(int  max_activities)
+{
+	this->max_activities = max_activities;
 }
 
 

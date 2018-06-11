@@ -55,5 +55,14 @@
 /* max distance of vehicle [optional]
  */
 @property(nonatomic) NSNumber* maxDistance;
+/* max drive time of vehicle [optional]
+ */
+@property(nonatomic) NSNumber* maxDrivingTime;
+/* max number of jobs the vehicle can load [optional]
+ */
+@property(nonatomic) NSNumber* maxJobs;
+/* max number of activities the vehicle can conduct [optional]
+ */
+@property(nonatomic) NSNumber* maxActivities;
 
 @end

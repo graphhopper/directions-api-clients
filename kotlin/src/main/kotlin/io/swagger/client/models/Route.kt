@@ -18,9 +18,9 @@ import io.swagger.client.models.RoutePoint
  * 
  * @param vehicle_id id of vehicle that operates route
  * @param distance distance of route in meter
- * @param transport_time transport time of route in ms
- * @param completion_time completion time of route in ms
- * @param waiting_time waiting time of route in ms
+ * @param transport_time transport time of route in seconds
+ * @param completion_time completion time of route in seconds
+ * @param waiting_time waiting time of route in seconds
  * @param activities array of activities
  * @param points array of route planning points
  */
@@ -29,11 +29,11 @@ data class Route (
     val vehicle_id: kotlin.String? = null,
     /* distance of route in meter */
     val distance: kotlin.Long? = null,
-    /* transport time of route in ms */
+    /* transport time of route in seconds */
     val transport_time: kotlin.Long? = null,
-    /* completion time of route in ms */
+    /* completion time of route in seconds */
     val completion_time: kotlin.Long? = null,
-    /* waiting time of route in ms */
+    /* waiting time of route in seconds */
     val waiting_time: kotlin.Long? = null,
     /* array of activities */
     val activities: kotlin.Array<Activity>? = null,

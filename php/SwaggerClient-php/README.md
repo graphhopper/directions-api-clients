@@ -63,10 +63,10 @@ $apiInstance = new Swagger\Client\Api\GeocodingApi(
     new GuzzleHttp\Client()
 );
 $key = "key_example"; // string | Get your key at graphhopper.com
-$q = "q_example"; // string | If you do forward geocoding, then this would be a textual description of the adress you are looking for. If you do reverse geocoding this would be in lat,lon.
+$q = "q_example"; // string | If you do forward geocoding, then this would be a textual description of the address you are looking for
 $locale = "locale_example"; // string | Display the search results for the specified locale. Currently French (fr), English (en), German (de) and Italian (it) are supported. If the locale wasn't found the default (en) is used.
 $limit = 56; // int | Specify the maximum number of returned results
-$reverse = true; // bool | Set to true to do a reverse Geocoding request
+$reverse = true; // bool | Set to true to do a reverse Geocoding request, see point parameter
 $point = "point_example"; // string | The location bias in the format 'latitude,longitude' e.g. point=45.93272,11.58803
 $provider = "provider_example"; // string | Can be either, default, nominatim, opencagedata
 
@@ -104,6 +104,7 @@ Class | Method | HTTP request | Description
  - [CostMatrix](docs/Model/CostMatrix.md)
  - [CostMatrixData](docs/Model/CostMatrixData.md)
  - [CostMatrixDataInfo](docs/Model/CostMatrixDataInfo.md)
+ - [Detail](docs/Model/Detail.md)
  - [GHError](docs/Model/GHError.md)
  - [GHErrorHints](docs/Model/GHErrorHints.md)
  - [GeocodingLocation](docs/Model/GeocodingLocation.md)

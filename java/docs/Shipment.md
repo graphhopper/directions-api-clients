@@ -12,6 +12,8 @@ Name | Type | Description | Notes
 **size** | **List&lt;Integer&gt;** | array of capacity dimensions |  [optional]
 **requiredSkills** | **List&lt;String&gt;** | array of required skills |  [optional]
 **allowedVehicles** | **List&lt;String&gt;** | array of allowed vehicle ids |  [optional]
+**disallowedVehicles** | **List&lt;String&gt;** | array of disallowed vehicle ids |  [optional]
+**maxTimeInVehicle** | **Long** | max time shipment can stay in vehicle |  [optional]
 
 
 

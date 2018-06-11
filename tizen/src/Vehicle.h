@@ -118,6 +118,27 @@ public:
 	/*! \brief Set max distance of vehicle
 	 */
 	void setMaxDistance(long long  max_distance);
+	/*! \brief Get max drive time of vehicle
+	 */
+	long long getMaxDrivingTime();
+
+	/*! \brief Set max drive time of vehicle
+	 */
+	void setMaxDrivingTime(long long  max_driving_time);
+	/*! \brief Get max number of jobs the vehicle can load
+	 */
+	int getMaxJobs();
+
+	/*! \brief Set max number of jobs the vehicle can load
+	 */
+	void setMaxJobs(int  max_jobs);
+	/*! \brief Get max number of activities the vehicle can conduct
+	 */
+	int getMaxActivities();
+
+	/*! \brief Set max number of activities the vehicle can conduct
+	 */
+	void setMaxActivities(int  max_activities);
 
 private:
 	std::string vehicle_id;
@@ -130,6 +151,9 @@ private:
 	long long latest_end;
 	std::list <std::string>skills;
 	long long max_distance;
+	long long max_driving_time;
+	int max_jobs;
+	int max_activities;
 	void __init();
 	void __cleanup();
 

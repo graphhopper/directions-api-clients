@@ -63,6 +63,15 @@ public class Vehicle {
   @SerializedName("max_distance")
   private Long maxDistance = null;
 
+  @SerializedName("max_driving_time")
+  private Long maxDrivingTime = null;
+
+  @SerializedName("max_jobs")
+  private Integer maxJobs = null;
+
+  @SerializedName("max_activities")
+  private Integer maxActivities = null;
+
   public Vehicle vehicleId(String vehicleId) {
     this.vehicleId = vehicleId;
     return this;
@@ -251,6 +260,60 @@ public class Vehicle {
     this.maxDistance = maxDistance;
   }
 
+  public Vehicle maxDrivingTime(Long maxDrivingTime) {
+    this.maxDrivingTime = maxDrivingTime;
+    return this;
+  }
+
+   /**
+   * max drive time of vehicle
+   * @return maxDrivingTime
+  **/
+  @ApiModelProperty(value = "max drive time of vehicle")
+  public Long getMaxDrivingTime() {
+    return maxDrivingTime;
+  }
+
+  public void setMaxDrivingTime(Long maxDrivingTime) {
+    this.maxDrivingTime = maxDrivingTime;
+  }
+
+  public Vehicle maxJobs(Integer maxJobs) {
+    this.maxJobs = maxJobs;
+    return this;
+  }
+
+   /**
+   * max number of jobs the vehicle can load
+   * @return maxJobs
+  **/
+  @ApiModelProperty(value = "max number of jobs the vehicle can load")
+  public Integer getMaxJobs() {
+    return maxJobs;
+  }
+
+  public void setMaxJobs(Integer maxJobs) {
+    this.maxJobs = maxJobs;
+  }
+
+  public Vehicle maxActivities(Integer maxActivities) {
+    this.maxActivities = maxActivities;
+    return this;
+  }
+
+   /**
+   * max number of activities the vehicle can conduct
+   * @return maxActivities
+  **/
+  @ApiModelProperty(value = "max number of activities the vehicle can conduct")
+  public Integer getMaxActivities() {
+    return maxActivities;
+  }
+
+  public void setMaxActivities(Integer maxActivities) {
+    this.maxActivities = maxActivities;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -270,12 +333,15 @@ public class Vehicle {
         Objects.equals(this.earliestStart, vehicle.earliestStart) &&
         Objects.equals(this.latestEnd, vehicle.latestEnd) &&
         Objects.equals(this.skills, vehicle.skills) &&
-        Objects.equals(this.maxDistance, vehicle.maxDistance);
+        Objects.equals(this.maxDistance, vehicle.maxDistance) &&
+        Objects.equals(this.maxDrivingTime, vehicle.maxDrivingTime) &&
+        Objects.equals(this.maxJobs, vehicle.maxJobs) &&
+        Objects.equals(this.maxActivities, vehicle.maxActivities);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(vehicleId, typeId, startAddress, endAddress, _break, returnToDepot, earliestStart, latestEnd, skills, maxDistance);
+    return Objects.hash(vehicleId, typeId, startAddress, endAddress, _break, returnToDepot, earliestStart, latestEnd, skills, maxDistance, maxDrivingTime, maxJobs, maxActivities);
   }
 
 
@@ -294,6 +360,9 @@ public class Vehicle {
     sb.append("    latestEnd: ").append(toIndentedString(latestEnd)).append("\n");
     sb.append("    skills: ").append(toIndentedString(skills)).append("\n");
     sb.append("    maxDistance: ").append(toIndentedString(maxDistance)).append("\n");
+    sb.append("    maxDrivingTime: ").append(toIndentedString(maxDrivingTime)).append("\n");
+    sb.append("    maxJobs: ").append(toIndentedString(maxJobs)).append("\n");
+    sb.append("    maxActivities: ").append(toIndentedString(maxActivities)).append("\n");
     sb.append("}");
     return sb.toString();
   }

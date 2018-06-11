@@ -1,4 +1,4 @@
-# DirectionsApiClient::Algorithm
+# GraphHopperClient::Algorithm
 
 ## Properties
 Name | Type | Description | Notes

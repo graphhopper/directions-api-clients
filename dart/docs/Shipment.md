@@ -16,6 +16,8 @@ Name | Type | Description | Notes
 **size** | **List&lt;int&gt;** | array of capacity dimensions | [optional] [default to []]
 **requiredSkills** | **List&lt;String&gt;** | array of required skills | [optional] [default to []]
 **allowedVehicles** | **List&lt;String&gt;** | array of allowed vehicle ids | [optional] [default to []]
+**disallowedVehicles** | **List&lt;String&gt;** | array of disallowed vehicle ids | [optional] [default to []]
+**maxTimeInVehicle** | **int** | max time shipment can stay in vehicle | [optional] [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

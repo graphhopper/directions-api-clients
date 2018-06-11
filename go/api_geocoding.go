@@ -30,10 +30,10 @@ This endpoint provides forward and reverse geocoding. For more details, review t
  * @param ctx context.Context for authentication, logging, tracing, etc.
 @param key Get your key at graphhopper.com
 @param optional (nil or map[string]interface{}) with one or more of:
-    @param "q" (string) If you do forward geocoding, then this would be a textual description of the adress you are looking for. If you do reverse geocoding this would be in lat,lon.
+    @param "q" (string) If you do forward geocoding, then this would be a textual description of the address you are looking for
     @param "locale" (string) Display the search results for the specified locale. Currently French (fr), English (en), German (de) and Italian (it) are supported. If the locale wasn&#39;t found the default (en) is used.
     @param "limit" (int32) Specify the maximum number of returned results
-    @param "reverse" (bool) Set to true to do a reverse Geocoding request
+    @param "reverse" (bool) Set to true to do a reverse Geocoding request, see point parameter
     @param "point" (string) The location bias in the format &#39;latitude,longitude&#39; e.g. point&#x3D;45.93272,11.58803
     @param "provider" (string) Can be either, default, nominatim, opencagedata
 @return GeocodingResponse*/

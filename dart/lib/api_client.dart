@@ -55,6 +55,8 @@ class ApiClient {
           return dson.map(value, new CostMatrixData());
         case 'CostMatrixDataInfo':
           return dson.map(value, new CostMatrixDataInfo());
+        case 'Detail':
+          return dson.map(value, new Detail());
         case 'GHError':
           return dson.map(value, new GHError());
         case 'GHErrorHints':

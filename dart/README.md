@@ -46,10 +46,10 @@ import 'package:swagger/api.dart';
 
 var api_instance = new GeocodingApi();
 var key = key_example; // String | Get your key at graphhopper.com
-var q = q_example; // String | If you do forward geocoding, then this would be a textual description of the adress you are looking for. If you do reverse geocoding this would be in lat,lon.
+var q = q_example; // String | If you do forward geocoding, then this would be a textual description of the address you are looking for
 var locale = locale_example; // String | Display the search results for the specified locale. Currently French (fr), English (en), German (de) and Italian (it) are supported. If the locale wasn't found the default (en) is used.
 var limit = 56; // int | Specify the maximum number of returned results
-var reverse = true; // bool | Set to true to do a reverse Geocoding request
+var reverse = true; // bool | Set to true to do a reverse Geocoding request, see point parameter
 var point = point_example; // String | The location bias in the format 'latitude,longitude' e.g. point=45.93272,11.58803
 var provider = provider_example; // String | Can be either, default, nominatim, opencagedata
 
@@ -86,6 +86,7 @@ Class | Method | HTTP request | Description
  - [CostMatrix](docs//CostMatrix.md)
  - [CostMatrixData](docs//CostMatrixData.md)
  - [CostMatrixDataInfo](docs//CostMatrixDataInfo.md)
+ - [Detail](docs//Detail.md)
  - [GHError](docs//GHError.md)
  - [GHErrorHints](docs//GHErrorHints.md)
  - [GeocodingLocation](docs//GeocodingLocation.md)

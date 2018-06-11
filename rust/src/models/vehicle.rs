@@ -40,7 +40,16 @@ pub struct Vehicle {
   skills: Option<Vec<String>>,
   /// max distance of vehicle
   #[serde(rename = "max_distance")]
-  max_distance: Option<i64>
+  max_distance: Option<i64>,
+  /// max drive time of vehicle
+  #[serde(rename = "max_driving_time")]
+  max_driving_time: Option<i64>,
+  /// max number of jobs the vehicle can load
+  #[serde(rename = "max_jobs")]
+  max_jobs: Option<i32>,
+  /// max number of activities the vehicle can conduct
+  #[serde(rename = "max_activities")]
+  max_activities: Option<i32>
 }
 
 impl Vehicle {
@@ -55,7 +64,10 @@ impl Vehicle {
       earliest_start: None,
       latest_end: None,
       skills: None,
-      max_distance: None
+      max_distance: None,
+      max_driving_time: None,
+      max_jobs: None,
+      max_activities: None
     }
   }
 
@@ -227,6 +239,57 @@ impl Vehicle {
 
   pub fn reset_max_distance(&mut self) {
     self.max_distance = None;
+  }
+
+  pub fn set_max_driving_time(&mut self, max_driving_time: i64) {
+    self.max_driving_time = Some(max_driving_time);
+  }
+
+  pub fn with_max_driving_time(mut self, max_driving_time: i64) -> Vehicle {
+    self.max_driving_time = Some(max_driving_time);
+    self
+  }
+
+  pub fn max_driving_time(&self) -> Option<&i64> {
+    self.max_driving_time.as_ref()
+  }
+
+  pub fn reset_max_driving_time(&mut self) {
+    self.max_driving_time = None;
+  }
+
+  pub fn set_max_jobs(&mut self, max_jobs: i32) {
+    self.max_jobs = Some(max_jobs);
+  }
+
+  pub fn with_max_jobs(mut self, max_jobs: i32) -> Vehicle {
+    self.max_jobs = Some(max_jobs);
+    self
+  }
+
+  pub fn max_jobs(&self) -> Option<&i32> {
+    self.max_jobs.as_ref()
+  }
+
+  pub fn reset_max_jobs(&mut self) {
+    self.max_jobs = None;
+  }
+
+  pub fn set_max_activities(&mut self, max_activities: i32) {
+    self.max_activities = Some(max_activities);
+  }
+
+  pub fn with_max_activities(mut self, max_activities: i32) -> Vehicle {
+    self.max_activities = Some(max_activities);
+    self
+  }
+
+  pub fn max_activities(&self) -> Option<&i32> {
+    self.max_activities.as_ref()
+  }
+
+  pub fn reset_max_activities(&mut self) {
+    self.max_activities = None;
   }
 
 }

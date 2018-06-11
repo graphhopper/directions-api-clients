@@ -34,7 +34,7 @@ namespace IO.Swagger.Model
         /// Initializes a new instance of the <see cref="Stop" /> class.
         /// </summary>
         /// <param name="Address">Address.</param>
-        /// <param name="Duration">duration of stop, i.e. time in ms the corresponding activity takes.</param>
+        /// <param name="Duration">duration of stop, i.e. time in seconds the corresponding activity takes.</param>
         /// <param name="PreparationTime">preparation time of service, e.g. search for a parking space. it only falls due if the location of previous activity differs from this location.</param>
         /// <param name="TimeWindows">array of time windows. currently, only a single time window is allowed.</param>
         public Stop(Address Address = default(Address), long? Duration = default(long?), long? PreparationTime = default(long?), List<TimeWindow> TimeWindows = default(List<TimeWindow>))
@@ -52,9 +52,9 @@ namespace IO.Swagger.Model
         public Address Address { get; set; }
 
         /// <summary>
-        /// duration of stop, i.e. time in ms the corresponding activity takes
+        /// duration of stop, i.e. time in seconds the corresponding activity takes
         /// </summary>
-        /// <value>duration of stop, i.e. time in ms the corresponding activity takes</value>
+        /// <value>duration of stop, i.e. time in seconds the corresponding activity takes</value>
         [DataMember(Name="duration", EmitDefaultValue=false)]
         public long? Duration { get; set; }
 

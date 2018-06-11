@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **bbox** | **List&lt;double&gt;** | The bounding box of the route, format &lt;br&gt; minLon, minLat, maxLon, maxLat | [optional] [default to []]
 **snappedWaypoints** | [**ResponseCoordinates**](ResponseCoordinates.md) |  | [optional] [default to null]
 **instructions** | [**ResponseInstructions**](ResponseInstructions.md) |  | [optional] [default to null]
+**details** | [**Object**](Object.md) |  | [optional] [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

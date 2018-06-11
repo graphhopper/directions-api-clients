@@ -32,7 +32,7 @@ function create {
 		CONFIG="--artifact-version $VERSION --api-package $PKG.api --invoker-package $PKG --model-package $PKG.model --artifact-id $NAME --group-id $GROUP --library okhttp-gson -DhideGenerationTimestamp=true"
 		;;
 	ruby)
-		CONFIG="-DgemName=$NAME -DmoduelName=graphhopper_directions_api_client -DgemVersion=$VERSION"
+		CONFIG="-DgemName=$NAME -DmoduleName=GraphHopperClient -DgemVersion=$VERSION"
 		;;
 	go)
 		# CONFIG="-t modules/swagger-codegen/src/main/resources/go"

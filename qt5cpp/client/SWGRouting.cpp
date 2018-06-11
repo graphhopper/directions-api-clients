@@ -39,10 +39,21 @@ void
 SWGRouting::init() {
     calc_points = false;
     m_calc_points_isSet = false;
+    consider_traffic = false;
+    m_consider_traffic_isSet = false;
+    network_data_provider = new QString("");
+    m_network_data_provider_isSet = false;
+    fail_fast = false;
+    m_fail_fast_isSet = false;
 }
 
 void
 SWGRouting::cleanup() {
+
+
+    if(network_data_provider != nullptr) { 
+        delete network_data_provider;
+    }
 
 }
 
@@ -58,6 +69,12 @@ SWGRouting::fromJson(QString &json) {
 void
 SWGRouting::fromJsonObject(QJsonObject &pJson) {
     ::Swagger::setValue(&calc_points, pJson["calc_points"], "bool", "");
+    
+    ::Swagger::setValue(&consider_traffic, pJson["consider_traffic"], "bool", "");
+    
+    ::Swagger::setValue(&network_data_provider, pJson["network_data_provider"], "QString", "QString");
+    
+    ::Swagger::setValue(&fail_fast, pJson["fail_fast"], "bool", "");
     
 }
 
@@ -78,6 +95,18 @@ SWGRouting::asJsonObject() {
     if(m_calc_points_isSet){
         obj->insert("calc_points", QJsonValue(calc_points));
     }
+    
+    if(m_consider_traffic_isSet){
+        obj->insert("consider_traffic", QJsonValue(consider_traffic));
+    }
+    
+    if(network_data_provider != nullptr && *network_data_provider != QString("")){
+        toJsonValue(QString("network_data_provider"), network_data_provider, obj, QString("QString"));
+    }
+    
+    if(m_fail_fast_isSet){
+        obj->insert("fail_fast", QJsonValue(fail_fast));
+    }
 
     return obj;
 }
@@ -92,12 +121,45 @@ SWGRouting::setCalcPoints(bool calc_points) {
     this->m_calc_points_isSet = true;
 }
 
+bool
+SWGRouting::isConsiderTraffic() {
+    return consider_traffic;
+}
+void
+SWGRouting::setConsiderTraffic(bool consider_traffic) {
+    this->consider_traffic = consider_traffic;
+    this->m_consider_traffic_isSet = true;
+}
+
+QString*
+SWGRouting::getNetworkDataProvider() {
+    return network_data_provider;
+}
+void
+SWGRouting::setNetworkDataProvider(QString* network_data_provider) {
+    this->network_data_provider = network_data_provider;
+    this->m_network_data_provider_isSet = true;
+}
+
+bool
+SWGRouting::isFailFast() {
+    return fail_fast;
+}
+void
+SWGRouting::setFailFast(bool fail_fast) {
+    this->fail_fast = fail_fast;
+    this->m_fail_fast_isSet = true;
+}
+
 
 bool 
 SWGRouting::isSet(){
     bool isObjectUpdated = false;
     do{
         if(m_calc_points_isSet){ isObjectUpdated = true; break;}
+        if(m_consider_traffic_isSet){ isObjectUpdated = true; break;}
+        if(network_data_provider != nullptr && *network_data_provider != QString("")){ isObjectUpdated = true; break;}
+        if(m_fail_fast_isSet){ isObjectUpdated = true; break;}
     }while(false);
     return isObjectUpdated;
 }

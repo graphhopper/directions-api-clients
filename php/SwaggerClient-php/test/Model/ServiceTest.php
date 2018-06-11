@@ -152,4 +152,18 @@ class ServiceTest extends \PHPUnit_Framework_TestCase
     public function testPropertyAllowedVehicles()
     {
     }
+
+    /**
+     * Test attribute "disallowed_vehicles"
+     */
+    public function testPropertyDisallowedVehicles()
+    {
+    }
+
+    /**
+     * Test attribute "max_time_in_vehicle"
+     */
+    public function testPropertyMaxTimeInVehicle()
+    {
+    }
 }

@@ -6,7 +6,7 @@ class Stop {
   @Property(name: 'address')
   Address address = null;
   
-/* duration of stop, i.e. time in ms the corresponding activity takes */
+/* duration of stop, i.e. time in seconds the corresponding activity takes */
   @Property(name: 'duration')
   int duration = null;
   

@@ -85,6 +85,8 @@ NSInteger kSWGRoutingApiMissingParamErrorCode = 234513;
 ///
 ///  @param passThrough If `true` u-turns are avoided at via-points with regard to the `heading_penalty`. (optional)
 ///
+///  @param details List of additional trip attributes to be returned. Try some of the following: `average_speed`, `street_name`, `edge_id`, `time`, `distance`. (optional)
+///
 ///  @param roundTripDistance If `algorithm=round_trip` this parameter configures approximative length of the resulting round trip (optional)
 ///
 ///  @param roundTripSeed If `algorithm=round_trip` this parameter introduces randomness if e.g. the first try wasn't good. (optional)
@@ -94,6 +96,8 @@ NSInteger kSWGRoutingApiMissingParamErrorCode = 234513;
 ///  @param alternativeRouteMaxWeightFactor If `algorithm=alternative_route` this parameter sets the factor by which the alternatives routes can be longer than the optimal route. Increasing can lead to worse alternatives. (optional)
 ///
 ///  @param alternativeRouteMaxShareFactor If `algorithm=alternative_route` this parameter specifies how much alternatives routes can have maximum in common with the optimal route. Increasing can lead to worse alternatives. (optional)
+///
+///  @param avoid comma separate list to avoid certain roads. You can avoid motorway, ferry, tunnel or track (optional)
 ///
 ///  @returns SWGRouteResponse*
 ///
@@ -113,11 +117,13 @@ NSInteger kSWGRoutingApiMissingParamErrorCode = 234513;
     heading: (NSNumber*) heading
     headingPenalty: (NSNumber*) headingPenalty
     passThrough: (NSNumber*) passThrough
+    details: (NSArray<NSString*>*) details
     roundTripDistance: (NSNumber*) roundTripDistance
     roundTripSeed: (NSNumber*) roundTripSeed
     alternativeRouteMaxPaths: (NSNumber*) alternativeRouteMaxPaths
     alternativeRouteMaxWeightFactor: (NSNumber*) alternativeRouteMaxWeightFactor
     alternativeRouteMaxShareFactor: (NSNumber*) alternativeRouteMaxShareFactor
+    avoid: (NSString*) avoid
     completionHandler: (void (^)(SWGRouteResponse* output, NSError* error)) handler {
     // verify the required parameter 'point' is set
     if (point == nil) {
@@ -202,6 +208,9 @@ NSInteger kSWGRoutingApiMissingParamErrorCode = 234513;
     if (passThrough != nil) {
         queryParams[@"pass_through"] = [passThrough isEqual:@(YES)] ? @"true" : @"false";
     }
+    if (details != nil) {
+        queryParams[@"details"] = [[SWGQueryParamCollection alloc] initWithValuesAndFormat: details format: @"multi"];
+    }
     if (roundTripDistance != nil) {
         queryParams[@"round_trip.distance"] = roundTripDistance;
     }
@@ -216,6 +225,9 @@ NSInteger kSWGRoutingApiMissingParamErrorCode = 234513;
     }
     if (alternativeRouteMaxShareFactor != nil) {
         queryParams[@"alternative_route.max_share_factor"] = alternativeRouteMaxShareFactor;
+    }
+    if (avoid != nil) {
+        queryParams[@"avoid"] = avoid;
     }
     if (key != nil) {
         queryParams[@"key"] = key;

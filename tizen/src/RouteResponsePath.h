@@ -111,6 +111,13 @@ public:
 	/*! \brief Set 
 	 */
 	void setInstructions(ResponseInstructions  instructions);
+	/*! \brief Get 
+	 */
+	std::string getDetails();
+
+	/*! \brief Set 
+	 */
+	void setDetails(std::string  details);
 
 private:
 	double distance;
@@ -122,6 +129,7 @@ private:
 	std::list <double>bbox;
 	ResponseCoordinates snapped_waypoints;
 	ResponseInstructions instructions;
+	std::string details;
 	void __init();
 	void __cleanup();
 

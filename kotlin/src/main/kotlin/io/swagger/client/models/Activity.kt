@@ -17,11 +17,11 @@ package io.swagger.client.models
  * @param type type of activity
  * @param id id referring to the underlying service or shipment, i.e. the shipment or service this activity belongs to
  * @param location_id id that refers to address
- * @param arr_time arrival time at this activity in ms
+ * @param arr_time arrival time at this activity in seconds
  * @param end_time end time of and thus departure time at this activity
- * @param waiting_time waiting time at this activity in ms
+ * @param waiting_time waiting time at this activity in seconds
  * @param distance cumulated distance from start to this activity in m
- * @param driving_time driving time of driver in ms
+ * @param driving_time driving time of driver in seconds
  * @param load_before Array with size/capacity dimensions before this activity
  * @param load_after Array with size/capacity dimensions after this activity
  */
@@ -32,15 +32,15 @@ data class Activity (
     val id: kotlin.String? = null,
     /* id that refers to address */
     val location_id: kotlin.String? = null,
-    /* arrival time at this activity in ms */
+    /* arrival time at this activity in seconds */
     val arr_time: kotlin.Long? = null,
     /* end time of and thus departure time at this activity */
     val end_time: kotlin.Long? = null,
-    /* waiting time at this activity in ms */
+    /* waiting time at this activity in seconds */
     val waiting_time: kotlin.Long? = null,
     /* cumulated distance from start to this activity in m */
     val distance: kotlin.Long? = null,
-    /* driving time of driver in ms */
+    /* driving time of driver in seconds */
     val driving_time: kotlin.Long? = null,
     /* Array with size/capacity dimensions before this activity */
     val load_before: kotlin.Array<kotlin.Int>? = null,

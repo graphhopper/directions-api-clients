@@ -1,4 +1,4 @@
-# DirectionsApiClient::IsochroneResponsePolygon
+# GraphHopperClient::IsochroneResponsePolygon
 
 ## Properties
 Name | Type | Description | Notes

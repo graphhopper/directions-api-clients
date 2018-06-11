@@ -10,7 +10,7 @@ class MatrixApi {
   /// Matrix API
   ///
   /// The Matrix API is part of the GraphHopper Directions API and with this API you can calculate many-to-many distances, times or routes a lot more efficient than calling the Routing API multiple times. In the Routing API we support multiple points, so called &#39;via points&#39;, which results in one route being calculated. The Matrix API results in NxM routes or more precise NxM weights, distances or times being calculated but is a lot faster compared to NxM single requests. The most simple example is a tourist trying to decide which pizza is close to him instead of using beeline distance she can calculate a 1x4 matrix. Or a delivery service in the need of often big NxN matrices to solve vehicle routing problems. E.g. the GraphHopper Route Optimization API uses the Matrix API under the hood to achieve this. 
-  Future<MatrixResponse> matrixGet(String key, { List<String> point, String fromPoint, String toPoint, List<String> outArray, String vehicle }) async {
+  Future<MatrixResponse> matrixGet(String key, { List<String> point, List<String> fromPoint, List<String> toPoint, List<String> outArray, String vehicle }) async {
     Object postBody = null;
 
     // verify required params are set
@@ -29,10 +29,10 @@ class MatrixApi {
       queryParams.addAll(_convertParametersForCollectionFormat("multi", "point", point));
     }
     if(fromPoint != null) {
-      queryParams.addAll(_convertParametersForCollectionFormat("", "from_point", fromPoint));
+      queryParams.addAll(_convertParametersForCollectionFormat("multi", "from_point", fromPoint));
     }
     if(toPoint != null) {
-      queryParams.addAll(_convertParametersForCollectionFormat("", "to_point", toPoint));
+      queryParams.addAll(_convertParametersForCollectionFormat("multi", "to_point", toPoint));
     }
     if(outArray != null) {
       queryParams.addAll(_convertParametersForCollectionFormat("multi", "out_array", outArray));

@@ -109,7 +109,7 @@ static bool routeGetProcessor(MemoryStruct_s p_chunk, long code, char* errormsg,
 }
 
 static bool routeGetHelper(char * accessToken,
-	std::list<std::string> point, bool pointsEncoded, std::string key, std::string locale, bool instructions, std::string vehicle, bool elevation, bool calcPoints, std::list<std::string> pointHint, bool ch.disable, std::string weighting, bool edgeTraversal, std::string algorithm, int heading, int headingPenalty, bool passThrough, int roundTrip.distance, long long roundTrip.seed, int alternativeRoute.maxPaths, int alternativeRoute.maxWeightFactor, int alternativeRoute.maxShareFactor, 
+	std::list<std::string> point, bool pointsEncoded, std::string key, std::string locale, bool instructions, std::string vehicle, bool elevation, bool calcPoints, std::list<std::string> pointHint, bool ch.disable, std::string weighting, bool edgeTraversal, std::string algorithm, int heading, int headingPenalty, bool passThrough, std::list<std::string> details, int roundTrip.distance, long long roundTrip.seed, int alternativeRoute.maxPaths, int alternativeRoute.maxWeightFactor, int alternativeRoute.maxShareFactor, std::string avoid, 
 	void(* handler)(RouteResponse, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -229,6 +229,15 @@ static bool routeGetHelper(char * accessToken,
 		queryParams.erase("pass_through");
 	}
 
+	for (std::list
+	<std::string>::iterator queryIter = details.begin(); queryIter != details.end(); ++queryIter) {
+		string itemAt = stringify(&(*queryIter), "std::string");
+		if( itemAt.empty()){
+			continue;
+		}
+		queryParams.insert(pair<string, string>("details", itemAt));
+	}
+	
 
 	itemAtq = stringify(&roundTrip.distance, "int");
 	queryParams.insert(pair<string, string>("round_trip.distance", itemAtq));
@@ -262,6 +271,13 @@ static bool routeGetHelper(char * accessToken,
 	queryParams.insert(pair<string, string>("alternative_route.max_share_factor", itemAtq));
 	if( itemAtq.empty()==true){
 		queryParams.erase("alternative_route.max_share_factor");
+	}
+
+
+	itemAtq = stringify(&avoid, "std::string");
+	queryParams.insert(pair<string, string>("avoid", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("avoid");
 	}
 
 
@@ -322,22 +338,22 @@ static bool routeGetHelper(char * accessToken,
 
 
 bool RoutingManager::routeGetAsync(char * accessToken,
-	std::list<std::string> point, bool pointsEncoded, std::string key, std::string locale, bool instructions, std::string vehicle, bool elevation, bool calcPoints, std::list<std::string> pointHint, bool ch.disable, std::string weighting, bool edgeTraversal, std::string algorithm, int heading, int headingPenalty, bool passThrough, int roundTrip.distance, long long roundTrip.seed, int alternativeRoute.maxPaths, int alternativeRoute.maxWeightFactor, int alternativeRoute.maxShareFactor, 
+	std::list<std::string> point, bool pointsEncoded, std::string key, std::string locale, bool instructions, std::string vehicle, bool elevation, bool calcPoints, std::list<std::string> pointHint, bool ch.disable, std::string weighting, bool edgeTraversal, std::string algorithm, int heading, int headingPenalty, bool passThrough, std::list<std::string> details, int roundTrip.distance, long long roundTrip.seed, int alternativeRoute.maxPaths, int alternativeRoute.maxWeightFactor, int alternativeRoute.maxShareFactor, std::string avoid, 
 	void(* handler)(RouteResponse, Error, void* )
 	, void* userData)
 {
 	return routeGetHelper(accessToken,
-	point, pointsEncoded, key, locale, instructions, vehicle, elevation, calcPoints, pointHint, ch.disable, weighting, edgeTraversal, algorithm, heading, headingPenalty, passThrough, roundTrip.distance, roundTrip.seed, alternativeRoute.maxPaths, alternativeRoute.maxWeightFactor, alternativeRoute.maxShareFactor, 
+	point, pointsEncoded, key, locale, instructions, vehicle, elevation, calcPoints, pointHint, ch.disable, weighting, edgeTraversal, algorithm, heading, headingPenalty, passThrough, details, roundTrip.distance, roundTrip.seed, alternativeRoute.maxPaths, alternativeRoute.maxWeightFactor, alternativeRoute.maxShareFactor, avoid, 
 	handler, userData, true);
 }
 
 bool RoutingManager::routeGetSync(char * accessToken,
-	std::list<std::string> point, bool pointsEncoded, std::string key, std::string locale, bool instructions, std::string vehicle, bool elevation, bool calcPoints, std::list<std::string> pointHint, bool ch.disable, std::string weighting, bool edgeTraversal, std::string algorithm, int heading, int headingPenalty, bool passThrough, int roundTrip.distance, long long roundTrip.seed, int alternativeRoute.maxPaths, int alternativeRoute.maxWeightFactor, int alternativeRoute.maxShareFactor, 
+	std::list<std::string> point, bool pointsEncoded, std::string key, std::string locale, bool instructions, std::string vehicle, bool elevation, bool calcPoints, std::list<std::string> pointHint, bool ch.disable, std::string weighting, bool edgeTraversal, std::string algorithm, int heading, int headingPenalty, bool passThrough, std::list<std::string> details, int roundTrip.distance, long long roundTrip.seed, int alternativeRoute.maxPaths, int alternativeRoute.maxWeightFactor, int alternativeRoute.maxShareFactor, std::string avoid, 
 	void(* handler)(RouteResponse, Error, void* )
 	, void* userData)
 {
 	return routeGetHelper(accessToken,
-	point, pointsEncoded, key, locale, instructions, vehicle, elevation, calcPoints, pointHint, ch.disable, weighting, edgeTraversal, algorithm, heading, headingPenalty, passThrough, roundTrip.distance, roundTrip.seed, alternativeRoute.maxPaths, alternativeRoute.maxWeightFactor, alternativeRoute.maxShareFactor, 
+	point, pointsEncoded, key, locale, instructions, vehicle, elevation, calcPoints, pointHint, ch.disable, weighting, edgeTraversal, algorithm, heading, headingPenalty, passThrough, details, roundTrip.distance, roundTrip.seed, alternativeRoute.maxPaths, alternativeRoute.maxWeightFactor, alternativeRoute.maxShareFactor, avoid, 
 	handler, userData, false);
 }
 

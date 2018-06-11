@@ -51,6 +51,9 @@ RouteResponsePath::__init()
 	//
 	//instructions = new ResponseInstructions();
 	//
+	//
+	//details = null;
+	//
 }
 
 void
@@ -100,6 +103,11 @@ RouteResponsePath::__cleanup()
 	//
 	//delete instructions;
 	//instructions = NULL;
+	//}
+	//if(details != NULL) {
+	//
+	//delete details;
+	//details = NULL;
 	//}
 	//
 }
@@ -228,6 +236,20 @@ RouteResponsePath::fromJson(char* jsonStr)
 			
 		}
 	}
+	const gchar *detailsKey = "details";
+	node = json_object_get_member(pJsonObject, detailsKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&details, node, "std::string", "");
+		} else {
+			
+			std::string* obj = static_cast<std::string*> (&details);
+			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
 }
 
 RouteResponsePath::RouteResponsePath(char* json)
@@ -342,6 +364,20 @@ RouteResponsePath::toJson()
 	}
 	const gchar *instructionsKey = "instructions";
 	json_object_set_member(pJsonObject, instructionsKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getDetails();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+		std::string obj = static_cast<std::string> (getDetails());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *detailsKey = "details";
+	json_object_set_member(pJsonObject, detailsKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -456,6 +492,18 @@ void
 RouteResponsePath::setInstructions(ResponseInstructions  instructions)
 {
 	this->instructions = instructions;
+}
+
+std::string
+RouteResponsePath::getDetails()
+{
+	return details;
+}
+
+void
+RouteResponsePath::setDetails(std::string  details)
+{
+	this->details = details;
 }
 
 

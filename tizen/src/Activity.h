@@ -67,11 +67,11 @@ public:
 	/*! \brief Set id that refers to address
 	 */
 	void setLocationId(std::string  location_id);
-	/*! \brief Get arrival time at this activity in ms
+	/*! \brief Get arrival time at this activity in seconds
 	 */
 	long long getArrTime();
 
-	/*! \brief Set arrival time at this activity in ms
+	/*! \brief Set arrival time at this activity in seconds
 	 */
 	void setArrTime(long long  arr_time);
 	/*! \brief Get end time of and thus departure time at this activity
@@ -81,11 +81,11 @@ public:
 	/*! \brief Set end time of and thus departure time at this activity
 	 */
 	void setEndTime(long long  end_time);
-	/*! \brief Get waiting time at this activity in ms
+	/*! \brief Get waiting time at this activity in seconds
 	 */
 	long long getWaitingTime();
 
-	/*! \brief Set waiting time at this activity in ms
+	/*! \brief Set waiting time at this activity in seconds
 	 */
 	void setWaitingTime(long long  waiting_time);
 	/*! \brief Get cumulated distance from start to this activity in m
@@ -95,11 +95,11 @@ public:
 	/*! \brief Set cumulated distance from start to this activity in m
 	 */
 	void setDistance(long long  distance);
-	/*! \brief Get driving time of driver in ms
+	/*! \brief Get driving time of driver in seconds
 	 */
 	long long getDrivingTime();
 
-	/*! \brief Set driving time of driver in ms
+	/*! \brief Set driving time of driver in seconds
 	 */
 	void setDrivingTime(long long  driving_time);
 	/*! \brief Get Array with size/capacity dimensions before this activity

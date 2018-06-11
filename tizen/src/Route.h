@@ -62,25 +62,25 @@ public:
 	/*! \brief Set distance of route in meter
 	 */
 	void setDistance(long long  distance);
-	/*! \brief Get transport time of route in ms
+	/*! \brief Get transport time of route in seconds
 	 */
 	long long getTransportTime();
 
-	/*! \brief Set transport time of route in ms
+	/*! \brief Set transport time of route in seconds
 	 */
 	void setTransportTime(long long  transport_time);
-	/*! \brief Get completion time of route in ms
+	/*! \brief Get completion time of route in seconds
 	 */
 	long long getCompletionTime();
 
-	/*! \brief Set completion time of route in ms
+	/*! \brief Set completion time of route in seconds
 	 */
 	void setCompletionTime(long long  completion_time);
-	/*! \brief Get waiting time of route in ms
+	/*! \brief Get waiting time of route in seconds
 	 */
 	long long getWaitingTime();
 
-	/*! \brief Set waiting time of route in ms
+	/*! \brief Set waiting time of route in seconds
 	 */
 	void setWaitingTime(long long  waiting_time);
 	/*! \brief Get array of activities

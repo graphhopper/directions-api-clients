@@ -14,6 +14,9 @@
 */
 
 
+#import "SWGDetail.h"
+@protocol SWGDetail;
+@class SWGDetail;
 
 
 
@@ -28,5 +31,11 @@
 /* An array of ids of unassigned shipments [optional]
  */
 @property(nonatomic) NSArray<NSString*>* shipments;
+/* An array of ids of unassigned breaks [optional]
+ */
+@property(nonatomic) NSArray<NSString*>* breaks;
+/* An array of details, i.e. reason for unassigned services or shipments [optional]
+ */
+@property(nonatomic) NSArray<SWGDetail>* details;
 
 @end

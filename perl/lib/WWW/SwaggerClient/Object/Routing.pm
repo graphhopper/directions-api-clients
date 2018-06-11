@@ -150,14 +150,41 @@ __PACKAGE__->method_documentation({
     	format => '',
     	read_only => '',
     		},
+    'consider_traffic' => {
+    	datatype => 'boolean',
+    	base_name => 'consider_traffic',
+    	description => 'indicates whether historical traffic information should be considered',
+    	format => '',
+    	read_only => '',
+    		},
+    'network_data_provider' => {
+    	datatype => 'string',
+    	base_name => 'network_data_provider',
+    	description => 'specifies the data provider',
+    	format => '',
+    	read_only => '',
+    		},
+    'fail_fast' => {
+    	datatype => 'boolean',
+    	base_name => 'fail_fast',
+    	description => 'indicates whether matrix calculation should fail fast when points cannot be connected',
+    	format => '',
+    	read_only => '',
+    		},
 });
 
 __PACKAGE__->swagger_types( {
-    'calc_points' => 'boolean'
+    'calc_points' => 'boolean',
+    'consider_traffic' => 'boolean',
+    'network_data_provider' => 'string',
+    'fail_fast' => 'boolean'
 } );
 
 __PACKAGE__->attribute_map( {
-    'calc_points' => 'calc_points'
+    'calc_points' => 'calc_points',
+    'consider_traffic' => 'consider_traffic',
+    'network_data_provider' => 'network_data_provider',
+    'fail_fast' => 'fail_fast'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

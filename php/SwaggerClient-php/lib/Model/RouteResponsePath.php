@@ -66,7 +66,8 @@ class RouteResponsePath implements ModelInterface, ArrayAccess
         'points_encoded' => 'bool',
         'bbox' => 'double[]',
         'snapped_waypoints' => '\Swagger\Client\Model\ResponseCoordinates',
-        'instructions' => '\Swagger\Client\Model\ResponseInstructions'
+        'instructions' => '\Swagger\Client\Model\ResponseInstructions',
+        'details' => 'object'
     ];
 
     /**
@@ -83,7 +84,8 @@ class RouteResponsePath implements ModelInterface, ArrayAccess
         'points_encoded' => null,
         'bbox' => 'double',
         'snapped_waypoints' => null,
-        'instructions' => null
+        'instructions' => null,
+        'details' => null
     ];
 
     /**
@@ -121,7 +123,8 @@ class RouteResponsePath implements ModelInterface, ArrayAccess
         'points_encoded' => 'points_encoded',
         'bbox' => 'bbox',
         'snapped_waypoints' => 'snapped_waypoints',
-        'instructions' => 'instructions'
+        'instructions' => 'instructions',
+        'details' => 'details'
     ];
 
     /**
@@ -138,7 +141,8 @@ class RouteResponsePath implements ModelInterface, ArrayAccess
         'points_encoded' => 'setPointsEncoded',
         'bbox' => 'setBbox',
         'snapped_waypoints' => 'setSnappedWaypoints',
-        'instructions' => 'setInstructions'
+        'instructions' => 'setInstructions',
+        'details' => 'setDetails'
     ];
 
     /**
@@ -155,7 +159,8 @@ class RouteResponsePath implements ModelInterface, ArrayAccess
         'points_encoded' => 'getPointsEncoded',
         'bbox' => 'getBbox',
         'snapped_waypoints' => 'getSnappedWaypoints',
-        'instructions' => 'getInstructions'
+        'instructions' => 'getInstructions',
+        'details' => 'getDetails'
     ];
 
     /**
@@ -227,6 +232,7 @@ class RouteResponsePath implements ModelInterface, ArrayAccess
         $this->container['bbox'] = isset($data['bbox']) ? $data['bbox'] : null;
         $this->container['snapped_waypoints'] = isset($data['snapped_waypoints']) ? $data['snapped_waypoints'] : null;
         $this->container['instructions'] = isset($data['instructions']) ? $data['instructions'] : null;
+        $this->container['details'] = isset($data['details']) ? $data['details'] : null;
     }
 
     /**
@@ -466,6 +472,30 @@ class RouteResponsePath implements ModelInterface, ArrayAccess
     public function setInstructions($instructions)
     {
         $this->container['instructions'] = $instructions;
+
+        return $this;
+    }
+
+    /**
+     * Gets details
+     *
+     * @return object
+     */
+    public function getDetails()
+    {
+        return $this->container['details'];
+    }
+
+    /**
+     * Sets details
+     *
+     * @param object $details details
+     *
+     * @return $this
+     */
+    public function setDetails($details)
+    {
+        $this->container['details'] = $details;
 
         return $this;
     }

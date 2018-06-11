@@ -12,7 +12,7 @@ Swagger Codegen version: 2.4.0-SNAPSHOT
 
 require 'date'
 
-module DirectionsApiClient
+module GraphHopperClient
 
   class MatrixRequest
     # Specifiy multiple points for which the weight-, route-, time- or distance-matrix should be calculated. In this case the starts are identical to the destinations. If there are N points, then NxN entries will be calculated. The order of the point parameter is important. Specify at least three points. Cannot be used together with from_point or to_point. Is a string with the format longitude,latitude.
@@ -185,7 +185,7 @@ module DirectionsApiClient
           end
         end
       else # model
-        temp_model = DirectionsApiClient.const_get(type).new
+        temp_model = GraphHopperClient.const_get(type).new
         temp_model.build_from_hash(value)
       end
     end

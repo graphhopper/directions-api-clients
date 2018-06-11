@@ -12,24 +12,60 @@ Swagger Codegen version: 2.4.0-SNAPSHOT
 
 require 'date'
 
-module DirectionsApiClient
+module GraphHopperClient
 
   class Routing
     # indicates whether solution should come with route geometries
     attr_accessor :calc_points
 
+    # indicates whether historical traffic information should be considered
+    attr_accessor :consider_traffic
+
+    # specifies the data provider
+    attr_accessor :network_data_provider
+
+    # indicates whether matrix calculation should fail fast when points cannot be connected
+    attr_accessor :fail_fast
+
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'calc_points' => :'calc_points'
+        :'calc_points' => :'calc_points',
+        :'consider_traffic' => :'consider_traffic',
+        :'network_data_provider' => :'network_data_provider',
+        :'fail_fast' => :'fail_fast'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'calc_points' => :'BOOLEAN'
+        :'calc_points' => :'BOOLEAN',
+        :'consider_traffic' => :'BOOLEAN',
+        :'network_data_provider' => :'String',
+        :'fail_fast' => :'BOOLEAN'
       }
     end
 
@@ -45,6 +81,18 @@ module DirectionsApiClient
         self.calc_points = attributes[:'calc_points']
       end
 
+      if attributes.has_key?(:'consider_traffic')
+        self.consider_traffic = attributes[:'consider_traffic']
+      end
+
+      if attributes.has_key?(:'network_data_provider')
+        self.network_data_provider = attributes[:'network_data_provider']
+      end
+
+      if attributes.has_key?(:'fail_fast')
+        self.fail_fast = attributes[:'fail_fast']
+      end
+
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -57,7 +105,19 @@ module DirectionsApiClient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      network_data_provider_validator = EnumAttributeValidator.new('String', ["openstreetmap", "tomtom"])
+      return false unless network_data_provider_validator.valid?(@network_data_provider)
       return true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] network_data_provider Object to be assigned
+    def network_data_provider=(network_data_provider)
+      validator = EnumAttributeValidator.new('String', ["openstreetmap", "tomtom"])
+      unless validator.valid?(network_data_provider)
+        fail ArgumentError, "invalid value for 'network_data_provider', must be one of #{validator.allowable_values}."
+      end
+      @network_data_provider = network_data_provider
     end
 
     # Checks equality by comparing each attribute.
@@ -65,7 +125,10 @@ module DirectionsApiClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          calc_points == o.calc_points
+          calc_points == o.calc_points &&
+          consider_traffic == o.consider_traffic &&
+          network_data_provider == o.network_data_provider &&
+          fail_fast == o.fail_fast
     end
 
     # @see the `==` method
@@ -77,7 +140,7 @@ module DirectionsApiClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [calc_points].hash
+      [calc_points, consider_traffic, network_data_provider, fail_fast].hash
     end
 
     # Builds the object from hash
@@ -137,7 +200,7 @@ module DirectionsApiClient
           end
         end
       else # model
-        temp_model = DirectionsApiClient.const_get(type).new
+        temp_model = GraphHopperClient.const_get(type).new
         temp_model.build_from_hash(value)
       end
     end

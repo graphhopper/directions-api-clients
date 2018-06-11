@@ -12,7 +12,7 @@ Swagger Codegen version: 2.4.0-SNAPSHOT
 
 require 'date'
 
-module DirectionsApiClient
+module GraphHopperClient
 
   class Route
     # id of vehicle that operates route
@@ -21,13 +21,13 @@ module DirectionsApiClient
     # distance of route in meter
     attr_accessor :distance
 
-    # transport time of route in ms
+    # transport time of route in seconds
     attr_accessor :transport_time
 
-    # completion time of route in ms
+    # completion time of route in seconds
     attr_accessor :completion_time
 
-    # waiting time of route in ms
+    # waiting time of route in seconds
     attr_accessor :waiting_time
 
     # array of activities
@@ -201,7 +201,7 @@ module DirectionsApiClient
           end
         end
       else # model
-        temp_model = DirectionsApiClient.const_get(type).new
+        temp_model = GraphHopperClient.const_get(type).new
         temp_model.build_from_hash(value)
       end
     end

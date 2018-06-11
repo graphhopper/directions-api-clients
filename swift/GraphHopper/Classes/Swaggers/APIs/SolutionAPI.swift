@@ -112,6 +112,16 @@ public class SolutionAPI: APIBase {
     "time" : 5,
     "no_unassigned" : 2,
     "unassigned" : {
+      "breaks" : [ "breaks", "breaks" ],
+      "details" : [ {
+        "reason" : "reason",
+        "code" : 9,
+        "id" : "id"
+      }, {
+        "reason" : "reason",
+        "code" : 9,
+        "id" : "id"
+      } ],
       "services" : [ "services", "services" ],
       "shipments" : [ "shipments", "shipments" ]
     },

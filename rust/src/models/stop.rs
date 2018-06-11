@@ -16,7 +16,7 @@ use serde_json::Value;
 pub struct Stop {
   #[serde(rename = "address")]
   address: Option<::models::Address>,
-  /// duration of stop, i.e. time in ms the corresponding activity takes
+  /// duration of stop, i.e. time in seconds the corresponding activity takes
   #[serde(rename = "duration")]
   duration: Option<i64>,
   /// preparation time of service, e.g. search for a parking space. it only falls due if the location of previous activity differs from this location

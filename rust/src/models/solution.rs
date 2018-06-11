@@ -20,16 +20,16 @@ pub struct Solution {
   /// overall travel distance in meters
   #[serde(rename = "distance")]
   distance: Option<i32>,
-  /// overall transport time in ms
+  /// overall transport time in seconds
   #[serde(rename = "time")]
   time: Option<i64>,
-  /// overall transport time in ms
+  /// overall transport time in seconds
   #[serde(rename = "transport_time")]
   transport_time: Option<i64>,
-  /// operation time of the longest route in ms
+  /// operation time of the longest route in seconds
   #[serde(rename = "max_operation_time")]
   max_operation_time: Option<i64>,
-  /// total waiting time in ms
+  /// total waiting time in seconds
   #[serde(rename = "waiting_time")]
   waiting_time: Option<i64>,
   /// number of employed vehicles

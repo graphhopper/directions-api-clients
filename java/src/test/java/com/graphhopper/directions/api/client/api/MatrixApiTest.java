@@ -46,8 +46,8 @@ public class MatrixApiTest {
     public void matrixGetTest() throws ApiException {
         String key = null;
         List<String> point = null;
-        String fromPoint = null;
-        String toPoint = null;
+        List<String> fromPoint = null;
+        List<String> toPoint = null;
         List<String> outArray = null;
         String vehicle = null;
         MatrixResponse response = api.matrixGet(key, point, fromPoint, toPoint, outArray, vehicle);

@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 <a name="routeGet"></a>
 # **routeGet**
-> RouteResponse routeGet(point, pointsEncoded, key, locale, instructions, vehicle, elevation, calcPoints, pointHint, ch.disable, weighting, edgeTraversal, algorithm, heading, headingPenalty, passThrough, roundTrip.distance, roundTrip.seed, alternativeRoute.maxPaths, alternativeRoute.maxWeightFactor, alternativeRoute.maxShareFactor)
+> RouteResponse routeGet(point, pointsEncoded, key, locale, instructions, vehicle, elevation, calcPoints, pointHint, ch.disable, weighting, edgeTraversal, algorithm, heading, headingPenalty, passThrough, details, roundTrip.distance, roundTrip.seed, alternativeRoute.maxPaths, alternativeRoute.maxWeightFactor, alternativeRoute.maxShareFactor, avoid)
 
 Routing Request
 
@@ -38,13 +38,15 @@ val algorithm : kotlin.String = algorithm_example // kotlin.String | The algorit
 val heading : kotlin.Int = 56 // kotlin.Int | Favour a heading direction for a certain point. Specify either one heading for the start point or as many as there are points. In this case headings are associated by their order to the specific points. Headings are given as north based clockwise angle between 0 and 360 degree. This parameter also influences the tour generated with `algorithm=round_trip` and force the initial direction.
 val headingPenalty : kotlin.Int = 56 // kotlin.Int | Penalty for omitting a specified heading. The penalty corresponds to the accepted time delay in seconds in comparison to the route without a heading.
 val passThrough : kotlin.Boolean = true // kotlin.Boolean | If `true` u-turns are avoided at via-points with regard to the `heading_penalty`.
+val details : kotlin.Array<kotlin.String> =  // kotlin.Array<kotlin.String> | List of additional trip attributes to be returned. Try some of the following: `average_speed`, `street_name`, `edge_id`, `time`, `distance`.
 val roundTrip.distance : kotlin.Int = 56 // kotlin.Int | If `algorithm=round_trip` this parameter configures approximative length of the resulting round trip
 val roundTrip.seed : kotlin.Long = 789 // kotlin.Long | If `algorithm=round_trip` this parameter introduces randomness if e.g. the first try wasn't good.
 val alternativeRoute.maxPaths : kotlin.Int = 56 // kotlin.Int | If `algorithm=alternative_route` this parameter sets the number of maximum paths which should be calculated. Increasing can lead to worse alternatives.
 val alternativeRoute.maxWeightFactor : kotlin.Int = 56 // kotlin.Int | If `algorithm=alternative_route` this parameter sets the factor by which the alternatives routes can be longer than the optimal route. Increasing can lead to worse alternatives.
 val alternativeRoute.maxShareFactor : kotlin.Int = 56 // kotlin.Int | If `algorithm=alternative_route` this parameter specifies how much alternatives routes can have maximum in common with the optimal route. Increasing can lead to worse alternatives.
+val avoid : kotlin.String = avoid_example // kotlin.String | comma separate list to avoid certain roads. You can avoid motorway, ferry, tunnel or track
 try {
-    val result : RouteResponse = apiInstance.routeGet(point, pointsEncoded, key, locale, instructions, vehicle, elevation, calcPoints, pointHint, ch.disable, weighting, edgeTraversal, algorithm, heading, headingPenalty, passThrough, roundTrip.distance, roundTrip.seed, alternativeRoute.maxPaths, alternativeRoute.maxWeightFactor, alternativeRoute.maxShareFactor)
+    val result : RouteResponse = apiInstance.routeGet(point, pointsEncoded, key, locale, instructions, vehicle, elevation, calcPoints, pointHint, ch.disable, weighting, edgeTraversal, algorithm, heading, headingPenalty, passThrough, details, roundTrip.distance, roundTrip.seed, alternativeRoute.maxPaths, alternativeRoute.maxWeightFactor, alternativeRoute.maxShareFactor, avoid)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling RoutingApi#routeGet")
@@ -75,11 +77,13 @@ Name | Type | Description  | Notes
  **heading** | **kotlin.Int**| Favour a heading direction for a certain point. Specify either one heading for the start point or as many as there are points. In this case headings are associated by their order to the specific points. Headings are given as north based clockwise angle between 0 and 360 degree. This parameter also influences the tour generated with &#x60;algorithm&#x3D;round_trip&#x60; and force the initial direction. | [optional]
  **headingPenalty** | **kotlin.Int**| Penalty for omitting a specified heading. The penalty corresponds to the accepted time delay in seconds in comparison to the route without a heading. | [optional]
  **passThrough** | **kotlin.Boolean**| If &#x60;true&#x60; u-turns are avoided at via-points with regard to the &#x60;heading_penalty&#x60;. | [optional]
+ **details** | [**kotlin.Array&lt;kotlin.String&gt;**](kotlin.String.md)| List of additional trip attributes to be returned. Try some of the following: &#x60;average_speed&#x60;, &#x60;street_name&#x60;, &#x60;edge_id&#x60;, &#x60;time&#x60;, &#x60;distance&#x60;. | [optional]
  **roundTrip.distance** | **kotlin.Int**| If &#x60;algorithm&#x3D;round_trip&#x60; this parameter configures approximative length of the resulting round trip | [optional]
  **roundTrip.seed** | **kotlin.Long**| If &#x60;algorithm&#x3D;round_trip&#x60; this parameter introduces randomness if e.g. the first try wasn&#39;t good. | [optional]
  **alternativeRoute.maxPaths** | **kotlin.Int**| If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the number of maximum paths which should be calculated. Increasing can lead to worse alternatives. | [optional]
  **alternativeRoute.maxWeightFactor** | **kotlin.Int**| If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the factor by which the alternatives routes can be longer than the optimal route. Increasing can lead to worse alternatives. | [optional]
  **alternativeRoute.maxShareFactor** | **kotlin.Int**| If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter specifies how much alternatives routes can have maximum in common with the optimal route. Increasing can lead to worse alternatives. | [optional]
+ **avoid** | **kotlin.String**| comma separate list to avoid certain roads. You can avoid motorway, ferry, tunnel or track | [optional]
 
 ### Return type
 

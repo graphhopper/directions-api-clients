@@ -14,6 +14,9 @@ Name | Type | Description | Notes
 **latest_end** | **kotlin.Long** | latest end of vehicle at its end location |  [optional]
 **skills** | **kotlin.Array&lt;kotlin.String&gt;** | array of skills |  [optional]
 **max_distance** | **kotlin.Long** | max distance of vehicle |  [optional]
+**max_driving_time** | **kotlin.Long** | max drive time of vehicle |  [optional]
+**max_jobs** | **kotlin.Int** | max number of jobs the vehicle can load |  [optional]
+**max_activities** | **kotlin.Int** | max number of activities the vehicle can conduct |  [optional]
 
 
 

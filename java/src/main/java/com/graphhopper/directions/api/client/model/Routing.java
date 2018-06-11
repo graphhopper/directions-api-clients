@@ -32,6 +32,62 @@ public class Routing {
   @SerializedName("calc_points")
   private Boolean calcPoints = null;
 
+  @SerializedName("consider_traffic")
+  private Boolean considerTraffic = null;
+
+  /**
+   * specifies the data provider
+   */
+  @JsonAdapter(NetworkDataProviderEnum.Adapter.class)
+  public enum NetworkDataProviderEnum {
+    OPENSTREETMAP("openstreetmap"),
+    
+    TOMTOM("tomtom");
+
+    private String value;
+
+    NetworkDataProviderEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static NetworkDataProviderEnum fromValue(String text) {
+      for (NetworkDataProviderEnum b : NetworkDataProviderEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      return null;
+    }
+
+    public static class Adapter extends TypeAdapter<NetworkDataProviderEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final NetworkDataProviderEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public NetworkDataProviderEnum read(final JsonReader jsonReader) throws IOException {
+        String value = jsonReader.nextString();
+        return NetworkDataProviderEnum.fromValue(String.valueOf(value));
+      }
+    }
+  }
+
+  @SerializedName("network_data_provider")
+  private NetworkDataProviderEnum networkDataProvider = null;
+
+  @SerializedName("fail_fast")
+  private Boolean failFast = null;
+
   public Routing calcPoints(Boolean calcPoints) {
     this.calcPoints = calcPoints;
     return this;
@@ -50,6 +106,60 @@ public class Routing {
     this.calcPoints = calcPoints;
   }
 
+  public Routing considerTraffic(Boolean considerTraffic) {
+    this.considerTraffic = considerTraffic;
+    return this;
+  }
+
+   /**
+   * indicates whether historical traffic information should be considered
+   * @return considerTraffic
+  **/
+  @ApiModelProperty(value = "indicates whether historical traffic information should be considered")
+  public Boolean isConsiderTraffic() {
+    return considerTraffic;
+  }
+
+  public void setConsiderTraffic(Boolean considerTraffic) {
+    this.considerTraffic = considerTraffic;
+  }
+
+  public Routing networkDataProvider(NetworkDataProviderEnum networkDataProvider) {
+    this.networkDataProvider = networkDataProvider;
+    return this;
+  }
+
+   /**
+   * specifies the data provider
+   * @return networkDataProvider
+  **/
+  @ApiModelProperty(value = "specifies the data provider")
+  public NetworkDataProviderEnum getNetworkDataProvider() {
+    return networkDataProvider;
+  }
+
+  public void setNetworkDataProvider(NetworkDataProviderEnum networkDataProvider) {
+    this.networkDataProvider = networkDataProvider;
+  }
+
+  public Routing failFast(Boolean failFast) {
+    this.failFast = failFast;
+    return this;
+  }
+
+   /**
+   * indicates whether matrix calculation should fail fast when points cannot be connected
+   * @return failFast
+  **/
+  @ApiModelProperty(value = "indicates whether matrix calculation should fail fast when points cannot be connected")
+  public Boolean isFailFast() {
+    return failFast;
+  }
+
+  public void setFailFast(Boolean failFast) {
+    this.failFast = failFast;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -60,12 +170,15 @@ public class Routing {
       return false;
     }
     Routing routing = (Routing) o;
-    return Objects.equals(this.calcPoints, routing.calcPoints);
+    return Objects.equals(this.calcPoints, routing.calcPoints) &&
+        Objects.equals(this.considerTraffic, routing.considerTraffic) &&
+        Objects.equals(this.networkDataProvider, routing.networkDataProvider) &&
+        Objects.equals(this.failFast, routing.failFast);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(calcPoints);
+    return Objects.hash(calcPoints, considerTraffic, networkDataProvider, failFast);
   }
 
 
@@ -75,6 +188,9 @@ public class Routing {
     sb.append("class Routing {\n");
     
     sb.append("    calcPoints: ").append(toIndentedString(calcPoints)).append("\n");
+    sb.append("    considerTraffic: ").append(toIndentedString(considerTraffic)).append("\n");
+    sb.append("    networkDataProvider: ").append(toIndentedString(networkDataProvider)).append("\n");
+    sb.append("    failFast: ").append(toIndentedString(failFast)).append("\n");
     sb.append("}");
     return sb.toString();
   }

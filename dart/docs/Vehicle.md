@@ -18,6 +18,9 @@ Name | Type | Description | Notes
 **latestEnd** | **int** | latest end of vehicle at its end location | [optional] [default to null]
 **skills** | **List&lt;String&gt;** | array of skills | [optional] [default to []]
 **maxDistance** | **int** | max distance of vehicle | [optional] [default to null]
+**maxDrivingTime** | **int** | max drive time of vehicle | [optional] [default to null]
+**maxJobs** | **int** | max number of jobs the vehicle can load | [optional] [default to null]
+**maxActivities** | **int** | max number of activities the vehicle can conduct | [optional] [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

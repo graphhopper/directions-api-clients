@@ -12,7 +12,7 @@ Swagger Codegen version: 2.4.0-SNAPSHOT
 
 require 'date'
 
-module DirectionsApiClient
+module GraphHopperClient
   # A found path
   class RouteResponsePath
     # The total distance of the route, in meter
@@ -38,6 +38,8 @@ module DirectionsApiClient
 
     attr_accessor :instructions
 
+    attr_accessor :details
+
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -50,7 +52,8 @@ module DirectionsApiClient
         :'points_encoded' => :'points_encoded',
         :'bbox' => :'bbox',
         :'snapped_waypoints' => :'snapped_waypoints',
-        :'instructions' => :'instructions'
+        :'instructions' => :'instructions',
+        :'details' => :'details'
       }
     end
 
@@ -65,7 +68,8 @@ module DirectionsApiClient
         :'points_encoded' => :'BOOLEAN',
         :'bbox' => :'Array<Float>',
         :'snapped_waypoints' => :'ResponseCoordinates',
-        :'instructions' => :'ResponseInstructions'
+        :'instructions' => :'ResponseInstructions',
+        :'details' => :'Object'
       }
     end
 
@@ -115,6 +119,10 @@ module DirectionsApiClient
         self.instructions = attributes[:'instructions']
       end
 
+      if attributes.has_key?(:'details')
+        self.details = attributes[:'details']
+      end
+
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -143,7 +151,8 @@ module DirectionsApiClient
           points_encoded == o.points_encoded &&
           bbox == o.bbox &&
           snapped_waypoints == o.snapped_waypoints &&
-          instructions == o.instructions
+          instructions == o.instructions &&
+          details == o.details
     end
 
     # @see the `==` method
@@ -155,7 +164,7 @@ module DirectionsApiClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [distance, time, ascend, descend, points, points_encoded, bbox, snapped_waypoints, instructions].hash
+      [distance, time, ascend, descend, points, points_encoded, bbox, snapped_waypoints, instructions, details].hash
     end
 
     # Builds the object from hash
@@ -215,7 +224,7 @@ module DirectionsApiClient
           end
         end
       else # model
-        temp_model = DirectionsApiClient.const_get(type).new
+        temp_model = GraphHopperClient.const_get(type).new
         temp_model.build_from_hash(value)
       end
     end

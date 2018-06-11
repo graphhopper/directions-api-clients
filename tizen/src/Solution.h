@@ -62,32 +62,32 @@ public:
 	/*! \brief Set overall travel distance in meters
 	 */
 	void setDistance(int  distance);
-	/*! \brief Get overall transport time in ms
+	/*! \brief Get overall transport time in seconds
 	 */
 	long long getTime();
 
-	/*! \brief Set overall transport time in ms
+	/*! \brief Set overall transport time in seconds
 	 */
 	void setTime(long long  time);
-	/*! \brief Get overall transport time in ms
+	/*! \brief Get overall transport time in seconds
 	 */
 	long long getTransportTime();
 
-	/*! \brief Set overall transport time in ms
+	/*! \brief Set overall transport time in seconds
 	 */
 	void setTransportTime(long long  transport_time);
-	/*! \brief Get operation time of the longest route in ms
+	/*! \brief Get operation time of the longest route in seconds
 	 */
 	long long getMaxOperationTime();
 
-	/*! \brief Set operation time of the longest route in ms
+	/*! \brief Set operation time of the longest route in seconds
 	 */
 	void setMaxOperationTime(long long  max_operation_time);
-	/*! \brief Get total waiting time in ms
+	/*! \brief Get total waiting time in seconds
 	 */
 	long long getWaitingTime();
 
-	/*! \brief Set total waiting time in ms
+	/*! \brief Set total waiting time in seconds
 	 */
 	void setWaitingTime(long long  waiting_time);
 	/*! \brief Get number of employed vehicles

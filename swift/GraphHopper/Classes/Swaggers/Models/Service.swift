@@ -23,7 +23,7 @@ public class Service: JSONEncodable {
     /** name of service */
     public var name: String?
     public var address: Address?
-    /** duration of service, i.e. time in ms the corresponding activity takes */
+    /** duration of service, i.e. time in seconds the corresponding activity takes */
     public var duration: Int64?
     /** preparation time of service, e.g. search for a parking space. it only falls due if the location of previous activity differs from this location */
     public var preparationTime: Int64?
@@ -35,6 +35,10 @@ public class Service: JSONEncodable {
     public var requiredSkills: [String]?
     /** array of allowed vehicle ids */
     public var allowedVehicles: [String]?
+    /** array of disallowed vehicle ids */
+    public var disallowedVehicles: [String]?
+    /** max time service can stay in vehicle */
+    public var maxTimeInVehicle: Int64?
 
     public init() {}
 
@@ -52,6 +56,8 @@ public class Service: JSONEncodable {
         nillableDictionary["size"] = self.size?.encodeToJSON()
         nillableDictionary["required_skills"] = self.requiredSkills?.encodeToJSON()
         nillableDictionary["allowed_vehicles"] = self.allowedVehicles?.encodeToJSON()
+        nillableDictionary["disallowed_vehicles"] = self.disallowedVehicles?.encodeToJSON()
+        nillableDictionary["max_time_in_vehicle"] = self.maxTimeInVehicle?.encodeToJSON()
         let dictionary: [String:AnyObject] = APIHelper.rejectNil(nillableDictionary) ?? [:]
         return dictionary
     }

@@ -1,4 +1,4 @@
-# DirectionsApiClient::VrpApi
+# GraphHopperClient::VrpApi
 
 All URIs are relative to *https://graphhopper.com/api/1*
 
@@ -19,18 +19,18 @@ This endpoint for solving vehicle routing problems, i.e. traveling salesman or v
 # load the gem
 require 'directions-api-client'
 
-api_instance = DirectionsApiClient::VrpApi.new
+api_instance = GraphHopperClient::VrpApi.new
 
 key = "key_example" # String | your API key
 
-body = DirectionsApiClient::Request.new # Request | Request object that contains the problem to be solved
+body = GraphHopperClient::Request.new # Request | Request object that contains the problem to be solved
 
 
 begin
   #Solves vehicle routing problems
   result = api_instance.post_vrp(key, body)
   p result
-rescue DirectionsApiClient::ApiError => e
+rescue GraphHopperClient::ApiError => e
   puts "Exception when calling VrpApi->post_vrp: #{e}"
 end
 ```

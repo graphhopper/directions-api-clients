@@ -138,4 +138,11 @@ class RouteResponsePathTest extends \PHPUnit_Framework_TestCase
     public function testPropertyInstructions()
     {
     }
+
+    /**
+     * Test attribute "details"
+     */
+    public function testPropertyDetails()
+    {
+    }
 }

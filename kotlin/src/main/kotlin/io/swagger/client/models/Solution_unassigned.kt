@@ -11,17 +11,24 @@
 */
 package io.swagger.client.models
 
+import io.swagger.client.models.Detail
 
 /**
  * 
  * @param services An array of ids of unassigned services
  * @param shipments An array of ids of unassigned shipments
+ * @param breaks An array of ids of unassigned breaks
+ * @param details An array of details, i.e. reason for unassigned services or shipments
  */
 data class Solution_unassigned (
     /* An array of ids of unassigned services */
     val services: kotlin.Array<kotlin.String>? = null,
     /* An array of ids of unassigned shipments */
-    val shipments: kotlin.Array<kotlin.String>? = null
+    val shipments: kotlin.Array<kotlin.String>? = null,
+    /* An array of ids of unassigned breaks */
+    val breaks: kotlin.Array<kotlin.String>? = null,
+    /* An array of details, i.e. reason for unassigned services or shipments */
+    val details: kotlin.Array<Detail>? = null
 ) {
 
 }

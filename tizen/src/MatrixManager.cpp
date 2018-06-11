@@ -109,7 +109,7 @@ static bool matrixGetProcessor(MemoryStruct_s p_chunk, long code, char* errormsg
 }
 
 static bool matrixGetHelper(char * accessToken,
-	std::string key, std::list<std::string> point, std::string fromPoint, std::string toPoint, std::list<std::string> outArray, std::string vehicle, 
+	std::string key, std::list<std::string> point, std::list<std::string> fromPoint, std::list<std::string> toPoint, std::list<std::string> outArray, std::string vehicle, 
 	void(* handler)(MatrixResponse, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -135,20 +135,24 @@ static bool matrixGetHelper(char * accessToken,
 		queryParams.insert(pair<string, string>("point", itemAt));
 	}
 	
-
-	itemAtq = stringify(&fromPoint, "std::string");
-	queryParams.insert(pair<string, string>("from_point", itemAtq));
-	if( itemAtq.empty()==true){
-		queryParams.erase("from_point");
+	for (std::list
+	<std::string>::iterator queryIter = fromPoint.begin(); queryIter != fromPoint.end(); ++queryIter) {
+		string itemAt = stringify(&(*queryIter), "std::string");
+		if( itemAt.empty()){
+			continue;
+		}
+		queryParams.insert(pair<string, string>("fromPoint", itemAt));
 	}
-
-
-	itemAtq = stringify(&toPoint, "std::string");
-	queryParams.insert(pair<string, string>("to_point", itemAtq));
-	if( itemAtq.empty()==true){
-		queryParams.erase("to_point");
+	
+	for (std::list
+	<std::string>::iterator queryIter = toPoint.begin(); queryIter != toPoint.end(); ++queryIter) {
+		string itemAt = stringify(&(*queryIter), "std::string");
+		if( itemAt.empty()){
+			continue;
+		}
+		queryParams.insert(pair<string, string>("toPoint", itemAt));
 	}
-
+	
 	for (std::list
 	<std::string>::iterator queryIter = outArray.begin(); queryIter != outArray.end(); ++queryIter) {
 		string itemAt = stringify(&(*queryIter), "std::string");
@@ -223,7 +227,7 @@ static bool matrixGetHelper(char * accessToken,
 
 
 bool MatrixManager::matrixGetAsync(char * accessToken,
-	std::string key, std::list<std::string> point, std::string fromPoint, std::string toPoint, std::list<std::string> outArray, std::string vehicle, 
+	std::string key, std::list<std::string> point, std::list<std::string> fromPoint, std::list<std::string> toPoint, std::list<std::string> outArray, std::string vehicle, 
 	void(* handler)(MatrixResponse, Error, void* )
 	, void* userData)
 {
@@ -233,7 +237,7 @@ bool MatrixManager::matrixGetAsync(char * accessToken,
 }
 
 bool MatrixManager::matrixGetSync(char * accessToken,
-	std::string key, std::list<std::string> point, std::string fromPoint, std::string toPoint, std::list<std::string> outArray, std::string vehicle, 
+	std::string key, std::list<std::string> point, std::list<std::string> fromPoint, std::list<std::string> toPoint, std::list<std::string> outArray, std::string vehicle, 
 	void(* handler)(MatrixResponse, Error, void* )
 	, void* userData)
 {

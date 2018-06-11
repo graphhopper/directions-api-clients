@@ -302,7 +302,7 @@ class Route implements ModelInterface, ArrayAccess
     /**
      * Sets transport_time
      *
-     * @param int $transport_time transport time of route in ms
+     * @param int $transport_time transport time of route in seconds
      *
      * @return $this
      */
@@ -326,7 +326,7 @@ class Route implements ModelInterface, ArrayAccess
     /**
      * Sets completion_time
      *
-     * @param int $completion_time completion time of route in ms
+     * @param int $completion_time completion time of route in seconds
      *
      * @return $this
      */
@@ -350,7 +350,7 @@ class Route implements ModelInterface, ArrayAccess
     /**
      * Sets waiting_time
      *
-     * @param int $waiting_time waiting time of route in ms
+     * @param int $waiting_time waiting time of route in seconds
      *
      * @return $this
      */

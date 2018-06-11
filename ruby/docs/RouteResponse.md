@@ -1,4 +1,4 @@
-# DirectionsApiClient::RouteResponse
+# GraphHopperClient::RouteResponse
 
 ## Properties
 Name | Type | Description | Notes

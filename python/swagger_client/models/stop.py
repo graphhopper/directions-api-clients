@@ -90,7 +90,7 @@ class Stop(object):
     def duration(self):
         """Gets the duration of this Stop.  # noqa: E501
 
-        duration of stop, i.e. time in ms the corresponding activity takes  # noqa: E501
+        duration of stop, i.e. time in seconds the corresponding activity takes  # noqa: E501
 
         :return: The duration of this Stop.  # noqa: E501
         :rtype: int
@@ -101,7 +101,7 @@ class Stop(object):
     def duration(self, duration):
         """Sets the duration of this Stop.
 
-        duration of stop, i.e. time in ms the corresponding activity takes  # noqa: E501
+        duration of stop, i.e. time in seconds the corresponding activity takes  # noqa: E501
 
         :param duration: The duration of this Stop.  # noqa: E501
         :type: int

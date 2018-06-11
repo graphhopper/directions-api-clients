@@ -34,12 +34,12 @@ impl<C: hyper::client::Connect> RoutingApiClient<C> {
 }
 
 pub trait RoutingApi {
-    fn route_get(&self, point: Vec<String>, points_encoded: bool, key: &str, locale: &str, instructions: bool, vehicle: &str, elevation: bool, calc_points: bool, point_hint: Vec<String>, ch_disable: bool, weighting: &str, edge_traversal: bool, algorithm: &str, heading: i32, heading_penalty: i32, pass_through: bool, round_trip_distance: i32, round_trip_seed: i64, alternative_route_max_paths: i32, alternative_route_max_weight_factor: i32, alternative_route_max_share_factor: i32) -> Box<Future<Item = ::models::RouteResponse, Error = Error<serde_json::Value>>>;
+    fn route_get(&self, point: Vec<String>, points_encoded: bool, key: &str, locale: &str, instructions: bool, vehicle: &str, elevation: bool, calc_points: bool, point_hint: Vec<String>, ch_disable: bool, weighting: &str, edge_traversal: bool, algorithm: &str, heading: i32, heading_penalty: i32, pass_through: bool, details: Vec<String>, round_trip_distance: i32, round_trip_seed: i64, alternative_route_max_paths: i32, alternative_route_max_weight_factor: i32, alternative_route_max_share_factor: i32, avoid: &str) -> Box<Future<Item = ::models::RouteResponse, Error = Error<serde_json::Value>>>;
 }
 
 
 impl<C: hyper::client::Connect>RoutingApi for RoutingApiClient<C> {
-    fn route_get(&self, point: Vec<String>, points_encoded: bool, key: &str, locale: &str, instructions: bool, vehicle: &str, elevation: bool, calc_points: bool, point_hint: Vec<String>, ch_disable: bool, weighting: &str, edge_traversal: bool, algorithm: &str, heading: i32, heading_penalty: i32, pass_through: bool, round_trip_distance: i32, round_trip_seed: i64, alternative_route_max_paths: i32, alternative_route_max_weight_factor: i32, alternative_route_max_share_factor: i32) -> Box<Future<Item = ::models::RouteResponse, Error = Error<serde_json::Value>>> {
+    fn route_get(&self, point: Vec<String>, points_encoded: bool, key: &str, locale: &str, instructions: bool, vehicle: &str, elevation: bool, calc_points: bool, point_hint: Vec<String>, ch_disable: bool, weighting: &str, edge_traversal: bool, algorithm: &str, heading: i32, heading_penalty: i32, pass_through: bool, details: Vec<String>, round_trip_distance: i32, round_trip_seed: i64, alternative_route_max_paths: i32, alternative_route_max_weight_factor: i32, alternative_route_max_share_factor: i32, avoid: &str) -> Box<Future<Item = ::models::RouteResponse, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let method = hyper::Method::Get;
@@ -60,11 +60,13 @@ impl<C: hyper::client::Connect>RoutingApi for RoutingApiClient<C> {
             .append_pair("heading", &heading.to_string())
             .append_pair("heading_penalty", &heading_penalty.to_string())
             .append_pair("pass_through", &pass_through.to_string())
+            .append_pair("details", &details.join(",").to_string())
             .append_pair("round_trip.distance", &round_trip_distance.to_string())
             .append_pair("round_trip.seed", &round_trip_seed.to_string())
             .append_pair("alternative_route.max_paths", &alternative_route_max_paths.to_string())
             .append_pair("alternative_route.max_weight_factor", &alternative_route_max_weight_factor.to_string())
             .append_pair("alternative_route.max_share_factor", &alternative_route_max_share_factor.to_string())
+            .append_pair("avoid", &avoid.to_string())
             .append_pair("key", &key.to_string())
             .finish();
         let uri_str = format!("{}/route{}", configuration.base_path, query);

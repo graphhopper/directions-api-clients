@@ -44,10 +44,10 @@ class GeocodingApi(object):
 
         :param async bool
         :param str key: Get your key at graphhopper.com (required)
-        :param str q: If you do forward geocoding, then this would be a textual description of the adress you are looking for. If you do reverse geocoding this would be in lat,lon.
+        :param str q: If you do forward geocoding, then this would be a textual description of the address you are looking for
         :param str locale: Display the search results for the specified locale. Currently French (fr), English (en), German (de) and Italian (it) are supported. If the locale wasn't found the default (en) is used.
         :param int limit: Specify the maximum number of returned results
-        :param bool reverse: Set to true to do a reverse Geocoding request
+        :param bool reverse: Set to true to do a reverse Geocoding request, see point parameter
         :param str point: The location bias in the format 'latitude,longitude' e.g. point=45.93272,11.58803
         :param str provider: Can be either, default, nominatim, opencagedata
         :return: GeocodingResponse
@@ -72,10 +72,10 @@ class GeocodingApi(object):
 
         :param async bool
         :param str key: Get your key at graphhopper.com (required)
-        :param str q: If you do forward geocoding, then this would be a textual description of the adress you are looking for. If you do reverse geocoding this would be in lat,lon.
+        :param str q: If you do forward geocoding, then this would be a textual description of the address you are looking for
         :param str locale: Display the search results for the specified locale. Currently French (fr), English (en), German (de) and Italian (it) are supported. If the locale wasn't found the default (en) is used.
         :param int limit: Specify the maximum number of returned results
-        :param bool reverse: Set to true to do a reverse Geocoding request
+        :param bool reverse: Set to true to do a reverse Geocoding request, see point parameter
         :param str point: The location bias in the format 'latitude,longitude' e.g. point=45.93272,11.58803
         :param str provider: Can be either, default, nominatim, opencagedata
         :return: GeocodingResponse

@@ -12,7 +12,7 @@ Swagger Codegen version: 2.4.0-SNAPSHOT
 
 require 'date'
 
-module DirectionsApiClient
+module GraphHopperClient
 
   class Shipment
     # Unique identifier of service
@@ -37,6 +37,12 @@ module DirectionsApiClient
     # array of allowed vehicle ids
     attr_accessor :allowed_vehicles
 
+    # array of disallowed vehicle ids
+    attr_accessor :disallowed_vehicles
+
+    # max time shipment can stay in vehicle
+    attr_accessor :max_time_in_vehicle
+
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -48,7 +54,9 @@ module DirectionsApiClient
         :'delivery' => :'delivery',
         :'size' => :'size',
         :'required_skills' => :'required_skills',
-        :'allowed_vehicles' => :'allowed_vehicles'
+        :'allowed_vehicles' => :'allowed_vehicles',
+        :'disallowed_vehicles' => :'disallowed_vehicles',
+        :'max_time_in_vehicle' => :'max_time_in_vehicle'
       }
     end
 
@@ -62,7 +70,9 @@ module DirectionsApiClient
         :'delivery' => :'Stop',
         :'size' => :'Array<Integer>',
         :'required_skills' => :'Array<String>',
-        :'allowed_vehicles' => :'Array<String>'
+        :'allowed_vehicles' => :'Array<String>',
+        :'disallowed_vehicles' => :'Array<String>',
+        :'max_time_in_vehicle' => :'Integer'
       }
     end
 
@@ -112,6 +122,16 @@ module DirectionsApiClient
         end
       end
 
+      if attributes.has_key?(:'disallowed_vehicles')
+        if (value = attributes[:'disallowed_vehicles']).is_a?(Array)
+          self.disallowed_vehicles = value
+        end
+      end
+
+      if attributes.has_key?(:'max_time_in_vehicle')
+        self.max_time_in_vehicle = attributes[:'max_time_in_vehicle']
+      end
+
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -139,7 +159,9 @@ module DirectionsApiClient
           delivery == o.delivery &&
           size == o.size &&
           required_skills == o.required_skills &&
-          allowed_vehicles == o.allowed_vehicles
+          allowed_vehicles == o.allowed_vehicles &&
+          disallowed_vehicles == o.disallowed_vehicles &&
+          max_time_in_vehicle == o.max_time_in_vehicle
     end
 
     # @see the `==` method
@@ -151,7 +173,7 @@ module DirectionsApiClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [id, name, priority, pickup, delivery, size, required_skills, allowed_vehicles].hash
+      [id, name, priority, pickup, delivery, size, required_skills, allowed_vehicles, disallowed_vehicles, max_time_in_vehicle].hash
     end
 
     # Builds the object from hash
@@ -211,7 +233,7 @@ module DirectionsApiClient
           end
         end
       else # model
-        temp_model = DirectionsApiClient.const_get(type).new
+        temp_model = GraphHopperClient.const_get(type).new
         temp_model.build_from_hash(value)
       end
     end

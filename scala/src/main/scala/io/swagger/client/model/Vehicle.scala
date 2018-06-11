@@ -30,6 +30,12 @@ case class Vehicle (
   // array of skills
   skills: Option[List[String]] = None,
   // max distance of vehicle
-  maxDistance: Option[Long] = None
+  maxDistance: Option[Long] = None,
+  // max drive time of vehicle
+  maxDrivingTime: Option[Long] = None,
+  // max number of jobs the vehicle can load
+  maxJobs: Option[Integer] = None,
+  // max number of activities the vehicle can conduct
+  maxActivities: Option[Integer] = None
 )
 

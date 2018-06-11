@@ -47,5 +47,11 @@
 /* array of allowed vehicle ids [optional]
  */
 @property(nonatomic) NSArray<NSString*>* allowedVehicles;
+/* array of disallowed vehicle ids [optional]
+ */
+@property(nonatomic) NSArray<NSString*>* disallowedVehicles;
+/* max time shipment can stay in vehicle [optional]
+ */
+@property(nonatomic) NSNumber* maxTimeInVehicle;
 
 @end

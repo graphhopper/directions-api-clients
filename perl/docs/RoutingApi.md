@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 
 # **route_get**
-> RouteResponse route_get(point => $point, points_encoded => $points_encoded, key => $key, locale => $locale, instructions => $instructions, vehicle => $vehicle, elevation => $elevation, calc_points => $calc_points, point_hint => $point_hint, ch/disable => $ch/disable, weighting => $weighting, edge_traversal => $edge_traversal, algorithm => $algorithm, heading => $heading, heading_penalty => $heading_penalty, pass_through => $pass_through, round_trip/distance => $round_trip/distance, round_trip/seed => $round_trip/seed, alternative_route/max_paths => $alternative_route/max_paths, alternative_route/max_weight_factor => $alternative_route/max_weight_factor, alternative_route/max_share_factor => $alternative_route/max_share_factor)
+> RouteResponse route_get(point => $point, points_encoded => $points_encoded, key => $key, locale => $locale, instructions => $instructions, vehicle => $vehicle, elevation => $elevation, calc_points => $calc_points, point_hint => $point_hint, ch/disable => $ch/disable, weighting => $weighting, edge_traversal => $edge_traversal, algorithm => $algorithm, heading => $heading, heading_penalty => $heading_penalty, pass_through => $pass_through, details => $details, round_trip/distance => $round_trip/distance, round_trip/seed => $round_trip/seed, alternative_route/max_paths => $alternative_route/max_paths, alternative_route/max_weight_factor => $alternative_route/max_weight_factor, alternative_route/max_share_factor => $alternative_route/max_share_factor, avoid => $avoid)
 
 Routing Request
 
@@ -42,14 +42,16 @@ my $algorithm = 'algorithm_example'; # string | The algorithm to calculate the r
 my $heading = 56; # int | Favour a heading direction for a certain point. Specify either one heading for the start point or as many as there are points. In this case headings are associated by their order to the specific points. Headings are given as north based clockwise angle between 0 and 360 degree. This parameter also influences the tour generated with `algorithm=round_trip` and force the initial direction.
 my $heading_penalty = 56; # int | Penalty for omitting a specified heading. The penalty corresponds to the accepted time delay in seconds in comparison to the route without a heading.
 my $pass_through = 1; # boolean | If `true` u-turns are avoided at via-points with regard to the `heading_penalty`.
+my $details = []; # ARRAY[string] | List of additional trip attributes to be returned. Try some of the following: `average_speed`, `street_name`, `edge_id`, `time`, `distance`.
 my $round_trip/distance = 56; # int | If `algorithm=round_trip` this parameter configures approximative length of the resulting round trip
 my $round_trip/seed = 789; # int | If `algorithm=round_trip` this parameter introduces randomness if e.g. the first try wasn't good.
 my $alternative_route/max_paths = 56; # int | If `algorithm=alternative_route` this parameter sets the number of maximum paths which should be calculated. Increasing can lead to worse alternatives.
 my $alternative_route/max_weight_factor = 56; # int | If `algorithm=alternative_route` this parameter sets the factor by which the alternatives routes can be longer than the optimal route. Increasing can lead to worse alternatives.
 my $alternative_route/max_share_factor = 56; # int | If `algorithm=alternative_route` this parameter specifies how much alternatives routes can have maximum in common with the optimal route. Increasing can lead to worse alternatives.
+my $avoid = 'avoid_example'; # string | comma separate list to avoid certain roads. You can avoid motorway, ferry, tunnel or track
 
 eval { 
-    my $result = $api_instance->route_get(point => $point, points_encoded => $points_encoded, key => $key, locale => $locale, instructions => $instructions, vehicle => $vehicle, elevation => $elevation, calc_points => $calc_points, point_hint => $point_hint, ch/disable => $ch/disable, weighting => $weighting, edge_traversal => $edge_traversal, algorithm => $algorithm, heading => $heading, heading_penalty => $heading_penalty, pass_through => $pass_through, round_trip/distance => $round_trip/distance, round_trip/seed => $round_trip/seed, alternative_route/max_paths => $alternative_route/max_paths, alternative_route/max_weight_factor => $alternative_route/max_weight_factor, alternative_route/max_share_factor => $alternative_route/max_share_factor);
+    my $result = $api_instance->route_get(point => $point, points_encoded => $points_encoded, key => $key, locale => $locale, instructions => $instructions, vehicle => $vehicle, elevation => $elevation, calc_points => $calc_points, point_hint => $point_hint, ch/disable => $ch/disable, weighting => $weighting, edge_traversal => $edge_traversal, algorithm => $algorithm, heading => $heading, heading_penalty => $heading_penalty, pass_through => $pass_through, details => $details, round_trip/distance => $round_trip/distance, round_trip/seed => $round_trip/seed, alternative_route/max_paths => $alternative_route/max_paths, alternative_route/max_weight_factor => $alternative_route/max_weight_factor, alternative_route/max_share_factor => $alternative_route/max_share_factor, avoid => $avoid);
     print Dumper($result);
 };
 if ($@) {
@@ -77,11 +79,13 @@ Name | Type | Description  | Notes
  **heading** | **int**| Favour a heading direction for a certain point. Specify either one heading for the start point or as many as there are points. In this case headings are associated by their order to the specific points. Headings are given as north based clockwise angle between 0 and 360 degree. This parameter also influences the tour generated with &#x60;algorithm&#x3D;round_trip&#x60; and force the initial direction. | [optional] 
  **heading_penalty** | **int**| Penalty for omitting a specified heading. The penalty corresponds to the accepted time delay in seconds in comparison to the route without a heading. | [optional] 
  **pass_through** | **boolean**| If &#x60;true&#x60; u-turns are avoided at via-points with regard to the &#x60;heading_penalty&#x60;. | [optional] 
+ **details** | [**ARRAY[string]**](string.md)| List of additional trip attributes to be returned. Try some of the following: &#x60;average_speed&#x60;, &#x60;street_name&#x60;, &#x60;edge_id&#x60;, &#x60;time&#x60;, &#x60;distance&#x60;. | [optional] 
  **round_trip/distance** | **int**| If &#x60;algorithm&#x3D;round_trip&#x60; this parameter configures approximative length of the resulting round trip | [optional] 
  **round_trip/seed** | **int**| If &#x60;algorithm&#x3D;round_trip&#x60; this parameter introduces randomness if e.g. the first try wasn&#39;t good. | [optional] 
  **alternative_route/max_paths** | **int**| If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the number of maximum paths which should be calculated. Increasing can lead to worse alternatives. | [optional] 
  **alternative_route/max_weight_factor** | **int**| If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the factor by which the alternatives routes can be longer than the optimal route. Increasing can lead to worse alternatives. | [optional] 
  **alternative_route/max_share_factor** | **int**| If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter specifies how much alternatives routes can have maximum in common with the optimal route. Increasing can lead to worse alternatives. | [optional] 
+ **avoid** | **string**| comma separate list to avoid certain roads. You can avoid motorway, ferry, tunnel or track | [optional] 
 
 ### Return type
 

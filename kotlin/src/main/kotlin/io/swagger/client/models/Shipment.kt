@@ -23,6 +23,8 @@ import io.swagger.client.models.Stop
  * @param size array of capacity dimensions
  * @param required_skills array of required skills
  * @param allowed_vehicles array of allowed vehicle ids
+ * @param disallowed_vehicles array of disallowed vehicle ids
+ * @param max_time_in_vehicle max time shipment can stay in vehicle
  */
 data class Shipment (
     /* Unique identifier of service */
@@ -38,7 +40,11 @@ data class Shipment (
     /* array of required skills */
     val required_skills: kotlin.Array<kotlin.String>? = null,
     /* array of allowed vehicle ids */
-    val allowed_vehicles: kotlin.Array<kotlin.String>? = null
+    val allowed_vehicles: kotlin.Array<kotlin.String>? = null,
+    /* array of disallowed vehicle ids */
+    val disallowed_vehicles: kotlin.Array<kotlin.String>? = null,
+    /* max time shipment can stay in vehicle */
+    val max_time_in_vehicle: kotlin.Long? = null
 ) {
 
 }

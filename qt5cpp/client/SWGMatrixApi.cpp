@@ -29,7 +29,7 @@ SWGMatrixApi::SWGMatrixApi(QString host, QString basePath) {
 }
 
 void
-SWGMatrixApi::matrixGet(QString* key, QList<QString*>* point, QString* from_point, QString* to_point, QList<QString*>* out_array, QString* vehicle) {
+SWGMatrixApi::matrixGet(QString* key, QList<QString*>* point, QList<QString*>* from_point, QList<QString*>* to_point, QList<QString*>* out_array, QString* vehicle) {
     QString fullPath;
     fullPath.append(this->host).append(this->basePath).append("/matrix");
 
@@ -76,21 +76,89 @@ SWGMatrixApi::matrixGet(QString* key, QList<QString*>* point, QString* from_poin
       }
     }
 
-    if (fullPath.indexOf("?") > 0) 
-      fullPath.append("&");
-    else 
-      fullPath.append("?");
-    fullPath.append(QUrl::toPercentEncoding("from_point"))
-        .append("=")
-        .append(QUrl::toPercentEncoding(stringValue(from_point)));
 
-    if (fullPath.indexOf("?") > 0) 
-      fullPath.append("&");
-    else 
-      fullPath.append("?");
-    fullPath.append(QUrl::toPercentEncoding("to_point"))
-        .append("=")
-        .append(QUrl::toPercentEncoding(stringValue(to_point)));
+
+    if (from_point->size() > 0) {
+      if (QString("multi").indexOf("multi") == 0) {
+        foreach(QString* t, *from_point) {
+          if (fullPath.indexOf("?") > 0)
+            fullPath.append("&");
+          else 
+            fullPath.append("?");
+          fullPath.append("from_point=").append(stringValue(t));
+        }
+      }
+      else if (QString("multi").indexOf("ssv") == 0) {
+        if (fullPath.indexOf("?") > 0)
+          fullPath.append("&");
+        else 
+          fullPath.append("?");
+        fullPath.append("from_point=");
+        qint32 count = 0;
+        foreach(QString* t, *from_point) {
+          if (count > 0) {
+            fullPath.append(" ");
+          }
+          fullPath.append(stringValue(t));
+        }
+      }
+      else if (QString("multi").indexOf("tsv") == 0) {
+        if (fullPath.indexOf("?") > 0)
+          fullPath.append("&");
+        else 
+          fullPath.append("?");
+        fullPath.append("from_point=");
+        qint32 count = 0;
+        foreach(QString* t, *from_point) {
+          if (count > 0) {
+            fullPath.append("\t");
+          }
+          fullPath.append(stringValue(t));
+        }
+      }
+    }
+
+
+
+    if (to_point->size() > 0) {
+      if (QString("multi").indexOf("multi") == 0) {
+        foreach(QString* t, *to_point) {
+          if (fullPath.indexOf("?") > 0)
+            fullPath.append("&");
+          else 
+            fullPath.append("?");
+          fullPath.append("to_point=").append(stringValue(t));
+        }
+      }
+      else if (QString("multi").indexOf("ssv") == 0) {
+        if (fullPath.indexOf("?") > 0)
+          fullPath.append("&");
+        else 
+          fullPath.append("?");
+        fullPath.append("to_point=");
+        qint32 count = 0;
+        foreach(QString* t, *to_point) {
+          if (count > 0) {
+            fullPath.append(" ");
+          }
+          fullPath.append(stringValue(t));
+        }
+      }
+      else if (QString("multi").indexOf("tsv") == 0) {
+        if (fullPath.indexOf("?") > 0)
+          fullPath.append("&");
+        else 
+          fullPath.append("?");
+        fullPath.append("to_point=");
+        qint32 count = 0;
+        foreach(QString* t, *to_point) {
+          if (count > 0) {
+            fullPath.append("\t");
+          }
+          fullPath.append(stringValue(t));
+        }
+      }
+    }
 
 
 

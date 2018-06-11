@@ -17,13 +17,13 @@ import io.swagger.client.models.TimeWindow
 /**
  * 
  * @param address 
- * @param duration duration of stop, i.e. time in ms the corresponding activity takes
+ * @param duration duration of stop, i.e. time in seconds the corresponding activity takes
  * @param preparation_time preparation time of service, e.g. search for a parking space. it only falls due if the location of previous activity differs from this location
  * @param time_windows array of time windows. currently, only a single time window is allowed
  */
 data class Stop (
     val address: Address? = null,
-    /* duration of stop, i.e. time in ms the corresponding activity takes */
+    /* duration of stop, i.e. time in seconds the corresponding activity takes */
     val duration: kotlin.Long? = null,
     /* preparation time of service, e.g. search for a parking space. it only falls due if the location of previous activity differs from this location */
     val preparation_time: kotlin.Long? = null,

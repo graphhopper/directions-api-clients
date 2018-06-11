@@ -208,6 +208,13 @@ __PACKAGE__->method_documentation({
     	format => '',
     	read_only => '',
     		},
+    'details' => {
+    	datatype => 'object',
+    	base_name => 'details',
+    	description => '',
+    	format => '',
+    	read_only => '',
+    		},
 });
 
 __PACKAGE__->swagger_types( {
@@ -219,7 +226,8 @@ __PACKAGE__->swagger_types( {
     'points_encoded' => 'boolean',
     'bbox' => 'ARRAY[double]',
     'snapped_waypoints' => 'ResponseCoordinates',
-    'instructions' => 'ResponseInstructions'
+    'instructions' => 'ResponseInstructions',
+    'details' => 'object'
 } );
 
 __PACKAGE__->attribute_map( {
@@ -231,7 +239,8 @@ __PACKAGE__->attribute_map( {
     'points_encoded' => 'points_encoded',
     'bbox' => 'bbox',
     'snapped_waypoints' => 'snapped_waypoints',
-    'instructions' => 'instructions'
+    'instructions' => 'instructions',
+    'details' => 'details'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

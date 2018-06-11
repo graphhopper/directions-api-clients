@@ -21,6 +21,7 @@ Name | Value
 CAR | &quot;car&quot;
 BIKE | &quot;bike&quot;
 FOOT | &quot;foot&quot;
+HIKE | &quot;hike&quot;
 MTB | &quot;mtb&quot;
 RACINGBIKE | &quot;racingbike&quot;
 SCOOTER | &quot;scooter&quot;

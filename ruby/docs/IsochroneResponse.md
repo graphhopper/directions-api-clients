@@ -1,4 +1,4 @@
-# DirectionsApiClient::IsochroneResponse
+# GraphHopperClient::IsochroneResponse
 
 ## Properties
 Name | Type | Description | Notes

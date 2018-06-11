@@ -15,4 +15,10 @@ type SolutionUnassigned struct {
 
 	// An array of ids of unassigned shipments
 	Shipments []string `json:"shipments,omitempty"`
+
+	// An array of ids of unassigned breaks
+	Breaks []string `json:"breaks,omitempty"`
+
+	// An array of details, i.e. reason for unassigned services or shipments
+	Details []Detail `json:"details,omitempty"`
 }

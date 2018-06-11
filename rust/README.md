@@ -39,6 +39,7 @@ Class | Method | HTTP request | Description
  - [CostMatrix](docs/CostMatrix.md)
  - [CostMatrixData](docs/CostMatrixData.md)
  - [CostMatrixDataInfo](docs/CostMatrixDataInfo.md)
+ - [Detail](docs/Detail.md)
  - [GeocodingLocation](docs/GeocodingLocation.md)
  - [GeocodingPoint](docs/GeocodingPoint.md)
  - [GeocodingResponse](docs/GeocodingResponse.md)

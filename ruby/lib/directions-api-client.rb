@@ -24,6 +24,7 @@ require 'directions-api-client/models/configuration'
 require 'directions-api-client/models/cost_matrix'
 require 'directions-api-client/models/cost_matrix_data'
 require 'directions-api-client/models/cost_matrix_data_info'
+require 'directions-api-client/models/detail'
 require 'directions-api-client/models/gh_error'
 require 'directions-api-client/models/gh_error_hints'
 require 'directions-api-client/models/geocoding_location'
@@ -69,10 +70,10 @@ require 'directions-api-client/api/routing_api'
 require 'directions-api-client/api/solution_api'
 require 'directions-api-client/api/vrp_api'
 
-module DirectionsApiClient
+module GraphHopperClient
   class << self
     # Customize default settings for the SDK using block.
-    #   DirectionsApiClient.configure do |config|
+    #   GraphHopperClient.configure do |config|
     #     config.username = "xxx"
     #     config.password = "xxx"
     #   end

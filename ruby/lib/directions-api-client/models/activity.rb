@@ -12,7 +12,7 @@ Swagger Codegen version: 2.4.0-SNAPSHOT
 
 require 'date'
 
-module DirectionsApiClient
+module GraphHopperClient
 
   class Activity
     # type of activity
@@ -24,19 +24,19 @@ module DirectionsApiClient
     # id that refers to address
     attr_accessor :location_id
 
-    # arrival time at this activity in ms
+    # arrival time at this activity in seconds
     attr_accessor :arr_time
 
     # end time of and thus departure time at this activity
     attr_accessor :end_time
 
-    # waiting time at this activity in ms
+    # waiting time at this activity in seconds
     attr_accessor :waiting_time
 
     # cumulated distance from start to this activity in m
     attr_accessor :distance
 
-    # driving time of driver in ms
+    # driving time of driver in seconds
     attr_accessor :driving_time
 
     # Array with size/capacity dimensions before this activity
@@ -264,7 +264,7 @@ module DirectionsApiClient
           end
         end
       else # model
-        temp_model = DirectionsApiClient.const_get(type).new
+        temp_model = GraphHopperClient.const_get(type).new
         temp_model.build_from_hash(value)
       end
     end

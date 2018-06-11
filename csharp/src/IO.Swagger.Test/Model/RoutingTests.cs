@@ -74,6 +74,30 @@ namespace IO.Swagger.Test
         {
             // TODO unit test for the property 'CalcPoints'
         }
+        /// <summary>
+        /// Test the property 'ConsiderTraffic'
+        /// </summary>
+        [Test]
+        public void ConsiderTrafficTest()
+        {
+            // TODO unit test for the property 'ConsiderTraffic'
+        }
+        /// <summary>
+        /// Test the property 'NetworkDataProvider'
+        /// </summary>
+        [Test]
+        public void NetworkDataProviderTest()
+        {
+            // TODO unit test for the property 'NetworkDataProvider'
+        }
+        /// <summary>
+        /// Test the property 'FailFast'
+        /// </summary>
+        [Test]
+        public void FailFastTest()
+        {
+            // TODO unit test for the property 'FailFast'
+        }
 
     }
 

@@ -43,7 +43,10 @@ namespace IO.Swagger.Model
         /// <param name="LatestEnd">latest end of vehicle at its end location.</param>
         /// <param name="Skills">array of skills.</param>
         /// <param name="MaxDistance">max distance of vehicle.</param>
-        public Vehicle(string VehicleId = default(string), string TypeId = default(string), Address StartAddress = default(Address), Address EndAddress = default(Address), Break Break = default(Break), bool? ReturnToDepot = default(bool?), long? EarliestStart = default(long?), long? LatestEnd = default(long?), List<string> Skills = default(List<string>), long? MaxDistance = default(long?))
+        /// <param name="MaxDrivingTime">max drive time of vehicle.</param>
+        /// <param name="MaxJobs">max number of jobs the vehicle can load.</param>
+        /// <param name="MaxActivities">max number of activities the vehicle can conduct.</param>
+        public Vehicle(string VehicleId = default(string), string TypeId = default(string), Address StartAddress = default(Address), Address EndAddress = default(Address), Break Break = default(Break), bool? ReturnToDepot = default(bool?), long? EarliestStart = default(long?), long? LatestEnd = default(long?), List<string> Skills = default(List<string>), long? MaxDistance = default(long?), long? MaxDrivingTime = default(long?), int? MaxJobs = default(int?), int? MaxActivities = default(int?))
         {
             this.VehicleId = VehicleId;
             this.TypeId = TypeId;
@@ -55,6 +58,9 @@ namespace IO.Swagger.Model
             this.LatestEnd = LatestEnd;
             this.Skills = Skills;
             this.MaxDistance = MaxDistance;
+            this.MaxDrivingTime = MaxDrivingTime;
+            this.MaxJobs = MaxJobs;
+            this.MaxActivities = MaxActivities;
         }
         
         /// <summary>
@@ -125,6 +131,27 @@ namespace IO.Swagger.Model
         public long? MaxDistance { get; set; }
 
         /// <summary>
+        /// max drive time of vehicle
+        /// </summary>
+        /// <value>max drive time of vehicle</value>
+        [DataMember(Name="max_driving_time", EmitDefaultValue=false)]
+        public long? MaxDrivingTime { get; set; }
+
+        /// <summary>
+        /// max number of jobs the vehicle can load
+        /// </summary>
+        /// <value>max number of jobs the vehicle can load</value>
+        [DataMember(Name="max_jobs", EmitDefaultValue=false)]
+        public int? MaxJobs { get; set; }
+
+        /// <summary>
+        /// max number of activities the vehicle can conduct
+        /// </summary>
+        /// <value>max number of activities the vehicle can conduct</value>
+        [DataMember(Name="max_activities", EmitDefaultValue=false)]
+        public int? MaxActivities { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -142,6 +169,9 @@ namespace IO.Swagger.Model
             sb.Append("  LatestEnd: ").Append(LatestEnd).Append("\n");
             sb.Append("  Skills: ").Append(Skills).Append("\n");
             sb.Append("  MaxDistance: ").Append(MaxDistance).Append("\n");
+            sb.Append("  MaxDrivingTime: ").Append(MaxDrivingTime).Append("\n");
+            sb.Append("  MaxJobs: ").Append(MaxJobs).Append("\n");
+            sb.Append("  MaxActivities: ").Append(MaxActivities).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -225,6 +255,21 @@ namespace IO.Swagger.Model
                     this.MaxDistance == input.MaxDistance ||
                     (this.MaxDistance != null &&
                     this.MaxDistance.Equals(input.MaxDistance))
+                ) && 
+                (
+                    this.MaxDrivingTime == input.MaxDrivingTime ||
+                    (this.MaxDrivingTime != null &&
+                    this.MaxDrivingTime.Equals(input.MaxDrivingTime))
+                ) && 
+                (
+                    this.MaxJobs == input.MaxJobs ||
+                    (this.MaxJobs != null &&
+                    this.MaxJobs.Equals(input.MaxJobs))
+                ) && 
+                (
+                    this.MaxActivities == input.MaxActivities ||
+                    (this.MaxActivities != null &&
+                    this.MaxActivities.Equals(input.MaxActivities))
                 );
         }
 
@@ -257,6 +302,12 @@ namespace IO.Swagger.Model
                     hashCode = hashCode * 59 + this.Skills.GetHashCode();
                 if (this.MaxDistance != null)
                     hashCode = hashCode * 59 + this.MaxDistance.GetHashCode();
+                if (this.MaxDrivingTime != null)
+                    hashCode = hashCode * 59 + this.MaxDrivingTime.GetHashCode();
+                if (this.MaxJobs != null)
+                    hashCode = hashCode * 59 + this.MaxJobs.GetHashCode();
+                if (this.MaxActivities != null)
+                    hashCode = hashCode * 59 + this.MaxActivities.GetHashCode();
                 return hashCode;
             }
         }

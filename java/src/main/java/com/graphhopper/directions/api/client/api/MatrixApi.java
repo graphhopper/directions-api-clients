@@ -63,13 +63,13 @@ public class MatrixApi {
      * @param fromPoint The starting points for the routes. E.g. if you want to calculate the three routes A-&amp;gt;1, A-&amp;gt;2, A-&amp;gt;3 then you have one from_point parameter and three to_point parameters. Is a string with the format latitude,longitude. (optional)
      * @param toPoint The destination points for the routes. Is a string with the format latitude,longitude. (optional)
      * @param outArray Specifies which arrays should be included in the response. Specify one or more of the following options &#39;weights&#39;, &#39;times&#39;, &#39;distances&#39;. To specify more than one array use e.g. out_array&#x3D;times&amp;out_array&#x3D;distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API. (optional)
-     * @param vehicle The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc, see here for the details. (optional, default to car)
+     * @param vehicle The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc (optional, default to car)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call matrixGetCall(String key, List<String> point, String fromPoint, String toPoint, List<String> outArray, String vehicle, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call matrixGetCall(String key, List<String> point, List<String> fromPoint, List<String> toPoint, List<String> outArray, String vehicle, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -80,9 +80,9 @@ public class MatrixApi {
         if (point != null)
         localVarCollectionQueryParams.addAll(apiClient.parameterToPairs("multi", "point", point));
         if (fromPoint != null)
-        localVarQueryParams.addAll(apiClient.parameterToPair("from_point", fromPoint));
+        localVarCollectionQueryParams.addAll(apiClient.parameterToPairs("multi", "from_point", fromPoint));
         if (toPoint != null)
-        localVarQueryParams.addAll(apiClient.parameterToPair("to_point", toPoint));
+        localVarCollectionQueryParams.addAll(apiClient.parameterToPairs("multi", "to_point", toPoint));
         if (outArray != null)
         localVarCollectionQueryParams.addAll(apiClient.parameterToPairs("multi", "out_array", outArray));
         if (vehicle != null)
@@ -123,7 +123,7 @@ public class MatrixApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call matrixGetValidateBeforeCall(String key, List<String> point, String fromPoint, String toPoint, List<String> outArray, String vehicle, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call matrixGetValidateBeforeCall(String key, List<String> point, List<String> fromPoint, List<String> toPoint, List<String> outArray, String vehicle, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'key' is set
         if (key == null) {
@@ -144,11 +144,11 @@ public class MatrixApi {
      * @param fromPoint The starting points for the routes. E.g. if you want to calculate the three routes A-&amp;gt;1, A-&amp;gt;2, A-&amp;gt;3 then you have one from_point parameter and three to_point parameters. Is a string with the format latitude,longitude. (optional)
      * @param toPoint The destination points for the routes. Is a string with the format latitude,longitude. (optional)
      * @param outArray Specifies which arrays should be included in the response. Specify one or more of the following options &#39;weights&#39;, &#39;times&#39;, &#39;distances&#39;. To specify more than one array use e.g. out_array&#x3D;times&amp;out_array&#x3D;distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API. (optional)
-     * @param vehicle The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc, see here for the details. (optional, default to car)
+     * @param vehicle The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc (optional, default to car)
      * @return MatrixResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public MatrixResponse matrixGet(String key, List<String> point, String fromPoint, String toPoint, List<String> outArray, String vehicle) throws ApiException {
+    public MatrixResponse matrixGet(String key, List<String> point, List<String> fromPoint, List<String> toPoint, List<String> outArray, String vehicle) throws ApiException {
         ApiResponse<MatrixResponse> resp = matrixGetWithHttpInfo(key, point, fromPoint, toPoint, outArray, vehicle);
         return resp.getData();
     }
@@ -161,11 +161,11 @@ public class MatrixApi {
      * @param fromPoint The starting points for the routes. E.g. if you want to calculate the three routes A-&amp;gt;1, A-&amp;gt;2, A-&amp;gt;3 then you have one from_point parameter and three to_point parameters. Is a string with the format latitude,longitude. (optional)
      * @param toPoint The destination points for the routes. Is a string with the format latitude,longitude. (optional)
      * @param outArray Specifies which arrays should be included in the response. Specify one or more of the following options &#39;weights&#39;, &#39;times&#39;, &#39;distances&#39;. To specify more than one array use e.g. out_array&#x3D;times&amp;out_array&#x3D;distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API. (optional)
-     * @param vehicle The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc, see here for the details. (optional, default to car)
+     * @param vehicle The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc (optional, default to car)
      * @return ApiResponse&lt;MatrixResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<MatrixResponse> matrixGetWithHttpInfo(String key, List<String> point, String fromPoint, String toPoint, List<String> outArray, String vehicle) throws ApiException {
+    public ApiResponse<MatrixResponse> matrixGetWithHttpInfo(String key, List<String> point, List<String> fromPoint, List<String> toPoint, List<String> outArray, String vehicle) throws ApiException {
         com.squareup.okhttp.Call call = matrixGetValidateBeforeCall(key, point, fromPoint, toPoint, outArray, vehicle, null, null);
         Type localVarReturnType = new TypeToken<MatrixResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -179,12 +179,12 @@ public class MatrixApi {
      * @param fromPoint The starting points for the routes. E.g. if you want to calculate the three routes A-&amp;gt;1, A-&amp;gt;2, A-&amp;gt;3 then you have one from_point parameter and three to_point parameters. Is a string with the format latitude,longitude. (optional)
      * @param toPoint The destination points for the routes. Is a string with the format latitude,longitude. (optional)
      * @param outArray Specifies which arrays should be included in the response. Specify one or more of the following options &#39;weights&#39;, &#39;times&#39;, &#39;distances&#39;. To specify more than one array use e.g. out_array&#x3D;times&amp;out_array&#x3D;distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API. (optional)
-     * @param vehicle The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc, see here for the details. (optional, default to car)
+     * @param vehicle The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc (optional, default to car)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call matrixGetAsync(String key, List<String> point, String fromPoint, String toPoint, List<String> outArray, String vehicle, final ApiCallback<MatrixResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call matrixGetAsync(String key, List<String> point, List<String> fromPoint, List<String> toPoint, List<String> outArray, String vehicle, final ApiCallback<MatrixResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;

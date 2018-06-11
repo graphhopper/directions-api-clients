@@ -31,21 +31,36 @@ class Routing(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'calc_points': 'bool'
+        'calc_points': 'bool',
+        'consider_traffic': 'bool',
+        'network_data_provider': 'str',
+        'fail_fast': 'bool'
     }
 
     attribute_map = {
-        'calc_points': 'calc_points'
+        'calc_points': 'calc_points',
+        'consider_traffic': 'consider_traffic',
+        'network_data_provider': 'network_data_provider',
+        'fail_fast': 'fail_fast'
     }
 
-    def __init__(self, calc_points=None):  # noqa: E501
+    def __init__(self, calc_points=None, consider_traffic=None, network_data_provider=None, fail_fast=None):  # noqa: E501
         """Routing - a model defined in Swagger"""  # noqa: E501
 
         self._calc_points = None
+        self._consider_traffic = None
+        self._network_data_provider = None
+        self._fail_fast = None
         self.discriminator = None
 
         if calc_points is not None:
             self.calc_points = calc_points
+        if consider_traffic is not None:
+            self.consider_traffic = consider_traffic
+        if network_data_provider is not None:
+            self.network_data_provider = network_data_provider
+        if fail_fast is not None:
+            self.fail_fast = fail_fast
 
     @property
     def calc_points(self):
@@ -69,6 +84,81 @@ class Routing(object):
         """
 
         self._calc_points = calc_points
+
+    @property
+    def consider_traffic(self):
+        """Gets the consider_traffic of this Routing.  # noqa: E501
+
+        indicates whether historical traffic information should be considered  # noqa: E501
+
+        :return: The consider_traffic of this Routing.  # noqa: E501
+        :rtype: bool
+        """
+        return self._consider_traffic
+
+    @consider_traffic.setter
+    def consider_traffic(self, consider_traffic):
+        """Sets the consider_traffic of this Routing.
+
+        indicates whether historical traffic information should be considered  # noqa: E501
+
+        :param consider_traffic: The consider_traffic of this Routing.  # noqa: E501
+        :type: bool
+        """
+
+        self._consider_traffic = consider_traffic
+
+    @property
+    def network_data_provider(self):
+        """Gets the network_data_provider of this Routing.  # noqa: E501
+
+        specifies the data provider  # noqa: E501
+
+        :return: The network_data_provider of this Routing.  # noqa: E501
+        :rtype: str
+        """
+        return self._network_data_provider
+
+    @network_data_provider.setter
+    def network_data_provider(self, network_data_provider):
+        """Sets the network_data_provider of this Routing.
+
+        specifies the data provider  # noqa: E501
+
+        :param network_data_provider: The network_data_provider of this Routing.  # noqa: E501
+        :type: str
+        """
+        allowed_values = ["openstreetmap", "tomtom"]  # noqa: E501
+        if network_data_provider not in allowed_values:
+            raise ValueError(
+                "Invalid value for `network_data_provider` ({0}), must be one of {1}"  # noqa: E501
+                .format(network_data_provider, allowed_values)
+            )
+
+        self._network_data_provider = network_data_provider
+
+    @property
+    def fail_fast(self):
+        """Gets the fail_fast of this Routing.  # noqa: E501
+
+        indicates whether matrix calculation should fail fast when points cannot be connected  # noqa: E501
+
+        :return: The fail_fast of this Routing.  # noqa: E501
+        :rtype: bool
+        """
+        return self._fail_fast
+
+    @fail_fast.setter
+    def fail_fast(self, fail_fast):
+        """Sets the fail_fast of this Routing.
+
+        indicates whether matrix calculation should fail fast when points cannot be connected  # noqa: E501
+
+        :param fail_fast: The fail_fast of this Routing.  # noqa: E501
+        :type: bool
+        """
+
+        self._fail_fast = fail_fast
 
     def to_dict(self):
         """Returns the model properties as a dict"""

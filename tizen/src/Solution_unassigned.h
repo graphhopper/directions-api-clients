@@ -9,6 +9,7 @@
 
 
 #include <string>
+#include "Detail.h"
 #include <list>
 #include "Object.h"
 
@@ -60,10 +61,26 @@ public:
 	/*! \brief Set An array of ids of unassigned shipments
 	 */
 	void setShipments(std::list <std::string> shipments);
+	/*! \brief Get An array of ids of unassigned breaks
+	 */
+	std::list<std::string> getBreaks();
+
+	/*! \brief Set An array of ids of unassigned breaks
+	 */
+	void setBreaks(std::list <std::string> breaks);
+	/*! \brief Get An array of details, i.e. reason for unassigned services or shipments
+	 */
+	std::list<Detail> getDetails();
+
+	/*! \brief Set An array of details, i.e. reason for unassigned services or shipments
+	 */
+	void setDetails(std::list <Detail> details);
 
 private:
 	std::list <std::string>services;
 	std::list <std::string>shipments;
+	std::list <std::string>breaks;
+	std::list <Detail>details;
 	void __init();
 	void __cleanup();
 

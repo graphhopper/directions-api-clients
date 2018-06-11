@@ -20,13 +20,13 @@ pub struct Route {
   /// distance of route in meter
   #[serde(rename = "distance")]
   distance: Option<i64>,
-  /// transport time of route in ms
+  /// transport time of route in seconds
   #[serde(rename = "transport_time")]
   transport_time: Option<i64>,
-  /// completion time of route in ms
+  /// completion time of route in seconds
   #[serde(rename = "completion_time")]
   completion_time: Option<i64>,
-  /// waiting time of route in ms
+  /// waiting time of route in seconds
   #[serde(rename = "waiting_time")]
   waiting_time: Option<i64>,
   /// array of activities

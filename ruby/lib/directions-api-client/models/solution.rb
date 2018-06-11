@@ -12,7 +12,7 @@ Swagger Codegen version: 2.4.0-SNAPSHOT
 
 require 'date'
 
-module DirectionsApiClient
+module GraphHopperClient
 
   class Solution
     # overall costs of solution
@@ -21,16 +21,16 @@ module DirectionsApiClient
     # overall travel distance in meters
     attr_accessor :distance
 
-    # overall transport time in ms
+    # overall transport time in seconds
     attr_accessor :time
 
-    # overall transport time in ms
+    # overall transport time in seconds
     attr_accessor :transport_time
 
-    # operation time of the longest route in ms
+    # operation time of the longest route in seconds
     attr_accessor :max_operation_time
 
-    # total waiting time in ms
+    # total waiting time in seconds
     attr_accessor :waiting_time
 
     # number of employed vehicles
@@ -228,7 +228,7 @@ module DirectionsApiClient
           end
         end
       else # model
-        temp_model = DirectionsApiClient.const_get(type).new
+        temp_model = GraphHopperClient.const_get(type).new
         temp_model.build_from_hash(value)
       end
     end

@@ -17,7 +17,7 @@ require "directions-api-client/version"
 
 Gem::Specification.new do |s|
   s.name        = "directions-api-client"
-  s.version     = DirectionsApiClient::VERSION
+  s.version     = GraphHopperClient::VERSION
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Swagger-Codegen"]
   s.email       = [""]

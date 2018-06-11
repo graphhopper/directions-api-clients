@@ -88,10 +88,10 @@ class GeocodingApi
      * Execute a Geocoding request
      *
      * @param  string $key Get your key at graphhopper.com (required)
-     * @param  string $q If you do forward geocoding, then this would be a textual description of the adress you are looking for. If you do reverse geocoding this would be in lat,lon. (optional)
+     * @param  string $q If you do forward geocoding, then this would be a textual description of the address you are looking for (optional)
      * @param  string $locale Display the search results for the specified locale. Currently French (fr), English (en), German (de) and Italian (it) are supported. If the locale wasn&#39;t found the default (en) is used. (optional)
      * @param  int $limit Specify the maximum number of returned results (optional)
-     * @param  bool $reverse Set to true to do a reverse Geocoding request (optional)
+     * @param  bool $reverse Set to true to do a reverse Geocoding request, see point parameter (optional)
      * @param  string $point The location bias in the format &#39;latitude,longitude&#39; e.g. point&#x3D;45.93272,11.58803 (optional)
      * @param  string $provider Can be either, default, nominatim, opencagedata (optional)
      *
@@ -111,10 +111,10 @@ class GeocodingApi
      * Execute a Geocoding request
      *
      * @param  string $key Get your key at graphhopper.com (required)
-     * @param  string $q If you do forward geocoding, then this would be a textual description of the adress you are looking for. If you do reverse geocoding this would be in lat,lon. (optional)
+     * @param  string $q If you do forward geocoding, then this would be a textual description of the address you are looking for (optional)
      * @param  string $locale Display the search results for the specified locale. Currently French (fr), English (en), German (de) and Italian (it) are supported. If the locale wasn&#39;t found the default (en) is used. (optional)
      * @param  int $limit Specify the maximum number of returned results (optional)
-     * @param  bool $reverse Set to true to do a reverse Geocoding request (optional)
+     * @param  bool $reverse Set to true to do a reverse Geocoding request, see point parameter (optional)
      * @param  string $point The location bias in the format &#39;latitude,longitude&#39; e.g. point&#x3D;45.93272,11.58803 (optional)
      * @param  string $provider Can be either, default, nominatim, opencagedata (optional)
      *
@@ -200,10 +200,10 @@ class GeocodingApi
      * Execute a Geocoding request
      *
      * @param  string $key Get your key at graphhopper.com (required)
-     * @param  string $q If you do forward geocoding, then this would be a textual description of the adress you are looking for. If you do reverse geocoding this would be in lat,lon. (optional)
+     * @param  string $q If you do forward geocoding, then this would be a textual description of the address you are looking for (optional)
      * @param  string $locale Display the search results for the specified locale. Currently French (fr), English (en), German (de) and Italian (it) are supported. If the locale wasn&#39;t found the default (en) is used. (optional)
      * @param  int $limit Specify the maximum number of returned results (optional)
-     * @param  bool $reverse Set to true to do a reverse Geocoding request (optional)
+     * @param  bool $reverse Set to true to do a reverse Geocoding request, see point parameter (optional)
      * @param  string $point The location bias in the format &#39;latitude,longitude&#39; e.g. point&#x3D;45.93272,11.58803 (optional)
      * @param  string $provider Can be either, default, nominatim, opencagedata (optional)
      *
@@ -226,10 +226,10 @@ class GeocodingApi
      * Execute a Geocoding request
      *
      * @param  string $key Get your key at graphhopper.com (required)
-     * @param  string $q If you do forward geocoding, then this would be a textual description of the adress you are looking for. If you do reverse geocoding this would be in lat,lon. (optional)
+     * @param  string $q If you do forward geocoding, then this would be a textual description of the address you are looking for (optional)
      * @param  string $locale Display the search results for the specified locale. Currently French (fr), English (en), German (de) and Italian (it) are supported. If the locale wasn&#39;t found the default (en) is used. (optional)
      * @param  int $limit Specify the maximum number of returned results (optional)
-     * @param  bool $reverse Set to true to do a reverse Geocoding request (optional)
+     * @param  bool $reverse Set to true to do a reverse Geocoding request, see point parameter (optional)
      * @param  string $point The location bias in the format &#39;latitude,longitude&#39; e.g. point&#x3D;45.93272,11.58803 (optional)
      * @param  string $provider Can be either, default, nominatim, opencagedata (optional)
      *
@@ -282,10 +282,10 @@ class GeocodingApi
      * Create request for operation 'geocodeGet'
      *
      * @param  string $key Get your key at graphhopper.com (required)
-     * @param  string $q If you do forward geocoding, then this would be a textual description of the adress you are looking for. If you do reverse geocoding this would be in lat,lon. (optional)
+     * @param  string $q If you do forward geocoding, then this would be a textual description of the address you are looking for (optional)
      * @param  string $locale Display the search results for the specified locale. Currently French (fr), English (en), German (de) and Italian (it) are supported. If the locale wasn&#39;t found the default (en) is used. (optional)
      * @param  int $limit Specify the maximum number of returned results (optional)
-     * @param  bool $reverse Set to true to do a reverse Geocoding request (optional)
+     * @param  bool $reverse Set to true to do a reverse Geocoding request, see point parameter (optional)
      * @param  string $point The location bias in the format &#39;latitude,longitude&#39; e.g. point&#x3D;45.93272,11.58803 (optional)
      * @param  string $provider Can be either, default, nominatim, opencagedata (optional)
      *

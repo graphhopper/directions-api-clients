@@ -10,19 +10,19 @@ class Solution {
   @Property(name: 'distance')
   int distance = null;
   
-/* overall transport time in ms */
+/* overall transport time in seconds */
   @Property(name: 'time')
   int time = null;
   
-/* overall transport time in ms */
+/* overall transport time in seconds */
   @Property(name: 'transport_time')
   int transportTime = null;
   
-/* operation time of the longest route in ms */
+/* operation time of the longest route in seconds */
   @Property(name: 'max_operation_time')
   int maxOperationTime = null;
   
-/* total waiting time in ms */
+/* total waiting time in seconds */
   @Property(name: 'waiting_time')
   int waitingTime = null;
   

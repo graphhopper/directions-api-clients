@@ -27,6 +27,10 @@ case class Shipment (
   // array of required skills
   requiredSkills: Option[List[String]] = None,
   // array of allowed vehicle ids
-  allowedVehicles: Option[List[String]] = None
+  allowedVehicles: Option[List[String]] = None,
+  // array of disallowed vehicle ids
+  disallowedVehicles: Option[List[String]] = None,
+  // max time shipment can stay in vehicle
+  maxTimeInVehicle: Option[Long] = None
 )
 

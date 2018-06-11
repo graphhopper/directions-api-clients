@@ -19,19 +19,19 @@ type Activity struct {
 	// id that refers to address
 	LocationId string `json:"location_id,omitempty"`
 
-	// arrival time at this activity in ms
+	// arrival time at this activity in seconds
 	ArrTime int64 `json:"arr_time,omitempty"`
 
 	// end time of and thus departure time at this activity
 	EndTime int64 `json:"end_time,omitempty"`
 
-	// waiting time at this activity in ms
+	// waiting time at this activity in seconds
 	WaitingTime int64 `json:"waiting_time,omitempty"`
 
 	// cumulated distance from start to this activity in m
 	Distance int64 `json:"distance,omitempty"`
 
-	// driving time of driver in ms
+	// driving time of driver in seconds
 	DrivingTime int64 `json:"driving_time,omitempty"`
 
 	// Array with size/capacity dimensions before this activity

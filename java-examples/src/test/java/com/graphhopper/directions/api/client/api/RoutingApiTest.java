@@ -30,7 +30,7 @@ public class RoutingApiTest {
 
     private final RoutingApi api = new RoutingApi();
 
-    public static final String KEY = "614b8305-b4db-48c9-bf4a-40de90919939";
+    public static final String KEY = System.getProperty("graphhopper.key", "");
 
     /**
      * Routing Request
@@ -58,11 +58,16 @@ public class RoutingApiTest {
         Integer headingPenalty = null;
         Boolean passThrough = null;
         Integer roundTripDistance = null;
+        List<String> details = new ArrayList<>();
         Long roundTripSeed = null;
         Integer alternativeRouteMaxPaths = null;
         Integer alternativeRouteMaxWeightFactor = null;
         Integer alternativeRouteMaxShareFactor = null;
-        RouteResponse response = api.routeGet(point, pointsEncoded, key, locale, instructions, vehicle, elevation, calcPoints, pointHint, chDisable, weighting, edgeTraversal, algorithm, heading, headingPenalty, passThrough, roundTripDistance, roundTripSeed, alternativeRouteMaxPaths, alternativeRouteMaxWeightFactor, alternativeRouteMaxShareFactor);
+        String avoid = null;
+        RouteResponse response = api.routeGet(point, pointsEncoded, key, locale, instructions, vehicle, elevation,
+                calcPoints, pointHint, chDisable, weighting, edgeTraversal, algorithm, heading, headingPenalty,
+                passThrough, details, roundTripDistance, roundTripSeed, alternativeRouteMaxPaths, alternativeRouteMaxWeightFactor,
+                alternativeRouteMaxShareFactor, avoid);
         assertEquals(1, response.getPaths().size());
     }
 

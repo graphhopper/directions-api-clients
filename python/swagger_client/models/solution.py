@@ -145,7 +145,7 @@ class Solution(object):
     def time(self):
         """Gets the time of this Solution.  # noqa: E501
 
-        overall transport time in ms  # noqa: E501
+        overall transport time in seconds  # noqa: E501
 
         :return: The time of this Solution.  # noqa: E501
         :rtype: int
@@ -156,7 +156,7 @@ class Solution(object):
     def time(self, time):
         """Sets the time of this Solution.
 
-        overall transport time in ms  # noqa: E501
+        overall transport time in seconds  # noqa: E501
 
         :param time: The time of this Solution.  # noqa: E501
         :type: int
@@ -168,7 +168,7 @@ class Solution(object):
     def transport_time(self):
         """Gets the transport_time of this Solution.  # noqa: E501
 
-        overall transport time in ms  # noqa: E501
+        overall transport time in seconds  # noqa: E501
 
         :return: The transport_time of this Solution.  # noqa: E501
         :rtype: int
@@ -179,7 +179,7 @@ class Solution(object):
     def transport_time(self, transport_time):
         """Sets the transport_time of this Solution.
 
-        overall transport time in ms  # noqa: E501
+        overall transport time in seconds  # noqa: E501
 
         :param transport_time: The transport_time of this Solution.  # noqa: E501
         :type: int
@@ -191,7 +191,7 @@ class Solution(object):
     def max_operation_time(self):
         """Gets the max_operation_time of this Solution.  # noqa: E501
 
-        operation time of the longest route in ms  # noqa: E501
+        operation time of the longest route in seconds  # noqa: E501
 
         :return: The max_operation_time of this Solution.  # noqa: E501
         :rtype: int
@@ -202,7 +202,7 @@ class Solution(object):
     def max_operation_time(self, max_operation_time):
         """Sets the max_operation_time of this Solution.
 
-        operation time of the longest route in ms  # noqa: E501
+        operation time of the longest route in seconds  # noqa: E501
 
         :param max_operation_time: The max_operation_time of this Solution.  # noqa: E501
         :type: int
@@ -214,7 +214,7 @@ class Solution(object):
     def waiting_time(self):
         """Gets the waiting_time of this Solution.  # noqa: E501
 
-        total waiting time in ms  # noqa: E501
+        total waiting time in seconds  # noqa: E501
 
         :return: The waiting_time of this Solution.  # noqa: E501
         :rtype: int
@@ -225,7 +225,7 @@ class Solution(object):
     def waiting_time(self, waiting_time):
         """Sets the waiting_time of this Solution.
 
-        total waiting time in ms  # noqa: E501
+        total waiting time in seconds  # noqa: E501
 
         :param waiting_time: The waiting_time of this Solution.  # noqa: E501
         :type: int

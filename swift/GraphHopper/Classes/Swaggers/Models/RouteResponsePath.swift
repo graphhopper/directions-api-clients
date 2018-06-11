@@ -24,6 +24,7 @@ public class RouteResponsePath: JSONEncodable {
     public var bbox: [Double]?
     public var snappedWaypoints: ResponseCoordinates?
     public var instructions: ResponseInstructions?
+    public var details: AnyObject?
 
     public init() {}
 
@@ -39,6 +40,7 @@ public class RouteResponsePath: JSONEncodable {
         nillableDictionary["bbox"] = self.bbox?.encodeToJSON()
         nillableDictionary["snapped_waypoints"] = self.snappedWaypoints?.encodeToJSON()
         nillableDictionary["instructions"] = self.instructions?.encodeToJSON()
+        nillableDictionary["details"] = self.details
         let dictionary: [String:AnyObject] = APIHelper.rejectNil(nillableDictionary) ?? [:]
         return dictionary
     }
