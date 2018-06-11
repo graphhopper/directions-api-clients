@@ -11,5 +11,5 @@ Swagger Codegen version: 2.4.0-SNAPSHOT
 =end
 
 module GraphHopperClient
-  VERSION = "0.11-SNAPSHOT"
+  VERSION = "0.10.1"
 end

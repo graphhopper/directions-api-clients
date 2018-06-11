@@ -4,7 +4,7 @@ SPEC=swagger.json
 # SPEC=https://graphhopper.com/api/1/swagger.json
 DIR=.
 
-VERSION=0.10.0
+VERSION=0.10.1
 
 # it is necessary to use the master snapshot to create a proper R and C# client
 SW_VERSION=master
