@@ -10,11 +10,19 @@ class SolutionUnassigned {
   @Property(name: 'shipments')
   List<String> shipments = [];
   
+/* An array of ids of unassigned breaks */
+  @Property(name: 'breaks')
+  List<String> breaks = [];
+  
+/* An array of details, i.e. reason for unassigned services or shipments */
+  @Property(name: 'details')
+  List<Detail> details = [];
+  
   SolutionUnassigned();
 
   @override
   String toString()  {
-    return 'SolutionUnassigned[services=$services, shipments=$shipments, ]';
+    return 'SolutionUnassigned[services=$services, shipments=$shipments, breaks=$breaks, details=$details, ]';
   }
 }
 

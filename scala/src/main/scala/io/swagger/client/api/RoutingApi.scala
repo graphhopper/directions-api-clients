@@ -100,6 +100,7 @@ class RoutingApi(
    * @param heading Favour a heading direction for a certain point. Specify either one heading for the start point or as many as there are points. In this case headings are associated by their order to the specific points. Headings are given as north based clockwise angle between 0 and 360 degree. This parameter also influences the tour generated with &#x60;algorithm&#x3D;round_trip&#x60; and force the initial direction. (optional)
    * @param headingPenalty Penalty for omitting a specified heading. The penalty corresponds to the accepted time delay in seconds in comparison to the route without a heading. (optional)
    * @param passThrough If &#x60;true&#x60; u-turns are avoided at via-points with regard to the &#x60;heading_penalty&#x60;. (optional)
+   * @param details List of additional trip attributes to be returned. Try some of the following: &#x60;average_speed&#x60;, &#x60;street_name&#x60;, &#x60;edge_id&#x60;, &#x60;time&#x60;, &#x60;distance&#x60;. (optional)
    * @param roundTripDistance If &#x60;algorithm&#x3D;round_trip&#x60; this parameter configures approximative length of the resulting round trip (optional)
    * @param roundTripSeed If &#x60;algorithm&#x3D;round_trip&#x60; this parameter introduces randomness if e.g. the first try wasn&#39;t good. (optional)
    * @param alternativeRouteMaxPaths If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the number of maximum paths which should be calculated. Increasing can lead to worse alternatives. (optional)
@@ -108,8 +109,8 @@ class RoutingApi(
    * @param avoid comma separate list to avoid certain roads. You can avoid motorway, ferry, tunnel or track (optional)
    * @return RouteResponse
    */
-  def routeGet(point: List[String], pointsEncoded: Boolean, key: String, locale: Option[String] = None, instructions: Option[Boolean] = None, vehicle: Option[String] = None, elevation: Option[Boolean] = None, calcPoints: Option[Boolean] = None, pointHint: Option[List[String]] = None, chDisable: Option[Boolean] = None, weighting: Option[String] = None, edgeTraversal: Option[Boolean] = None, algorithm: Option[String] = None, heading: Option[Integer] = None, headingPenalty: Option[Integer] = None, passThrough: Option[Boolean] = None, roundTripDistance: Option[Integer] = None, roundTripSeed: Option[Long] = None, alternativeRouteMaxPaths: Option[Integer] = None, alternativeRouteMaxWeightFactor: Option[Integer] = None, alternativeRouteMaxShareFactor: Option[Integer] = None, avoid: Option[String] = None): Option[RouteResponse] = {
-    val await = Try(Await.result(routeGetAsync(point, pointsEncoded, key, locale, instructions, vehicle, elevation, calcPoints, pointHint, chDisable, weighting, edgeTraversal, algorithm, heading, headingPenalty, passThrough, roundTripDistance, roundTripSeed, alternativeRouteMaxPaths, alternativeRouteMaxWeightFactor, alternativeRouteMaxShareFactor, avoid), Duration.Inf))
+  def routeGet(point: List[String], pointsEncoded: Boolean, key: String, locale: Option[String] = None, instructions: Option[Boolean] = None, vehicle: Option[String] = None, elevation: Option[Boolean] = None, calcPoints: Option[Boolean] = None, pointHint: Option[List[String]] = None, chDisable: Option[Boolean] = None, weighting: Option[String] = None, edgeTraversal: Option[Boolean] = None, algorithm: Option[String] = None, heading: Option[Integer] = None, headingPenalty: Option[Integer] = None, passThrough: Option[Boolean] = None, details: Option[List[String]] = None, roundTripDistance: Option[Integer] = None, roundTripSeed: Option[Long] = None, alternativeRouteMaxPaths: Option[Integer] = None, alternativeRouteMaxWeightFactor: Option[Integer] = None, alternativeRouteMaxShareFactor: Option[Integer] = None, avoid: Option[String] = None): Option[RouteResponse] = {
+    val await = Try(Await.result(routeGetAsync(point, pointsEncoded, key, locale, instructions, vehicle, elevation, calcPoints, pointHint, chDisable, weighting, edgeTraversal, algorithm, heading, headingPenalty, passThrough, details, roundTripDistance, roundTripSeed, alternativeRouteMaxPaths, alternativeRouteMaxWeightFactor, alternativeRouteMaxShareFactor, avoid), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -136,6 +137,7 @@ class RoutingApi(
    * @param heading Favour a heading direction for a certain point. Specify either one heading for the start point or as many as there are points. In this case headings are associated by their order to the specific points. Headings are given as north based clockwise angle between 0 and 360 degree. This parameter also influences the tour generated with &#x60;algorithm&#x3D;round_trip&#x60; and force the initial direction. (optional)
    * @param headingPenalty Penalty for omitting a specified heading. The penalty corresponds to the accepted time delay in seconds in comparison to the route without a heading. (optional)
    * @param passThrough If &#x60;true&#x60; u-turns are avoided at via-points with regard to the &#x60;heading_penalty&#x60;. (optional)
+   * @param details List of additional trip attributes to be returned. Try some of the following: &#x60;average_speed&#x60;, &#x60;street_name&#x60;, &#x60;edge_id&#x60;, &#x60;time&#x60;, &#x60;distance&#x60;. (optional)
    * @param roundTripDistance If &#x60;algorithm&#x3D;round_trip&#x60; this parameter configures approximative length of the resulting round trip (optional)
    * @param roundTripSeed If &#x60;algorithm&#x3D;round_trip&#x60; this parameter introduces randomness if e.g. the first try wasn&#39;t good. (optional)
    * @param alternativeRouteMaxPaths If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the number of maximum paths which should be calculated. Increasing can lead to worse alternatives. (optional)
@@ -144,8 +146,8 @@ class RoutingApi(
    * @param avoid comma separate list to avoid certain roads. You can avoid motorway, ferry, tunnel or track (optional)
    * @return Future(RouteResponse)
    */
-  def routeGetAsync(point: List[String], pointsEncoded: Boolean, key: String, locale: Option[String] = None, instructions: Option[Boolean] = None, vehicle: Option[String] = None, elevation: Option[Boolean] = None, calcPoints: Option[Boolean] = None, pointHint: Option[List[String]] = None, chDisable: Option[Boolean] = None, weighting: Option[String] = None, edgeTraversal: Option[Boolean] = None, algorithm: Option[String] = None, heading: Option[Integer] = None, headingPenalty: Option[Integer] = None, passThrough: Option[Boolean] = None, roundTripDistance: Option[Integer] = None, roundTripSeed: Option[Long] = None, alternativeRouteMaxPaths: Option[Integer] = None, alternativeRouteMaxWeightFactor: Option[Integer] = None, alternativeRouteMaxShareFactor: Option[Integer] = None, avoid: Option[String] = None): Future[RouteResponse] = {
-      helper.routeGet(point, pointsEncoded, key, locale, instructions, vehicle, elevation, calcPoints, pointHint, chDisable, weighting, edgeTraversal, algorithm, heading, headingPenalty, passThrough, roundTripDistance, roundTripSeed, alternativeRouteMaxPaths, alternativeRouteMaxWeightFactor, alternativeRouteMaxShareFactor, avoid)
+  def routeGetAsync(point: List[String], pointsEncoded: Boolean, key: String, locale: Option[String] = None, instructions: Option[Boolean] = None, vehicle: Option[String] = None, elevation: Option[Boolean] = None, calcPoints: Option[Boolean] = None, pointHint: Option[List[String]] = None, chDisable: Option[Boolean] = None, weighting: Option[String] = None, edgeTraversal: Option[Boolean] = None, algorithm: Option[String] = None, heading: Option[Integer] = None, headingPenalty: Option[Integer] = None, passThrough: Option[Boolean] = None, details: Option[List[String]] = None, roundTripDistance: Option[Integer] = None, roundTripSeed: Option[Long] = None, alternativeRouteMaxPaths: Option[Integer] = None, alternativeRouteMaxWeightFactor: Option[Integer] = None, alternativeRouteMaxShareFactor: Option[Integer] = None, avoid: Option[String] = None): Future[RouteResponse] = {
+      helper.routeGet(point, pointsEncoded, key, locale, instructions, vehicle, elevation, calcPoints, pointHint, chDisable, weighting, edgeTraversal, algorithm, heading, headingPenalty, passThrough, details, roundTripDistance, roundTripSeed, alternativeRouteMaxPaths, alternativeRouteMaxWeightFactor, alternativeRouteMaxShareFactor, avoid)
   }
 
 }
@@ -168,6 +170,7 @@ class RoutingApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     heading: Option[Integer] = None,
     headingPenalty: Option[Integer] = None,
     passThrough: Option[Boolean] = None,
+    details: Option[List[String]] = None,
     roundTripDistance: Option[Integer] = None,
     roundTripSeed: Option[Long] = None,
     alternativeRouteMaxPaths: Option[Integer] = None,
@@ -237,6 +240,10 @@ class RoutingApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     }
     passThrough match {
       case Some(param) => queryParams += "pass_through" -> param.toString
+      case _ => queryParams
+    }
+    details match {
+      case Some(param) => queryParams += "details" -> param.toString
       case _ => queryParams
     }
     roundTripDistance match {

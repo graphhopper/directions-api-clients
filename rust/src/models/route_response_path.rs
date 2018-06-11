@@ -37,7 +37,9 @@ pub struct RouteResponsePath {
   #[serde(rename = "snapped_waypoints")]
   snapped_waypoints: Option<::models::ResponseCoordinates>,
   #[serde(rename = "instructions")]
-  instructions: Option<::models::ResponseInstructions>
+  instructions: Option<::models::ResponseInstructions>,
+  #[serde(rename = "details")]
+  details: Option<Value>
 }
 
 impl RouteResponsePath {
@@ -52,7 +54,8 @@ impl RouteResponsePath {
       points_encoded: None,
       bbox: None,
       snapped_waypoints: None,
-      instructions: None
+      instructions: None,
+      details: None
     }
   }
 
@@ -207,6 +210,23 @@ impl RouteResponsePath {
 
   pub fn reset_instructions(&mut self) {
     self.instructions = None;
+  }
+
+  pub fn set_details(&mut self, details: Value) {
+    self.details = Some(details);
+  }
+
+  pub fn with_details(mut self, details: Value) -> RouteResponsePath {
+    self.details = Some(details);
+    self
+  }
+
+  pub fn details(&self) -> Option<&Value> {
+    self.details.as_ref()
+  }
+
+  pub fn reset_details(&mut self) {
+    self.details = None;
   }
 
 }

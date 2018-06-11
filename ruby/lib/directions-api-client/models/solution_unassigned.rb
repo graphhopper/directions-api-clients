@@ -21,12 +21,20 @@ module GraphHopperClient
     # An array of ids of unassigned shipments
     attr_accessor :shipments
 
+    # An array of ids of unassigned breaks
+    attr_accessor :breaks
+
+    # An array of details, i.e. reason for unassigned services or shipments
+    attr_accessor :details
+
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'services' => :'services',
-        :'shipments' => :'shipments'
+        :'shipments' => :'shipments',
+        :'breaks' => :'breaks',
+        :'details' => :'details'
       }
     end
 
@@ -34,7 +42,9 @@ module GraphHopperClient
     def self.swagger_types
       {
         :'services' => :'Array<String>',
-        :'shipments' => :'Array<String>'
+        :'shipments' => :'Array<String>',
+        :'breaks' => :'Array<String>',
+        :'details' => :'Array<Detail>'
       }
     end
 
@@ -55,6 +65,18 @@ module GraphHopperClient
       if attributes.has_key?(:'shipments')
         if (value = attributes[:'shipments']).is_a?(Array)
           self.shipments = value
+        end
+      end
+
+      if attributes.has_key?(:'breaks')
+        if (value = attributes[:'breaks']).is_a?(Array)
+          self.breaks = value
+        end
+      end
+
+      if attributes.has_key?(:'details')
+        if (value = attributes[:'details']).is_a?(Array)
+          self.details = value
         end
       end
 
@@ -79,7 +101,9 @@ module GraphHopperClient
       return true if self.equal?(o)
       self.class == o.class &&
           services == o.services &&
-          shipments == o.shipments
+          shipments == o.shipments &&
+          breaks == o.breaks &&
+          details == o.details
     end
 
     # @see the `==` method
@@ -91,7 +115,7 @@ module GraphHopperClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [services, shipments].hash
+      [services, shipments, breaks, details].hash
     end
 
     # Builds the object from hash

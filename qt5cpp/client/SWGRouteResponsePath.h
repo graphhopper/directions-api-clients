@@ -22,6 +22,7 @@
 #include <QJsonObject>
 
 
+#include "SWGObject.h"
 #include "SWGResponseCoordinates.h"
 #include "SWGResponseInstructions.h"
 #include <QList>
@@ -70,6 +71,9 @@ public:
     SWGResponseInstructions* getInstructions();
     void setInstructions(SWGResponseInstructions* instructions);
 
+    SWGObject* getDetails();
+    void setDetails(SWGObject* details);
+
 
     virtual bool isSet() override;
 
@@ -100,6 +104,9 @@ private:
     
     SWGResponseInstructions* instructions;
     bool m_instructions_isSet;
+    
+    SWGObject* details;
+    bool m_details_isSet;
     
 };
 

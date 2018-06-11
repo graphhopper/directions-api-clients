@@ -45,6 +45,7 @@ The GraphHopper Routing API allows to calculate route and implement navigation v
     @param "heading" (int32) Favour a heading direction for a certain point. Specify either one heading for the start point or as many as there are points. In this case headings are associated by their order to the specific points. Headings are given as north based clockwise angle between 0 and 360 degree. This parameter also influences the tour generated with &#x60;algorithm&#x3D;round_trip&#x60; and force the initial direction.
     @param "headingPenalty" (int32) Penalty for omitting a specified heading. The penalty corresponds to the accepted time delay in seconds in comparison to the route without a heading.
     @param "passThrough" (bool) If &#x60;true&#x60; u-turns are avoided at via-points with regard to the &#x60;heading_penalty&#x60;.
+    @param "details" ([]string) List of additional trip attributes to be returned. Try some of the following: &#x60;average_speed&#x60;, &#x60;street_name&#x60;, &#x60;edge_id&#x60;, &#x60;time&#x60;, &#x60;distance&#x60;.
     @param "roundTripDistance" (int32) If &#x60;algorithm&#x3D;round_trip&#x60; this parameter configures approximative length of the resulting round trip
     @param "roundTripSeed" (int64) If &#x60;algorithm&#x3D;round_trip&#x60; this parameter introduces randomness if e.g. the first try wasn&#39;t good.
     @param "alternativeRouteMaxPaths" (int32) If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the number of maximum paths which should be calculated. Increasing can lead to worse alternatives.
@@ -162,6 +163,9 @@ func (a *RoutingApiService) RouteGet(ctx context.Context, point []string, points
 	}
 	if localVarTempParam, localVarOk := localVarOptionals["passThrough"].(bool); localVarOk {
 		localVarQueryParams.Add("pass_through", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["details"].([]string); localVarOk {
+		localVarQueryParams.Add("details", parameterToString(localVarTempParam, "multi"))
 	}
 	if localVarTempParam, localVarOk := localVarOptionals["roundTripDistance"].(int32); localVarOk {
 		localVarQueryParams.Add("round_trip.distance", parameterToString(localVarTempParam, ""))

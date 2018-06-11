@@ -59,6 +59,7 @@ class RoutingApi(object):
         :param int heading: Favour a heading direction for a certain point. Specify either one heading for the start point or as many as there are points. In this case headings are associated by their order to the specific points. Headings are given as north based clockwise angle between 0 and 360 degree. This parameter also influences the tour generated with `algorithm=round_trip` and force the initial direction.
         :param int heading_penalty: Penalty for omitting a specified heading. The penalty corresponds to the accepted time delay in seconds in comparison to the route without a heading.
         :param bool pass_through: If `true` u-turns are avoided at via-points with regard to the `heading_penalty`.
+        :param list[str] details: List of additional trip attributes to be returned. Try some of the following: `average_speed`, `street_name`, `edge_id`, `time`, `distance`.
         :param int round_trip_distance: If `algorithm=round_trip` this parameter configures approximative length of the resulting round trip
         :param int round_trip_seed: If `algorithm=round_trip` this parameter introduces randomness if e.g. the first try wasn't good.
         :param int alternative_route_max_paths: If `algorithm=alternative_route` this parameter sets the number of maximum paths which should be calculated. Increasing can lead to worse alternatives.
@@ -102,6 +103,7 @@ class RoutingApi(object):
         :param int heading: Favour a heading direction for a certain point. Specify either one heading for the start point or as many as there are points. In this case headings are associated by their order to the specific points. Headings are given as north based clockwise angle between 0 and 360 degree. This parameter also influences the tour generated with `algorithm=round_trip` and force the initial direction.
         :param int heading_penalty: Penalty for omitting a specified heading. The penalty corresponds to the accepted time delay in seconds in comparison to the route without a heading.
         :param bool pass_through: If `true` u-turns are avoided at via-points with regard to the `heading_penalty`.
+        :param list[str] details: List of additional trip attributes to be returned. Try some of the following: `average_speed`, `street_name`, `edge_id`, `time`, `distance`.
         :param int round_trip_distance: If `algorithm=round_trip` this parameter configures approximative length of the resulting round trip
         :param int round_trip_seed: If `algorithm=round_trip` this parameter introduces randomness if e.g. the first try wasn't good.
         :param int alternative_route_max_paths: If `algorithm=alternative_route` this parameter sets the number of maximum paths which should be calculated. Increasing can lead to worse alternatives.
@@ -113,7 +115,7 @@ class RoutingApi(object):
                  returns the request thread.
         """
 
-        all_params = ['point', 'points_encoded', 'key', 'locale', 'instructions', 'vehicle', 'elevation', 'calc_points', 'point_hint', 'ch_disable', 'weighting', 'edge_traversal', 'algorithm', 'heading', 'heading_penalty', 'pass_through', 'round_trip_distance', 'round_trip_seed', 'alternative_route_max_paths', 'alternative_route_max_weight_factor', 'alternative_route_max_share_factor', 'avoid']  # noqa: E501
+        all_params = ['point', 'points_encoded', 'key', 'locale', 'instructions', 'vehicle', 'elevation', 'calc_points', 'point_hint', 'ch_disable', 'weighting', 'edge_traversal', 'algorithm', 'heading', 'heading_penalty', 'pass_through', 'details', 'round_trip_distance', 'round_trip_seed', 'alternative_route_max_paths', 'alternative_route_max_weight_factor', 'alternative_route_max_share_factor', 'avoid']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -178,6 +180,9 @@ class RoutingApi(object):
             query_params.append(('heading_penalty', params['heading_penalty']))  # noqa: E501
         if 'pass_through' in params:
             query_params.append(('pass_through', params['pass_through']))  # noqa: E501
+        if 'details' in params:
+            query_params.append(('details', params['details']))  # noqa: E501
+            collection_formats['details'] = 'multi'  # noqa: E501
         if 'round_trip_distance' in params:
             query_params.append(('round_trip.distance', params['round_trip_distance']))  # noqa: E501
         if 'round_trip_seed' in params:

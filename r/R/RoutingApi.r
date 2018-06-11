@@ -36,7 +36,7 @@ RoutingApi <- R6::R6Class(
         self$apiClient <- ApiClient$new()
       }
     },
-    route_get = function(point, points_encoded, key, locale, instructions, vehicle, elevation, calc_points, point_hint, ch_disable, weighting, edge_traversal, algorithm, heading, heading_penalty, pass_through, round_trip_distance, round_trip_seed, alternative_route_max_paths, alternative_route_max_weight_factor, alternative_route_max_share_factor, avoid, ...){
+    route_get = function(point, points_encoded, key, locale, instructions, vehicle, elevation, calc_points, point_hint, ch_disable, weighting, edge_traversal, algorithm, heading, heading_penalty, pass_through, details, round_trip_distance, round_trip_seed, alternative_route_max_paths, alternative_route_max_weight_factor, alternative_route_max_share_factor, avoid, ...){
       args <- list(...)
       queryParams <- list()
       headerParams <- character()
@@ -99,6 +99,10 @@ RoutingApi <- R6::R6Class(
 
       if (!missing(`pass_through`)) {
         queryParams['pass_through'] <- pass_through
+      }
+
+      if (!missing(`details`)) {
+        queryParams['details'] <- details
       }
 
       if (!missing(`round_trip_distance`)) {

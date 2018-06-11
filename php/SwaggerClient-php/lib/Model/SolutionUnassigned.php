@@ -58,7 +58,9 @@ class SolutionUnassigned implements ModelInterface, ArrayAccess
       */
     protected static $swaggerTypes = [
         'services' => 'string[]',
-        'shipments' => 'string[]'
+        'shipments' => 'string[]',
+        'breaks' => 'string[]',
+        'details' => '\Swagger\Client\Model\Detail[]'
     ];
 
     /**
@@ -68,7 +70,9 @@ class SolutionUnassigned implements ModelInterface, ArrayAccess
       */
     protected static $swaggerFormats = [
         'services' => null,
-        'shipments' => null
+        'shipments' => null,
+        'breaks' => null,
+        'details' => null
     ];
 
     /**
@@ -99,7 +103,9 @@ class SolutionUnassigned implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'services' => 'services',
-        'shipments' => 'shipments'
+        'shipments' => 'shipments',
+        'breaks' => 'breaks',
+        'details' => 'details'
     ];
 
     /**
@@ -109,7 +115,9 @@ class SolutionUnassigned implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'services' => 'setServices',
-        'shipments' => 'setShipments'
+        'shipments' => 'setShipments',
+        'breaks' => 'setBreaks',
+        'details' => 'setDetails'
     ];
 
     /**
@@ -119,7 +127,9 @@ class SolutionUnassigned implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'services' => 'getServices',
-        'shipments' => 'getShipments'
+        'shipments' => 'getShipments',
+        'breaks' => 'getBreaks',
+        'details' => 'getDetails'
     ];
 
     /**
@@ -184,6 +194,8 @@ class SolutionUnassigned implements ModelInterface, ArrayAccess
     {
         $this->container['services'] = isset($data['services']) ? $data['services'] : null;
         $this->container['shipments'] = isset($data['shipments']) ? $data['shipments'] : null;
+        $this->container['breaks'] = isset($data['breaks']) ? $data['breaks'] : null;
+        $this->container['details'] = isset($data['details']) ? $data['details'] : null;
     }
 
     /**
@@ -255,6 +267,54 @@ class SolutionUnassigned implements ModelInterface, ArrayAccess
     public function setShipments($shipments)
     {
         $this->container['shipments'] = $shipments;
+
+        return $this;
+    }
+
+    /**
+     * Gets breaks
+     *
+     * @return string[]
+     */
+    public function getBreaks()
+    {
+        return $this->container['breaks'];
+    }
+
+    /**
+     * Sets breaks
+     *
+     * @param string[] $breaks An array of ids of unassigned breaks
+     *
+     * @return $this
+     */
+    public function setBreaks($breaks)
+    {
+        $this->container['breaks'] = $breaks;
+
+        return $this;
+    }
+
+    /**
+     * Gets details
+     *
+     * @return \Swagger\Client\Model\Detail[]
+     */
+    public function getDetails()
+    {
+        return $this->container['details'];
+    }
+
+    /**
+     * Sets details
+     *
+     * @param \Swagger\Client\Model\Detail[] $details An array of details, i.e. reason for unassigned services or shipments
+     *
+     * @return $this
+     */
+    public function setDetails($details)
+    {
+        $this->container['details'] = $details;
 
         return $this;
     }

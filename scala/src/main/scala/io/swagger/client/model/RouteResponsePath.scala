@@ -27,6 +27,7 @@ case class RouteResponsePath (
   // The bounding box of the route, format <br> minLon, minLat, maxLon, maxLat
   bbox: Option[List[Double]] = None,
   snappedWaypoints: Option[ResponseCoordinates] = None,
-  instructions: Option[ResponseInstructions] = None
+  instructions: Option[ResponseInstructions] = None,
+  details: Option[Any] = None
 )
 

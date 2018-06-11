@@ -93,6 +93,7 @@ Class | Method | HTTP request | Description
  - [CostMatrix](docs/CostMatrix.md)
  - [CostMatrixData](docs/CostMatrixData.md)
  - [CostMatrixDataInfo](docs/CostMatrixDataInfo.md)
+ - [Detail](docs/Detail.md)
  - [GHError](docs/GHError.md)
  - [GHErrorHints](docs/GHErrorHints.md)
  - [GeocodingLocation](docs/GeocodingLocation.md)

@@ -29,7 +29,7 @@ SWGRoutingApi::SWGRoutingApi(QString host, QString basePath) {
 }
 
 void
-SWGRoutingApi::routeGet(QList<QString*>* point, bool points_encoded, QString* key, QString* locale, bool instructions, QString* vehicle, bool elevation, bool calc_points, QList<QString*>* point_hint, bool ch_disable, QString* weighting, bool edge_traversal, QString* algorithm, qint32 heading, qint32 heading_penalty, bool pass_through, qint32 round_trip_distance, qint64 round_trip_seed, qint32 alternative_route_max_paths, qint32 alternative_route_max_weight_factor, qint32 alternative_route_max_share_factor, QString* avoid) {
+SWGRoutingApi::routeGet(QList<QString*>* point, bool points_encoded, QString* key, QString* locale, bool instructions, QString* vehicle, bool elevation, bool calc_points, QList<QString*>* point_hint, bool ch_disable, QString* weighting, bool edge_traversal, QString* algorithm, qint32 heading, qint32 heading_penalty, bool pass_through, QList<QString*>* details, qint32 round_trip_distance, qint64 round_trip_seed, qint32 alternative_route_max_paths, qint32 alternative_route_max_weight_factor, qint32 alternative_route_max_share_factor, QString* avoid) {
     QString fullPath;
     fullPath.append(this->host).append(this->basePath).append("/route");
 
@@ -221,6 +221,48 @@ SWGRoutingApi::routeGet(QList<QString*>* point, bool points_encoded, QString* ke
     fullPath.append(QUrl::toPercentEncoding("pass_through"))
         .append("=")
         .append(QUrl::toPercentEncoding(stringValue(pass_through)));
+
+
+
+    if (details->size() > 0) {
+      if (QString("multi").indexOf("multi") == 0) {
+        foreach(QString* t, *details) {
+          if (fullPath.indexOf("?") > 0)
+            fullPath.append("&");
+          else 
+            fullPath.append("?");
+          fullPath.append("details=").append(stringValue(t));
+        }
+      }
+      else if (QString("multi").indexOf("ssv") == 0) {
+        if (fullPath.indexOf("?") > 0)
+          fullPath.append("&");
+        else 
+          fullPath.append("?");
+        fullPath.append("details=");
+        qint32 count = 0;
+        foreach(QString* t, *details) {
+          if (count > 0) {
+            fullPath.append(" ");
+          }
+          fullPath.append(stringValue(t));
+        }
+      }
+      else if (QString("multi").indexOf("tsv") == 0) {
+        if (fullPath.indexOf("?") > 0)
+          fullPath.append("&");
+        else 
+          fullPath.append("?");
+        fullPath.append("details=");
+        qint32 count = 0;
+        foreach(QString* t, *details) {
+          if (count > 0) {
+            fullPath.append("\t");
+          }
+          fullPath.append(stringValue(t));
+        }
+      }
+    }
 
     if (fullPath.indexOf("?") > 0) 
       fullPath.append("&");

@@ -280,6 +280,21 @@ class Decoders {
             }
 
 
+            // Decoder for [Detail]
+            Decoders.addDecoder(clazz: [Detail].self) { (source: AnyObject) -> [Detail] in
+                return Decoders.decode(clazz: [Detail].self, source: source)
+            }
+            // Decoder for Detail
+            Decoders.addDecoder(clazz: Detail.self) { (source: AnyObject) -> Detail in
+                let sourceDictionary = source as! [NSObject:AnyObject]
+                let instance = Detail()
+                instance.id = Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["id"])
+                instance.code = Decoders.decodeOptional(clazz: Int32.self, source: sourceDictionary["code"])
+                instance.reason = Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["reason"])
+                return instance
+            }
+
+
             // Decoder for [GHError]
             Decoders.addDecoder(clazz: [GHError].self) { (source: AnyObject) -> [GHError] in
                 return Decoders.decode(clazz: [GHError].self, source: source)
@@ -680,6 +695,7 @@ class Decoders {
                 instance.bbox = Decoders.decodeOptional(clazz: Array.self, source: sourceDictionary["bbox"])
                 instance.snappedWaypoints = Decoders.decodeOptional(clazz: ResponseCoordinates.self, source: sourceDictionary["snapped_waypoints"])
                 instance.instructions = Decoders.decodeOptional(clazz: ResponseInstructions.self, source: sourceDictionary["instructions"])
+                instance.details = Decoders.decodeOptional(clazz: AnyObject.self, source: sourceDictionary["details"])
                 return instance
             }
 
@@ -779,6 +795,8 @@ class Decoders {
                 let instance = SolutionUnassigned()
                 instance.services = Decoders.decodeOptional(clazz: Array.self, source: sourceDictionary["services"])
                 instance.shipments = Decoders.decodeOptional(clazz: Array.self, source: sourceDictionary["shipments"])
+                instance.breaks = Decoders.decodeOptional(clazz: Array.self, source: sourceDictionary["breaks"])
+                instance.details = Decoders.decodeOptional(clazz: Array.self, source: sourceDictionary["details"])
                 return instance
             }
 

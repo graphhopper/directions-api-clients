@@ -145,6 +145,15 @@ MyApp.add_route('GET', '/api/1/route', {
       
     },
     {
+      "name" => "details",
+      "description" => "List of additional trip attributes to be returned. Try some of the following: &#x60;average_speed&#x60;, &#x60;street_name&#x60;, &#x60;edge_id&#x60;, &#x60;time&#x60;, &#x60;distance&#x60;.",
+      "dataType" => "array[string]",
+      "paramType" => "query",
+      "collectionFormat" => "multi",
+      "allowableValues" => "",
+      
+    },
+    {
       "name" => "round_trip/distance",
       "description" => "If &#x60;algorithm&#x3D;round_trip&#x60; this parameter configures approximative length of the resulting round trip",
       "dataType" => "int",

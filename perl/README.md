@@ -240,6 +240,7 @@ use WWW::SwaggerClient::Object::Configuration;
 use WWW::SwaggerClient::Object::CostMatrix;
 use WWW::SwaggerClient::Object::CostMatrixData;
 use WWW::SwaggerClient::Object::CostMatrixDataInfo;
+use WWW::SwaggerClient::Object::Detail;
 use WWW::SwaggerClient::Object::GHError;
 use WWW::SwaggerClient::Object::GHErrorHints;
 use WWW::SwaggerClient::Object::GeocodingLocation;
@@ -302,6 +303,7 @@ use WWW::SwaggerClient::Object::Configuration;
 use WWW::SwaggerClient::Object::CostMatrix;
 use WWW::SwaggerClient::Object::CostMatrixData;
 use WWW::SwaggerClient::Object::CostMatrixDataInfo;
+use WWW::SwaggerClient::Object::Detail;
 use WWW::SwaggerClient::Object::GHError;
 use WWW::SwaggerClient::Object::GHErrorHints;
 use WWW::SwaggerClient::Object::GeocodingLocation;
@@ -387,6 +389,7 @@ Class | Method | HTTP request | Description
  - [WWW::SwaggerClient::Object::CostMatrix](docs/CostMatrix.md)
  - [WWW::SwaggerClient::Object::CostMatrixData](docs/CostMatrixData.md)
  - [WWW::SwaggerClient::Object::CostMatrixDataInfo](docs/CostMatrixDataInfo.md)
+ - [WWW::SwaggerClient::Object::Detail](docs/Detail.md)
  - [WWW::SwaggerClient::Object::GHError](docs/GHError.md)
  - [WWW::SwaggerClient::Object::GHErrorHints](docs/GHErrorHints.md)
  - [WWW::SwaggerClient::Object::GeocodingLocation](docs/GeocodingLocation.md)

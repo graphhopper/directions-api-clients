@@ -20,6 +20,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.graphhopper.directions.api.client.model.Detail;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -36,6 +37,12 @@ public class SolutionUnassigned {
 
   @SerializedName("shipments")
   private List<String> shipments = null;
+
+  @SerializedName("breaks")
+  private List<String> breaks = null;
+
+  @SerializedName("details")
+  private List<Detail> details = null;
 
   public SolutionUnassigned services(List<String> services) {
     this.services = services;
@@ -89,6 +96,58 @@ public class SolutionUnassigned {
     this.shipments = shipments;
   }
 
+  public SolutionUnassigned breaks(List<String> breaks) {
+    this.breaks = breaks;
+    return this;
+  }
+
+  public SolutionUnassigned addBreaksItem(String breaksItem) {
+    if (this.breaks == null) {
+      this.breaks = new ArrayList<String>();
+    }
+    this.breaks.add(breaksItem);
+    return this;
+  }
+
+   /**
+   * An array of ids of unassigned breaks
+   * @return breaks
+  **/
+  @ApiModelProperty(value = "An array of ids of unassigned breaks")
+  public List<String> getBreaks() {
+    return breaks;
+  }
+
+  public void setBreaks(List<String> breaks) {
+    this.breaks = breaks;
+  }
+
+  public SolutionUnassigned details(List<Detail> details) {
+    this.details = details;
+    return this;
+  }
+
+  public SolutionUnassigned addDetailsItem(Detail detailsItem) {
+    if (this.details == null) {
+      this.details = new ArrayList<Detail>();
+    }
+    this.details.add(detailsItem);
+    return this;
+  }
+
+   /**
+   * An array of details, i.e. reason for unassigned services or shipments
+   * @return details
+  **/
+  @ApiModelProperty(value = "An array of details, i.e. reason for unassigned services or shipments")
+  public List<Detail> getDetails() {
+    return details;
+  }
+
+  public void setDetails(List<Detail> details) {
+    this.details = details;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -100,12 +159,14 @@ public class SolutionUnassigned {
     }
     SolutionUnassigned solutionUnassigned = (SolutionUnassigned) o;
     return Objects.equals(this.services, solutionUnassigned.services) &&
-        Objects.equals(this.shipments, solutionUnassigned.shipments);
+        Objects.equals(this.shipments, solutionUnassigned.shipments) &&
+        Objects.equals(this.breaks, solutionUnassigned.breaks) &&
+        Objects.equals(this.details, solutionUnassigned.details);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(services, shipments);
+    return Objects.hash(services, shipments, breaks, details);
   }
 
 
@@ -116,6 +177,8 @@ public class SolutionUnassigned {
     
     sb.append("    services: ").append(toIndentedString(services)).append("\n");
     sb.append("    shipments: ").append(toIndentedString(shipments)).append("\n");
+    sb.append("    breaks: ").append(toIndentedString(breaks)).append("\n");
+    sb.append("    details: ").append(toIndentedString(details)).append("\n");
     sb.append("}");
     return sb.toString();
   }

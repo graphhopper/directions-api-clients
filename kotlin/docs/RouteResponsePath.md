@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **bbox** | **kotlin.Array&lt;kotlin.Double&gt;** | The bounding box of the route, format &lt;br&gt; minLon, minLat, maxLon, maxLat |  [optional]
 **snapped_waypoints** | [**ResponseCoordinates**](ResponseCoordinates.md) |  |  [optional]
 **instructions** | [**ResponseInstructions**](ResponseInstructions.md) |  |  [optional]
+**details** | [**kotlin.Any**](kotlin.Any.md) |  |  [optional]
 
 
 

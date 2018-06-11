@@ -103,6 +103,7 @@ class RoutingApi
      * @param  int $heading Favour a heading direction for a certain point. Specify either one heading for the start point or as many as there are points. In this case headings are associated by their order to the specific points. Headings are given as north based clockwise angle between 0 and 360 degree. This parameter also influences the tour generated with &#x60;algorithm&#x3D;round_trip&#x60; and force the initial direction. (optional)
      * @param  int $heading_penalty Penalty for omitting a specified heading. The penalty corresponds to the accepted time delay in seconds in comparison to the route without a heading. (optional)
      * @param  bool $pass_through If &#x60;true&#x60; u-turns are avoided at via-points with regard to the &#x60;heading_penalty&#x60;. (optional)
+     * @param  string[] $details List of additional trip attributes to be returned. Try some of the following: &#x60;average_speed&#x60;, &#x60;street_name&#x60;, &#x60;edge_id&#x60;, &#x60;time&#x60;, &#x60;distance&#x60;. (optional)
      * @param  int $round_trip_distance If &#x60;algorithm&#x3D;round_trip&#x60; this parameter configures approximative length of the resulting round trip (optional)
      * @param  int $round_trip_seed If &#x60;algorithm&#x3D;round_trip&#x60; this parameter introduces randomness if e.g. the first try wasn&#39;t good. (optional)
      * @param  int $alternative_route_max_paths If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the number of maximum paths which should be calculated. Increasing can lead to worse alternatives. (optional)
@@ -114,9 +115,9 @@ class RoutingApi
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\RouteResponse
      */
-    public function routeGet($point, $points_encoded, $key, $locale = null, $instructions = null, $vehicle = null, $elevation = null, $calc_points = null, $point_hint = null, $ch_disable = null, $weighting = null, $edge_traversal = null, $algorithm = null, $heading = null, $heading_penalty = null, $pass_through = null, $round_trip_distance = null, $round_trip_seed = null, $alternative_route_max_paths = null, $alternative_route_max_weight_factor = null, $alternative_route_max_share_factor = null, $avoid = null)
+    public function routeGet($point, $points_encoded, $key, $locale = null, $instructions = null, $vehicle = null, $elevation = null, $calc_points = null, $point_hint = null, $ch_disable = null, $weighting = null, $edge_traversal = null, $algorithm = null, $heading = null, $heading_penalty = null, $pass_through = null, $details = null, $round_trip_distance = null, $round_trip_seed = null, $alternative_route_max_paths = null, $alternative_route_max_weight_factor = null, $alternative_route_max_share_factor = null, $avoid = null)
     {
-        list($response) = $this->routeGetWithHttpInfo($point, $points_encoded, $key, $locale, $instructions, $vehicle, $elevation, $calc_points, $point_hint, $ch_disable, $weighting, $edge_traversal, $algorithm, $heading, $heading_penalty, $pass_through, $round_trip_distance, $round_trip_seed, $alternative_route_max_paths, $alternative_route_max_weight_factor, $alternative_route_max_share_factor, $avoid);
+        list($response) = $this->routeGetWithHttpInfo($point, $points_encoded, $key, $locale, $instructions, $vehicle, $elevation, $calc_points, $point_hint, $ch_disable, $weighting, $edge_traversal, $algorithm, $heading, $heading_penalty, $pass_through, $details, $round_trip_distance, $round_trip_seed, $alternative_route_max_paths, $alternative_route_max_weight_factor, $alternative_route_max_share_factor, $avoid);
         return $response;
     }
 
@@ -141,6 +142,7 @@ class RoutingApi
      * @param  int $heading Favour a heading direction for a certain point. Specify either one heading for the start point or as many as there are points. In this case headings are associated by their order to the specific points. Headings are given as north based clockwise angle between 0 and 360 degree. This parameter also influences the tour generated with &#x60;algorithm&#x3D;round_trip&#x60; and force the initial direction. (optional)
      * @param  int $heading_penalty Penalty for omitting a specified heading. The penalty corresponds to the accepted time delay in seconds in comparison to the route without a heading. (optional)
      * @param  bool $pass_through If &#x60;true&#x60; u-turns are avoided at via-points with regard to the &#x60;heading_penalty&#x60;. (optional)
+     * @param  string[] $details List of additional trip attributes to be returned. Try some of the following: &#x60;average_speed&#x60;, &#x60;street_name&#x60;, &#x60;edge_id&#x60;, &#x60;time&#x60;, &#x60;distance&#x60;. (optional)
      * @param  int $round_trip_distance If &#x60;algorithm&#x3D;round_trip&#x60; this parameter configures approximative length of the resulting round trip (optional)
      * @param  int $round_trip_seed If &#x60;algorithm&#x3D;round_trip&#x60; this parameter introduces randomness if e.g. the first try wasn&#39;t good. (optional)
      * @param  int $alternative_route_max_paths If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the number of maximum paths which should be calculated. Increasing can lead to worse alternatives. (optional)
@@ -152,10 +154,10 @@ class RoutingApi
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\RouteResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function routeGetWithHttpInfo($point, $points_encoded, $key, $locale = null, $instructions = null, $vehicle = null, $elevation = null, $calc_points = null, $point_hint = null, $ch_disable = null, $weighting = null, $edge_traversal = null, $algorithm = null, $heading = null, $heading_penalty = null, $pass_through = null, $round_trip_distance = null, $round_trip_seed = null, $alternative_route_max_paths = null, $alternative_route_max_weight_factor = null, $alternative_route_max_share_factor = null, $avoid = null)
+    public function routeGetWithHttpInfo($point, $points_encoded, $key, $locale = null, $instructions = null, $vehicle = null, $elevation = null, $calc_points = null, $point_hint = null, $ch_disable = null, $weighting = null, $edge_traversal = null, $algorithm = null, $heading = null, $heading_penalty = null, $pass_through = null, $details = null, $round_trip_distance = null, $round_trip_seed = null, $alternative_route_max_paths = null, $alternative_route_max_weight_factor = null, $alternative_route_max_share_factor = null, $avoid = null)
     {
         $returnType = '\Swagger\Client\Model\RouteResponse';
-        $request = $this->routeGetRequest($point, $points_encoded, $key, $locale, $instructions, $vehicle, $elevation, $calc_points, $point_hint, $ch_disable, $weighting, $edge_traversal, $algorithm, $heading, $heading_penalty, $pass_through, $round_trip_distance, $round_trip_seed, $alternative_route_max_paths, $alternative_route_max_weight_factor, $alternative_route_max_share_factor, $avoid);
+        $request = $this->routeGetRequest($point, $points_encoded, $key, $locale, $instructions, $vehicle, $elevation, $calc_points, $point_hint, $ch_disable, $weighting, $edge_traversal, $algorithm, $heading, $heading_penalty, $pass_through, $details, $round_trip_distance, $round_trip_seed, $alternative_route_max_paths, $alternative_route_max_weight_factor, $alternative_route_max_share_factor, $avoid);
 
         try {
             $options = $this->createHttpClientOption();
@@ -245,6 +247,7 @@ class RoutingApi
      * @param  int $heading Favour a heading direction for a certain point. Specify either one heading for the start point or as many as there are points. In this case headings are associated by their order to the specific points. Headings are given as north based clockwise angle between 0 and 360 degree. This parameter also influences the tour generated with &#x60;algorithm&#x3D;round_trip&#x60; and force the initial direction. (optional)
      * @param  int $heading_penalty Penalty for omitting a specified heading. The penalty corresponds to the accepted time delay in seconds in comparison to the route without a heading. (optional)
      * @param  bool $pass_through If &#x60;true&#x60; u-turns are avoided at via-points with regard to the &#x60;heading_penalty&#x60;. (optional)
+     * @param  string[] $details List of additional trip attributes to be returned. Try some of the following: &#x60;average_speed&#x60;, &#x60;street_name&#x60;, &#x60;edge_id&#x60;, &#x60;time&#x60;, &#x60;distance&#x60;. (optional)
      * @param  int $round_trip_distance If &#x60;algorithm&#x3D;round_trip&#x60; this parameter configures approximative length of the resulting round trip (optional)
      * @param  int $round_trip_seed If &#x60;algorithm&#x3D;round_trip&#x60; this parameter introduces randomness if e.g. the first try wasn&#39;t good. (optional)
      * @param  int $alternative_route_max_paths If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the number of maximum paths which should be calculated. Increasing can lead to worse alternatives. (optional)
@@ -255,9 +258,9 @@ class RoutingApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function routeGetAsync($point, $points_encoded, $key, $locale = null, $instructions = null, $vehicle = null, $elevation = null, $calc_points = null, $point_hint = null, $ch_disable = null, $weighting = null, $edge_traversal = null, $algorithm = null, $heading = null, $heading_penalty = null, $pass_through = null, $round_trip_distance = null, $round_trip_seed = null, $alternative_route_max_paths = null, $alternative_route_max_weight_factor = null, $alternative_route_max_share_factor = null, $avoid = null)
+    public function routeGetAsync($point, $points_encoded, $key, $locale = null, $instructions = null, $vehicle = null, $elevation = null, $calc_points = null, $point_hint = null, $ch_disable = null, $weighting = null, $edge_traversal = null, $algorithm = null, $heading = null, $heading_penalty = null, $pass_through = null, $details = null, $round_trip_distance = null, $round_trip_seed = null, $alternative_route_max_paths = null, $alternative_route_max_weight_factor = null, $alternative_route_max_share_factor = null, $avoid = null)
     {
-        return $this->routeGetAsyncWithHttpInfo($point, $points_encoded, $key, $locale, $instructions, $vehicle, $elevation, $calc_points, $point_hint, $ch_disable, $weighting, $edge_traversal, $algorithm, $heading, $heading_penalty, $pass_through, $round_trip_distance, $round_trip_seed, $alternative_route_max_paths, $alternative_route_max_weight_factor, $alternative_route_max_share_factor, $avoid)
+        return $this->routeGetAsyncWithHttpInfo($point, $points_encoded, $key, $locale, $instructions, $vehicle, $elevation, $calc_points, $point_hint, $ch_disable, $weighting, $edge_traversal, $algorithm, $heading, $heading_penalty, $pass_through, $details, $round_trip_distance, $round_trip_seed, $alternative_route_max_paths, $alternative_route_max_weight_factor, $alternative_route_max_share_factor, $avoid)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -286,6 +289,7 @@ class RoutingApi
      * @param  int $heading Favour a heading direction for a certain point. Specify either one heading for the start point or as many as there are points. In this case headings are associated by their order to the specific points. Headings are given as north based clockwise angle between 0 and 360 degree. This parameter also influences the tour generated with &#x60;algorithm&#x3D;round_trip&#x60; and force the initial direction. (optional)
      * @param  int $heading_penalty Penalty for omitting a specified heading. The penalty corresponds to the accepted time delay in seconds in comparison to the route without a heading. (optional)
      * @param  bool $pass_through If &#x60;true&#x60; u-turns are avoided at via-points with regard to the &#x60;heading_penalty&#x60;. (optional)
+     * @param  string[] $details List of additional trip attributes to be returned. Try some of the following: &#x60;average_speed&#x60;, &#x60;street_name&#x60;, &#x60;edge_id&#x60;, &#x60;time&#x60;, &#x60;distance&#x60;. (optional)
      * @param  int $round_trip_distance If &#x60;algorithm&#x3D;round_trip&#x60; this parameter configures approximative length of the resulting round trip (optional)
      * @param  int $round_trip_seed If &#x60;algorithm&#x3D;round_trip&#x60; this parameter introduces randomness if e.g. the first try wasn&#39;t good. (optional)
      * @param  int $alternative_route_max_paths If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the number of maximum paths which should be calculated. Increasing can lead to worse alternatives. (optional)
@@ -296,10 +300,10 @@ class RoutingApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function routeGetAsyncWithHttpInfo($point, $points_encoded, $key, $locale = null, $instructions = null, $vehicle = null, $elevation = null, $calc_points = null, $point_hint = null, $ch_disable = null, $weighting = null, $edge_traversal = null, $algorithm = null, $heading = null, $heading_penalty = null, $pass_through = null, $round_trip_distance = null, $round_trip_seed = null, $alternative_route_max_paths = null, $alternative_route_max_weight_factor = null, $alternative_route_max_share_factor = null, $avoid = null)
+    public function routeGetAsyncWithHttpInfo($point, $points_encoded, $key, $locale = null, $instructions = null, $vehicle = null, $elevation = null, $calc_points = null, $point_hint = null, $ch_disable = null, $weighting = null, $edge_traversal = null, $algorithm = null, $heading = null, $heading_penalty = null, $pass_through = null, $details = null, $round_trip_distance = null, $round_trip_seed = null, $alternative_route_max_paths = null, $alternative_route_max_weight_factor = null, $alternative_route_max_share_factor = null, $avoid = null)
     {
         $returnType = '\Swagger\Client\Model\RouteResponse';
-        $request = $this->routeGetRequest($point, $points_encoded, $key, $locale, $instructions, $vehicle, $elevation, $calc_points, $point_hint, $ch_disable, $weighting, $edge_traversal, $algorithm, $heading, $heading_penalty, $pass_through, $round_trip_distance, $round_trip_seed, $alternative_route_max_paths, $alternative_route_max_weight_factor, $alternative_route_max_share_factor, $avoid);
+        $request = $this->routeGetRequest($point, $points_encoded, $key, $locale, $instructions, $vehicle, $elevation, $calc_points, $point_hint, $ch_disable, $weighting, $edge_traversal, $algorithm, $heading, $heading_penalty, $pass_through, $details, $round_trip_distance, $round_trip_seed, $alternative_route_max_paths, $alternative_route_max_weight_factor, $alternative_route_max_share_factor, $avoid);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -357,6 +361,7 @@ class RoutingApi
      * @param  int $heading Favour a heading direction for a certain point. Specify either one heading for the start point or as many as there are points. In this case headings are associated by their order to the specific points. Headings are given as north based clockwise angle between 0 and 360 degree. This parameter also influences the tour generated with &#x60;algorithm&#x3D;round_trip&#x60; and force the initial direction. (optional)
      * @param  int $heading_penalty Penalty for omitting a specified heading. The penalty corresponds to the accepted time delay in seconds in comparison to the route without a heading. (optional)
      * @param  bool $pass_through If &#x60;true&#x60; u-turns are avoided at via-points with regard to the &#x60;heading_penalty&#x60;. (optional)
+     * @param  string[] $details List of additional trip attributes to be returned. Try some of the following: &#x60;average_speed&#x60;, &#x60;street_name&#x60;, &#x60;edge_id&#x60;, &#x60;time&#x60;, &#x60;distance&#x60;. (optional)
      * @param  int $round_trip_distance If &#x60;algorithm&#x3D;round_trip&#x60; this parameter configures approximative length of the resulting round trip (optional)
      * @param  int $round_trip_seed If &#x60;algorithm&#x3D;round_trip&#x60; this parameter introduces randomness if e.g. the first try wasn&#39;t good. (optional)
      * @param  int $alternative_route_max_paths If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the number of maximum paths which should be calculated. Increasing can lead to worse alternatives. (optional)
@@ -367,7 +372,7 @@ class RoutingApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function routeGetRequest($point, $points_encoded, $key, $locale = null, $instructions = null, $vehicle = null, $elevation = null, $calc_points = null, $point_hint = null, $ch_disable = null, $weighting = null, $edge_traversal = null, $algorithm = null, $heading = null, $heading_penalty = null, $pass_through = null, $round_trip_distance = null, $round_trip_seed = null, $alternative_route_max_paths = null, $alternative_route_max_weight_factor = null, $alternative_route_max_share_factor = null, $avoid = null)
+    protected function routeGetRequest($point, $points_encoded, $key, $locale = null, $instructions = null, $vehicle = null, $elevation = null, $calc_points = null, $point_hint = null, $ch_disable = null, $weighting = null, $edge_traversal = null, $algorithm = null, $heading = null, $heading_penalty = null, $pass_through = null, $details = null, $round_trip_distance = null, $round_trip_seed = null, $alternative_route_max_paths = null, $alternative_route_max_weight_factor = null, $alternative_route_max_share_factor = null, $avoid = null)
     {
         // verify the required parameter 'point' is set
         if ($point === null) {
@@ -460,6 +465,13 @@ class RoutingApi
         // query params
         if ($pass_through !== null) {
             $queryParams['pass_through'] = ObjectSerializer::toQueryValue($pass_through);
+        }
+        // query params
+        if (is_array($details)) {
+            $details = ObjectSerializer::serializeCollection($details, 'multi', true);
+        }
+        if ($details !== null) {
+            $queryParams['details'] = ObjectSerializer::toQueryValue($details);
         }
         // query params
         if ($round_trip_distance !== null) {

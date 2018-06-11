@@ -18,6 +18,7 @@
 #' @field bbox 
 #' @field snapped_waypoints 
 #' @field instructions 
+#' @field details 
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -34,7 +35,8 @@ RouteResponsePath <- R6::R6Class(
     `bbox` = NULL,
     `snapped_waypoints` = NULL,
     `instructions` = NULL,
-    initialize = function(`distance`, `time`, `ascend`, `descend`, `points`, `points_encoded`, `bbox`, `snapped_waypoints`, `instructions`){
+    `details` = NULL,
+    initialize = function(`distance`, `time`, `ascend`, `descend`, `points`, `points_encoded`, `bbox`, `snapped_waypoints`, `instructions`, `details`){
       if (!missing(`distance`)) {
         stopifnot(is.numeric(`distance`), length(`distance`) == 1)
         self$`distance` <- `distance`
@@ -71,6 +73,10 @@ RouteResponsePath <- R6::R6Class(
         stopifnot(R6::is.R6(`instructions`))
         self$`instructions` <- `instructions`
       }
+      if (!missing(`details`)) {
+        stopifnot(R6::is.R6(`details`))
+        self$`details` <- `details`
+      }
     },
     toJSON = function() {
       RouteResponsePathObject <- list()
@@ -100,6 +106,9 @@ RouteResponsePath <- R6::R6Class(
       }
       if (!is.null(self$`instructions`)) {
         RouteResponsePathObject[['instructions']] <- self$`instructions`$toJSON()
+      }
+      if (!is.null(self$`details`)) {
+        RouteResponsePathObject[['details']] <- self$`details`$toJSON()
       }
 
       RouteResponsePathObject
@@ -139,6 +148,11 @@ RouteResponsePath <- R6::R6Class(
         instructionsObject$fromJSON(jsonlite::toJSON(RouteResponsePathObject$instructions, auto_unbox = TRUE))
         self$`instructions` <- instructionsObject
       }
+      if (!is.null(RouteResponsePathObject$`details`)) {
+        detailsObject <- TODO_OBJECT_MAPPING$new()
+        detailsObject$fromJSON(jsonlite::toJSON(RouteResponsePathObject$details, auto_unbox = TRUE))
+        self$`details` <- detailsObject
+      }
     },
     toJSONString = function() {
        sprintf(
@@ -151,7 +165,8 @@ RouteResponsePath <- R6::R6Class(
            "points_encoded": %s,
            "bbox": [%s],
            "snapped_waypoints": %s,
-           "instructions": %s
+           "instructions": %s,
+           "details": %s
         }',
         self$`distance`,
         self$`time`,
@@ -161,7 +176,8 @@ RouteResponsePath <- R6::R6Class(
         self$`points_encoded`,
         lapply(self$`bbox`, function(x) paste(paste0('"', x, '"'), sep=",")),
         self$`snapped_waypoints`$toJSON(),
-        self$`instructions`$toJSON()
+        self$`instructions`$toJSON(),
+        self$`details`$toJSON()
       )
     },
     fromJSONString = function(RouteResponsePathJson) {
@@ -178,6 +194,8 @@ RouteResponsePath <- R6::R6Class(
       self$`snapped_waypoints` <- ResponseCoordinatesObject$fromJSON(jsonlite::toJSON(RouteResponsePathObject$snapped_waypoints, auto_unbox = TRUE))
       ResponseInstructionsObject <- ResponseInstructions$new()
       self$`instructions` <- ResponseInstructionsObject$fromJSON(jsonlite::toJSON(RouteResponsePathObject$instructions, auto_unbox = TRUE))
+      TODO_OBJECT_MAPPINGObject <- TODO_OBJECT_MAPPING$new()
+      self$`details` <- TODO_OBJECT_MAPPINGObject$fromJSON(jsonlite::toJSON(RouteResponsePathObject$details, auto_unbox = TRUE))
     }
   )
 )

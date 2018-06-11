@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **bbox** | **Vec<f64>** | The bounding box of the route, format &lt;br&gt; minLon, minLat, maxLon, maxLat | [optional] [default to null]
 **snapped_waypoints** | [***::models::ResponseCoordinates**](ResponseCoordinates.md) |  | [optional] [default to null]
 **instructions** | [***::models::ResponseInstructions**](ResponseInstructions.md) |  | [optional] [default to null]
+**details** | [***Value**](Value.md) |  | [optional] [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

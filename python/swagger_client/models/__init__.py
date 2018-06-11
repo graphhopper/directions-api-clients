@@ -22,6 +22,7 @@ from swagger_client.models.configuration import Configuration
 from swagger_client.models.cost_matrix import CostMatrix
 from swagger_client.models.cost_matrix_data import CostMatrixData
 from swagger_client.models.cost_matrix_data_info import CostMatrixDataInfo
+from swagger_client.models.detail import Detail
 from swagger_client.models.gh_error import GHError
 from swagger_client.models.gh_error_hints import GHErrorHints
 from swagger_client.models.geocoding_location import GeocodingLocation

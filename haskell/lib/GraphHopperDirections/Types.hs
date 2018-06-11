@@ -11,6 +11,7 @@ module GraphHopperDirections.Types (
   CostMatrix (..),
   CostMatrix_data (..),
   CostMatrix_data_info (..),
+  Detail (..),
   GHError (..),
   GHError_hints (..),
   GeocodingLocation (..),
@@ -163,6 +164,18 @@ instance FromJSON CostMatrix_data_info where
   parseJSON = genericParseJSON (removeFieldLabelPrefix True "costMatrixDataInfo")
 instance ToJSON CostMatrix_data_info where
   toJSON = genericToJSON (removeFieldLabelPrefix False "costMatrixDataInfo")
+
+-- | 
+data Detail = Detail
+  { detailId :: Text -- ^ id of unassigned service/shipment
+  , detailCode :: Int -- ^ reason code
+  , detailReason :: Text -- ^ human readable reason
+  } deriving (Show, Eq, Generic)
+
+instance FromJSON Detail where
+  parseJSON = genericParseJSON (removeFieldLabelPrefix True "detail")
+instance ToJSON Detail where
+  toJSON = genericToJSON (removeFieldLabelPrefix False "detail")
 
 -- | 
 data GHError = GHError
@@ -473,6 +486,7 @@ data RouteResponsePath = RouteResponsePath
   , routeResponsePathBbox :: [Double] -- ^ The bounding box of the route, format <br> minLon, minLat, maxLon, maxLat
   , routeResponsePathSnapped'Underscorewaypoints :: ResponseCoordinates -- ^ 
   , routeResponsePathInstructions :: ResponseInstructions -- ^ 
+  , routeResponsePathDetails :: Value -- ^ 
   } deriving (Show, Eq, Generic)
 
 instance FromJSON RouteResponsePath where
@@ -557,6 +571,8 @@ instance ToJSON Solution where
 data Solution_unassigned = Solution_unassigned
   { solutionUnassignedServices :: [Text] -- ^ An array of ids of unassigned services
   , solutionUnassignedShipments :: [Text] -- ^ An array of ids of unassigned shipments
+  , solutionUnassignedBreaks :: [Text] -- ^ An array of ids of unassigned breaks
+  , solutionUnassignedDetails :: [Detail] -- ^ An array of details, i.e. reason for unassigned services or shipments
   } deriving (Show, Eq, Generic)
 
 instance FromJSON Solution_unassigned where

@@ -35,10 +35,14 @@ namespace IO.Swagger.Model
         /// </summary>
         /// <param name="Services">An array of ids of unassigned services.</param>
         /// <param name="Shipments">An array of ids of unassigned shipments.</param>
-        public SolutionUnassigned(List<string> Services = default(List<string>), List<string> Shipments = default(List<string>))
+        /// <param name="Breaks">An array of ids of unassigned breaks.</param>
+        /// <param name="Details">An array of details, i.e. reason for unassigned services or shipments.</param>
+        public SolutionUnassigned(List<string> Services = default(List<string>), List<string> Shipments = default(List<string>), List<string> Breaks = default(List<string>), List<Detail> Details = default(List<Detail>))
         {
             this.Services = Services;
             this.Shipments = Shipments;
+            this.Breaks = Breaks;
+            this.Details = Details;
         }
         
         /// <summary>
@@ -56,6 +60,20 @@ namespace IO.Swagger.Model
         public List<string> Shipments { get; set; }
 
         /// <summary>
+        /// An array of ids of unassigned breaks
+        /// </summary>
+        /// <value>An array of ids of unassigned breaks</value>
+        [DataMember(Name="breaks", EmitDefaultValue=false)]
+        public List<string> Breaks { get; set; }
+
+        /// <summary>
+        /// An array of details, i.e. reason for unassigned services or shipments
+        /// </summary>
+        /// <value>An array of details, i.e. reason for unassigned services or shipments</value>
+        [DataMember(Name="details", EmitDefaultValue=false)]
+        public List<Detail> Details { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -65,6 +83,8 @@ namespace IO.Swagger.Model
             sb.Append("class SolutionUnassigned {\n");
             sb.Append("  Services: ").Append(Services).Append("\n");
             sb.Append("  Shipments: ").Append(Shipments).Append("\n");
+            sb.Append("  Breaks: ").Append(Breaks).Append("\n");
+            sb.Append("  Details: ").Append(Details).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -108,6 +128,16 @@ namespace IO.Swagger.Model
                     this.Shipments == input.Shipments ||
                     this.Shipments != null &&
                     this.Shipments.SequenceEqual(input.Shipments)
+                ) && 
+                (
+                    this.Breaks == input.Breaks ||
+                    this.Breaks != null &&
+                    this.Breaks.SequenceEqual(input.Breaks)
+                ) && 
+                (
+                    this.Details == input.Details ||
+                    this.Details != null &&
+                    this.Details.SequenceEqual(input.Details)
                 );
         }
 
@@ -124,6 +154,10 @@ namespace IO.Swagger.Model
                     hashCode = hashCode * 59 + this.Services.GetHashCode();
                 if (this.Shipments != null)
                     hashCode = hashCode * 59 + this.Shipments.GetHashCode();
+                if (this.Breaks != null)
+                    hashCode = hashCode * 59 + this.Breaks.GetHashCode();
+                if (this.Details != null)
+                    hashCode = hashCode * 59 + this.Details.GetHashCode();
                 return hashCode;
             }
         }

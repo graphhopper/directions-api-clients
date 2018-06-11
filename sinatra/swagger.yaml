@@ -141,6 +141,15 @@ paths:
           \ `heading_penalty`."
         required: false
         type: "boolean"
+      - name: "details"
+        in: "query"
+        description: "List of additional trip attributes to be returned. Try some\
+          \ of the following: `average_speed`, `street_name`, `edge_id`, `time`, `distance`."
+        required: false
+        type: "array"
+        items:
+          type: "string"
+        collectionFormat: "multi"
       - name: "round_trip.distance"
         in: "query"
         description: "If `algorithm=round_trip` this parameter configures approximative\
@@ -732,6 +741,7 @@ definitions:
         bbox:
         - 5.637376656633329
         - 5.637376656633329
+        details: "{}"
         time: 6
         points_encoded: true
         points:
@@ -745,6 +755,7 @@ definitions:
         bbox:
         - 5.637376656633329
         - 5.637376656633329
+        details: "{}"
         time: 6
         points_encoded: true
         points:
@@ -792,6 +803,9 @@ definitions:
         $ref: "#/definitions/ResponseCoordinates"
       instructions:
         $ref: "#/definitions/ResponseInstructions"
+      details:
+        type: "object"
+        properties: {}
     description: "A found path"
     example:
       descend: 5.962133916683182
@@ -801,6 +815,7 @@ definitions:
       bbox:
       - 5.637376656633329
       - 5.637376656633329
+      details: "{}"
       time: 6
       points_encoded: true
       points:
@@ -2016,6 +2031,16 @@ definitions:
         time: 5
         no_unassigned: 2
         unassigned:
+          breaks:
+          - "breaks"
+          - "breaks"
+          details:
+          - reason: "reason"
+            code: 9
+            id: "id"
+          - reason: "reason"
+            code: 9
+            id: "id"
           services:
           - "services"
           - "services"
@@ -2167,6 +2192,16 @@ definitions:
       time: 5
       no_unassigned: 2
       unassigned:
+        breaks:
+        - "breaks"
+        - "breaks"
+        details:
+        - reason: "reason"
+          code: 9
+          id: "id"
+        - reason: "reason"
+          code: 9
+          id: "id"
         services:
         - "services"
         - "services"
@@ -2174,6 +2209,23 @@ definitions:
         - "shipments"
         - "shipments"
       max_operation_time: 7
+  Detail:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+        description: "id of unassigned service/shipment"
+      code:
+        type: "integer"
+        format: "int32"
+        description: "reason code"
+      reason:
+        type: "string"
+        description: "human readable reason"
+    example:
+      reason: "reason"
+      code: 9
+      id: "id"
   Route:
     type: "object"
     properties:
@@ -2426,7 +2478,29 @@ definitions:
         items:
           type: "string"
           description: "id of unassigned shipments"
+      breaks:
+        type: "array"
+        description: "An array of ids of unassigned breaks"
+        items:
+          type: "string"
+          description: "id of unassigned breaks"
+      details:
+        type: "array"
+        description: "An array of details, i.e. reason for unassigned services or\
+          \ shipments"
+        items:
+          $ref: "#/definitions/Detail"
     example:
+      breaks:
+      - "breaks"
+      - "breaks"
+      details:
+      - reason: "reason"
+        code: 9
+        id: "id"
+      - reason: "reason"
+        code: 9
+        id: "id"
       services:
       - "services"
       - "services"

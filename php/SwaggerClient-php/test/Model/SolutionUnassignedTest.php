@@ -89,4 +89,18 @@ class SolutionUnassignedTest extends \PHPUnit_Framework_TestCase
     public function testPropertyShipments()
     {
     }
+
+    /**
+     * Test attribute "breaks"
+     */
+    public function testPropertyBreaks()
+    {
+    }
+
+    /**
+     * Test attribute "details"
+     */
+    public function testPropertyDetails()
+    {
+    }
 }

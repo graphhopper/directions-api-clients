@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **bbox** | **List&lt;Double&gt;** | The bounding box of the route, format &lt;br&gt; minLon, minLat, maxLon, maxLat |  [optional]
 **snappedWaypoints** | [**ResponseCoordinates**](ResponseCoordinates.md) |  |  [optional]
 **instructions** | [**ResponseInstructions**](ResponseInstructions.md) |  |  [optional]
+**details** | **Object** |  |  [optional]
 
 
 

@@ -55,6 +55,8 @@ SWGRouteResponsePath::init() {
     m_snapped_waypoints_isSet = false;
     instructions = new SWGResponseInstructions();
     m_instructions_isSet = false;
+    details = NULL;
+    m_details_isSet = false;
 }
 
 void
@@ -73,6 +75,9 @@ SWGRouteResponsePath::cleanup() {
     }
     if(instructions != nullptr) { 
         delete instructions;
+    }
+    if(details != nullptr) { 
+        delete details;
     }
 }
 
@@ -104,6 +109,8 @@ SWGRouteResponsePath::fromJsonObject(QJsonObject &pJson) {
     ::Swagger::setValue(&snapped_waypoints, pJson["snapped_waypoints"], "SWGResponseCoordinates", "SWGResponseCoordinates");
     
     ::Swagger::setValue(&instructions, pJson["instructions"], "SWGResponseInstructions", "SWGResponseInstructions");
+    
+    ::Swagger::setValue(&details, pJson["details"], "SWGObject", "SWGObject");
     
 }
 
@@ -155,6 +162,10 @@ SWGRouteResponsePath::asJsonObject() {
      
     if((instructions != nullptr) && (instructions->isSet())){
         toJsonValue(QString("instructions"), instructions, obj, QString("SWGResponseInstructions"));
+    }
+     
+    if((details != nullptr) && (details->isSet())){
+        toJsonValue(QString("details"), details, obj, QString("SWGObject"));
     }
 
     return obj;
@@ -250,6 +261,16 @@ SWGRouteResponsePath::setInstructions(SWGResponseInstructions* instructions) {
     this->m_instructions_isSet = true;
 }
 
+SWGObject*
+SWGRouteResponsePath::getDetails() {
+    return details;
+}
+void
+SWGRouteResponsePath::setDetails(SWGObject* details) {
+    this->details = details;
+    this->m_details_isSet = true;
+}
+
 
 bool 
 SWGRouteResponsePath::isSet(){
@@ -264,6 +285,7 @@ SWGRouteResponsePath::isSet(){
         if(m_bbox_isSet){ isObjectUpdated = true; break;}if(bbox->size() > 0){ isObjectUpdated = true; break;}
         if(snapped_waypoints != nullptr && snapped_waypoints->isSet()){ isObjectUpdated = true; break;}
         if(instructions != nullptr && instructions->isSet()){ isObjectUpdated = true; break;}
+        if(details != nullptr && details->isSet()){ isObjectUpdated = true; break;}
     }while(false);
     return isObjectUpdated;
 }

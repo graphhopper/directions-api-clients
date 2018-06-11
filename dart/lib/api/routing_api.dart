@@ -10,7 +10,7 @@ class RoutingApi {
   /// Routing Request
   ///
   /// The GraphHopper Routing API allows to calculate route and implement navigation via the turn instructions
-  Future<RouteResponse> routeGet(List<String> point, bool pointsEncoded, String key, { String locale, bool instructions, String vehicle, bool elevation, bool calcPoints, List<String> pointHint, bool chDisable, String weighting, bool edgeTraversal, String algorithm, int heading, int headingPenalty, bool passThrough, int roundTripDistance, int roundTripSeed, int alternativeRouteMaxPaths, int alternativeRouteMaxWeightFactor, int alternativeRouteMaxShareFactor, String avoid }) async {
+  Future<RouteResponse> routeGet(List<String> point, bool pointsEncoded, String key, { String locale, bool instructions, String vehicle, bool elevation, bool calcPoints, List<String> pointHint, bool chDisable, String weighting, bool edgeTraversal, String algorithm, int heading, int headingPenalty, bool passThrough, List<String> details, int roundTripDistance, int roundTripSeed, int alternativeRouteMaxPaths, int alternativeRouteMaxWeightFactor, int alternativeRouteMaxShareFactor, String avoid }) async {
     Object postBody = null;
 
     // verify required params are set
@@ -71,6 +71,9 @@ class RoutingApi {
     }
     if(passThrough != null) {
       queryParams.addAll(_convertParametersForCollectionFormat("", "pass_through", passThrough));
+    }
+    if(details != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat("multi", "details", details));
     }
     if(roundTripDistance != null) {
       queryParams.addAll(_convertParametersForCollectionFormat("", "round_trip.distance", roundTripDistance));

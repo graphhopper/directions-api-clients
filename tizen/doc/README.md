@@ -88,6 +88,7 @@ Class | Description
  *CostMatrix* | 
  *CostMatrix_data* | JSON data of matrix response
  *CostMatrix_data_info* | Additional information for your request
+ *Detail* | 
  *GHError* | 
  *GHError_hints* | 
  *GeocodingLocation* | 

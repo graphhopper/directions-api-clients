@@ -17,6 +17,10 @@ case class SolutionUnassigned (
   // An array of ids of unassigned services
   services: Option[List[String]] = None,
   // An array of ids of unassigned shipments
-  shipments: Option[List[String]] = None
+  shipments: Option[List[String]] = None,
+  // An array of ids of unassigned breaks
+  breaks: Option[List[String]] = None,
+  // An array of details, i.e. reason for unassigned services or shipments
+  details: Option[List[Detail]] = None
 )
 

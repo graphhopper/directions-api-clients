@@ -41,6 +41,10 @@ SWGSolution_unassigned::init() {
     m_services_isSet = false;
     shipments = new QList<QString*>();
     m_shipments_isSet = false;
+    breaks = new QList<QString*>();
+    m_breaks_isSet = false;
+    details = new QList<SWGDetail*>();
+    m_details_isSet = false;
 }
 
 void
@@ -59,6 +63,20 @@ SWGSolution_unassigned::cleanup() {
         }
         delete shipments;
     }
+    if(breaks != nullptr) { 
+        auto arr = breaks;
+        for(auto o: *arr) { 
+            delete o;
+        }
+        delete breaks;
+    }
+    if(details != nullptr) { 
+        auto arr = details;
+        for(auto o: *arr) { 
+            delete o;
+        }
+        delete details;
+    }
 }
 
 SWGSolution_unassigned*
@@ -76,6 +94,10 @@ SWGSolution_unassigned::fromJsonObject(QJsonObject &pJson) {
     ::Swagger::setValue(&services, pJson["services"], "QList", "QString");
     
     ::Swagger::setValue(&shipments, pJson["shipments"], "QList", "QString");
+    
+    ::Swagger::setValue(&breaks, pJson["breaks"], "QList", "QString");
+    
+    ::Swagger::setValue(&details, pJson["details"], "QList", "SWGDetail");
 }
 
 QString
@@ -98,6 +120,14 @@ SWGSolution_unassigned::asJsonObject() {
     
     if(shipments->size() > 0){
         toJsonArray((QList<void*>*)shipments, obj, "shipments", "QString");
+    }
+    
+    if(breaks->size() > 0){
+        toJsonArray((QList<void*>*)breaks, obj, "breaks", "QString");
+    }
+    
+    if(details->size() > 0){
+        toJsonArray((QList<void*>*)details, obj, "details", "SWGDetail");
     }
 
     return obj;
@@ -123,6 +153,26 @@ SWGSolution_unassigned::setShipments(QList<QString*>* shipments) {
     this->m_shipments_isSet = true;
 }
 
+QList<QString*>*
+SWGSolution_unassigned::getBreaks() {
+    return breaks;
+}
+void
+SWGSolution_unassigned::setBreaks(QList<QString*>* breaks) {
+    this->breaks = breaks;
+    this->m_breaks_isSet = true;
+}
+
+QList<SWGDetail*>*
+SWGSolution_unassigned::getDetails() {
+    return details;
+}
+void
+SWGSolution_unassigned::setDetails(QList<SWGDetail*>* details) {
+    this->details = details;
+    this->m_details_isSet = true;
+}
+
 
 bool 
 SWGSolution_unassigned::isSet(){
@@ -130,6 +180,8 @@ SWGSolution_unassigned::isSet(){
     do{
         if(services->size() > 0){ isObjectUpdated = true; break;}
         if(shipments->size() > 0){ isObjectUpdated = true; break;}
+        if(breaks->size() > 0){ isObjectUpdated = true; break;}
+        if(details->size() > 0){ isObjectUpdated = true; break;}
     }while(false);
     return isObjectUpdated;
 }

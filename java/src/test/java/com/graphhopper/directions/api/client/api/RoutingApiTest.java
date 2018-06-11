@@ -59,13 +59,14 @@ public class RoutingApiTest {
         Integer heading = null;
         Integer headingPenalty = null;
         Boolean passThrough = null;
+        List<String> details = null;
         Integer roundTripDistance = null;
         Long roundTripSeed = null;
         Integer alternativeRouteMaxPaths = null;
         Integer alternativeRouteMaxWeightFactor = null;
         Integer alternativeRouteMaxShareFactor = null;
         String avoid = null;
-        RouteResponse response = api.routeGet(point, pointsEncoded, key, locale, instructions, vehicle, elevation, calcPoints, pointHint, chDisable, weighting, edgeTraversal, algorithm, heading, headingPenalty, passThrough, roundTripDistance, roundTripSeed, alternativeRouteMaxPaths, alternativeRouteMaxWeightFactor, alternativeRouteMaxShareFactor, avoid);
+        RouteResponse response = api.routeGet(point, pointsEncoded, key, locale, instructions, vehicle, elevation, calcPoints, pointHint, chDisable, weighting, edgeTraversal, algorithm, heading, headingPenalty, passThrough, details, roundTripDistance, roundTripSeed, alternativeRouteMaxPaths, alternativeRouteMaxWeightFactor, alternativeRouteMaxShareFactor, avoid);
 
         // TODO: test validations
     }

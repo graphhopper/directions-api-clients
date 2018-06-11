@@ -55,6 +55,7 @@ Class | Method | HTTP request | Description
  - [io.swagger.client.models.CostMatrix](docs/CostMatrix.md)
  - [io.swagger.client.models.CostMatrix_data](docs/CostMatrix_data.md)
  - [io.swagger.client.models.CostMatrix_data_info](docs/CostMatrix_data_info.md)
+ - [io.swagger.client.models.Detail](docs/Detail.md)
  - [io.swagger.client.models.GHError](docs/GHError.md)
  - [io.swagger.client.models.GHError_hints](docs/GHError_hints.md)
  - [io.swagger.client.models.GeocodingLocation](docs/GeocodingLocation.md)

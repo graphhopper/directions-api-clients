@@ -122,6 +122,7 @@ Class | Method | HTTP request | Description
  - [Model.CostMatrix](docs/CostMatrix.md)
  - [Model.CostMatrixData](docs/CostMatrixData.md)
  - [Model.CostMatrixDataInfo](docs/CostMatrixDataInfo.md)
+ - [Model.Detail](docs/Detail.md)
  - [Model.GHError](docs/GHError.md)
  - [Model.GHErrorHints](docs/GHErrorHints.md)
  - [Model.GeocodingLocation](docs/GeocodingLocation.md)

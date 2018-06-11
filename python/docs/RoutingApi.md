@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 
 # **route_get**
-> RouteResponse route_get(point, points_encoded, key, locale=locale, instructions=instructions, vehicle=vehicle, elevation=elevation, calc_points=calc_points, point_hint=point_hint, ch_disable=ch_disable, weighting=weighting, edge_traversal=edge_traversal, algorithm=algorithm, heading=heading, heading_penalty=heading_penalty, pass_through=pass_through, round_trip_distance=round_trip_distance, round_trip_seed=round_trip_seed, alternative_route_max_paths=alternative_route_max_paths, alternative_route_max_weight_factor=alternative_route_max_weight_factor, alternative_route_max_share_factor=alternative_route_max_share_factor, avoid=avoid)
+> RouteResponse route_get(point, points_encoded, key, locale=locale, instructions=instructions, vehicle=vehicle, elevation=elevation, calc_points=calc_points, point_hint=point_hint, ch_disable=ch_disable, weighting=weighting, edge_traversal=edge_traversal, algorithm=algorithm, heading=heading, heading_penalty=heading_penalty, pass_through=pass_through, details=details, round_trip_distance=round_trip_distance, round_trip_seed=round_trip_seed, alternative_route_max_paths=alternative_route_max_paths, alternative_route_max_weight_factor=alternative_route_max_weight_factor, alternative_route_max_share_factor=alternative_route_max_share_factor, avoid=avoid)
 
 Routing Request
 
@@ -40,6 +40,7 @@ algorithm = 'algorithm_example' # str | The algorithm to calculate the route. Ot
 heading = 56 # int | Favour a heading direction for a certain point. Specify either one heading for the start point or as many as there are points. In this case headings are associated by their order to the specific points. Headings are given as north based clockwise angle between 0 and 360 degree. This parameter also influences the tour generated with `algorithm=round_trip` and force the initial direction. (optional)
 heading_penalty = 56 # int | Penalty for omitting a specified heading. The penalty corresponds to the accepted time delay in seconds in comparison to the route without a heading. (optional)
 pass_through = true # bool | If `true` u-turns are avoided at via-points with regard to the `heading_penalty`. (optional)
+details = ['details_example'] # list[str] | List of additional trip attributes to be returned. Try some of the following: `average_speed`, `street_name`, `edge_id`, `time`, `distance`. (optional)
 round_trip_distance = 56 # int | If `algorithm=round_trip` this parameter configures approximative length of the resulting round trip (optional)
 round_trip_seed = 789 # int | If `algorithm=round_trip` this parameter introduces randomness if e.g. the first try wasn't good. (optional)
 alternative_route_max_paths = 56 # int | If `algorithm=alternative_route` this parameter sets the number of maximum paths which should be calculated. Increasing can lead to worse alternatives. (optional)
@@ -49,7 +50,7 @@ avoid = 'avoid_example' # str | comma separate list to avoid certain roads. You 
 
 try:
     # Routing Request
-    api_response = api_instance.route_get(point, points_encoded, key, locale=locale, instructions=instructions, vehicle=vehicle, elevation=elevation, calc_points=calc_points, point_hint=point_hint, ch_disable=ch_disable, weighting=weighting, edge_traversal=edge_traversal, algorithm=algorithm, heading=heading, heading_penalty=heading_penalty, pass_through=pass_through, round_trip_distance=round_trip_distance, round_trip_seed=round_trip_seed, alternative_route_max_paths=alternative_route_max_paths, alternative_route_max_weight_factor=alternative_route_max_weight_factor, alternative_route_max_share_factor=alternative_route_max_share_factor, avoid=avoid)
+    api_response = api_instance.route_get(point, points_encoded, key, locale=locale, instructions=instructions, vehicle=vehicle, elevation=elevation, calc_points=calc_points, point_hint=point_hint, ch_disable=ch_disable, weighting=weighting, edge_traversal=edge_traversal, algorithm=algorithm, heading=heading, heading_penalty=heading_penalty, pass_through=pass_through, details=details, round_trip_distance=round_trip_distance, round_trip_seed=round_trip_seed, alternative_route_max_paths=alternative_route_max_paths, alternative_route_max_weight_factor=alternative_route_max_weight_factor, alternative_route_max_share_factor=alternative_route_max_share_factor, avoid=avoid)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling RoutingApi->route_get: %s\n" % e)
@@ -75,6 +76,7 @@ Name | Type | Description  | Notes
  **heading** | **int**| Favour a heading direction for a certain point. Specify either one heading for the start point or as many as there are points. In this case headings are associated by their order to the specific points. Headings are given as north based clockwise angle between 0 and 360 degree. This parameter also influences the tour generated with &#x60;algorithm&#x3D;round_trip&#x60; and force the initial direction. | [optional] 
  **heading_penalty** | **int**| Penalty for omitting a specified heading. The penalty corresponds to the accepted time delay in seconds in comparison to the route without a heading. | [optional] 
  **pass_through** | **bool**| If &#x60;true&#x60; u-turns are avoided at via-points with regard to the &#x60;heading_penalty&#x60;. | [optional] 
+ **details** | [**list[str]**](str.md)| List of additional trip attributes to be returned. Try some of the following: &#x60;average_speed&#x60;, &#x60;street_name&#x60;, &#x60;edge_id&#x60;, &#x60;time&#x60;, &#x60;distance&#x60;. | [optional] 
  **round_trip_distance** | **int**| If &#x60;algorithm&#x3D;round_trip&#x60; this parameter configures approximative length of the resulting round trip | [optional] 
  **round_trip_seed** | **int**| If &#x60;algorithm&#x3D;round_trip&#x60; this parameter introduces randomness if e.g. the first try wasn&#39;t good. | [optional] 
  **alternative_route_max_paths** | **int**| If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the number of maximum paths which should be calculated. Increasing can lead to worse alternatives. | [optional] 

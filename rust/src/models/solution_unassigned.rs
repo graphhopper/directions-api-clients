@@ -19,14 +19,22 @@ pub struct SolutionUnassigned {
   services: Option<Vec<String>>,
   /// An array of ids of unassigned shipments
   #[serde(rename = "shipments")]
-  shipments: Option<Vec<String>>
+  shipments: Option<Vec<String>>,
+  /// An array of ids of unassigned breaks
+  #[serde(rename = "breaks")]
+  breaks: Option<Vec<String>>,
+  /// An array of details, i.e. reason for unassigned services or shipments
+  #[serde(rename = "details")]
+  details: Option<Vec<::models::Detail>>
 }
 
 impl SolutionUnassigned {
   pub fn new() -> SolutionUnassigned {
     SolutionUnassigned {
       services: None,
-      shipments: None
+      shipments: None,
+      breaks: None,
+      details: None
     }
   }
 
@@ -62,6 +70,40 @@ impl SolutionUnassigned {
 
   pub fn reset_shipments(&mut self) {
     self.shipments = None;
+  }
+
+  pub fn set_breaks(&mut self, breaks: Vec<String>) {
+    self.breaks = Some(breaks);
+  }
+
+  pub fn with_breaks(mut self, breaks: Vec<String>) -> SolutionUnassigned {
+    self.breaks = Some(breaks);
+    self
+  }
+
+  pub fn breaks(&self) -> Option<&Vec<String>> {
+    self.breaks.as_ref()
+  }
+
+  pub fn reset_breaks(&mut self) {
+    self.breaks = None;
+  }
+
+  pub fn set_details(&mut self, details: Vec<::models::Detail>) {
+    self.details = Some(details);
+  }
+
+  pub fn with_details(mut self, details: Vec<::models::Detail>) -> SolutionUnassigned {
+    self.details = Some(details);
+    self
+  }
+
+  pub fn details(&self) -> Option<&Vec<::models::Detail>> {
+    self.details.as_ref()
+  }
+
+  pub fn reset_details(&mut self) {
+    self.details = None;
   }
 
 }

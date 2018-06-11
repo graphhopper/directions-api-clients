@@ -30,6 +30,7 @@ use Log::Any qw($log);
 use Date::Parse;
 use DateTime;
 
+use WWW::SwaggerClient::Object::Detail;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
@@ -157,16 +158,34 @@ __PACKAGE__->method_documentation({
     	format => '',
     	read_only => '',
     		},
+    'breaks' => {
+    	datatype => 'ARRAY[string]',
+    	base_name => 'breaks',
+    	description => 'An array of ids of unassigned breaks',
+    	format => '',
+    	read_only => '',
+    		},
+    'details' => {
+    	datatype => 'ARRAY[Detail]',
+    	base_name => 'details',
+    	description => 'An array of details, i.e. reason for unassigned services or shipments',
+    	format => '',
+    	read_only => '',
+    		},
 });
 
 __PACKAGE__->swagger_types( {
     'services' => 'ARRAY[string]',
-    'shipments' => 'ARRAY[string]'
+    'shipments' => 'ARRAY[string]',
+    'breaks' => 'ARRAY[string]',
+    'details' => 'ARRAY[Detail]'
 } );
 
 __PACKAGE__->attribute_map( {
     'services' => 'services',
-    'shipments' => 'shipments'
+    'shipments' => 'shipments',
+    'breaks' => 'breaks',
+    'details' => 'details'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

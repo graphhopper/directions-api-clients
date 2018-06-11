@@ -49,13 +49,14 @@ isa_ok($api, 'WWW::SwaggerClient::RoutingApi');
     my $heading = undef; # replace NULL with a proper value
     my $heading_penalty = undef; # replace NULL with a proper value
     my $pass_through = undef; # replace NULL with a proper value
+    my $details = undef; # replace NULL with a proper value
     my $round_trip/distance = undef; # replace NULL with a proper value
     my $round_trip/seed = undef; # replace NULL with a proper value
     my $alternative_route/max_paths = undef; # replace NULL with a proper value
     my $alternative_route/max_weight_factor = undef; # replace NULL with a proper value
     my $alternative_route/max_share_factor = undef; # replace NULL with a proper value
     my $avoid = undef; # replace NULL with a proper value
-    my $result = $api->route_get(point => $point, points_encoded => $points_encoded, key => $key, locale => $locale, instructions => $instructions, vehicle => $vehicle, elevation => $elevation, calc_points => $calc_points, point_hint => $point_hint, ch/disable => $ch/disable, weighting => $weighting, edge_traversal => $edge_traversal, algorithm => $algorithm, heading => $heading, heading_penalty => $heading_penalty, pass_through => $pass_through, round_trip/distance => $round_trip/distance, round_trip/seed => $round_trip/seed, alternative_route/max_paths => $alternative_route/max_paths, alternative_route/max_weight_factor => $alternative_route/max_weight_factor, alternative_route/max_share_factor => $alternative_route/max_share_factor, avoid => $avoid);
+    my $result = $api->route_get(point => $point, points_encoded => $points_encoded, key => $key, locale => $locale, instructions => $instructions, vehicle => $vehicle, elevation => $elevation, calc_points => $calc_points, point_hint => $point_hint, ch/disable => $ch/disable, weighting => $weighting, edge_traversal => $edge_traversal, algorithm => $algorithm, heading => $heading, heading_penalty => $heading_penalty, pass_through => $pass_through, details => $details, round_trip/distance => $round_trip/distance, round_trip/seed => $round_trip/seed, alternative_route/max_paths => $alternative_route/max_paths, alternative_route/max_weight_factor => $alternative_route/max_weight_factor, alternative_route/max_share_factor => $alternative_route/max_share_factor, avoid => $avoid);
 }
 
 

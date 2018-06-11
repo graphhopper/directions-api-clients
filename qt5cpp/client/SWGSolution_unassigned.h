@@ -22,6 +22,7 @@
 #include <QJsonObject>
 
 
+#include "SWGDetail.h"
 #include <QList>
 #include <QString>
 
@@ -48,6 +49,12 @@ public:
     QList<QString*>* getShipments();
     void setShipments(QList<QString*>* shipments);
 
+    QList<QString*>* getBreaks();
+    void setBreaks(QList<QString*>* breaks);
+
+    QList<SWGDetail*>* getDetails();
+    void setDetails(QList<SWGDetail*>* details);
+
 
     virtual bool isSet() override;
 
@@ -57,6 +64,12 @@ private:
     
     QList<QString*>* shipments;
     bool m_shipments_isSet;
+    
+    QList<QString*>* breaks;
+    bool m_breaks_isSet;
+    
+    QList<SWGDetail*>* details;
+    bool m_details_isSet;
     
 };
 

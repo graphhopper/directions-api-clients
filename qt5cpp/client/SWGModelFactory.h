@@ -22,6 +22,7 @@
 #include "SWGCostMatrix.h"
 #include "SWGCostMatrix_data.h"
 #include "SWGCostMatrix_data_info.h"
+#include "SWGDetail.h"
 #include "SWGGHError.h"
 #include "SWGGHError_hints.h"
 #include "SWGGeocodingLocation.h"
@@ -84,6 +85,9 @@ namespace Swagger {
     }
     if(QString("SWGCostMatrix_data_info").compare(type) == 0) {
       return new SWGCostMatrix_data_info();
+    }
+    if(QString("SWGDetail").compare(type) == 0) {
+      return new SWGDetail();
     }
     if(QString("SWGGHError").compare(type) == 0) {
       return new SWGGHError();

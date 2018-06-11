@@ -101,6 +101,7 @@ Class | Method | HTTP request | Description
  - [GraphHopperClient::CostMatrix](docs/CostMatrix.md)
  - [GraphHopperClient::CostMatrixData](docs/CostMatrixData.md)
  - [GraphHopperClient::CostMatrixDataInfo](docs/CostMatrixDataInfo.md)
+ - [GraphHopperClient::Detail](docs/Detail.md)
  - [GraphHopperClient::GHError](docs/GHError.md)
  - [GraphHopperClient::GHErrorHints](docs/GHErrorHints.md)
  - [GraphHopperClient::GeocodingLocation](docs/GeocodingLocation.md)

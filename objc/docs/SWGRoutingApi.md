@@ -25,6 +25,7 @@ Method | HTTP request | Description
     heading: (NSNumber*) heading
     headingPenalty: (NSNumber*) headingPenalty
     passThrough: (NSNumber*) passThrough
+    details: (NSArray<NSString*>*) details
     roundTripDistance: (NSNumber*) roundTripDistance
     roundTripSeed: (NSNumber*) roundTripSeed
     alternativeRouteMaxPaths: (NSNumber*) alternativeRouteMaxPaths
@@ -57,6 +58,7 @@ NSString* algorithm = @"algorithm_example"; // The algorithm to calculate the ro
 NSNumber* heading = @56; // Favour a heading direction for a certain point. Specify either one heading for the start point or as many as there are points. In this case headings are associated by their order to the specific points. Headings are given as north based clockwise angle between 0 and 360 degree. This parameter also influences the tour generated with `algorithm=round_trip` and force the initial direction. (optional)
 NSNumber* headingPenalty = @56; // Penalty for omitting a specified heading. The penalty corresponds to the accepted time delay in seconds in comparison to the route without a heading. (optional)
 NSNumber* passThrough = @true; // If `true` u-turns are avoided at via-points with regard to the `heading_penalty`. (optional)
+NSArray<NSString*>* details = @[@"details_example"]; // List of additional trip attributes to be returned. Try some of the following: `average_speed`, `street_name`, `edge_id`, `time`, `distance`. (optional)
 NSNumber* roundTripDistance = @56; // If `algorithm=round_trip` this parameter configures approximative length of the resulting round trip (optional)
 NSNumber* roundTripSeed = @789; // If `algorithm=round_trip` this parameter introduces randomness if e.g. the first try wasn't good. (optional)
 NSNumber* alternativeRouteMaxPaths = @56; // If `algorithm=alternative_route` this parameter sets the number of maximum paths which should be calculated. Increasing can lead to worse alternatives. (optional)
@@ -83,6 +85,7 @@ SWGRoutingApi*apiInstance = [[SWGRoutingApi alloc] init];
               heading:heading
               headingPenalty:headingPenalty
               passThrough:passThrough
+              details:details
               roundTripDistance:roundTripDistance
               roundTripSeed:roundTripSeed
               alternativeRouteMaxPaths:alternativeRouteMaxPaths
@@ -119,6 +122,7 @@ Name | Type | Description  | Notes
  **heading** | **NSNumber***| Favour a heading direction for a certain point. Specify either one heading for the start point or as many as there are points. In this case headings are associated by their order to the specific points. Headings are given as north based clockwise angle between 0 and 360 degree. This parameter also influences the tour generated with &#x60;algorithm&#x3D;round_trip&#x60; and force the initial direction. | [optional] 
  **headingPenalty** | **NSNumber***| Penalty for omitting a specified heading. The penalty corresponds to the accepted time delay in seconds in comparison to the route without a heading. | [optional] 
  **passThrough** | **NSNumber***| If &#x60;true&#x60; u-turns are avoided at via-points with regard to the &#x60;heading_penalty&#x60;. | [optional] 
+ **details** | [**NSArray&lt;NSString*&gt;***](NSString*.md)| List of additional trip attributes to be returned. Try some of the following: &#x60;average_speed&#x60;, &#x60;street_name&#x60;, &#x60;edge_id&#x60;, &#x60;time&#x60;, &#x60;distance&#x60;. | [optional] 
  **roundTripDistance** | **NSNumber***| If &#x60;algorithm&#x3D;round_trip&#x60; this parameter configures approximative length of the resulting round trip | [optional] 
  **roundTripSeed** | **NSNumber***| If &#x60;algorithm&#x3D;round_trip&#x60; this parameter introduces randomness if e.g. the first try wasn&#39;t good. | [optional] 
  **alternativeRouteMaxPaths** | **NSNumber***| If &#x60;algorithm&#x3D;alternative_route&#x60; this parameter sets the number of maximum paths which should be calculated. Increasing can lead to worse alternatives. | [optional] 

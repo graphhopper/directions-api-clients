@@ -85,6 +85,8 @@ NSInteger kSWGRoutingApiMissingParamErrorCode = 234513;
 ///
 ///  @param passThrough If `true` u-turns are avoided at via-points with regard to the `heading_penalty`. (optional)
 ///
+///  @param details List of additional trip attributes to be returned. Try some of the following: `average_speed`, `street_name`, `edge_id`, `time`, `distance`. (optional)
+///
 ///  @param roundTripDistance If `algorithm=round_trip` this parameter configures approximative length of the resulting round trip (optional)
 ///
 ///  @param roundTripSeed If `algorithm=round_trip` this parameter introduces randomness if e.g. the first try wasn't good. (optional)
@@ -115,6 +117,7 @@ NSInteger kSWGRoutingApiMissingParamErrorCode = 234513;
     heading: (NSNumber*) heading
     headingPenalty: (NSNumber*) headingPenalty
     passThrough: (NSNumber*) passThrough
+    details: (NSArray<NSString*>*) details
     roundTripDistance: (NSNumber*) roundTripDistance
     roundTripSeed: (NSNumber*) roundTripSeed
     alternativeRouteMaxPaths: (NSNumber*) alternativeRouteMaxPaths
@@ -204,6 +207,9 @@ NSInteger kSWGRoutingApiMissingParamErrorCode = 234513;
     }
     if (passThrough != nil) {
         queryParams[@"pass_through"] = [passThrough isEqual:@(YES)] ? @"true" : @"false";
+    }
+    if (details != nil) {
+        queryParams[@"details"] = [[SWGQueryParamCollection alloc] initWithValuesAndFormat: details format: @"multi"];
     }
     if (roundTripDistance != nil) {
         queryParams[@"round_trip.distance"] = roundTripDistance;

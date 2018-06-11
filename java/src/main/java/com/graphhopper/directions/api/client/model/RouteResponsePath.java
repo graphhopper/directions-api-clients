@@ -61,6 +61,9 @@ public class RouteResponsePath {
   @SerializedName("instructions")
   private ResponseInstructions instructions = null;
 
+  @SerializedName("details")
+  private Object details = null;
+
   public RouteResponsePath distance(Double distance) {
     this.distance = distance;
     return this;
@@ -231,6 +234,24 @@ public class RouteResponsePath {
     this.instructions = instructions;
   }
 
+  public RouteResponsePath details(Object details) {
+    this.details = details;
+    return this;
+  }
+
+   /**
+   * Get details
+   * @return details
+  **/
+  @ApiModelProperty(value = "")
+  public Object getDetails() {
+    return details;
+  }
+
+  public void setDetails(Object details) {
+    this.details = details;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -249,12 +270,13 @@ public class RouteResponsePath {
         Objects.equals(this.pointsEncoded, routeResponsePath.pointsEncoded) &&
         Objects.equals(this.bbox, routeResponsePath.bbox) &&
         Objects.equals(this.snappedWaypoints, routeResponsePath.snappedWaypoints) &&
-        Objects.equals(this.instructions, routeResponsePath.instructions);
+        Objects.equals(this.instructions, routeResponsePath.instructions) &&
+        Objects.equals(this.details, routeResponsePath.details);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(distance, time, ascend, descend, points, pointsEncoded, bbox, snappedWaypoints, instructions);
+    return Objects.hash(distance, time, ascend, descend, points, pointsEncoded, bbox, snappedWaypoints, instructions, details);
   }
 
 
@@ -272,6 +294,7 @@ public class RouteResponsePath {
     sb.append("    bbox: ").append(toIndentedString(bbox)).append("\n");
     sb.append("    snappedWaypoints: ").append(toIndentedString(snappedWaypoints)).append("\n");
     sb.append("    instructions: ").append(toIndentedString(instructions)).append("\n");
+    sb.append("    details: ").append(toIndentedString(details)).append("\n");
     sb.append("}");
     return sb.toString();
   }

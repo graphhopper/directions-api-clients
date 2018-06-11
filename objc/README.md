@@ -49,6 +49,7 @@ Import the following:
 #import <SwaggerClient/SWGCostMatrix.h>
 #import <SwaggerClient/SWGCostMatrixData.h>
 #import <SwaggerClient/SWGCostMatrixDataInfo.h>
+#import <SwaggerClient/SWGDetail.h>
 #import <SwaggerClient/SWGGHError.h>
 #import <SwaggerClient/SWGGHErrorHints.h>
 #import <SwaggerClient/SWGGeocodingLocation.h>
@@ -159,6 +160,7 @@ Class | Method | HTTP request | Description
  - [SWGCostMatrix](docs/SWGCostMatrix.md)
  - [SWGCostMatrixData](docs/SWGCostMatrixData.md)
  - [SWGCostMatrixDataInfo](docs/SWGCostMatrixDataInfo.md)
+ - [SWGDetail](docs/SWGDetail.md)
  - [SWGGHError](docs/SWGGHError.md)
  - [SWGGHErrorHints](docs/SWGGHErrorHints.md)
  - [SWGGeocodingLocation](docs/SWGGeocodingLocation.md)

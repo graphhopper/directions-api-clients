@@ -38,11 +38,15 @@ class RouteResponsePath {
   @Property(name: 'instructions')
   ResponseInstructions instructions = null;
   
+
+  @Property(name: 'details')
+  Object details = null;
+  
   RouteResponsePath();
 
   @override
   String toString()  {
-    return 'RouteResponsePath[distance=$distance, time=$time, ascend=$ascend, descend=$descend, points=$points, pointsEncoded=$pointsEncoded, bbox=$bbox, snappedWaypoints=$snappedWaypoints, instructions=$instructions, ]';
+    return 'RouteResponsePath[distance=$distance, time=$time, ascend=$ascend, descend=$descend, points=$points, pointsEncoded=$pointsEncoded, bbox=$bbox, snappedWaypoints=$snappedWaypoints, instructions=$instructions, details=$details, ]';
   }
 }
 

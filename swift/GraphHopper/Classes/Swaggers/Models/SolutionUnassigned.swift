@@ -13,6 +13,10 @@ public class SolutionUnassigned: JSONEncodable {
     public var services: [String]?
     /** An array of ids of unassigned shipments */
     public var shipments: [String]?
+    /** An array of ids of unassigned breaks */
+    public var breaks: [String]?
+    /** An array of details, i.e. reason for unassigned services or shipments */
+    public var details: [Detail]?
 
     public init() {}
 
@@ -21,6 +25,8 @@ public class SolutionUnassigned: JSONEncodable {
         var nillableDictionary = [String:AnyObject?]()
         nillableDictionary["services"] = self.services?.encodeToJSON()
         nillableDictionary["shipments"] = self.shipments?.encodeToJSON()
+        nillableDictionary["breaks"] = self.breaks?.encodeToJSON()
+        nillableDictionary["details"] = self.details?.encodeToJSON()
         let dictionary: [String:AnyObject] = APIHelper.rejectNil(nillableDictionary) ?? [:]
         return dictionary
     }

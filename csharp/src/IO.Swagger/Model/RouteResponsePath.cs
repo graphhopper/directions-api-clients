@@ -42,7 +42,8 @@ namespace IO.Swagger.Model
         /// <param name="Bbox">The bounding box of the route, format &lt;br&gt; minLon, minLat, maxLon, maxLat.</param>
         /// <param name="SnappedWaypoints">SnappedWaypoints.</param>
         /// <param name="Instructions">Instructions.</param>
-        public RouteResponsePath(double? Distance = default(double?), long? Time = default(long?), double? Ascend = default(double?), double? Descend = default(double?), ResponseCoordinates Points = default(ResponseCoordinates), bool? PointsEncoded = default(bool?), List<double?> Bbox = default(List<double?>), ResponseCoordinates SnappedWaypoints = default(ResponseCoordinates), ResponseInstructions Instructions = default(ResponseInstructions))
+        /// <param name="Details">Details.</param>
+        public RouteResponsePath(double? Distance = default(double?), long? Time = default(long?), double? Ascend = default(double?), double? Descend = default(double?), ResponseCoordinates Points = default(ResponseCoordinates), bool? PointsEncoded = default(bool?), List<double?> Bbox = default(List<double?>), ResponseCoordinates SnappedWaypoints = default(ResponseCoordinates), ResponseInstructions Instructions = default(ResponseInstructions), Object Details = default(Object))
         {
             this.Distance = Distance;
             this.Time = Time;
@@ -53,6 +54,7 @@ namespace IO.Swagger.Model
             this.Bbox = Bbox;
             this.SnappedWaypoints = SnappedWaypoints;
             this.Instructions = Instructions;
+            this.Details = Details;
         }
         
         /// <summary>
@@ -115,6 +117,12 @@ namespace IO.Swagger.Model
         public ResponseInstructions Instructions { get; set; }
 
         /// <summary>
+        /// Gets or Sets Details
+        /// </summary>
+        [DataMember(Name="details", EmitDefaultValue=false)]
+        public Object Details { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -131,6 +139,7 @@ namespace IO.Swagger.Model
             sb.Append("  Bbox: ").Append(Bbox).Append("\n");
             sb.Append("  SnappedWaypoints: ").Append(SnappedWaypoints).Append("\n");
             sb.Append("  Instructions: ").Append(Instructions).Append("\n");
+            sb.Append("  Details: ").Append(Details).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -209,6 +218,11 @@ namespace IO.Swagger.Model
                     this.Instructions == input.Instructions ||
                     (this.Instructions != null &&
                     this.Instructions.Equals(input.Instructions))
+                ) && 
+                (
+                    this.Details == input.Details ||
+                    (this.Details != null &&
+                    this.Details.Equals(input.Details))
                 );
         }
 
@@ -239,6 +253,8 @@ namespace IO.Swagger.Model
                     hashCode = hashCode * 59 + this.SnappedWaypoints.GetHashCode();
                 if (this.Instructions != null)
                     hashCode = hashCode * 59 + this.Instructions.GetHashCode();
+                if (this.Details != null)
+                    hashCode = hashCode * 59 + this.Details.GetHashCode();
                 return hashCode;
             }
         }
