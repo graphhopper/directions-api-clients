@@ -24,9 +24,6 @@ module GraphHopperClient
     # The destination points for the routes. Is a string with the format longitude,latitude.
     attr_accessor :to_points
 
-    # Specifies which arrays should be included in the response. Specify one or more of the following options 'weights', 'times', 'distances'. To specify more than one array use e.g. out_array=times&amp;out_array=distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API.
-    attr_accessor :out_arrays
-
     # Optional parameter. Specifies a hint for each point in the `points` array to prefer a certain street for the closest location lookup. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up.
     attr_accessor :point_hints
 
@@ -35,6 +32,9 @@ module GraphHopperClient
 
     # More information for the `to_points` array. See `point_hints`
     attr_accessor :to_point_hints
+
+    # Specifies which arrays should be included in the response. Specify one or more of the following options 'weights', 'times', 'distances'. To specify more than one array use e.g. out_array=times&amp;out_array=distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API.
+    attr_accessor :out_arrays
 
     # The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc, see here for the details.
     attr_accessor :vehicle
@@ -46,10 +46,10 @@ module GraphHopperClient
         :'points' => :'points',
         :'from_points' => :'from_points',
         :'to_points' => :'to_points',
-        :'out_arrays' => :'out_arrays',
         :'point_hints' => :'point_hints',
         :'from_point_hints' => :'from_point_hints',
         :'to_point_hints' => :'to_point_hints',
+        :'out_arrays' => :'out_arrays',
         :'vehicle' => :'vehicle'
       }
     end
@@ -60,10 +60,10 @@ module GraphHopperClient
         :'points' => :'Array<Array<Float>>',
         :'from_points' => :'Array<Array<Float>>',
         :'to_points' => :'Array<Array<Float>>',
-        :'out_arrays' => :'Array<String>',
         :'point_hints' => :'Array<String>',
         :'from_point_hints' => :'Array<String>',
         :'to_point_hints' => :'Array<String>',
+        :'out_arrays' => :'Array<String>',
         :'vehicle' => :'String'
       }
     end
@@ -94,12 +94,6 @@ module GraphHopperClient
         end
       end
 
-      if attributes.has_key?(:'out_arrays')
-        if (value = attributes[:'out_arrays']).is_a?(Array)
-          self.out_arrays = value
-        end
-      end
-
       if attributes.has_key?(:'point_hints')
         if (value = attributes[:'point_hints']).is_a?(Array)
           self.point_hints = value
@@ -115,6 +109,12 @@ module GraphHopperClient
       if attributes.has_key?(:'to_point_hints')
         if (value = attributes[:'to_point_hints']).is_a?(Array)
           self.to_point_hints = value
+        end
+      end
+
+      if attributes.has_key?(:'out_arrays')
+        if (value = attributes[:'out_arrays']).is_a?(Array)
+          self.out_arrays = value
         end
       end
 
@@ -145,10 +145,10 @@ module GraphHopperClient
           points == o.points &&
           from_points == o.from_points &&
           to_points == o.to_points &&
-          out_arrays == o.out_arrays &&
           point_hints == o.point_hints &&
           from_point_hints == o.from_point_hints &&
           to_point_hints == o.to_point_hints &&
+          out_arrays == o.out_arrays &&
           vehicle == o.vehicle
     end
 
@@ -161,7 +161,7 @@ module GraphHopperClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [points, from_points, to_points, out_arrays, point_hints, from_point_hints, to_point_hints, vehicle].hash
+      [points, from_points, to_points, point_hints, from_point_hints, to_point_hints, out_arrays, vehicle].hash
     end
 
     # Builds the object from hash

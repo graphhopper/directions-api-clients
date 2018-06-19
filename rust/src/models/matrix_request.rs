@@ -23,9 +23,6 @@ pub struct MatrixRequest {
   /// The destination points for the routes. Is a string with the format longitude,latitude.
   #[serde(rename = "to_points")]
   to_points: Option<Vec<Vec<f64>>>,
-  /// Specifies which arrays should be included in the response. Specify one or more of the following options 'weights', 'times', 'distances'. To specify more than one array use e.g. out_array=times&amp;out_array=distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API.
-  #[serde(rename = "out_arrays")]
-  out_arrays: Option<Vec<String>>,
   /// Optional parameter. Specifies a hint for each point in the `points` array to prefer a certain street for the closest location lookup. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up.
   #[serde(rename = "point_hints")]
   point_hints: Option<Vec<String>>,
@@ -35,6 +32,9 @@ pub struct MatrixRequest {
   /// More information for the `to_points` array. See `point_hints`
   #[serde(rename = "to_point_hints")]
   to_point_hints: Option<Vec<String>>,
+  /// Specifies which arrays should be included in the response. Specify one or more of the following options 'weights', 'times', 'distances'. To specify more than one array use e.g. out_array=times&amp;out_array=distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API.
+  #[serde(rename = "out_arrays")]
+  out_arrays: Option<Vec<String>>,
   /// The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc, see here for the details.
   #[serde(rename = "vehicle")]
   vehicle: Option<String>
@@ -46,10 +46,10 @@ impl MatrixRequest {
       points: None,
       from_points: None,
       to_points: None,
-      out_arrays: None,
       point_hints: None,
       from_point_hints: None,
       to_point_hints: None,
+      out_arrays: None,
       vehicle: None
     }
   }
@@ -105,23 +105,6 @@ impl MatrixRequest {
     self.to_points = None;
   }
 
-  pub fn set_out_arrays(&mut self, out_arrays: Vec<String>) {
-    self.out_arrays = Some(out_arrays);
-  }
-
-  pub fn with_out_arrays(mut self, out_arrays: Vec<String>) -> MatrixRequest {
-    self.out_arrays = Some(out_arrays);
-    self
-  }
-
-  pub fn out_arrays(&self) -> Option<&Vec<String>> {
-    self.out_arrays.as_ref()
-  }
-
-  pub fn reset_out_arrays(&mut self) {
-    self.out_arrays = None;
-  }
-
   pub fn set_point_hints(&mut self, point_hints: Vec<String>) {
     self.point_hints = Some(point_hints);
   }
@@ -171,6 +154,23 @@ impl MatrixRequest {
 
   pub fn reset_to_point_hints(&mut self) {
     self.to_point_hints = None;
+  }
+
+  pub fn set_out_arrays(&mut self, out_arrays: Vec<String>) {
+    self.out_arrays = Some(out_arrays);
+  }
+
+  pub fn with_out_arrays(mut self, out_arrays: Vec<String>) -> MatrixRequest {
+    self.out_arrays = Some(out_arrays);
+    self
+  }
+
+  pub fn out_arrays(&self) -> Option<&Vec<String>> {
+    self.out_arrays.as_ref()
+  }
+
+  pub fn reset_out_arrays(&mut self) {
+    self.out_arrays = None;
   }
 
   pub fn set_vehicle(&mut self, vehicle: String) {

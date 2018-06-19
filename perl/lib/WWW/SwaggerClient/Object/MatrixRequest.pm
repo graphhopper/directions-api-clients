@@ -164,13 +164,6 @@ __PACKAGE__->method_documentation({
     	format => '',
     	read_only => '',
     		},
-    'out_arrays' => {
-    	datatype => 'ARRAY[string]',
-    	base_name => 'out_arrays',
-    	description => 'Specifies which arrays should be included in the response. Specify one or more of the following options &#39;weights&#39;, &#39;times&#39;, &#39;distances&#39;. To specify more than one array use e.g. out_array&#x3D;times&amp;amp;out_array&#x3D;distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API.',
-    	format => '',
-    	read_only => '',
-    		},
     'point_hints' => {
     	datatype => 'ARRAY[string]',
     	base_name => 'point_hints',
@@ -192,6 +185,13 @@ __PACKAGE__->method_documentation({
     	format => '',
     	read_only => '',
     		},
+    'out_arrays' => {
+    	datatype => 'ARRAY[string]',
+    	base_name => 'out_arrays',
+    	description => 'Specifies which arrays should be included in the response. Specify one or more of the following options &#39;weights&#39;, &#39;times&#39;, &#39;distances&#39;. To specify more than one array use e.g. out_array&#x3D;times&amp;amp;out_array&#x3D;distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API.',
+    	format => '',
+    	read_only => '',
+    		},
     'vehicle' => {
     	datatype => 'string',
     	base_name => 'vehicle',
@@ -205,10 +205,10 @@ __PACKAGE__->swagger_types( {
     'points' => 'ARRAY[ARRAY[double]]',
     'from_points' => 'ARRAY[ARRAY[double]]',
     'to_points' => 'ARRAY[ARRAY[double]]',
-    'out_arrays' => 'ARRAY[string]',
     'point_hints' => 'ARRAY[string]',
     'from_point_hints' => 'ARRAY[string]',
     'to_point_hints' => 'ARRAY[string]',
+    'out_arrays' => 'ARRAY[string]',
     'vehicle' => 'string'
 } );
 
@@ -216,10 +216,10 @@ __PACKAGE__->attribute_map( {
     'points' => 'points',
     'from_points' => 'from_points',
     'to_points' => 'to_points',
-    'out_arrays' => 'out_arrays',
     'point_hints' => 'point_hints',
     'from_point_hints' => 'from_point_hints',
     'to_point_hints' => 'to_point_hints',
+    'out_arrays' => 'out_arrays',
     'vehicle' => 'vehicle'
 } );
 

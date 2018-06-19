@@ -14,10 +14,6 @@ class MatrixRequest {
   @Property(name: 'to_points')
   List<List<double>> toPoints = [];
   
-/* Specifies which arrays should be included in the response. Specify one or more of the following options 'weights', 'times', 'distances'. To specify more than one array use e.g. out_array=times&amp;out_array=distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API. */
-  @Property(name: 'out_arrays')
-  List<String> outArrays = [];
-  
 /* Optional parameter. Specifies a hint for each point in the `points` array to prefer a certain street for the closest location lookup. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up. */
   @Property(name: 'point_hints')
   List<String> pointHints = [];
@@ -30,6 +26,10 @@ class MatrixRequest {
   @Property(name: 'to_point_hints')
   List<String> toPointHints = [];
   
+/* Specifies which arrays should be included in the response. Specify one or more of the following options 'weights', 'times', 'distances'. To specify more than one array use e.g. out_array=times&amp;out_array=distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API. */
+  @Property(name: 'out_arrays')
+  List<String> outArrays = [];
+  
 /* The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc, see here for the details. */
   @Property(name: 'vehicle')
   String vehicle = null;
@@ -38,7 +38,7 @@ class MatrixRequest {
 
   @override
   String toString()  {
-    return 'MatrixRequest[points=$points, fromPoints=$fromPoints, toPoints=$toPoints, outArrays=$outArrays, pointHints=$pointHints, fromPointHints=$fromPointHints, toPointHints=$toPointHints, vehicle=$vehicle, ]';
+    return 'MatrixRequest[points=$points, fromPoints=$fromPoints, toPoints=$toPoints, pointHints=$pointHints, fromPointHints=$fromPointHints, toPointHints=$toPointHints, outArrays=$outArrays, vehicle=$vehicle, ]';
   }
 }
 

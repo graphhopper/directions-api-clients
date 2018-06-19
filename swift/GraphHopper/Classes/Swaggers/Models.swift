@@ -469,10 +469,10 @@ class Decoders {
                 instance.points = Decoders.decodeOptional(clazz: Array.self, source: sourceDictionary["points"])
                 instance.fromPoints = Decoders.decodeOptional(clazz: Array.self, source: sourceDictionary["from_points"])
                 instance.toPoints = Decoders.decodeOptional(clazz: Array.self, source: sourceDictionary["to_points"])
-                instance.outArrays = Decoders.decodeOptional(clazz: Array.self, source: sourceDictionary["out_arrays"])
                 instance.pointHints = Decoders.decodeOptional(clazz: Array.self, source: sourceDictionary["point_hints"])
                 instance.fromPointHints = Decoders.decodeOptional(clazz: Array.self, source: sourceDictionary["from_point_hints"])
                 instance.toPointHints = Decoders.decodeOptional(clazz: Array.self, source: sourceDictionary["to_point_hints"])
+                instance.outArrays = Decoders.decodeOptional(clazz: Array.self, source: sourceDictionary["out_arrays"])
                 instance.vehicle = Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["vehicle"])
                 return instance
             }

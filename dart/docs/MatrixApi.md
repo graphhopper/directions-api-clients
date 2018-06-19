@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 
 # **matrixGet**
-> MatrixResponse matrixGet(key, point, fromPoint, toPoint, outArray, pointHint, toPointHint, fromPointHint, vehicle)
+> MatrixResponse matrixGet(key, point, fromPoint, toPoint, pointHint, fromPointHint, toPointHint, outArray, vehicle)
 
 Matrix API
 
@@ -29,14 +29,14 @@ var key = key_example; // String | Get your key at graphhopper.com
 var point = []; // List<String> | Specifiy multiple points for which the weight-, route-, time- or distance-matrix should be calculated. In this case the starts are identical to the destinations. If there are N points, then NxN entries will be calculated. The order of the point parameter is important. Specify at least three points. Cannot be used together with from_point or to_point. Is a string with the format latitude,longitude.
 var fromPoint = []; // List<String> | The starting points for the routes. E.g. if you want to calculate the three routes A-&gt;1, A-&gt;2, A-&gt;3 then you have one from_point parameter and three to_point parameters. Is a string with the format latitude,longitude.
 var toPoint = []; // List<String> | The destination points for the routes. Is a string with the format latitude,longitude.
-var outArray = []; // List<String> | Specifies which arrays should be included in the response. Specify one or more of the following options 'weights', 'times', 'distances'. To specify more than one array use e.g. out_array=times&out_array=distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API.
 var pointHint = []; // List<String> | Optional parameter. Specifies a hint for each `point` parameter to prefer a certain street for the closest location lookup. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up.
-var toPointHint = []; // List<String> | For the to_point parameter. See point_hint
 var fromPointHint = []; // List<String> | For the from_point parameter. See point_hint
+var toPointHint = []; // List<String> | For the to_point parameter. See point_hint
+var outArray = []; // List<String> | Specifies which arrays should be included in the response. Specify one or more of the following options 'weights', 'times', 'distances'. To specify more than one array use e.g. out_array=times&out_array=distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API.
 var vehicle = vehicle_example; // String | The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc
 
 try { 
-    var result = api_instance.matrixGet(key, point, fromPoint, toPoint, outArray, pointHint, toPointHint, fromPointHint, vehicle);
+    var result = api_instance.matrixGet(key, point, fromPoint, toPoint, pointHint, fromPointHint, toPointHint, outArray, vehicle);
     print(result);
 } catch (e) {
     print("Exception when calling MatrixApi->matrixGet: $e\n");
@@ -51,10 +51,10 @@ Name | Type | Description  | Notes
  **point** | [**List&lt;String&gt;**](String.md)| Specifiy multiple points for which the weight-, route-, time- or distance-matrix should be calculated. In this case the starts are identical to the destinations. If there are N points, then NxN entries will be calculated. The order of the point parameter is important. Specify at least three points. Cannot be used together with from_point or to_point. Is a string with the format latitude,longitude. | [optional] 
  **fromPoint** | [**List&lt;String&gt;**](String.md)| The starting points for the routes. E.g. if you want to calculate the three routes A-&amp;gt;1, A-&amp;gt;2, A-&amp;gt;3 then you have one from_point parameter and three to_point parameters. Is a string with the format latitude,longitude. | [optional] 
  **toPoint** | [**List&lt;String&gt;**](String.md)| The destination points for the routes. Is a string with the format latitude,longitude. | [optional] 
- **outArray** | [**List&lt;String&gt;**](String.md)| Specifies which arrays should be included in the response. Specify one or more of the following options &#39;weights&#39;, &#39;times&#39;, &#39;distances&#39;. To specify more than one array use e.g. out_array&#x3D;times&amp;out_array&#x3D;distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API. | [optional] 
  **pointHint** | [**List&lt;String&gt;**](String.md)| Optional parameter. Specifies a hint for each &#x60;point&#x60; parameter to prefer a certain street for the closest location lookup. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up. | [optional] 
- **toPointHint** | [**List&lt;String&gt;**](String.md)| For the to_point parameter. See point_hint | [optional] 
  **fromPointHint** | [**List&lt;String&gt;**](String.md)| For the from_point parameter. See point_hint | [optional] 
+ **toPointHint** | [**List&lt;String&gt;**](String.md)| For the to_point parameter. See point_hint | [optional] 
+ **outArray** | [**List&lt;String&gt;**](String.md)| Specifies which arrays should be included in the response. Specify one or more of the following options &#39;weights&#39;, &#39;times&#39;, &#39;distances&#39;. To specify more than one array use e.g. out_array&#x3D;times&amp;out_array&#x3D;distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API. | [optional] 
  **vehicle** | **String**| The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc | [optional] [default to car]
 
 ### Return type

@@ -49,9 +49,12 @@ MatrixApiTest {
         List<String> point = Arrays.asList(new String[]{"49.932707,11.588051", "50.241935,10.747375", "50.118817,11.983337"});
         List<String> fromPoint = null;
         List<String> toPoint = null;
+        List<String> pointHints = null;
+        List<String> fromPointHints = null;
+        List<String> toPointHints = null;
         List<String> outArray = Arrays.asList("weights", "distances", "times");
         String vehicle = null;
-        MatrixResponse response = api.matrixGet(key, point, fromPoint, toPoint, outArray, vehicle);
+        MatrixResponse response = api.matrixGet(key, point, fromPoint, toPoint, pointHints, fromPointHints, toPointHints, outArray, vehicle);
         assertEquals(3, response.getDistances().size());
 
     }

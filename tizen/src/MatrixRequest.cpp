@@ -33,9 +33,6 @@ MatrixRequest::__init()
 	//new std::list()std::list> to_points;
 	//
 	//
-	//new std::list()std::list> out_arrays;
-	//
-	//
 	//new std::list()std::list> point_hints;
 	//
 	//
@@ -43,6 +40,9 @@ MatrixRequest::__init()
 	//
 	//
 	//new std::list()std::list> to_point_hints;
+	//
+	//
+	//new std::list()std::list> out_arrays;
 	//
 	//
 	//
@@ -68,11 +68,6 @@ MatrixRequest::__cleanup()
 	//delete to_points;
 	//to_points = NULL;
 	//}
-	//if(out_arrays != NULL) {
-	//out_arrays.RemoveAll(true);
-	//delete out_arrays;
-	//out_arrays = NULL;
-	//}
 	//if(point_hints != NULL) {
 	//point_hints.RemoveAll(true);
 	//delete point_hints;
@@ -87,6 +82,11 @@ MatrixRequest::__cleanup()
 	//to_point_hints.RemoveAll(true);
 	//delete to_point_hints;
 	//to_point_hints = NULL;
+	//}
+	//if(out_arrays != NULL) {
+	//out_arrays.RemoveAll(true);
+	//delete out_arrays;
+	//out_arrays = NULL;
 	//}
 	//if(vehicle != NULL) {
 	//
@@ -173,28 +173,6 @@ MatrixRequest::fromJson(char* jsonStr)
 		}
 		
 	}
-	const gchar *out_arraysKey = "out_arrays";
-	node = json_object_get_member(pJsonObject, out_arraysKey);
-	if (node !=NULL) {
-	
-		{
-			JsonArray* arr = json_node_get_array(node);
-			JsonNode*  temp_json;
-			list<std::string> new_list;
-			std::string inst;
-			for (guint i=0;i<json_array_get_length(arr);i++) {
-				temp_json = json_array_get_element(arr,i);
-				if (isprimitive("std::string")) {
-					jsonToValue(&inst, temp_json, "std::string", "");
-				} else {
-					
-				}
-				new_list.push_back(inst);
-			}
-			out_arrays = new_list;
-		}
-		
-	}
 	const gchar *point_hintsKey = "point_hints";
 	node = json_object_get_member(pJsonObject, point_hintsKey);
 	if (node !=NULL) {
@@ -258,6 +236,28 @@ MatrixRequest::fromJson(char* jsonStr)
 				new_list.push_back(inst);
 			}
 			to_point_hints = new_list;
+		}
+		
+	}
+	const gchar *out_arraysKey = "out_arrays";
+	node = json_object_get_member(pJsonObject, out_arraysKey);
+	if (node !=NULL) {
+	
+		{
+			JsonArray* arr = json_node_get_array(node);
+			JsonNode*  temp_json;
+			list<std::string> new_list;
+			std::string inst;
+			for (guint i=0;i<json_array_get_length(arr);i++) {
+				temp_json = json_array_get_element(arr,i);
+				if (isprimitive("std::string")) {
+					jsonToValue(&inst, temp_json, "std::string", "");
+				} else {
+					
+				}
+				new_list.push_back(inst);
+			}
+			out_arrays = new_list;
 		}
 		
 	}
@@ -360,21 +360,6 @@ MatrixRequest::toJson()
 	const gchar *to_pointsKey = "to_points";
 	json_object_set_member(pJsonObject, to_pointsKey, node);
 	if (isprimitive("std::string")) {
-		list<std::string> new_list = static_cast<list <std::string> > (getOutArrays());
-		node = converttoJson(&new_list, "std::string", "array");
-	} else {
-		node = json_node_alloc();
-		list<std::string> new_list = static_cast<list <std::string> > (getOutArrays());
-		JsonArray* json_array = json_array_new();
-		GError *mygerror;
-		
-	}
-
-
-	
-	const gchar *out_arraysKey = "out_arrays";
-	json_object_set_member(pJsonObject, out_arraysKey, node);
-	if (isprimitive("std::string")) {
 		list<std::string> new_list = static_cast<list <std::string> > (getPointHints());
 		node = converttoJson(&new_list, "std::string", "array");
 	} else {
@@ -419,6 +404,21 @@ MatrixRequest::toJson()
 	
 	const gchar *to_point_hintsKey = "to_point_hints";
 	json_object_set_member(pJsonObject, to_point_hintsKey, node);
+	if (isprimitive("std::string")) {
+		list<std::string> new_list = static_cast<list <std::string> > (getOutArrays());
+		node = converttoJson(&new_list, "std::string", "array");
+	} else {
+		node = json_node_alloc();
+		list<std::string> new_list = static_cast<list <std::string> > (getOutArrays());
+		JsonArray* json_array = json_array_new();
+		GError *mygerror;
+		
+	}
+
+
+	
+	const gchar *out_arraysKey = "out_arrays";
+	json_object_set_member(pJsonObject, out_arraysKey, node);
 	if (isprimitive("std::string")) {
 		std::string obj = getVehicle();
 		node = converttoJson(&obj, "std::string", "");
@@ -473,18 +473,6 @@ MatrixRequest::setToPoints(std::list <std::list> to_points)
 }
 
 std::list<std::string>
-MatrixRequest::getOutArrays()
-{
-	return out_arrays;
-}
-
-void
-MatrixRequest::setOutArrays(std::list <std::string> out_arrays)
-{
-	this->out_arrays = out_arrays;
-}
-
-std::list<std::string>
 MatrixRequest::getPointHints()
 {
 	return point_hints;
@@ -518,6 +506,18 @@ void
 MatrixRequest::setToPointHints(std::list <std::string> to_point_hints)
 {
 	this->to_point_hints = to_point_hints;
+}
+
+std::list<std::string>
+MatrixRequest::getOutArrays()
+{
+	return out_arrays;
+}
+
+void
+MatrixRequest::setOutArrays(std::list <std::string> out_arrays)
+{
+	this->out_arrays = out_arrays;
 }
 
 std::string

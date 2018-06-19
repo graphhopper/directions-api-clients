@@ -31,9 +31,6 @@
 /* The destination points for the routes. Is a string with the format longitude,latitude. [optional]
  */
 @property(nonatomic) NSArray<NSArray<NSNumber*>*>* toPoints;
-/* Specifies which arrays should be included in the response. Specify one or more of the following options 'weights', 'times', 'distances'. To specify more than one array use e.g. out_array=times&amp;out_array=distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API. [optional]
- */
-@property(nonatomic) NSArray<NSString*>* outArrays;
 /* Optional parameter. Specifies a hint for each point in the `points` array to prefer a certain street for the closest location lookup. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up. [optional]
  */
 @property(nonatomic) NSArray<NSString*>* pointHints;
@@ -43,6 +40,9 @@
 /* More information for the `to_points` array. See `point_hints` [optional]
  */
 @property(nonatomic) NSArray<NSString*>* toPointHints;
+/* Specifies which arrays should be included in the response. Specify one or more of the following options 'weights', 'times', 'distances'. To specify more than one array use e.g. out_array=times&amp;out_array=distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API. [optional]
+ */
+@property(nonatomic) NSArray<NSString*>* outArrays;
 /* The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc, see here for the details. [optional]
  */
 @property(nonatomic) NSString* vehicle;

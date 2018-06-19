@@ -47,10 +47,10 @@ class MatrixApi(object):
         :param list[str] point: Specifiy multiple points for which the weight-, route-, time- or distance-matrix should be calculated. In this case the starts are identical to the destinations. If there are N points, then NxN entries will be calculated. The order of the point parameter is important. Specify at least three points. Cannot be used together with from_point or to_point. Is a string with the format latitude,longitude.
         :param list[str] from_point: The starting points for the routes. E.g. if you want to calculate the three routes A-&gt;1, A-&gt;2, A-&gt;3 then you have one from_point parameter and three to_point parameters. Is a string with the format latitude,longitude.
         :param list[str] to_point: The destination points for the routes. Is a string with the format latitude,longitude.
-        :param list[str] out_array: Specifies which arrays should be included in the response. Specify one or more of the following options 'weights', 'times', 'distances'. To specify more than one array use e.g. out_array=times&out_array=distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API.
         :param list[str] point_hint: Optional parameter. Specifies a hint for each `point` parameter to prefer a certain street for the closest location lookup. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up.
-        :param list[str] to_point_hint: For the to_point parameter. See point_hint
         :param list[str] from_point_hint: For the from_point parameter. See point_hint
+        :param list[str] to_point_hint: For the to_point parameter. See point_hint
+        :param list[str] out_array: Specifies which arrays should be included in the response. Specify one or more of the following options 'weights', 'times', 'distances'. To specify more than one array use e.g. out_array=times&out_array=distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API.
         :param str vehicle: The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc
         :return: MatrixResponse
                  If the method is called asynchronously,
@@ -77,17 +77,17 @@ class MatrixApi(object):
         :param list[str] point: Specifiy multiple points for which the weight-, route-, time- or distance-matrix should be calculated. In this case the starts are identical to the destinations. If there are N points, then NxN entries will be calculated. The order of the point parameter is important. Specify at least three points. Cannot be used together with from_point or to_point. Is a string with the format latitude,longitude.
         :param list[str] from_point: The starting points for the routes. E.g. if you want to calculate the three routes A-&gt;1, A-&gt;2, A-&gt;3 then you have one from_point parameter and three to_point parameters. Is a string with the format latitude,longitude.
         :param list[str] to_point: The destination points for the routes. Is a string with the format latitude,longitude.
-        :param list[str] out_array: Specifies which arrays should be included in the response. Specify one or more of the following options 'weights', 'times', 'distances'. To specify more than one array use e.g. out_array=times&out_array=distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API.
         :param list[str] point_hint: Optional parameter. Specifies a hint for each `point` parameter to prefer a certain street for the closest location lookup. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up.
-        :param list[str] to_point_hint: For the to_point parameter. See point_hint
         :param list[str] from_point_hint: For the from_point parameter. See point_hint
+        :param list[str] to_point_hint: For the to_point parameter. See point_hint
+        :param list[str] out_array: Specifies which arrays should be included in the response. Specify one or more of the following options 'weights', 'times', 'distances'. To specify more than one array use e.g. out_array=times&out_array=distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API.
         :param str vehicle: The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc
         :return: MatrixResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['key', 'point', 'from_point', 'to_point', 'out_array', 'point_hint', 'to_point_hint', 'from_point_hint', 'vehicle']  # noqa: E501
+        all_params = ['key', 'point', 'from_point', 'to_point', 'point_hint', 'from_point_hint', 'to_point_hint', 'out_array', 'vehicle']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -121,18 +121,18 @@ class MatrixApi(object):
         if 'to_point' in params:
             query_params.append(('to_point', params['to_point']))  # noqa: E501
             collection_formats['to_point'] = 'multi'  # noqa: E501
-        if 'out_array' in params:
-            query_params.append(('out_array', params['out_array']))  # noqa: E501
-            collection_formats['out_array'] = 'multi'  # noqa: E501
         if 'point_hint' in params:
             query_params.append(('point_hint', params['point_hint']))  # noqa: E501
             collection_formats['point_hint'] = 'multi'  # noqa: E501
-        if 'to_point_hint' in params:
-            query_params.append(('to_point_hint', params['to_point_hint']))  # noqa: E501
-            collection_formats['to_point_hint'] = 'multi'  # noqa: E501
         if 'from_point_hint' in params:
             query_params.append(('from_point_hint', params['from_point_hint']))  # noqa: E501
             collection_formats['from_point_hint'] = 'multi'  # noqa: E501
+        if 'to_point_hint' in params:
+            query_params.append(('to_point_hint', params['to_point_hint']))  # noqa: E501
+            collection_formats['to_point_hint'] = 'multi'  # noqa: E501
+        if 'out_array' in params:
+            query_params.append(('out_array', params['out_array']))  # noqa: E501
+            collection_formats['out_array'] = 'multi'  # noqa: E501
         if 'vehicle' in params:
             query_params.append(('vehicle', params['vehicle']))  # noqa: E501
         if 'key' in params:

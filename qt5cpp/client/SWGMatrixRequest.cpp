@@ -43,14 +43,14 @@ SWGMatrixRequest::init() {
     m_from_points_isSet = false;
     to_points = new QList<QList<double>*>();
     m_to_points_isSet = false;
-    out_arrays = new QList<QString*>();
-    m_out_arrays_isSet = false;
     point_hints = new QList<QString*>();
     m_point_hints_isSet = false;
     from_point_hints = new QList<QString*>();
     m_from_point_hints_isSet = false;
     to_point_hints = new QList<QString*>();
     m_to_point_hints_isSet = false;
+    out_arrays = new QList<QString*>();
+    m_out_arrays_isSet = false;
     vehicle = new QString("");
     m_vehicle_isSet = false;
 }
@@ -87,13 +87,6 @@ SWGMatrixRequest::cleanup() {
         }
         delete to_points;
     }
-    if(out_arrays != nullptr) { 
-        auto arr = out_arrays;
-        for(auto o: *arr) { 
-            delete o;
-        }
-        delete out_arrays;
-    }
     if(point_hints != nullptr) { 
         auto arr = point_hints;
         for(auto o: *arr) { 
@@ -114,6 +107,13 @@ SWGMatrixRequest::cleanup() {
             delete o;
         }
         delete to_point_hints;
+    }
+    if(out_arrays != nullptr) { 
+        auto arr = out_arrays;
+        for(auto o: *arr) { 
+            delete o;
+        }
+        delete out_arrays;
     }
     if(vehicle != nullptr) { 
         delete vehicle;
@@ -168,13 +168,13 @@ SWGMatrixRequest::fromJsonObject(QJsonObject &pJson) {
         }
     }
     
-    ::Swagger::setValue(&out_arrays, pJson["out_arrays"], "QList", "QString");
-    
     ::Swagger::setValue(&point_hints, pJson["point_hints"], "QList", "QString");
     
     ::Swagger::setValue(&from_point_hints, pJson["from_point_hints"], "QList", "QString");
     
     ::Swagger::setValue(&to_point_hints, pJson["to_point_hints"], "QList", "QString");
+    
+    ::Swagger::setValue(&out_arrays, pJson["out_arrays"], "QList", "QString");
     ::Swagger::setValue(&vehicle, pJson["vehicle"], "QString", "QString");
     
 }
@@ -229,10 +229,6 @@ SWGMatrixRequest::asJsonObject() {
         obj->insert("to_points", jarray);
     }
     
-    if(out_arrays->size() > 0){
-        toJsonArray((QList<void*>*)out_arrays, obj, "out_arrays", "QString");
-    }
-    
     if(point_hints->size() > 0){
         toJsonArray((QList<void*>*)point_hints, obj, "point_hints", "QString");
     }
@@ -243,6 +239,10 @@ SWGMatrixRequest::asJsonObject() {
     
     if(to_point_hints->size() > 0){
         toJsonArray((QList<void*>*)to_point_hints, obj, "to_point_hints", "QString");
+    }
+    
+    if(out_arrays->size() > 0){
+        toJsonArray((QList<void*>*)out_arrays, obj, "out_arrays", "QString");
     }
     
     if(vehicle != nullptr && *vehicle != QString("")){
@@ -283,16 +283,6 @@ SWGMatrixRequest::setToPoints(QList<QList<double>*>* to_points) {
 }
 
 QList<QString*>*
-SWGMatrixRequest::getOutArrays() {
-    return out_arrays;
-}
-void
-SWGMatrixRequest::setOutArrays(QList<QString*>* out_arrays) {
-    this->out_arrays = out_arrays;
-    this->m_out_arrays_isSet = true;
-}
-
-QList<QString*>*
 SWGMatrixRequest::getPointHints() {
     return point_hints;
 }
@@ -322,6 +312,16 @@ SWGMatrixRequest::setToPointHints(QList<QString*>* to_point_hints) {
     this->m_to_point_hints_isSet = true;
 }
 
+QList<QString*>*
+SWGMatrixRequest::getOutArrays() {
+    return out_arrays;
+}
+void
+SWGMatrixRequest::setOutArrays(QList<QString*>* out_arrays) {
+    this->out_arrays = out_arrays;
+    this->m_out_arrays_isSet = true;
+}
+
 QString*
 SWGMatrixRequest::getVehicle() {
     return vehicle;
@@ -340,10 +340,10 @@ SWGMatrixRequest::isSet(){
         if(points->size() > 0){ isObjectUpdated = true; break;}
         if(from_points->size() > 0){ isObjectUpdated = true; break;}
         if(to_points->size() > 0){ isObjectUpdated = true; break;}
-        if(out_arrays->size() > 0){ isObjectUpdated = true; break;}
         if(point_hints->size() > 0){ isObjectUpdated = true; break;}
         if(from_point_hints->size() > 0){ isObjectUpdated = true; break;}
         if(to_point_hints->size() > 0){ isObjectUpdated = true; break;}
+        if(out_arrays->size() > 0){ isObjectUpdated = true; break;}
         if(vehicle != nullptr && *vehicle != QString("")){ isObjectUpdated = true; break;}
     }while(false);
     return isObjectUpdated;

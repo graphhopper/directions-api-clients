@@ -109,7 +109,7 @@ static bool matrixGetProcessor(MemoryStruct_s p_chunk, long code, char* errormsg
 }
 
 static bool matrixGetHelper(char * accessToken,
-	std::string key, std::list<std::string> point, std::list<std::string> fromPoint, std::list<std::string> toPoint, std::list<std::string> outArray, std::list<std::string> pointHint, std::list<std::string> toPointHint, std::list<std::string> fromPointHint, std::string vehicle, 
+	std::string key, std::list<std::string> point, std::list<std::string> fromPoint, std::list<std::string> toPoint, std::list<std::string> pointHint, std::list<std::string> fromPointHint, std::list<std::string> toPointHint, std::list<std::string> outArray, std::string vehicle, 
 	void(* handler)(MatrixResponse, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -154,21 +154,21 @@ static bool matrixGetHelper(char * accessToken,
 	}
 	
 	for (std::list
-	<std::string>::iterator queryIter = outArray.begin(); queryIter != outArray.end(); ++queryIter) {
-		string itemAt = stringify(&(*queryIter), "std::string");
-		if( itemAt.empty()){
-			continue;
-		}
-		queryParams.insert(pair<string, string>("outArray", itemAt));
-	}
-	
-	for (std::list
 	<std::string>::iterator queryIter = pointHint.begin(); queryIter != pointHint.end(); ++queryIter) {
 		string itemAt = stringify(&(*queryIter), "std::string");
 		if( itemAt.empty()){
 			continue;
 		}
 		queryParams.insert(pair<string, string>("pointHint", itemAt));
+	}
+	
+	for (std::list
+	<std::string>::iterator queryIter = fromPointHint.begin(); queryIter != fromPointHint.end(); ++queryIter) {
+		string itemAt = stringify(&(*queryIter), "std::string");
+		if( itemAt.empty()){
+			continue;
+		}
+		queryParams.insert(pair<string, string>("fromPointHint", itemAt));
 	}
 	
 	for (std::list
@@ -181,12 +181,12 @@ static bool matrixGetHelper(char * accessToken,
 	}
 	
 	for (std::list
-	<std::string>::iterator queryIter = fromPointHint.begin(); queryIter != fromPointHint.end(); ++queryIter) {
+	<std::string>::iterator queryIter = outArray.begin(); queryIter != outArray.end(); ++queryIter) {
 		string itemAt = stringify(&(*queryIter), "std::string");
 		if( itemAt.empty()){
 			continue;
 		}
-		queryParams.insert(pair<string, string>("fromPointHint", itemAt));
+		queryParams.insert(pair<string, string>("outArray", itemAt));
 	}
 	
 
@@ -254,22 +254,22 @@ static bool matrixGetHelper(char * accessToken,
 
 
 bool MatrixManager::matrixGetAsync(char * accessToken,
-	std::string key, std::list<std::string> point, std::list<std::string> fromPoint, std::list<std::string> toPoint, std::list<std::string> outArray, std::list<std::string> pointHint, std::list<std::string> toPointHint, std::list<std::string> fromPointHint, std::string vehicle, 
+	std::string key, std::list<std::string> point, std::list<std::string> fromPoint, std::list<std::string> toPoint, std::list<std::string> pointHint, std::list<std::string> fromPointHint, std::list<std::string> toPointHint, std::list<std::string> outArray, std::string vehicle, 
 	void(* handler)(MatrixResponse, Error, void* )
 	, void* userData)
 {
 	return matrixGetHelper(accessToken,
-	key, point, fromPoint, toPoint, outArray, pointHint, toPointHint, fromPointHint, vehicle, 
+	key, point, fromPoint, toPoint, pointHint, fromPointHint, toPointHint, outArray, vehicle, 
 	handler, userData, true);
 }
 
 bool MatrixManager::matrixGetSync(char * accessToken,
-	std::string key, std::list<std::string> point, std::list<std::string> fromPoint, std::list<std::string> toPoint, std::list<std::string> outArray, std::list<std::string> pointHint, std::list<std::string> toPointHint, std::list<std::string> fromPointHint, std::string vehicle, 
+	std::string key, std::list<std::string> point, std::list<std::string> fromPoint, std::list<std::string> toPoint, std::list<std::string> pointHint, std::list<std::string> fromPointHint, std::list<std::string> toPointHint, std::list<std::string> outArray, std::string vehicle, 
 	void(* handler)(MatrixResponse, Error, void* )
 	, void* userData)
 {
 	return matrixGetHelper(accessToken,
-	key, point, fromPoint, toPoint, outArray, pointHint, toPointHint, fromPointHint, vehicle, 
+	key, point, fromPoint, toPoint, pointHint, fromPointHint, toPointHint, outArray, vehicle, 
 	handler, userData, false);
 }
 

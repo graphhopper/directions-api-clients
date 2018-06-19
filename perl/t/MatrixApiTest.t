@@ -37,12 +37,12 @@ isa_ok($api, 'WWW::SwaggerClient::MatrixApi');
     my $point = undef; # replace NULL with a proper value
     my $from_point = undef; # replace NULL with a proper value
     my $to_point = undef; # replace NULL with a proper value
-    my $out_array = undef; # replace NULL with a proper value
     my $point_hint = undef; # replace NULL with a proper value
-    my $to_point_hint = undef; # replace NULL with a proper value
     my $from_point_hint = undef; # replace NULL with a proper value
+    my $to_point_hint = undef; # replace NULL with a proper value
+    my $out_array = undef; # replace NULL with a proper value
     my $vehicle = undef; # replace NULL with a proper value
-    my $result = $api->matrix_get(key => $key, point => $point, from_point => $from_point, to_point => $to_point, out_array => $out_array, point_hint => $point_hint, to_point_hint => $to_point_hint, from_point_hint => $from_point_hint, vehicle => $vehicle);
+    my $result = $api->matrix_get(key => $key, point => $point, from_point => $from_point, to_point => $to_point, point_hint => $point_hint, from_point_hint => $from_point_hint, to_point_hint => $to_point_hint, out_array => $out_array, vehicle => $vehicle);
 }
 
 #

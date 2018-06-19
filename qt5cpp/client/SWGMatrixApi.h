@@ -36,7 +36,7 @@ public:
     QString basePath;
     QMap<QString, QString> defaultHeaders;
 
-    void matrixGet(QString* key, QList<QString*>* point, QList<QString*>* from_point, QList<QString*>* to_point, QList<QString*>* out_array, QList<QString*>* point_hint, QList<QString*>* to_point_hint, QList<QString*>* from_point_hint, QString* vehicle);
+    void matrixGet(QString* key, QList<QString*>* point, QList<QString*>* from_point, QList<QString*>* to_point, QList<QString*>* point_hint, QList<QString*>* from_point_hint, QList<QString*>* to_point_hint, QList<QString*>* out_array, QString* vehicle);
     void matrixPost(QString* key, SWGMatrixRequest& body);
     
 private:

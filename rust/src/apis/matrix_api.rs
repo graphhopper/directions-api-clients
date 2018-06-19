@@ -34,13 +34,13 @@ impl<C: hyper::client::Connect> MatrixApiClient<C> {
 }
 
 pub trait MatrixApi {
-    fn matrix_get(&self, key: &str, point: Vec<String>, from_point: Vec<String>, to_point: Vec<String>, out_array: Vec<String>, point_hint: Vec<String>, to_point_hint: Vec<String>, from_point_hint: Vec<String>, vehicle: &str) -> Box<Future<Item = ::models::MatrixResponse, Error = Error<serde_json::Value>>>;
+    fn matrix_get(&self, key: &str, point: Vec<String>, from_point: Vec<String>, to_point: Vec<String>, point_hint: Vec<String>, from_point_hint: Vec<String>, to_point_hint: Vec<String>, out_array: Vec<String>, vehicle: &str) -> Box<Future<Item = ::models::MatrixResponse, Error = Error<serde_json::Value>>>;
     fn matrix_post(&self, key: &str, body: ::models::MatrixRequest) -> Box<Future<Item = ::models::MatrixResponse, Error = Error<serde_json::Value>>>;
 }
 
 
 impl<C: hyper::client::Connect>MatrixApi for MatrixApiClient<C> {
-    fn matrix_get(&self, key: &str, point: Vec<String>, from_point: Vec<String>, to_point: Vec<String>, out_array: Vec<String>, point_hint: Vec<String>, to_point_hint: Vec<String>, from_point_hint: Vec<String>, vehicle: &str) -> Box<Future<Item = ::models::MatrixResponse, Error = Error<serde_json::Value>>> {
+    fn matrix_get(&self, key: &str, point: Vec<String>, from_point: Vec<String>, to_point: Vec<String>, point_hint: Vec<String>, from_point_hint: Vec<String>, to_point_hint: Vec<String>, out_array: Vec<String>, vehicle: &str) -> Box<Future<Item = ::models::MatrixResponse, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let method = hyper::Method::Get;
@@ -49,10 +49,10 @@ impl<C: hyper::client::Connect>MatrixApi for MatrixApiClient<C> {
             .append_pair("point", &point.join(",").to_string())
             .append_pair("from_point", &from_point.join(",").to_string())
             .append_pair("to_point", &to_point.join(",").to_string())
-            .append_pair("out_array", &out_array.join(",").to_string())
             .append_pair("point_hint", &point_hint.join(",").to_string())
-            .append_pair("to_point_hint", &to_point_hint.join(",").to_string())
             .append_pair("from_point_hint", &from_point_hint.join(",").to_string())
+            .append_pair("to_point_hint", &to_point_hint.join(",").to_string())
+            .append_pair("out_array", &out_array.join(",").to_string())
             .append_pair("vehicle", &vehicle.to_string())
             .append_pair("key", &key.to_string())
             .finish();

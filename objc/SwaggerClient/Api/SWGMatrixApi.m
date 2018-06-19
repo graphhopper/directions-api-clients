@@ -62,13 +62,13 @@ NSInteger kSWGMatrixApiMissingParamErrorCode = 234513;
 ///
 ///  @param toPoint The destination points for the routes. Is a string with the format latitude,longitude. (optional)
 ///
-///  @param outArray Specifies which arrays should be included in the response. Specify one or more of the following options 'weights', 'times', 'distances'. To specify more than one array use e.g. out_array=times&out_array=distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API. (optional)
-///
 ///  @param pointHint Optional parameter. Specifies a hint for each `point` parameter to prefer a certain street for the closest location lookup. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up. (optional)
+///
+///  @param fromPointHint For the from_point parameter. See point_hint (optional)
 ///
 ///  @param toPointHint For the to_point parameter. See point_hint (optional)
 ///
-///  @param fromPointHint For the from_point parameter. See point_hint (optional)
+///  @param outArray Specifies which arrays should be included in the response. Specify one or more of the following options 'weights', 'times', 'distances'. To specify more than one array use e.g. out_array=times&out_array=distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API. (optional)
 ///
 ///  @param vehicle The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc (optional, default to car)
 ///
@@ -78,10 +78,10 @@ NSInteger kSWGMatrixApiMissingParamErrorCode = 234513;
     point: (NSArray<NSString*>*) point
     fromPoint: (NSArray<NSString*>*) fromPoint
     toPoint: (NSArray<NSString*>*) toPoint
-    outArray: (NSArray<NSString*>*) outArray
     pointHint: (NSArray<NSString*>*) pointHint
-    toPointHint: (NSArray<NSString*>*) toPointHint
     fromPointHint: (NSArray<NSString*>*) fromPointHint
+    toPointHint: (NSArray<NSString*>*) toPointHint
+    outArray: (NSArray<NSString*>*) outArray
     vehicle: (NSString*) vehicle
     completionHandler: (void (^)(SWGMatrixResponse* output, NSError* error)) handler {
     // verify the required parameter 'key' is set
@@ -109,17 +109,17 @@ NSInteger kSWGMatrixApiMissingParamErrorCode = 234513;
     if (toPoint != nil) {
         queryParams[@"to_point"] = [[SWGQueryParamCollection alloc] initWithValuesAndFormat: toPoint format: @"multi"];
     }
-    if (outArray != nil) {
-        queryParams[@"out_array"] = [[SWGQueryParamCollection alloc] initWithValuesAndFormat: outArray format: @"multi"];
-    }
     if (pointHint != nil) {
         queryParams[@"point_hint"] = [[SWGQueryParamCollection alloc] initWithValuesAndFormat: pointHint format: @"multi"];
+    }
+    if (fromPointHint != nil) {
+        queryParams[@"from_point_hint"] = [[SWGQueryParamCollection alloc] initWithValuesAndFormat: fromPointHint format: @"multi"];
     }
     if (toPointHint != nil) {
         queryParams[@"to_point_hint"] = [[SWGQueryParamCollection alloc] initWithValuesAndFormat: toPointHint format: @"multi"];
     }
-    if (fromPointHint != nil) {
-        queryParams[@"from_point_hint"] = [[SWGQueryParamCollection alloc] initWithValuesAndFormat: fromPointHint format: @"multi"];
+    if (outArray != nil) {
+        queryParams[@"out_array"] = [[SWGQueryParamCollection alloc] initWithValuesAndFormat: outArray format: @"multi"];
     }
     if (vehicle != nil) {
         queryParams[@"vehicle"] = vehicle;

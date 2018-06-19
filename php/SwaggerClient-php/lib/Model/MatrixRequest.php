@@ -60,10 +60,10 @@ class MatrixRequest implements ModelInterface, ArrayAccess
         'points' => 'double[][]',
         'from_points' => 'double[][]',
         'to_points' => 'double[][]',
-        'out_arrays' => 'string[]',
         'point_hints' => 'string[]',
         'from_point_hints' => 'string[]',
         'to_point_hints' => 'string[]',
+        'out_arrays' => 'string[]',
         'vehicle' => 'string'
     ];
 
@@ -76,10 +76,10 @@ class MatrixRequest implements ModelInterface, ArrayAccess
         'points' => 'double',
         'from_points' => 'double',
         'to_points' => 'double',
-        'out_arrays' => null,
         'point_hints' => null,
         'from_point_hints' => null,
         'to_point_hints' => null,
+        'out_arrays' => null,
         'vehicle' => null
     ];
 
@@ -113,10 +113,10 @@ class MatrixRequest implements ModelInterface, ArrayAccess
         'points' => 'points',
         'from_points' => 'from_points',
         'to_points' => 'to_points',
-        'out_arrays' => 'out_arrays',
         'point_hints' => 'point_hints',
         'from_point_hints' => 'from_point_hints',
         'to_point_hints' => 'to_point_hints',
+        'out_arrays' => 'out_arrays',
         'vehicle' => 'vehicle'
     ];
 
@@ -129,10 +129,10 @@ class MatrixRequest implements ModelInterface, ArrayAccess
         'points' => 'setPoints',
         'from_points' => 'setFromPoints',
         'to_points' => 'setToPoints',
-        'out_arrays' => 'setOutArrays',
         'point_hints' => 'setPointHints',
         'from_point_hints' => 'setFromPointHints',
         'to_point_hints' => 'setToPointHints',
+        'out_arrays' => 'setOutArrays',
         'vehicle' => 'setVehicle'
     ];
 
@@ -145,10 +145,10 @@ class MatrixRequest implements ModelInterface, ArrayAccess
         'points' => 'getPoints',
         'from_points' => 'getFromPoints',
         'to_points' => 'getToPoints',
-        'out_arrays' => 'getOutArrays',
         'point_hints' => 'getPointHints',
         'from_point_hints' => 'getFromPointHints',
         'to_point_hints' => 'getToPointHints',
+        'out_arrays' => 'getOutArrays',
         'vehicle' => 'getVehicle'
     ];
 
@@ -215,10 +215,10 @@ class MatrixRequest implements ModelInterface, ArrayAccess
         $this->container['points'] = isset($data['points']) ? $data['points'] : null;
         $this->container['from_points'] = isset($data['from_points']) ? $data['from_points'] : null;
         $this->container['to_points'] = isset($data['to_points']) ? $data['to_points'] : null;
-        $this->container['out_arrays'] = isset($data['out_arrays']) ? $data['out_arrays'] : null;
         $this->container['point_hints'] = isset($data['point_hints']) ? $data['point_hints'] : null;
         $this->container['from_point_hints'] = isset($data['from_point_hints']) ? $data['from_point_hints'] : null;
         $this->container['to_point_hints'] = isset($data['to_point_hints']) ? $data['to_point_hints'] : null;
+        $this->container['out_arrays'] = isset($data['out_arrays']) ? $data['out_arrays'] : null;
         $this->container['vehicle'] = isset($data['vehicle']) ? $data['vehicle'] : null;
     }
 
@@ -320,30 +320,6 @@ class MatrixRequest implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets out_arrays
-     *
-     * @return string[]
-     */
-    public function getOutArrays()
-    {
-        return $this->container['out_arrays'];
-    }
-
-    /**
-     * Sets out_arrays
-     *
-     * @param string[] $out_arrays Specifies which arrays should be included in the response. Specify one or more of the following options 'weights', 'times', 'distances'. To specify more than one array use e.g. out_array=times&amp;out_array=distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API.
-     *
-     * @return $this
-     */
-    public function setOutArrays($out_arrays)
-    {
-        $this->container['out_arrays'] = $out_arrays;
-
-        return $this;
-    }
-
-    /**
      * Gets point_hints
      *
      * @return string[]
@@ -411,6 +387,30 @@ class MatrixRequest implements ModelInterface, ArrayAccess
     public function setToPointHints($to_point_hints)
     {
         $this->container['to_point_hints'] = $to_point_hints;
+
+        return $this;
+    }
+
+    /**
+     * Gets out_arrays
+     *
+     * @return string[]
+     */
+    public function getOutArrays()
+    {
+        return $this->container['out_arrays'];
+    }
+
+    /**
+     * Sets out_arrays
+     *
+     * @param string[] $out_arrays Specifies which arrays should be included in the response. Specify one or more of the following options 'weights', 'times', 'distances'. To specify more than one array use e.g. out_array=times&amp;out_array=distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API.
+     *
+     * @return $this
+     */
+    public function setOutArrays($out_arrays)
+    {
+        $this->container['out_arrays'] = $out_arrays;
 
         return $this;
     }

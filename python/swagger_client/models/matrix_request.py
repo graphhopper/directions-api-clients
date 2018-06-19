@@ -34,10 +34,10 @@ class MatrixRequest(object):
         'points': 'list[list[float]]',
         'from_points': 'list[list[float]]',
         'to_points': 'list[list[float]]',
-        'out_arrays': 'list[str]',
         'point_hints': 'list[str]',
         'from_point_hints': 'list[str]',
         'to_point_hints': 'list[str]',
+        'out_arrays': 'list[str]',
         'vehicle': 'str'
     }
 
@@ -45,23 +45,23 @@ class MatrixRequest(object):
         'points': 'points',
         'from_points': 'from_points',
         'to_points': 'to_points',
-        'out_arrays': 'out_arrays',
         'point_hints': 'point_hints',
         'from_point_hints': 'from_point_hints',
         'to_point_hints': 'to_point_hints',
+        'out_arrays': 'out_arrays',
         'vehicle': 'vehicle'
     }
 
-    def __init__(self, points=None, from_points=None, to_points=None, out_arrays=None, point_hints=None, from_point_hints=None, to_point_hints=None, vehicle=None):  # noqa: E501
+    def __init__(self, points=None, from_points=None, to_points=None, point_hints=None, from_point_hints=None, to_point_hints=None, out_arrays=None, vehicle=None):  # noqa: E501
         """MatrixRequest - a model defined in Swagger"""  # noqa: E501
 
         self._points = None
         self._from_points = None
         self._to_points = None
-        self._out_arrays = None
         self._point_hints = None
         self._from_point_hints = None
         self._to_point_hints = None
+        self._out_arrays = None
         self._vehicle = None
         self.discriminator = None
 
@@ -71,14 +71,14 @@ class MatrixRequest(object):
             self.from_points = from_points
         if to_points is not None:
             self.to_points = to_points
-        if out_arrays is not None:
-            self.out_arrays = out_arrays
         if point_hints is not None:
             self.point_hints = point_hints
         if from_point_hints is not None:
             self.from_point_hints = from_point_hints
         if to_point_hints is not None:
             self.to_point_hints = to_point_hints
+        if out_arrays is not None:
+            self.out_arrays = out_arrays
         if vehicle is not None:
             self.vehicle = vehicle
 
@@ -152,29 +152,6 @@ class MatrixRequest(object):
         self._to_points = to_points
 
     @property
-    def out_arrays(self):
-        """Gets the out_arrays of this MatrixRequest.  # noqa: E501
-
-        Specifies which arrays should be included in the response. Specify one or more of the following options 'weights', 'times', 'distances'. To specify more than one array use e.g. out_array=times&amp;out_array=distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API.  # noqa: E501
-
-        :return: The out_arrays of this MatrixRequest.  # noqa: E501
-        :rtype: list[str]
-        """
-        return self._out_arrays
-
-    @out_arrays.setter
-    def out_arrays(self, out_arrays):
-        """Sets the out_arrays of this MatrixRequest.
-
-        Specifies which arrays should be included in the response. Specify one or more of the following options 'weights', 'times', 'distances'. To specify more than one array use e.g. out_array=times&amp;out_array=distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API.  # noqa: E501
-
-        :param out_arrays: The out_arrays of this MatrixRequest.  # noqa: E501
-        :type: list[str]
-        """
-
-        self._out_arrays = out_arrays
-
-    @property
     def point_hints(self):
         """Gets the point_hints of this MatrixRequest.  # noqa: E501
 
@@ -242,6 +219,29 @@ class MatrixRequest(object):
         """
 
         self._to_point_hints = to_point_hints
+
+    @property
+    def out_arrays(self):
+        """Gets the out_arrays of this MatrixRequest.  # noqa: E501
+
+        Specifies which arrays should be included in the response. Specify one or more of the following options 'weights', 'times', 'distances'. To specify more than one array use e.g. out_array=times&amp;out_array=distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API.  # noqa: E501
+
+        :return: The out_arrays of this MatrixRequest.  # noqa: E501
+        :rtype: list[str]
+        """
+        return self._out_arrays
+
+    @out_arrays.setter
+    def out_arrays(self, out_arrays):
+        """Sets the out_arrays of this MatrixRequest.
+
+        Specifies which arrays should be included in the response. Specify one or more of the following options 'weights', 'times', 'distances'. To specify more than one array use e.g. out_array=times&amp;out_array=distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API.  # noqa: E501
+
+        :param out_arrays: The out_arrays of this MatrixRequest.  # noqa: E501
+        :type: list[str]
+        """
+
+        self._out_arrays = out_arrays
 
     @property
     def vehicle(self):

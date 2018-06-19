@@ -323,25 +323,20 @@ paths:
         items:
           type: "string"
         collectionFormat: "multi"
-      - name: "out_array"
-        in: "query"
-        description: "Specifies which arrays should be included in the response. Specify\
-          \ one or more of the following options 'weights', 'times', 'distances'.\
-          \ To specify more than one array use e.g. out_array=times&out_array=distances.\
-          \ The units of the entries of distances are meters, of times are seconds\
-          \ and of weights is arbitrary and it can differ for different vehicles or\
-          \ versions of this API."
-        required: false
-        type: "array"
-        items:
-          type: "string"
-        collectionFormat: "multi"
       - name: "point_hint"
         in: "query"
         description: "Optional parameter. Specifies a hint for each `point` parameter\
           \ to prefer a certain street for the closest location lookup. E.g. if there\
           \ is an address or house with two or more neighboring streets you can control\
           \ for which street the closest location is looked up."
+        required: false
+        type: "array"
+        items:
+          type: "string"
+        collectionFormat: "multi"
+      - name: "from_point_hint"
+        in: "query"
+        description: "For the from_point parameter. See point_hint"
         required: false
         type: "array"
         items:
@@ -355,9 +350,14 @@ paths:
         items:
           type: "string"
         collectionFormat: "multi"
-      - name: "from_point_hint"
+      - name: "out_array"
         in: "query"
-        description: "For the from_point parameter. See point_hint"
+        description: "Specifies which arrays should be included in the response. Specify\
+          \ one or more of the following options 'weights', 'times', 'distances'.\
+          \ To specify more than one array use e.g. out_array=times&out_array=distances.\
+          \ The units of the entries of distances are meters, of times are seconds\
+          \ and of weights is arbitrary and it can differ for different vehicles or\
+          \ versions of this API."
         required: false
         type: "array"
         items:
@@ -669,16 +669,6 @@ definitions:
           items:
             type: "number"
             format: "double"
-      out_arrays:
-        type: "array"
-        description: "Specifies which arrays should be included in the response. Specify\
-          \ one or more of the following options 'weights', 'times', 'distances'.\
-          \ To specify more than one array use e.g. out_array=times&amp;out_array=distances.\
-          \ The units of the entries of distances are meters, of times are seconds\
-          \ and of weights is arbitrary and it can differ for different vehicles or\
-          \ versions of this API."
-        items:
-          type: "string"
       point_hints:
         type: "array"
         description: "Optional parameter. Specifies a hint for each point in the `points`\
@@ -695,6 +685,16 @@ definitions:
       to_point_hints:
         type: "array"
         description: "More information for the `to_points` array. See `point_hints`"
+        items:
+          type: "string"
+      out_arrays:
+        type: "array"
+        description: "Specifies which arrays should be included in the response. Specify\
+          \ one or more of the following options 'weights', 'times', 'distances'.\
+          \ To specify more than one array use e.g. out_array=times&amp;out_array=distances.\
+          \ The units of the entries of distances are meters, of times are seconds\
+          \ and of weights is arbitrary and it can differ for different vehicles or\
+          \ versions of this API."
         items:
           type: "string"
       vehicle:

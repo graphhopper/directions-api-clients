@@ -37,8 +37,8 @@ MyApp.add_route('GET', '/api/1/matrix', {
       
     },
     {
-      "name" => "out_array",
-      "description" => "Specifies which arrays should be included in the response. Specify one or more of the following options &#39;weights&#39;, &#39;times&#39;, &#39;distances&#39;. To specify more than one array use e.g. out_array&#x3D;times&amp;out_array&#x3D;distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API.",
+      "name" => "point_hint",
+      "description" => "Optional parameter. Specifies a hint for each &#x60;point&#x60; parameter to prefer a certain street for the closest location lookup. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up.",
       "dataType" => "array[string]",
       "paramType" => "query",
       "collectionFormat" => "multi",
@@ -46,8 +46,8 @@ MyApp.add_route('GET', '/api/1/matrix', {
       
     },
     {
-      "name" => "point_hint",
-      "description" => "Optional parameter. Specifies a hint for each &#x60;point&#x60; parameter to prefer a certain street for the closest location lookup. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up.",
+      "name" => "from_point_hint",
+      "description" => "For the from_point parameter. See point_hint",
       "dataType" => "array[string]",
       "paramType" => "query",
       "collectionFormat" => "multi",
@@ -64,8 +64,8 @@ MyApp.add_route('GET', '/api/1/matrix', {
       
     },
     {
-      "name" => "from_point_hint",
-      "description" => "For the from_point parameter. See point_hint",
+      "name" => "out_array",
+      "description" => "Specifies which arrays should be included in the response. Specify one or more of the following options &#39;weights&#39;, &#39;times&#39;, &#39;distances&#39;. To specify more than one array use e.g. out_array&#x3D;times&amp;out_array&#x3D;distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API.",
       "dataType" => "array[string]",
       "paramType" => "query",
       "collectionFormat" => "multi",

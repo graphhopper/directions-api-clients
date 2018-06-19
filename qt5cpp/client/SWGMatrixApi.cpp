@@ -29,7 +29,7 @@ SWGMatrixApi::SWGMatrixApi(QString host, QString basePath) {
 }
 
 void
-SWGMatrixApi::matrixGet(QString* key, QList<QString*>* point, QList<QString*>* from_point, QList<QString*>* to_point, QList<QString*>* out_array, QList<QString*>* point_hint, QList<QString*>* to_point_hint, QList<QString*>* from_point_hint, QString* vehicle) {
+SWGMatrixApi::matrixGet(QString* key, QList<QString*>* point, QList<QString*>* from_point, QList<QString*>* to_point, QList<QString*>* point_hint, QList<QString*>* from_point_hint, QList<QString*>* to_point_hint, QList<QString*>* out_array, QString* vehicle) {
     QString fullPath;
     fullPath.append(this->host).append(this->basePath).append("/matrix");
 
@@ -162,48 +162,6 @@ SWGMatrixApi::matrixGet(QString* key, QList<QString*>* point, QList<QString*>* f
 
 
 
-    if (out_array->size() > 0) {
-      if (QString("multi").indexOf("multi") == 0) {
-        foreach(QString* t, *out_array) {
-          if (fullPath.indexOf("?") > 0)
-            fullPath.append("&");
-          else 
-            fullPath.append("?");
-          fullPath.append("out_array=").append(stringValue(t));
-        }
-      }
-      else if (QString("multi").indexOf("ssv") == 0) {
-        if (fullPath.indexOf("?") > 0)
-          fullPath.append("&");
-        else 
-          fullPath.append("?");
-        fullPath.append("out_array=");
-        qint32 count = 0;
-        foreach(QString* t, *out_array) {
-          if (count > 0) {
-            fullPath.append(" ");
-          }
-          fullPath.append(stringValue(t));
-        }
-      }
-      else if (QString("multi").indexOf("tsv") == 0) {
-        if (fullPath.indexOf("?") > 0)
-          fullPath.append("&");
-        else 
-          fullPath.append("?");
-        fullPath.append("out_array=");
-        qint32 count = 0;
-        foreach(QString* t, *out_array) {
-          if (count > 0) {
-            fullPath.append("\t");
-          }
-          fullPath.append(stringValue(t));
-        }
-      }
-    }
-
-
-
     if (point_hint->size() > 0) {
       if (QString("multi").indexOf("multi") == 0) {
         foreach(QString* t, *point_hint) {
@@ -236,6 +194,48 @@ SWGMatrixApi::matrixGet(QString* key, QList<QString*>* point, QList<QString*>* f
         fullPath.append("point_hint=");
         qint32 count = 0;
         foreach(QString* t, *point_hint) {
+          if (count > 0) {
+            fullPath.append("\t");
+          }
+          fullPath.append(stringValue(t));
+        }
+      }
+    }
+
+
+
+    if (from_point_hint->size() > 0) {
+      if (QString("multi").indexOf("multi") == 0) {
+        foreach(QString* t, *from_point_hint) {
+          if (fullPath.indexOf("?") > 0)
+            fullPath.append("&");
+          else 
+            fullPath.append("?");
+          fullPath.append("from_point_hint=").append(stringValue(t));
+        }
+      }
+      else if (QString("multi").indexOf("ssv") == 0) {
+        if (fullPath.indexOf("?") > 0)
+          fullPath.append("&");
+        else 
+          fullPath.append("?");
+        fullPath.append("from_point_hint=");
+        qint32 count = 0;
+        foreach(QString* t, *from_point_hint) {
+          if (count > 0) {
+            fullPath.append(" ");
+          }
+          fullPath.append(stringValue(t));
+        }
+      }
+      else if (QString("multi").indexOf("tsv") == 0) {
+        if (fullPath.indexOf("?") > 0)
+          fullPath.append("&");
+        else 
+          fullPath.append("?");
+        fullPath.append("from_point_hint=");
+        qint32 count = 0;
+        foreach(QString* t, *from_point_hint) {
           if (count > 0) {
             fullPath.append("\t");
           }
@@ -288,14 +288,14 @@ SWGMatrixApi::matrixGet(QString* key, QList<QString*>* point, QList<QString*>* f
 
 
 
-    if (from_point_hint->size() > 0) {
+    if (out_array->size() > 0) {
       if (QString("multi").indexOf("multi") == 0) {
-        foreach(QString* t, *from_point_hint) {
+        foreach(QString* t, *out_array) {
           if (fullPath.indexOf("?") > 0)
             fullPath.append("&");
           else 
             fullPath.append("?");
-          fullPath.append("from_point_hint=").append(stringValue(t));
+          fullPath.append("out_array=").append(stringValue(t));
         }
       }
       else if (QString("multi").indexOf("ssv") == 0) {
@@ -303,9 +303,9 @@ SWGMatrixApi::matrixGet(QString* key, QList<QString*>* point, QList<QString*>* f
           fullPath.append("&");
         else 
           fullPath.append("?");
-        fullPath.append("from_point_hint=");
+        fullPath.append("out_array=");
         qint32 count = 0;
-        foreach(QString* t, *from_point_hint) {
+        foreach(QString* t, *out_array) {
           if (count > 0) {
             fullPath.append(" ");
           }
@@ -317,9 +317,9 @@ SWGMatrixApi::matrixGet(QString* key, QList<QString*>* point, QList<QString*>* f
           fullPath.append("&");
         else 
           fullPath.append("?");
-        fullPath.append("from_point_hint=");
+        fullPath.append("out_array=");
         qint32 count = 0;
-        foreach(QString* t, *from_point_hint) {
+        foreach(QString* t, *out_array) {
           if (count > 0) {
             fullPath.append("\t");
           }

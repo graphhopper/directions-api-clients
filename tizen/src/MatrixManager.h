@@ -33,17 +33,17 @@ public:
  * \param point Specifiy multiple points for which the weight-, route-, time- or distance-matrix should be calculated. In this case the starts are identical to the destinations. If there are N points, then NxN entries will be calculated. The order of the point parameter is important. Specify at least three points. Cannot be used together with from_point or to_point. Is a string with the format latitude,longitude.
  * \param fromPoint The starting points for the routes. E.g. if you want to calculate the three routes A-&gt;1, A-&gt;2, A-&gt;3 then you have one from_point parameter and three to_point parameters. Is a string with the format latitude,longitude.
  * \param toPoint The destination points for the routes. Is a string with the format latitude,longitude.
- * \param outArray Specifies which arrays should be included in the response. Specify one or more of the following options 'weights', 'times', 'distances'. To specify more than one array use e.g. out_array=times&out_array=distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API.
  * \param pointHint Optional parameter. Specifies a hint for each `point` parameter to prefer a certain street for the closest location lookup. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up.
- * \param toPointHint For the to_point parameter. See point_hint
  * \param fromPointHint For the from_point parameter. See point_hint
+ * \param toPointHint For the to_point parameter. See point_hint
+ * \param outArray Specifies which arrays should be included in the response. Specify one or more of the following options 'weights', 'times', 'distances'. To specify more than one array use e.g. out_array=times&out_array=distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API.
  * \param vehicle The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool matrixGetSync(char * accessToken,
-	std::string key, std::list<std::string> point, std::list<std::string> fromPoint, std::list<std::string> toPoint, std::list<std::string> outArray, std::list<std::string> pointHint, std::list<std::string> toPointHint, std::list<std::string> fromPointHint, std::string vehicle, 
+	std::string key, std::list<std::string> point, std::list<std::string> fromPoint, std::list<std::string> toPoint, std::list<std::string> pointHint, std::list<std::string> fromPointHint, std::list<std::string> toPointHint, std::list<std::string> outArray, std::string vehicle, 
 	void(* handler)(MatrixResponse, Error, void* )
 	, void* userData);
 
@@ -54,17 +54,17 @@ bool matrixGetSync(char * accessToken,
  * \param point Specifiy multiple points for which the weight-, route-, time- or distance-matrix should be calculated. In this case the starts are identical to the destinations. If there are N points, then NxN entries will be calculated. The order of the point parameter is important. Specify at least three points. Cannot be used together with from_point or to_point. Is a string with the format latitude,longitude.
  * \param fromPoint The starting points for the routes. E.g. if you want to calculate the three routes A-&gt;1, A-&gt;2, A-&gt;3 then you have one from_point parameter and three to_point parameters. Is a string with the format latitude,longitude.
  * \param toPoint The destination points for the routes. Is a string with the format latitude,longitude.
- * \param outArray Specifies which arrays should be included in the response. Specify one or more of the following options 'weights', 'times', 'distances'. To specify more than one array use e.g. out_array=times&out_array=distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API.
  * \param pointHint Optional parameter. Specifies a hint for each `point` parameter to prefer a certain street for the closest location lookup. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up.
- * \param toPointHint For the to_point parameter. See point_hint
  * \param fromPointHint For the from_point parameter. See point_hint
+ * \param toPointHint For the to_point parameter. See point_hint
+ * \param outArray Specifies which arrays should be included in the response. Specify one or more of the following options 'weights', 'times', 'distances'. To specify more than one array use e.g. out_array=times&out_array=distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API.
  * \param vehicle The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool matrixGetAsync(char * accessToken,
-	std::string key, std::list<std::string> point, std::list<std::string> fromPoint, std::list<std::string> toPoint, std::list<std::string> outArray, std::list<std::string> pointHint, std::list<std::string> toPointHint, std::list<std::string> fromPointHint, std::string vehicle, 
+	std::string key, std::list<std::string> point, std::list<std::string> fromPoint, std::list<std::string> toPoint, std::list<std::string> pointHint, std::list<std::string> fromPointHint, std::list<std::string> toPointHint, std::list<std::string> outArray, std::string vehicle, 
 	void(* handler)(MatrixResponse, Error, void* )
 	, void* userData);
 

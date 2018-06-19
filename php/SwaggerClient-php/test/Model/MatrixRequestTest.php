@@ -98,13 +98,6 @@ class MatrixRequestTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test attribute "out_arrays"
-     */
-    public function testPropertyOutArrays()
-    {
-    }
-
-    /**
      * Test attribute "point_hints"
      */
     public function testPropertyPointHints()
@@ -122,6 +115,13 @@ class MatrixRequestTest extends \PHPUnit_Framework_TestCase
      * Test attribute "to_point_hints"
      */
     public function testPropertyToPointHints()
+    {
+    }
+
+    /**
+     * Test attribute "out_arrays"
+     */
+    public function testPropertyOutArrays()
     {
     }
 

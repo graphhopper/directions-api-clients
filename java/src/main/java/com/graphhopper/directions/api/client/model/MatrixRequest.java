@@ -40,9 +40,6 @@ public class MatrixRequest {
   @SerializedName("to_points")
   private List<List<Double>> toPoints = null;
 
-  @SerializedName("out_arrays")
-  private List<String> outArrays = null;
-
   @SerializedName("point_hints")
   private List<String> pointHints = null;
 
@@ -51,6 +48,9 @@ public class MatrixRequest {
 
   @SerializedName("to_point_hints")
   private List<String> toPointHints = null;
+
+  @SerializedName("out_arrays")
+  private List<String> outArrays = null;
 
   @SerializedName("vehicle")
   private String vehicle = null;
@@ -133,32 +133,6 @@ public class MatrixRequest {
     this.toPoints = toPoints;
   }
 
-  public MatrixRequest outArrays(List<String> outArrays) {
-    this.outArrays = outArrays;
-    return this;
-  }
-
-  public MatrixRequest addOutArraysItem(String outArraysItem) {
-    if (this.outArrays == null) {
-      this.outArrays = new ArrayList<String>();
-    }
-    this.outArrays.add(outArraysItem);
-    return this;
-  }
-
-   /**
-   * Specifies which arrays should be included in the response. Specify one or more of the following options &#39;weights&#39;, &#39;times&#39;, &#39;distances&#39;. To specify more than one array use e.g. out_array&#x3D;times&amp;amp;out_array&#x3D;distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API.
-   * @return outArrays
-  **/
-  @ApiModelProperty(value = "Specifies which arrays should be included in the response. Specify one or more of the following options 'weights', 'times', 'distances'. To specify more than one array use e.g. out_array=times&amp;out_array=distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API.")
-  public List<String> getOutArrays() {
-    return outArrays;
-  }
-
-  public void setOutArrays(List<String> outArrays) {
-    this.outArrays = outArrays;
-  }
-
   public MatrixRequest pointHints(List<String> pointHints) {
     this.pointHints = pointHints;
     return this;
@@ -237,6 +211,32 @@ public class MatrixRequest {
     this.toPointHints = toPointHints;
   }
 
+  public MatrixRequest outArrays(List<String> outArrays) {
+    this.outArrays = outArrays;
+    return this;
+  }
+
+  public MatrixRequest addOutArraysItem(String outArraysItem) {
+    if (this.outArrays == null) {
+      this.outArrays = new ArrayList<String>();
+    }
+    this.outArrays.add(outArraysItem);
+    return this;
+  }
+
+   /**
+   * Specifies which arrays should be included in the response. Specify one or more of the following options &#39;weights&#39;, &#39;times&#39;, &#39;distances&#39;. To specify more than one array use e.g. out_array&#x3D;times&amp;amp;out_array&#x3D;distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API.
+   * @return outArrays
+  **/
+  @ApiModelProperty(value = "Specifies which arrays should be included in the response. Specify one or more of the following options 'weights', 'times', 'distances'. To specify more than one array use e.g. out_array=times&amp;out_array=distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API.")
+  public List<String> getOutArrays() {
+    return outArrays;
+  }
+
+  public void setOutArrays(List<String> outArrays) {
+    this.outArrays = outArrays;
+  }
+
   public MatrixRequest vehicle(String vehicle) {
     this.vehicle = vehicle;
     return this;
@@ -268,16 +268,16 @@ public class MatrixRequest {
     return Objects.equals(this.points, matrixRequest.points) &&
         Objects.equals(this.fromPoints, matrixRequest.fromPoints) &&
         Objects.equals(this.toPoints, matrixRequest.toPoints) &&
-        Objects.equals(this.outArrays, matrixRequest.outArrays) &&
         Objects.equals(this.pointHints, matrixRequest.pointHints) &&
         Objects.equals(this.fromPointHints, matrixRequest.fromPointHints) &&
         Objects.equals(this.toPointHints, matrixRequest.toPointHints) &&
+        Objects.equals(this.outArrays, matrixRequest.outArrays) &&
         Objects.equals(this.vehicle, matrixRequest.vehicle);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(points, fromPoints, toPoints, outArrays, pointHints, fromPointHints, toPointHints, vehicle);
+    return Objects.hash(points, fromPoints, toPoints, pointHints, fromPointHints, toPointHints, outArrays, vehicle);
   }
 
 
@@ -289,10 +289,10 @@ public class MatrixRequest {
     sb.append("    points: ").append(toIndentedString(points)).append("\n");
     sb.append("    fromPoints: ").append(toIndentedString(fromPoints)).append("\n");
     sb.append("    toPoints: ").append(toIndentedString(toPoints)).append("\n");
-    sb.append("    outArrays: ").append(toIndentedString(outArrays)).append("\n");
     sb.append("    pointHints: ").append(toIndentedString(pointHints)).append("\n");
     sb.append("    fromPointHints: ").append(toIndentedString(fromPointHints)).append("\n");
     sb.append("    toPointHints: ").append(toIndentedString(toPointHints)).append("\n");
+    sb.append("    outArrays: ").append(toIndentedString(outArrays)).append("\n");
     sb.append("    vehicle: ").append(toIndentedString(vehicle)).append("\n");
     sb.append("}");
     return sb.toString();
