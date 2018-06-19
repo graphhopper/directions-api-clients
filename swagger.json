@@ -333,6 +333,41 @@
                         "collectionFormat": "multi"
                     },
                     {
+                        "name": "point_hint",
+                        "in": "query",
+                        "description": "Optional parameter. Specifies a hint for each `point` parameter to prefer a certain street for the closest location lookup. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up.",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi"
+                    },
+
+                    {
+                        "name": "to_point_hint",
+                        "in": "query",
+                        "description": "For the to_point parameter. See point_hint",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi"
+                    },
+
+                    {
+                        "name": "from_point_hint",
+                        "in": "query",
+                        "description": "For the from_point parameter. See point_hint",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi"
+                    },
+                    {
                         "name": "vehicle",
                         "in": "query",
                         "description": "The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc",
@@ -681,6 +716,27 @@
                 },
                 "out_arrays": {
                     "description": "Specifies which arrays should be included in the response. Specify one or more of the following options 'weights', 'times', 'distances'. To specify more than one array use e.g. out_array=times&amp;out_array=distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API.",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "point_hints": {
+                    "description": "Optional parameter. Specifies a hint for each point in the `points` array to prefer a certain street for the closest location lookup. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up.",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "from_point_hints": {
+                    "description": "More information for the `from_points` array. See `point_hints`",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "to_point_hints": {
+                    "description": "More information for the `to_points` array. See `point_hints`",
                     "type": "array",
                     "items": {
                         "type": "string"
@@ -1133,6 +1189,10 @@
                     "format": "double",
                     "type": "number",
                     "description": "latitude"
+                },
+                "street_hint": {
+                    "type": "string",
+                    "description": "Optional parameter. Specifies a hint for each address to better snap the coordinates (lon,lat) to road network. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up."
                 }
             }
         },
