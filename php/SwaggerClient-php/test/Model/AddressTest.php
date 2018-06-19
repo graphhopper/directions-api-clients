@@ -103,4 +103,11 @@ class AddressTest extends \PHPUnit_Framework_TestCase
     public function testPropertyLat()
     {
     }
+
+    /**
+     * Test attribute "street_hint"
+     */
+    public function testPropertyStreetHint()
+    {
+    }
 }

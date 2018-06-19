@@ -7,12 +7,12 @@
   The Matrix API is part of the GraphHopper Directions API and with this API you can calculate many-to-many distances, times or routes a lot more efficient than calling the Routing API multiple times.
 In the Routing API we support multiple points, so called 'via points', which results in one route being calculated. The Matrix API results in NxM routes or more precise NxM weights, distances or times being calculated but is a lot faster compared to NxM single requests. The most simple example is a tourist trying to decide which pizza is close to him instead of using beeline distance she can calculate a 1x4 matrix. Or a delivery service in the need of often big NxN matrices to solve vehicle routing problems. E.g. the GraphHopper Route Optimization API uses the Matrix API under the hood to achieve this."
   ([key ] (matrix-get-with-http-info key nil))
-  ([key {:keys [point from-point to-point out-array vehicle ]}]
+  ([key {:keys [point from-point to-point out-array point-hint to-point-hint from-point-hint vehicle ]}]
    (check-required-params key)
    (call-api "/matrix" :get
              {:path-params   {}
               :header-params {}
-              :query-params  {"point" (with-collection-format point :multi) "from_point" (with-collection-format from-point :multi) "to_point" (with-collection-format to-point :multi) "out_array" (with-collection-format out-array :multi) "vehicle" vehicle "key" key }
+              :query-params  {"point" (with-collection-format point :multi) "from_point" (with-collection-format from-point :multi) "to_point" (with-collection-format to-point :multi) "out_array" (with-collection-format out-array :multi) "point_hint" (with-collection-format point-hint :multi) "to_point_hint" (with-collection-format to-point-hint :multi) "from_point_hint" (with-collection-format from-point-hint :multi) "vehicle" vehicle "key" key }
               :form-params   {}
               :content-types []
               :accepts       ["application/json"]

@@ -171,20 +171,29 @@ __PACKAGE__->method_documentation({
     	format => '',
     	read_only => '',
     		},
+    'street_hint' => {
+    	datatype => 'string',
+    	base_name => 'street_hint',
+    	description => 'Optional parameter. Specifies a hint for each address to better snap the coordinates (lon,lat) to road network. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up.',
+    	format => '',
+    	read_only => '',
+    		},
 });
 
 __PACKAGE__->swagger_types( {
     'location_id' => 'string',
     'name' => 'string',
     'lon' => 'double',
-    'lat' => 'double'
+    'lat' => 'double',
+    'street_hint' => 'string'
 } );
 
 __PACKAGE__->attribute_map( {
     'location_id' => 'location_id',
     'name' => 'name',
     'lon' => 'lon',
-    'lat' => 'lat'
+    'lat' => 'lat',
+    'street_hint' => 'street_hint'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

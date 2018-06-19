@@ -28,6 +28,9 @@ module GraphHopperClient
     # @option opts [Array<String>] :from_point The starting points for the routes. E.g. if you want to calculate the three routes A-&amp;gt;1, A-&amp;gt;2, A-&amp;gt;3 then you have one from_point parameter and three to_point parameters. Is a string with the format latitude,longitude.
     # @option opts [Array<String>] :to_point The destination points for the routes. Is a string with the format latitude,longitude.
     # @option opts [Array<String>] :out_array Specifies which arrays should be included in the response. Specify one or more of the following options &#39;weights&#39;, &#39;times&#39;, &#39;distances&#39;. To specify more than one array use e.g. out_array&#x3D;times&amp;out_array&#x3D;distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API.
+    # @option opts [Array<String>] :point_hint Optional parameter. Specifies a hint for each &#x60;point&#x60; parameter to prefer a certain street for the closest location lookup. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up.
+    # @option opts [Array<String>] :to_point_hint For the to_point parameter. See point_hint
+    # @option opts [Array<String>] :from_point_hint For the from_point parameter. See point_hint
     # @option opts [String] :vehicle The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc (default to car)
     # @return [MatrixResponse]
     def matrix_get(key, opts = {})
@@ -43,6 +46,9 @@ module GraphHopperClient
     # @option opts [Array<String>] :from_point The starting points for the routes. E.g. if you want to calculate the three routes A-&amp;gt;1, A-&amp;gt;2, A-&amp;gt;3 then you have one from_point parameter and three to_point parameters. Is a string with the format latitude,longitude.
     # @option opts [Array<String>] :to_point The destination points for the routes. Is a string with the format latitude,longitude.
     # @option opts [Array<String>] :out_array Specifies which arrays should be included in the response. Specify one or more of the following options &#39;weights&#39;, &#39;times&#39;, &#39;distances&#39;. To specify more than one array use e.g. out_array&#x3D;times&amp;out_array&#x3D;distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API.
+    # @option opts [Array<String>] :point_hint Optional parameter. Specifies a hint for each &#x60;point&#x60; parameter to prefer a certain street for the closest location lookup. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up.
+    # @option opts [Array<String>] :to_point_hint For the to_point parameter. See point_hint
+    # @option opts [Array<String>] :from_point_hint For the from_point parameter. See point_hint
     # @option opts [String] :vehicle The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc
     # @return [Array<(MatrixResponse, Fixnum, Hash)>] MatrixResponse data, response status code and response headers
     def matrix_get_with_http_info(key, opts = {})
@@ -63,6 +69,9 @@ module GraphHopperClient
       query_params[:'from_point'] = @api_client.build_collection_param(opts[:'from_point'], :multi) if !opts[:'from_point'].nil?
       query_params[:'to_point'] = @api_client.build_collection_param(opts[:'to_point'], :multi) if !opts[:'to_point'].nil?
       query_params[:'out_array'] = @api_client.build_collection_param(opts[:'out_array'], :multi) if !opts[:'out_array'].nil?
+      query_params[:'point_hint'] = @api_client.build_collection_param(opts[:'point_hint'], :multi) if !opts[:'point_hint'].nil?
+      query_params[:'to_point_hint'] = @api_client.build_collection_param(opts[:'to_point_hint'], :multi) if !opts[:'to_point_hint'].nil?
+      query_params[:'from_point_hint'] = @api_client.build_collection_param(opts[:'from_point_hint'], :multi) if !opts[:'from_point_hint'].nil?
       query_params[:'vehicle'] = opts[:'vehicle'] if !opts[:'vehicle'].nil?
 
       # header parameters

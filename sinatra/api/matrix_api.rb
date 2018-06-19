@@ -46,6 +46,33 @@ MyApp.add_route('GET', '/api/1/matrix', {
       
     },
     {
+      "name" => "point_hint",
+      "description" => "Optional parameter. Specifies a hint for each &#x60;point&#x60; parameter to prefer a certain street for the closest location lookup. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up.",
+      "dataType" => "array[string]",
+      "paramType" => "query",
+      "collectionFormat" => "multi",
+      "allowableValues" => "",
+      
+    },
+    {
+      "name" => "to_point_hint",
+      "description" => "For the to_point parameter. See point_hint",
+      "dataType" => "array[string]",
+      "paramType" => "query",
+      "collectionFormat" => "multi",
+      "allowableValues" => "",
+      
+    },
+    {
+      "name" => "from_point_hint",
+      "description" => "For the from_point parameter. See point_hint",
+      "dataType" => "array[string]",
+      "paramType" => "query",
+      "collectionFormat" => "multi",
+      "allowableValues" => "",
+      
+    },
+    {
       "name" => "vehicle",
       "description" => "The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc",
       "dataType" => "string",

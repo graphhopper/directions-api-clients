@@ -18,6 +18,18 @@ class MatrixRequest {
   @Property(name: 'out_arrays')
   List<String> outArrays = [];
   
+/* Optional parameter. Specifies a hint for each point in the `points` array to prefer a certain street for the closest location lookup. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up. */
+  @Property(name: 'point_hints')
+  List<String> pointHints = [];
+  
+/* More information for the `from_points` array. See `point_hints` */
+  @Property(name: 'from_point_hints')
+  List<String> fromPointHints = [];
+  
+/* More information for the `to_points` array. See `point_hints` */
+  @Property(name: 'to_point_hints')
+  List<String> toPointHints = [];
+  
 /* The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc, see here for the details. */
   @Property(name: 'vehicle')
   String vehicle = null;
@@ -26,7 +38,7 @@ class MatrixRequest {
 
   @override
   String toString()  {
-    return 'MatrixRequest[points=$points, fromPoints=$fromPoints, toPoints=$toPoints, outArrays=$outArrays, vehicle=$vehicle, ]';
+    return 'MatrixRequest[points=$points, fromPoints=$fromPoints, toPoints=$toPoints, outArrays=$outArrays, pointHints=$pointHints, fromPointHints=$fromPointHints, toPointHints=$toPointHints, vehicle=$vehicle, ]';
   }
 }
 

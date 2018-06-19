@@ -171,6 +171,27 @@ __PACKAGE__->method_documentation({
     	format => '',
     	read_only => '',
     		},
+    'point_hints' => {
+    	datatype => 'ARRAY[string]',
+    	base_name => 'point_hints',
+    	description => 'Optional parameter. Specifies a hint for each point in the &#x60;points&#x60; array to prefer a certain street for the closest location lookup. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up.',
+    	format => '',
+    	read_only => '',
+    		},
+    'from_point_hints' => {
+    	datatype => 'ARRAY[string]',
+    	base_name => 'from_point_hints',
+    	description => 'More information for the &#x60;from_points&#x60; array. See &#x60;point_hints&#x60;',
+    	format => '',
+    	read_only => '',
+    		},
+    'to_point_hints' => {
+    	datatype => 'ARRAY[string]',
+    	base_name => 'to_point_hints',
+    	description => 'More information for the &#x60;to_points&#x60; array. See &#x60;point_hints&#x60;',
+    	format => '',
+    	read_only => '',
+    		},
     'vehicle' => {
     	datatype => 'string',
     	base_name => 'vehicle',
@@ -185,6 +206,9 @@ __PACKAGE__->swagger_types( {
     'from_points' => 'ARRAY[ARRAY[double]]',
     'to_points' => 'ARRAY[ARRAY[double]]',
     'out_arrays' => 'ARRAY[string]',
+    'point_hints' => 'ARRAY[string]',
+    'from_point_hints' => 'ARRAY[string]',
+    'to_point_hints' => 'ARRAY[string]',
     'vehicle' => 'string'
 } );
 
@@ -193,6 +217,9 @@ __PACKAGE__->attribute_map( {
     'from_points' => 'from_points',
     'to_points' => 'to_points',
     'out_arrays' => 'out_arrays',
+    'point_hints' => 'point_hints',
+    'from_point_hints' => 'from_point_hints',
+    'to_point_hints' => 'to_point_hints',
     'vehicle' => 'vehicle'
 } );
 

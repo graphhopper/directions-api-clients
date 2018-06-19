@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 
 # **matrixGet**
-> \Swagger\Client\Model\MatrixResponse matrixGet($key, $point, $from_point, $to_point, $out_array, $vehicle)
+> \Swagger\Client\Model\MatrixResponse matrixGet($key, $point, $from_point, $to_point, $out_array, $point_hint, $to_point_hint, $from_point_hint, $vehicle)
 
 Matrix API
 
@@ -30,10 +30,13 @@ $point = array("point_example"); // string[] | Specifiy multiple points for whic
 $from_point = array("from_point_example"); // string[] | The starting points for the routes. E.g. if you want to calculate the three routes A-&gt;1, A-&gt;2, A-&gt;3 then you have one from_point parameter and three to_point parameters. Is a string with the format latitude,longitude.
 $to_point = array("to_point_example"); // string[] | The destination points for the routes. Is a string with the format latitude,longitude.
 $out_array = array("out_array_example"); // string[] | Specifies which arrays should be included in the response. Specify one or more of the following options 'weights', 'times', 'distances'. To specify more than one array use e.g. out_array=times&out_array=distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API.
+$point_hint = array("point_hint_example"); // string[] | Optional parameter. Specifies a hint for each `point` parameter to prefer a certain street for the closest location lookup. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up.
+$to_point_hint = array("to_point_hint_example"); // string[] | For the to_point parameter. See point_hint
+$from_point_hint = array("from_point_hint_example"); // string[] | For the from_point parameter. See point_hint
 $vehicle = "car"; // string | The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc
 
 try {
-    $result = $apiInstance->matrixGet($key, $point, $from_point, $to_point, $out_array, $vehicle);
+    $result = $apiInstance->matrixGet($key, $point, $from_point, $to_point, $out_array, $point_hint, $to_point_hint, $from_point_hint, $vehicle);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling MatrixApi->matrixGet: ', $e->getMessage(), PHP_EOL;
@@ -50,6 +53,9 @@ Name | Type | Description  | Notes
  **from_point** | [**string[]**](../Model/string.md)| The starting points for the routes. E.g. if you want to calculate the three routes A-&amp;gt;1, A-&amp;gt;2, A-&amp;gt;3 then you have one from_point parameter and three to_point parameters. Is a string with the format latitude,longitude. | [optional]
  **to_point** | [**string[]**](../Model/string.md)| The destination points for the routes. Is a string with the format latitude,longitude. | [optional]
  **out_array** | [**string[]**](../Model/string.md)| Specifies which arrays should be included in the response. Specify one or more of the following options &#39;weights&#39;, &#39;times&#39;, &#39;distances&#39;. To specify more than one array use e.g. out_array&#x3D;times&amp;out_array&#x3D;distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API. | [optional]
+ **point_hint** | [**string[]**](../Model/string.md)| Optional parameter. Specifies a hint for each &#x60;point&#x60; parameter to prefer a certain street for the closest location lookup. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up. | [optional]
+ **to_point_hint** | [**string[]**](../Model/string.md)| For the to_point parameter. See point_hint | [optional]
+ **from_point_hint** | [**string[]**](../Model/string.md)| For the from_point parameter. See point_hint | [optional]
  **vehicle** | **string**| The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc | [optional] [default to car]
 
 ### Return type

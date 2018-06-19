@@ -17,7 +17,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"points": @"points", @"fromPoints": @"from_points", @"toPoints": @"to_points", @"outArrays": @"out_arrays", @"vehicle": @"vehicle" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"points": @"points", @"fromPoints": @"from_points", @"toPoints": @"to_points", @"outArrays": @"out_arrays", @"pointHints": @"point_hints", @"fromPointHints": @"from_point_hints", @"toPointHints": @"to_point_hints", @"vehicle": @"vehicle" }];
 }
 
 /**
@@ -27,7 +27,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"points", @"fromPoints", @"toPoints", @"outArrays", @"vehicle"];
+  NSArray *optionalProperties = @[@"points", @"fromPoints", @"toPoints", @"outArrays", @"pointHints", @"fromPointHints", @"toPointHints", @"vehicle"];
   return [optionalProperties containsObject:propertyName];
 }
 

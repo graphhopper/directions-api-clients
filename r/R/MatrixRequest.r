@@ -13,6 +13,9 @@
 #' @field from_points 
 #' @field to_points 
 #' @field out_arrays 
+#' @field point_hints 
+#' @field from_point_hints 
+#' @field to_point_hints 
 #' @field vehicle 
 #'
 #' @importFrom R6 R6Class
@@ -25,8 +28,11 @@ MatrixRequest <- R6::R6Class(
     `from_points` = NULL,
     `to_points` = NULL,
     `out_arrays` = NULL,
+    `point_hints` = NULL,
+    `from_point_hints` = NULL,
+    `to_point_hints` = NULL,
     `vehicle` = NULL,
-    initialize = function(`points`, `from_points`, `to_points`, `out_arrays`, `vehicle`){
+    initialize = function(`points`, `from_points`, `to_points`, `out_arrays`, `point_hints`, `from_point_hints`, `to_point_hints`, `vehicle`){
       if (!missing(`points`)) {
         stopifnot(is.list(`points`), length(`points`) != 0)
         lapply(`points`, function(x) stopifnot(R6::is.R6(x)))
@@ -47,6 +53,21 @@ MatrixRequest <- R6::R6Class(
         lapply(`out_arrays`, function(x) stopifnot(is.character(x)))
         self$`out_arrays` <- `out_arrays`
       }
+      if (!missing(`point_hints`)) {
+        stopifnot(is.list(`point_hints`), length(`point_hints`) != 0)
+        lapply(`point_hints`, function(x) stopifnot(is.character(x)))
+        self$`point_hints` <- `point_hints`
+      }
+      if (!missing(`from_point_hints`)) {
+        stopifnot(is.list(`from_point_hints`), length(`from_point_hints`) != 0)
+        lapply(`from_point_hints`, function(x) stopifnot(is.character(x)))
+        self$`from_point_hints` <- `from_point_hints`
+      }
+      if (!missing(`to_point_hints`)) {
+        stopifnot(is.list(`to_point_hints`), length(`to_point_hints`) != 0)
+        lapply(`to_point_hints`, function(x) stopifnot(is.character(x)))
+        self$`to_point_hints` <- `to_point_hints`
+      }
       if (!missing(`vehicle`)) {
         stopifnot(is.character(`vehicle`), length(`vehicle`) == 1)
         self$`vehicle` <- `vehicle`
@@ -65,6 +86,15 @@ MatrixRequest <- R6::R6Class(
       }
       if (!is.null(self$`out_arrays`)) {
         MatrixRequestObject[['out_arrays']] <- self$`out_arrays`
+      }
+      if (!is.null(self$`point_hints`)) {
+        MatrixRequestObject[['point_hints']] <- self$`point_hints`
+      }
+      if (!is.null(self$`from_point_hints`)) {
+        MatrixRequestObject[['from_point_hints']] <- self$`from_point_hints`
+      }
+      if (!is.null(self$`to_point_hints`)) {
+        MatrixRequestObject[['to_point_hints']] <- self$`to_point_hints`
       }
       if (!is.null(self$`vehicle`)) {
         MatrixRequestObject[['vehicle']] <- self$`vehicle`
@@ -98,6 +128,15 @@ MatrixRequest <- R6::R6Class(
       if (!is.null(MatrixRequestObject$`out_arrays`)) {
         self$`out_arrays` <- MatrixRequestObject$`out_arrays`
       }
+      if (!is.null(MatrixRequestObject$`point_hints`)) {
+        self$`point_hints` <- MatrixRequestObject$`point_hints`
+      }
+      if (!is.null(MatrixRequestObject$`from_point_hints`)) {
+        self$`from_point_hints` <- MatrixRequestObject$`from_point_hints`
+      }
+      if (!is.null(MatrixRequestObject$`to_point_hints`)) {
+        self$`to_point_hints` <- MatrixRequestObject$`to_point_hints`
+      }
       if (!is.null(MatrixRequestObject$`vehicle`)) {
         self$`vehicle` <- MatrixRequestObject$`vehicle`
       }
@@ -109,12 +148,18 @@ MatrixRequest <- R6::R6Class(
            "from_points": [%s],
            "to_points": [%s],
            "out_arrays": [%s],
+           "point_hints": [%s],
+           "from_point_hints": [%s],
+           "to_point_hints": [%s],
            "vehicle": %s
         }',
         lapply(self$`points`, function(x) paste(x$toJSON(), sep=",")),
         lapply(self$`from_points`, function(x) paste(x$toJSON(), sep=",")),
         lapply(self$`to_points`, function(x) paste(x$toJSON(), sep=",")),
         lapply(self$`out_arrays`, function(x) paste(paste0('"', x, '"'), sep=",")),
+        lapply(self$`point_hints`, function(x) paste(paste0('"', x, '"'), sep=",")),
+        lapply(self$`from_point_hints`, function(x) paste(paste0('"', x, '"'), sep=",")),
+        lapply(self$`to_point_hints`, function(x) paste(paste0('"', x, '"'), sep=",")),
         self$`vehicle`
       )
     },
@@ -124,6 +169,9 @@ MatrixRequest <- R6::R6Class(
       self$`from_points` <- lapply(MatrixRequestObject$`from_points`, function(x) Numeric$new()$fromJSON(jsonlite::toJSON(x, auto_unbox = TRUE)))
       self$`to_points` <- lapply(MatrixRequestObject$`to_points`, function(x) Numeric$new()$fromJSON(jsonlite::toJSON(x, auto_unbox = TRUE)))
       self$`out_arrays` <- MatrixRequestObject$`out_arrays`
+      self$`point_hints` <- MatrixRequestObject$`point_hints`
+      self$`from_point_hints` <- MatrixRequestObject$`from_point_hints`
+      self$`to_point_hints` <- MatrixRequestObject$`to_point_hints`
       self$`vehicle` <- MatrixRequestObject$`vehicle`
     }
   )

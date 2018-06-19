@@ -185,6 +185,7 @@ class Decoders {
                 instance.name = Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["name"])
                 instance.lon = Decoders.decodeOptional(clazz: Double.self, source: sourceDictionary["lon"])
                 instance.lat = Decoders.decodeOptional(clazz: Double.self, source: sourceDictionary["lat"])
+                instance.streetHint = Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["street_hint"])
                 return instance
             }
 
@@ -469,6 +470,9 @@ class Decoders {
                 instance.fromPoints = Decoders.decodeOptional(clazz: Array.self, source: sourceDictionary["from_points"])
                 instance.toPoints = Decoders.decodeOptional(clazz: Array.self, source: sourceDictionary["to_points"])
                 instance.outArrays = Decoders.decodeOptional(clazz: Array.self, source: sourceDictionary["out_arrays"])
+                instance.pointHints = Decoders.decodeOptional(clazz: Array.self, source: sourceDictionary["point_hints"])
+                instance.fromPointHints = Decoders.decodeOptional(clazz: Array.self, source: sourceDictionary["from_point_hints"])
+                instance.toPointHints = Decoders.decodeOptional(clazz: Array.self, source: sourceDictionary["to_point_hints"])
                 instance.vehicle = Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["vehicle"])
                 return instance
             }

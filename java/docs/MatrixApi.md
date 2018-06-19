@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 <a name="matrixGet"></a>
 # **matrixGet**
-> MatrixResponse matrixGet(key, point, fromPoint, toPoint, outArray, vehicle)
+> MatrixResponse matrixGet(key, point, fromPoint, toPoint, outArray, pointHint, toPointHint, fromPointHint, vehicle)
 
 Matrix API
 
@@ -29,9 +29,12 @@ List<String> point = Arrays.asList("point_example"); // List<String> | Specifiy 
 List<String> fromPoint = Arrays.asList("fromPoint_example"); // List<String> | The starting points for the routes. E.g. if you want to calculate the three routes A-&gt;1, A-&gt;2, A-&gt;3 then you have one from_point parameter and three to_point parameters. Is a string with the format latitude,longitude.
 List<String> toPoint = Arrays.asList("toPoint_example"); // List<String> | The destination points for the routes. Is a string with the format latitude,longitude.
 List<String> outArray = Arrays.asList("outArray_example"); // List<String> | Specifies which arrays should be included in the response. Specify one or more of the following options 'weights', 'times', 'distances'. To specify more than one array use e.g. out_array=times&out_array=distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API.
+List<String> pointHint = Arrays.asList("pointHint_example"); // List<String> | Optional parameter. Specifies a hint for each `point` parameter to prefer a certain street for the closest location lookup. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up.
+List<String> toPointHint = Arrays.asList("toPointHint_example"); // List<String> | For the to_point parameter. See point_hint
+List<String> fromPointHint = Arrays.asList("fromPointHint_example"); // List<String> | For the from_point parameter. See point_hint
 String vehicle = "car"; // String | The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc
 try {
-    MatrixResponse result = apiInstance.matrixGet(key, point, fromPoint, toPoint, outArray, vehicle);
+    MatrixResponse result = apiInstance.matrixGet(key, point, fromPoint, toPoint, outArray, pointHint, toPointHint, fromPointHint, vehicle);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling MatrixApi#matrixGet");
@@ -48,6 +51,9 @@ Name | Type | Description  | Notes
  **fromPoint** | [**List&lt;String&gt;**](String.md)| The starting points for the routes. E.g. if you want to calculate the three routes A-&amp;gt;1, A-&amp;gt;2, A-&amp;gt;3 then you have one from_point parameter and three to_point parameters. Is a string with the format latitude,longitude. | [optional]
  **toPoint** | [**List&lt;String&gt;**](String.md)| The destination points for the routes. Is a string with the format latitude,longitude. | [optional]
  **outArray** | [**List&lt;String&gt;**](String.md)| Specifies which arrays should be included in the response. Specify one or more of the following options &#39;weights&#39;, &#39;times&#39;, &#39;distances&#39;. To specify more than one array use e.g. out_array&#x3D;times&amp;out_array&#x3D;distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API. | [optional]
+ **pointHint** | [**List&lt;String&gt;**](String.md)| Optional parameter. Specifies a hint for each &#x60;point&#x60; parameter to prefer a certain street for the closest location lookup. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up. | [optional]
+ **toPointHint** | [**List&lt;String&gt;**](String.md)| For the to_point parameter. See point_hint | [optional]
+ **fromPointHint** | [**List&lt;String&gt;**](String.md)| For the from_point parameter. See point_hint | [optional]
  **vehicle** | **String**| The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc | [optional] [default to car]
 
 ### Return type

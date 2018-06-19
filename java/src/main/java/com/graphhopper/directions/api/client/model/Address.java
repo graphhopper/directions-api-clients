@@ -41,6 +41,9 @@ public class Address {
   @SerializedName("lat")
   private Double lat = null;
 
+  @SerializedName("street_hint")
+  private String streetHint = null;
+
   public Address locationId(String locationId) {
     this.locationId = locationId;
     return this;
@@ -113,6 +116,24 @@ public class Address {
     this.lat = lat;
   }
 
+  public Address streetHint(String streetHint) {
+    this.streetHint = streetHint;
+    return this;
+  }
+
+   /**
+   * Optional parameter. Specifies a hint for each address to better snap the coordinates (lon,lat) to road network. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up.
+   * @return streetHint
+  **/
+  @ApiModelProperty(value = "Optional parameter. Specifies a hint for each address to better snap the coordinates (lon,lat) to road network. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up.")
+  public String getStreetHint() {
+    return streetHint;
+  }
+
+  public void setStreetHint(String streetHint) {
+    this.streetHint = streetHint;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -126,12 +147,13 @@ public class Address {
     return Objects.equals(this.locationId, address.locationId) &&
         Objects.equals(this.name, address.name) &&
         Objects.equals(this.lon, address.lon) &&
-        Objects.equals(this.lat, address.lat);
+        Objects.equals(this.lat, address.lat) &&
+        Objects.equals(this.streetHint, address.streetHint);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(locationId, name, lon, lat);
+    return Objects.hash(locationId, name, lon, lat, streetHint);
   }
 
 
@@ -144,6 +166,7 @@ public class Address {
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    lon: ").append(toIndentedString(lon)).append("\n");
     sb.append("    lat: ").append(toIndentedString(lat)).append("\n");
+    sb.append("    streetHint: ").append(toIndentedString(streetHint)).append("\n");
     sb.append("}");
     return sb.toString();
   }

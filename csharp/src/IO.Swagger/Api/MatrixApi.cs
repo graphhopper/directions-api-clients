@@ -36,9 +36,12 @@ namespace IO.Swagger.Api
         /// <param name="fromPoint">The starting points for the routes. E.g. if you want to calculate the three routes A-&amp;gt;1, A-&amp;gt;2, A-&amp;gt;3 then you have one from_point parameter and three to_point parameters. Is a string with the format latitude,longitude. (optional)</param>
         /// <param name="toPoint">The destination points for the routes. Is a string with the format latitude,longitude. (optional)</param>
         /// <param name="outArray">Specifies which arrays should be included in the response. Specify one or more of the following options &#39;weights&#39;, &#39;times&#39;, &#39;distances&#39;. To specify more than one array use e.g. out_array&#x3D;times&amp;out_array&#x3D;distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API. (optional)</param>
+        /// <param name="pointHint">Optional parameter. Specifies a hint for each &#x60;point&#x60; parameter to prefer a certain street for the closest location lookup. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up. (optional)</param>
+        /// <param name="toPointHint">For the to_point parameter. See point_hint (optional)</param>
+        /// <param name="fromPointHint">For the from_point parameter. See point_hint (optional)</param>
         /// <param name="vehicle">The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc (optional, default to car)</param>
         /// <returns>MatrixResponse</returns>
-        MatrixResponse MatrixGet (string key, List<string> point = null, List<string> fromPoint = null, List<string> toPoint = null, List<string> outArray = null, string vehicle = null);
+        MatrixResponse MatrixGet (string key, List<string> point = null, List<string> fromPoint = null, List<string> toPoint = null, List<string> outArray = null, List<string> pointHint = null, List<string> toPointHint = null, List<string> fromPointHint = null, string vehicle = null);
 
         /// <summary>
         /// Matrix API
@@ -52,9 +55,12 @@ namespace IO.Swagger.Api
         /// <param name="fromPoint">The starting points for the routes. E.g. if you want to calculate the three routes A-&amp;gt;1, A-&amp;gt;2, A-&amp;gt;3 then you have one from_point parameter and three to_point parameters. Is a string with the format latitude,longitude. (optional)</param>
         /// <param name="toPoint">The destination points for the routes. Is a string with the format latitude,longitude. (optional)</param>
         /// <param name="outArray">Specifies which arrays should be included in the response. Specify one or more of the following options &#39;weights&#39;, &#39;times&#39;, &#39;distances&#39;. To specify more than one array use e.g. out_array&#x3D;times&amp;out_array&#x3D;distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API. (optional)</param>
+        /// <param name="pointHint">Optional parameter. Specifies a hint for each &#x60;point&#x60; parameter to prefer a certain street for the closest location lookup. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up. (optional)</param>
+        /// <param name="toPointHint">For the to_point parameter. See point_hint (optional)</param>
+        /// <param name="fromPointHint">For the from_point parameter. See point_hint (optional)</param>
         /// <param name="vehicle">The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc (optional, default to car)</param>
         /// <returns>ApiResponse of MatrixResponse</returns>
-        ApiResponse<MatrixResponse> MatrixGetWithHttpInfo (string key, List<string> point = null, List<string> fromPoint = null, List<string> toPoint = null, List<string> outArray = null, string vehicle = null);
+        ApiResponse<MatrixResponse> MatrixGetWithHttpInfo (string key, List<string> point = null, List<string> fromPoint = null, List<string> toPoint = null, List<string> outArray = null, List<string> pointHint = null, List<string> toPointHint = null, List<string> fromPointHint = null, string vehicle = null);
         /// <summary>
         /// Matrix API Post
         /// </summary>
@@ -92,9 +98,12 @@ namespace IO.Swagger.Api
         /// <param name="fromPoint">The starting points for the routes. E.g. if you want to calculate the three routes A-&amp;gt;1, A-&amp;gt;2, A-&amp;gt;3 then you have one from_point parameter and three to_point parameters. Is a string with the format latitude,longitude. (optional)</param>
         /// <param name="toPoint">The destination points for the routes. Is a string with the format latitude,longitude. (optional)</param>
         /// <param name="outArray">Specifies which arrays should be included in the response. Specify one or more of the following options &#39;weights&#39;, &#39;times&#39;, &#39;distances&#39;. To specify more than one array use e.g. out_array&#x3D;times&amp;out_array&#x3D;distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API. (optional)</param>
+        /// <param name="pointHint">Optional parameter. Specifies a hint for each &#x60;point&#x60; parameter to prefer a certain street for the closest location lookup. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up. (optional)</param>
+        /// <param name="toPointHint">For the to_point parameter. See point_hint (optional)</param>
+        /// <param name="fromPointHint">For the from_point parameter. See point_hint (optional)</param>
         /// <param name="vehicle">The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc (optional, default to car)</param>
         /// <returns>Task of MatrixResponse</returns>
-        System.Threading.Tasks.Task<MatrixResponse> MatrixGetAsync (string key, List<string> point = null, List<string> fromPoint = null, List<string> toPoint = null, List<string> outArray = null, string vehicle = null);
+        System.Threading.Tasks.Task<MatrixResponse> MatrixGetAsync (string key, List<string> point = null, List<string> fromPoint = null, List<string> toPoint = null, List<string> outArray = null, List<string> pointHint = null, List<string> toPointHint = null, List<string> fromPointHint = null, string vehicle = null);
 
         /// <summary>
         /// Matrix API
@@ -108,9 +117,12 @@ namespace IO.Swagger.Api
         /// <param name="fromPoint">The starting points for the routes. E.g. if you want to calculate the three routes A-&amp;gt;1, A-&amp;gt;2, A-&amp;gt;3 then you have one from_point parameter and three to_point parameters. Is a string with the format latitude,longitude. (optional)</param>
         /// <param name="toPoint">The destination points for the routes. Is a string with the format latitude,longitude. (optional)</param>
         /// <param name="outArray">Specifies which arrays should be included in the response. Specify one or more of the following options &#39;weights&#39;, &#39;times&#39;, &#39;distances&#39;. To specify more than one array use e.g. out_array&#x3D;times&amp;out_array&#x3D;distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API. (optional)</param>
+        /// <param name="pointHint">Optional parameter. Specifies a hint for each &#x60;point&#x60; parameter to prefer a certain street for the closest location lookup. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up. (optional)</param>
+        /// <param name="toPointHint">For the to_point parameter. See point_hint (optional)</param>
+        /// <param name="fromPointHint">For the from_point parameter. See point_hint (optional)</param>
         /// <param name="vehicle">The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc (optional, default to car)</param>
         /// <returns>Task of ApiResponse (MatrixResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<MatrixResponse>> MatrixGetAsyncWithHttpInfo (string key, List<string> point = null, List<string> fromPoint = null, List<string> toPoint = null, List<string> outArray = null, string vehicle = null);
+        System.Threading.Tasks.Task<ApiResponse<MatrixResponse>> MatrixGetAsyncWithHttpInfo (string key, List<string> point = null, List<string> fromPoint = null, List<string> toPoint = null, List<string> outArray = null, List<string> pointHint = null, List<string> toPointHint = null, List<string> fromPointHint = null, string vehicle = null);
         /// <summary>
         /// Matrix API Post
         /// </summary>
@@ -243,11 +255,14 @@ namespace IO.Swagger.Api
         /// <param name="fromPoint">The starting points for the routes. E.g. if you want to calculate the three routes A-&amp;gt;1, A-&amp;gt;2, A-&amp;gt;3 then you have one from_point parameter and three to_point parameters. Is a string with the format latitude,longitude. (optional)</param>
         /// <param name="toPoint">The destination points for the routes. Is a string with the format latitude,longitude. (optional)</param>
         /// <param name="outArray">Specifies which arrays should be included in the response. Specify one or more of the following options &#39;weights&#39;, &#39;times&#39;, &#39;distances&#39;. To specify more than one array use e.g. out_array&#x3D;times&amp;out_array&#x3D;distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API. (optional)</param>
+        /// <param name="pointHint">Optional parameter. Specifies a hint for each &#x60;point&#x60; parameter to prefer a certain street for the closest location lookup. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up. (optional)</param>
+        /// <param name="toPointHint">For the to_point parameter. See point_hint (optional)</param>
+        /// <param name="fromPointHint">For the from_point parameter. See point_hint (optional)</param>
         /// <param name="vehicle">The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc (optional, default to car)</param>
         /// <returns>MatrixResponse</returns>
-        public MatrixResponse MatrixGet (string key, List<string> point = null, List<string> fromPoint = null, List<string> toPoint = null, List<string> outArray = null, string vehicle = null)
+        public MatrixResponse MatrixGet (string key, List<string> point = null, List<string> fromPoint = null, List<string> toPoint = null, List<string> outArray = null, List<string> pointHint = null, List<string> toPointHint = null, List<string> fromPointHint = null, string vehicle = null)
         {
-             ApiResponse<MatrixResponse> localVarResponse = MatrixGetWithHttpInfo(key, point, fromPoint, toPoint, outArray, vehicle);
+             ApiResponse<MatrixResponse> localVarResponse = MatrixGetWithHttpInfo(key, point, fromPoint, toPoint, outArray, pointHint, toPointHint, fromPointHint, vehicle);
              return localVarResponse.Data;
         }
 
@@ -260,9 +275,12 @@ namespace IO.Swagger.Api
         /// <param name="fromPoint">The starting points for the routes. E.g. if you want to calculate the three routes A-&amp;gt;1, A-&amp;gt;2, A-&amp;gt;3 then you have one from_point parameter and three to_point parameters. Is a string with the format latitude,longitude. (optional)</param>
         /// <param name="toPoint">The destination points for the routes. Is a string with the format latitude,longitude. (optional)</param>
         /// <param name="outArray">Specifies which arrays should be included in the response. Specify one or more of the following options &#39;weights&#39;, &#39;times&#39;, &#39;distances&#39;. To specify more than one array use e.g. out_array&#x3D;times&amp;out_array&#x3D;distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API. (optional)</param>
+        /// <param name="pointHint">Optional parameter. Specifies a hint for each &#x60;point&#x60; parameter to prefer a certain street for the closest location lookup. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up. (optional)</param>
+        /// <param name="toPointHint">For the to_point parameter. See point_hint (optional)</param>
+        /// <param name="fromPointHint">For the from_point parameter. See point_hint (optional)</param>
         /// <param name="vehicle">The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc (optional, default to car)</param>
         /// <returns>ApiResponse of MatrixResponse</returns>
-        public ApiResponse< MatrixResponse > MatrixGetWithHttpInfo (string key, List<string> point = null, List<string> fromPoint = null, List<string> toPoint = null, List<string> outArray = null, string vehicle = null)
+        public ApiResponse< MatrixResponse > MatrixGetWithHttpInfo (string key, List<string> point = null, List<string> fromPoint = null, List<string> toPoint = null, List<string> outArray = null, List<string> pointHint = null, List<string> toPointHint = null, List<string> fromPointHint = null, string vehicle = null)
         {
             // verify the required parameter 'key' is set
             if (key == null)
@@ -293,6 +311,9 @@ namespace IO.Swagger.Api
             if (fromPoint != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("multi", "from_point", fromPoint)); // query parameter
             if (toPoint != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("multi", "to_point", toPoint)); // query parameter
             if (outArray != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("multi", "out_array", outArray)); // query parameter
+            if (pointHint != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("multi", "point_hint", pointHint)); // query parameter
+            if (toPointHint != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("multi", "to_point_hint", toPointHint)); // query parameter
+            if (fromPointHint != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("multi", "from_point_hint", fromPointHint)); // query parameter
             if (vehicle != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "vehicle", vehicle)); // query parameter
             if (key != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "key", key)); // query parameter
 
@@ -324,11 +345,14 @@ namespace IO.Swagger.Api
         /// <param name="fromPoint">The starting points for the routes. E.g. if you want to calculate the three routes A-&amp;gt;1, A-&amp;gt;2, A-&amp;gt;3 then you have one from_point parameter and three to_point parameters. Is a string with the format latitude,longitude. (optional)</param>
         /// <param name="toPoint">The destination points for the routes. Is a string with the format latitude,longitude. (optional)</param>
         /// <param name="outArray">Specifies which arrays should be included in the response. Specify one or more of the following options &#39;weights&#39;, &#39;times&#39;, &#39;distances&#39;. To specify more than one array use e.g. out_array&#x3D;times&amp;out_array&#x3D;distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API. (optional)</param>
+        /// <param name="pointHint">Optional parameter. Specifies a hint for each &#x60;point&#x60; parameter to prefer a certain street for the closest location lookup. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up. (optional)</param>
+        /// <param name="toPointHint">For the to_point parameter. See point_hint (optional)</param>
+        /// <param name="fromPointHint">For the from_point parameter. See point_hint (optional)</param>
         /// <param name="vehicle">The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc (optional, default to car)</param>
         /// <returns>Task of MatrixResponse</returns>
-        public async System.Threading.Tasks.Task<MatrixResponse> MatrixGetAsync (string key, List<string> point = null, List<string> fromPoint = null, List<string> toPoint = null, List<string> outArray = null, string vehicle = null)
+        public async System.Threading.Tasks.Task<MatrixResponse> MatrixGetAsync (string key, List<string> point = null, List<string> fromPoint = null, List<string> toPoint = null, List<string> outArray = null, List<string> pointHint = null, List<string> toPointHint = null, List<string> fromPointHint = null, string vehicle = null)
         {
-             ApiResponse<MatrixResponse> localVarResponse = await MatrixGetAsyncWithHttpInfo(key, point, fromPoint, toPoint, outArray, vehicle);
+             ApiResponse<MatrixResponse> localVarResponse = await MatrixGetAsyncWithHttpInfo(key, point, fromPoint, toPoint, outArray, pointHint, toPointHint, fromPointHint, vehicle);
              return localVarResponse.Data;
 
         }
@@ -342,9 +366,12 @@ namespace IO.Swagger.Api
         /// <param name="fromPoint">The starting points for the routes. E.g. if you want to calculate the three routes A-&amp;gt;1, A-&amp;gt;2, A-&amp;gt;3 then you have one from_point parameter and three to_point parameters. Is a string with the format latitude,longitude. (optional)</param>
         /// <param name="toPoint">The destination points for the routes. Is a string with the format latitude,longitude. (optional)</param>
         /// <param name="outArray">Specifies which arrays should be included in the response. Specify one or more of the following options &#39;weights&#39;, &#39;times&#39;, &#39;distances&#39;. To specify more than one array use e.g. out_array&#x3D;times&amp;out_array&#x3D;distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API. (optional)</param>
+        /// <param name="pointHint">Optional parameter. Specifies a hint for each &#x60;point&#x60; parameter to prefer a certain street for the closest location lookup. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up. (optional)</param>
+        /// <param name="toPointHint">For the to_point parameter. See point_hint (optional)</param>
+        /// <param name="fromPointHint">For the from_point parameter. See point_hint (optional)</param>
         /// <param name="vehicle">The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc (optional, default to car)</param>
         /// <returns>Task of ApiResponse (MatrixResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<MatrixResponse>> MatrixGetAsyncWithHttpInfo (string key, List<string> point = null, List<string> fromPoint = null, List<string> toPoint = null, List<string> outArray = null, string vehicle = null)
+        public async System.Threading.Tasks.Task<ApiResponse<MatrixResponse>> MatrixGetAsyncWithHttpInfo (string key, List<string> point = null, List<string> fromPoint = null, List<string> toPoint = null, List<string> outArray = null, List<string> pointHint = null, List<string> toPointHint = null, List<string> fromPointHint = null, string vehicle = null)
         {
             // verify the required parameter 'key' is set
             if (key == null)
@@ -375,6 +402,9 @@ namespace IO.Swagger.Api
             if (fromPoint != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("multi", "from_point", fromPoint)); // query parameter
             if (toPoint != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("multi", "to_point", toPoint)); // query parameter
             if (outArray != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("multi", "out_array", outArray)); // query parameter
+            if (pointHint != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("multi", "point_hint", pointHint)); // query parameter
+            if (toPointHint != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("multi", "to_point_hint", toPointHint)); // query parameter
+            if (fromPointHint != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("multi", "from_point_hint", fromPointHint)); // query parameter
             if (vehicle != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "vehicle", vehicle)); // query parameter
             if (key != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "key", key)); // query parameter
 

@@ -39,7 +39,7 @@ MatrixApi <- R6::R6Class(
         self$apiClient <- ApiClient$new()
       }
     },
-    matrix_get = function(key, point, from_point, to_point, out_array, vehicle, ...){
+    matrix_get = function(key, point, from_point, to_point, out_array, point_hint, to_point_hint, from_point_hint, vehicle, ...){
       args <- list(...)
       queryParams <- list()
       headerParams <- character()
@@ -58,6 +58,18 @@ MatrixApi <- R6::R6Class(
 
       if (!missing(`out_array`)) {
         queryParams['out_array'] <- out_array
+      }
+
+      if (!missing(`point_hint`)) {
+        queryParams['point_hint'] <- point_hint
+      }
+
+      if (!missing(`to_point_hint`)) {
+        queryParams['to_point_hint'] <- to_point_hint
+      }
+
+      if (!missing(`from_point_hint`)) {
+        queryParams['from_point_hint'] <- from_point_hint
       }
 
       if (!missing(`vehicle`)) {

@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 
 # **matrix_get**
-> MatrixResponse matrix_get(key => $key, point => $point, from_point => $from_point, to_point => $to_point, out_array => $out_array, vehicle => $vehicle)
+> MatrixResponse matrix_get(key => $key, point => $point, from_point => $from_point, to_point => $to_point, out_array => $out_array, point_hint => $point_hint, to_point_hint => $to_point_hint, from_point_hint => $from_point_hint, vehicle => $vehicle)
 
 Matrix API
 
@@ -32,10 +32,13 @@ my $point = []; # ARRAY[string] | Specifiy multiple points for which the weight-
 my $from_point = []; # ARRAY[string] | The starting points for the routes. E.g. if you want to calculate the three routes A-&gt;1, A-&gt;2, A-&gt;3 then you have one from_point parameter and three to_point parameters. Is a string with the format latitude,longitude.
 my $to_point = []; # ARRAY[string] | The destination points for the routes. Is a string with the format latitude,longitude.
 my $out_array = []; # ARRAY[string] | Specifies which arrays should be included in the response. Specify one or more of the following options 'weights', 'times', 'distances'. To specify more than one array use e.g. out_array=times&out_array=distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API.
+my $point_hint = []; # ARRAY[string] | Optional parameter. Specifies a hint for each `point` parameter to prefer a certain street for the closest location lookup. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up.
+my $to_point_hint = []; # ARRAY[string] | For the to_point parameter. See point_hint
+my $from_point_hint = []; # ARRAY[string] | For the from_point parameter. See point_hint
 my $vehicle = 'vehicle_example'; # string | The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc
 
 eval { 
-    my $result = $api_instance->matrix_get(key => $key, point => $point, from_point => $from_point, to_point => $to_point, out_array => $out_array, vehicle => $vehicle);
+    my $result = $api_instance->matrix_get(key => $key, point => $point, from_point => $from_point, to_point => $to_point, out_array => $out_array, point_hint => $point_hint, to_point_hint => $to_point_hint, from_point_hint => $from_point_hint, vehicle => $vehicle);
     print Dumper($result);
 };
 if ($@) {
@@ -52,6 +55,9 @@ Name | Type | Description  | Notes
  **from_point** | [**ARRAY[string]**](string.md)| The starting points for the routes. E.g. if you want to calculate the three routes A-&amp;gt;1, A-&amp;gt;2, A-&amp;gt;3 then you have one from_point parameter and three to_point parameters. Is a string with the format latitude,longitude. | [optional] 
  **to_point** | [**ARRAY[string]**](string.md)| The destination points for the routes. Is a string with the format latitude,longitude. | [optional] 
  **out_array** | [**ARRAY[string]**](string.md)| Specifies which arrays should be included in the response. Specify one or more of the following options &#39;weights&#39;, &#39;times&#39;, &#39;distances&#39;. To specify more than one array use e.g. out_array&#x3D;times&amp;out_array&#x3D;distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API. | [optional] 
+ **point_hint** | [**ARRAY[string]**](string.md)| Optional parameter. Specifies a hint for each &#x60;point&#x60; parameter to prefer a certain street for the closest location lookup. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up. | [optional] 
+ **to_point_hint** | [**ARRAY[string]**](string.md)| For the to_point parameter. See point_hint | [optional] 
+ **from_point_hint** | [**ARRAY[string]**](string.md)| For the from_point parameter. See point_hint | [optional] 
  **vehicle** | **string**| The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc | [optional] [default to car]
 
 ### Return type

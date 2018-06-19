@@ -22,6 +22,15 @@ type MatrixRequest struct {
 	// Specifies which arrays should be included in the response. Specify one or more of the following options 'weights', 'times', 'distances'. To specify more than one array use e.g. out_array=times&amp;out_array=distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API.
 	OutArrays []string `json:"out_arrays,omitempty"`
 
+	// Optional parameter. Specifies a hint for each point in the `points` array to prefer a certain street for the closest location lookup. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up.
+	PointHints []string `json:"point_hints,omitempty"`
+
+	// More information for the `from_points` array. See `point_hints`
+	FromPointHints []string `json:"from_point_hints,omitempty"`
+
+	// More information for the `to_points` array. See `point_hints`
+	ToPointHints []string `json:"to_point_hints,omitempty"`
+
 	// The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc, see here for the details.
 	Vehicle string `json:"vehicle,omitempty"`
 }

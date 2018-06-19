@@ -35,6 +35,9 @@ class MatrixRequest(object):
         'from_points': 'list[list[float]]',
         'to_points': 'list[list[float]]',
         'out_arrays': 'list[str]',
+        'point_hints': 'list[str]',
+        'from_point_hints': 'list[str]',
+        'to_point_hints': 'list[str]',
         'vehicle': 'str'
     }
 
@@ -43,16 +46,22 @@ class MatrixRequest(object):
         'from_points': 'from_points',
         'to_points': 'to_points',
         'out_arrays': 'out_arrays',
+        'point_hints': 'point_hints',
+        'from_point_hints': 'from_point_hints',
+        'to_point_hints': 'to_point_hints',
         'vehicle': 'vehicle'
     }
 
-    def __init__(self, points=None, from_points=None, to_points=None, out_arrays=None, vehicle=None):  # noqa: E501
+    def __init__(self, points=None, from_points=None, to_points=None, out_arrays=None, point_hints=None, from_point_hints=None, to_point_hints=None, vehicle=None):  # noqa: E501
         """MatrixRequest - a model defined in Swagger"""  # noqa: E501
 
         self._points = None
         self._from_points = None
         self._to_points = None
         self._out_arrays = None
+        self._point_hints = None
+        self._from_point_hints = None
+        self._to_point_hints = None
         self._vehicle = None
         self.discriminator = None
 
@@ -64,6 +73,12 @@ class MatrixRequest(object):
             self.to_points = to_points
         if out_arrays is not None:
             self.out_arrays = out_arrays
+        if point_hints is not None:
+            self.point_hints = point_hints
+        if from_point_hints is not None:
+            self.from_point_hints = from_point_hints
+        if to_point_hints is not None:
+            self.to_point_hints = to_point_hints
         if vehicle is not None:
             self.vehicle = vehicle
 
@@ -158,6 +173,75 @@ class MatrixRequest(object):
         """
 
         self._out_arrays = out_arrays
+
+    @property
+    def point_hints(self):
+        """Gets the point_hints of this MatrixRequest.  # noqa: E501
+
+        Optional parameter. Specifies a hint for each point in the `points` array to prefer a certain street for the closest location lookup. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up.  # noqa: E501
+
+        :return: The point_hints of this MatrixRequest.  # noqa: E501
+        :rtype: list[str]
+        """
+        return self._point_hints
+
+    @point_hints.setter
+    def point_hints(self, point_hints):
+        """Sets the point_hints of this MatrixRequest.
+
+        Optional parameter. Specifies a hint for each point in the `points` array to prefer a certain street for the closest location lookup. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up.  # noqa: E501
+
+        :param point_hints: The point_hints of this MatrixRequest.  # noqa: E501
+        :type: list[str]
+        """
+
+        self._point_hints = point_hints
+
+    @property
+    def from_point_hints(self):
+        """Gets the from_point_hints of this MatrixRequest.  # noqa: E501
+
+        More information for the `from_points` array. See `point_hints`  # noqa: E501
+
+        :return: The from_point_hints of this MatrixRequest.  # noqa: E501
+        :rtype: list[str]
+        """
+        return self._from_point_hints
+
+    @from_point_hints.setter
+    def from_point_hints(self, from_point_hints):
+        """Sets the from_point_hints of this MatrixRequest.
+
+        More information for the `from_points` array. See `point_hints`  # noqa: E501
+
+        :param from_point_hints: The from_point_hints of this MatrixRequest.  # noqa: E501
+        :type: list[str]
+        """
+
+        self._from_point_hints = from_point_hints
+
+    @property
+    def to_point_hints(self):
+        """Gets the to_point_hints of this MatrixRequest.  # noqa: E501
+
+        More information for the `to_points` array. See `point_hints`  # noqa: E501
+
+        :return: The to_point_hints of this MatrixRequest.  # noqa: E501
+        :rtype: list[str]
+        """
+        return self._to_point_hints
+
+    @to_point_hints.setter
+    def to_point_hints(self, to_point_hints):
+        """Sets the to_point_hints of this MatrixRequest.
+
+        More information for the `to_points` array. See `point_hints`  # noqa: E501
+
+        :param to_point_hints: The to_point_hints of this MatrixRequest.  # noqa: E501
+        :type: list[str]
+        """
+
+        self._to_point_hints = to_point_hints
 
     @property
     def vehicle(self):

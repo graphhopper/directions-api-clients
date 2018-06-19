@@ -43,6 +43,15 @@ public class MatrixRequest {
   @SerializedName("out_arrays")
   private List<String> outArrays = null;
 
+  @SerializedName("point_hints")
+  private List<String> pointHints = null;
+
+  @SerializedName("from_point_hints")
+  private List<String> fromPointHints = null;
+
+  @SerializedName("to_point_hints")
+  private List<String> toPointHints = null;
+
   @SerializedName("vehicle")
   private String vehicle = null;
 
@@ -150,6 +159,84 @@ public class MatrixRequest {
     this.outArrays = outArrays;
   }
 
+  public MatrixRequest pointHints(List<String> pointHints) {
+    this.pointHints = pointHints;
+    return this;
+  }
+
+  public MatrixRequest addPointHintsItem(String pointHintsItem) {
+    if (this.pointHints == null) {
+      this.pointHints = new ArrayList<String>();
+    }
+    this.pointHints.add(pointHintsItem);
+    return this;
+  }
+
+   /**
+   * Optional parameter. Specifies a hint for each point in the &#x60;points&#x60; array to prefer a certain street for the closest location lookup. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up.
+   * @return pointHints
+  **/
+  @ApiModelProperty(value = "Optional parameter. Specifies a hint for each point in the `points` array to prefer a certain street for the closest location lookup. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up.")
+  public List<String> getPointHints() {
+    return pointHints;
+  }
+
+  public void setPointHints(List<String> pointHints) {
+    this.pointHints = pointHints;
+  }
+
+  public MatrixRequest fromPointHints(List<String> fromPointHints) {
+    this.fromPointHints = fromPointHints;
+    return this;
+  }
+
+  public MatrixRequest addFromPointHintsItem(String fromPointHintsItem) {
+    if (this.fromPointHints == null) {
+      this.fromPointHints = new ArrayList<String>();
+    }
+    this.fromPointHints.add(fromPointHintsItem);
+    return this;
+  }
+
+   /**
+   * More information for the &#x60;from_points&#x60; array. See &#x60;point_hints&#x60;
+   * @return fromPointHints
+  **/
+  @ApiModelProperty(value = "More information for the `from_points` array. See `point_hints`")
+  public List<String> getFromPointHints() {
+    return fromPointHints;
+  }
+
+  public void setFromPointHints(List<String> fromPointHints) {
+    this.fromPointHints = fromPointHints;
+  }
+
+  public MatrixRequest toPointHints(List<String> toPointHints) {
+    this.toPointHints = toPointHints;
+    return this;
+  }
+
+  public MatrixRequest addToPointHintsItem(String toPointHintsItem) {
+    if (this.toPointHints == null) {
+      this.toPointHints = new ArrayList<String>();
+    }
+    this.toPointHints.add(toPointHintsItem);
+    return this;
+  }
+
+   /**
+   * More information for the &#x60;to_points&#x60; array. See &#x60;point_hints&#x60;
+   * @return toPointHints
+  **/
+  @ApiModelProperty(value = "More information for the `to_points` array. See `point_hints`")
+  public List<String> getToPointHints() {
+    return toPointHints;
+  }
+
+  public void setToPointHints(List<String> toPointHints) {
+    this.toPointHints = toPointHints;
+  }
+
   public MatrixRequest vehicle(String vehicle) {
     this.vehicle = vehicle;
     return this;
@@ -182,12 +269,15 @@ public class MatrixRequest {
         Objects.equals(this.fromPoints, matrixRequest.fromPoints) &&
         Objects.equals(this.toPoints, matrixRequest.toPoints) &&
         Objects.equals(this.outArrays, matrixRequest.outArrays) &&
+        Objects.equals(this.pointHints, matrixRequest.pointHints) &&
+        Objects.equals(this.fromPointHints, matrixRequest.fromPointHints) &&
+        Objects.equals(this.toPointHints, matrixRequest.toPointHints) &&
         Objects.equals(this.vehicle, matrixRequest.vehicle);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(points, fromPoints, toPoints, outArrays, vehicle);
+    return Objects.hash(points, fromPoints, toPoints, outArrays, pointHints, fromPointHints, toPointHints, vehicle);
   }
 
 
@@ -200,6 +290,9 @@ public class MatrixRequest {
     sb.append("    fromPoints: ").append(toIndentedString(fromPoints)).append("\n");
     sb.append("    toPoints: ").append(toIndentedString(toPoints)).append("\n");
     sb.append("    outArrays: ").append(toIndentedString(outArrays)).append("\n");
+    sb.append("    pointHints: ").append(toIndentedString(pointHints)).append("\n");
+    sb.append("    fromPointHints: ").append(toIndentedString(fromPointHints)).append("\n");
+    sb.append("    toPointHints: ").append(toIndentedString(toPointHints)).append("\n");
     sb.append("    vehicle: ").append(toIndentedString(vehicle)).append("\n");
     sb.append("}");
     return sb.toString();

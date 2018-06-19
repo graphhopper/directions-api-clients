@@ -26,6 +26,15 @@ pub struct MatrixRequest {
   /// Specifies which arrays should be included in the response. Specify one or more of the following options 'weights', 'times', 'distances'. To specify more than one array use e.g. out_array=times&amp;out_array=distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API.
   #[serde(rename = "out_arrays")]
   out_arrays: Option<Vec<String>>,
+  /// Optional parameter. Specifies a hint for each point in the `points` array to prefer a certain street for the closest location lookup. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up.
+  #[serde(rename = "point_hints")]
+  point_hints: Option<Vec<String>>,
+  /// More information for the `from_points` array. See `point_hints`
+  #[serde(rename = "from_point_hints")]
+  from_point_hints: Option<Vec<String>>,
+  /// More information for the `to_points` array. See `point_hints`
+  #[serde(rename = "to_point_hints")]
+  to_point_hints: Option<Vec<String>>,
   /// The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc, see here for the details.
   #[serde(rename = "vehicle")]
   vehicle: Option<String>
@@ -38,6 +47,9 @@ impl MatrixRequest {
       from_points: None,
       to_points: None,
       out_arrays: None,
+      point_hints: None,
+      from_point_hints: None,
+      to_point_hints: None,
       vehicle: None
     }
   }
@@ -108,6 +120,57 @@ impl MatrixRequest {
 
   pub fn reset_out_arrays(&mut self) {
     self.out_arrays = None;
+  }
+
+  pub fn set_point_hints(&mut self, point_hints: Vec<String>) {
+    self.point_hints = Some(point_hints);
+  }
+
+  pub fn with_point_hints(mut self, point_hints: Vec<String>) -> MatrixRequest {
+    self.point_hints = Some(point_hints);
+    self
+  }
+
+  pub fn point_hints(&self) -> Option<&Vec<String>> {
+    self.point_hints.as_ref()
+  }
+
+  pub fn reset_point_hints(&mut self) {
+    self.point_hints = None;
+  }
+
+  pub fn set_from_point_hints(&mut self, from_point_hints: Vec<String>) {
+    self.from_point_hints = Some(from_point_hints);
+  }
+
+  pub fn with_from_point_hints(mut self, from_point_hints: Vec<String>) -> MatrixRequest {
+    self.from_point_hints = Some(from_point_hints);
+    self
+  }
+
+  pub fn from_point_hints(&self) -> Option<&Vec<String>> {
+    self.from_point_hints.as_ref()
+  }
+
+  pub fn reset_from_point_hints(&mut self) {
+    self.from_point_hints = None;
+  }
+
+  pub fn set_to_point_hints(&mut self, to_point_hints: Vec<String>) {
+    self.to_point_hints = Some(to_point_hints);
+  }
+
+  pub fn with_to_point_hints(mut self, to_point_hints: Vec<String>) -> MatrixRequest {
+    self.to_point_hints = Some(to_point_hints);
+    self
+  }
+
+  pub fn to_point_hints(&self) -> Option<&Vec<String>> {
+    self.to_point_hints.as_ref()
+  }
+
+  pub fn reset_to_point_hints(&mut self) {
+    self.to_point_hints = None;
   }
 
   pub fn set_vehicle(&mut self, vehicle: String) {

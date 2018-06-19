@@ -37,12 +37,14 @@ namespace IO.Swagger.Model
         /// <param name="Name">name of location, e.g. street name plus house number.</param>
         /// <param name="Lon">longitude.</param>
         /// <param name="Lat">latitude.</param>
-        public Address(string LocationId = default(string), string Name = default(string), double? Lon = default(double?), double? Lat = default(double?))
+        /// <param name="StreetHint">Optional parameter. Specifies a hint for each address to better snap the coordinates (lon,lat) to road network. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up..</param>
+        public Address(string LocationId = default(string), string Name = default(string), double? Lon = default(double?), double? Lat = default(double?), string StreetHint = default(string))
         {
             this.LocationId = LocationId;
             this.Name = Name;
             this.Lon = Lon;
             this.Lat = Lat;
+            this.StreetHint = StreetHint;
         }
         
         /// <summary>
@@ -74,6 +76,13 @@ namespace IO.Swagger.Model
         public double? Lat { get; set; }
 
         /// <summary>
+        /// Optional parameter. Specifies a hint for each address to better snap the coordinates (lon,lat) to road network. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up.
+        /// </summary>
+        /// <value>Optional parameter. Specifies a hint for each address to better snap the coordinates (lon,lat) to road network. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up.</value>
+        [DataMember(Name="street_hint", EmitDefaultValue=false)]
+        public string StreetHint { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -85,6 +94,7 @@ namespace IO.Swagger.Model
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Lon: ").Append(Lon).Append("\n");
             sb.Append("  Lat: ").Append(Lat).Append("\n");
+            sb.Append("  StreetHint: ").Append(StreetHint).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -138,6 +148,11 @@ namespace IO.Swagger.Model
                     this.Lat == input.Lat ||
                     (this.Lat != null &&
                     this.Lat.Equals(input.Lat))
+                ) && 
+                (
+                    this.StreetHint == input.StreetHint ||
+                    (this.StreetHint != null &&
+                    this.StreetHint.Equals(input.StreetHint))
                 );
         }
 
@@ -158,6 +173,8 @@ namespace IO.Swagger.Model
                     hashCode = hashCode * 59 + this.Lon.GetHashCode();
                 if (this.Lat != null)
                     hashCode = hashCode * 59 + this.Lat.GetHashCode();
+                if (this.StreetHint != null)
+                    hashCode = hashCode * 59 + this.StreetHint.GetHashCode();
                 return hashCode;
             }
         }

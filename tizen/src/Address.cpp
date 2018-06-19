@@ -36,6 +36,9 @@ Address::__init()
 	//
 	//lat = double(0);
 	//
+	//
+	//street_hint = std::string();
+	//
 }
 
 void
@@ -60,6 +63,11 @@ Address::__cleanup()
 	//
 	//delete lat;
 	//lat = NULL;
+	//}
+	//if(street_hint != NULL) {
+	//
+	//delete street_hint;
+	//street_hint = NULL;
 	//}
 	//
 }
@@ -113,6 +121,17 @@ Address::fromJson(char* jsonStr)
 			
 		}
 	}
+	const gchar *street_hintKey = "street_hint";
+	node = json_object_get_member(pJsonObject, street_hintKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&street_hint, node, "std::string", "");
+		} else {
+			
+		}
+	}
 }
 
 Address::Address(char* json)
@@ -161,6 +180,15 @@ Address::toJson()
 	}
 	const gchar *latKey = "lat";
 	json_object_set_member(pJsonObject, latKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getStreetHint();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *street_hintKey = "street_hint";
+	json_object_set_member(pJsonObject, street_hintKey, node);
 	node = json_node_alloc();
 	json_node_init(node, JSON_NODE_OBJECT);
 	json_node_take_object(node, pJsonObject);
@@ -215,6 +243,18 @@ void
 Address::setLat(double  lat)
 {
 	this->lat = lat;
+}
+
+std::string
+Address::getStreetHint()
+{
+	return street_hint;
+}
+
+void
+Address::setStreetHint(std::string  street_hint)
+{
+	this->street_hint = street_hint;
 }
 
 

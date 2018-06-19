@@ -45,6 +45,8 @@ SWGAddress::init() {
     m_lon_isSet = false;
     lat = 0.0;
     m_lat_isSet = false;
+    street_hint = new QString("");
+    m_street_hint_isSet = false;
 }
 
 void
@@ -57,6 +59,9 @@ SWGAddress::cleanup() {
     }
 
 
+    if(street_hint != nullptr) { 
+        delete street_hint;
+    }
 }
 
 SWGAddress*
@@ -77,6 +82,8 @@ SWGAddress::fromJsonObject(QJsonObject &pJson) {
     ::Swagger::setValue(&lon, pJson["lon"], "double", "");
     
     ::Swagger::setValue(&lat, pJson["lat"], "double", "");
+    
+    ::Swagger::setValue(&street_hint, pJson["street_hint"], "QString", "QString");
     
 }
 
@@ -108,6 +115,10 @@ SWGAddress::asJsonObject() {
     
     if(m_lat_isSet){
         obj->insert("lat", QJsonValue(lat));
+    }
+    
+    if(street_hint != nullptr && *street_hint != QString("")){
+        toJsonValue(QString("street_hint"), street_hint, obj, QString("QString"));
     }
 
     return obj;
@@ -153,6 +164,16 @@ SWGAddress::setLat(double lat) {
     this->m_lat_isSet = true;
 }
 
+QString*
+SWGAddress::getStreetHint() {
+    return street_hint;
+}
+void
+SWGAddress::setStreetHint(QString* street_hint) {
+    this->street_hint = street_hint;
+    this->m_street_hint_isSet = true;
+}
+
 
 bool 
 SWGAddress::isSet(){
@@ -162,6 +183,7 @@ SWGAddress::isSet(){
         if(name != nullptr && *name != QString("")){ isObjectUpdated = true; break;}
         if(m_lon_isSet){ isObjectUpdated = true; break;}
         if(m_lat_isSet){ isObjectUpdated = true; break;}
+        if(street_hint != nullptr && *street_hint != QString("")){ isObjectUpdated = true; break;}
     }while(false);
     return isObjectUpdated;
 }

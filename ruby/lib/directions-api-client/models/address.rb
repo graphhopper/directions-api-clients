@@ -27,6 +27,9 @@ module GraphHopperClient
     # latitude
     attr_accessor :lat
 
+    # Optional parameter. Specifies a hint for each address to better snap the coordinates (lon,lat) to road network. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up.
+    attr_accessor :street_hint
+
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -34,7 +37,8 @@ module GraphHopperClient
         :'location_id' => :'location_id',
         :'name' => :'name',
         :'lon' => :'lon',
-        :'lat' => :'lat'
+        :'lat' => :'lat',
+        :'street_hint' => :'street_hint'
       }
     end
 
@@ -44,7 +48,8 @@ module GraphHopperClient
         :'location_id' => :'String',
         :'name' => :'String',
         :'lon' => :'Float',
-        :'lat' => :'Float'
+        :'lat' => :'Float',
+        :'street_hint' => :'String'
       }
     end
 
@@ -72,6 +77,10 @@ module GraphHopperClient
         self.lat = attributes[:'lat']
       end
 
+      if attributes.has_key?(:'street_hint')
+        self.street_hint = attributes[:'street_hint']
+      end
+
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -95,7 +104,8 @@ module GraphHopperClient
           location_id == o.location_id &&
           name == o.name &&
           lon == o.lon &&
-          lat == o.lat
+          lat == o.lat &&
+          street_hint == o.street_hint
     end
 
     # @see the `==` method
@@ -107,7 +117,7 @@ module GraphHopperClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [location_id, name, lon, lat].hash
+      [location_id, name, lon, lat, street_hint].hash
     end
 
     # Builds the object from hash

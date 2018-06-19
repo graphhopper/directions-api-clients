@@ -85,6 +85,7 @@ data Address = Address
   , addressName :: Text -- ^ name of location, e.g. street name plus house number
   , addressLon :: Double -- ^ longitude
   , addressLat :: Double -- ^ latitude
+  , addressStreet'Underscorehint :: Text -- ^ Optional parameter. Specifies a hint for each address to better snap the coordinates (lon,lat) to road network. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up.
   } deriving (Show, Eq, Generic)
 
 instance FromJSON Address where
@@ -312,6 +313,9 @@ data MatrixRequest = MatrixRequest
   , matrixRequestFrom'Underscorepoints :: [[Double]] -- ^ The starting points for the routes. E.g. if you want to calculate the three routes A-&gt;1, A-&gt;2, A-&gt;3 then you have one from_point parameter and three to_point parameters. Is a string with the format longitude,latitude.
   , matrixRequestTo'Underscorepoints :: [[Double]] -- ^ The destination points for the routes. Is a string with the format longitude,latitude.
   , matrixRequestOut'Underscorearrays :: [Text] -- ^ Specifies which arrays should be included in the response. Specify one or more of the following options 'weights', 'times', 'distances'. To specify more than one array use e.g. out_array=times&amp;out_array=distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API.
+  , matrixRequestPoint'Underscorehints :: [Text] -- ^ Optional parameter. Specifies a hint for each point in the `points` array to prefer a certain street for the closest location lookup. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up.
+  , matrixRequestFrom'Underscorepoint'Underscorehints :: [Text] -- ^ More information for the `from_points` array. See `point_hints`
+  , matrixRequestTo'Underscorepoint'Underscorehints :: [Text] -- ^ More information for the `to_points` array. See `point_hints`
   , matrixRequestVehicle :: Text -- ^ The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc, see here for the details.
   } deriving (Show, Eq, Generic)
 

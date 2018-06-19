@@ -34,23 +34,26 @@ class Address(object):
         'location_id': 'str',
         'name': 'str',
         'lon': 'float',
-        'lat': 'float'
+        'lat': 'float',
+        'street_hint': 'str'
     }
 
     attribute_map = {
         'location_id': 'location_id',
         'name': 'name',
         'lon': 'lon',
-        'lat': 'lat'
+        'lat': 'lat',
+        'street_hint': 'street_hint'
     }
 
-    def __init__(self, location_id=None, name=None, lon=None, lat=None):  # noqa: E501
+    def __init__(self, location_id=None, name=None, lon=None, lat=None, street_hint=None):  # noqa: E501
         """Address - a model defined in Swagger"""  # noqa: E501
 
         self._location_id = None
         self._name = None
         self._lon = None
         self._lat = None
+        self._street_hint = None
         self.discriminator = None
 
         if location_id is not None:
@@ -61,6 +64,8 @@ class Address(object):
             self.lon = lon
         if lat is not None:
             self.lat = lat
+        if street_hint is not None:
+            self.street_hint = street_hint
 
     @property
     def location_id(self):
@@ -153,6 +158,29 @@ class Address(object):
         """
 
         self._lat = lat
+
+    @property
+    def street_hint(self):
+        """Gets the street_hint of this Address.  # noqa: E501
+
+        Optional parameter. Specifies a hint for each address to better snap the coordinates (lon,lat) to road network. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up.  # noqa: E501
+
+        :return: The street_hint of this Address.  # noqa: E501
+        :rtype: str
+        """
+        return self._street_hint
+
+    @street_hint.setter
+    def street_hint(self, street_hint):
+        """Sets the street_hint of this Address.
+
+        Optional parameter. Specifies a hint for each address to better snap the coordinates (lon,lat) to road network. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up.  # noqa: E501
+
+        :param street_hint: The street_hint of this Address.  # noqa: E501
+        :type: str
+        """
+
+        self._street_hint = street_hint
 
     def to_dict(self):
         """Returns the model properties as a dict"""

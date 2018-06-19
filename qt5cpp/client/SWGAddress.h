@@ -53,6 +53,9 @@ public:
     double getLat();
     void setLat(double lat);
 
+    QString* getStreetHint();
+    void setStreetHint(QString* street_hint);
+
 
     virtual bool isSet() override;
 
@@ -68,6 +71,9 @@ private:
     
     double lat;
     bool m_lat_isSet;
+    
+    QString* street_hint;
+    bool m_street_hint_isSet;
     
 };
 

@@ -99,6 +99,30 @@ namespace IO.Swagger.Test
             // TODO unit test for the property 'OutArrays'
         }
         /// <summary>
+        /// Test the property 'PointHints'
+        /// </summary>
+        [Test]
+        public void PointHintsTest()
+        {
+            // TODO unit test for the property 'PointHints'
+        }
+        /// <summary>
+        /// Test the property 'FromPointHints'
+        /// </summary>
+        [Test]
+        public void FromPointHintsTest()
+        {
+            // TODO unit test for the property 'FromPointHints'
+        }
+        /// <summary>
+        /// Test the property 'ToPointHints'
+        /// </summary>
+        [Test]
+        public void ToPointHintsTest()
+        {
+            // TODO unit test for the property 'ToPointHints'
+        }
+        /// <summary>
         /// Test the property 'Vehicle'
         /// </summary>
         [Test]

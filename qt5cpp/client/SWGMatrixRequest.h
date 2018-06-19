@@ -54,6 +54,15 @@ public:
     QList<QString*>* getOutArrays();
     void setOutArrays(QList<QString*>* out_arrays);
 
+    QList<QString*>* getPointHints();
+    void setPointHints(QList<QString*>* point_hints);
+
+    QList<QString*>* getFromPointHints();
+    void setFromPointHints(QList<QString*>* from_point_hints);
+
+    QList<QString*>* getToPointHints();
+    void setToPointHints(QList<QString*>* to_point_hints);
+
     QString* getVehicle();
     void setVehicle(QString* vehicle);
 
@@ -72,6 +81,15 @@ private:
     
     QList<QString*>* out_arrays;
     bool m_out_arrays_isSet;
+    
+    QList<QString*>* point_hints;
+    bool m_point_hints_isSet;
+    
+    QList<QString*>* from_point_hints;
+    bool m_from_point_hints_isSet;
+    
+    QList<QString*>* to_point_hints;
+    bool m_to_point_hints_isSet;
     
     QString* vehicle;
     bool m_vehicle_isSet;

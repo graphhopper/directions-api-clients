@@ -61,6 +61,9 @@ class MatrixRequest implements ModelInterface, ArrayAccess
         'from_points' => 'double[][]',
         'to_points' => 'double[][]',
         'out_arrays' => 'string[]',
+        'point_hints' => 'string[]',
+        'from_point_hints' => 'string[]',
+        'to_point_hints' => 'string[]',
         'vehicle' => 'string'
     ];
 
@@ -74,6 +77,9 @@ class MatrixRequest implements ModelInterface, ArrayAccess
         'from_points' => 'double',
         'to_points' => 'double',
         'out_arrays' => null,
+        'point_hints' => null,
+        'from_point_hints' => null,
+        'to_point_hints' => null,
         'vehicle' => null
     ];
 
@@ -108,6 +114,9 @@ class MatrixRequest implements ModelInterface, ArrayAccess
         'from_points' => 'from_points',
         'to_points' => 'to_points',
         'out_arrays' => 'out_arrays',
+        'point_hints' => 'point_hints',
+        'from_point_hints' => 'from_point_hints',
+        'to_point_hints' => 'to_point_hints',
         'vehicle' => 'vehicle'
     ];
 
@@ -121,6 +130,9 @@ class MatrixRequest implements ModelInterface, ArrayAccess
         'from_points' => 'setFromPoints',
         'to_points' => 'setToPoints',
         'out_arrays' => 'setOutArrays',
+        'point_hints' => 'setPointHints',
+        'from_point_hints' => 'setFromPointHints',
+        'to_point_hints' => 'setToPointHints',
         'vehicle' => 'setVehicle'
     ];
 
@@ -134,6 +146,9 @@ class MatrixRequest implements ModelInterface, ArrayAccess
         'from_points' => 'getFromPoints',
         'to_points' => 'getToPoints',
         'out_arrays' => 'getOutArrays',
+        'point_hints' => 'getPointHints',
+        'from_point_hints' => 'getFromPointHints',
+        'to_point_hints' => 'getToPointHints',
         'vehicle' => 'getVehicle'
     ];
 
@@ -201,6 +216,9 @@ class MatrixRequest implements ModelInterface, ArrayAccess
         $this->container['from_points'] = isset($data['from_points']) ? $data['from_points'] : null;
         $this->container['to_points'] = isset($data['to_points']) ? $data['to_points'] : null;
         $this->container['out_arrays'] = isset($data['out_arrays']) ? $data['out_arrays'] : null;
+        $this->container['point_hints'] = isset($data['point_hints']) ? $data['point_hints'] : null;
+        $this->container['from_point_hints'] = isset($data['from_point_hints']) ? $data['from_point_hints'] : null;
+        $this->container['to_point_hints'] = isset($data['to_point_hints']) ? $data['to_point_hints'] : null;
         $this->container['vehicle'] = isset($data['vehicle']) ? $data['vehicle'] : null;
     }
 
@@ -321,6 +339,78 @@ class MatrixRequest implements ModelInterface, ArrayAccess
     public function setOutArrays($out_arrays)
     {
         $this->container['out_arrays'] = $out_arrays;
+
+        return $this;
+    }
+
+    /**
+     * Gets point_hints
+     *
+     * @return string[]
+     */
+    public function getPointHints()
+    {
+        return $this->container['point_hints'];
+    }
+
+    /**
+     * Sets point_hints
+     *
+     * @param string[] $point_hints Optional parameter. Specifies a hint for each point in the `points` array to prefer a certain street for the closest location lookup. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up.
+     *
+     * @return $this
+     */
+    public function setPointHints($point_hints)
+    {
+        $this->container['point_hints'] = $point_hints;
+
+        return $this;
+    }
+
+    /**
+     * Gets from_point_hints
+     *
+     * @return string[]
+     */
+    public function getFromPointHints()
+    {
+        return $this->container['from_point_hints'];
+    }
+
+    /**
+     * Sets from_point_hints
+     *
+     * @param string[] $from_point_hints More information for the `from_points` array. See `point_hints`
+     *
+     * @return $this
+     */
+    public function setFromPointHints($from_point_hints)
+    {
+        $this->container['from_point_hints'] = $from_point_hints;
+
+        return $this;
+    }
+
+    /**
+     * Gets to_point_hints
+     *
+     * @return string[]
+     */
+    public function getToPointHints()
+    {
+        return $this->container['to_point_hints'];
+    }
+
+    /**
+     * Sets to_point_hints
+     *
+     * @param string[] $to_point_hints More information for the `to_points` array. See `point_hints`
+     *
+     * @return $this
+     */
+    public function setToPointHints($to_point_hints)
+    {
+        $this->container['to_point_hints'] = $to_point_hints;
 
         return $this;
     }

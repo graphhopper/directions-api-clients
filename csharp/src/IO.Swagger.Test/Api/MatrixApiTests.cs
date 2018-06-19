@@ -76,8 +76,11 @@ namespace IO.Swagger.Test
             //List<string> fromPoint = null;
             //List<string> toPoint = null;
             //List<string> outArray = null;
+            //List<string> pointHint = null;
+            //List<string> toPointHint = null;
+            //List<string> fromPointHint = null;
             //string vehicle = null;
-            //var response = instance.MatrixGet(key, point, fromPoint, toPoint, outArray, vehicle);
+            //var response = instance.MatrixGet(key, point, fromPoint, toPoint, outArray, pointHint, toPointHint, fromPointHint, vehicle);
             //Assert.IsInstanceOf<MatrixResponse> (response, "response is MatrixResponse");
         }
         

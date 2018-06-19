@@ -13,6 +13,7 @@
 #' @field name 
 #' @field lon 
 #' @field lat 
+#' @field street_hint 
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -24,7 +25,8 @@ Address <- R6::R6Class(
     `name` = NULL,
     `lon` = NULL,
     `lat` = NULL,
-    initialize = function(`location_id`, `name`, `lon`, `lat`){
+    `street_hint` = NULL,
+    initialize = function(`location_id`, `name`, `lon`, `lat`, `street_hint`){
       if (!missing(`location_id`)) {
         stopifnot(is.character(`location_id`), length(`location_id`) == 1)
         self$`location_id` <- `location_id`
@@ -41,6 +43,10 @@ Address <- R6::R6Class(
         stopifnot(is.numeric(`lat`), length(`lat`) == 1)
         self$`lat` <- `lat`
       }
+      if (!missing(`street_hint`)) {
+        stopifnot(is.character(`street_hint`), length(`street_hint`) == 1)
+        self$`street_hint` <- `street_hint`
+      }
     },
     toJSON = function() {
       AddressObject <- list()
@@ -55,6 +61,9 @@ Address <- R6::R6Class(
       }
       if (!is.null(self$`lat`)) {
         AddressObject[['lat']] <- self$`lat`
+      }
+      if (!is.null(self$`street_hint`)) {
+        AddressObject[['street_hint']] <- self$`street_hint`
       }
 
       AddressObject
@@ -73,6 +82,9 @@ Address <- R6::R6Class(
       if (!is.null(AddressObject$`lat`)) {
         self$`lat` <- AddressObject$`lat`
       }
+      if (!is.null(AddressObject$`street_hint`)) {
+        self$`street_hint` <- AddressObject$`street_hint`
+      }
     },
     toJSONString = function() {
        sprintf(
@@ -80,12 +92,14 @@ Address <- R6::R6Class(
            "location_id": %s,
            "name": %s,
            "lon": %d,
-           "lat": %d
+           "lat": %d,
+           "street_hint": %s
         }',
         self$`location_id`,
         self$`name`,
         self$`lon`,
-        self$`lat`
+        self$`lat`,
+        self$`street_hint`
       )
     },
     fromJSONString = function(AddressJson) {
@@ -94,6 +108,7 @@ Address <- R6::R6Class(
       self$`name` <- AddressObject$`name`
       self$`lon` <- AddressObject$`lon`
       self$`lat` <- AddressObject$`lat`
+      self$`street_hint` <- AddressObject$`street_hint`
     }
   )
 )

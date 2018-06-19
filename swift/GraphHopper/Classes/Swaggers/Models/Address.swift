@@ -17,6 +17,8 @@ public class Address: JSONEncodable {
     public var lon: Double?
     /** latitude */
     public var lat: Double?
+    /** Optional parameter. Specifies a hint for each address to better snap the coordinates (lon,lat) to road network. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up. */
+    public var streetHint: String?
 
     public init() {}
 
@@ -27,6 +29,7 @@ public class Address: JSONEncodable {
         nillableDictionary["name"] = self.name
         nillableDictionary["lon"] = self.lon
         nillableDictionary["lat"] = self.lat
+        nillableDictionary["street_hint"] = self.streetHint
         let dictionary: [String:AnyObject] = APIHelper.rejectNil(nillableDictionary) ?? [:]
         return dictionary
     }

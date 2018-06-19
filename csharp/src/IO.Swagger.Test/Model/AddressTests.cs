@@ -98,6 +98,14 @@ namespace IO.Swagger.Test
         {
             // TODO unit test for the property 'Lat'
         }
+        /// <summary>
+        /// Test the property 'StreetHint'
+        /// </summary>
+        [Test]
+        public void StreetHintTest()
+        {
+            // TODO unit test for the property 'StreetHint'
+        }
 
     }
 

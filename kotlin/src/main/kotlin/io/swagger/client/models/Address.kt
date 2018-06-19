@@ -18,6 +18,7 @@ package io.swagger.client.models
  * @param name name of location, e.g. street name plus house number
  * @param lon longitude
  * @param lat latitude
+ * @param street_hint Optional parameter. Specifies a hint for each address to better snap the coordinates (lon,lat) to road network. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up.
  */
 data class Address (
     /* Unique identifier of location */
@@ -27,7 +28,9 @@ data class Address (
     /* longitude */
     val lon: kotlin.Double? = null,
     /* latitude */
-    val lat: kotlin.Double? = null
+    val lat: kotlin.Double? = null,
+    /* Optional parameter. Specifies a hint for each address to better snap the coordinates (lon,lat) to road network. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up. */
+    val street_hint: kotlin.String? = null
 ) {
 
 }

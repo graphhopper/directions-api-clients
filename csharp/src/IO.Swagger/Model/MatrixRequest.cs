@@ -37,13 +37,19 @@ namespace IO.Swagger.Model
         /// <param name="FromPoints">The starting points for the routes. E.g. if you want to calculate the three routes A-&amp;gt;1, A-&amp;gt;2, A-&amp;gt;3 then you have one from_point parameter and three to_point parameters. Is a string with the format longitude,latitude..</param>
         /// <param name="ToPoints">The destination points for the routes. Is a string with the format longitude,latitude..</param>
         /// <param name="OutArrays">Specifies which arrays should be included in the response. Specify one or more of the following options &#39;weights&#39;, &#39;times&#39;, &#39;distances&#39;. To specify more than one array use e.g. out_array&#x3D;times&amp;amp;out_array&#x3D;distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API..</param>
+        /// <param name="PointHints">Optional parameter. Specifies a hint for each point in the &#x60;points&#x60; array to prefer a certain street for the closest location lookup. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up..</param>
+        /// <param name="FromPointHints">More information for the &#x60;from_points&#x60; array. See &#x60;point_hints&#x60;.</param>
+        /// <param name="ToPointHints">More information for the &#x60;to_points&#x60; array. See &#x60;point_hints&#x60;.</param>
         /// <param name="Vehicle">The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc, see here for the details..</param>
-        public MatrixRequest(List<List<double?>> Points = default(List<List<double?>>), List<List<double?>> FromPoints = default(List<List<double?>>), List<List<double?>> ToPoints = default(List<List<double?>>), List<string> OutArrays = default(List<string>), string Vehicle = default(string))
+        public MatrixRequest(List<List<double?>> Points = default(List<List<double?>>), List<List<double?>> FromPoints = default(List<List<double?>>), List<List<double?>> ToPoints = default(List<List<double?>>), List<string> OutArrays = default(List<string>), List<string> PointHints = default(List<string>), List<string> FromPointHints = default(List<string>), List<string> ToPointHints = default(List<string>), string Vehicle = default(string))
         {
             this.Points = Points;
             this.FromPoints = FromPoints;
             this.ToPoints = ToPoints;
             this.OutArrays = OutArrays;
+            this.PointHints = PointHints;
+            this.FromPointHints = FromPointHints;
+            this.ToPointHints = ToPointHints;
             this.Vehicle = Vehicle;
         }
         
@@ -76,6 +82,27 @@ namespace IO.Swagger.Model
         public List<string> OutArrays { get; set; }
 
         /// <summary>
+        /// Optional parameter. Specifies a hint for each point in the &#x60;points&#x60; array to prefer a certain street for the closest location lookup. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up.
+        /// </summary>
+        /// <value>Optional parameter. Specifies a hint for each point in the &#x60;points&#x60; array to prefer a certain street for the closest location lookup. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up.</value>
+        [DataMember(Name="point_hints", EmitDefaultValue=false)]
+        public List<string> PointHints { get; set; }
+
+        /// <summary>
+        /// More information for the &#x60;from_points&#x60; array. See &#x60;point_hints&#x60;
+        /// </summary>
+        /// <value>More information for the &#x60;from_points&#x60; array. See &#x60;point_hints&#x60;</value>
+        [DataMember(Name="from_point_hints", EmitDefaultValue=false)]
+        public List<string> FromPointHints { get; set; }
+
+        /// <summary>
+        /// More information for the &#x60;to_points&#x60; array. See &#x60;point_hints&#x60;
+        /// </summary>
+        /// <value>More information for the &#x60;to_points&#x60; array. See &#x60;point_hints&#x60;</value>
+        [DataMember(Name="to_point_hints", EmitDefaultValue=false)]
+        public List<string> ToPointHints { get; set; }
+
+        /// <summary>
         /// The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc, see here for the details.
         /// </summary>
         /// <value>The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc, see here for the details.</value>
@@ -94,6 +121,9 @@ namespace IO.Swagger.Model
             sb.Append("  FromPoints: ").Append(FromPoints).Append("\n");
             sb.Append("  ToPoints: ").Append(ToPoints).Append("\n");
             sb.Append("  OutArrays: ").Append(OutArrays).Append("\n");
+            sb.Append("  PointHints: ").Append(PointHints).Append("\n");
+            sb.Append("  FromPointHints: ").Append(FromPointHints).Append("\n");
+            sb.Append("  ToPointHints: ").Append(ToPointHints).Append("\n");
             sb.Append("  Vehicle: ").Append(Vehicle).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -150,6 +180,21 @@ namespace IO.Swagger.Model
                     this.OutArrays.SequenceEqual(input.OutArrays)
                 ) && 
                 (
+                    this.PointHints == input.PointHints ||
+                    this.PointHints != null &&
+                    this.PointHints.SequenceEqual(input.PointHints)
+                ) && 
+                (
+                    this.FromPointHints == input.FromPointHints ||
+                    this.FromPointHints != null &&
+                    this.FromPointHints.SequenceEqual(input.FromPointHints)
+                ) && 
+                (
+                    this.ToPointHints == input.ToPointHints ||
+                    this.ToPointHints != null &&
+                    this.ToPointHints.SequenceEqual(input.ToPointHints)
+                ) && 
+                (
                     this.Vehicle == input.Vehicle ||
                     (this.Vehicle != null &&
                     this.Vehicle.Equals(input.Vehicle))
@@ -173,6 +218,12 @@ namespace IO.Swagger.Model
                     hashCode = hashCode * 59 + this.ToPoints.GetHashCode();
                 if (this.OutArrays != null)
                     hashCode = hashCode * 59 + this.OutArrays.GetHashCode();
+                if (this.PointHints != null)
+                    hashCode = hashCode * 59 + this.PointHints.GetHashCode();
+                if (this.FromPointHints != null)
+                    hashCode = hashCode * 59 + this.FromPointHints.GetHashCode();
+                if (this.ToPointHints != null)
+                    hashCode = hashCode * 59 + this.ToPointHints.GetHashCode();
                 if (this.Vehicle != null)
                     hashCode = hashCode * 59 + this.Vehicle.GetHashCode();
                 return hashCode;

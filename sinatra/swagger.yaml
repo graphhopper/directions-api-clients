@@ -336,6 +336,33 @@ paths:
         items:
           type: "string"
         collectionFormat: "multi"
+      - name: "point_hint"
+        in: "query"
+        description: "Optional parameter. Specifies a hint for each `point` parameter\
+          \ to prefer a certain street for the closest location lookup. E.g. if there\
+          \ is an address or house with two or more neighboring streets you can control\
+          \ for which street the closest location is looked up."
+        required: false
+        type: "array"
+        items:
+          type: "string"
+        collectionFormat: "multi"
+      - name: "to_point_hint"
+        in: "query"
+        description: "For the to_point parameter. See point_hint"
+        required: false
+        type: "array"
+        items:
+          type: "string"
+        collectionFormat: "multi"
+      - name: "from_point_hint"
+        in: "query"
+        description: "For the from_point parameter. See point_hint"
+        required: false
+        type: "array"
+        items:
+          type: "string"
+        collectionFormat: "multi"
       - name: "vehicle"
         in: "query"
         description: "The vehicle for which the route should be calculated. Other\
@@ -652,6 +679,24 @@ definitions:
           \ versions of this API."
         items:
           type: "string"
+      point_hints:
+        type: "array"
+        description: "Optional parameter. Specifies a hint for each point in the `points`\
+          \ array to prefer a certain street for the closest location lookup. E.g.\
+          \ if there is an address or house with two or more neighboring streets you\
+          \ can control for which street the closest location is looked up."
+        items:
+          type: "string"
+      from_point_hints:
+        type: "array"
+        description: "More information for the `from_points` array. See `point_hints`"
+        items:
+          type: "string"
+      to_point_hints:
+        type: "array"
+        description: "More information for the `to_points` array. See `point_hints`"
+        items:
+          type: "string"
       vehicle:
         type: "string"
         description: "The vehicle for which the route should be calculated. Other\
@@ -670,11 +715,20 @@ definitions:
         - 1.4658129805029452
       - - 1.4658129805029452
         - 1.4658129805029452
+      to_point_hints:
+      - "to_point_hints"
+      - "to_point_hints"
+      point_hints:
+      - "point_hints"
+      - "point_hints"
       points:
       - - 0.8008281904610115
         - 0.8008281904610115
       - - 0.8008281904610115
         - 0.8008281904610115
+      from_point_hints:
+      - "from_point_hints"
+      - "from_point_hints"
       vehicle: "vehicle"
   MatrixResponse:
     type: "object"
@@ -1075,6 +1129,7 @@ definitions:
         - "skills"
         - "skills"
         start_address:
+          street_hint: "street_hint"
           name: "name"
           lon: 0.8008281904610115
           location_id: "location_id"
@@ -1082,6 +1137,7 @@ definitions:
         latest_end: 2
         max_driving_time: 7
         end_address:
+          street_hint: "street_hint"
           name: "name"
           lon: 0.8008281904610115
           location_id: "location_id"
@@ -1106,6 +1162,7 @@ definitions:
         - "skills"
         - "skills"
         start_address:
+          street_hint: "street_hint"
           name: "name"
           lon: 0.8008281904610115
           location_id: "location_id"
@@ -1113,6 +1170,7 @@ definitions:
         latest_end: 2
         max_driving_time: 7
         end_address:
+          street_hint: "street_hint"
           name: "name"
           lon: 0.8008281904610115
           location_id: "location_id"
@@ -1133,6 +1191,7 @@ definitions:
         - earliest: 8
           latest: 9
         address:
+          street_hint: "street_hint"
           name: "name"
           lon: 0.8008281904610115
           location_id: "location_id"
@@ -1162,6 +1221,7 @@ definitions:
         - earliest: 8
           latest: 9
         address:
+          street_hint: "street_hint"
           name: "name"
           lon: 0.8008281904610115
           location_id: "location_id"
@@ -1205,6 +1265,7 @@ definitions:
           - earliest: 8
             latest: 9
           address:
+            street_hint: "street_hint"
             name: "name"
             lon: 0.8008281904610115
             location_id: "location_id"
@@ -1231,6 +1292,7 @@ definitions:
           - earliest: 8
             latest: 9
           address:
+            street_hint: "street_hint"
             name: "name"
             lon: 0.8008281904610115
             location_id: "location_id"
@@ -1247,6 +1309,7 @@ definitions:
           - earliest: 8
             latest: 9
           address:
+            street_hint: "street_hint"
             name: "name"
             lon: 0.8008281904610115
             location_id: "location_id"
@@ -1273,6 +1336,7 @@ definitions:
           - earliest: 8
             latest: 9
           address:
+            street_hint: "street_hint"
             name: "name"
             lon: 0.8008281904610115
             location_id: "location_id"
@@ -1394,6 +1458,7 @@ definitions:
       - "skills"
       - "skills"
       start_address:
+        street_hint: "street_hint"
         name: "name"
         lon: 0.8008281904610115
         location_id: "location_id"
@@ -1401,6 +1466,7 @@ definitions:
       latest_end: 2
       max_driving_time: 7
       end_address:
+        street_hint: "street_hint"
         name: "name"
         lon: 0.8008281904610115
         location_id: "location_id"
@@ -1442,7 +1508,14 @@ definitions:
         type: "number"
         format: "double"
         description: "latitude"
+      street_hint:
+        type: "string"
+        description: "Optional parameter. Specifies a hint for each address to better\
+          \ snap the coordinates (lon,lat) to road network. E.g. if there is an address\
+          \ or house with two or more neighboring streets you can control for which\
+          \ street the closest location is looked up."
     example:
+      street_hint: "street_hint"
       name: "name"
       lon: 0.8008281904610115
       location_id: "location_id"
@@ -1614,6 +1687,7 @@ definitions:
       - earliest: 8
         latest: 9
       address:
+        street_hint: "street_hint"
         name: "name"
         lon: 0.8008281904610115
         location_id: "location_id"
@@ -1689,6 +1763,7 @@ definitions:
         - earliest: 8
           latest: 9
         address:
+          street_hint: "street_hint"
           name: "name"
           lon: 0.8008281904610115
           location_id: "location_id"
@@ -1715,6 +1790,7 @@ definitions:
         - earliest: 8
           latest: 9
         address:
+          street_hint: "street_hint"
           name: "name"
           lon: 0.8008281904610115
           location_id: "location_id"
@@ -1753,6 +1829,7 @@ definitions:
       - earliest: 8
         latest: 9
       address:
+        street_hint: "street_hint"
         name: "name"
         lon: 0.8008281904610115
         location_id: "location_id"

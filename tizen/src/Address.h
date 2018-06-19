@@ -73,12 +73,20 @@ public:
 	/*! \brief Set latitude
 	 */
 	void setLat(double  lat);
+	/*! \brief Get Optional parameter. Specifies a hint for each address to better snap the coordinates (lon,lat) to road network. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up.
+	 */
+	std::string getStreetHint();
+
+	/*! \brief Set Optional parameter. Specifies a hint for each address to better snap the coordinates (lon,lat) to road network. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up.
+	 */
+	void setStreetHint(std::string  street_hint);
 
 private:
 	std::string location_id;
 	std::string name;
 	double lon;
 	double lat;
+	std::string street_hint;
 	void __init();
 	void __cleanup();
 

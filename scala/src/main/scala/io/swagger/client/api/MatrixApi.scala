@@ -90,11 +90,14 @@ class MatrixApi(
    * @param fromPoint The starting points for the routes. E.g. if you want to calculate the three routes A-&amp;gt;1, A-&amp;gt;2, A-&amp;gt;3 then you have one from_point parameter and three to_point parameters. Is a string with the format latitude,longitude. (optional)
    * @param toPoint The destination points for the routes. Is a string with the format latitude,longitude. (optional)
    * @param outArray Specifies which arrays should be included in the response. Specify one or more of the following options &#39;weights&#39;, &#39;times&#39;, &#39;distances&#39;. To specify more than one array use e.g. out_array&#x3D;times&amp;out_array&#x3D;distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API. (optional)
+   * @param pointHint Optional parameter. Specifies a hint for each &#x60;point&#x60; parameter to prefer a certain street for the closest location lookup. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up. (optional)
+   * @param toPointHint For the to_point parameter. See point_hint (optional)
+   * @param fromPointHint For the from_point parameter. See point_hint (optional)
    * @param vehicle The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc (optional, default to car)
    * @return MatrixResponse
    */
-  def matrixGet(key: String, point: Option[List[String]] = None, fromPoint: Option[List[String]] = None, toPoint: Option[List[String]] = None, outArray: Option[List[String]] = None, vehicle: Option[String] = Option("car")): Option[MatrixResponse] = {
-    val await = Try(Await.result(matrixGetAsync(key, point, fromPoint, toPoint, outArray, vehicle), Duration.Inf))
+  def matrixGet(key: String, point: Option[List[String]] = None, fromPoint: Option[List[String]] = None, toPoint: Option[List[String]] = None, outArray: Option[List[String]] = None, pointHint: Option[List[String]] = None, toPointHint: Option[List[String]] = None, fromPointHint: Option[List[String]] = None, vehicle: Option[String] = Option("car")): Option[MatrixResponse] = {
+    val await = Try(Await.result(matrixGetAsync(key, point, fromPoint, toPoint, outArray, pointHint, toPointHint, fromPointHint, vehicle), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -110,11 +113,14 @@ class MatrixApi(
    * @param fromPoint The starting points for the routes. E.g. if you want to calculate the three routes A-&amp;gt;1, A-&amp;gt;2, A-&amp;gt;3 then you have one from_point parameter and three to_point parameters. Is a string with the format latitude,longitude. (optional)
    * @param toPoint The destination points for the routes. Is a string with the format latitude,longitude. (optional)
    * @param outArray Specifies which arrays should be included in the response. Specify one or more of the following options &#39;weights&#39;, &#39;times&#39;, &#39;distances&#39;. To specify more than one array use e.g. out_array&#x3D;times&amp;out_array&#x3D;distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API. (optional)
+   * @param pointHint Optional parameter. Specifies a hint for each &#x60;point&#x60; parameter to prefer a certain street for the closest location lookup. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up. (optional)
+   * @param toPointHint For the to_point parameter. See point_hint (optional)
+   * @param fromPointHint For the from_point parameter. See point_hint (optional)
    * @param vehicle The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc (optional, default to car)
    * @return Future(MatrixResponse)
    */
-  def matrixGetAsync(key: String, point: Option[List[String]] = None, fromPoint: Option[List[String]] = None, toPoint: Option[List[String]] = None, outArray: Option[List[String]] = None, vehicle: Option[String] = Option("car")): Future[MatrixResponse] = {
-      helper.matrixGet(key, point, fromPoint, toPoint, outArray, vehicle)
+  def matrixGetAsync(key: String, point: Option[List[String]] = None, fromPoint: Option[List[String]] = None, toPoint: Option[List[String]] = None, outArray: Option[List[String]] = None, pointHint: Option[List[String]] = None, toPointHint: Option[List[String]] = None, fromPointHint: Option[List[String]] = None, vehicle: Option[String] = Option("car")): Future[MatrixResponse] = {
+      helper.matrixGet(key, point, fromPoint, toPoint, outArray, pointHint, toPointHint, fromPointHint, vehicle)
   }
 
   /**
@@ -154,6 +160,9 @@ class MatrixApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exten
     fromPoint: Option[List[String]] = None,
     toPoint: Option[List[String]] = None,
     outArray: Option[List[String]] = None,
+    pointHint: Option[List[String]] = None,
+    toPointHint: Option[List[String]] = None,
+    fromPointHint: Option[List[String]] = None,
     vehicle: Option[String] = Option("car")
     )(implicit reader: ClientResponseReader[MatrixResponse]): Future[MatrixResponse] = {
     // create path and map variables
@@ -179,6 +188,18 @@ class MatrixApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exten
     }
     outArray match {
       case Some(param) => queryParams += "out_array" -> param.toString
+      case _ => queryParams
+    }
+    pointHint match {
+      case Some(param) => queryParams += "point_hint" -> param.toString
+      case _ => queryParams
+    }
+    toPointHint match {
+      case Some(param) => queryParams += "to_point_hint" -> param.toString
+      case _ => queryParams
+    }
+    fromPointHint match {
+      case Some(param) => queryParams += "from_point_hint" -> param.toString
       case _ => queryParams
     }
     vehicle match {

@@ -49,8 +49,11 @@ public class MatrixApiTest {
         List<String> fromPoint = null;
         List<String> toPoint = null;
         List<String> outArray = null;
+        List<String> pointHint = null;
+        List<String> toPointHint = null;
+        List<String> fromPointHint = null;
         String vehicle = null;
-        MatrixResponse response = api.matrixGet(key, point, fromPoint, toPoint, outArray, vehicle);
+        MatrixResponse response = api.matrixGet(key, point, fromPoint, toPoint, outArray, pointHint, toPointHint, fromPointHint, vehicle);
 
         // TODO: test validations
     }

@@ -92,15 +92,18 @@ class MatrixApi
      * @param  string[] $from_point The starting points for the routes. E.g. if you want to calculate the three routes A-&amp;gt;1, A-&amp;gt;2, A-&amp;gt;3 then you have one from_point parameter and three to_point parameters. Is a string with the format latitude,longitude. (optional)
      * @param  string[] $to_point The destination points for the routes. Is a string with the format latitude,longitude. (optional)
      * @param  string[] $out_array Specifies which arrays should be included in the response. Specify one or more of the following options &#39;weights&#39;, &#39;times&#39;, &#39;distances&#39;. To specify more than one array use e.g. out_array&#x3D;times&amp;out_array&#x3D;distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API. (optional)
+     * @param  string[] $point_hint Optional parameter. Specifies a hint for each &#x60;point&#x60; parameter to prefer a certain street for the closest location lookup. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up. (optional)
+     * @param  string[] $to_point_hint For the to_point parameter. See point_hint (optional)
+     * @param  string[] $from_point_hint For the from_point parameter. See point_hint (optional)
      * @param  string $vehicle The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc (optional, default to car)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\MatrixResponse
      */
-    public function matrixGet($key, $point = null, $from_point = null, $to_point = null, $out_array = null, $vehicle = 'car')
+    public function matrixGet($key, $point = null, $from_point = null, $to_point = null, $out_array = null, $point_hint = null, $to_point_hint = null, $from_point_hint = null, $vehicle = 'car')
     {
-        list($response) = $this->matrixGetWithHttpInfo($key, $point, $from_point, $to_point, $out_array, $vehicle);
+        list($response) = $this->matrixGetWithHttpInfo($key, $point, $from_point, $to_point, $out_array, $point_hint, $to_point_hint, $from_point_hint, $vehicle);
         return $response;
     }
 
@@ -114,16 +117,19 @@ class MatrixApi
      * @param  string[] $from_point The starting points for the routes. E.g. if you want to calculate the three routes A-&amp;gt;1, A-&amp;gt;2, A-&amp;gt;3 then you have one from_point parameter and three to_point parameters. Is a string with the format latitude,longitude. (optional)
      * @param  string[] $to_point The destination points for the routes. Is a string with the format latitude,longitude. (optional)
      * @param  string[] $out_array Specifies which arrays should be included in the response. Specify one or more of the following options &#39;weights&#39;, &#39;times&#39;, &#39;distances&#39;. To specify more than one array use e.g. out_array&#x3D;times&amp;out_array&#x3D;distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API. (optional)
+     * @param  string[] $point_hint Optional parameter. Specifies a hint for each &#x60;point&#x60; parameter to prefer a certain street for the closest location lookup. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up. (optional)
+     * @param  string[] $to_point_hint For the to_point parameter. See point_hint (optional)
+     * @param  string[] $from_point_hint For the from_point parameter. See point_hint (optional)
      * @param  string $vehicle The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc (optional, default to car)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\MatrixResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function matrixGetWithHttpInfo($key, $point = null, $from_point = null, $to_point = null, $out_array = null, $vehicle = 'car')
+    public function matrixGetWithHttpInfo($key, $point = null, $from_point = null, $to_point = null, $out_array = null, $point_hint = null, $to_point_hint = null, $from_point_hint = null, $vehicle = 'car')
     {
         $returnType = '\Swagger\Client\Model\MatrixResponse';
-        $request = $this->matrixGetRequest($key, $point, $from_point, $to_point, $out_array, $vehicle);
+        $request = $this->matrixGetRequest($key, $point, $from_point, $to_point, $out_array, $point_hint, $to_point_hint, $from_point_hint, $vehicle);
 
         try {
             $options = $this->createHttpClientOption();
@@ -202,14 +208,17 @@ class MatrixApi
      * @param  string[] $from_point The starting points for the routes. E.g. if you want to calculate the three routes A-&amp;gt;1, A-&amp;gt;2, A-&amp;gt;3 then you have one from_point parameter and three to_point parameters. Is a string with the format latitude,longitude. (optional)
      * @param  string[] $to_point The destination points for the routes. Is a string with the format latitude,longitude. (optional)
      * @param  string[] $out_array Specifies which arrays should be included in the response. Specify one or more of the following options &#39;weights&#39;, &#39;times&#39;, &#39;distances&#39;. To specify more than one array use e.g. out_array&#x3D;times&amp;out_array&#x3D;distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API. (optional)
+     * @param  string[] $point_hint Optional parameter. Specifies a hint for each &#x60;point&#x60; parameter to prefer a certain street for the closest location lookup. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up. (optional)
+     * @param  string[] $to_point_hint For the to_point parameter. See point_hint (optional)
+     * @param  string[] $from_point_hint For the from_point parameter. See point_hint (optional)
      * @param  string $vehicle The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc (optional, default to car)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function matrixGetAsync($key, $point = null, $from_point = null, $to_point = null, $out_array = null, $vehicle = 'car')
+    public function matrixGetAsync($key, $point = null, $from_point = null, $to_point = null, $out_array = null, $point_hint = null, $to_point_hint = null, $from_point_hint = null, $vehicle = 'car')
     {
-        return $this->matrixGetAsyncWithHttpInfo($key, $point, $from_point, $to_point, $out_array, $vehicle)
+        return $this->matrixGetAsyncWithHttpInfo($key, $point, $from_point, $to_point, $out_array, $point_hint, $to_point_hint, $from_point_hint, $vehicle)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -227,15 +236,18 @@ class MatrixApi
      * @param  string[] $from_point The starting points for the routes. E.g. if you want to calculate the three routes A-&amp;gt;1, A-&amp;gt;2, A-&amp;gt;3 then you have one from_point parameter and three to_point parameters. Is a string with the format latitude,longitude. (optional)
      * @param  string[] $to_point The destination points for the routes. Is a string with the format latitude,longitude. (optional)
      * @param  string[] $out_array Specifies which arrays should be included in the response. Specify one or more of the following options &#39;weights&#39;, &#39;times&#39;, &#39;distances&#39;. To specify more than one array use e.g. out_array&#x3D;times&amp;out_array&#x3D;distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API. (optional)
+     * @param  string[] $point_hint Optional parameter. Specifies a hint for each &#x60;point&#x60; parameter to prefer a certain street for the closest location lookup. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up. (optional)
+     * @param  string[] $to_point_hint For the to_point parameter. See point_hint (optional)
+     * @param  string[] $from_point_hint For the from_point parameter. See point_hint (optional)
      * @param  string $vehicle The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc (optional, default to car)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function matrixGetAsyncWithHttpInfo($key, $point = null, $from_point = null, $to_point = null, $out_array = null, $vehicle = 'car')
+    public function matrixGetAsyncWithHttpInfo($key, $point = null, $from_point = null, $to_point = null, $out_array = null, $point_hint = null, $to_point_hint = null, $from_point_hint = null, $vehicle = 'car')
     {
         $returnType = '\Swagger\Client\Model\MatrixResponse';
-        $request = $this->matrixGetRequest($key, $point, $from_point, $to_point, $out_array, $vehicle);
+        $request = $this->matrixGetRequest($key, $point, $from_point, $to_point, $out_array, $point_hint, $to_point_hint, $from_point_hint, $vehicle);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -282,12 +294,15 @@ class MatrixApi
      * @param  string[] $from_point The starting points for the routes. E.g. if you want to calculate the three routes A-&amp;gt;1, A-&amp;gt;2, A-&amp;gt;3 then you have one from_point parameter and three to_point parameters. Is a string with the format latitude,longitude. (optional)
      * @param  string[] $to_point The destination points for the routes. Is a string with the format latitude,longitude. (optional)
      * @param  string[] $out_array Specifies which arrays should be included in the response. Specify one or more of the following options &#39;weights&#39;, &#39;times&#39;, &#39;distances&#39;. To specify more than one array use e.g. out_array&#x3D;times&amp;out_array&#x3D;distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API. (optional)
+     * @param  string[] $point_hint Optional parameter. Specifies a hint for each &#x60;point&#x60; parameter to prefer a certain street for the closest location lookup. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up. (optional)
+     * @param  string[] $to_point_hint For the to_point parameter. See point_hint (optional)
+     * @param  string[] $from_point_hint For the from_point parameter. See point_hint (optional)
      * @param  string $vehicle The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc (optional, default to car)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function matrixGetRequest($key, $point = null, $from_point = null, $to_point = null, $out_array = null, $vehicle = 'car')
+    protected function matrixGetRequest($key, $point = null, $from_point = null, $to_point = null, $out_array = null, $point_hint = null, $to_point_hint = null, $from_point_hint = null, $vehicle = 'car')
     {
         // verify the required parameter 'key' is set
         if ($key === null) {
@@ -330,6 +345,27 @@ class MatrixApi
         }
         if ($out_array !== null) {
             $queryParams['out_array'] = ObjectSerializer::toQueryValue($out_array);
+        }
+        // query params
+        if (is_array($point_hint)) {
+            $point_hint = ObjectSerializer::serializeCollection($point_hint, 'multi', true);
+        }
+        if ($point_hint !== null) {
+            $queryParams['point_hint'] = ObjectSerializer::toQueryValue($point_hint);
+        }
+        // query params
+        if (is_array($to_point_hint)) {
+            $to_point_hint = ObjectSerializer::serializeCollection($to_point_hint, 'multi', true);
+        }
+        if ($to_point_hint !== null) {
+            $queryParams['to_point_hint'] = ObjectSerializer::toQueryValue($to_point_hint);
+        }
+        // query params
+        if (is_array($from_point_hint)) {
+            $from_point_hint = ObjectSerializer::serializeCollection($from_point_hint, 'multi', true);
+        }
+        if ($from_point_hint !== null) {
+            $queryParams['from_point_hint'] = ObjectSerializer::toQueryValue($from_point_hint);
         }
         // query params
         if ($vehicle !== null) {

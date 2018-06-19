@@ -60,7 +60,8 @@ class Address implements ModelInterface, ArrayAccess
         'location_id' => 'string',
         'name' => 'string',
         'lon' => 'double',
-        'lat' => 'double'
+        'lat' => 'double',
+        'street_hint' => 'string'
     ];
 
     /**
@@ -72,7 +73,8 @@ class Address implements ModelInterface, ArrayAccess
         'location_id' => null,
         'name' => null,
         'lon' => 'double',
-        'lat' => 'double'
+        'lat' => 'double',
+        'street_hint' => null
     ];
 
     /**
@@ -105,7 +107,8 @@ class Address implements ModelInterface, ArrayAccess
         'location_id' => 'location_id',
         'name' => 'name',
         'lon' => 'lon',
-        'lat' => 'lat'
+        'lat' => 'lat',
+        'street_hint' => 'street_hint'
     ];
 
     /**
@@ -117,7 +120,8 @@ class Address implements ModelInterface, ArrayAccess
         'location_id' => 'setLocationId',
         'name' => 'setName',
         'lon' => 'setLon',
-        'lat' => 'setLat'
+        'lat' => 'setLat',
+        'street_hint' => 'setStreetHint'
     ];
 
     /**
@@ -129,7 +133,8 @@ class Address implements ModelInterface, ArrayAccess
         'location_id' => 'getLocationId',
         'name' => 'getName',
         'lon' => 'getLon',
-        'lat' => 'getLat'
+        'lat' => 'getLat',
+        'street_hint' => 'getStreetHint'
     ];
 
     /**
@@ -196,6 +201,7 @@ class Address implements ModelInterface, ArrayAccess
         $this->container['name'] = isset($data['name']) ? $data['name'] : null;
         $this->container['lon'] = isset($data['lon']) ? $data['lon'] : null;
         $this->container['lat'] = isset($data['lat']) ? $data['lat'] : null;
+        $this->container['street_hint'] = isset($data['street_hint']) ? $data['street_hint'] : null;
     }
 
     /**
@@ -315,6 +321,30 @@ class Address implements ModelInterface, ArrayAccess
     public function setLat($lat)
     {
         $this->container['lat'] = $lat;
+
+        return $this;
+    }
+
+    /**
+     * Gets street_hint
+     *
+     * @return string
+     */
+    public function getStreetHint()
+    {
+        return $this->container['street_hint'];
+    }
+
+    /**
+     * Sets street_hint
+     *
+     * @param string $street_hint Optional parameter. Specifies a hint for each address to better snap the coordinates (lon,lat) to road network. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up.
+     *
+     * @return $this
+     */
+    public function setStreetHint($street_hint)
+    {
+        $this->container['street_hint'] = $street_hint;
 
         return $this;
     }

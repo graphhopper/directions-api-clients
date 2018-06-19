@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 <a name="matrixget"></a>
 # **MatrixGet**
-> MatrixResponse MatrixGet (string key, List<string> point = null, List<string> fromPoint = null, List<string> toPoint = null, List<string> outArray = null, string vehicle = null)
+> MatrixResponse MatrixGet (string key, List<string> point = null, List<string> fromPoint = null, List<string> toPoint = null, List<string> outArray = null, List<string> pointHint = null, List<string> toPointHint = null, List<string> fromPointHint = null, string vehicle = null)
 
 Matrix API
 
@@ -36,12 +36,15 @@ namespace Example
             var fromPoint = new List<string>(); // List<string> | The starting points for the routes. E.g. if you want to calculate the three routes A-&gt;1, A-&gt;2, A-&gt;3 then you have one from_point parameter and three to_point parameters. Is a string with the format latitude,longitude. (optional) 
             var toPoint = new List<string>(); // List<string> | The destination points for the routes. Is a string with the format latitude,longitude. (optional) 
             var outArray = new List<string>(); // List<string> | Specifies which arrays should be included in the response. Specify one or more of the following options 'weights', 'times', 'distances'. To specify more than one array use e.g. out_array=times&out_array=distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API. (optional) 
+            var pointHint = new List<string>(); // List<string> | Optional parameter. Specifies a hint for each `point` parameter to prefer a certain street for the closest location lookup. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up. (optional) 
+            var toPointHint = new List<string>(); // List<string> | For the to_point parameter. See point_hint (optional) 
+            var fromPointHint = new List<string>(); // List<string> | For the from_point parameter. See point_hint (optional) 
             var vehicle = vehicle_example;  // string | The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc (optional)  (default to car)
 
             try
             {
                 // Matrix API
-                MatrixResponse result = apiInstance.MatrixGet(key, point, fromPoint, toPoint, outArray, vehicle);
+                MatrixResponse result = apiInstance.MatrixGet(key, point, fromPoint, toPoint, outArray, pointHint, toPointHint, fromPointHint, vehicle);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -62,6 +65,9 @@ Name | Type | Description  | Notes
  **fromPoint** | [**List&lt;string&gt;**](string.md)| The starting points for the routes. E.g. if you want to calculate the three routes A-&amp;gt;1, A-&amp;gt;2, A-&amp;gt;3 then you have one from_point parameter and three to_point parameters. Is a string with the format latitude,longitude. | [optional] 
  **toPoint** | [**List&lt;string&gt;**](string.md)| The destination points for the routes. Is a string with the format latitude,longitude. | [optional] 
  **outArray** | [**List&lt;string&gt;**](string.md)| Specifies which arrays should be included in the response. Specify one or more of the following options &#39;weights&#39;, &#39;times&#39;, &#39;distances&#39;. To specify more than one array use e.g. out_array&#x3D;times&amp;out_array&#x3D;distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API. | [optional] 
+ **pointHint** | [**List&lt;string&gt;**](string.md)| Optional parameter. Specifies a hint for each &#x60;point&#x60; parameter to prefer a certain street for the closest location lookup. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up. | [optional] 
+ **toPointHint** | [**List&lt;string&gt;**](string.md)| For the to_point parameter. See point_hint | [optional] 
+ **fromPointHint** | [**List&lt;string&gt;**](string.md)| For the from_point parameter. See point_hint | [optional] 
  **vehicle** | **string**| The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc | [optional] [default to car]
 
 ### Return type

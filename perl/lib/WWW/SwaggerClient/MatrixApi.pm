@@ -58,6 +58,9 @@ sub new {
 # @param ARRAY[string] $from_point The starting points for the routes. E.g. if you want to calculate the three routes A-&amp;gt;1, A-&amp;gt;2, A-&amp;gt;3 then you have one from_point parameter and three to_point parameters. Is a string with the format latitude,longitude. (optional)
 # @param ARRAY[string] $to_point The destination points for the routes. Is a string with the format latitude,longitude. (optional)
 # @param ARRAY[string] $out_array Specifies which arrays should be included in the response. Specify one or more of the following options &#39;weights&#39;, &#39;times&#39;, &#39;distances&#39;. To specify more than one array use e.g. out_array&#x3D;times&amp;out_array&#x3D;distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API. (optional)
+# @param ARRAY[string] $point_hint Optional parameter. Specifies a hint for each &#x60;point&#x60; parameter to prefer a certain street for the closest location lookup. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up. (optional)
+# @param ARRAY[string] $to_point_hint For the to_point parameter. See point_hint (optional)
+# @param ARRAY[string] $from_point_hint For the from_point parameter. See point_hint (optional)
 # @param string $vehicle The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc (optional, default to car)
 {
     my $params = {
@@ -84,6 +87,21 @@ sub new {
     'out_array' => {
         data_type => 'ARRAY[string]',
         description => 'Specifies which arrays should be included in the response. Specify one or more of the following options &#39;weights&#39;, &#39;times&#39;, &#39;distances&#39;. To specify more than one array use e.g. out_array&#x3D;times&amp;out_array&#x3D;distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API.',
+        required => '0',
+    },
+    'point_hint' => {
+        data_type => 'ARRAY[string]',
+        description => 'Optional parameter. Specifies a hint for each &#x60;point&#x60; parameter to prefer a certain street for the closest location lookup. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up.',
+        required => '0',
+    },
+    'to_point_hint' => {
+        data_type => 'ARRAY[string]',
+        description => 'For the to_point parameter. See point_hint',
+        required => '0',
+    },
+    'from_point_hint' => {
+        data_type => 'ARRAY[string]',
+        description => 'For the from_point parameter. See point_hint',
         required => '0',
     },
     'vehicle' => {
@@ -141,6 +159,21 @@ sub matrix_get {
     # query params
     if ( exists $args{'out_array'}) {
         $query_params->{'out_array'} = $self->{api_client}->to_query_value($args{'out_array'});
+    }
+
+    # query params
+    if ( exists $args{'point_hint'}) {
+        $query_params->{'point_hint'} = $self->{api_client}->to_query_value($args{'point_hint'});
+    }
+
+    # query params
+    if ( exists $args{'to_point_hint'}) {
+        $query_params->{'to_point_hint'} = $self->{api_client}->to_query_value($args{'to_point_hint'});
+    }
+
+    # query params
+    if ( exists $args{'from_point_hint'}) {
+        $query_params->{'from_point_hint'} = $self->{api_client}->to_query_value($args{'from_point_hint'});
     }
 
     # query params

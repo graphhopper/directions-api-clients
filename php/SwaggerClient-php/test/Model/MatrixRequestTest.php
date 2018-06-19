@@ -105,6 +105,27 @@ class MatrixRequestTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test attribute "point_hints"
+     */
+    public function testPropertyPointHints()
+    {
+    }
+
+    /**
+     * Test attribute "from_point_hints"
+     */
+    public function testPropertyFromPointHints()
+    {
+    }
+
+    /**
+     * Test attribute "to_point_hints"
+     */
+    public function testPropertyToPointHints()
+    {
+    }
+
+    /**
      * Test attribute "vehicle"
      */
     public function testPropertyVehicle()

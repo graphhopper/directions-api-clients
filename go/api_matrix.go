@@ -34,6 +34,9 @@ The Matrix API is part of the GraphHopper Directions API and with this API you c
     @param "fromPoint" ([]string) The starting points for the routes. E.g. if you want to calculate the three routes A-&amp;gt;1, A-&amp;gt;2, A-&amp;gt;3 then you have one from_point parameter and three to_point parameters. Is a string with the format latitude,longitude.
     @param "toPoint" ([]string) The destination points for the routes. Is a string with the format latitude,longitude.
     @param "outArray" ([]string) Specifies which arrays should be included in the response. Specify one or more of the following options &#39;weights&#39;, &#39;times&#39;, &#39;distances&#39;. To specify more than one array use e.g. out_array&#x3D;times&amp;out_array&#x3D;distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API.
+    @param "pointHint" ([]string) Optional parameter. Specifies a hint for each &#x60;point&#x60; parameter to prefer a certain street for the closest location lookup. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up.
+    @param "toPointHint" ([]string) For the to_point parameter. See point_hint
+    @param "fromPointHint" ([]string) For the from_point parameter. See point_hint
     @param "vehicle" (string) The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc
 @return MatrixResponse*/
 func (a *MatrixApiService) MatrixGet(ctx context.Context, key string, localVarOptionals map[string]interface{}) (MatrixResponse, *http.Response, error) {
@@ -66,6 +69,15 @@ func (a *MatrixApiService) MatrixGet(ctx context.Context, key string, localVarOp
 	}
 	if localVarTempParam, localVarOk := localVarOptionals["outArray"].([]string); localVarOk {
 		localVarQueryParams.Add("out_array", parameterToString(localVarTempParam, "multi"))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["pointHint"].([]string); localVarOk {
+		localVarQueryParams.Add("point_hint", parameterToString(localVarTempParam, "multi"))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["toPointHint"].([]string); localVarOk {
+		localVarQueryParams.Add("to_point_hint", parameterToString(localVarTempParam, "multi"))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["fromPointHint"].([]string); localVarOk {
+		localVarQueryParams.Add("from_point_hint", parameterToString(localVarTempParam, "multi"))
 	}
 	if localVarTempParam, localVarOk := localVarOptionals["vehicle"].(string); localVarOk {
 		localVarQueryParams.Add("vehicle", parameterToString(localVarTempParam, ""))

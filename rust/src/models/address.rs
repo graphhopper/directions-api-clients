@@ -25,7 +25,10 @@ pub struct Address {
   lon: Option<f64>,
   /// latitude
   #[serde(rename = "lat")]
-  lat: Option<f64>
+  lat: Option<f64>,
+  /// Optional parameter. Specifies a hint for each address to better snap the coordinates (lon,lat) to road network. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up.
+  #[serde(rename = "street_hint")]
+  street_hint: Option<String>
 }
 
 impl Address {
@@ -34,7 +37,8 @@ impl Address {
       location_id: None,
       name: None,
       lon: None,
-      lat: None
+      lat: None,
+      street_hint: None
     }
   }
 
@@ -104,6 +108,23 @@ impl Address {
 
   pub fn reset_lat(&mut self) {
     self.lat = None;
+  }
+
+  pub fn set_street_hint(&mut self, street_hint: String) {
+    self.street_hint = Some(street_hint);
+  }
+
+  pub fn with_street_hint(mut self, street_hint: String) -> Address {
+    self.street_hint = Some(street_hint);
+    self
+  }
+
+  pub fn street_hint(&self) -> Option<&String> {
+    self.street_hint.as_ref()
+  }
+
+  pub fn reset_street_hint(&mut self) {
+    self.street_hint = None;
   }
 
 }
