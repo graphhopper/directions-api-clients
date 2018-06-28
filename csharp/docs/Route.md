@@ -1,4 +1,4 @@
-# IO.Swagger.Model.Route
+# Org.OpenAPITools.Model.Route
 ## Properties
 
 Name | Type | Description | Notes

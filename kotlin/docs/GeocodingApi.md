@@ -18,8 +18,8 @@ This endpoint provides forward and reverse geocoding. For more details, review t
 ### Example
 ```kotlin
 // Import classes:
-//import io.swagger.client.infrastructure.*
-//import io.swagger.client.models.*
+//import org.openapitools.client.infrastructure.*
+//import org.openapitools.client.models.*
 
 val apiInstance = GeocodingApi()
 val key : kotlin.String = key_example // kotlin.String | Get your key at graphhopper.com

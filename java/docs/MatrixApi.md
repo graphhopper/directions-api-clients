@@ -32,7 +32,7 @@ List<String> pointHint = Arrays.asList("pointHint_example"); // List<String> | O
 List<String> fromPointHint = Arrays.asList("fromPointHint_example"); // List<String> | For the from_point parameter. See point_hint
 List<String> toPointHint = Arrays.asList("toPointHint_example"); // List<String> | For the to_point parameter. See point_hint
 List<String> outArray = Arrays.asList("outArray_example"); // List<String> | Specifies which arrays should be included in the response. Specify one or more of the following options 'weights', 'times', 'distances'. To specify more than one array use e.g. out_array=times&out_array=distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API.
-String vehicle = "car"; // String | The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc
+String vehicle = "\"car\""; // String | The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc
 try {
     MatrixResponse result = apiInstance.matrixGet(key, point, fromPoint, toPoint, pointHint, fromPointHint, toPointHint, outArray, vehicle);
     System.out.println(result);
@@ -54,7 +54,7 @@ Name | Type | Description  | Notes
  **fromPointHint** | [**List&lt;String&gt;**](String.md)| For the from_point parameter. See point_hint | [optional]
  **toPointHint** | [**List&lt;String&gt;**](String.md)| For the to_point parameter. See point_hint | [optional]
  **outArray** | [**List&lt;String&gt;**](String.md)| Specifies which arrays should be included in the response. Specify one or more of the following options &#39;weights&#39;, &#39;times&#39;, &#39;distances&#39;. To specify more than one array use e.g. out_array&#x3D;times&amp;out_array&#x3D;distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API. | [optional]
- **vehicle** | **String**| The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc | [optional] [default to car]
+ **vehicle** | **String**| The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc | [optional] [default to &quot;car&quot;]
 
 ### Return type
 
@@ -71,7 +71,7 @@ No authorization required
 
 <a name="matrixPost"></a>
 # **matrixPost**
-> MatrixResponse matrixPost(key, body)
+> MatrixResponse matrixPost(key, matrixRequest)
 
 Matrix API Post
 
@@ -86,9 +86,9 @@ The GET request has an URL length limitation, which hurts for many locations per
 
 MatrixApi apiInstance = new MatrixApi();
 String key = "key_example"; // String | Get your key at graphhopper.com
-MatrixRequest body = new MatrixRequest(); // MatrixRequest | 
+MatrixRequest matrixRequest = new MatrixRequest(); // MatrixRequest | 
 try {
-    MatrixResponse result = apiInstance.matrixPost(key, body);
+    MatrixResponse result = apiInstance.matrixPost(key, matrixRequest);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling MatrixApi#matrixPost");
@@ -101,7 +101,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **key** | **String**| Get your key at graphhopper.com |
- **body** | [**MatrixRequest**](MatrixRequest.md)|  | [optional]
+ **matrixRequest** | [**MatrixRequest**](MatrixRequest.md)|  | [optional]
 
 ### Return type
 

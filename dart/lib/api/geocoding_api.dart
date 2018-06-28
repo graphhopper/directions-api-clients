@@ -1,4 +1,4 @@
-part of swagger.api;
+part of openapi.api;
 
 
 
@@ -44,7 +44,7 @@ class GeocodingApi {
       queryParams.addAll(_convertParametersForCollectionFormat("", "provider", provider));
     }
       queryParams.addAll(_convertParametersForCollectionFormat("", "key", key));
-    
+
     List<String> contentTypes = [];
 
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
@@ -53,12 +53,11 @@ class GeocodingApi {
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
       MultipartRequest mp = new MultipartRequest(null, null);
-      
       if(hasFields)
         postBody = mp;
     }
     else {
-          }
+    }
 
     var response = await apiClient.invokeAPI(path,
                                              'GET',
@@ -72,7 +71,7 @@ class GeocodingApi {
     if(response.statusCode >= 400) {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
-      return apiClient.deserialize(response.body, 'GeocodingResponse') as GeocodingResponse ;
+      return apiClient.deserialize(response.body, 'GeocodingResponse') as GeocodingResponse;
     } else {
       return null;
     }

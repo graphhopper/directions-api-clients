@@ -1,4 +1,4 @@
-# IO.Swagger.Model.RouteResponsePath
+# Org.OpenAPITools.Model.RouteResponsePath
 ## Properties
 
 Name | Type | Description | Notes

@@ -1,8 +1,8 @@
-# WWW::SwaggerClient::MatrixApi
+# WWW::OpenAPIClient::MatrixApi
 
 ## Load the API package
 ```perl
-use WWW::SwaggerClient::Object::MatrixApi;
+use WWW::OpenAPIClient::Object::MatrixApi;
 ```
 
 All URIs are relative to *https://graphhopper.com/api/1*
@@ -23,19 +23,19 @@ The Matrix API is part of the GraphHopper Directions API and with this API you c
 ### Example 
 ```perl
 use Data::Dumper;
-use WWW::SwaggerClient::MatrixApi;
-my $api_instance = WWW::SwaggerClient::MatrixApi->new(
+use WWW::OpenAPIClient::MatrixApi;
+my $api_instance = WWW::OpenAPIClient::MatrixApi->new(
 );
 
-my $key = 'key_example'; # string | Get your key at graphhopper.com
-my $point = []; # ARRAY[string] | Specifiy multiple points for which the weight-, route-, time- or distance-matrix should be calculated. In this case the starts are identical to the destinations. If there are N points, then NxN entries will be calculated. The order of the point parameter is important. Specify at least three points. Cannot be used together with from_point or to_point. Is a string with the format latitude,longitude.
-my $from_point = []; # ARRAY[string] | The starting points for the routes. E.g. if you want to calculate the three routes A-&gt;1, A-&gt;2, A-&gt;3 then you have one from_point parameter and three to_point parameters. Is a string with the format latitude,longitude.
-my $to_point = []; # ARRAY[string] | The destination points for the routes. Is a string with the format latitude,longitude.
-my $point_hint = []; # ARRAY[string] | Optional parameter. Specifies a hint for each `point` parameter to prefer a certain street for the closest location lookup. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up.
-my $from_point_hint = []; # ARRAY[string] | For the from_point parameter. See point_hint
-my $to_point_hint = []; # ARRAY[string] | For the to_point parameter. See point_hint
-my $out_array = []; # ARRAY[string] | Specifies which arrays should be included in the response. Specify one or more of the following options 'weights', 'times', 'distances'. To specify more than one array use e.g. out_array=times&out_array=distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API.
-my $vehicle = 'vehicle_example'; # string | The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc
+my $key = "key_example"; # string | Get your key at graphhopper.com
+my $point = [("inner_example")]; # ARRAY[string] | Specifiy multiple points for which the weight-, route-, time- or distance-matrix should be calculated. In this case the starts are identical to the destinations. If there are N points, then NxN entries will be calculated. The order of the point parameter is important. Specify at least three points. Cannot be used together with from_point or to_point. Is a string with the format latitude,longitude.
+my $from_point = [("inner_example")]; # ARRAY[string] | The starting points for the routes. E.g. if you want to calculate the three routes A-&gt;1, A-&gt;2, A-&gt;3 then you have one from_point parameter and three to_point parameters. Is a string with the format latitude,longitude.
+my $to_point = [("inner_example")]; # ARRAY[string] | The destination points for the routes. Is a string with the format latitude,longitude.
+my $point_hint = [("inner_example")]; # ARRAY[string] | Optional parameter. Specifies a hint for each `point` parameter to prefer a certain street for the closest location lookup. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up.
+my $from_point_hint = [("inner_example")]; # ARRAY[string] | For the from_point parameter. See point_hint
+my $to_point_hint = [("inner_example")]; # ARRAY[string] | For the to_point parameter. See point_hint
+my $out_array = [("inner_example")]; # ARRAY[string] | Specifies which arrays should be included in the response. Specify one or more of the following options 'weights', 'times', 'distances'. To specify more than one array use e.g. out_array=times&out_array=distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API.
+my $vehicle = 'car'; # string | The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc
 
 eval { 
     my $result = $api_instance->matrix_get(key => $key, point => $point, from_point => $from_point, to_point => $to_point, point_hint => $point_hint, from_point_hint => $from_point_hint, to_point_hint => $to_point_hint, out_array => $out_array, vehicle => $vehicle);
@@ -58,7 +58,7 @@ Name | Type | Description  | Notes
  **from_point_hint** | [**ARRAY[string]**](string.md)| For the from_point parameter. See point_hint | [optional] 
  **to_point_hint** | [**ARRAY[string]**](string.md)| For the to_point parameter. See point_hint | [optional] 
  **out_array** | [**ARRAY[string]**](string.md)| Specifies which arrays should be included in the response. Specify one or more of the following options &#39;weights&#39;, &#39;times&#39;, &#39;distances&#39;. To specify more than one array use e.g. out_array&#x3D;times&amp;out_array&#x3D;distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API. | [optional] 
- **vehicle** | **string**| The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc | [optional] [default to car]
+ **vehicle** | **string**| The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc | [optional] [default to &#39;car&#39;]
 
 ### Return type
 
@@ -76,7 +76,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **matrix_post**
-> MatrixResponse matrix_post(key => $key, body => $body)
+> MatrixResponse matrix_post(key => $key, matrix_request => $matrix_request)
 
 Matrix API Post
 
@@ -85,15 +85,15 @@ The GET request has an URL length limitation, which hurts for many locations per
 ### Example 
 ```perl
 use Data::Dumper;
-use WWW::SwaggerClient::MatrixApi;
-my $api_instance = WWW::SwaggerClient::MatrixApi->new(
+use WWW::OpenAPIClient::MatrixApi;
+my $api_instance = WWW::OpenAPIClient::MatrixApi->new(
 );
 
-my $key = 'key_example'; # string | Get your key at graphhopper.com
-my $body = WWW::SwaggerClient::Object::MatrixRequest->new(); # MatrixRequest | 
+my $key = "key_example"; # string | Get your key at graphhopper.com
+my $matrix_request = WWW::OpenAPIClient::Object::MatrixRequest->new(); # MatrixRequest | 
 
 eval { 
-    my $result = $api_instance->matrix_post(key => $key, body => $body);
+    my $result = $api_instance->matrix_post(key => $key, matrix_request => $matrix_request);
     print Dumper($result);
 };
 if ($@) {
@@ -106,7 +106,7 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **key** | **string**| Get your key at graphhopper.com | 
- **body** | [**MatrixRequest**](MatrixRequest.md)|  | [optional] 
+ **matrix_request** | [**MatrixRequest**](MatrixRequest.md)|  | [optional] 
 
 ### Return type
 

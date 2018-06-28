@@ -1,4 +1,4 @@
-# IO.Swagger.Model.Stop
+# Org.OpenAPITools.Model.Stop
 ## Properties
 
 Name | Type | Description | Notes

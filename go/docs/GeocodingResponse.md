@@ -3,8 +3,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Hits** | [**[]GeocodingLocation**](GeocodingLocation.md) |  | [optional] [default to null]
-**Locale** | **string** |  | [optional] [default to null]
+**Hits** | [**[]GeocodingLocation**](GeocodingLocation.md) |  | [optional] 
+**Locale** | **string** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

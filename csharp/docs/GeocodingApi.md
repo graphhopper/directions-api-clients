@@ -1,4 +1,4 @@
-# IO.Swagger.Api.GeocodingApi
+# Org.OpenAPITools.Api.GeocodingApi
 
 All URIs are relative to *https://graphhopper.com/api/1*
 
@@ -19,9 +19,9 @@ This endpoint provides forward and reverse geocoding. For more details, review t
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using Org.OpenAPITools.Api;
+using Org.OpenAPITools.Client;
+using Org.OpenAPITools.Model;
 
 namespace Example
 {

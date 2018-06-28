@@ -1,8 +1,8 @@
-# WWW::SwaggerClient::Object::GeocodingPoint
+# WWW::OpenAPIClient::Object::GeocodingPoint
 
 ## Load the model package
 ```perl
-use WWW::SwaggerClient::Object::GeocodingPoint;
+use WWW::OpenAPIClient::Object::GeocodingPoint;
 ```
 
 ## Properties

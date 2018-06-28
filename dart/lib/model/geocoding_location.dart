@@ -1,56 +1,76 @@
-part of swagger.api;
+part of openapi.api;
 
-@Entity()
 class GeocodingLocation {
   
-  @Property(name: 'point')
   GeocodingPoint point = null;
-  
-/* OSM Id */
-  @Property(name: 'osm_id')
+  /* OSM Id */
   String osmId = null;
-  
-/* N = node, R = relation, W = way */
-  @Property(name: 'osm_type')
+  /* N = node, R = relation, W = way */
   String osmType = null;
-  
-/* The osm key of the result like `place` or `amenity` */
-  @Property(name: 'osm_key')
+  /* The osm key of the result like `place` or `amenity` */
   String osmKey = null;
   
-
-  @Property(name: 'name')
   String name = null;
   
-
-  @Property(name: 'country')
   String country = null;
   
-
-  @Property(name: 'city')
   String city = null;
   
-
-  @Property(name: 'state')
   String state = null;
   
-
-  @Property(name: 'street')
   String street = null;
   
-
-  @Property(name: 'housenumber')
   String housenumber = null;
   
-
-  @Property(name: 'postcode')
   String postcode = null;
-  
   GeocodingLocation();
 
   @override
-  String toString()  {
+  String toString() {
     return 'GeocodingLocation[point=$point, osmId=$osmId, osmType=$osmType, osmKey=$osmKey, name=$name, country=$country, city=$city, state=$state, street=$street, housenumber=$housenumber, postcode=$postcode, ]';
+  }
+
+  GeocodingLocation.fromJson(Map<String, dynamic> json) {
+    if (json == null) return;
+    point = new GeocodingPoint.fromJson(json['point']);
+    osmId = json['osmId'];
+    osmType = json['osmType'];
+    osmKey = json['osmKey'];
+    name = json['name'];
+    country = json['country'];
+    city = json['city'];
+    state = json['state'];
+    street = json['street'];
+    housenumber = json['housenumber'];
+    postcode = json['postcode'];
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'point': point,
+      'osmId': osmId,
+      'osmType': osmType,
+      'osmKey': osmKey,
+      'name': name,
+      'country': country,
+      'city': city,
+      'state': state,
+      'street': street,
+      'housenumber': housenumber,
+      'postcode': postcode
+    };
+  }
+
+  static List<GeocodingLocation> listFromJson(List<dynamic> json) {
+    return json == null ? new List<GeocodingLocation>() : json.map((value) => new GeocodingLocation.fromJson(value)).toList();
+  }
+
+  static Map<String, GeocodingLocation> mapFromJson(Map<String, Map<String, dynamic>> json) {
+    var map = new Map<String, GeocodingLocation>();
+    if (json != null && json.length > 0) {
+      json.forEach((String key, Map<String, dynamic> value) => map[key] = new GeocodingLocation.fromJson(value));
+    }
+    return map;
   }
 }
 

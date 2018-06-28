@@ -1,4 +1,4 @@
-part of swagger.api;
+part of openapi.api;
 
 class ApiException implements Exception {
   int code = 0;

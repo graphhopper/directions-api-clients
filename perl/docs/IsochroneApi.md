@@ -1,8 +1,8 @@
-# WWW::SwaggerClient::IsochroneApi
+# WWW::OpenAPIClient::IsochroneApi
 
 ## Load the API package
 ```perl
-use WWW::SwaggerClient::Object::IsochroneApi;
+use WWW::OpenAPIClient::Object::IsochroneApi;
 ```
 
 All URIs are relative to *https://graphhopper.com/api/1*
@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 
 # **isochrone_get**
-> IsochroneResponse isochrone_get(point => $point, key => $key, time_limit => $time_limit, distance_limit => $distance_limit, vehicle => $vehicle, buckets => $buckets, reverse_flow => $reverse_flow)
+> IsochroneResponse isochrone_get(point => $point, key => $key, time_limit => $time_limit, distance_limit => $distance_limit, vehicle => $vehicle, buckets => $buckets, reverse_flow => $reverse_flow, weighting => $weighting)
 
 Isochrone Request
 
@@ -22,20 +22,21 @@ The GraphHopper Isochrone API allows calculating an isochrone of a locations mea
 ### Example 
 ```perl
 use Data::Dumper;
-use WWW::SwaggerClient::IsochroneApi;
-my $api_instance = WWW::SwaggerClient::IsochroneApi->new(
+use WWW::OpenAPIClient::IsochroneApi;
+my $api_instance = WWW::OpenAPIClient::IsochroneApi->new(
 );
 
-my $point = 'point_example'; # string | Specify the start coordinate
-my $key = 'key_example'; # string | Get your key at graphhopper.com
-my $time_limit = 56; # int | Specify which time the vehicle should travel. In seconds.
-my $distance_limit = 56; # int | Specify which distance the vehicle should travel. In meter.
-my $vehicle = 'vehicle_example'; # string | Possible vehicles are bike, car, foot and [more](https://graphhopper.com/api/1/docs/supported-vehicle-profiles/)
-my $buckets = 56; # int | For how many sub intervals an additional polygon should be calculated.
-my $reverse_flow = 1; # boolean | If `false` the flow goes from point to the polygon, if `true` the flow goes from the polygon \"inside\" to the point. Example usage for `false`&#58; *How many potential customer can be reached within 30min travel time from your store* vs. `true`&#58; *How many customers can reach your store within 30min travel time.*
+my $point = "point_example"; # string | Specify the start coordinate
+my $key = "key_example"; # string | Get your key at graphhopper.com
+my $time_limit = 600; # int | Specify which time the vehicle should travel. In seconds.
+my $distance_limit = -1; # int | Specify which distance the vehicle should travel. In meter.
+my $vehicle = 'car'; # string | Possible vehicles are bike, car, foot and [more](https://graphhopper.com/api/1/docs/supported-vehicle-profiles/)
+my $buckets = 1; # int | For how many sub intervals an additional polygon should be calculated.
+my $reverse_flow = false; # boolean | If `false` the flow goes from point to the polygon, if `true` the flow goes from the polygon \"inside\" to the point. Example usage for `false`&#58; *How many potential customer can be reached within 30min travel time from your store* vs. `true`&#58; *How many customers can reach your store within 30min travel time.*
+my $weighting = 'fastest'; # string | Can be fastest or shortest
 
 eval { 
-    my $result = $api_instance->isochrone_get(point => $point, key => $key, time_limit => $time_limit, distance_limit => $distance_limit, vehicle => $vehicle, buckets => $buckets, reverse_flow => $reverse_flow);
+    my $result = $api_instance->isochrone_get(point => $point, key => $key, time_limit => $time_limit, distance_limit => $distance_limit, vehicle => $vehicle, buckets => $buckets, reverse_flow => $reverse_flow, weighting => $weighting);
     print Dumper($result);
 };
 if ($@) {
@@ -51,9 +52,10 @@ Name | Type | Description  | Notes
  **key** | **string**| Get your key at graphhopper.com | 
  **time_limit** | **int**| Specify which time the vehicle should travel. In seconds. | [optional] [default to 600]
  **distance_limit** | **int**| Specify which distance the vehicle should travel. In meter. | [optional] [default to -1]
- **vehicle** | **string**| Possible vehicles are bike, car, foot and [more](https://graphhopper.com/api/1/docs/supported-vehicle-profiles/) | [optional] [default to car]
+ **vehicle** | **string**| Possible vehicles are bike, car, foot and [more](https://graphhopper.com/api/1/docs/supported-vehicle-profiles/) | [optional] [default to &#39;car&#39;]
  **buckets** | **int**| For how many sub intervals an additional polygon should be calculated. | [optional] [default to 1]
  **reverse_flow** | **boolean**| If &#x60;false&#x60; the flow goes from point to the polygon, if &#x60;true&#x60; the flow goes from the polygon \&quot;inside\&quot; to the point. Example usage for &#x60;false&#x60;&amp;#58; *How many potential customer can be reached within 30min travel time from your store* vs. &#x60;true&#x60;&amp;#58; *How many customers can reach your store within 30min travel time.* | [optional] [default to false]
+ **weighting** | **string**| Can be fastest or shortest | [optional] [default to &#39;fastest&#39;]
 
 ### Return type
 

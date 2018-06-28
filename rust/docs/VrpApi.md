@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 
 # **post_vrp**
-> ::models::JobId post_vrp(key, body)
+> ::models::JobId post_vrp(key, request)
 Solves vehicle routing problems
 
 This endpoint for solving vehicle routing problems, i.e. traveling salesman or vehicle routing problems, and returns the solution.
@@ -18,7 +18,7 @@ This endpoint for solving vehicle routing problems, i.e. traveling salesman or v
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
   **key** | **String**| your API key | 
-  **body** | [**Request**](Request.md)| Request object that contains the problem to be solved | 
+  **request** | [**Request**](Request.md)| Request object that contains the problem to be solved | 
 
 ### Return type
 

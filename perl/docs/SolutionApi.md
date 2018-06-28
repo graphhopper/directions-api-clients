@@ -1,8 +1,8 @@
-# WWW::SwaggerClient::SolutionApi
+# WWW::OpenAPIClient::SolutionApi
 
 ## Load the API package
 ```perl
-use WWW::SwaggerClient::Object::SolutionApi;
+use WWW::OpenAPIClient::Object::SolutionApi;
 ```
 
 All URIs are relative to *https://graphhopper.com/api/1*
@@ -22,12 +22,12 @@ This endpoint returns the solution of a large problems. You can fetch it with th
 ### Example 
 ```perl
 use Data::Dumper;
-use WWW::SwaggerClient::SolutionApi;
-my $api_instance = WWW::SwaggerClient::SolutionApi->new(
+use WWW::OpenAPIClient::SolutionApi;
+my $api_instance = WWW::OpenAPIClient::SolutionApi->new(
 );
 
-my $key = 'key_example'; # string | your API key
-my $job_id = 'job_id_example'; # string | Request solution with jobId
+my $key = "key_example"; # string | your API key
+my $job_id = "job_id_example"; # string | Request solution with jobId
 
 eval { 
     my $result = $api_instance->get_solution(key => $key, job_id => $job_id);
@@ -55,7 +55,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

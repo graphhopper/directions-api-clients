@@ -1,4 +1,4 @@
-part of swagger.api;
+part of openapi.api;
 
 
 
@@ -10,15 +10,15 @@ class VrpApi {
   /// Solves vehicle routing problems
   ///
   /// This endpoint for solving vehicle routing problems, i.e. traveling salesman or vehicle routing problems, and returns the solution.
-  Future<JobId> postVrp(String key, Request body) async {
-    Object postBody = body;
+  Future<JobId> postVrp(String key, Request request) async {
+    Object postBody = request;
 
     // verify required params are set
     if(key == null) {
      throw new ApiException(400, "Missing required param: key");
     }
-    if(body == null) {
-     throw new ApiException(400, "Missing required param: body");
+    if(request == null) {
+     throw new ApiException(400, "Missing required param: request");
     }
 
     // create path and map variables
@@ -29,7 +29,7 @@ class VrpApi {
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
       queryParams.addAll(_convertParametersForCollectionFormat("", "key", key));
-    
+
     List<String> contentTypes = ["application/json"];
 
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
@@ -38,12 +38,11 @@ class VrpApi {
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
       MultipartRequest mp = new MultipartRequest(null, null);
-      
       if(hasFields)
         postBody = mp;
     }
     else {
-          }
+    }
 
     var response = await apiClient.invokeAPI(path,
                                              'POST',
@@ -57,7 +56,7 @@ class VrpApi {
     if(response.statusCode >= 400) {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
-      return apiClient.deserialize(response.body, 'JobId') as JobId ;
+      return apiClient.deserialize(response.body, 'JobId') as JobId;
     } else {
       return null;
     }

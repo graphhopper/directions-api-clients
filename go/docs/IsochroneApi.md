@@ -17,23 +17,24 @@ The GraphHopper Isochrone API allows calculating an isochrone of a locations mea
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **point** | **string**| Specify the start coordinate | 
   **key** | **string**| Get your key at graphhopper.com | 
- **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+ **optional** | ***IsochroneGetOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
-Optional parameters are passed through a map[string]interface{}.
+Optional parameters are passed through a pointer to a IsochroneGetOpts struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **point** | **string**| Specify the start coordinate | 
- **key** | **string**| Get your key at graphhopper.com | 
- **timeLimit** | **int32**| Specify which time the vehicle should travel. In seconds. | [default to 600]
- **distanceLimit** | **int32**| Specify which distance the vehicle should travel. In meter. | [default to -1]
- **vehicle** | **string**| Possible vehicles are bike, car, foot and [more](https://graphhopper.com/api/1/docs/supported-vehicle-profiles/) | [default to car]
- **buckets** | **int32**| For how many sub intervals an additional polygon should be calculated. | [default to 1]
- **reverseFlow** | **bool**| If &#x60;false&#x60; the flow goes from point to the polygon, if &#x60;true&#x60; the flow goes from the polygon \&quot;inside\&quot; to the point. Example usage for &#x60;false&#x60;&amp;#58; *How many potential customer can be reached within 30min travel time from your store* vs. &#x60;true&#x60;&amp;#58; *How many customers can reach your store within 30min travel time.* | [default to false]
+
+
+ **timeLimit** | **optional.Int32**| Specify which time the vehicle should travel. In seconds. | [default to 600]
+ **distanceLimit** | **optional.Int32**| Specify which distance the vehicle should travel. In meter. | [default to -1]
+ **vehicle** | **optional.String**| Possible vehicles are bike, car, foot and [more](https://graphhopper.com/api/1/docs/supported-vehicle-profiles/) | [default to car]
+ **buckets** | **optional.Int32**| For how many sub intervals an additional polygon should be calculated. | [default to 1]
+ **reverseFlow** | **optional.Bool**| If &#x60;false&#x60; the flow goes from point to the polygon, if &#x60;true&#x60; the flow goes from the polygon \&quot;inside\&quot; to the point. Example usage for &#x60;false&#x60;&amp;#58; *How many potential customer can be reached within 30min travel time from your store* vs. &#x60;true&#x60;&amp;#58; *How many customers can reach your store within 30min travel time.* | [default to false]
+ **weighting** | **optional.String**| Can be fastest or shortest | [default to fastest]
 
 ### Return type
 

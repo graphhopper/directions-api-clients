@@ -12,7 +12,7 @@
              :header-params {}
              :query-params  {"key" key }
              :form-params   {}
-             :content-types ["application/json"]
+             :content-types []
              :accepts       ["application/json"]
              :auth-names    []}))
 

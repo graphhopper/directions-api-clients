@@ -1,4 +1,4 @@
-# swagger_client.MatrixApi
+# openapi_client.MatrixApi
 
 All URIs are relative to *https://graphhopper.com/api/1*
 
@@ -19,12 +19,12 @@ The Matrix API is part of the GraphHopper Directions API and with this API you c
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import openapi_client
+from openapi_client.rest import ApiException
 from pprint import pprint
 
 # create an instance of the API class
-api_instance = swagger_client.MatrixApi()
+api_instance = openapi_client.MatrixApi()
 key = 'key_example' # str | Get your key at graphhopper.com
 point = ['point_example'] # list[str] | Specifiy multiple points for which the weight-, route-, time- or distance-matrix should be calculated. In this case the starts are identical to the destinations. If there are N points, then NxN entries will be calculated. The order of the point parameter is important. Specify at least three points. Cannot be used together with from_point or to_point. Is a string with the format latitude,longitude. (optional)
 from_point = ['from_point_example'] # list[str] | The starting points for the routes. E.g. if you want to calculate the three routes A-&gt;1, A-&gt;2, A-&gt;3 then you have one from_point parameter and three to_point parameters. Is a string with the format latitude,longitude. (optional)
@@ -33,7 +33,7 @@ point_hint = ['point_hint_example'] # list[str] | Optional parameter. Specifies 
 from_point_hint = ['from_point_hint_example'] # list[str] | For the from_point parameter. See point_hint (optional)
 to_point_hint = ['to_point_hint_example'] # list[str] | For the to_point parameter. See point_hint (optional)
 out_array = ['out_array_example'] # list[str] | Specifies which arrays should be included in the response. Specify one or more of the following options 'weights', 'times', 'distances'. To specify more than one array use e.g. out_array=times&out_array=distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API. (optional)
-vehicle = 'car' # str | The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc (optional) (default to car)
+vehicle = 'car' # str | The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc (optional) (default to 'car')
 
 try:
     # Matrix API
@@ -55,7 +55,7 @@ Name | Type | Description  | Notes
  **from_point_hint** | [**list[str]**](str.md)| For the from_point parameter. See point_hint | [optional] 
  **to_point_hint** | [**list[str]**](str.md)| For the to_point parameter. See point_hint | [optional] 
  **out_array** | [**list[str]**](str.md)| Specifies which arrays should be included in the response. Specify one or more of the following options &#39;weights&#39;, &#39;times&#39;, &#39;distances&#39;. To specify more than one array use e.g. out_array&#x3D;times&amp;out_array&#x3D;distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API. | [optional] 
- **vehicle** | **str**| The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc | [optional] [default to car]
+ **vehicle** | **str**| The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc | [optional] [default to &#39;car&#39;]
 
 ### Return type
 
@@ -73,7 +73,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **matrix_post**
-> MatrixResponse matrix_post(key, body=body)
+> MatrixResponse matrix_post(key, matrix_request=matrix_request)
 
 Matrix API Post
 
@@ -83,18 +83,18 @@ The GET request has an URL length limitation, which hurts for many locations per
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import openapi_client
+from openapi_client.rest import ApiException
 from pprint import pprint
 
 # create an instance of the API class
-api_instance = swagger_client.MatrixApi()
+api_instance = openapi_client.MatrixApi()
 key = 'key_example' # str | Get your key at graphhopper.com
-body = swagger_client.MatrixRequest() # MatrixRequest |  (optional)
+matrix_request = openapi_client.MatrixRequest() # MatrixRequest |  (optional)
 
 try:
     # Matrix API Post
-    api_response = api_instance.matrix_post(key, body=body)
+    api_response = api_instance.matrix_post(key, matrix_request=matrix_request)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling MatrixApi->matrix_post: %s\n" % e)
@@ -105,7 +105,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **key** | **str**| Get your key at graphhopper.com | 
- **body** | [**MatrixRequest**](MatrixRequest.md)|  | [optional] 
+ **matrix_request** | [**MatrixRequest**](MatrixRequest.md)|  | [optional] 
 
 ### Return type
 

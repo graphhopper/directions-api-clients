@@ -1,4 +1,4 @@
-# IO.Swagger.Model.Request
+# Org.OpenAPITools.Model.Request
 ## Properties
 
 Name | Type | Description | Notes

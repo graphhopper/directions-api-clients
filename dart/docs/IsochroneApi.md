@@ -1,8 +1,8 @@
-# swagger.api.IsochroneApi
+# openapi.api.IsochroneApi
 
 ## Load the API package
 ```dart
-import 'package:swagger/api.dart';
+import 'package:openapi/api.dart';
 ```
 
 All URIs are relative to *https://graphhopper.com/api/1*
@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 
 # **isochroneGet**
-> IsochroneResponse isochroneGet(point, key, timeLimit, distanceLimit, vehicle, buckets, reverseFlow)
+> IsochroneResponse isochroneGet(point, key, timeLimit, distanceLimit, vehicle, buckets, reverseFlow, weighting)
 
 Isochrone Request
 
@@ -21,7 +21,7 @@ The GraphHopper Isochrone API allows calculating an isochrone of a locations mea
 
 ### Example 
 ```dart
-import 'package:swagger/api.dart';
+import 'package:openapi/api.dart';
 
 var api_instance = new IsochroneApi();
 var point = point_example; // String | Specify the start coordinate
@@ -31,9 +31,10 @@ var distanceLimit = 56; // int | Specify which distance the vehicle should trave
 var vehicle = vehicle_example; // String | Possible vehicles are bike, car, foot and [more](https://graphhopper.com/api/1/docs/supported-vehicle-profiles/)
 var buckets = 56; // int | For how many sub intervals an additional polygon should be calculated.
 var reverseFlow = true; // bool | If `false` the flow goes from point to the polygon, if `true` the flow goes from the polygon \"inside\" to the point. Example usage for `false`&#58; *How many potential customer can be reached within 30min travel time from your store* vs. `true`&#58; *How many customers can reach your store within 30min travel time.*
+var weighting = weighting_example; // String | Can be fastest or shortest
 
 try { 
-    var result = api_instance.isochroneGet(point, key, timeLimit, distanceLimit, vehicle, buckets, reverseFlow);
+    var result = api_instance.isochroneGet(point, key, timeLimit, distanceLimit, vehicle, buckets, reverseFlow, weighting);
     print(result);
 } catch (e) {
     print("Exception when calling IsochroneApi->isochroneGet: $e\n");
@@ -51,6 +52,7 @@ Name | Type | Description  | Notes
  **vehicle** | **String**| Possible vehicles are bike, car, foot and [more](https://graphhopper.com/api/1/docs/supported-vehicle-profiles/) | [optional] [default to car]
  **buckets** | **int**| For how many sub intervals an additional polygon should be calculated. | [optional] [default to 1]
  **reverseFlow** | **bool**| If &#x60;false&#x60; the flow goes from point to the polygon, if &#x60;true&#x60; the flow goes from the polygon \&quot;inside\&quot; to the point. Example usage for &#x60;false&#x60;&amp;#58; *How many potential customer can be reached within 30min travel time from your store* vs. &#x60;true&#x60;&amp;#58; *How many customers can reach your store within 30min travel time.* | [optional] [default to false]
+ **weighting** | **String**| Can be fastest or shortest | [optional] [default to fastest]
 
 ### Return type
 

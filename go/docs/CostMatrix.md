@@ -3,11 +3,11 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type_** | **string** | type of cost matrix, currently default or google are supported | [optional] [default to null]
-**Url** | **string** | URL of matrix service | [optional] [default to null]
-**LocationIds** | **[]string** |  | [optional] [default to null]
-**Data** | [***CostMatrixData**](CostMatrix_data.md) |  | [optional] [default to null]
-**Profile** | **string** | vehicle profile or empty if catch all fallback | [optional] [default to null]
+**Type** | **string** | type of cost matrix, currently default or google are supported | [optional] 
+**Url** | **string** | URL of matrix service | [optional] 
+**LocationIds** | **[]string** |  | [optional] 
+**Data** | [**map[string]interface{}**](map[string]interface{}.md) | JSON data of matrix response | [optional] 
+**Profile** | **string** | vehicle profile or empty if catch all fallback | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

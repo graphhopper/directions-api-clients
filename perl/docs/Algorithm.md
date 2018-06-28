@@ -1,8 +1,8 @@
-# WWW::SwaggerClient::Object::Algorithm
+# WWW::OpenAPIClient::Object::Algorithm
 
 ## Load the model package
 ```perl
-use WWW::SwaggerClient::Object::Algorithm;
+use WWW::OpenAPIClient::Object::Algorithm;
 ```
 
 ## Properties

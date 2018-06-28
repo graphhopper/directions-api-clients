@@ -1,4 +1,4 @@
-# IO.Swagger.Model.MatrixRequest
+# Org.OpenAPITools.Model.MatrixRequest
 ## Properties
 
 Name | Type | Description | Notes

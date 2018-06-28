@@ -1,4 +1,4 @@
-part of swagger.api;
+part of openapi.api;
 
 
 
@@ -50,7 +50,7 @@ class MatrixApi {
       queryParams.addAll(_convertParametersForCollectionFormat("", "vehicle", vehicle));
     }
       queryParams.addAll(_convertParametersForCollectionFormat("", "key", key));
-    
+
     List<String> contentTypes = [];
 
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
@@ -59,12 +59,11 @@ class MatrixApi {
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
       MultipartRequest mp = new MultipartRequest(null, null);
-      
       if(hasFields)
         postBody = mp;
     }
     else {
-          }
+    }
 
     var response = await apiClient.invokeAPI(path,
                                              'GET',
@@ -78,7 +77,7 @@ class MatrixApi {
     if(response.statusCode >= 400) {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
-      return apiClient.deserialize(response.body, 'MatrixResponse') as MatrixResponse ;
+      return apiClient.deserialize(response.body, 'MatrixResponse') as MatrixResponse;
     } else {
       return null;
     }
@@ -86,8 +85,8 @@ class MatrixApi {
   /// Matrix API Post
   ///
   /// The GET request has an URL length limitation, which hurts for many locations per request. In those cases use a HTTP POST request with JSON data as input. The only parameter in the URL will be the key which stays in the URL. Both request scenarios are identically except that all singular parameter names are named as their plural for a POST request. 
-  Future<MatrixResponse> matrixPost(String key, { MatrixRequest body }) async {
-    Object postBody = body;
+  Future<MatrixResponse> matrixPost(String key, { MatrixRequest matrixRequest }) async {
+    Object postBody = matrixRequest;
 
     // verify required params are set
     if(key == null) {
@@ -102,7 +101,7 @@ class MatrixApi {
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
       queryParams.addAll(_convertParametersForCollectionFormat("", "key", key));
-    
+
     List<String> contentTypes = [];
 
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
@@ -111,12 +110,11 @@ class MatrixApi {
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
       MultipartRequest mp = new MultipartRequest(null, null);
-      
       if(hasFields)
         postBody = mp;
     }
     else {
-          }
+    }
 
     var response = await apiClient.invokeAPI(path,
                                              'POST',
@@ -130,7 +128,7 @@ class MatrixApi {
     if(response.statusCode >= 400) {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
-      return apiClient.deserialize(response.body, 'MatrixResponse') as MatrixResponse ;
+      return apiClient.deserialize(response.body, 'MatrixResponse') as MatrixResponse;
     } else {
       return null;
     }

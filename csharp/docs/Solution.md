@@ -1,4 +1,4 @@
-# IO.Swagger.Model.Solution
+# Org.OpenAPITools.Model.Solution
 ## Properties
 
 Name | Type | Description | Notes
@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **NoVehicles** | **int?** | number of employed vehicles | [optional] 
 **NoUnassigned** | **int?** | number of jobs that could not be assigned to final solution | [optional] 
 **Routes** | [**List&lt;Route&gt;**](Route.md) | An array of routes | [optional] 
-**Unassigned** | [**SolutionUnassigned**](SolutionUnassigned.md) |  | [optional] 
+**Unassigned** | **Object** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -1,28 +1,48 @@
-part of swagger.api;
+part of openapi.api;
 
-@Entity()
 class MatrixResponse {
   
-  @Property(name: 'distances')
-  List<List<num>> distances = [];
+  List<List<double>> distances = [];
   
-
-  @Property(name: 'times')
-  List<List<num>> times = [];
+  List<List<double>> times = [];
   
-
-  @Property(name: 'weights')
   List<List<double>> weights = [];
   
-
-  @Property(name: 'info')
   ResponseInfo info = null;
-  
   MatrixResponse();
 
   @override
-  String toString()  {
+  String toString() {
     return 'MatrixResponse[distances=$distances, times=$times, weights=$weights, info=$info, ]';
+  }
+
+  MatrixResponse.fromJson(Map<String, dynamic> json) {
+    if (json == null) return;
+    distances = List.listFromJson(json['distances']);
+    times = List.listFromJson(json['times']);
+    weights = List.listFromJson(json['weights']);
+    info = new ResponseInfo.fromJson(json['info']);
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'distances': distances,
+      'times': times,
+      'weights': weights,
+      'info': info
+    };
+  }
+
+  static List<MatrixResponse> listFromJson(List<dynamic> json) {
+    return json == null ? new List<MatrixResponse>() : json.map((value) => new MatrixResponse.fromJson(value)).toList();
+  }
+
+  static Map<String, MatrixResponse> mapFromJson(Map<String, Map<String, dynamic>> json) {
+    var map = new Map<String, MatrixResponse>();
+    if (json != null && json.length > 0) {
+      json.forEach((String key, Map<String, dynamic> value) => map[key] = new MatrixResponse.fromJson(value));
+    }
+    return map;
   }
 }
 

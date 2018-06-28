@@ -1,8 +1,8 @@
-# swagger.model.Detail
+# openapi.model.Detail
 
 ## Load the model package
 ```dart
-import 'package:swagger/api.dart';
+import 'package:openapi/api.dart';
 ```
 
 ## Properties

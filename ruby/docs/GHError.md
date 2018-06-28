@@ -5,6 +5,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **code** | **Integer** |  | [optional] 
 **message** | **String** |  | [optional] 
-**hints** | [**Array&lt;GHErrorHints&gt;**](GHErrorHints.md) |  | [optional] 
+**hints** | **Array&lt;Object&gt;** |  | [optional] 
 
 

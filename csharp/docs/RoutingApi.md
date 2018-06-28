@@ -1,4 +1,4 @@
-# IO.Swagger.Api.RoutingApi
+# Org.OpenAPITools.Api.RoutingApi
 
 All URIs are relative to *https://graphhopper.com/api/1*
 
@@ -19,9 +19,9 @@ The GraphHopper Routing API allows to calculate route and implement navigation v
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using Org.OpenAPITools.Api;
+using Org.OpenAPITools.Client;
+using Org.OpenAPITools.Model;
 
 namespace Example
 {

@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 <a name="postVrp"></a>
 # **postVrp**
-> JobId postVrp(key, body)
+> JobId postVrp(key, request)
 
 Solves vehicle routing problems
 
@@ -18,14 +18,14 @@ This endpoint for solving vehicle routing problems, i.e. traveling salesman or v
 ### Example
 ```kotlin
 // Import classes:
-//import io.swagger.client.infrastructure.*
-//import io.swagger.client.models.*
+//import org.openapitools.client.infrastructure.*
+//import org.openapitools.client.models.*
 
 val apiInstance = VrpApi()
 val key : kotlin.String = key_example // kotlin.String | your API key
-val body : Request =  // Request | Request object that contains the problem to be solved
+val request : Request =  // Request | Request object that contains the problem to be solved
 try {
-    val result : JobId = apiInstance.postVrp(key, body)
+    val result : JobId = apiInstance.postVrp(key, request)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling VrpApi#postVrp")
@@ -41,7 +41,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **key** | **kotlin.String**| your API key |
- **body** | [**Request**](Request.md)| Request object that contains the problem to be solved |
+ **request** | [**Request**](Request.md)| Request object that contains the problem to be solved |
 
 ### Return type
 

@@ -1,4 +1,4 @@
-# IO.Swagger.Model.ResponseCoordinates
+# Org.OpenAPITools.Model.ResponseCoordinates
 ## Properties
 
 Name | Type | Description | Notes

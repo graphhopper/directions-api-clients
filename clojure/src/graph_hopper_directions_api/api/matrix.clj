@@ -30,14 +30,14 @@ In the Routing API we support multiple points, so called 'via points', which res
   "Matrix API Post
   The GET request has an URL length limitation, which hurts for many locations per request. In those cases use a HTTP POST request with JSON data as input. The only parameter in the URL will be the key which stays in the URL. Both request scenarios are identically except that all singular parameter names are named as their plural for a POST request."
   ([key ] (matrix-post-with-http-info key nil))
-  ([key {:keys [body ]}]
+  ([key {:keys [matrix-request ]}]
    (check-required-params key)
    (call-api "/matrix" :post
              {:path-params   {}
               :header-params {}
               :query-params  {"key" key }
               :form-params   {}
-              :body-param    body
+              :body-param    matrix-request
               :content-types []
               :accepts       ["application/json"]
               :auth-names    []})))

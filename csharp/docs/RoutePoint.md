@@ -1,4 +1,4 @@
-# IO.Swagger.Model.RoutePoint
+# Org.OpenAPITools.Model.RoutePoint
 ## Properties
 
 Name | Type | Description | Notes

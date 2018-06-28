@@ -1,8 +1,8 @@
-# WWW::SwaggerClient::Object::Solution
+# WWW::OpenAPIClient::Object::Solution
 
 ## Load the model package
 ```perl
-use WWW::SwaggerClient::Object::Solution;
+use WWW::OpenAPIClient::Object::Solution;
 ```
 
 ## Properties
@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **no_vehicles** | **int** | number of employed vehicles | [optional] 
 **no_unassigned** | **int** | number of jobs that could not be assigned to final solution | [optional] 
 **routes** | [**ARRAY[Route]**](Route.md) | An array of routes | [optional] 
-**unassigned** | [**SolutionUnassigned**](SolutionUnassigned.md) |  | [optional] 
+**unassigned** | **object** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

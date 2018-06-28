@@ -1,8 +1,8 @@
-# WWW::SwaggerClient::Object::Location
+# WWW::OpenAPIClient::Object::Location
 
 ## Load the model package
 ```perl
-use WWW::SwaggerClient::Object::Location;
+use WWW::OpenAPIClient::Object::Location;
 ```
 
 ## Properties

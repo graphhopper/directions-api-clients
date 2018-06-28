@@ -1,4 +1,4 @@
-# swagger_client.IsochroneApi
+# openapi_client.IsochroneApi
 
 All URIs are relative to *https://graphhopper.com/api/1*
 
@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 
 # **isochrone_get**
-> IsochroneResponse isochrone_get(point, key, time_limit=time_limit, distance_limit=distance_limit, vehicle=vehicle, buckets=buckets, reverse_flow=reverse_flow)
+> IsochroneResponse isochrone_get(point, key, time_limit=time_limit, distance_limit=distance_limit, vehicle=vehicle, buckets=buckets, reverse_flow=reverse_flow, weighting=weighting)
 
 Isochrone Request
 
@@ -18,23 +18,24 @@ The GraphHopper Isochrone API allows calculating an isochrone of a locations mea
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import openapi_client
+from openapi_client.rest import ApiException
 from pprint import pprint
 
 # create an instance of the API class
-api_instance = swagger_client.IsochroneApi()
+api_instance = openapi_client.IsochroneApi()
 point = 'point_example' # str | Specify the start coordinate
 key = 'key_example' # str | Get your key at graphhopper.com
 time_limit = 600 # int | Specify which time the vehicle should travel. In seconds. (optional) (default to 600)
 distance_limit = -1 # int | Specify which distance the vehicle should travel. In meter. (optional) (default to -1)
-vehicle = 'car' # str | Possible vehicles are bike, car, foot and [more](https://graphhopper.com/api/1/docs/supported-vehicle-profiles/) (optional) (default to car)
+vehicle = 'car' # str | Possible vehicles are bike, car, foot and [more](https://graphhopper.com/api/1/docs/supported-vehicle-profiles/) (optional) (default to 'car')
 buckets = 1 # int | For how many sub intervals an additional polygon should be calculated. (optional) (default to 1)
-reverse_flow = false # bool | If `false` the flow goes from point to the polygon, if `true` the flow goes from the polygon \"inside\" to the point. Example usage for `false`&#58; *How many potential customer can be reached within 30min travel time from your store* vs. `true`&#58; *How many customers can reach your store within 30min travel time.* (optional) (default to false)
+reverse_flow = False # bool | If `false` the flow goes from point to the polygon, if `true` the flow goes from the polygon \"inside\" to the point. Example usage for `false`&#58; *How many potential customer can be reached within 30min travel time from your store* vs. `true`&#58; *How many customers can reach your store within 30min travel time.* (optional) (default to False)
+weighting = 'fastest' # str | Can be fastest or shortest (optional) (default to 'fastest')
 
 try:
     # Isochrone Request
-    api_response = api_instance.isochrone_get(point, key, time_limit=time_limit, distance_limit=distance_limit, vehicle=vehicle, buckets=buckets, reverse_flow=reverse_flow)
+    api_response = api_instance.isochrone_get(point, key, time_limit=time_limit, distance_limit=distance_limit, vehicle=vehicle, buckets=buckets, reverse_flow=reverse_flow, weighting=weighting)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling IsochroneApi->isochrone_get: %s\n" % e)
@@ -48,9 +49,10 @@ Name | Type | Description  | Notes
  **key** | **str**| Get your key at graphhopper.com | 
  **time_limit** | **int**| Specify which time the vehicle should travel. In seconds. | [optional] [default to 600]
  **distance_limit** | **int**| Specify which distance the vehicle should travel. In meter. | [optional] [default to -1]
- **vehicle** | **str**| Possible vehicles are bike, car, foot and [more](https://graphhopper.com/api/1/docs/supported-vehicle-profiles/) | [optional] [default to car]
+ **vehicle** | **str**| Possible vehicles are bike, car, foot and [more](https://graphhopper.com/api/1/docs/supported-vehicle-profiles/) | [optional] [default to &#39;car&#39;]
  **buckets** | **int**| For how many sub intervals an additional polygon should be calculated. | [optional] [default to 1]
- **reverse_flow** | **bool**| If &#x60;false&#x60; the flow goes from point to the polygon, if &#x60;true&#x60; the flow goes from the polygon \&quot;inside\&quot; to the point. Example usage for &#x60;false&#x60;&amp;#58; *How many potential customer can be reached within 30min travel time from your store* vs. &#x60;true&#x60;&amp;#58; *How many customers can reach your store within 30min travel time.* | [optional] [default to false]
+ **reverse_flow** | **bool**| If &#x60;false&#x60; the flow goes from point to the polygon, if &#x60;true&#x60; the flow goes from the polygon \&quot;inside\&quot; to the point. Example usage for &#x60;false&#x60;&amp;#58; *How many potential customer can be reached within 30min travel time from your store* vs. &#x60;true&#x60;&amp;#58; *How many customers can reach your store within 30min travel time.* | [optional] [default to False]
+ **weighting** | **str**| Can be fastest or shortest | [optional] [default to &#39;fastest&#39;]
 
 ### Return type
 

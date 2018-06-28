@@ -9,18 +9,13 @@ module GraphHopperDirections.Types (
   Break (..),
   Configuration (..),
   CostMatrix (..),
-  CostMatrix_data (..),
-  CostMatrix_data_info (..),
   Detail (..),
   GHError (..),
-  GHError_hints (..),
   GeocodingLocation (..),
   GeocodingPoint (..),
   GeocodingResponse (..),
   IsochroneResponse (..),
   IsochroneResponsePolygon (..),
-  IsochroneResponsePolygon_geometry (..),
-  IsochroneResponsePolygon_properties (..),
   JobId (..),
   Location (..),
   MatrixRequest (..),
@@ -42,7 +37,6 @@ module GraphHopperDirections.Types (
   Service (..),
   Shipment (..),
   Solution (..),
-  Solution_unassigned (..),
   Stop (..),
   TimeWindow (..),
   Vehicle (..),
@@ -134,7 +128,7 @@ data CostMatrix = CostMatrix
   { costMatrixType :: Text -- ^ type of cost matrix, currently default or google are supported
   , costMatrixUrl :: Text -- ^ URL of matrix service
   , costMatrixLocation'Underscoreids :: [Text] -- ^ 
-  , costMatrixData :: CostMatrix_data -- ^ 
+  , costMatrixData :: Value -- ^ JSON data of matrix response
   , costMatrixProfile :: Text -- ^ vehicle profile or empty if catch all fallback
   } deriving (Show, Eq, Generic)
 
@@ -142,29 +136,6 @@ instance FromJSON CostMatrix where
   parseJSON = genericParseJSON (removeFieldLabelPrefix True "costMatrix")
 instance ToJSON CostMatrix where
   toJSON = genericToJSON (removeFieldLabelPrefix False "costMatrix")
-
--- | JSON data of matrix response
-data CostMatrix_data = CostMatrix_data
-  { costMatrixDataTimes :: [[Integer]] -- ^ 
-  , costMatrixDataDistances :: [[Double]] -- ^ 
-  , costMatrixDataInfo :: CostMatrix_data_info -- ^ 
-  } deriving (Show, Eq, Generic)
-
-instance FromJSON CostMatrix_data where
-  parseJSON = genericParseJSON (removeFieldLabelPrefix True "costMatrixData")
-instance ToJSON CostMatrix_data where
-  toJSON = genericToJSON (removeFieldLabelPrefix False "costMatrixData")
-
--- | Additional information for your request
-data CostMatrix_data_info = CostMatrix_data_info
-  { costMatrixDataInfoCopyrights :: [Text] -- ^ 
-  , costMatrixDataInfoTook :: Double -- ^ 
-  } deriving (Show, Eq, Generic)
-
-instance FromJSON CostMatrix_data_info where
-  parseJSON = genericParseJSON (removeFieldLabelPrefix True "costMatrixDataInfo")
-instance ToJSON CostMatrix_data_info where
-  toJSON = genericToJSON (removeFieldLabelPrefix False "costMatrixDataInfo")
 
 -- | 
 data Detail = Detail
@@ -182,23 +153,13 @@ instance ToJSON Detail where
 data GHError = GHError
   { gHErrorCode :: Int -- ^ 
   , gHErrorMessage :: Text -- ^ 
-  , gHErrorHints :: [GHError_hints] -- ^ 
+  , gHErrorHints :: [Value] -- ^ 
   } deriving (Show, Eq, Generic)
 
 instance FromJSON GHError where
   parseJSON = genericParseJSON (removeFieldLabelPrefix True "gHError")
 instance ToJSON GHError where
   toJSON = genericToJSON (removeFieldLabelPrefix False "gHError")
-
--- | 
-data GHError_hints = GHError_hints
-  { gHErrorHintsMessage :: Text -- ^ 
-  } deriving (Show, Eq, Generic)
-
-instance FromJSON GHError_hints where
-  parseJSON = genericParseJSON (removeFieldLabelPrefix True "gHErrorHints")
-instance ToJSON GHError_hints where
-  toJSON = genericToJSON (removeFieldLabelPrefix False "gHErrorHints")
 
 -- | 
 data GeocodingLocation = GeocodingLocation
@@ -255,36 +216,15 @@ instance ToJSON IsochroneResponse where
 
 -- | A found path
 data IsochroneResponsePolygon = IsochroneResponsePolygon
-  { isochroneResponsePolygonProperties :: IsochroneResponsePolygon_properties -- ^ 
+  { isochroneResponsePolygonProperties :: Value -- ^ 
   , isochroneResponsePolygonType :: Text -- ^ 
-  , isochroneResponsePolygonGeometry :: IsochroneResponsePolygon_geometry -- ^ 
+  , isochroneResponsePolygonGeometry :: Value -- ^ 
   } deriving (Show, Eq, Generic)
 
 instance FromJSON IsochroneResponsePolygon where
   parseJSON = genericParseJSON (removeFieldLabelPrefix True "isochroneResponsePolygon")
 instance ToJSON IsochroneResponsePolygon where
   toJSON = genericToJSON (removeFieldLabelPrefix False "isochroneResponsePolygon")
-
--- | 
-data IsochroneResponsePolygon_geometry = IsochroneResponsePolygon_geometry
-  { isochroneResponsePolygonGeometryType :: Text -- ^ 
-  , isochroneResponsePolygonGeometryCoordinates :: [ResponseCoordinatesArray] -- ^ 
-  } deriving (Show, Eq, Generic)
-
-instance FromJSON IsochroneResponsePolygon_geometry where
-  parseJSON = genericParseJSON (removeFieldLabelPrefix True "isochroneResponsePolygonGeometry")
-instance ToJSON IsochroneResponsePolygon_geometry where
-  toJSON = genericToJSON (removeFieldLabelPrefix False "isochroneResponsePolygonGeometry")
-
--- | 
-data IsochroneResponsePolygon_properties = IsochroneResponsePolygon_properties
-  { isochroneResponsePolygonPropertiesBucket :: Int -- ^ 
-  } deriving (Show, Eq, Generic)
-
-instance FromJSON IsochroneResponsePolygon_properties where
-  parseJSON = genericParseJSON (removeFieldLabelPrefix True "isochroneResponsePolygonProperties")
-instance ToJSON IsochroneResponsePolygon_properties where
-  toJSON = genericToJSON (removeFieldLabelPrefix False "isochroneResponsePolygonProperties")
 
 -- | 
 data JobId = JobId
@@ -385,7 +325,7 @@ data Response = Response
   , responseStatus :: Text -- ^ indicates the current status of the job
   , responseWaiting'Underscorein'Underscorequeue :: Integer -- ^ waiting time in ms
   , responseProcessing'Underscoretime :: Integer -- ^ processing time in ms. if job is still waiting in queue, processing_time is 0
-  , responseSolution :: Solution -- ^ the solution. only available if status field indicates finished
+  , responseSolution :: Solution -- ^ 
   } deriving (Show, Eq, Generic)
 
 instance FromJSON Response where
@@ -563,26 +503,13 @@ data Solution = Solution
   , solutionNo'Underscorevehicles :: Int -- ^ number of employed vehicles
   , solutionNo'Underscoreunassigned :: Int -- ^ number of jobs that could not be assigned to final solution
   , solutionRoutes :: [Route] -- ^ An array of routes
-  , solutionUnassigned :: Solution_unassigned -- ^ 
+  , solutionUnassigned :: Value -- ^ 
   } deriving (Show, Eq, Generic)
 
 instance FromJSON Solution where
   parseJSON = genericParseJSON (removeFieldLabelPrefix True "solution")
 instance ToJSON Solution where
   toJSON = genericToJSON (removeFieldLabelPrefix False "solution")
-
--- | 
-data Solution_unassigned = Solution_unassigned
-  { solutionUnassignedServices :: [Text] -- ^ An array of ids of unassigned services
-  , solutionUnassignedShipments :: [Text] -- ^ An array of ids of unassigned shipments
-  , solutionUnassignedBreaks :: [Text] -- ^ An array of ids of unassigned breaks
-  , solutionUnassignedDetails :: [Detail] -- ^ An array of details, i.e. reason for unassigned services or shipments
-  } deriving (Show, Eq, Generic)
-
-instance FromJSON Solution_unassigned where
-  parseJSON = genericParseJSON (removeFieldLabelPrefix True "solutionUnassigned")
-instance ToJSON Solution_unassigned where
-  toJSON = genericToJSON (removeFieldLabelPrefix False "solutionUnassigned")
 
 -- | 
 data Stop = Stop

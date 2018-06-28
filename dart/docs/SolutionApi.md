@@ -1,8 +1,8 @@
-# swagger.api.SolutionApi
+# openapi.api.SolutionApi
 
 ## Load the API package
 ```dart
-import 'package:swagger/api.dart';
+import 'package:openapi/api.dart';
 ```
 
 All URIs are relative to *https://graphhopper.com/api/1*
@@ -21,7 +21,7 @@ This endpoint returns the solution of a large problems. You can fetch it with th
 
 ### Example 
 ```dart
-import 'package:swagger/api.dart';
+import 'package:openapi/api.dart';
 
 var api_instance = new SolutionApi();
 var key = key_example; // String | your API key
@@ -52,7 +52,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

@@ -1,4 +1,4 @@
-# IO.Swagger.Model.JobId
+# Org.OpenAPITools.Model.JobId
 ## Properties
 
 Name | Type | Description | Notes

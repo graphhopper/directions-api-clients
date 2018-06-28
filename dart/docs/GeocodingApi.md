@@ -1,8 +1,8 @@
-# swagger.api.GeocodingApi
+# openapi.api.GeocodingApi
 
 ## Load the API package
 ```dart
-import 'package:swagger/api.dart';
+import 'package:openapi/api.dart';
 ```
 
 All URIs are relative to *https://graphhopper.com/api/1*
@@ -21,7 +21,7 @@ This endpoint provides forward and reverse geocoding. For more details, review t
 
 ### Example 
 ```dart
-import 'package:swagger/api.dart';
+import 'package:openapi/api.dart';
 
 var api_instance = new GeocodingApi();
 var key = key_example; // String | Get your key at graphhopper.com

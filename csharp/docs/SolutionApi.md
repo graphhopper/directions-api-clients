@@ -1,4 +1,4 @@
-# IO.Swagger.Api.SolutionApi
+# Org.OpenAPITools.Api.SolutionApi
 
 All URIs are relative to *https://graphhopper.com/api/1*
 
@@ -19,9 +19,9 @@ This endpoint returns the solution of a large problems. You can fetch it with th
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using Org.OpenAPITools.Api;
+using Org.OpenAPITools.Client;
+using Org.OpenAPITools.Model;
 
 namespace Example
 {
@@ -65,7 +65,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

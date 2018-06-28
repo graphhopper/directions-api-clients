@@ -1,4 +1,4 @@
-# swagger_client.SolutionApi
+# openapi_client.SolutionApi
 
 All URIs are relative to *https://graphhopper.com/api/1*
 
@@ -18,12 +18,12 @@ This endpoint returns the solution of a large problems. You can fetch it with th
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import openapi_client
+from openapi_client.rest import ApiException
 from pprint import pprint
 
 # create an instance of the API class
-api_instance = swagger_client.SolutionApi()
+api_instance = openapi_client.SolutionApi()
 key = 'key_example' # str | your API key
 job_id = 'job_id_example' # str | Request solution with jobId
 
@@ -52,7 +52,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

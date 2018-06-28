@@ -18,8 +18,8 @@ This endpoint returns the solution of a large problems. You can fetch it with th
 ### Example
 ```kotlin
 // Import classes:
-//import io.swagger.client.infrastructure.*
-//import io.swagger.client.models.*
+//import org.openapitools.client.infrastructure.*
+//import org.openapitools.client.models.*
 
 val apiInstance = SolutionApi()
 val key : kotlin.String = key_example // kotlin.String | your API key
@@ -53,6 +53,6 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 

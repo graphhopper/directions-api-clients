@@ -1,8 +1,8 @@
-# swagger.api.RoutingApi
+# openapi.api.RoutingApi
 
 ## Load the API package
 ```dart
-import 'package:swagger/api.dart';
+import 'package:openapi/api.dart';
 ```
 
 All URIs are relative to *https://graphhopper.com/api/1*
@@ -21,7 +21,7 @@ The GraphHopper Routing API allows to calculate route and implement navigation v
 
 ### Example 
 ```dart
-import 'package:swagger/api.dart';
+import 'package:openapi/api.dart';
 
 var api_instance = new RoutingApi();
 var point = []; // List<String> | Specify multiple points for which the route should be calculated. The order is important. Specify at least two points.

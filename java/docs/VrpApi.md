@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 <a name="postVrp"></a>
 # **postVrp**
-> JobId postVrp(key, body)
+> JobId postVrp(key, request)
 
 Solves vehicle routing problems
 
@@ -24,9 +24,9 @@ This endpoint for solving vehicle routing problems, i.e. traveling salesman or v
 
 VrpApi apiInstance = new VrpApi();
 String key = "key_example"; // String | your API key
-Request body = new Request(); // Request | Request object that contains the problem to be solved
+Request request = new Request(); // Request | Request object that contains the problem to be solved
 try {
-    JobId result = apiInstance.postVrp(key, body);
+    JobId result = apiInstance.postVrp(key, request);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling VrpApi#postVrp");
@@ -39,7 +39,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **key** | **String**| your API key |
- **body** | [**Request**](Request.md)| Request object that contains the problem to be solved |
+ **request** | [**Request**](Request.md)| Request object that contains the problem to be solved |
 
 ### Return type
 

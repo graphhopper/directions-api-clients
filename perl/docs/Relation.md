@@ -1,8 +1,8 @@
-# WWW::SwaggerClient::Object::Relation
+# WWW::OpenAPIClient::Object::Relation
 
 ## Load the model package
 ```perl
-use WWW::SwaggerClient::Object::Relation;
+use WWW::OpenAPIClient::Object::Relation;
 ```
 
 ## Properties

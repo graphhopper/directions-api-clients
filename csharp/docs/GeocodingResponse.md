@@ -1,4 +1,4 @@
-# IO.Swagger.Model.GeocodingResponse
+# Org.OpenAPITools.Model.GeocodingResponse
 ## Properties
 
 Name | Type | Description | Notes

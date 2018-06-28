@@ -1,8 +1,8 @@
-# WWW::SwaggerClient::Object::Activity
+# WWW::OpenAPIClient::Object::Activity
 
 ## Load the model package
 ```perl
-use WWW::SwaggerClient::Object::Activity;
+use WWW::OpenAPIClient::Object::Activity;
 ```
 
 ## Properties

@@ -22,6 +22,11 @@
   "Dynamic API context to be applied in API calls."
   default-api-context)
 
+(defn set-api-context
+  "Set the *api-context* globally"
+  [new-context]
+  (alter-var-root #'*api-context* (constantly (merge *api-context* new-context))))
+
 (defmacro with-api-context
   "A helper macro to wrap *api-context* with default values."
   [api-context & body]
@@ -167,6 +172,13 @@
        (map (fn [[k v]] [k (normalize-param v)]))
        (into {})))
 
+(defn default-to-json-mime
+  "Default to JSON MIME if given */* MIME"
+  [mime]
+  (if (= mime "*/*")
+    "application/json"
+    mime))
+
 (defn json-mime?
   "Check if the given MIME is a standard JSON MIME or :json."
   [mime]
@@ -180,7 +192,7 @@
   [mimes]
   (-> (filter json-mime? mimes)
       first
-      (or (first mimes))))
+      (or (default-to-json-mime (first mimes)))))
 
 (defn serialize
   "Serialize the given data according to content-type.

@@ -1,8 +1,8 @@
-# WWW::SwaggerClient::Object::RouteResponsePath
+# WWW::OpenAPIClient::Object::RouteResponsePath
 
 ## Load the model package
 ```perl
-use WWW::SwaggerClient::Object::RouteResponsePath;
+use WWW::OpenAPIClient::Object::RouteResponsePath;
 ```
 
 ## Properties

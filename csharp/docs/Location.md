@@ -1,4 +1,4 @@
-# IO.Swagger.Model.Location
+# Org.OpenAPITools.Model.Location
 ## Properties
 
 Name | Type | Description | Notes

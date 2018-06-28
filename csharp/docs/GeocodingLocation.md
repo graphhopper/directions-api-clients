@@ -1,4 +1,4 @@
-# IO.Swagger.Model.GeocodingLocation
+# Org.OpenAPITools.Model.GeocodingLocation
 ## Properties
 
 Name | Type | Description | Notes

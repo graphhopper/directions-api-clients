@@ -1,8 +1,8 @@
-# WWW::SwaggerClient::Object::Routing
+# WWW::OpenAPIClient::Object::Routing
 
 ## Load the model package
 ```perl
-use WWW::SwaggerClient::Object::Routing;
+use WWW::OpenAPIClient::Object::Routing;
 ```
 
 ## Properties

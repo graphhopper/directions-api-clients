@@ -1,6 +1,6 @@
-# Auto-Generated Swagger Bindings to `GraphHopperDirections`
+# Auto-Generated OpenAPI Bindings to `GraphHopperDirections`
 
-The library in `lib` provides auto-generated-from-Swagger bindings to the GraphHopperDirections API.
+The library in `lib` provides auto-generated-from-OpenAPI bindings to the GraphHopperDirections API.
 
 ## Installation
 

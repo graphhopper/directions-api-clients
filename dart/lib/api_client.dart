@@ -1,4 +1,4 @@
-part of swagger.api;
+part of openapi.api;
 
 class QueryParam {
   String name;
@@ -14,9 +14,6 @@ class ApiClient {
 
   Map<String, String> _defaultHeaderMap = {};
   Map<String, Authentication> _authentications = {};
-
-  final dson = new Dartson.JSON()
-      ..addTransformer(new DateTimeParser(), DateTime);
 
   final _RegList = new RegExp(r'^List<(.*)>$');
   final _RegMap = new RegExp(r'^Map<String,(.*)>$');
@@ -42,93 +39,81 @@ class ApiClient {
         case 'double':
           return value is double ? value : double.parse('$value');
         case 'Activity':
-          return dson.map(value, new Activity());
+          return new Activity.fromJson(value);
         case 'Address':
-          return dson.map(value, new Address());
+          return new Address.fromJson(value);
         case 'Algorithm':
-          return dson.map(value, new Algorithm());
+          return new Algorithm.fromJson(value);
         case 'Configuration':
-          return dson.map(value, new Configuration());
+          return new Configuration.fromJson(value);
         case 'CostMatrix':
-          return dson.map(value, new CostMatrix());
-        case 'CostMatrixData':
-          return dson.map(value, new CostMatrixData());
-        case 'CostMatrixDataInfo':
-          return dson.map(value, new CostMatrixDataInfo());
+          return new CostMatrix.fromJson(value);
         case 'Detail':
-          return dson.map(value, new Detail());
+          return new Detail.fromJson(value);
         case 'GHError':
-          return dson.map(value, new GHError());
-        case 'GHErrorHints':
-          return dson.map(value, new GHErrorHints());
+          return new GHError.fromJson(value);
         case 'GeocodingLocation':
-          return dson.map(value, new GeocodingLocation());
+          return new GeocodingLocation.fromJson(value);
         case 'GeocodingPoint':
-          return dson.map(value, new GeocodingPoint());
+          return new GeocodingPoint.fromJson(value);
         case 'GeocodingResponse':
-          return dson.map(value, new GeocodingResponse());
+          return new GeocodingResponse.fromJson(value);
         case 'IsochroneResponse':
-          return dson.map(value, new IsochroneResponse());
+          return new IsochroneResponse.fromJson(value);
         case 'IsochroneResponsePolygon':
-          return dson.map(value, new IsochroneResponsePolygon());
-        case 'IsochroneResponsePolygonGeometry':
-          return dson.map(value, new IsochroneResponsePolygonGeometry());
-        case 'IsochroneResponsePolygonProperties':
-          return dson.map(value, new IsochroneResponsePolygonProperties());
+          return new IsochroneResponsePolygon.fromJson(value);
         case 'JobId':
-          return dson.map(value, new JobId());
+          return new JobId.fromJson(value);
         case 'Location':
-          return dson.map(value, new Location());
+          return new Location.fromJson(value);
         case 'MatrixRequest':
-          return dson.map(value, new MatrixRequest());
+          return new MatrixRequest.fromJson(value);
         case 'MatrixResponse':
-          return dson.map(value, new MatrixResponse());
+          return new MatrixResponse.fromJson(value);
         case 'ModelBreak':
-          return dson.map(value, new ModelBreak());
+          return new ModelBreak.fromJson(value);
         case 'Objective':
-          return dson.map(value, new Objective());
+          return new Objective.fromJson(value);
         case 'Relation':
-          return dson.map(value, new Relation());
+          return new Relation.fromJson(value);
         case 'Request':
-          return dson.map(value, new Request());
+          return new Request.fromJson(value);
         case 'Response':
-          return dson.map(value, new Response());
+          return new Response.fromJson(value);
         case 'ResponseCoordinates':
-          return dson.map(value, new ResponseCoordinates());
+          return new ResponseCoordinates.fromJson(value);
         case 'ResponseCoordinatesArray':
-          return dson.map(value, new ResponseCoordinatesArray());
+          return new ResponseCoordinatesArray.fromJson(value);
         case 'ResponseInfo':
-          return dson.map(value, new ResponseInfo());
+          return new ResponseInfo.fromJson(value);
         case 'ResponseInstruction':
-          return dson.map(value, new ResponseInstruction());
+          return new ResponseInstruction.fromJson(value);
         case 'ResponseInstructions':
-          return dson.map(value, new ResponseInstructions());
+          return new ResponseInstructions.fromJson(value);
         case 'Route':
-          return dson.map(value, new Route());
+          return new Route.fromJson(value);
         case 'RoutePoint':
-          return dson.map(value, new RoutePoint());
+          return new RoutePoint.fromJson(value);
         case 'RouteResponse':
-          return dson.map(value, new RouteResponse());
+          return new RouteResponse.fromJson(value);
         case 'RouteResponsePath':
-          return dson.map(value, new RouteResponsePath());
+          return new RouteResponsePath.fromJson(value);
         case 'Routing':
-          return dson.map(value, new Routing());
+          return new Routing.fromJson(value);
         case 'Service':
-          return dson.map(value, new Service());
+          return new Service.fromJson(value);
         case 'Shipment':
-          return dson.map(value, new Shipment());
+          return new Shipment.fromJson(value);
         case 'Solution':
-          return dson.map(value, new Solution());
-        case 'SolutionUnassigned':
-          return dson.map(value, new SolutionUnassigned());
+          return new Solution.fromJson(value);
         case 'Stop':
-          return dson.map(value, new Stop());
+          return new Stop.fromJson(value);
         case 'TimeWindow':
-          return dson.map(value, new TimeWindow());
+          return new TimeWindow.fromJson(value);
         case 'Vehicle':
-          return dson.map(value, new Vehicle());
+          return new Vehicle.fromJson(value);
         case 'VehicleType':
-          return dson.map(value, new VehicleType());
+          return new VehicleType.fromJson(value);
         default:
           {
             Match match;
@@ -164,10 +149,8 @@ class ApiClient {
     String serialized = '';
     if (obj == null) {
       serialized = '';
-    } else if (obj is String) {
-      serialized = obj;
     } else {
-      serialized = dson.encode(obj);
+      serialized = JSON.encode(obj);
     }
     return serialized;
   }
@@ -227,6 +210,14 @@ class ApiClient {
       Authentication auth = _authentications[authName];
       if (auth == null) throw new ArgumentError("Authentication undefined: " + authName);
       auth.applyToParams(queryParams, headerParams);
+    });
+  }
+
+  void setAccessToken(String accessToken) {
+    _authentications.forEach((key, auth) {
+      if (auth is OAuth) {
+        auth.setAccessToken(accessToken);
+      }
     });
   }
 }

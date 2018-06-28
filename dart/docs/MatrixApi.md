@@ -1,8 +1,8 @@
-# swagger.api.MatrixApi
+# openapi.api.MatrixApi
 
 ## Load the API package
 ```dart
-import 'package:swagger/api.dart';
+import 'package:openapi/api.dart';
 ```
 
 All URIs are relative to *https://graphhopper.com/api/1*
@@ -22,7 +22,7 @@ The Matrix API is part of the GraphHopper Directions API and with this API you c
 
 ### Example 
 ```dart
-import 'package:swagger/api.dart';
+import 'package:openapi/api.dart';
 
 var api_instance = new MatrixApi();
 var key = key_example; // String | Get your key at graphhopper.com
@@ -73,7 +73,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **matrixPost**
-> MatrixResponse matrixPost(key, body)
+> MatrixResponse matrixPost(key, matrixRequest)
 
 Matrix API Post
 
@@ -81,14 +81,14 @@ The GET request has an URL length limitation, which hurts for many locations per
 
 ### Example 
 ```dart
-import 'package:swagger/api.dart';
+import 'package:openapi/api.dart';
 
 var api_instance = new MatrixApi();
 var key = key_example; // String | Get your key at graphhopper.com
-var body = new MatrixRequest(); // MatrixRequest | 
+var matrixRequest = new MatrixRequest(); // MatrixRequest | 
 
 try { 
-    var result = api_instance.matrixPost(key, body);
+    var result = api_instance.matrixPost(key, matrixRequest);
     print(result);
 } catch (e) {
     print("Exception when calling MatrixApi->matrixPost: $e\n");
@@ -100,7 +100,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **key** | **String**| Get your key at graphhopper.com | 
- **body** | [**MatrixRequest**](MatrixRequest.md)|  | [optional] 
+ **matrixRequest** | [**MatrixRequest**](MatrixRequest.md)|  | [optional] 
 
 ### Return type
 

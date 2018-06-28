@@ -1,4 +1,4 @@
-# swagger_client.RoutingApi
+# openapi_client.RoutingApi
 
 All URIs are relative to *https://graphhopper.com/api/1*
 
@@ -18,31 +18,31 @@ The GraphHopper Routing API allows to calculate route and implement navigation v
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import openapi_client
+from openapi_client.rest import ApiException
 from pprint import pprint
 
 # create an instance of the API class
-api_instance = swagger_client.RoutingApi()
+api_instance = openapi_client.RoutingApi()
 point = ['point_example'] # list[str] | Specify multiple points for which the route should be calculated. The order is important. Specify at least two points.
-points_encoded = true # bool | IMPORTANT- TODO - currently you have to pass false for the swagger client - Have not found a way to force add a parameter. If `false` the coordinates in `point` and `snapped_waypoints` are returned as array using the order [lon,lat,elevation] for every point. If `true` the coordinates will be encoded as string leading to less bandwith usage. You'll need a special handling for the decoding of this string on the client-side. We provide open source code in [Java](https://github.com/graphhopper/graphhopper/blob/d70b63660ac5200b03c38ba3406b8f93976628a6/web/src/main/java/com/graphhopper/http/WebHelper.java#L43) and [JavaScript](https://github.com/graphhopper/graphhopper/blob/d70b63660ac5200b03c38ba3406b8f93976628a6/web/src/main/webapp/js/ghrequest.js#L139). It is especially important to use no 3rd party client if you set `elevation=true`!
+points_encoded = True # bool | IMPORTANT- TODO - currently you have to pass false for the swagger client - Have not found a way to force add a parameter. If `false` the coordinates in `point` and `snapped_waypoints` are returned as array using the order [lon,lat,elevation] for every point. If `true` the coordinates will be encoded as string leading to less bandwith usage. You'll need a special handling for the decoding of this string on the client-side. We provide open source code in [Java](https://github.com/graphhopper/graphhopper/blob/d70b63660ac5200b03c38ba3406b8f93976628a6/web/src/main/java/com/graphhopper/http/WebHelper.java#L43) and [JavaScript](https://github.com/graphhopper/graphhopper/blob/d70b63660ac5200b03c38ba3406b8f93976628a6/web/src/main/webapp/js/ghrequest.js#L139). It is especially important to use no 3rd party client if you set `elevation=true`!
 key = 'key_example' # str | Get your key at graphhopper.com
 locale = 'locale_example' # str | The locale of the resulting turn instructions. E.g. `pt_PT` for Portuguese or `de` for German (optional)
-instructions = true # bool | If instruction should be calculated and returned (optional)
+instructions = True # bool | If instruction should be calculated and returned (optional)
 vehicle = 'vehicle_example' # str | The vehicle for which the route should be calculated. Other vehicles are foot, small_truck, ... (optional)
-elevation = true # bool | If `true` a third dimension - the elevation - is included in the polyline or in the GeoJson. If enabled you have to use a modified version of the decoding method or set points_encoded to `false`. See the points_encoded attribute for more details. Additionally a request can fail if the vehicle does not support elevation. See the features object for every vehicle. (optional)
-calc_points = true # bool | If the points for the route should be calculated at all printing out only distance and time. (optional)
+elevation = True # bool | If `true` a third dimension - the elevation - is included in the polyline or in the GeoJson. If enabled you have to use a modified version of the decoding method or set points_encoded to `false`. See the points_encoded attribute for more details. Additionally a request can fail if the vehicle does not support elevation. See the features object for every vehicle. (optional)
+calc_points = True # bool | If the points for the route should be calculated at all printing out only distance and time. (optional)
 point_hint = ['point_hint_example'] # list[str] | Optional parameter. Specifies a hint for each `point` parameter to prefer a certain street for the closest location lookup. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up. (optional)
-ch_disable = true # bool | Use this parameter in combination with one or more parameters of this table (optional)
+ch_disable = True # bool | Use this parameter in combination with one or more parameters of this table (optional)
 weighting = 'weighting_example' # str | Which kind of 'best' route calculation you need. Other option is `shortest` (e.g. for `vehicle=foot` or `bike`), `short_fastest` if time and distance is expensive e.g. for `vehicle=truck` (optional)
-edge_traversal = true # bool | Use `true` if you want to consider turn restrictions for bike and motor vehicles. Keep in mind that the response time is roughly 2 times slower. (optional)
+edge_traversal = True # bool | Use `true` if you want to consider turn restrictions for bike and motor vehicles. Keep in mind that the response time is roughly 2 times slower. (optional)
 algorithm = 'algorithm_example' # str | The algorithm to calculate the route. Other options are `dijkstra`, `astar`, `astarbi`, `alternative_route` and `round_trip` (optional)
 heading = 56 # int | Favour a heading direction for a certain point. Specify either one heading for the start point or as many as there are points. In this case headings are associated by their order to the specific points. Headings are given as north based clockwise angle between 0 and 360 degree. This parameter also influences the tour generated with `algorithm=round_trip` and force the initial direction. (optional)
 heading_penalty = 56 # int | Penalty for omitting a specified heading. The penalty corresponds to the accepted time delay in seconds in comparison to the route without a heading. (optional)
-pass_through = true # bool | If `true` u-turns are avoided at via-points with regard to the `heading_penalty`. (optional)
+pass_through = True # bool | If `true` u-turns are avoided at via-points with regard to the `heading_penalty`. (optional)
 details = ['details_example'] # list[str] | List of additional trip attributes to be returned. Try some of the following: `average_speed`, `street_name`, `edge_id`, `time`, `distance`. (optional)
 round_trip_distance = 56 # int | If `algorithm=round_trip` this parameter configures approximative length of the resulting round trip (optional)
-round_trip_seed = 789 # int | If `algorithm=round_trip` this parameter introduces randomness if e.g. the first try wasn't good. (optional)
+round_trip_seed = 56 # int | If `algorithm=round_trip` this parameter introduces randomness if e.g. the first try wasn't good. (optional)
 alternative_route_max_paths = 56 # int | If `algorithm=alternative_route` this parameter sets the number of maximum paths which should be calculated. Increasing can lead to worse alternatives. (optional)
 alternative_route_max_weight_factor = 56 # int | If `algorithm=alternative_route` this parameter sets the factor by which the alternatives routes can be longer than the optimal route. Increasing can lead to worse alternatives. (optional)
 alternative_route_max_share_factor = 56 # int | If `algorithm=alternative_route` this parameter specifies how much alternatives routes can have maximum in common with the optimal route. Increasing can lead to worse alternatives. (optional)

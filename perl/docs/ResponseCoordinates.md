@@ -1,8 +1,8 @@
-# WWW::SwaggerClient::Object::ResponseCoordinates
+# WWW::OpenAPIClient::Object::ResponseCoordinates
 
 ## Load the model package
 ```perl
-use WWW::SwaggerClient::Object::ResponseCoordinates;
+use WWW::OpenAPIClient::Object::ResponseCoordinates;
 ```
 
 ## Properties

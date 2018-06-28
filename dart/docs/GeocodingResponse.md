@@ -1,8 +1,8 @@
-# swagger.model.GeocodingResponse
+# openapi.model.GeocodingResponse
 
 ## Load the model package
 ```dart
-import 'package:swagger/api.dart';
+import 'package:openapi/api.dart';
 ```
 
 ## Properties

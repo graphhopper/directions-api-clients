@@ -1,8 +1,8 @@
-# WWW::SwaggerClient::Object::VehicleType
+# WWW::OpenAPIClient::Object::VehicleType
 
 ## Load the model package
 ```perl
-use WWW::SwaggerClient::Object::VehicleType;
+use WWW::OpenAPIClient::Object::VehicleType;
 ```
 
 ## Properties

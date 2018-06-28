@@ -1,8 +1,8 @@
-# WWW::SwaggerClient::Object::Shipment
+# WWW::OpenAPIClient::Object::Shipment
 
 ## Load the model package
 ```perl
-use WWW::SwaggerClient::Object::Shipment;
+use WWW::OpenAPIClient::Object::Shipment;
 ```
 
 ## Properties

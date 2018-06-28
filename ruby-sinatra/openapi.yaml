@@ -1,0 +1,2333 @@
+openapi: 3.0.1
+info:
+  description: You use the GraphHopper Directions API to add route planning, navigation and route optimization to your software. E.g. the Routing API has turn instructions and elevation data and the Route Optimization API solves your logistic problems and supports various constraints like time window and capacity restrictions. Also it is possible to get all distances between all locations with our fast Matrix API.
+  title: GraphHopper Directions API
+  version: 1.0.0
+servers:
+- url: https://graphhopper.com/api/1
+paths:
+  /route:
+    get:
+      description: The GraphHopper Routing API allows to calculate route and implement navigation via the turn instructions
+      parameters:
+      - description: Specify multiple points for which the route should be calculated. The order is important. Specify at least two points.
+        explode: true
+        in: query
+        name: point
+        required: true
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      - description: The locale of the resulting turn instructions. E.g. `pt_PT` for Portuguese or `de` for German
+        in: query
+        name: locale
+        schema:
+          type: string
+      - description: If instruction should be calculated and returned
+        in: query
+        name: instructions
+        schema:
+          type: boolean
+      - description: The vehicle for which the route should be calculated. Other vehicles are foot, small_truck, ...
+        in: query
+        name: vehicle
+        schema:
+          type: string
+      - description: If `true` a third dimension - the elevation - is included in the polyline or in the GeoJson. If enabled you have to use a modified version of the decoding method or set points_encoded to `false`. See the points_encoded attribute for more details. Additionally a request can fail if the vehicle does not support elevation. See the features object for every vehicle.
+        in: query
+        name: elevation
+        schema:
+          type: boolean
+      - description: IMPORTANT- TODO - currently you have to pass false for the swagger client - Have not found a way to force add a parameter. If `false` the coordinates in `point` and `snapped_waypoints` are returned as array using the order [lon,lat,elevation] for every point. If `true` the coordinates will be encoded as string leading to less bandwith usage. You'll need a special handling for the decoding of this string on the client-side. We provide open source code in [Java](https://github.com/graphhopper/graphhopper/blob/d70b63660ac5200b03c38ba3406b8f93976628a6/web/src/main/java/com/graphhopper/http/WebHelper.java#L43) and [JavaScript](https://github.com/graphhopper/graphhopper/blob/d70b63660ac5200b03c38ba3406b8f93976628a6/web/src/main/webapp/js/ghrequest.js#L139). It is especially important to use no 3rd party client if you set `elevation=true`!
+        in: query
+        name: points_encoded
+        required: true
+        schema:
+          type: boolean
+      - description: If the points for the route should be calculated at all printing out only distance and time.
+        in: query
+        name: calc_points
+        schema:
+          type: boolean
+      - description: Optional parameter. Specifies a hint for each `point` parameter to prefer a certain street for the closest location lookup. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up.
+        explode: true
+        in: query
+        name: point_hint
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      - description: Use this parameter in combination with one or more parameters of this table
+        in: query
+        name: ch.disable
+        schema:
+          type: boolean
+      - description: Which kind of 'best' route calculation you need. Other option is `shortest` (e.g. for `vehicle=foot` or `bike`), `short_fastest` if time and distance is expensive e.g. for `vehicle=truck`
+        in: query
+        name: weighting
+        schema:
+          type: string
+      - description: Use `true` if you want to consider turn restrictions for bike and motor vehicles. Keep in mind that the response time is roughly 2 times slower.
+        in: query
+        name: edge_traversal
+        schema:
+          type: boolean
+      - description: The algorithm to calculate the route. Other options are `dijkstra`, `astar`, `astarbi`, `alternative_route` and `round_trip`
+        in: query
+        name: algorithm
+        schema:
+          type: string
+      - description: Favour a heading direction for a certain point. Specify either one heading for the start point or as many as there are points. In this case headings are associated by their order to the specific points. Headings are given as north based clockwise angle between 0 and 360 degree. This parameter also influences the tour generated with `algorithm=round_trip` and force the initial direction.
+        in: query
+        name: heading
+        schema:
+          format: int32
+          type: integer
+      - description: Penalty for omitting a specified heading. The penalty corresponds to the accepted time delay in seconds in comparison to the route without a heading.
+        in: query
+        name: heading_penalty
+        schema:
+          format: int32
+          type: integer
+      - description: If `true` u-turns are avoided at via-points with regard to the `heading_penalty`.
+        in: query
+        name: pass_through
+        schema:
+          type: boolean
+      - description: 'List of additional trip attributes to be returned. Try some
+          of the following: `average_speed`, `street_name`, `edge_id`, `time`, `distance`.'
+        explode: true
+        in: query
+        name: details
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      - description: If `algorithm=round_trip` this parameter configures approximative length of the resulting round trip
+        in: query
+        name: round_trip.distance
+        schema:
+          format: int32
+          type: integer
+      - description: If `algorithm=round_trip` this parameter introduces randomness if e.g. the first try wasn't good.
+        in: query
+        name: round_trip.seed
+        schema:
+          format: int64
+          type: integer
+      - description: If `algorithm=alternative_route` this parameter sets the number of maximum paths which should be calculated. Increasing can lead to worse alternatives.
+        in: query
+        name: alternative_route.max_paths
+        schema:
+          format: int32
+          type: integer
+      - description: If `algorithm=alternative_route` this parameter sets the factor by which the alternatives routes can be longer than the optimal route. Increasing can lead to worse alternatives.
+        in: query
+        name: alternative_route.max_weight_factor
+        schema:
+          format: int32
+          type: integer
+      - description: If `algorithm=alternative_route` this parameter specifies how much alternatives routes can have maximum in common with the optimal route. Increasing can lead to worse alternatives.
+        in: query
+        name: alternative_route.max_share_factor
+        schema:
+          format: int32
+          type: integer
+      - description: comma separate list to avoid certain roads. You can avoid motorway, ferry, tunnel or track
+        in: query
+        name: avoid
+        schema:
+          type: string
+      - description: Get your key at graphhopper.com
+        in: query
+        name: key
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RouteResponse'
+          description: Routing Result
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GHError'
+          description: Unexpected Error
+      summary: Routing Request
+      tags:
+      - Routing
+  /isochrone:
+    get:
+      description: |
+        The GraphHopper Isochrone API allows calculating an isochrone of a locations means to calculate
+        'a line connecting points at which a vehicle arrives at the same time,'
+        see [Wikipedia](http://en.wikipedia.org/wiki/Isochrone_map).
+        It is also called **reachability** or **walkability**.
+      parameters:
+      - description: Specify the start coordinate
+        in: query
+        name: point
+        required: true
+        schema:
+          type: string
+      - description: Specify which time the vehicle should travel. In seconds.
+        in: query
+        name: time_limit
+        schema:
+          default: 600
+          format: int32
+          type: integer
+      - description: Specify which distance the vehicle should travel. In meter.
+        in: query
+        name: distance_limit
+        schema:
+          default: -1
+          format: int32
+          type: integer
+      - description: Possible vehicles are bike, car, foot and [more](https://graphhopper.com/api/1/docs/supported-vehicle-profiles/)
+        in: query
+        name: vehicle
+        schema:
+          default: car
+          type: string
+      - description: For how many sub intervals an additional polygon should be calculated.
+        in: query
+        name: buckets
+        schema:
+          default: 1
+          format: int32
+          type: integer
+      - description: If `false` the flow goes from point to the polygon, if `true` the flow goes from the polygon "inside" to the point. Example usage for `false`&#58; *How many potential customer can be reached within 30min travel time from your store* vs. `true`&#58; *How many customers can reach your store within 30min travel time.*
+        in: query
+        name: reverse_flow
+        schema:
+          default: false
+          type: boolean
+      - description: Can be fastest or shortest
+        in: query
+        name: weighting
+        schema:
+          default: fastest
+          type: string
+      - description: Get your key at graphhopper.com
+        in: query
+        name: key
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IsochroneResponse'
+          description: Isochrone Result
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GHError'
+          description: Unexpected Error
+      summary: Isochrone Request
+      tags:
+      - Isochrone
+  /matrix:
+    get:
+      description: |
+        The Matrix API is part of the GraphHopper Directions API and with this API you can calculate many-to-many distances, times or routes a lot more efficient than calling the Routing API multiple times.
+        In the Routing API we support multiple points, so called 'via points', which results in one route being calculated. The Matrix API results in NxM routes or more precise NxM weights, distances or times being calculated but is a lot faster compared to NxM single requests. The most simple example is a tourist trying to decide which pizza is close to him instead of using beeline distance she can calculate a 1x4 matrix. Or a delivery service in the need of often big NxN matrices to solve vehicle routing problems. E.g. the GraphHopper Route Optimization API uses the Matrix API under the hood to achieve this.
+      parameters:
+      - description: Specifiy multiple points for which the weight-, route-, time- or distance-matrix should be calculated. In this case the starts are identical to the destinations. If there are N points, then NxN entries will be calculated. The order of the point parameter is important. Specify at least three points. Cannot be used together with from_point or to_point. Is a string with the format latitude,longitude.
+        explode: true
+        in: query
+        name: point
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      - description: The starting points for the routes. E.g. if you want to calculate the three routes A-&gt;1, A-&gt;2, A-&gt;3 then you have one from_point parameter and three to_point parameters. Is a string with the format latitude,longitude.
+        explode: true
+        in: query
+        name: from_point
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      - description: The destination points for the routes. Is a string with the format latitude,longitude.
+        explode: true
+        in: query
+        name: to_point
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      - description: Optional parameter. Specifies a hint for each `point` parameter to prefer a certain street for the closest location lookup. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up.
+        explode: true
+        in: query
+        name: point_hint
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      - description: For the from_point parameter. See point_hint
+        explode: true
+        in: query
+        name: from_point_hint
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      - description: For the to_point parameter. See point_hint
+        explode: true
+        in: query
+        name: to_point_hint
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      - description: Specifies which arrays should be included in the response. Specify one or more of the following options 'weights', 'times', 'distances'. To specify more than one array use e.g. out_array=times&out_array=distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API.
+        explode: true
+        in: query
+        name: out_array
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+      - description: The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc
+        in: query
+        name: vehicle
+        schema:
+          default: car
+          type: string
+      - description: Get your key at graphhopper.com
+        in: query
+        name: key
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MatrixResponse'
+          description: Isochrone Result
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GHError'
+          description: Unexpected Error
+      summary: Matrix API
+      tags:
+      - Matrix
+    post:
+      description: |
+        The GET request has an URL length limitation, which hurts for many locations per request. In those cases use a HTTP POST request with JSON data as input. The only parameter in the URL will be the key which stays in the URL. Both request scenarios are identically except that all singular parameter names are named as their plural for a POST request.
+      parameters:
+      - description: Get your key at graphhopper.com
+        in: query
+        name: key
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/MatrixRequest'
+        required: false
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MatrixResponse'
+          description: Isochrone Result
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GHError'
+          description: Unexpected Error
+      summary: Matrix API Post
+      tags:
+      - Matrix
+  /geocode:
+    get:
+      description: |
+        This endpoint provides forward and reverse geocoding. For more details, review the official documentation at: https://graphhopper.com/api/1/docs/geocoding/
+      parameters:
+      - description: If you do forward geocoding, then this would be a textual description of the address you are looking for
+        in: query
+        name: q
+        schema:
+          type: string
+      - description: Display the search results for the specified locale. Currently French (fr), English (en), German (de) and Italian (it) are supported. If the locale wasn't found the default (en) is used.
+        in: query
+        name: locale
+        schema:
+          type: string
+      - description: Specify the maximum number of returned results
+        in: query
+        name: limit
+        schema:
+          format: int32
+          type: integer
+      - description: Set to true to do a reverse Geocoding request, see point parameter
+        in: query
+        name: reverse
+        schema:
+          type: boolean
+      - description: The location bias in the format 'latitude,longitude' e.g. point=45.93272,11.58803
+        in: query
+        name: point
+        schema:
+          type: string
+      - description: Can be either, default, nominatim, opencagedata
+        in: query
+        name: provider
+        schema:
+          type: string
+      - description: Get your key at graphhopper.com
+        in: query
+        name: key
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeocodingResponse'
+          description: An array found locations
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GHError'
+          description: Unexpected error
+      summary: Execute a Geocoding request
+      tags:
+      - Geocoding
+  /vrp/optimize:
+    post:
+      description: This endpoint for solving vehicle routing problems, i.e. traveling salesman or vehicle routing problems, and returns the solution.
+      operationId: postVrp
+      parameters:
+      - description: your API key
+        in: query
+        name: key
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Request'
+        description: Request object that contains the problem to be solved
+        required: true
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobId'
+          description: A jobId you can use to retrieve your solution from server - see solution endpoint.
+        400:
+          content: {}
+          description: Error occurred when reading client request. Request is invalid.
+        500:
+          content: {}
+          description: Error occurred on server side.
+      summary: Solves vehicle routing problems
+      tags:
+      - vrp
+  /vrp/solution/{jobId}:
+    get:
+      description: |
+        This endpoint returns the solution of a large problems. You can fetch it with the job_id, you have been sent.
+      operationId: getSolution
+      parameters:
+      - description: your API key
+        in: query
+        name: key
+        required: true
+        schema:
+          type: string
+      - description: Request solution with jobId
+        in: path
+        name: jobId
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+          description: A response containing the solution
+        400:
+          content: {}
+          description: Error occurred on client side such as invalid input.
+        500:
+          content: {}
+          description: Error occurred on server side.
+      summary: Return the solution associated to the jobId
+      tags:
+      - solution
+components:
+  schemas:
+    Address:
+      example:
+        street_hint: street_hint
+        name: name
+        lon: 0.80082819046101150206595775671303272247314453125
+        location_id: location_id
+        lat: 6.02745618307040320615897144307382404804229736328125
+      properties:
+        location_id:
+          description: Unique identifier of location
+          type: string
+        name:
+          description: name of location, e.g. street name plus house number
+          type: string
+        lon:
+          description: longitude
+          format: double
+          type: number
+        lat:
+          description: latitude
+          format: double
+          type: number
+        street_hint:
+          description: Optional parameter. Specifies a hint for each address to better snap the coordinates (lon,lat) to road network. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up.
+          type: string
+      type: object
+    Configuration:
+      example:
+        routing:
+          network_data_provider: openstreetmap
+          fail_fast: true
+          calc_points: true
+          consider_traffic: true
+      properties:
+        routing:
+          $ref: '#/components/schemas/Routing'
+      type: object
+    RoutePoint:
+      example:
+        coordinates:
+        - '{}'
+        - '{}'
+        type: type
+      properties:
+        type:
+          type: string
+        coordinates:
+          items:
+            properties: {}
+            type: object
+          type: array
+      type: object
+    Stop:
+      example:
+        duration: 1
+        time_windows:
+        - earliest: 8
+          latest: 9
+        - earliest: 8
+          latest: 9
+        address:
+          street_hint: street_hint
+          name: name
+          lon: 0.80082819046101150206595775671303272247314453125
+          location_id: location_id
+          lat: 6.02745618307040320615897144307382404804229736328125
+        preparation_time: 2
+      properties:
+        address:
+          $ref: '#/components/schemas/Address'
+        duration:
+          description: duration of stop, i.e. time in seconds the corresponding activity takes
+          format: int64
+          type: integer
+        preparation_time:
+          description: preparation time of service, e.g. search for a parking space. it only falls due if the location of previous activity differs from this location
+          format: int64
+          type: integer
+        time_windows:
+          description: array of time windows. currently, only a single time window is allowed
+          items:
+            $ref: '#/components/schemas/TimeWindow'
+          type: array
+      type: object
+    GeocodingResponse:
+      example:
+        hits:
+        - osm_id: osm_id
+          osm_type: osm_type
+          country: country
+          osm_key: osm_key
+          city: city
+          housenumber: housenumber
+          street: street
+          name: name
+          postcode: postcode
+          state: state
+          point:
+            lng: 6.02745618307040320615897144307382404804229736328125
+            lat: 0.80082819046101150206595775671303272247314453125
+        - osm_id: osm_id
+          osm_type: osm_type
+          country: country
+          osm_key: osm_key
+          city: city
+          housenumber: housenumber
+          street: street
+          name: name
+          postcode: postcode
+          state: state
+          point:
+            lng: 6.02745618307040320615897144307382404804229736328125
+            lat: 0.80082819046101150206595775671303272247314453125
+        locale: locale
+      properties:
+        hits:
+          items:
+            $ref: '#/components/schemas/GeocodingLocation'
+          type: array
+        locale:
+          type: string
+      type: object
+    Break:
+      example:
+        duration: 5
+        initial_driving_time: 7
+        possible_split:
+        - 9
+        - 9
+        max_driving_time: 2
+        earliest: 1
+        latest: 5
+      properties:
+        earliest:
+          description: earliest start of break
+          format: int64
+          type: integer
+        latest:
+          description: latest start of break
+          format: int64
+          type: integer
+        duration:
+          description: duration of break
+          format: int64
+          type: integer
+        max_driving_time:
+          description: max driving time without break
+          format: int64
+          type: integer
+        initial_driving_time:
+          description: initial driving time, i.e. the time your driver has already spent for driving
+          format: int64
+          type: integer
+        possible_split:
+          description: array of splits
+          items:
+            format: int64
+            type: integer
+          type: array
+      type: object
+    Activity:
+      example:
+        distance: 1
+        waiting_time: 7
+        driving_time: 4
+        end_time: 6
+        load_before:
+        - 5
+        - 5
+        arr_time: 1
+        id: id
+        type: start
+        location_id: location_id
+        load_after:
+        - 9
+        - 9
+      properties:
+        type:
+          description: type of activity
+          enum:
+          - start
+          - end
+          - service
+          - pickupShipment
+          - deliverShipment
+          - pickup
+          - delivery
+          - break
+          type: string
+        id:
+          description: id referring to the underlying service or shipment, i.e. the shipment or service this activity belongs to
+          type: string
+        location_id:
+          description: id that refers to address
+          type: string
+        arr_time:
+          description: arrival time at this activity in seconds
+          format: int64
+          type: integer
+        end_time:
+          description: end time of and thus departure time at this activity
+          format: int64
+          type: integer
+        waiting_time:
+          description: waiting time at this activity in seconds
+          format: int64
+          type: integer
+        distance:
+          description: cumulated distance from start to this activity in m
+          format: int64
+          type: integer
+        driving_time:
+          description: driving time of driver in seconds
+          format: int64
+          type: integer
+        load_before:
+          description: Array with size/capacity dimensions before this activity
+          items:
+            description: dimension value
+            format: int32
+            type: integer
+          type: array
+        load_after:
+          description: Array with size/capacity dimensions after this activity
+          items:
+            description: dimension value
+            format: int32
+            type: integer
+          type: array
+      type: object
+    Vehicle:
+      example:
+        break:
+          duration: 5
+          initial_driving_time: 7
+          possible_split:
+          - 9
+          - 9
+          max_driving_time: 2
+          earliest: 1
+          latest: 5
+        type_id: type_id
+        return_to_depot: true
+        earliest_start: 3
+        skills:
+        - skills
+        - skills
+        start_address:
+          street_hint: street_hint
+          name: name
+          lon: 0.80082819046101150206595775671303272247314453125
+          location_id: location_id
+          lat: 6.02745618307040320615897144307382404804229736328125
+        latest_end: 2
+        max_driving_time: 7
+        end_address:
+          street_hint: street_hint
+          name: name
+          lon: 0.80082819046101150206595775671303272247314453125
+          location_id: location_id
+          lat: 6.02745618307040320615897144307382404804229736328125
+        max_activities: 1
+        vehicle_id: vehicle_id
+        max_distance: 4
+        max_jobs: 1
+      properties:
+        vehicle_id:
+          description: Unique identifier of vehicle
+          type: string
+        type_id:
+          description: Unique identifier referring to the available vehicle types
+          type: string
+        start_address:
+          $ref: '#/components/schemas/Address'
+        end_address:
+          $ref: '#/components/schemas/Address'
+        break:
+          $ref: '#/components/schemas/Break'
+        return_to_depot:
+          description: Indicates whether vehicle should return to start address or not. If not, it can end at any service activity.
+          type: boolean
+        earliest_start:
+          description: earliest start of vehicle at its start location
+          format: int64
+          type: integer
+        latest_end:
+          description: latest end of vehicle at its end location
+          format: int64
+          type: integer
+        skills:
+          description: array of skills
+          items:
+            type: string
+          type: array
+        max_distance:
+          description: max distance of vehicle
+          format: int64
+          type: integer
+        max_driving_time:
+          description: max drive time of vehicle
+          format: int64
+          type: integer
+        max_jobs:
+          description: max number of jobs the vehicle can load
+          format: int32
+          type: integer
+        max_activities:
+          description: max number of activities the vehicle can conduct
+          format: int32
+          type: integer
+      type: object
+    GeocodingPoint:
+      example:
+        lng: 6.02745618307040320615897144307382404804229736328125
+        lat: 0.80082819046101150206595775671303272247314453125
+      properties:
+        lat:
+          description: Latitude
+          format: double
+          type: number
+        lng:
+          description: Longitude
+          format: double
+          type: number
+      type: object
+    Relation:
+      example:
+        ids:
+        - ids
+        - ids
+        type: type
+        vehicle_id: vehicle_id
+      properties:
+        type:
+          description: identifier of relation
+          type: string
+        ids:
+          description: An array of ids that should be related
+          items:
+            description: id of services or special ids of shipments
+            type: string
+          type: array
+        vehicle_id:
+          description: vehicle id
+          type: string
+      type: object
+    ResponseInstructions:
+      description: Contains information about the instructions for this route. The last instruction is always the Finish instruction and takes 0ms and 0meter. Keep in mind that instructions are currently under active development and can sometimes contain misleading information, so, make sure you always show an image of the map at the same time when navigating your users!
+      items:
+        $ref: '#/components/schemas/ResponseInstruction'
+      type: array
+    RouteResponse:
+      example:
+        paths:
+        - descend: 5.962133916683182377482808078639209270477294921875
+          ascend: 1.46581298050294517310021547018550336360931396484375
+          distance: 0.80082819046101150206595775671303272247314453125
+          bbox:
+          - 5.63737665663332876420099637471139430999755859375
+          - 5.63737665663332876420099637471139430999755859375
+          details: '{}'
+          time: 6
+          points_encoded: true
+          points: {}
+          snapped_waypoints: {}
+        - descend: 5.962133916683182377482808078639209270477294921875
+          ascend: 1.46581298050294517310021547018550336360931396484375
+          distance: 0.80082819046101150206595775671303272247314453125
+          bbox:
+          - 5.63737665663332876420099637471139430999755859375
+          - 5.63737665663332876420099637471139430999755859375
+          details: '{}'
+          time: 6
+          points_encoded: true
+          points: {}
+          snapped_waypoints: {}
+        info:
+          took: 2.3021358869347654518833223846741020679473876953125
+          copyrights:
+          - copyrights
+          - copyrights
+      properties:
+        paths:
+          items:
+            $ref: '#/components/schemas/RouteResponsePath'
+          type: array
+        info:
+          $ref: '#/components/schemas/ResponseInfo'
+      type: object
+    MatrixRequest:
+      example:
+        out_arrays:
+        - out_arrays
+        - out_arrays
+        from_points:
+        - - 6.02745618307040320615897144307382404804229736328125
+          - 6.02745618307040320615897144307382404804229736328125
+        - - 6.02745618307040320615897144307382404804229736328125
+          - 6.02745618307040320615897144307382404804229736328125
+        to_points:
+        - - 1.46581298050294517310021547018550336360931396484375
+          - 1.46581298050294517310021547018550336360931396484375
+        - - 1.46581298050294517310021547018550336360931396484375
+          - 1.46581298050294517310021547018550336360931396484375
+        to_point_hints:
+        - to_point_hints
+        - to_point_hints
+        point_hints:
+        - point_hints
+        - point_hints
+        points:
+        - - 0.80082819046101150206595775671303272247314453125
+          - 0.80082819046101150206595775671303272247314453125
+        - - 0.80082819046101150206595775671303272247314453125
+          - 0.80082819046101150206595775671303272247314453125
+        from_point_hints:
+        - from_point_hints
+        - from_point_hints
+        vehicle: vehicle
+      properties:
+        points:
+          description: Specifiy multiple points for which the weight-, route-, time- or distance-matrix should be calculated. In this case the starts are identical to the destinations. If there are N points, then NxN entries will be calculated. The order of the point parameter is important. Specify at least three points. Cannot be used together with from_point or to_point. Is a string with the format longitude,latitude.
+          items:
+            items:
+              format: double
+              type: number
+            type: array
+          type: array
+        from_points:
+          description: The starting points for the routes. E.g. if you want to calculate the three routes A-&gt;1, A-&gt;2, A-&gt;3 then you have one from_point parameter and three to_point parameters. Is a string with the format longitude,latitude.
+          items:
+            items:
+              format: double
+              type: number
+            type: array
+          type: array
+        to_points:
+          description: The destination points for the routes. Is a string with the format longitude,latitude.
+          items:
+            items:
+              format: double
+              type: number
+            type: array
+          type: array
+        point_hints:
+          description: Optional parameter. Specifies a hint for each point in the `points` array to prefer a certain street for the closest location lookup. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up.
+          items:
+            type: string
+          type: array
+        from_point_hints:
+          description: More information for the `from_points` array. See `point_hints`
+          items:
+            type: string
+          type: array
+        to_point_hints:
+          description: More information for the `to_points` array. See `point_hints`
+          items:
+            type: string
+          type: array
+        out_arrays:
+          description: Specifies which arrays should be included in the response. Specify one or more of the following options 'weights', 'times', 'distances'. To specify more than one array use e.g. out_array=times&amp;out_array=distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API.
+          items:
+            type: string
+          type: array
+        vehicle:
+          description: The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc, see here for the details.
+          type: string
+      type: object
+    GHError:
+      properties:
+        code:
+          format: int32
+          type: integer
+        message:
+          type: string
+        hints:
+          items:
+            properties:
+              message:
+                type: string
+            type: object
+          type: array
+      type: object
+    JobId:
+      example:
+        job_id: job_id
+      properties:
+        job_id:
+          description: unique id for your job/request with which you can fetch your solution
+          type: string
+      type: object
+    Solution:
+      example:
+        costs: 1
+        routes:
+        - completion_time: 1
+          distance: 4
+          transport_time: 7
+          waiting_time: 1
+          activities:
+          - distance: 1
+            waiting_time: 7
+            driving_time: 4
+            end_time: 6
+            load_before:
+            - 5
+            - 5
+            arr_time: 1
+            id: id
+            type: start
+            location_id: location_id
+            load_after:
+            - 9
+            - 9
+          - distance: 1
+            waiting_time: 7
+            driving_time: 4
+            end_time: 6
+            load_before:
+            - 5
+            - 5
+            arr_time: 1
+            id: id
+            type: start
+            location_id: location_id
+            load_after:
+            - 9
+            - 9
+          vehicle_id: vehicle_id
+          points:
+          - coordinates:
+            - '{}'
+            - '{}'
+            type: type
+          - coordinates:
+            - '{}'
+            - '{}'
+            type: type
+        - completion_time: 1
+          distance: 4
+          transport_time: 7
+          waiting_time: 1
+          activities:
+          - distance: 1
+            waiting_time: 7
+            driving_time: 4
+            end_time: 6
+            load_before:
+            - 5
+            - 5
+            arr_time: 1
+            id: id
+            type: start
+            location_id: location_id
+            load_after:
+            - 9
+            - 9
+          - distance: 1
+            waiting_time: 7
+            driving_time: 4
+            end_time: 6
+            load_before:
+            - 5
+            - 5
+            arr_time: 1
+            id: id
+            type: start
+            location_id: location_id
+            load_after:
+            - 9
+            - 9
+          vehicle_id: vehicle_id
+          points:
+          - coordinates:
+            - '{}'
+            - '{}'
+            type: type
+          - coordinates:
+            - '{}'
+            - '{}'
+            type: type
+        distance: 5
+        transport_time: 2
+        waiting_time: 9
+        no_vehicles: 3
+        time: 5
+        no_unassigned: 2
+        unassigned: '{}'
+        max_operation_time: 7
+      properties:
+        costs:
+          description: overall costs of solution
+          format: int32
+          type: integer
+        distance:
+          description: overall travel distance in meters
+          format: int32
+          type: integer
+        time:
+          description: overall transport time in seconds
+          format: int64
+          type: integer
+        transport_time:
+          description: overall transport time in seconds
+          format: int64
+          type: integer
+        max_operation_time:
+          description: operation time of the longest route in seconds
+          format: int64
+          type: integer
+        waiting_time:
+          description: total waiting time in seconds
+          format: int64
+          type: integer
+        no_vehicles:
+          description: number of employed vehicles
+          format: int32
+          type: integer
+        no_unassigned:
+          description: number of jobs that could not be assigned to final solution
+          format: int32
+          type: integer
+        routes:
+          description: An array of routes
+          items:
+            $ref: '#/components/schemas/Route'
+          type: array
+        unassigned:
+          properties:
+            breaks:
+              description: An array of ids of unassigned breaks
+              items:
+                description: id of unassigned breaks
+                type: string
+              type: array
+            details:
+              description: An array of details, i.e. reason for unassigned services or shipments
+              items:
+                $ref: '#/components/schemas/Detail'
+              type: array
+            services:
+              description: An array of ids of unassigned services
+              items:
+                description: id of unassigned service
+                type: string
+              type: array
+            shipments:
+              description: An array of ids of unassigned shipments
+              items:
+                description: id of unassigned shipments
+                type: string
+              type: array
+          type: object
+      type: object
+    Route:
+      example:
+        completion_time: 1
+        distance: 4
+        transport_time: 7
+        waiting_time: 1
+        activities:
+        - distance: 1
+          waiting_time: 7
+          driving_time: 4
+          end_time: 6
+          load_before:
+          - 5
+          - 5
+          arr_time: 1
+          id: id
+          type: start
+          location_id: location_id
+          load_after:
+          - 9
+          - 9
+        - distance: 1
+          waiting_time: 7
+          driving_time: 4
+          end_time: 6
+          load_before:
+          - 5
+          - 5
+          arr_time: 1
+          id: id
+          type: start
+          location_id: location_id
+          load_after:
+          - 9
+          - 9
+        vehicle_id: vehicle_id
+        points:
+        - coordinates:
+          - '{}'
+          - '{}'
+          type: type
+        - coordinates:
+          - '{}'
+          - '{}'
+          type: type
+      properties:
+        vehicle_id:
+          description: id of vehicle that operates route
+          type: string
+        distance:
+          description: distance of route in meter
+          format: int64
+          type: integer
+        transport_time:
+          description: transport time of route in seconds
+          format: int64
+          type: integer
+        completion_time:
+          description: completion time of route in seconds
+          format: int64
+          type: integer
+        waiting_time:
+          description: waiting time of route in seconds
+          format: int64
+          type: integer
+        activities:
+          description: array of activities
+          items:
+            $ref: '#/components/schemas/Activity'
+          type: array
+        points:
+          description: array of route planning points
+          items:
+            $ref: '#/components/schemas/RoutePoint'
+          type: array
+      type: object
+    CostMatrix:
+      example:
+        data: '{}'
+        location_ids:
+        - location_ids
+        - location_ids
+        profile: profile
+        type: default
+        url: url
+      properties:
+        type:
+          description: type of cost matrix, currently default or google are supported
+          enum:
+          - default
+          - google
+          type: string
+        url:
+          description: URL of matrix service
+          type: string
+        location_ids:
+          items:
+            type: string
+          type: array
+        data:
+          description: JSON data of matrix response
+          properties:
+            distances:
+              items:
+                items:
+                  format: double
+                  type: number
+                type: array
+              minItems: 1
+              type: array
+            times:
+              items:
+                items:
+                  format: int64
+                  type: integer
+                type: array
+              minItems: 1
+              type: array
+            info:
+              description: Additional information for your request
+              properties:
+                took:
+                  format: double
+                  type: number
+                copyrights:
+                  items:
+                    type: string
+                  type: array
+              type: object
+          type: object
+        profile:
+          description: vehicle profile or empty if catch all fallback
+          type: string
+      type: object
+    ResponseInfo:
+      description: Additional information for your request
+      example:
+        took: 2.3021358869347654518833223846741020679473876953125
+        copyrights:
+        - copyrights
+        - copyrights
+      properties:
+        copyrights:
+          items:
+            type: string
+          type: array
+        took:
+          format: double
+          type: number
+      type: object
+    IsochroneResponse:
+      example:
+        polygons:
+        - geometry: '{}'
+          type: type
+          properties: '{}'
+        - geometry: '{}'
+          type: type
+          properties: '{}'
+        copyrights:
+        - copyrights
+        - copyrights
+      properties:
+        polygons:
+          items:
+            $ref: '#/components/schemas/IsochroneResponsePolygon'
+          type: array
+        copyrights:
+          items:
+            type: string
+          type: array
+      type: object
+    GeocodingLocation:
+      example:
+        osm_id: osm_id
+        osm_type: osm_type
+        country: country
+        osm_key: osm_key
+        city: city
+        housenumber: housenumber
+        street: street
+        name: name
+        postcode: postcode
+        state: state
+        point:
+          lng: 6.02745618307040320615897144307382404804229736328125
+          lat: 0.80082819046101150206595775671303272247314453125
+      properties:
+        point:
+          $ref: '#/components/schemas/GeocodingPoint'
+        osm_id:
+          description: OSM Id
+          type: string
+        osm_type:
+          description: N = node, R = relation, W = way
+          type: string
+        osm_key:
+          description: The osm key of the result like `place` or `amenity`
+          type: string
+        name:
+          type: string
+        country:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        street:
+          type: string
+        housenumber:
+          type: string
+        postcode:
+          type: string
+      type: object
+    VehicleType:
+      example:
+        type_id: type_id
+        profile: car
+        cost_per_meter: 1.173074250955943309548956676735542714595794677734375
+        cost_per_second: 4.9652184929849543237878606305457651615142822265625
+        speed_factor: 6.8468526983526398765889098285697400569915771484375
+        cost_per_activation: 5.02500479152029466689555192715488374233245849609375
+        service_time_factor: 7.4577447736837658709418974467553198337554931640625
+        capacity:
+        - 1
+        - 1
+      properties:
+        type_id:
+          description: Unique identifier for the vehicle type
+          type: string
+        profile:
+          description: Profile of vehicle type
+          enum:
+          - car
+          - bike
+          - foot
+          - hike
+          - mtb
+          - racingbike
+          - scooter
+          - truck
+          - small_truck
+          example: car
+          type: string
+        capacity:
+          description: array of capacity dimensions
+          items:
+            format: int32
+            type: integer
+          type: array
+        speed_factor:
+          description: speed_factor of vehicle type
+          format: double
+          type: number
+        service_time_factor:
+          description: service time factor of vehicle type
+          format: double
+          type: number
+        cost_per_meter:
+          description: cost parameter per distance unit, here meter is used
+          format: double
+          type: number
+        cost_per_second:
+          description: cost parameter per time unit, here second is used
+          format: double
+          type: number
+        cost_per_activation:
+          description: cost parameter vehicle activation, i.e. fixed costs per vehicle
+          format: double
+          type: number
+      type: object
+    ResponseInstruction:
+      properties:
+        text:
+          description: A description what the user has to do in order to follow the route. The language depends on the locale parameter.
+          type: string
+        street_name:
+          description: The name of the street to turn onto in order to follow the route.
+          type: string
+        distance:
+          description: The distance for this instruction, in meter
+          format: double
+          type: number
+        time:
+          description: The duration for this instruction, in ms
+          format: int32
+          type: integer
+        interval:
+          description: An array containing the first and the last index (relative to paths[0].points) of the points for this instruction. This is useful to know for which part of the route the instructions are valid.
+          items:
+            format: int32
+            type: integer
+          type: array
+        sign:
+          description: A number which specifies the sign to show e.g. for right turn etc <br>TURN_SHARP_LEFT = -3<br>TURN_LEFT = -2<br>TURN_SLIGHT_LEFT = -1<br>CONTINUE_ON_STREET = 0<br>TURN_SLIGHT_RIGHT = 1<br>TURN_RIGHT = 2<br>TURN_SHARP_RIGHT = 3<br>FINISH = 4<br>VIA_REACHED = 5<br>USE_ROUNDABOUT = 6
+          format: int32
+          type: integer
+        annotation_text:
+          description: optional - A text describing the instruction in more detail, e.g. like surface of the way, warnings or involved costs.
+          type: string
+        annotation_importance:
+          description: optional - 0 stands for INFO, 1 for warning, 2 for costs, 3 for costs and warning
+          format: int32
+          type: integer
+        exit_number:
+          description: optional - Only available for USE_ROUNDABOUT instructions. The count of exits at which the route leaves the roundabout.
+          format: int32
+          type: integer
+        turn_angle:
+          description: optional - Only available for USE_ROUNDABOUT instructions. The radian of the route within the roundabout - 0&lt;r&lt;2*PI for clockwise and -2PI&lt;r&lt;0 for counterclockwise transit. Null if the direction of rotation is undefined.
+          format: double
+          type: number
+      type: object
+    Request:
+      example:
+        vehicle_types:
+        - type_id: type_id
+          profile: car
+          cost_per_meter: 1.173074250955943309548956676735542714595794677734375
+          cost_per_second: 4.9652184929849543237878606305457651615142822265625
+          speed_factor: 6.8468526983526398765889098285697400569915771484375
+          cost_per_activation: 5.02500479152029466689555192715488374233245849609375
+          service_time_factor: 7.4577447736837658709418974467553198337554931640625
+          capacity:
+          - 1
+          - 1
+        - type_id: type_id
+          profile: car
+          cost_per_meter: 1.173074250955943309548956676735542714595794677734375
+          cost_per_second: 4.9652184929849543237878606305457651615142822265625
+          speed_factor: 6.8468526983526398765889098285697400569915771484375
+          cost_per_activation: 5.02500479152029466689555192715488374233245849609375
+          service_time_factor: 7.4577447736837658709418974467553198337554931640625
+          capacity:
+          - 1
+          - 1
+        configuration:
+          routing:
+            network_data_provider: openstreetmap
+            fail_fast: true
+            calc_points: true
+            consider_traffic: true
+        vehicles:
+        - break:
+            duration: 5
+            initial_driving_time: 7
+            possible_split:
+            - 9
+            - 9
+            max_driving_time: 2
+            earliest: 1
+            latest: 5
+          type_id: type_id
+          return_to_depot: true
+          earliest_start: 3
+          skills:
+          - skills
+          - skills
+          start_address:
+            street_hint: street_hint
+            name: name
+            lon: 0.80082819046101150206595775671303272247314453125
+            location_id: location_id
+            lat: 6.02745618307040320615897144307382404804229736328125
+          latest_end: 2
+          max_driving_time: 7
+          end_address:
+            street_hint: street_hint
+            name: name
+            lon: 0.80082819046101150206595775671303272247314453125
+            location_id: location_id
+            lat: 6.02745618307040320615897144307382404804229736328125
+          max_activities: 1
+          vehicle_id: vehicle_id
+          max_distance: 4
+          max_jobs: 1
+        - break:
+            duration: 5
+            initial_driving_time: 7
+            possible_split:
+            - 9
+            - 9
+            max_driving_time: 2
+            earliest: 1
+            latest: 5
+          type_id: type_id
+          return_to_depot: true
+          earliest_start: 3
+          skills:
+          - skills
+          - skills
+          start_address:
+            street_hint: street_hint
+            name: name
+            lon: 0.80082819046101150206595775671303272247314453125
+            location_id: location_id
+            lat: 6.02745618307040320615897144307382404804229736328125
+          latest_end: 2
+          max_driving_time: 7
+          end_address:
+            street_hint: street_hint
+            name: name
+            lon: 0.80082819046101150206595775671303272247314453125
+            location_id: location_id
+            lat: 6.02745618307040320615897144307382404804229736328125
+          max_activities: 1
+          vehicle_id: vehicle_id
+          max_distance: 4
+          max_jobs: 1
+        objectives:
+        - type: min
+          value: completion_time
+        - type: min
+          value: completion_time
+        services:
+        - time_windows:
+          - earliest: 8
+            latest: 9
+          - earliest: 8
+            latest: 9
+          address:
+            street_hint: street_hint
+            name: name
+            lon: 0.80082819046101150206595775671303272247314453125
+            location_id: location_id
+            lat: 6.02745618307040320615897144307382404804229736328125
+          type: service
+          priority: 9
+          duration: 9
+          size:
+          - 6
+          - 6
+          allowed_vehicles:
+          - allowed_vehicles
+          - allowed_vehicles
+          required_skills:
+          - required_skills
+          - required_skills
+          disallowed_vehicles:
+          - disallowed_vehicles
+          - disallowed_vehicles
+          name: name
+          preparation_time: 6
+          max_time_in_vehicle: 3
+          id: id
+        - time_windows:
+          - earliest: 8
+            latest: 9
+          - earliest: 8
+            latest: 9
+          address:
+            street_hint: street_hint
+            name: name
+            lon: 0.80082819046101150206595775671303272247314453125
+            location_id: location_id
+            lat: 6.02745618307040320615897144307382404804229736328125
+          type: service
+          priority: 9
+          duration: 9
+          size:
+          - 6
+          - 6
+          allowed_vehicles:
+          - allowed_vehicles
+          - allowed_vehicles
+          required_skills:
+          - required_skills
+          - required_skills
+          disallowed_vehicles:
+          - disallowed_vehicles
+          - disallowed_vehicles
+          name: name
+          preparation_time: 6
+          max_time_in_vehicle: 3
+          id: id
+        relations:
+        - ids:
+          - ids
+          - ids
+          type: type
+          vehicle_id: vehicle_id
+        - ids:
+          - ids
+          - ids
+          type: type
+          vehicle_id: vehicle_id
+        shipments:
+        - delivery:
+            duration: 1
+            time_windows:
+            - earliest: 8
+              latest: 9
+            - earliest: 8
+              latest: 9
+            address:
+              street_hint: street_hint
+              name: name
+              lon: 0.80082819046101150206595775671303272247314453125
+              location_id: location_id
+              lat: 6.02745618307040320615897144307382404804229736328125
+            preparation_time: 2
+          size:
+          - 6
+          - 6
+          allowed_vehicles:
+          - allowed_vehicles
+          - allowed_vehicles
+          required_skills:
+          - required_skills
+          - required_skills
+          disallowed_vehicles:
+          - disallowed_vehicles
+          - disallowed_vehicles
+          name: name
+          pickup:
+            duration: 1
+            time_windows:
+            - earliest: 8
+              latest: 9
+            - earliest: 8
+              latest: 9
+            address:
+              street_hint: street_hint
+              name: name
+              lon: 0.80082819046101150206595775671303272247314453125
+              location_id: location_id
+              lat: 6.02745618307040320615897144307382404804229736328125
+            preparation_time: 2
+          max_time_in_vehicle: 6
+          id: id
+          priority: 6
+        - delivery:
+            duration: 1
+            time_windows:
+            - earliest: 8
+              latest: 9
+            - earliest: 8
+              latest: 9
+            address:
+              street_hint: street_hint
+              name: name
+              lon: 0.80082819046101150206595775671303272247314453125
+              location_id: location_id
+              lat: 6.02745618307040320615897144307382404804229736328125
+            preparation_time: 2
+          size:
+          - 6
+          - 6
+          allowed_vehicles:
+          - allowed_vehicles
+          - allowed_vehicles
+          required_skills:
+          - required_skills
+          - required_skills
+          disallowed_vehicles:
+          - disallowed_vehicles
+          - disallowed_vehicles
+          name: name
+          pickup:
+            duration: 1
+            time_windows:
+            - earliest: 8
+              latest: 9
+            - earliest: 8
+              latest: 9
+            address:
+              street_hint: street_hint
+              name: name
+              lon: 0.80082819046101150206595775671303272247314453125
+              location_id: location_id
+              lat: 6.02745618307040320615897144307382404804229736328125
+            preparation_time: 2
+          max_time_in_vehicle: 6
+          id: id
+          priority: 6
+        cost_matrices:
+        - data: '{}'
+          location_ids:
+          - location_ids
+          - location_ids
+          profile: profile
+          type: default
+          url: url
+        - data: '{}'
+          location_ids:
+          - location_ids
+          - location_ids
+          profile: profile
+          type: default
+          url: url
+        algorithm:
+          problem_type: min
+          objective: transport_time
+      properties:
+        vehicles:
+          description: An array of vehicles that can be employed
+          items:
+            $ref: '#/components/schemas/Vehicle'
+          type: array
+        vehicle_types:
+          description: An array of vehicle types
+          items:
+            $ref: '#/components/schemas/VehicleType'
+          type: array
+        services:
+          description: An array of services
+          items:
+            $ref: '#/components/schemas/Service'
+          type: array
+        shipments:
+          description: An array of shipments
+          items:
+            $ref: '#/components/schemas/Shipment'
+          type: array
+        relations:
+          description: An array of relations
+          items:
+            $ref: '#/components/schemas/Relation'
+          type: array
+        algorithm:
+          $ref: '#/components/schemas/Algorithm'
+        objectives:
+          description: An array of objectives
+          items:
+            $ref: '#/components/schemas/Objective'
+          type: array
+        cost_matrices:
+          description: An array of cost matrices
+          items:
+            $ref: '#/components/schemas/CostMatrix'
+          type: array
+        configuration:
+          $ref: '#/components/schemas/Configuration'
+      type: object
+    Service:
+      example:
+        time_windows:
+        - earliest: 8
+          latest: 9
+        - earliest: 8
+          latest: 9
+        address:
+          street_hint: street_hint
+          name: name
+          lon: 0.80082819046101150206595775671303272247314453125
+          location_id: location_id
+          lat: 6.02745618307040320615897144307382404804229736328125
+        type: service
+        priority: 9
+        duration: 9
+        size:
+        - 6
+        - 6
+        allowed_vehicles:
+        - allowed_vehicles
+        - allowed_vehicles
+        required_skills:
+        - required_skills
+        - required_skills
+        disallowed_vehicles:
+        - disallowed_vehicles
+        - disallowed_vehicles
+        name: name
+        preparation_time: 6
+        max_time_in_vehicle: 3
+        id: id
+      properties:
+        id:
+          description: Unique identifier of service
+          type: string
+        type:
+          description: type of service
+          enum:
+          - service
+          - pickup
+          - delivery
+          type: string
+        priority:
+          description: priority of service
+          format: int32
+          type: integer
+        name:
+          description: name of service
+          type: string
+        address:
+          $ref: '#/components/schemas/Address'
+        duration:
+          description: duration of service, i.e. time in seconds the corresponding activity takes
+          format: int64
+          type: integer
+        preparation_time:
+          description: preparation time of service, e.g. search for a parking space. it only falls due if the location of previous activity differs from this location
+          format: int64
+          type: integer
+        time_windows:
+          description: array of time windows. currently, only a single time window is allowed
+          items:
+            $ref: '#/components/schemas/TimeWindow'
+          type: array
+        size:
+          description: array of capacity dimensions
+          items:
+            format: int32
+            type: integer
+          type: array
+        required_skills:
+          description: array of required skills
+          items:
+            type: string
+          type: array
+        allowed_vehicles:
+          description: array of allowed vehicle ids
+          items:
+            type: string
+          type: array
+        disallowed_vehicles:
+          description: array of disallowed vehicle ids
+          items:
+            type: string
+          type: array
+        max_time_in_vehicle:
+          description: max time service can stay in vehicle
+          format: int64
+          type: integer
+      type: object
+    Shipment:
+      example:
+        delivery:
+          duration: 1
+          time_windows:
+          - earliest: 8
+            latest: 9
+          - earliest: 8
+            latest: 9
+          address:
+            street_hint: street_hint
+            name: name
+            lon: 0.80082819046101150206595775671303272247314453125
+            location_id: location_id
+            lat: 6.02745618307040320615897144307382404804229736328125
+          preparation_time: 2
+        size:
+        - 6
+        - 6
+        allowed_vehicles:
+        - allowed_vehicles
+        - allowed_vehicles
+        required_skills:
+        - required_skills
+        - required_skills
+        disallowed_vehicles:
+        - disallowed_vehicles
+        - disallowed_vehicles
+        name: name
+        pickup:
+          duration: 1
+          time_windows:
+          - earliest: 8
+            latest: 9
+          - earliest: 8
+            latest: 9
+          address:
+            street_hint: street_hint
+            name: name
+            lon: 0.80082819046101150206595775671303272247314453125
+            location_id: location_id
+            lat: 6.02745618307040320615897144307382404804229736328125
+          preparation_time: 2
+        max_time_in_vehicle: 6
+        id: id
+        priority: 6
+      properties:
+        id:
+          description: Unique identifier of service
+          type: string
+        name:
+          description: name of shipment
+          type: string
+        priority:
+          description: priority of service, i.e. 1 = high, 2 = normal, 3 = low. default is 2.
+          format: int32
+          type: integer
+        pickup:
+          $ref: '#/components/schemas/Stop'
+        delivery:
+          $ref: '#/components/schemas/Stop'
+        size:
+          description: array of capacity dimensions
+          items:
+            format: int32
+            type: integer
+          type: array
+        required_skills:
+          description: array of required skills
+          items:
+            type: string
+          type: array
+        allowed_vehicles:
+          description: array of allowed vehicle ids
+          items:
+            type: string
+          type: array
+        disallowed_vehicles:
+          description: array of disallowed vehicle ids
+          items:
+            type: string
+          type: array
+        max_time_in_vehicle:
+          description: max time shipment can stay in vehicle
+          format: int64
+          type: integer
+      type: object
+    Routing:
+      example:
+        network_data_provider: openstreetmap
+        fail_fast: true
+        calc_points: true
+        consider_traffic: true
+      properties:
+        calc_points:
+          description: indicates whether solution should come with route geometries
+          type: boolean
+        consider_traffic:
+          description: indicates whether historical traffic information should be considered
+          type: boolean
+        network_data_provider:
+          description: specifies the data provider
+          enum:
+          - openstreetmap
+          - tomtom
+          type: string
+        fail_fast:
+          description: indicates whether matrix calculation should fail fast when points cannot be connected
+          type: boolean
+      type: object
+    IsochroneResponsePolygon:
+      description: A found path
+      example:
+        geometry: '{}'
+        type: type
+        properties: '{}'
+      properties:
+        properties:
+          properties:
+            bucket:
+              format: int32
+              type: integer
+          type: object
+        type:
+          type: string
+        geometry:
+          properties:
+            coordinates:
+              items:
+                $ref: '#/components/schemas/ResponseCoordinatesArray'
+              type: array
+            type:
+              type: string
+          type: object
+      type: object
+    Algorithm:
+      example:
+        problem_type: min
+        objective: transport_time
+      properties:
+        problem_type:
+          enum:
+          - min
+          - min-max
+          type: string
+        objective:
+          enum:
+          - transport_time
+          - completion_time
+          type: string
+      type: object
+    TimeWindow:
+      example:
+        earliest: 8
+        latest: 9
+      properties:
+        earliest:
+          description: earliest start time of corresponding activity
+          format: int64
+          type: integer
+        latest:
+          description: latest start time of corresponding activity
+          format: int64
+          type: integer
+      type: object
+    Response:
+      example:
+        processing_time: 6
+        solution:
+          costs: 1
+          routes:
+          - completion_time: 1
+            distance: 4
+            transport_time: 7
+            waiting_time: 1
+            activities:
+            - distance: 1
+              waiting_time: 7
+              driving_time: 4
+              end_time: 6
+              load_before:
+              - 5
+              - 5
+              arr_time: 1
+              id: id
+              type: start
+              location_id: location_id
+              load_after:
+              - 9
+              - 9
+            - distance: 1
+              waiting_time: 7
+              driving_time: 4
+              end_time: 6
+              load_before:
+              - 5
+              - 5
+              arr_time: 1
+              id: id
+              type: start
+              location_id: location_id
+              load_after:
+              - 9
+              - 9
+            vehicle_id: vehicle_id
+            points:
+            - coordinates:
+              - '{}'
+              - '{}'
+              type: type
+            - coordinates:
+              - '{}'
+              - '{}'
+              type: type
+          - completion_time: 1
+            distance: 4
+            transport_time: 7
+            waiting_time: 1
+            activities:
+            - distance: 1
+              waiting_time: 7
+              driving_time: 4
+              end_time: 6
+              load_before:
+              - 5
+              - 5
+              arr_time: 1
+              id: id
+              type: start
+              location_id: location_id
+              load_after:
+              - 9
+              - 9
+            - distance: 1
+              waiting_time: 7
+              driving_time: 4
+              end_time: 6
+              load_before:
+              - 5
+              - 5
+              arr_time: 1
+              id: id
+              type: start
+              location_id: location_id
+              load_after:
+              - 9
+              - 9
+            vehicle_id: vehicle_id
+            points:
+            - coordinates:
+              - '{}'
+              - '{}'
+              type: type
+            - coordinates:
+              - '{}'
+              - '{}'
+              type: type
+          distance: 5
+          transport_time: 2
+          waiting_time: 9
+          no_vehicles: 3
+          time: 5
+          no_unassigned: 2
+          unassigned: '{}'
+          max_operation_time: 7
+        copyrights:
+        - copyrights
+        - copyrights
+        job_id: job_id
+        waiting_in_queue: 0
+        status: waiting_in_queue
+      properties:
+        copyrights:
+          items:
+            description: attribution
+            type: string
+          type: array
+        job_id:
+          description: unique identify of job - which you get when posting your request to the large problem solver
+          type: string
+        status:
+          description: indicates the current status of the job
+          enum:
+          - waiting_in_queue
+          - processing
+          - finished
+          type: string
+        waiting_in_queue:
+          description: waiting time in ms
+          format: int64
+          type: integer
+        processing_time:
+          description: processing time in ms. if job is still waiting in queue, processing_time is 0
+          format: int64
+          type: integer
+        solution:
+          $ref: '#/components/schemas/Solution'
+      type: object
+    Objective:
+      example:
+        type: min
+        value: completion_time
+      properties:
+        type:
+          description: 'type of objective function, i.e. min or min-max '
+          enum:
+          - min
+          - min-max
+          type: string
+        value:
+          description: objective function value
+          enum:
+          - completion_time
+          - transport_time
+          - vehicles
+          type: string
+      type: object
+    MatrixResponse:
+      example:
+        distances:
+        - - 0.80082819046101150206595775671303272247314453125
+          - 0.80082819046101150206595775671303272247314453125
+        - - 0.80082819046101150206595775671303272247314453125
+          - 0.80082819046101150206595775671303272247314453125
+        times:
+        - - 6.02745618307040320615897144307382404804229736328125
+          - 6.02745618307040320615897144307382404804229736328125
+        - - 6.02745618307040320615897144307382404804229736328125
+          - 6.02745618307040320615897144307382404804229736328125
+        weights:
+        - - 1.46581298050294517310021547018550336360931396484375
+          - 1.46581298050294517310021547018550336360931396484375
+        - - 1.46581298050294517310021547018550336360931396484375
+          - 1.46581298050294517310021547018550336360931396484375
+        info:
+          took: 2.3021358869347654518833223846741020679473876953125
+          copyrights:
+          - copyrights
+          - copyrights
+      properties:
+        distances:
+          items:
+            items:
+              format: int64
+              type: number
+            type: array
+          type: array
+        times:
+          items:
+            items:
+              format: int64
+              type: number
+            type: array
+          type: array
+        weights:
+          items:
+            items:
+              format: double
+              type: number
+            type: array
+          type: array
+        info:
+          $ref: '#/components/schemas/ResponseInfo'
+      type: object
+    ResponseCoordinates:
+      example: {}
+      properties:
+        coordinates:
+          $ref: '#/components/schemas/ResponseCoordinatesArray'
+      type: object
+    ResponseCoordinatesArray:
+      description: An array containing coordinates
+      items:
+        items:
+          format: double
+          type: number
+        type: array
+      type: array
+    RouteResponsePath:
+      description: A found path
+      example:
+        descend: 5.962133916683182377482808078639209270477294921875
+        ascend: 1.46581298050294517310021547018550336360931396484375
+        distance: 0.80082819046101150206595775671303272247314453125
+        bbox:
+        - 5.63737665663332876420099637471139430999755859375
+        - 5.63737665663332876420099637471139430999755859375
+        details: '{}'
+        time: 6
+        points_encoded: true
+        points: {}
+        snapped_waypoints: {}
+      properties:
+        distance:
+          description: The total distance of the route, in meter
+          format: double
+          type: number
+        time:
+          description: The total time of the route, in ms
+          format: int64
+          type: integer
+        ascend:
+          format: double
+          type: number
+        descend:
+          description: The total descend (downhill) of the route, in meter
+          format: double
+          type: number
+        points:
+          $ref: '#/components/schemas/ResponseCoordinates'
+        points_encoded:
+          description: Is true if the points are encoded, if not paths[0].points contains the geo json of the path (then order is lon,lat,elevation), which is easier to handle but consumes more bandwidth compared to encoded version
+          type: boolean
+        bbox:
+          description: The bounding box of the route, format <br> minLon, minLat, maxLon, maxLat
+          items:
+            format: double
+            type: number
+          type: array
+        snapped_waypoints:
+          $ref: '#/components/schemas/ResponseCoordinates'
+        instructions:
+          $ref: '#/components/schemas/ResponseInstructions'
+        details:
+          properties: {}
+          type: object
+      type: object
+    Detail:
+      properties:
+        id:
+          description: id of unassigned service/shipment
+          type: string
+        code:
+          description: reason code
+          format: int32
+          type: integer
+        reason:
+          description: human readable reason
+          type: string
+      type: object
+    Location:
+      properties:
+        lon:
+          description: longitude
+          format: double
+          type: number
+        lat:
+          description: latitude
+          format: double
+          type: number
+      type: object
+  securitySchemes:
+    api_key:
+      in: query
+      name: key
+      type: apiKey

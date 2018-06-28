@@ -1,4 +1,4 @@
-# IO.Swagger.Api.VrpApi
+# Org.OpenAPITools.Api.VrpApi
 
 All URIs are relative to *https://graphhopper.com/api/1*
 
@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 <a name="postvrp"></a>
 # **PostVrp**
-> JobId PostVrp (string key, Request body)
+> JobId PostVrp (string key, Request request)
 
 Solves vehicle routing problems
 
@@ -19,9 +19,9 @@ This endpoint for solving vehicle routing problems, i.e. traveling salesman or v
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using Org.OpenAPITools.Api;
+using Org.OpenAPITools.Client;
+using Org.OpenAPITools.Model;
 
 namespace Example
 {
@@ -31,12 +31,12 @@ namespace Example
         {
             var apiInstance = new VrpApi();
             var key = key_example;  // string | your API key
-            var body = new Request(); // Request | Request object that contains the problem to be solved
+            var request = new Request(); // Request | Request object that contains the problem to be solved
 
             try
             {
                 // Solves vehicle routing problems
-                JobId result = apiInstance.PostVrp(key, body);
+                JobId result = apiInstance.PostVrp(key, request);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -53,7 +53,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **key** | **string**| your API key | 
- **body** | [**Request**](Request.md)| Request object that contains the problem to be solved | 
+ **request** | [**Request**](Request.md)| Request object that contains the problem to be solved | 
 
 ### Return type
 

@@ -33,6 +33,7 @@ Name | Type | Description  | Notes
  **vehicle** | **String**| Possible vehicles are bike, car, foot and [more](https://graphhopper.com/api/1/docs/supported-vehicle-profiles/) | [default to car]
  **buckets** | **i32**| For how many sub intervals an additional polygon should be calculated. | [default to 1]
  **reverse_flow** | **bool**| If &#x60;false&#x60; the flow goes from point to the polygon, if &#x60;true&#x60; the flow goes from the polygon \&quot;inside\&quot; to the point. Example usage for &#x60;false&#x60;&amp;#58; *How many potential customer can be reached within 30min travel time from your store* vs. &#x60;true&#x60;&amp;#58; *How many customers can reach your store within 30min travel time.* | [default to false]
+ **weighting** | **String**| Can be fastest or shortest | [default to fastest]
 
 ### Return type
 

@@ -41,7 +41,7 @@ Integer headingPenalty = 56; // Integer | Penalty for omitting a specified headi
 Boolean passThrough = true; // Boolean | If `true` u-turns are avoided at via-points with regard to the `heading_penalty`.
 List<String> details = Arrays.asList("details_example"); // List<String> | List of additional trip attributes to be returned. Try some of the following: `average_speed`, `street_name`, `edge_id`, `time`, `distance`.
 Integer roundTripDistance = 56; // Integer | If `algorithm=round_trip` this parameter configures approximative length of the resulting round trip
-Long roundTripSeed = 789L; // Long | If `algorithm=round_trip` this parameter introduces randomness if e.g. the first try wasn't good.
+Long roundTripSeed = 56L; // Long | If `algorithm=round_trip` this parameter introduces randomness if e.g. the first try wasn't good.
 Integer alternativeRouteMaxPaths = 56; // Integer | If `algorithm=alternative_route` this parameter sets the number of maximum paths which should be calculated. Increasing can lead to worse alternatives.
 Integer alternativeRouteMaxWeightFactor = 56; // Integer | If `algorithm=alternative_route` this parameter sets the factor by which the alternatives routes can be longer than the optimal route. Increasing can lead to worse alternatives.
 Integer alternativeRouteMaxShareFactor = 56; // Integer | If `algorithm=alternative_route` this parameter specifies how much alternatives routes can have maximum in common with the optimal route. Increasing can lead to worse alternatives.

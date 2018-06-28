@@ -1,15 +1,15 @@
-# WWW::SwaggerClient::Object::MatrixResponse
+# WWW::OpenAPIClient::Object::MatrixResponse
 
 ## Load the model package
 ```perl
-use WWW::SwaggerClient::Object::MatrixResponse;
+use WWW::OpenAPIClient::Object::MatrixResponse;
 ```
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**distances** | **ARRAY[ARRAY[Number]]** |  | [optional] 
-**times** | **ARRAY[ARRAY[Number]]** |  | [optional] 
+**distances** | **ARRAY[ARRAY[double]]** |  | [optional] 
+**times** | **ARRAY[ARRAY[double]]** |  | [optional] 
 **weights** | **ARRAY[ARRAY[double]]** |  | [optional] 
 **info** | [**ResponseInfo**](ResponseInfo.md) |  | [optional] 
 

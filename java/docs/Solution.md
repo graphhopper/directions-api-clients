@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **noVehicles** | **Integer** | number of employed vehicles |  [optional]
 **noUnassigned** | **Integer** | number of jobs that could not be assigned to final solution |  [optional]
 **routes** | [**List&lt;Route&gt;**](Route.md) | An array of routes |  [optional]
-**unassigned** | [**SolutionUnassigned**](SolutionUnassigned.md) |  |  [optional]
+**unassigned** | **Object** |  |  [optional]
 
 
 

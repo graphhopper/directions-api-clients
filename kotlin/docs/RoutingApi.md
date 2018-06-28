@@ -18,8 +18,8 @@ The GraphHopper Routing API allows to calculate route and implement navigation v
 ### Example
 ```kotlin
 // Import classes:
-//import io.swagger.client.infrastructure.*
-//import io.swagger.client.models.*
+//import org.openapitools.client.infrastructure.*
+//import org.openapitools.client.models.*
 
 val apiInstance = RoutingApi()
 val point : kotlin.Array<kotlin.String> =  // kotlin.Array<kotlin.String> | Specify multiple points for which the route should be calculated. The order is important. Specify at least two points.

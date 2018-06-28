@@ -4,9 +4,9 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**properties** | [**IsochroneResponsePolygon_properties**](IsochroneResponsePolygon_properties.md) |  |  [optional]
+**properties** | [**kotlin.Any**](kotlin.Any.md) |  |  [optional]
 **type** | **kotlin.String** |  |  [optional]
-**geometry** | [**IsochroneResponsePolygon_geometry**](IsochroneResponsePolygon_geometry.md) |  |  [optional]
+**geometry** | [**kotlin.Any**](kotlin.Any.md) |  |  [optional]
 
 
 

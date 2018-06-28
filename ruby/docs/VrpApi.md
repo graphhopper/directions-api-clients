@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 
 # **post_vrp**
-> JobId post_vrp(key, body)
+> JobId post_vrp(key, request)
 
 Solves vehicle routing problems
 
@@ -20,15 +20,12 @@ This endpoint for solving vehicle routing problems, i.e. traveling salesman or v
 require 'directions-api-client'
 
 api_instance = GraphHopperClient::VrpApi.new
-
-key = "key_example" # String | your API key
-
-body = GraphHopperClient::Request.new # Request | Request object that contains the problem to be solved
-
+key = 'key_example' # String | your API key
+request = GraphHopperClient::Request.new # Request | Request object that contains the problem to be solved
 
 begin
   #Solves vehicle routing problems
-  result = api_instance.post_vrp(key, body)
+  result = api_instance.post_vrp(key, request)
   p result
 rescue GraphHopperClient::ApiError => e
   puts "Exception when calling VrpApi->post_vrp: #{e}"
@@ -40,7 +37,7 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **key** | **String**| your API key | 
- **body** | [**Request**](Request.md)| Request object that contains the problem to be solved | 
+ **request** | [**Request**](Request.md)| Request object that contains the problem to be solved | 
 
 ### Return type
 

@@ -1,4 +1,4 @@
-# IO.Swagger.Model.Response
+# Org.OpenAPITools.Model.Response
 ## Properties
 
 Name | Type | Description | Notes
@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Status** | **string** | indicates the current status of the job | [optional] 
 **WaitingInQueue** | **long?** | waiting time in ms | [optional] 
 **ProcessingTime** | **long?** | processing time in ms. if job is still waiting in queue, processing_time is 0 | [optional] 
-**Solution** | [**Solution**](Solution.md) | the solution. only available if status field indicates finished | [optional] 
+**Solution** | [**Solution**](Solution.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

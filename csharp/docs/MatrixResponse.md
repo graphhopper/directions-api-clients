@@ -1,10 +1,10 @@
-# IO.Swagger.Model.MatrixResponse
+# Org.OpenAPITools.Model.MatrixResponse
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Distances** | **List&lt;List&lt;decimal?&gt;&gt;** |  | [optional] 
-**Times** | **List&lt;List&lt;decimal?&gt;&gt;** |  | [optional] 
+**Distances** | **List&lt;List&lt;double?&gt;&gt;** |  | [optional] 
+**Times** | **List&lt;List&lt;double?&gt;&gt;** |  | [optional] 
 **Weights** | **List&lt;List&lt;double?&gt;&gt;** |  | [optional] 
 **Info** | [**ResponseInfo**](ResponseInfo.md) |  | [optional] 
 

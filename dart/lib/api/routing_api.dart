@@ -1,4 +1,4 @@
-part of swagger.api;
+part of openapi.api;
 
 
 
@@ -94,7 +94,7 @@ class RoutingApi {
       queryParams.addAll(_convertParametersForCollectionFormat("", "avoid", avoid));
     }
       queryParams.addAll(_convertParametersForCollectionFormat("", "key", key));
-    
+
     List<String> contentTypes = [];
 
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
@@ -103,12 +103,11 @@ class RoutingApi {
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
       MultipartRequest mp = new MultipartRequest(null, null);
-      
       if(hasFields)
         postBody = mp;
     }
     else {
-          }
+    }
 
     var response = await apiClient.invokeAPI(path,
                                              'GET',
@@ -122,7 +121,7 @@ class RoutingApi {
     if(response.statusCode >= 400) {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
-      return apiClient.deserialize(response.body, 'RouteResponse') as RouteResponse ;
+      return apiClient.deserialize(response.body, 'RouteResponse') as RouteResponse;
     } else {
       return null;
     }

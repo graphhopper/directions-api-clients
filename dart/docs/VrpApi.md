@@ -1,8 +1,8 @@
-# swagger.api.VrpApi
+# openapi.api.VrpApi
 
 ## Load the API package
 ```dart
-import 'package:swagger/api.dart';
+import 'package:openapi/api.dart';
 ```
 
 All URIs are relative to *https://graphhopper.com/api/1*
@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 
 # **postVrp**
-> JobId postVrp(key, body)
+> JobId postVrp(key, request)
 
 Solves vehicle routing problems
 
@@ -21,14 +21,14 @@ This endpoint for solving vehicle routing problems, i.e. traveling salesman or v
 
 ### Example 
 ```dart
-import 'package:swagger/api.dart';
+import 'package:openapi/api.dart';
 
 var api_instance = new VrpApi();
 var key = key_example; // String | your API key
-var body = new Request(); // Request | Request object that contains the problem to be solved
+var request = new Request(); // Request | Request object that contains the problem to be solved
 
 try { 
-    var result = api_instance.postVrp(key, body);
+    var result = api_instance.postVrp(key, request);
     print(result);
 } catch (e) {
     print("Exception when calling VrpApi->postVrp: $e\n");
@@ -40,7 +40,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **key** | **String**| your API key | 
- **body** | [**Request**](Request.md)| Request object that contains the problem to be solved | 
+ **request** | [**Request**](Request.md)| Request object that contains the problem to be solved | 
 
 ### Return type
 

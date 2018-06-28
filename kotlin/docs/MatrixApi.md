@@ -19,8 +19,8 @@ The Matrix API is part of the GraphHopper Directions API and with this API you c
 ### Example
 ```kotlin
 // Import classes:
-//import io.swagger.client.infrastructure.*
-//import io.swagger.client.models.*
+//import org.openapitools.client.infrastructure.*
+//import org.openapitools.client.models.*
 
 val apiInstance = MatrixApi()
 val key : kotlin.String = key_example // kotlin.String | Get your key at graphhopper.com
@@ -73,7 +73,7 @@ No authorization required
 
 <a name="matrixPost"></a>
 # **matrixPost**
-> MatrixResponse matrixPost(key, body)
+> MatrixResponse matrixPost(key, matrixRequest)
 
 Matrix API Post
 
@@ -82,14 +82,14 @@ The GET request has an URL length limitation, which hurts for many locations per
 ### Example
 ```kotlin
 // Import classes:
-//import io.swagger.client.infrastructure.*
-//import io.swagger.client.models.*
+//import org.openapitools.client.infrastructure.*
+//import org.openapitools.client.models.*
 
 val apiInstance = MatrixApi()
 val key : kotlin.String = key_example // kotlin.String | Get your key at graphhopper.com
-val body : MatrixRequest =  // MatrixRequest | 
+val matrixRequest : MatrixRequest =  // MatrixRequest | 
 try {
-    val result : MatrixResponse = apiInstance.matrixPost(key, body)
+    val result : MatrixResponse = apiInstance.matrixPost(key, matrixRequest)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling MatrixApi#matrixPost")
@@ -105,7 +105,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **key** | **kotlin.String**| Get your key at graphhopper.com |
- **body** | [**MatrixRequest**](MatrixRequest.md)|  | [optional]
+ **matrixRequest** | [**MatrixRequest**](MatrixRequest.md)|  | [optional]
 
 ### Return type
 

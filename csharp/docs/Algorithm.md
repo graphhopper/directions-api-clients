@@ -1,4 +1,4 @@
-# IO.Swagger.Model.Algorithm
+# Org.OpenAPITools.Model.Algorithm
 ## Properties
 
 Name | Type | Description | Notes

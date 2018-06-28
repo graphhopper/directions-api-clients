@@ -1,8 +1,8 @@
-# WWW::SwaggerClient::Object::IsochroneResponse
+# WWW::OpenAPIClient::Object::IsochroneResponse
 
 ## Load the model package
 ```perl
-use WWW::SwaggerClient::Object::IsochroneResponse;
+use WWW::OpenAPIClient::Object::IsochroneResponse;
 ```
 
 ## Properties

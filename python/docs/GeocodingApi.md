@@ -1,4 +1,4 @@
-# swagger_client.GeocodingApi
+# openapi_client.GeocodingApi
 
 All URIs are relative to *https://graphhopper.com/api/1*
 
@@ -18,17 +18,17 @@ This endpoint provides forward and reverse geocoding. For more details, review t
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import openapi_client
+from openapi_client.rest import ApiException
 from pprint import pprint
 
 # create an instance of the API class
-api_instance = swagger_client.GeocodingApi()
+api_instance = openapi_client.GeocodingApi()
 key = 'key_example' # str | Get your key at graphhopper.com
 q = 'q_example' # str | If you do forward geocoding, then this would be a textual description of the address you are looking for (optional)
 locale = 'locale_example' # str | Display the search results for the specified locale. Currently French (fr), English (en), German (de) and Italian (it) are supported. If the locale wasn't found the default (en) is used. (optional)
 limit = 56 # int | Specify the maximum number of returned results (optional)
-reverse = true # bool | Set to true to do a reverse Geocoding request, see point parameter (optional)
+reverse = True # bool | Set to true to do a reverse Geocoding request, see point parameter (optional)
 point = 'point_example' # str | The location bias in the format 'latitude,longitude' e.g. point=45.93272,11.58803 (optional)
 provider = 'provider_example' # str | Can be either, default, nominatim, opencagedata (optional)
 

@@ -8,6 +8,6 @@ Name | Type | Description | Notes
 **status** | **String** | indicates the current status of the job | [optional] 
 **waiting_in_queue** | **Integer** | waiting time in ms | [optional] 
 **processing_time** | **Integer** | processing time in ms. if job is still waiting in queue, processing_time is 0 | [optional] 
-**solution** | [**Solution**](Solution.md) | the solution. only available if status field indicates finished | [optional] 
+**solution** | [**Solution**](Solution.md) |  | [optional] 
 
 

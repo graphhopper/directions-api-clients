@@ -20,11 +20,8 @@ This endpoint returns the solution of a large problems. You can fetch it with th
 require 'directions-api-client'
 
 api_instance = GraphHopperClient::SolutionApi.new
-
-key = "key_example" # String | your API key
-
-job_id = "job_id_example" # String | Request solution with jobId
-
+key = 'key_example' # String | your API key
+job_id = 'job_id_example' # String | Request solution with jobId
 
 begin
   #Return the solution associated to the jobId
@@ -52,7 +49,7 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 

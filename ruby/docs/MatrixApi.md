@@ -21,18 +21,16 @@ The Matrix API is part of the GraphHopper Directions API and with this API you c
 require 'directions-api-client'
 
 api_instance = GraphHopperClient::MatrixApi.new
-
-key = "key_example" # String | Get your key at graphhopper.com
-
-opts = { 
-  point: ["point_example"], # Array<String> | Specifiy multiple points for which the weight-, route-, time- or distance-matrix should be calculated. In this case the starts are identical to the destinations. If there are N points, then NxN entries will be calculated. The order of the point parameter is important. Specify at least three points. Cannot be used together with from_point or to_point. Is a string with the format latitude,longitude.
-  from_point: ["from_point_example"], # Array<String> | The starting points for the routes. E.g. if you want to calculate the three routes A-&gt;1, A-&gt;2, A-&gt;3 then you have one from_point parameter and three to_point parameters. Is a string with the format latitude,longitude.
-  to_point: ["to_point_example"], # Array<String> | The destination points for the routes. Is a string with the format latitude,longitude.
-  point_hint: ["point_hint_example"], # Array<String> | Optional parameter. Specifies a hint for each `point` parameter to prefer a certain street for the closest location lookup. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up.
-  from_point_hint: ["from_point_hint_example"], # Array<String> | For the from_point parameter. See point_hint
-  to_point_hint: ["to_point_hint_example"], # Array<String> | For the to_point parameter. See point_hint
-  out_array: ["out_array_example"], # Array<String> | Specifies which arrays should be included in the response. Specify one or more of the following options 'weights', 'times', 'distances'. To specify more than one array use e.g. out_array=times&out_array=distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API.
-  vehicle: "car" # String | The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc
+key = 'key_example' # String | Get your key at graphhopper.com
+opts = {
+  point: ['point_example'], # Array<String> | Specifiy multiple points for which the weight-, route-, time- or distance-matrix should be calculated. In this case the starts are identical to the destinations. If there are N points, then NxN entries will be calculated. The order of the point parameter is important. Specify at least three points. Cannot be used together with from_point or to_point. Is a string with the format latitude,longitude.
+  from_point: ['from_point_example'], # Array<String> | The starting points for the routes. E.g. if you want to calculate the three routes A-&gt;1, A-&gt;2, A-&gt;3 then you have one from_point parameter and three to_point parameters. Is a string with the format latitude,longitude.
+  to_point: ['to_point_example'], # Array<String> | The destination points for the routes. Is a string with the format latitude,longitude.
+  point_hint: ['point_hint_example'], # Array<String> | Optional parameter. Specifies a hint for each `point` parameter to prefer a certain street for the closest location lookup. E.g. if there is an address or house with two or more neighboring streets you can control for which street the closest location is looked up.
+  from_point_hint: ['from_point_hint_example'], # Array<String> | For the from_point parameter. See point_hint
+  to_point_hint: ['to_point_hint_example'], # Array<String> | For the to_point parameter. See point_hint
+  out_array: ['out_array_example'], # Array<String> | Specifies which arrays should be included in the response. Specify one or more of the following options 'weights', 'times', 'distances'. To specify more than one array use e.g. out_array=times&out_array=distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API.
+  vehicle: 'car' # String | The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc
 }
 
 begin
@@ -56,7 +54,7 @@ Name | Type | Description  | Notes
  **from_point_hint** | [**Array&lt;String&gt;**](String.md)| For the from_point parameter. See point_hint | [optional] 
  **to_point_hint** | [**Array&lt;String&gt;**](String.md)| For the to_point parameter. See point_hint | [optional] 
  **out_array** | [**Array&lt;String&gt;**](String.md)| Specifies which arrays should be included in the response. Specify one or more of the following options &#39;weights&#39;, &#39;times&#39;, &#39;distances&#39;. To specify more than one array use e.g. out_array&#x3D;times&amp;out_array&#x3D;distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API. | [optional] 
- **vehicle** | **String**| The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc | [optional] [default to car]
+ **vehicle** | **String**| The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc | [optional] [default to &#39;car&#39;]
 
 ### Return type
 
@@ -86,11 +84,9 @@ The GET request has an URL length limitation, which hurts for many locations per
 require 'directions-api-client'
 
 api_instance = GraphHopperClient::MatrixApi.new
-
-key = "key_example" # String | Get your key at graphhopper.com
-
-opts = { 
-  body: GraphHopperClient::MatrixRequest.new # MatrixRequest | 
+key = 'key_example' # String | Get your key at graphhopper.com
+opts = {
+  matrix_request: GraphHopperClient::MatrixRequest.new # MatrixRequest | 
 }
 
 begin
@@ -107,7 +103,7 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **key** | **String**| Get your key at graphhopper.com | 
- **body** | [**MatrixRequest**](MatrixRequest.md)|  | [optional] 
+ **matrix_request** | [**MatrixRequest**](MatrixRequest.md)|  | [optional] 
 
 ### Return type
 

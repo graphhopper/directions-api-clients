@@ -1,4 +1,4 @@
-part of swagger.api;
+part of openapi.api;
 
 class ApiKeyAuth implements Authentication {
 

@@ -1,4 +1,4 @@
-# IO.Swagger.Model.IsochroneResponse
+# Org.OpenAPITools.Model.IsochroneResponse
 ## Properties
 
 Name | Type | Description | Notes

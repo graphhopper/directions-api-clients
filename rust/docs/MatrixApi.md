@@ -70,7 +70,7 @@ Optional parameters are passed through a map[string]interface{}.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **key** | **String**| Get your key at graphhopper.com | 
- **body** | [**MatrixRequest**](MatrixRequest.md)|  | 
+ **matrix_request** | [**MatrixRequest**](MatrixRequest.md)|  | 
 
 ### Return type
 

@@ -1,8 +1,8 @@
-# WWW::SwaggerClient::Object::TimeWindow
+# WWW::OpenAPIClient::Object::TimeWindow
 
 ## Load the model package
 ```perl
-use WWW::SwaggerClient::Object::TimeWindow;
+use WWW::OpenAPIClient::Object::TimeWindow;
 ```
 
 ## Properties

@@ -1,4 +1,4 @@
-# IO.Swagger.Model.Activity
+# Org.OpenAPITools.Model.Activity
 ## Properties
 
 Name | Type | Description | Notes

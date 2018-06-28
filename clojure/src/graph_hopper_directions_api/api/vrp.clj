@@ -5,14 +5,14 @@
 (defn post-vrp-with-http-info
   "Solves vehicle routing problems
   This endpoint for solving vehicle routing problems, i.e. traveling salesman or vehicle routing problems, and returns the solution."
-  [key body ]
-  (check-required-params key body)
+  [key request ]
+  (check-required-params key request)
   (call-api "/vrp/optimize" :post
             {:path-params   {}
              :header-params {}
              :query-params  {"key" key }
              :form-params   {}
-             :body-param    body
+             :body-param    request
              :content-types ["application/json"]
              :accepts       ["application/json"]
              :auth-names    []}))
@@ -20,6 +20,6 @@
 (defn post-vrp
   "Solves vehicle routing problems
   This endpoint for solving vehicle routing problems, i.e. traveling salesman or vehicle routing problems, and returns the solution."
-  [key body ]
-  (:data (post-vrp-with-http-info key body)))
+  [key request ]
+  (:data (post-vrp-with-http-info key request)))
 

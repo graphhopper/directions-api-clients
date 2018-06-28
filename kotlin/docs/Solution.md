@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **no_vehicles** | **kotlin.Int** | number of employed vehicles |  [optional]
 **no_unassigned** | **kotlin.Int** | number of jobs that could not be assigned to final solution |  [optional]
 **routes** | [**kotlin.Array&lt;Route&gt;**](Route.md) | An array of routes |  [optional]
-**unassigned** | [**Solution_unassigned**](Solution_unassigned.md) |  |  [optional]
+**unassigned** | [**kotlin.Any**](kotlin.Any.md) |  |  [optional]
 
 
 

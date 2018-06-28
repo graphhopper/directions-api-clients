@@ -1,4 +1,4 @@
-# IO.Swagger.Model.Relation
+# Org.OpenAPITools.Model.Relation
 ## Properties
 
 Name | Type | Description | Notes

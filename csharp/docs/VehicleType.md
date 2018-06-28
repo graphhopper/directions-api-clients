@@ -1,4 +1,4 @@
-# IO.Swagger.Model.VehicleType
+# Org.OpenAPITools.Model.VehicleType
 ## Properties
 
 Name | Type | Description | Notes

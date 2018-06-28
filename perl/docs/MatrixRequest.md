@@ -1,8 +1,8 @@
-# WWW::SwaggerClient::Object::MatrixRequest
+# WWW::OpenAPIClient::Object::MatrixRequest
 
 ## Load the model package
 ```perl
-use WWW::SwaggerClient::Object::MatrixRequest;
+use WWW::OpenAPIClient::Object::MatrixRequest;
 ```
 
 ## Properties

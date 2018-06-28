@@ -1,4 +1,4 @@
-# IO.Swagger.Model.TimeWindow
+# Org.OpenAPITools.Model.TimeWindow
 ## Properties
 
 Name | Type | Description | Notes

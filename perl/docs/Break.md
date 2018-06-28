@@ -1,8 +1,8 @@
-# WWW::SwaggerClient::Object::Break
+# WWW::OpenAPIClient::Object::Break
 
 ## Load the model package
 ```perl
-use WWW::SwaggerClient::Object::Break;
+use WWW::OpenAPIClient::Object::Break;
 ```
 
 ## Properties

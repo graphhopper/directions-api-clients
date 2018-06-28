@@ -1,0 +1,107 @@
+QT += network
+
+HEADERS += \
+# Models
+    $${PWD}/OAIActivity.h \
+    $${PWD}/OAIAddress.h \
+    $${PWD}/OAIAlgorithm.h \
+    $${PWD}/OAIBreak.h \
+    $${PWD}/OAIConfiguration.h \
+    $${PWD}/OAICostMatrix.h \
+    $${PWD}/OAIDetail.h \
+    $${PWD}/OAIGHError.h \
+    $${PWD}/OAIGeocodingLocation.h \
+    $${PWD}/OAIGeocodingPoint.h \
+    $${PWD}/OAIGeocodingResponse.h \
+    $${PWD}/OAIIsochroneResponse.h \
+    $${PWD}/OAIIsochroneResponsePolygon.h \
+    $${PWD}/OAIJobId.h \
+    $${PWD}/OAILocation.h \
+    $${PWD}/OAIMatrixRequest.h \
+    $${PWD}/OAIMatrixResponse.h \
+    $${PWD}/OAIObjective.h \
+    $${PWD}/OAIRelation.h \
+    $${PWD}/OAIRequest.h \
+    $${PWD}/OAIResponse.h \
+    $${PWD}/OAIResponseCoordinates.h \
+    $${PWD}/OAIResponseCoordinatesArray.h \
+    $${PWD}/OAIResponseInfo.h \
+    $${PWD}/OAIResponseInstruction.h \
+    $${PWD}/OAIResponseInstructions.h \
+    $${PWD}/OAIRoute.h \
+    $${PWD}/OAIRoutePoint.h \
+    $${PWD}/OAIRouteResponse.h \
+    $${PWD}/OAIRouteResponsePath.h \
+    $${PWD}/OAIRouting.h \
+    $${PWD}/OAIService.h \
+    $${PWD}/OAIShipment.h \
+    $${PWD}/OAISolution.h \
+    $${PWD}/OAIStop.h \
+    $${PWD}/OAITimeWindow.h \
+    $${PWD}/OAIVehicle.h \
+    $${PWD}/OAIVehicleType.h \
+# APIs
+    $${PWD}/OAIGeocodingApi.h \
+    $${PWD}/OAIIsochroneApi.h \
+    $${PWD}/OAIMatrixApi.h \
+    $${PWD}/OAIRoutingApi.h \
+    $${PWD}/OAISolutionApi.h \
+    $${PWD}/OAIVrpApi.h \
+# Others
+    $${PWD}/OAIHelpers.h \
+    $${PWD}/OAIHttpRequest.h \
+    $${PWD}/OAIModelFactory.h \
+    $${PWD}/OAIObject.h \
+    $${PWD}/OAIQObjectWrapper.h
+
+SOURCES += \
+# Models
+    $${PWD}/OAIActivity.cpp \
+    $${PWD}/OAIAddress.cpp \
+    $${PWD}/OAIAlgorithm.cpp \
+    $${PWD}/OAIBreak.cpp \
+    $${PWD}/OAIConfiguration.cpp \
+    $${PWD}/OAICostMatrix.cpp \
+    $${PWD}/OAIDetail.cpp \
+    $${PWD}/OAIGHError.cpp \
+    $${PWD}/OAIGeocodingLocation.cpp \
+    $${PWD}/OAIGeocodingPoint.cpp \
+    $${PWD}/OAIGeocodingResponse.cpp \
+    $${PWD}/OAIIsochroneResponse.cpp \
+    $${PWD}/OAIIsochroneResponsePolygon.cpp \
+    $${PWD}/OAIJobId.cpp \
+    $${PWD}/OAILocation.cpp \
+    $${PWD}/OAIMatrixRequest.cpp \
+    $${PWD}/OAIMatrixResponse.cpp \
+    $${PWD}/OAIObjective.cpp \
+    $${PWD}/OAIRelation.cpp \
+    $${PWD}/OAIRequest.cpp \
+    $${PWD}/OAIResponse.cpp \
+    $${PWD}/OAIResponseCoordinates.cpp \
+    $${PWD}/OAIResponseCoordinatesArray.cpp \
+    $${PWD}/OAIResponseInfo.cpp \
+    $${PWD}/OAIResponseInstruction.cpp \
+    $${PWD}/OAIResponseInstructions.cpp \
+    $${PWD}/OAIRoute.cpp \
+    $${PWD}/OAIRoutePoint.cpp \
+    $${PWD}/OAIRouteResponse.cpp \
+    $${PWD}/OAIRouteResponsePath.cpp \
+    $${PWD}/OAIRouting.cpp \
+    $${PWD}/OAIService.cpp \
+    $${PWD}/OAIShipment.cpp \
+    $${PWD}/OAISolution.cpp \
+    $${PWD}/OAIStop.cpp \
+    $${PWD}/OAITimeWindow.cpp \
+    $${PWD}/OAIVehicle.cpp \
+    $${PWD}/OAIVehicleType.cpp \
+# APIs
+    $${PWD}/OAIGeocodingApi.cpp \
+    $${PWD}/OAIIsochroneApi.cpp \
+    $${PWD}/OAIMatrixApi.cpp \
+    $${PWD}/OAIRoutingApi.cpp \
+    $${PWD}/OAISolutionApi.cpp \
+    $${PWD}/OAIVrpApi.cpp \
+# Others
+    $${PWD}/OAIHelpers.cpp \
+    $${PWD}/OAIHttpRequest.cpp
+

@@ -1,4 +1,4 @@
-# io.swagger.client - Kotlin client library for GraphHopper Directions API
+# org.openapitools.client - Kotlin client library for GraphHopper Directions API
 
 ## Requires
 
@@ -25,7 +25,7 @@ This runs all tests and packages the library.
 
 * Supports JSON inputs/outputs, File inputs, and Form inputs.
 * Supports collection formats for query parameters: csv, tsv, ssv, pipes.
-* Some Kotlin and Java types are fully qualified to avoid conflicts with types defined in Swagger definitions.
+* Some Kotlin and Java types are fully qualified to avoid conflicts with types defined in OpenAPI definitions.
 * Implementation of ApiClient is intended to reduce method counts, specifically to benefit Android targets.
 
 <a name="documentation-for-api-endpoints"></a>
@@ -47,50 +47,44 @@ Class | Method | HTTP request | Description
 <a name="documentation-for-models"></a>
 ## Documentation for Models
 
- - [io.swagger.client.models.Activity](docs/Activity.md)
- - [io.swagger.client.models.Address](docs/Address.md)
- - [io.swagger.client.models.Algorithm](docs/Algorithm.md)
- - [io.swagger.client.models.Break](docs/Break.md)
- - [io.swagger.client.models.Configuration](docs/Configuration.md)
- - [io.swagger.client.models.CostMatrix](docs/CostMatrix.md)
- - [io.swagger.client.models.CostMatrix_data](docs/CostMatrix_data.md)
- - [io.swagger.client.models.CostMatrix_data_info](docs/CostMatrix_data_info.md)
- - [io.swagger.client.models.Detail](docs/Detail.md)
- - [io.swagger.client.models.GHError](docs/GHError.md)
- - [io.swagger.client.models.GHError_hints](docs/GHError_hints.md)
- - [io.swagger.client.models.GeocodingLocation](docs/GeocodingLocation.md)
- - [io.swagger.client.models.GeocodingPoint](docs/GeocodingPoint.md)
- - [io.swagger.client.models.GeocodingResponse](docs/GeocodingResponse.md)
- - [io.swagger.client.models.IsochroneResponse](docs/IsochroneResponse.md)
- - [io.swagger.client.models.IsochroneResponsePolygon](docs/IsochroneResponsePolygon.md)
- - [io.swagger.client.models.IsochroneResponsePolygon_geometry](docs/IsochroneResponsePolygon_geometry.md)
- - [io.swagger.client.models.IsochroneResponsePolygon_properties](docs/IsochroneResponsePolygon_properties.md)
- - [io.swagger.client.models.JobId](docs/JobId.md)
- - [io.swagger.client.models.Location](docs/Location.md)
- - [io.swagger.client.models.MatrixRequest](docs/MatrixRequest.md)
- - [io.swagger.client.models.MatrixResponse](docs/MatrixResponse.md)
- - [io.swagger.client.models.Objective](docs/Objective.md)
- - [io.swagger.client.models.Relation](docs/Relation.md)
- - [io.swagger.client.models.Request](docs/Request.md)
- - [io.swagger.client.models.Response](docs/Response.md)
- - [io.swagger.client.models.ResponseCoordinates](docs/ResponseCoordinates.md)
- - [io.swagger.client.models.ResponseCoordinatesArray](docs/ResponseCoordinatesArray.md)
- - [io.swagger.client.models.ResponseInfo](docs/ResponseInfo.md)
- - [io.swagger.client.models.ResponseInstruction](docs/ResponseInstruction.md)
- - [io.swagger.client.models.ResponseInstructions](docs/ResponseInstructions.md)
- - [io.swagger.client.models.Route](docs/Route.md)
- - [io.swagger.client.models.RoutePoint](docs/RoutePoint.md)
- - [io.swagger.client.models.RouteResponse](docs/RouteResponse.md)
- - [io.swagger.client.models.RouteResponsePath](docs/RouteResponsePath.md)
- - [io.swagger.client.models.Routing](docs/Routing.md)
- - [io.swagger.client.models.Service](docs/Service.md)
- - [io.swagger.client.models.Shipment](docs/Shipment.md)
- - [io.swagger.client.models.Solution](docs/Solution.md)
- - [io.swagger.client.models.Solution_unassigned](docs/Solution_unassigned.md)
- - [io.swagger.client.models.Stop](docs/Stop.md)
- - [io.swagger.client.models.TimeWindow](docs/TimeWindow.md)
- - [io.swagger.client.models.Vehicle](docs/Vehicle.md)
- - [io.swagger.client.models.VehicleType](docs/VehicleType.md)
+ - [org.openapitools.client.models.Activity](docs/Activity.md)
+ - [org.openapitools.client.models.Address](docs/Address.md)
+ - [org.openapitools.client.models.Algorithm](docs/Algorithm.md)
+ - [org.openapitools.client.models.Break](docs/Break.md)
+ - [org.openapitools.client.models.Configuration](docs/Configuration.md)
+ - [org.openapitools.client.models.CostMatrix](docs/CostMatrix.md)
+ - [org.openapitools.client.models.Detail](docs/Detail.md)
+ - [org.openapitools.client.models.GHError](docs/GHError.md)
+ - [org.openapitools.client.models.GeocodingLocation](docs/GeocodingLocation.md)
+ - [org.openapitools.client.models.GeocodingPoint](docs/GeocodingPoint.md)
+ - [org.openapitools.client.models.GeocodingResponse](docs/GeocodingResponse.md)
+ - [org.openapitools.client.models.IsochroneResponse](docs/IsochroneResponse.md)
+ - [org.openapitools.client.models.IsochroneResponsePolygon](docs/IsochroneResponsePolygon.md)
+ - [org.openapitools.client.models.JobId](docs/JobId.md)
+ - [org.openapitools.client.models.Location](docs/Location.md)
+ - [org.openapitools.client.models.MatrixRequest](docs/MatrixRequest.md)
+ - [org.openapitools.client.models.MatrixResponse](docs/MatrixResponse.md)
+ - [org.openapitools.client.models.Objective](docs/Objective.md)
+ - [org.openapitools.client.models.Relation](docs/Relation.md)
+ - [org.openapitools.client.models.Request](docs/Request.md)
+ - [org.openapitools.client.models.Response](docs/Response.md)
+ - [org.openapitools.client.models.ResponseCoordinates](docs/ResponseCoordinates.md)
+ - [org.openapitools.client.models.ResponseCoordinatesArray](docs/ResponseCoordinatesArray.md)
+ - [org.openapitools.client.models.ResponseInfo](docs/ResponseInfo.md)
+ - [org.openapitools.client.models.ResponseInstruction](docs/ResponseInstruction.md)
+ - [org.openapitools.client.models.ResponseInstructions](docs/ResponseInstructions.md)
+ - [org.openapitools.client.models.Route](docs/Route.md)
+ - [org.openapitools.client.models.RoutePoint](docs/RoutePoint.md)
+ - [org.openapitools.client.models.RouteResponse](docs/RouteResponse.md)
+ - [org.openapitools.client.models.RouteResponsePath](docs/RouteResponsePath.md)
+ - [org.openapitools.client.models.Routing](docs/Routing.md)
+ - [org.openapitools.client.models.Service](docs/Service.md)
+ - [org.openapitools.client.models.Shipment](docs/Shipment.md)
+ - [org.openapitools.client.models.Solution](docs/Solution.md)
+ - [org.openapitools.client.models.Stop](docs/Stop.md)
+ - [org.openapitools.client.models.TimeWindow](docs/TimeWindow.md)
+ - [org.openapitools.client.models.Vehicle](docs/Vehicle.md)
+ - [org.openapitools.client.models.VehicleType](docs/VehicleType.md)
 
 
 <a name="documentation-for-authorization"></a>

@@ -1,8 +1,8 @@
-# WWW::SwaggerClient::Object::RoutePoint
+# WWW::OpenAPIClient::Object::RoutePoint
 
 ## Load the model package
 ```perl
-use WWW::SwaggerClient::Object::RoutePoint;
+use WWW::OpenAPIClient::Object::RoutePoint;
 ```
 
 ## Properties

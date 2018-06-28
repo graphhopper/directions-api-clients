@@ -1,4 +1,4 @@
-# IO.Swagger.Model.Break
+# Org.OpenAPITools.Model.Break
 ## Properties
 
 Name | Type | Description | Notes

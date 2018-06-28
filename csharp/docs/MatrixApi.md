@@ -1,4 +1,4 @@
-# IO.Swagger.Api.MatrixApi
+# Org.OpenAPITools.Api.MatrixApi
 
 All URIs are relative to *https://graphhopper.com/api/1*
 
@@ -20,9 +20,9 @@ The Matrix API is part of the GraphHopper Directions API and with this API you c
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using Org.OpenAPITools.Api;
+using Org.OpenAPITools.Client;
+using Org.OpenAPITools.Model;
 
 namespace Example
 {
@@ -39,7 +39,7 @@ namespace Example
             var fromPointHint = new List<string>(); // List<string> | For the from_point parameter. See point_hint (optional) 
             var toPointHint = new List<string>(); // List<string> | For the to_point parameter. See point_hint (optional) 
             var outArray = new List<string>(); // List<string> | Specifies which arrays should be included in the response. Specify one or more of the following options 'weights', 'times', 'distances'. To specify more than one array use e.g. out_array=times&out_array=distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API. (optional) 
-            var vehicle = vehicle_example;  // string | The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc (optional)  (default to car)
+            var vehicle = vehicle_example;  // string | The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc (optional)  (default to "car")
 
             try
             {
@@ -68,7 +68,7 @@ Name | Type | Description  | Notes
  **fromPointHint** | [**List&lt;string&gt;**](string.md)| For the from_point parameter. See point_hint | [optional] 
  **toPointHint** | [**List&lt;string&gt;**](string.md)| For the to_point parameter. See point_hint | [optional] 
  **outArray** | [**List&lt;string&gt;**](string.md)| Specifies which arrays should be included in the response. Specify one or more of the following options &#39;weights&#39;, &#39;times&#39;, &#39;distances&#39;. To specify more than one array use e.g. out_array&#x3D;times&amp;out_array&#x3D;distances. The units of the entries of distances are meters, of times are seconds and of weights is arbitrary and it can differ for different vehicles or versions of this API. | [optional] 
- **vehicle** | **string**| The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc | [optional] [default to car]
+ **vehicle** | **string**| The vehicle for which the route should be calculated. Other vehicles are foot, small_truck etc | [optional] [default to &quot;car&quot;]
 
 ### Return type
 
@@ -87,7 +87,7 @@ No authorization required
 
 <a name="matrixpost"></a>
 # **MatrixPost**
-> MatrixResponse MatrixPost (string key, MatrixRequest body = null)
+> MatrixResponse MatrixPost (string key, MatrixRequest matrixRequest = null)
 
 Matrix API Post
 
@@ -97,9 +97,9 @@ The GET request has an URL length limitation, which hurts for many locations per
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using Org.OpenAPITools.Api;
+using Org.OpenAPITools.Client;
+using Org.OpenAPITools.Model;
 
 namespace Example
 {
@@ -109,12 +109,12 @@ namespace Example
         {
             var apiInstance = new MatrixApi();
             var key = key_example;  // string | Get your key at graphhopper.com
-            var body = new MatrixRequest(); // MatrixRequest |  (optional) 
+            var matrixRequest = new MatrixRequest(); // MatrixRequest |  (optional) 
 
             try
             {
                 // Matrix API Post
-                MatrixResponse result = apiInstance.MatrixPost(key, body);
+                MatrixResponse result = apiInstance.MatrixPost(key, matrixRequest);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -131,7 +131,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **key** | **string**| Get your key at graphhopper.com | 
- **body** | [**MatrixRequest**](MatrixRequest.md)|  | [optional] 
+ **matrixRequest** | [**MatrixRequest**](MatrixRequest.md)|  | [optional] 
 
 ### Return type
 

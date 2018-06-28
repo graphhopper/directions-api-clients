@@ -1,8 +1,8 @@
-# WWW::SwaggerClient::Object::JobId
+# WWW::OpenAPIClient::Object::JobId
 
 ## Load the model package
 ```perl
-use WWW::SwaggerClient::Object::JobId;
+use WWW::OpenAPIClient::Object::JobId;
 ```
 
 ## Properties

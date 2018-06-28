@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **status** | [**inline**](#StatusEnum) | indicates the current status of the job |  [optional]
 **waiting_in_queue** | **kotlin.Long** | waiting time in ms |  [optional]
 **processing_time** | **kotlin.Long** | processing time in ms. if job is still waiting in queue, processing_time is 0 |  [optional]
-**solution** | [**Solution**](Solution.md) | the solution. only available if status field indicates finished |  [optional]
+**solution** | [**Solution**](Solution.md) |  |  [optional]
 
 
 <a name="StatusEnum"></a>
