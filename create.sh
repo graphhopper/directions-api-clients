@@ -7,17 +7,17 @@ DIR=.
 VERSION=0.11-SNAPSHOT
 
 # it is necessary to use the master snapshot to create a proper R and C# client
-SW_VERSION=master
-#SW_VERSION=2.2.3
-FILE=swagger-codegen-cli-$SW_VERSION.jar
+#SW_VERSION=master
+SW_VERSION=3.0.3
+FILE=openapi-generator-cli-$SW_VERSION.jar
 
 NAME=directions-api-client
 GROUP=com.graphhopper
 
 if [[ ! -f $FILE ]]; then
-  wget http://repo1.maven.org/maven2/io/swagger/swagger-codegen-cli/$SW_VERSION/$FILE -O $FILE
+  wget http://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/$SW_VERSION/$FILE -O $FILE
   if [[ ! -f $FILE ]]; then
-    curl http://repo1.maven.org/maven2/io/swagger/swagger-codegen-cli/$SW_VERSION/$FILE -O $FILE
+    curl http://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/$SW_VERSION/$FILE -O $FILE
   fi
 fi
 
@@ -35,7 +35,6 @@ function create {
 		CONFIG="-DgemName=$NAME -DmoduleName=GraphHopperClient -DgemVersion=$VERSION"
 		;;
 	go)
-		# CONFIG="-t modules/swagger-codegen/src/main/resources/go"
 		ADD_PARAMS="-DpackageName=graphhopper"
 		;;
 	swift)
@@ -58,7 +57,7 @@ function create {
 
   # echo "create $LANG, config: $CONFIG, additional params: $ADD_PARAMS"
   rm -rf $DIR/$LANG
-  SH="java -jar $FILE generate -i $SPEC -l $LANG $CONFIG -o $DIR/$LANG $ADD_PARAMS"
+  SH="java -jar $FILE generate -i $SPEC -g $LANG $CONFIG -o $DIR/$LANG $ADD_PARAMS"
   echo $SH
   $SH
 }
@@ -75,6 +74,8 @@ else
   
   create clojure
   create csharp
+  create cpp-qt5
+  create cpp-tizen
   create dart
   create go
   create haskell
@@ -85,12 +86,10 @@ else
   create perl
   create php
   create python
-  create qt5cpp
   create r
   create ruby
+  create ruby-sinatra
   create rust
-  create scala
-  create sinatra
-  create swift
-  create tizen
+  create scala-httpclient
+  create swift4
 fi
