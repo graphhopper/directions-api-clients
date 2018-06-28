@@ -30,6 +30,7 @@ module GraphHopperClient
     # @option opts [String] :vehicle Possible vehicles are bike, car, foot and [more](https://graphhopper.com/api/1/docs/supported-vehicle-profiles/) (default to car)
     # @option opts [Integer] :buckets For how many sub intervals an additional polygon should be calculated. (default to 1)
     # @option opts [BOOLEAN] :reverse_flow If &#x60;false&#x60; the flow goes from point to the polygon, if &#x60;true&#x60; the flow goes from the polygon \&quot;inside\&quot; to the point. Example usage for &#x60;false&#x60;&amp;#58; *How many potential customer can be reached within 30min travel time from your store* vs. &#x60;true&#x60;&amp;#58; *How many customers can reach your store within 30min travel time.* (default to false)
+    # @option opts [String] :weighting Can be fastest or shortest (default to fastest)
     # @return [IsochroneResponse]
     def isochrone_get(point, key, opts = {})
       data, _status_code, _headers = isochrone_get_with_http_info(point, key, opts)
@@ -46,6 +47,7 @@ module GraphHopperClient
     # @option opts [String] :vehicle Possible vehicles are bike, car, foot and [more](https://graphhopper.com/api/1/docs/supported-vehicle-profiles/)
     # @option opts [Integer] :buckets For how many sub intervals an additional polygon should be calculated.
     # @option opts [BOOLEAN] :reverse_flow If &#x60;false&#x60; the flow goes from point to the polygon, if &#x60;true&#x60; the flow goes from the polygon \&quot;inside\&quot; to the point. Example usage for &#x60;false&#x60;&amp;#58; *How many potential customer can be reached within 30min travel time from your store* vs. &#x60;true&#x60;&amp;#58; *How many customers can reach your store within 30min travel time.*
+    # @option opts [String] :weighting Can be fastest or shortest
     # @return [Array<(IsochroneResponse, Fixnum, Hash)>] IsochroneResponse data, response status code and response headers
     def isochrone_get_with_http_info(point, key, opts = {})
       if @api_client.config.debugging
@@ -71,6 +73,7 @@ module GraphHopperClient
       query_params[:'vehicle'] = opts[:'vehicle'] if !opts[:'vehicle'].nil?
       query_params[:'buckets'] = opts[:'buckets'] if !opts[:'buckets'].nil?
       query_params[:'reverse_flow'] = opts[:'reverse_flow'] if !opts[:'reverse_flow'].nil?
+      query_params[:'weighting'] = opts[:'weighting'] if !opts[:'weighting'].nil?
 
       # header parameters
       header_params = {}

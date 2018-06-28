@@ -50,6 +50,7 @@ class IsochroneApi(object):
         :param str vehicle: Possible vehicles are bike, car, foot and [more](https://graphhopper.com/api/1/docs/supported-vehicle-profiles/)
         :param int buckets: For how many sub intervals an additional polygon should be calculated.
         :param bool reverse_flow: If `false` the flow goes from point to the polygon, if `true` the flow goes from the polygon \"inside\" to the point. Example usage for `false`&#58; *How many potential customer can be reached within 30min travel time from your store* vs. `true`&#58; *How many customers can reach your store within 30min travel time.*
+        :param str weighting: Can be fastest or shortest
         :return: IsochroneResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -78,12 +79,13 @@ class IsochroneApi(object):
         :param str vehicle: Possible vehicles are bike, car, foot and [more](https://graphhopper.com/api/1/docs/supported-vehicle-profiles/)
         :param int buckets: For how many sub intervals an additional polygon should be calculated.
         :param bool reverse_flow: If `false` the flow goes from point to the polygon, if `true` the flow goes from the polygon \"inside\" to the point. Example usage for `false`&#58; *How many potential customer can be reached within 30min travel time from your store* vs. `true`&#58; *How many customers can reach your store within 30min travel time.*
+        :param str weighting: Can be fastest or shortest
         :return: IsochroneResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['point', 'key', 'time_limit', 'distance_limit', 'vehicle', 'buckets', 'reverse_flow']  # noqa: E501
+        all_params = ['point', 'key', 'time_limit', 'distance_limit', 'vehicle', 'buckets', 'reverse_flow', 'weighting']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -124,6 +126,8 @@ class IsochroneApi(object):
             query_params.append(('buckets', params['buckets']))  # noqa: E501
         if 'reverse_flow' in params:
             query_params.append(('reverse_flow', params['reverse_flow']))  # noqa: E501
+        if 'weighting' in params:
+            query_params.append(('weighting', params['weighting']))  # noqa: E501
         if 'key' in params:
             query_params.append(('key', params['key']))  # noqa: E501
 

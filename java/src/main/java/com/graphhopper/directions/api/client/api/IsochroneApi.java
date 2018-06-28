@@ -64,12 +64,13 @@ public class IsochroneApi {
      * @param vehicle Possible vehicles are bike, car, foot and [more](https://graphhopper.com/api/1/docs/supported-vehicle-profiles/) (optional, default to car)
      * @param buckets For how many sub intervals an additional polygon should be calculated. (optional, default to 1)
      * @param reverseFlow If &#x60;false&#x60; the flow goes from point to the polygon, if &#x60;true&#x60; the flow goes from the polygon \&quot;inside\&quot; to the point. Example usage for &#x60;false&#x60;&amp;#58; *How many potential customer can be reached within 30min travel time from your store* vs. &#x60;true&#x60;&amp;#58; *How many customers can reach your store within 30min travel time.* (optional, default to false)
+     * @param weighting Can be fastest or shortest (optional, default to fastest)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call isochroneGetCall(String point, String key, Integer timeLimit, Integer distanceLimit, String vehicle, Integer buckets, Boolean reverseFlow, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call isochroneGetCall(String point, String key, Integer timeLimit, Integer distanceLimit, String vehicle, Integer buckets, Boolean reverseFlow, String weighting, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -89,6 +90,8 @@ public class IsochroneApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("buckets", buckets));
         if (reverseFlow != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("reverse_flow", reverseFlow));
+        if (weighting != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("weighting", weighting));
         if (key != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("key", key));
 
@@ -125,7 +128,7 @@ public class IsochroneApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call isochroneGetValidateBeforeCall(String point, String key, Integer timeLimit, Integer distanceLimit, String vehicle, Integer buckets, Boolean reverseFlow, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call isochroneGetValidateBeforeCall(String point, String key, Integer timeLimit, Integer distanceLimit, String vehicle, Integer buckets, Boolean reverseFlow, String weighting, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'point' is set
         if (point == null) {
@@ -138,7 +141,7 @@ public class IsochroneApi {
         }
         
 
-        com.squareup.okhttp.Call call = isochroneGetCall(point, key, timeLimit, distanceLimit, vehicle, buckets, reverseFlow, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = isochroneGetCall(point, key, timeLimit, distanceLimit, vehicle, buckets, reverseFlow, weighting, progressListener, progressRequestListener);
         return call;
 
     }
@@ -153,11 +156,12 @@ public class IsochroneApi {
      * @param vehicle Possible vehicles are bike, car, foot and [more](https://graphhopper.com/api/1/docs/supported-vehicle-profiles/) (optional, default to car)
      * @param buckets For how many sub intervals an additional polygon should be calculated. (optional, default to 1)
      * @param reverseFlow If &#x60;false&#x60; the flow goes from point to the polygon, if &#x60;true&#x60; the flow goes from the polygon \&quot;inside\&quot; to the point. Example usage for &#x60;false&#x60;&amp;#58; *How many potential customer can be reached within 30min travel time from your store* vs. &#x60;true&#x60;&amp;#58; *How many customers can reach your store within 30min travel time.* (optional, default to false)
+     * @param weighting Can be fastest or shortest (optional, default to fastest)
      * @return IsochroneResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public IsochroneResponse isochroneGet(String point, String key, Integer timeLimit, Integer distanceLimit, String vehicle, Integer buckets, Boolean reverseFlow) throws ApiException {
-        ApiResponse<IsochroneResponse> resp = isochroneGetWithHttpInfo(point, key, timeLimit, distanceLimit, vehicle, buckets, reverseFlow);
+    public IsochroneResponse isochroneGet(String point, String key, Integer timeLimit, Integer distanceLimit, String vehicle, Integer buckets, Boolean reverseFlow, String weighting) throws ApiException {
+        ApiResponse<IsochroneResponse> resp = isochroneGetWithHttpInfo(point, key, timeLimit, distanceLimit, vehicle, buckets, reverseFlow, weighting);
         return resp.getData();
     }
 
@@ -171,11 +175,12 @@ public class IsochroneApi {
      * @param vehicle Possible vehicles are bike, car, foot and [more](https://graphhopper.com/api/1/docs/supported-vehicle-profiles/) (optional, default to car)
      * @param buckets For how many sub intervals an additional polygon should be calculated. (optional, default to 1)
      * @param reverseFlow If &#x60;false&#x60; the flow goes from point to the polygon, if &#x60;true&#x60; the flow goes from the polygon \&quot;inside\&quot; to the point. Example usage for &#x60;false&#x60;&amp;#58; *How many potential customer can be reached within 30min travel time from your store* vs. &#x60;true&#x60;&amp;#58; *How many customers can reach your store within 30min travel time.* (optional, default to false)
+     * @param weighting Can be fastest or shortest (optional, default to fastest)
      * @return ApiResponse&lt;IsochroneResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<IsochroneResponse> isochroneGetWithHttpInfo(String point, String key, Integer timeLimit, Integer distanceLimit, String vehicle, Integer buckets, Boolean reverseFlow) throws ApiException {
-        com.squareup.okhttp.Call call = isochroneGetValidateBeforeCall(point, key, timeLimit, distanceLimit, vehicle, buckets, reverseFlow, null, null);
+    public ApiResponse<IsochroneResponse> isochroneGetWithHttpInfo(String point, String key, Integer timeLimit, Integer distanceLimit, String vehicle, Integer buckets, Boolean reverseFlow, String weighting) throws ApiException {
+        com.squareup.okhttp.Call call = isochroneGetValidateBeforeCall(point, key, timeLimit, distanceLimit, vehicle, buckets, reverseFlow, weighting, null, null);
         Type localVarReturnType = new TypeToken<IsochroneResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -190,11 +195,12 @@ public class IsochroneApi {
      * @param vehicle Possible vehicles are bike, car, foot and [more](https://graphhopper.com/api/1/docs/supported-vehicle-profiles/) (optional, default to car)
      * @param buckets For how many sub intervals an additional polygon should be calculated. (optional, default to 1)
      * @param reverseFlow If &#x60;false&#x60; the flow goes from point to the polygon, if &#x60;true&#x60; the flow goes from the polygon \&quot;inside\&quot; to the point. Example usage for &#x60;false&#x60;&amp;#58; *How many potential customer can be reached within 30min travel time from your store* vs. &#x60;true&#x60;&amp;#58; *How many customers can reach your store within 30min travel time.* (optional, default to false)
+     * @param weighting Can be fastest or shortest (optional, default to fastest)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call isochroneGetAsync(String point, String key, Integer timeLimit, Integer distanceLimit, String vehicle, Integer buckets, Boolean reverseFlow, final ApiCallback<IsochroneResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call isochroneGetAsync(String point, String key, Integer timeLimit, Integer distanceLimit, String vehicle, Integer buckets, Boolean reverseFlow, String weighting, final ApiCallback<IsochroneResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -215,7 +221,7 @@ public class IsochroneApi {
             };
         }
 
-        com.squareup.okhttp.Call call = isochroneGetValidateBeforeCall(point, key, timeLimit, distanceLimit, vehicle, buckets, reverseFlow, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = isochroneGetValidateBeforeCall(point, key, timeLimit, distanceLimit, vehicle, buckets, reverseFlow, weighting, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<IsochroneResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

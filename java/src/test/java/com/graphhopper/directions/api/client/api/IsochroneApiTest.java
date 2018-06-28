@@ -50,7 +50,8 @@ public class IsochroneApiTest {
         String vehicle = null;
         Integer buckets = null;
         Boolean reverseFlow = null;
-        IsochroneResponse response = api.isochroneGet(point, key, timeLimit, distanceLimit, vehicle, buckets, reverseFlow);
+        String weighting = null;
+        IsochroneResponse response = api.isochroneGet(point, key, timeLimit, distanceLimit, vehicle, buckets, reverseFlow, weighting);
 
         // TODO: test validations
     }

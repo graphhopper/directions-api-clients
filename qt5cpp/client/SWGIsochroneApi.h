@@ -35,7 +35,7 @@ public:
     QString basePath;
     QMap<QString, QString> defaultHeaders;
 
-    void isochroneGet(QString* point, QString* key, qint32 time_limit, qint32 distance_limit, QString* vehicle, qint32 buckets, bool reverse_flow);
+    void isochroneGet(QString* point, QString* key, qint32 time_limit, qint32 distance_limit, QString* vehicle, qint32 buckets, bool reverse_flow, QString* weighting);
     
 private:
     void isochroneGetCallback (SWGHttpRequestWorker * worker);

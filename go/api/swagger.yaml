@@ -289,6 +289,13 @@ paths:
         type: "boolean"
         default: false
         x-exportParamName: "ReverseFlow"
+      - name: "weighting"
+        in: "query"
+        description: "Can be fastest or shortest"
+        required: false
+        type: "string"
+        default: "fastest"
+        x-exportParamName: "Weighting"
       - name: "key"
         in: "query"
         description: "Get your key at graphhopper.com"

@@ -35,12 +35,13 @@ public:
  * \param vehicle Possible vehicles are bike, car, foot and [more](https://graphhopper.com/api/1/docs/supported-vehicle-profiles/)
  * \param buckets For how many sub intervals an additional polygon should be calculated.
  * \param reverseFlow If `false` the flow goes from point to the polygon, if `true` the flow goes from the polygon \"inside\" to the point. Example usage for `false`&#58; *How many potential customer can be reached within 30min travel time from your store* vs. `true`&#58; *How many customers can reach your store within 30min travel time.*
+ * \param weighting Can be fastest or shortest
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool isochroneGetSync(char * accessToken,
-	std::string point, std::string key, int timeLimit, int distanceLimit, std::string vehicle, int buckets, bool reverseFlow, 
+	std::string point, std::string key, int timeLimit, int distanceLimit, std::string vehicle, int buckets, bool reverseFlow, std::string weighting, 
 	void(* handler)(IsochroneResponse, Error, void* )
 	, void* userData);
 
@@ -54,12 +55,13 @@ bool isochroneGetSync(char * accessToken,
  * \param vehicle Possible vehicles are bike, car, foot and [more](https://graphhopper.com/api/1/docs/supported-vehicle-profiles/)
  * \param buckets For how many sub intervals an additional polygon should be calculated.
  * \param reverseFlow If `false` the flow goes from point to the polygon, if `true` the flow goes from the polygon \"inside\" to the point. Example usage for `false`&#58; *How many potential customer can be reached within 30min travel time from your store* vs. `true`&#58; *How many customers can reach your store within 30min travel time.*
+ * \param weighting Can be fastest or shortest
  * \param handler The callback function to be invoked on completion. *Required*
  * \param accessToken The Authorization token. *Required*
  * \param userData The user data to be passed to the callback function.
  */
 bool isochroneGetAsync(char * accessToken,
-	std::string point, std::string key, int timeLimit, int distanceLimit, std::string vehicle, int buckets, bool reverseFlow, 
+	std::string point, std::string key, int timeLimit, int distanceLimit, std::string vehicle, int buckets, bool reverseFlow, std::string weighting, 
 	void(* handler)(IsochroneResponse, Error, void* )
 	, void* userData);
 

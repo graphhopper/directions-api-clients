@@ -40,7 +40,8 @@ isa_ok($api, 'WWW::SwaggerClient::IsochroneApi');
     my $vehicle = undef; # replace NULL with a proper value
     my $buckets = undef; # replace NULL with a proper value
     my $reverse_flow = undef; # replace NULL with a proper value
-    my $result = $api->isochrone_get(point => $point, key => $key, time_limit => $time_limit, distance_limit => $distance_limit, vehicle => $vehicle, buckets => $buckets, reverse_flow => $reverse_flow);
+    my $weighting = undef; # replace NULL with a proper value
+    my $result = $api->isochrone_get(point => $point, key => $key, time_limit => $time_limit, distance_limit => $distance_limit, vehicle => $vehicle, buckets => $buckets, reverse_flow => $reverse_flow, weighting => $weighting);
 }
 
 

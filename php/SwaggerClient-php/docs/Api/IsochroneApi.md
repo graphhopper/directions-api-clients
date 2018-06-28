@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 
 # **isochroneGet**
-> \Swagger\Client\Model\IsochroneResponse isochroneGet($point, $key, $time_limit, $distance_limit, $vehicle, $buckets, $reverse_flow)
+> \Swagger\Client\Model\IsochroneResponse isochroneGet($point, $key, $time_limit, $distance_limit, $vehicle, $buckets, $reverse_flow, $weighting)
 
 Isochrone Request
 
@@ -31,9 +31,10 @@ $distance_limit = -1; // int | Specify which distance the vehicle should travel.
 $vehicle = "car"; // string | Possible vehicles are bike, car, foot and [more](https://graphhopper.com/api/1/docs/supported-vehicle-profiles/)
 $buckets = 1; // int | For how many sub intervals an additional polygon should be calculated.
 $reverse_flow = false; // bool | If `false` the flow goes from point to the polygon, if `true` the flow goes from the polygon \"inside\" to the point. Example usage for `false`&#58; *How many potential customer can be reached within 30min travel time from your store* vs. `true`&#58; *How many customers can reach your store within 30min travel time.*
+$weighting = "fastest"; // string | Can be fastest or shortest
 
 try {
-    $result = $apiInstance->isochroneGet($point, $key, $time_limit, $distance_limit, $vehicle, $buckets, $reverse_flow);
+    $result = $apiInstance->isochroneGet($point, $key, $time_limit, $distance_limit, $vehicle, $buckets, $reverse_flow, $weighting);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling IsochroneApi->isochroneGet: ', $e->getMessage(), PHP_EOL;
@@ -52,6 +53,7 @@ Name | Type | Description  | Notes
  **vehicle** | **string**| Possible vehicles are bike, car, foot and [more](https://graphhopper.com/api/1/docs/supported-vehicle-profiles/) | [optional] [default to car]
  **buckets** | **int**| For how many sub intervals an additional polygon should be calculated. | [optional] [default to 1]
  **reverse_flow** | **bool**| If &#x60;false&#x60; the flow goes from point to the polygon, if &#x60;true&#x60; the flow goes from the polygon \&quot;inside\&quot; to the point. Example usage for &#x60;false&#x60;&amp;#58; *How many potential customer can be reached within 30min travel time from your store* vs. &#x60;true&#x60;&amp;#58; *How many customers can reach your store within 30min travel time.* | [optional] [default to false]
+ **weighting** | **string**| Can be fastest or shortest | [optional] [default to fastest]
 
 ### Return type
 

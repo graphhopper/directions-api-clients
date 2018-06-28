@@ -36,6 +36,7 @@ The GraphHopper Isochrone API allows calculating an isochrone of a locations mea
     @param "vehicle" (string) Possible vehicles are bike, car, foot and [more](https://graphhopper.com/api/1/docs/supported-vehicle-profiles/)
     @param "buckets" (int32) For how many sub intervals an additional polygon should be calculated.
     @param "reverseFlow" (bool) If &#x60;false&#x60; the flow goes from point to the polygon, if &#x60;true&#x60; the flow goes from the polygon \&quot;inside\&quot; to the point. Example usage for &#x60;false&#x60;&amp;#58; *How many potential customer can be reached within 30min travel time from your store* vs. &#x60;true&#x60;&amp;#58; *How many customers can reach your store within 30min travel time.*
+    @param "weighting" (string) Can be fastest or shortest
 @return IsochroneResponse*/
 func (a *IsochroneApiService) IsochroneGet(ctx context.Context, point string, key string, localVarOptionals map[string]interface{}) (IsochroneResponse, *http.Response, error) {
 	var (
@@ -67,6 +68,9 @@ func (a *IsochroneApiService) IsochroneGet(ctx context.Context, point string, ke
 	if err := typeCheckParameter(localVarOptionals["reverseFlow"], "bool", "reverseFlow"); err != nil {
 		return successPayload, nil, err
 	}
+	if err := typeCheckParameter(localVarOptionals["weighting"], "string", "weighting"); err != nil {
+		return successPayload, nil, err
+	}
 
 	localVarQueryParams.Add("point", parameterToString(point, ""))
 	if localVarTempParam, localVarOk := localVarOptionals["timeLimit"].(int32); localVarOk {
@@ -83,6 +87,9 @@ func (a *IsochroneApiService) IsochroneGet(ctx context.Context, point string, ke
 	}
 	if localVarTempParam, localVarOk := localVarOptionals["reverseFlow"].(bool); localVarOk {
 		localVarQueryParams.Add("reverse_flow", parameterToString(localVarTempParam, ""))
+	}
+	if localVarTempParam, localVarOk := localVarOptionals["weighting"].(string); localVarOk {
+		localVarQueryParams.Add("weighting", parameterToString(localVarTempParam, ""))
 	}
 	localVarQueryParams.Add("key", parameterToString(key, ""))
 	// to determine the Content-Type header

@@ -78,7 +78,8 @@ namespace IO.Swagger.Test
             //string vehicle = null;
             //int? buckets = null;
             //bool? reverseFlow = null;
-            //var response = instance.IsochroneGet(point, key, timeLimit, distanceLimit, vehicle, buckets, reverseFlow);
+            //string weighting = null;
+            //var response = instance.IsochroneGet(point, key, timeLimit, distanceLimit, vehicle, buckets, reverseFlow, weighting);
             //Assert.IsInstanceOf<IsochroneResponse> (response, "response is IsochroneResponse");
         }
         

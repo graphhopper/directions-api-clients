@@ -67,6 +67,8 @@ NSInteger kSWGIsochroneApiMissingParamErrorCode = 234513;
 ///
 ///  @param reverseFlow If `false` the flow goes from point to the polygon, if `true` the flow goes from the polygon \"inside\" to the point. Example usage for `false`&#58; *How many potential customer can be reached within 30min travel time from your store* vs. `true`&#58; *How many customers can reach your store within 30min travel time.* (optional, default to false)
 ///
+///  @param weighting Can be fastest or shortest (optional, default to fastest)
+///
 ///  @returns SWGIsochroneResponse*
 ///
 -(NSURLSessionTask*) isochroneGetWithPoint: (NSString*) point
@@ -76,6 +78,7 @@ NSInteger kSWGIsochroneApiMissingParamErrorCode = 234513;
     vehicle: (NSString*) vehicle
     buckets: (NSNumber*) buckets
     reverseFlow: (NSNumber*) reverseFlow
+    weighting: (NSString*) weighting
     completionHandler: (void (^)(SWGIsochroneResponse* output, NSError* error)) handler {
     // verify the required parameter 'point' is set
     if (point == nil) {
@@ -121,6 +124,9 @@ NSInteger kSWGIsochroneApiMissingParamErrorCode = 234513;
     }
     if (reverseFlow != nil) {
         queryParams[@"reverse_flow"] = [reverseFlow isEqual:@(YES)] ? @"true" : @"false";
+    }
+    if (weighting != nil) {
+        queryParams[@"weighting"] = weighting;
     }
     if (key != nil) {
         queryParams[@"key"] = key;

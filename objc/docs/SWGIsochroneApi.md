@@ -16,6 +16,7 @@ Method | HTTP request | Description
     vehicle: (NSString*) vehicle
     buckets: (NSNumber*) buckets
     reverseFlow: (NSNumber*) reverseFlow
+    weighting: (NSString*) weighting
         completionHandler: (void (^)(SWGIsochroneResponse* output, NSError* error)) handler;
 ```
 
@@ -33,6 +34,7 @@ NSNumber* distanceLimit = @-1; // Specify which distance the vehicle should trav
 NSString* vehicle = @"car"; // Possible vehicles are bike, car, foot and [more](https://graphhopper.com/api/1/docs/supported-vehicle-profiles/) (optional) (default to car)
 NSNumber* buckets = @1; // For how many sub intervals an additional polygon should be calculated. (optional) (default to 1)
 NSNumber* reverseFlow = @false; // If `false` the flow goes from point to the polygon, if `true` the flow goes from the polygon \"inside\" to the point. Example usage for `false`&#58; *How many potential customer can be reached within 30min travel time from your store* vs. `true`&#58; *How many customers can reach your store within 30min travel time.* (optional) (default to false)
+NSString* weighting = @"fastest"; // Can be fastest or shortest (optional) (default to fastest)
 
 SWGIsochroneApi*apiInstance = [[SWGIsochroneApi alloc] init];
 
@@ -44,6 +46,7 @@ SWGIsochroneApi*apiInstance = [[SWGIsochroneApi alloc] init];
               vehicle:vehicle
               buckets:buckets
               reverseFlow:reverseFlow
+              weighting:weighting
           completionHandler: ^(SWGIsochroneResponse* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
@@ -65,6 +68,7 @@ Name | Type | Description  | Notes
  **vehicle** | **NSString***| Possible vehicles are bike, car, foot and [more](https://graphhopper.com/api/1/docs/supported-vehicle-profiles/) | [optional] [default to car]
  **buckets** | **NSNumber***| For how many sub intervals an additional polygon should be calculated. | [optional] [default to 1]
  **reverseFlow** | **NSNumber***| If &#x60;false&#x60; the flow goes from point to the polygon, if &#x60;true&#x60; the flow goes from the polygon \&quot;inside\&quot; to the point. Example usage for &#x60;false&#x60;&amp;#58; *How many potential customer can be reached within 30min travel time from your store* vs. &#x60;true&#x60;&amp;#58; *How many customers can reach your store within 30min travel time.* | [optional] [default to false]
+ **weighting** | **NSString***| Can be fastest or shortest | [optional] [default to fastest]
 
 ### Return type
 

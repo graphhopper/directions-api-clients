@@ -91,10 +91,11 @@ class IsochroneApi(
    * @param vehicle Possible vehicles are bike, car, foot and [more](https://graphhopper.com/api/1/docs/supported-vehicle-profiles/) (optional, default to car)
    * @param buckets For how many sub intervals an additional polygon should be calculated. (optional, default to 1)
    * @param reverseFlow If &#x60;false&#x60; the flow goes from point to the polygon, if &#x60;true&#x60; the flow goes from the polygon \&quot;inside\&quot; to the point. Example usage for &#x60;false&#x60;&amp;#58; *How many potential customer can be reached within 30min travel time from your store* vs. &#x60;true&#x60;&amp;#58; *How many customers can reach your store within 30min travel time.* (optional, default to false)
+   * @param weighting Can be fastest or shortest (optional, default to fastest)
    * @return IsochroneResponse
    */
-  def isochroneGet(point: String, key: String, timeLimit: Option[Integer] = Option(600), distanceLimit: Option[Integer] = Option(-1), vehicle: Option[String] = Option("car"), buckets: Option[Integer] = Option(1), reverseFlow: Option[Boolean] = Option(false)): Option[IsochroneResponse] = {
-    val await = Try(Await.result(isochroneGetAsync(point, key, timeLimit, distanceLimit, vehicle, buckets, reverseFlow), Duration.Inf))
+  def isochroneGet(point: String, key: String, timeLimit: Option[Integer] = Option(600), distanceLimit: Option[Integer] = Option(-1), vehicle: Option[String] = Option("car"), buckets: Option[Integer] = Option(1), reverseFlow: Option[Boolean] = Option(false), weighting: Option[String] = Option("fastest")): Option[IsochroneResponse] = {
+    val await = Try(Await.result(isochroneGetAsync(point, key, timeLimit, distanceLimit, vehicle, buckets, reverseFlow, weighting), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -112,10 +113,11 @@ class IsochroneApi(
    * @param vehicle Possible vehicles are bike, car, foot and [more](https://graphhopper.com/api/1/docs/supported-vehicle-profiles/) (optional, default to car)
    * @param buckets For how many sub intervals an additional polygon should be calculated. (optional, default to 1)
    * @param reverseFlow If &#x60;false&#x60; the flow goes from point to the polygon, if &#x60;true&#x60; the flow goes from the polygon \&quot;inside\&quot; to the point. Example usage for &#x60;false&#x60;&amp;#58; *How many potential customer can be reached within 30min travel time from your store* vs. &#x60;true&#x60;&amp;#58; *How many customers can reach your store within 30min travel time.* (optional, default to false)
+   * @param weighting Can be fastest or shortest (optional, default to fastest)
    * @return Future(IsochroneResponse)
    */
-  def isochroneGetAsync(point: String, key: String, timeLimit: Option[Integer] = Option(600), distanceLimit: Option[Integer] = Option(-1), vehicle: Option[String] = Option("car"), buckets: Option[Integer] = Option(1), reverseFlow: Option[Boolean] = Option(false)): Future[IsochroneResponse] = {
-      helper.isochroneGet(point, key, timeLimit, distanceLimit, vehicle, buckets, reverseFlow)
+  def isochroneGetAsync(point: String, key: String, timeLimit: Option[Integer] = Option(600), distanceLimit: Option[Integer] = Option(-1), vehicle: Option[String] = Option("car"), buckets: Option[Integer] = Option(1), reverseFlow: Option[Boolean] = Option(false), weighting: Option[String] = Option("fastest")): Future[IsochroneResponse] = {
+      helper.isochroneGet(point, key, timeLimit, distanceLimit, vehicle, buckets, reverseFlow, weighting)
   }
 
 }
@@ -128,7 +130,8 @@ class IsochroneApiAsyncHelper(client: TransportClient, config: SwaggerConfig) ex
     distanceLimit: Option[Integer] = Option(-1),
     vehicle: Option[String] = Option("car"),
     buckets: Option[Integer] = Option(1),
-    reverseFlow: Option[Boolean] = Option(false)
+    reverseFlow: Option[Boolean] = Option(false),
+    weighting: Option[String] = Option("fastest")
     )(implicit reader: ClientResponseReader[IsochroneResponse]): Future[IsochroneResponse] = {
     // create path and map variables
     val path = (addFmt("/isochrone"))
@@ -160,6 +163,10 @@ class IsochroneApiAsyncHelper(client: TransportClient, config: SwaggerConfig) ex
     }
     reverseFlow match {
       case Some(param) => queryParams += "reverse_flow" -> param.toString
+      case _ => queryParams
+    }
+    weighting match {
+      case Some(param) => queryParams += "weighting" -> param.toString
       case _ => queryParams
     }
     queryParams += "key" -> key.toString

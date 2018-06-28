@@ -34,12 +34,12 @@ impl<C: hyper::client::Connect> IsochroneApiClient<C> {
 }
 
 pub trait IsochroneApi {
-    fn isochrone_get(&self, point: &str, key: &str, time_limit: i32, distance_limit: i32, vehicle: &str, buckets: i32, reverse_flow: bool) -> Box<Future<Item = ::models::IsochroneResponse, Error = Error<serde_json::Value>>>;
+    fn isochrone_get(&self, point: &str, key: &str, time_limit: i32, distance_limit: i32, vehicle: &str, buckets: i32, reverse_flow: bool, weighting: &str) -> Box<Future<Item = ::models::IsochroneResponse, Error = Error<serde_json::Value>>>;
 }
 
 
 impl<C: hyper::client::Connect>IsochroneApi for IsochroneApiClient<C> {
-    fn isochrone_get(&self, point: &str, key: &str, time_limit: i32, distance_limit: i32, vehicle: &str, buckets: i32, reverse_flow: bool) -> Box<Future<Item = ::models::IsochroneResponse, Error = Error<serde_json::Value>>> {
+    fn isochrone_get(&self, point: &str, key: &str, time_limit: i32, distance_limit: i32, vehicle: &str, buckets: i32, reverse_flow: bool, weighting: &str) -> Box<Future<Item = ::models::IsochroneResponse, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let method = hyper::Method::Get;
@@ -51,6 +51,7 @@ impl<C: hyper::client::Connect>IsochroneApi for IsochroneApiClient<C> {
             .append_pair("vehicle", &vehicle.to_string())
             .append_pair("buckets", &buckets.to_string())
             .append_pair("reverse_flow", &reverse_flow.to_string())
+            .append_pair("weighting", &weighting.to_string())
             .append_pair("key", &key.to_string())
             .finish();
         let uri_str = format!("{}/isochrone{}", configuration.base_path, query);

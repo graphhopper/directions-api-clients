@@ -109,7 +109,7 @@ static bool isochroneGetProcessor(MemoryStruct_s p_chunk, long code, char* error
 }
 
 static bool isochroneGetHelper(char * accessToken,
-	std::string point, std::string key, int timeLimit, int distanceLimit, std::string vehicle, int buckets, bool reverseFlow, 
+	std::string point, std::string key, int timeLimit, int distanceLimit, std::string vehicle, int buckets, bool reverseFlow, std::string weighting, 
 	void(* handler)(IsochroneResponse, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -163,6 +163,13 @@ static bool isochroneGetHelper(char * accessToken,
 	queryParams.insert(pair<string, string>("reverse_flow", itemAtq));
 	if( itemAtq.empty()==true){
 		queryParams.erase("reverse_flow");
+	}
+
+
+	itemAtq = stringify(&weighting, "std::string");
+	queryParams.insert(pair<string, string>("weighting", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("weighting");
 	}
 
 
@@ -223,22 +230,22 @@ static bool isochroneGetHelper(char * accessToken,
 
 
 bool IsochroneManager::isochroneGetAsync(char * accessToken,
-	std::string point, std::string key, int timeLimit, int distanceLimit, std::string vehicle, int buckets, bool reverseFlow, 
+	std::string point, std::string key, int timeLimit, int distanceLimit, std::string vehicle, int buckets, bool reverseFlow, std::string weighting, 
 	void(* handler)(IsochroneResponse, Error, void* )
 	, void* userData)
 {
 	return isochroneGetHelper(accessToken,
-	point, key, timeLimit, distanceLimit, vehicle, buckets, reverseFlow, 
+	point, key, timeLimit, distanceLimit, vehicle, buckets, reverseFlow, weighting, 
 	handler, userData, true);
 }
 
 bool IsochroneManager::isochroneGetSync(char * accessToken,
-	std::string point, std::string key, int timeLimit, int distanceLimit, std::string vehicle, int buckets, bool reverseFlow, 
+	std::string point, std::string key, int timeLimit, int distanceLimit, std::string vehicle, int buckets, bool reverseFlow, std::string weighting, 
 	void(* handler)(IsochroneResponse, Error, void* )
 	, void* userData)
 {
 	return isochroneGetHelper(accessToken,
-	point, key, timeLimit, distanceLimit, vehicle, buckets, reverseFlow, 
+	point, key, timeLimit, distanceLimit, vehicle, buckets, reverseFlow, weighting, 
 	handler, userData, false);
 }
 

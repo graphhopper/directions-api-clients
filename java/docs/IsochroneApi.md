@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 <a name="isochroneGet"></a>
 # **isochroneGet**
-> IsochroneResponse isochroneGet(point, key, timeLimit, distanceLimit, vehicle, buckets, reverseFlow)
+> IsochroneResponse isochroneGet(point, key, timeLimit, distanceLimit, vehicle, buckets, reverseFlow, weighting)
 
 Isochrone Request
 
@@ -30,8 +30,9 @@ Integer distanceLimit = -1; // Integer | Specify which distance the vehicle shou
 String vehicle = "car"; // String | Possible vehicles are bike, car, foot and [more](https://graphhopper.com/api/1/docs/supported-vehicle-profiles/)
 Integer buckets = 1; // Integer | For how many sub intervals an additional polygon should be calculated.
 Boolean reverseFlow = false; // Boolean | If `false` the flow goes from point to the polygon, if `true` the flow goes from the polygon \"inside\" to the point. Example usage for `false`&#58; *How many potential customer can be reached within 30min travel time from your store* vs. `true`&#58; *How many customers can reach your store within 30min travel time.*
+String weighting = "fastest"; // String | Can be fastest or shortest
 try {
-    IsochroneResponse result = apiInstance.isochroneGet(point, key, timeLimit, distanceLimit, vehicle, buckets, reverseFlow);
+    IsochroneResponse result = apiInstance.isochroneGet(point, key, timeLimit, distanceLimit, vehicle, buckets, reverseFlow, weighting);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling IsochroneApi#isochroneGet");
@@ -50,6 +51,7 @@ Name | Type | Description  | Notes
  **vehicle** | **String**| Possible vehicles are bike, car, foot and [more](https://graphhopper.com/api/1/docs/supported-vehicle-profiles/) | [optional] [default to car]
  **buckets** | **Integer**| For how many sub intervals an additional polygon should be calculated. | [optional] [default to 1]
  **reverseFlow** | **Boolean**| If &#x60;false&#x60; the flow goes from point to the polygon, if &#x60;true&#x60; the flow goes from the polygon \&quot;inside\&quot; to the point. Example usage for &#x60;false&#x60;&amp;#58; *How many potential customer can be reached within 30min travel time from your store* vs. &#x60;true&#x60;&amp;#58; *How many customers can reach your store within 30min travel time.* | [optional] [default to false]
+ **weighting** | **String**| Can be fastest or shortest | [optional] [default to fastest]
 
 ### Return type
 

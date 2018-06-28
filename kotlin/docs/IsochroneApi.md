@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 <a name="isochroneGet"></a>
 # **isochroneGet**
-> IsochroneResponse isochroneGet(point, key, timeLimit, distanceLimit, vehicle, buckets, reverseFlow)
+> IsochroneResponse isochroneGet(point, key, timeLimit, distanceLimit, vehicle, buckets, reverseFlow, weighting)
 
 Isochrone Request
 
@@ -29,8 +29,9 @@ val distanceLimit : kotlin.Int = 56 // kotlin.Int | Specify which distance the v
 val vehicle : kotlin.String = vehicle_example // kotlin.String | Possible vehicles are bike, car, foot and [more](https://graphhopper.com/api/1/docs/supported-vehicle-profiles/)
 val buckets : kotlin.Int = 56 // kotlin.Int | For how many sub intervals an additional polygon should be calculated.
 val reverseFlow : kotlin.Boolean = true // kotlin.Boolean | If `false` the flow goes from point to the polygon, if `true` the flow goes from the polygon \"inside\" to the point. Example usage for `false`&#58; *How many potential customer can be reached within 30min travel time from your store* vs. `true`&#58; *How many customers can reach your store within 30min travel time.*
+val weighting : kotlin.String = weighting_example // kotlin.String | Can be fastest or shortest
 try {
-    val result : IsochroneResponse = apiInstance.isochroneGet(point, key, timeLimit, distanceLimit, vehicle, buckets, reverseFlow)
+    val result : IsochroneResponse = apiInstance.isochroneGet(point, key, timeLimit, distanceLimit, vehicle, buckets, reverseFlow, weighting)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling IsochroneApi#isochroneGet")
@@ -52,6 +53,7 @@ Name | Type | Description  | Notes
  **vehicle** | **kotlin.String**| Possible vehicles are bike, car, foot and [more](https://graphhopper.com/api/1/docs/supported-vehicle-profiles/) | [optional] [default to car]
  **buckets** | **kotlin.Int**| For how many sub intervals an additional polygon should be calculated. | [optional] [default to 1]
  **reverseFlow** | **kotlin.Boolean**| If &#x60;false&#x60; the flow goes from point to the polygon, if &#x60;true&#x60; the flow goes from the polygon \&quot;inside\&quot; to the point. Example usage for &#x60;false&#x60;&amp;#58; *How many potential customer can be reached within 30min travel time from your store* vs. &#x60;true&#x60;&amp;#58; *How many customers can reach your store within 30min travel time.* | [optional] [default to false]
+ **weighting** | **kotlin.String**| Can be fastest or shortest | [optional] [default to fastest]
 
 ### Return type
 

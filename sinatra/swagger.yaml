@@ -260,6 +260,12 @@ paths:
         required: false
         type: "boolean"
         default: false
+      - name: "weighting"
+        in: "query"
+        description: "Can be fastest or shortest"
+        required: false
+        type: "string"
+        default: "fastest"
       - name: "key"
         in: "query"
         description: "Get your key at graphhopper.com"

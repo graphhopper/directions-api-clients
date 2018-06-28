@@ -10,7 +10,7 @@ class IsochroneApi {
   /// Isochrone Request
   ///
   /// The GraphHopper Isochrone API allows calculating an isochrone of a locations means to calculate &#39;a line connecting points at which a vehicle arrives at the same time,&#39; see [Wikipedia](http://en.wikipedia.org/wiki/Isochrone_map). It is also called **reachability** or **walkability**. 
-  Future<IsochroneResponse> isochroneGet(String point, String key, { int timeLimit, int distanceLimit, String vehicle, int buckets, bool reverseFlow }) async {
+  Future<IsochroneResponse> isochroneGet(String point, String key, { int timeLimit, int distanceLimit, String vehicle, int buckets, bool reverseFlow, String weighting }) async {
     Object postBody = null;
 
     // verify required params are set
@@ -43,6 +43,9 @@ class IsochroneApi {
     }
     if(reverseFlow != null) {
       queryParams.addAll(_convertParametersForCollectionFormat("", "reverse_flow", reverseFlow));
+    }
+    if(weighting != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat("", "weighting", weighting));
     }
       queryParams.addAll(_convertParametersForCollectionFormat("", "key", key));
     

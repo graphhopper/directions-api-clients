@@ -60,6 +60,7 @@ sub new {
 # @param string $vehicle Possible vehicles are bike, car, foot and [more](https://graphhopper.com/api/1/docs/supported-vehicle-profiles/) (optional, default to car)
 # @param int $buckets For how many sub intervals an additional polygon should be calculated. (optional, default to 1)
 # @param boolean $reverse_flow If &#x60;false&#x60; the flow goes from point to the polygon, if &#x60;true&#x60; the flow goes from the polygon \&quot;inside\&quot; to the point. Example usage for &#x60;false&#x60;&amp;#58; *How many potential customer can be reached within 30min travel time from your store* vs. &#x60;true&#x60;&amp;#58; *How many customers can reach your store within 30min travel time.* (optional, default to false)
+# @param string $weighting Can be fastest or shortest (optional, default to fastest)
 {
     my $params = {
     'point' => {
@@ -95,6 +96,11 @@ sub new {
     'reverse_flow' => {
         data_type => 'boolean',
         description => 'If &#x60;false&#x60; the flow goes from point to the polygon, if &#x60;true&#x60; the flow goes from the polygon \&quot;inside\&quot; to the point. Example usage for &#x60;false&#x60;&amp;#58; *How many potential customer can be reached within 30min travel time from your store* vs. &#x60;true&#x60;&amp;#58; *How many customers can reach your store within 30min travel time.*',
+        required => '0',
+    },
+    'weighting' => {
+        data_type => 'string',
+        description => 'Can be fastest or shortest',
         required => '0',
     },
     };
@@ -162,6 +168,11 @@ sub isochrone_get {
     # query params
     if ( exists $args{'reverse_flow'}) {
         $query_params->{'reverse_flow'} = $self->{api_client}->to_query_value($args{'reverse_flow'});
+    }
+
+    # query params
+    if ( exists $args{'weighting'}) {
+        $query_params->{'weighting'} = $self->{api_client}->to_query_value($args{'weighting'});
     }
 
     # query params

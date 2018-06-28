@@ -36,7 +36,7 @@ IsochroneApi <- R6::R6Class(
         self$apiClient <- ApiClient$new()
       }
     },
-    isochrone_get = function(point, key, time_limit, distance_limit, vehicle, buckets, reverse_flow, ...){
+    isochrone_get = function(point, key, time_limit, distance_limit, vehicle, buckets, reverse_flow, weighting, ...){
       args <- list(...)
       queryParams <- list()
       headerParams <- character()
@@ -63,6 +63,10 @@ IsochroneApi <- R6::R6Class(
 
       if (!missing(`reverse_flow`)) {
         queryParams['reverse_flow'] <- reverse_flow
+      }
+
+      if (!missing(`weighting`)) {
+        queryParams['weighting'] <- weighting
       }
 
       if (!missing(`key`)) {

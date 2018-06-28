@@ -64,6 +64,15 @@ MyApp.add_route('GET', '/api/1/isochrone', {
       "defaultValue" => "false"
     },
     {
+      "name" => "weighting",
+      "description" => "Can be fastest or shortest",
+      "dataType" => "string",
+      "paramType" => "query",
+      
+      "allowableValues" => "",
+      "defaultValue" => "fastest"
+    },
+    {
       "name" => "key",
       "description" => "Get your key at graphhopper.com",
       "dataType" => "string",

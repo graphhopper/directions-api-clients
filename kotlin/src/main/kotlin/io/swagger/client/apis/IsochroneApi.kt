@@ -28,12 +28,13 @@ class IsochroneApi(basePath: kotlin.String = "https://graphhopper.com/api/1") : 
     * @param vehicle Possible vehicles are bike, car, foot and [more](https://graphhopper.com/api/1/docs/supported-vehicle-profiles/) (optional, default to car)
     * @param buckets For how many sub intervals an additional polygon should be calculated. (optional, default to 1)
     * @param reverseFlow If &#x60;false&#x60; the flow goes from point to the polygon, if &#x60;true&#x60; the flow goes from the polygon \&quot;inside\&quot; to the point. Example usage for &#x60;false&#x60;&amp;#58; *How many potential customer can be reached within 30min travel time from your store* vs. &#x60;true&#x60;&amp;#58; *How many customers can reach your store within 30min travel time.* (optional, default to false)
+    * @param weighting Can be fastest or shortest (optional, default to fastest)
     * @return IsochroneResponse
     */
     @Suppress("UNCHECKED_CAST")
-    fun isochroneGet(point: kotlin.String, key: kotlin.String, timeLimit: kotlin.Int, distanceLimit: kotlin.Int, vehicle: kotlin.String, buckets: kotlin.Int, reverseFlow: kotlin.Boolean) : IsochroneResponse {
+    fun isochroneGet(point: kotlin.String, key: kotlin.String, timeLimit: kotlin.Int, distanceLimit: kotlin.Int, vehicle: kotlin.String, buckets: kotlin.Int, reverseFlow: kotlin.Boolean, weighting: kotlin.String) : IsochroneResponse {
         val localVariableBody: kotlin.Any? = null
-        val localVariableQuery: MultiValueMap = mapOf("point" to listOf("$point"), "time_limit" to listOf("$timeLimit"), "distance_limit" to listOf("$distanceLimit"), "vehicle" to listOf("$vehicle"), "buckets" to listOf("$buckets"), "reverse_flow" to listOf("$reverseFlow"), "key" to listOf("$key"))
+        val localVariableQuery: MultiValueMap = mapOf("point" to listOf("$point"), "time_limit" to listOf("$timeLimit"), "distance_limit" to listOf("$distanceLimit"), "vehicle" to listOf("$vehicle"), "buckets" to listOf("$buckets"), "reverse_flow" to listOf("$reverseFlow"), "weighting" to listOf("$weighting"), "key" to listOf("$key"))
         val localVariableHeaders: kotlin.collections.Map<kotlin.String,kotlin.String> = mapOf()
         val localVariableConfig = RequestConfig(
             RequestMethod.GET,

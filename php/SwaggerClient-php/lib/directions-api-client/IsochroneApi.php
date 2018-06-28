@@ -94,14 +94,15 @@ class IsochroneApi
      * @param  string $vehicle Possible vehicles are bike, car, foot and [more](https://graphhopper.com/api/1/docs/supported-vehicle-profiles/) (optional, default to car)
      * @param  int $buckets For how many sub intervals an additional polygon should be calculated. (optional, default to 1)
      * @param  bool $reverse_flow If &#x60;false&#x60; the flow goes from point to the polygon, if &#x60;true&#x60; the flow goes from the polygon \&quot;inside\&quot; to the point. Example usage for &#x60;false&#x60;&amp;#58; *How many potential customer can be reached within 30min travel time from your store* vs. &#x60;true&#x60;&amp;#58; *How many customers can reach your store within 30min travel time.* (optional, default to false)
+     * @param  string $weighting Can be fastest or shortest (optional, default to fastest)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\IsochroneResponse
      */
-    public function isochroneGet($point, $key, $time_limit = '600', $distance_limit = '-1', $vehicle = 'car', $buckets = '1', $reverse_flow = 'false')
+    public function isochroneGet($point, $key, $time_limit = '600', $distance_limit = '-1', $vehicle = 'car', $buckets = '1', $reverse_flow = 'false', $weighting = 'fastest')
     {
-        list($response) = $this->isochroneGetWithHttpInfo($point, $key, $time_limit, $distance_limit, $vehicle, $buckets, $reverse_flow);
+        list($response) = $this->isochroneGetWithHttpInfo($point, $key, $time_limit, $distance_limit, $vehicle, $buckets, $reverse_flow, $weighting);
         return $response;
     }
 
@@ -117,15 +118,16 @@ class IsochroneApi
      * @param  string $vehicle Possible vehicles are bike, car, foot and [more](https://graphhopper.com/api/1/docs/supported-vehicle-profiles/) (optional, default to car)
      * @param  int $buckets For how many sub intervals an additional polygon should be calculated. (optional, default to 1)
      * @param  bool $reverse_flow If &#x60;false&#x60; the flow goes from point to the polygon, if &#x60;true&#x60; the flow goes from the polygon \&quot;inside\&quot; to the point. Example usage for &#x60;false&#x60;&amp;#58; *How many potential customer can be reached within 30min travel time from your store* vs. &#x60;true&#x60;&amp;#58; *How many customers can reach your store within 30min travel time.* (optional, default to false)
+     * @param  string $weighting Can be fastest or shortest (optional, default to fastest)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\IsochroneResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function isochroneGetWithHttpInfo($point, $key, $time_limit = '600', $distance_limit = '-1', $vehicle = 'car', $buckets = '1', $reverse_flow = 'false')
+    public function isochroneGetWithHttpInfo($point, $key, $time_limit = '600', $distance_limit = '-1', $vehicle = 'car', $buckets = '1', $reverse_flow = 'false', $weighting = 'fastest')
     {
         $returnType = '\Swagger\Client\Model\IsochroneResponse';
-        $request = $this->isochroneGetRequest($point, $key, $time_limit, $distance_limit, $vehicle, $buckets, $reverse_flow);
+        $request = $this->isochroneGetRequest($point, $key, $time_limit, $distance_limit, $vehicle, $buckets, $reverse_flow, $weighting);
 
         try {
             $options = $this->createHttpClientOption();
@@ -206,13 +208,14 @@ class IsochroneApi
      * @param  string $vehicle Possible vehicles are bike, car, foot and [more](https://graphhopper.com/api/1/docs/supported-vehicle-profiles/) (optional, default to car)
      * @param  int $buckets For how many sub intervals an additional polygon should be calculated. (optional, default to 1)
      * @param  bool $reverse_flow If &#x60;false&#x60; the flow goes from point to the polygon, if &#x60;true&#x60; the flow goes from the polygon \&quot;inside\&quot; to the point. Example usage for &#x60;false&#x60;&amp;#58; *How many potential customer can be reached within 30min travel time from your store* vs. &#x60;true&#x60;&amp;#58; *How many customers can reach your store within 30min travel time.* (optional, default to false)
+     * @param  string $weighting Can be fastest or shortest (optional, default to fastest)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function isochroneGetAsync($point, $key, $time_limit = '600', $distance_limit = '-1', $vehicle = 'car', $buckets = '1', $reverse_flow = 'false')
+    public function isochroneGetAsync($point, $key, $time_limit = '600', $distance_limit = '-1', $vehicle = 'car', $buckets = '1', $reverse_flow = 'false', $weighting = 'fastest')
     {
-        return $this->isochroneGetAsyncWithHttpInfo($point, $key, $time_limit, $distance_limit, $vehicle, $buckets, $reverse_flow)
+        return $this->isochroneGetAsyncWithHttpInfo($point, $key, $time_limit, $distance_limit, $vehicle, $buckets, $reverse_flow, $weighting)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -232,14 +235,15 @@ class IsochroneApi
      * @param  string $vehicle Possible vehicles are bike, car, foot and [more](https://graphhopper.com/api/1/docs/supported-vehicle-profiles/) (optional, default to car)
      * @param  int $buckets For how many sub intervals an additional polygon should be calculated. (optional, default to 1)
      * @param  bool $reverse_flow If &#x60;false&#x60; the flow goes from point to the polygon, if &#x60;true&#x60; the flow goes from the polygon \&quot;inside\&quot; to the point. Example usage for &#x60;false&#x60;&amp;#58; *How many potential customer can be reached within 30min travel time from your store* vs. &#x60;true&#x60;&amp;#58; *How many customers can reach your store within 30min travel time.* (optional, default to false)
+     * @param  string $weighting Can be fastest or shortest (optional, default to fastest)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function isochroneGetAsyncWithHttpInfo($point, $key, $time_limit = '600', $distance_limit = '-1', $vehicle = 'car', $buckets = '1', $reverse_flow = 'false')
+    public function isochroneGetAsyncWithHttpInfo($point, $key, $time_limit = '600', $distance_limit = '-1', $vehicle = 'car', $buckets = '1', $reverse_flow = 'false', $weighting = 'fastest')
     {
         $returnType = '\Swagger\Client\Model\IsochroneResponse';
-        $request = $this->isochroneGetRequest($point, $key, $time_limit, $distance_limit, $vehicle, $buckets, $reverse_flow);
+        $request = $this->isochroneGetRequest($point, $key, $time_limit, $distance_limit, $vehicle, $buckets, $reverse_flow, $weighting);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -288,11 +292,12 @@ class IsochroneApi
      * @param  string $vehicle Possible vehicles are bike, car, foot and [more](https://graphhopper.com/api/1/docs/supported-vehicle-profiles/) (optional, default to car)
      * @param  int $buckets For how many sub intervals an additional polygon should be calculated. (optional, default to 1)
      * @param  bool $reverse_flow If &#x60;false&#x60; the flow goes from point to the polygon, if &#x60;true&#x60; the flow goes from the polygon \&quot;inside\&quot; to the point. Example usage for &#x60;false&#x60;&amp;#58; *How many potential customer can be reached within 30min travel time from your store* vs. &#x60;true&#x60;&amp;#58; *How many customers can reach your store within 30min travel time.* (optional, default to false)
+     * @param  string $weighting Can be fastest or shortest (optional, default to fastest)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function isochroneGetRequest($point, $key, $time_limit = '600', $distance_limit = '-1', $vehicle = 'car', $buckets = '1', $reverse_flow = 'false')
+    protected function isochroneGetRequest($point, $key, $time_limit = '600', $distance_limit = '-1', $vehicle = 'car', $buckets = '1', $reverse_flow = 'false', $weighting = 'fastest')
     {
         // verify the required parameter 'point' is set
         if ($point === null) {
@@ -337,6 +342,10 @@ class IsochroneApi
         // query params
         if ($reverse_flow !== null) {
             $queryParams['reverse_flow'] = ObjectSerializer::toQueryValue($reverse_flow);
+        }
+        // query params
+        if ($weighting !== null) {
+            $queryParams['weighting'] = ObjectSerializer::toQueryValue($weighting);
         }
         // query params
         if ($key !== null) {
