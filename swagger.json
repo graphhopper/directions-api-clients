@@ -257,6 +257,13 @@
                         "type": "boolean"
                     },
                     {
+                        "name": "weighting",
+                        "in": "query",
+                        "description": "Can be fastest or shortest",
+                        "default": "fastest",
+                        "type": "string"
+                    },
+                    {
                         "name": "key",
                         "in": "query",
                         "description": "Get your key at graphhopper.com",
