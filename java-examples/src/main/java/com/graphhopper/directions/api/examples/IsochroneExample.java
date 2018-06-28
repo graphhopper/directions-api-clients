@@ -22,7 +22,7 @@ public class IsochroneExample {
             // Please note: the request string for the point has the order "lat,lon" but the response contains
             // an array with the order [lon,lat]
             IsochroneResponse rsp = isochrone.isochroneGet("51.183728,14.42801", key, 10 * 60, -1, "car",
-                    3, false);
+                    3, false, "fastest");
             final IsochroneResponsePolygon isochrone0 = rsp.getPolygons().get(0);
             ResponseCoordinatesArray exteriorRing = isochrone0.getGeometry().getCoordinates().get(0);
             System.out.println(exteriorRing);
