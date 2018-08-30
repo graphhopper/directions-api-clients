@@ -101,7 +101,7 @@ class Objective(object):
         :param value: The value of this Objective.  # noqa: E501
         :type: str
         """
-        allowed_values = ["completion_time", "transport_time", "vehicles"]  # noqa: E501
+        allowed_values = ["completion_time", "transport_time", "vehicles", "activities"]  # noqa: E501
         if value not in allowed_values:
             raise ValueError(
                 "Invalid value for `value` ({0}), must be one of {1}"  # noqa: E501

@@ -88,7 +88,9 @@ public class Objective {
     
     TRANSPORT_TIME("transport_time"),
     
-    VEHICLES("vehicles");
+    VEHICLES("vehicles"),
+    
+    ACTIVITIES("activities");
 
     private String value;
 

@@ -19,7 +19,7 @@ type | min, min-max
 ## Enum: value
 Name | Value
 ---- | -----
-value | completion_time, transport_time, vehicles
+value | completion_time, transport_time, vehicles, activities
 
 
 

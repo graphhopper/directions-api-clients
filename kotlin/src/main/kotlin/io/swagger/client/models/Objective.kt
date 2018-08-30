@@ -38,7 +38,7 @@ data class Objective (
 
     /**
     * objective function value
-    * Values: completionTime,transportTime,vehicles
+    * Values: completionTime,transportTime,vehicles,activities
     */
     enum class Value(val value: kotlin.Any){
     
@@ -46,7 +46,9 @@ data class Objective (
     
         transportTime("transport_time"),
     
-        vehicles("vehicles");
+        vehicles("vehicles"),
+    
+        activities("activities");
     
     }
 

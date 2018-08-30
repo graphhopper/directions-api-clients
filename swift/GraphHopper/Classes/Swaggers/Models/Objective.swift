@@ -17,6 +17,7 @@ public class Objective: JSONEncodable {
         case CompletionTime = "completion_time"
         case TransportTime = "transport_time"
         case Vehicles = "vehicles"
+        case Activities = "activities"
     }
     /** type of objective function, i.e. min or min-max  */
     public var type: ModelType?

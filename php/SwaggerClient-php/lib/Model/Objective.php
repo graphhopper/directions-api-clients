@@ -168,6 +168,7 @@ class Objective implements ModelInterface, ArrayAccess
     const VALUE_COMPLETION_TIME = 'completion_time';
     const VALUE_TRANSPORT_TIME = 'transport_time';
     const VALUE_VEHICLES = 'vehicles';
+    const VALUE_ACTIVITIES = 'activities';
     
 
     
@@ -195,6 +196,7 @@ class Objective implements ModelInterface, ArrayAccess
             self::VALUE_COMPLETION_TIME,
             self::VALUE_TRANSPORT_TIME,
             self::VALUE_VEHICLES,
+            self::VALUE_ACTIVITIES,
         ];
     }
     

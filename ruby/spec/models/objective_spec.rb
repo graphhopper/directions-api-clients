@@ -45,7 +45,7 @@ describe 'Objective' do
   describe 'test attribute "value"' do
     it 'should work' do
        # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
-       #validator = Petstore::EnumTest::EnumAttributeValidator.new('String', ["completion_time", "transport_time", "vehicles"])
+       #validator = Petstore::EnumTest::EnumAttributeValidator.new('String', ["completion_time", "transport_time", "vehicles", "activities"])
        #validator.allowable_values.each do |value|
        #  expect { @instance.value = value }.not_to raise_error
        #end

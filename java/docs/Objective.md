@@ -23,6 +23,7 @@ Name | Value
 COMPLETION_TIME | &quot;completion_time&quot;
 TRANSPORT_TIME | &quot;transport_time&quot;
 VEHICLES | &quot;vehicles&quot;
+ACTIVITIES | &quot;activities&quot;
 
 
 

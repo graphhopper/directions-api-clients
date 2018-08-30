@@ -1917,6 +1917,7 @@ definitions:
         - "completion_time"
         - "transport_time"
         - "vehicles"
+        - "activities"
     example:
       type: "min"
       value: "completion_time"

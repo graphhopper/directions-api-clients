@@ -9,7 +9,7 @@ class Objective {
 /* objective function value */
   @Property(name: 'value')
   String value = null;
-  //enum valueEnum {  completion_time,  transport_time,  vehicles,  };
+  //enum valueEnum {  completion_time,  transport_time,  vehicles,  activities,  };
   Objective();
 
   @override

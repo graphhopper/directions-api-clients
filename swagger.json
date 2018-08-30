@@ -1541,7 +1541,8 @@
                     "enum": [
                         "completion_time",
                         "transport_time",
-                        "vehicles"
+                        "vehicles",
+                        "activities"
                     ]
                 }
             }

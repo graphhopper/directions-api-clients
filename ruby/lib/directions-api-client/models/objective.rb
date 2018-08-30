@@ -89,7 +89,7 @@ module GraphHopperClient
     def valid?
       type_validator = EnumAttributeValidator.new('String', ["min", "min-max"])
       return false unless type_validator.valid?(@type)
-      value_validator = EnumAttributeValidator.new('String', ["completion_time", "transport_time", "vehicles"])
+      value_validator = EnumAttributeValidator.new('String', ["completion_time", "transport_time", "vehicles", "activities"])
       return false unless value_validator.valid?(@value)
       return true
     end
@@ -107,7 +107,7 @@ module GraphHopperClient
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] value Object to be assigned
     def value=(value)
-      validator = EnumAttributeValidator.new('String', ["completion_time", "transport_time", "vehicles"])
+      validator = EnumAttributeValidator.new('String', ["completion_time", "transport_time", "vehicles", "activities"])
       unless validator.valid?(value)
         fail ArgumentError, "invalid value for 'value', must be one of #{validator.allowable_values}."
       end

@@ -81,7 +81,13 @@ namespace IO.Swagger.Model
             /// Enum Vehicles for value: vehicles
             /// </summary>
             [EnumMember(Value = "vehicles")]
-            Vehicles = 3
+            Vehicles = 3,
+            
+            /// <summary>
+            /// Enum Activities for value: activities
+            /// </summary>
+            [EnumMember(Value = "activities")]
+            Activities = 4
         }
 
         /// <summary>
