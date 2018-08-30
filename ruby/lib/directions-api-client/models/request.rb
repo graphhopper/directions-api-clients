@@ -30,8 +30,6 @@ module GraphHopperClient
     # An array of relations
     attr_accessor :relations
 
-    attr_accessor :algorithm
-
     # An array of objectives
     attr_accessor :objectives
 
@@ -49,7 +47,6 @@ module GraphHopperClient
         :'services' => :'services',
         :'shipments' => :'shipments',
         :'relations' => :'relations',
-        :'algorithm' => :'algorithm',
         :'objectives' => :'objectives',
         :'cost_matrices' => :'cost_matrices',
         :'configuration' => :'configuration'
@@ -64,7 +61,6 @@ module GraphHopperClient
         :'services' => :'Array<Service>',
         :'shipments' => :'Array<Shipment>',
         :'relations' => :'Array<Relation>',
-        :'algorithm' => :'Algorithm',
         :'objectives' => :'Array<Objective>',
         :'cost_matrices' => :'Array<CostMatrix>',
         :'configuration' => :'Configuration'
@@ -109,10 +105,6 @@ module GraphHopperClient
         end
       end
 
-      if attributes.has_key?(:'algorithm')
-        self.algorithm = attributes[:'algorithm']
-      end
-
       if attributes.has_key?(:'objectives')
         if (value = attributes[:'objectives']).is_a?(Array)
           self.objectives = value
@@ -154,7 +146,6 @@ module GraphHopperClient
           services == o.services &&
           shipments == o.shipments &&
           relations == o.relations &&
-          algorithm == o.algorithm &&
           objectives == o.objectives &&
           cost_matrices == o.cost_matrices &&
           configuration == o.configuration
@@ -169,7 +160,7 @@ module GraphHopperClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [vehicles, vehicle_types, services, shipments, relations, algorithm, objectives, cost_matrices, configuration].hash
+      [vehicles, vehicle_types, services, shipments, relations, objectives, cost_matrices, configuration].hash
     end
 
     # Builds the object from hash

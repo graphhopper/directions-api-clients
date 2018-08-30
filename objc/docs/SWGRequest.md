@@ -8,7 +8,6 @@ Name | Type | Description | Notes
 **services** | [**NSArray&lt;SWGService&gt;***](SWGService.md) | An array of services | [optional] 
 **shipments** | [**NSArray&lt;SWGShipment&gt;***](SWGShipment.md) | An array of shipments | [optional] 
 **relations** | [**NSArray&lt;SWGRelation&gt;***](SWGRelation.md) | An array of relations | [optional] 
-**algorithm** | [**SWGAlgorithm***](SWGAlgorithm.md) |  | [optional] 
 **objectives** | [**NSArray&lt;SWGObjective&gt;***](SWGObjective.md) | An array of objectives | [optional] 
 **costMatrices** | [**NSArray&lt;SWGCostMatrix&gt;***](SWGCostMatrix.md) | An array of cost matrices | [optional] 
 **configuration** | [**SWGConfiguration***](SWGConfiguration.md) |  | [optional] 

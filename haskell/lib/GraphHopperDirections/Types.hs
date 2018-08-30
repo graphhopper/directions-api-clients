@@ -5,7 +5,6 @@
 module GraphHopperDirections.Types (
   Activity (..),
   Address (..),
-  Algorithm (..),
   Break (..),
   Configuration (..),
   CostMatrix (..),
@@ -92,17 +91,6 @@ instance FromJSON Address where
   parseJSON = genericParseJSON (removeFieldLabelPrefix True "address")
 instance ToJSON Address where
   toJSON = genericToJSON (removeFieldLabelPrefix False "address")
-
--- | 
-data Algorithm = Algorithm
-  { algorithmProblem'Underscoretype :: Text -- ^ 
-  , algorithmObjective :: Text -- ^ 
-  } deriving (Show, Eq, Generic)
-
-instance FromJSON Algorithm where
-  parseJSON = genericParseJSON (removeFieldLabelPrefix True "algorithm")
-instance ToJSON Algorithm where
-  toJSON = genericToJSON (removeFieldLabelPrefix False "algorithm")
 
 -- | 
 data Break = Break
@@ -367,7 +355,6 @@ data Request = Request
   , requestServices :: [Service] -- ^ An array of services
   , requestShipments :: [Shipment] -- ^ An array of shipments
   , requestRelations :: [Relation] -- ^ An array of relations
-  , requestAlgorithm :: Algorithm -- ^ 
   , requestObjectives :: [Objective] -- ^ An array of objectives
   , requestCost'Underscorematrices :: [CostMatrix] -- ^ An array of cost matrices
   , requestConfiguration :: Configuration -- ^ 

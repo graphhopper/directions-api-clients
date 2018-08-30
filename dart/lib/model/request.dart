@@ -22,10 +22,6 @@ class Request {
   @Property(name: 'relations')
   List<Relation> relations = [];
   
-
-  @Property(name: 'algorithm')
-  Algorithm algorithm = null;
-  
 /* An array of objectives */
   @Property(name: 'objectives')
   List<Objective> objectives = [];
@@ -42,7 +38,7 @@ class Request {
 
   @override
   String toString()  {
-    return 'Request[vehicles=$vehicles, vehicleTypes=$vehicleTypes, services=$services, shipments=$shipments, relations=$relations, algorithm=$algorithm, objectives=$objectives, costMatrices=$costMatrices, configuration=$configuration, ]';
+    return 'Request[vehicles=$vehicles, vehicleTypes=$vehicleTypes, services=$services, shipments=$shipments, relations=$relations, objectives=$objectives, costMatrices=$costMatrices, configuration=$configuration, ]';
   }
 }
 

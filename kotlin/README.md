@@ -49,7 +49,6 @@ Class | Method | HTTP request | Description
 
  - [io.swagger.client.models.Activity](docs/Activity.md)
  - [io.swagger.client.models.Address](docs/Address.md)
- - [io.swagger.client.models.Algorithm](docs/Algorithm.md)
  - [io.swagger.client.models.Break](docs/Break.md)
  - [io.swagger.client.models.Configuration](docs/Configuration.md)
  - [io.swagger.client.models.CostMatrix](docs/CostMatrix.md)

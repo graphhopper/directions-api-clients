@@ -38,18 +38,16 @@ namespace IO.Swagger.Model
         /// <param name="Services">An array of services.</param>
         /// <param name="Shipments">An array of shipments.</param>
         /// <param name="Relations">An array of relations.</param>
-        /// <param name="Algorithm">Algorithm.</param>
         /// <param name="Objectives">An array of objectives.</param>
         /// <param name="CostMatrices">An array of cost matrices.</param>
         /// <param name="Configuration">Configuration.</param>
-        public Request(List<Vehicle> Vehicles = default(List<Vehicle>), List<VehicleType> VehicleTypes = default(List<VehicleType>), List<Service> Services = default(List<Service>), List<Shipment> Shipments = default(List<Shipment>), List<Relation> Relations = default(List<Relation>), Algorithm Algorithm = default(Algorithm), List<Objective> Objectives = default(List<Objective>), List<CostMatrix> CostMatrices = default(List<CostMatrix>), Configuration Configuration = default(Configuration))
+        public Request(List<Vehicle> Vehicles = default(List<Vehicle>), List<VehicleType> VehicleTypes = default(List<VehicleType>), List<Service> Services = default(List<Service>), List<Shipment> Shipments = default(List<Shipment>), List<Relation> Relations = default(List<Relation>), List<Objective> Objectives = default(List<Objective>), List<CostMatrix> CostMatrices = default(List<CostMatrix>), Configuration Configuration = default(Configuration))
         {
             this.Vehicles = Vehicles;
             this.VehicleTypes = VehicleTypes;
             this.Services = Services;
             this.Shipments = Shipments;
             this.Relations = Relations;
-            this.Algorithm = Algorithm;
             this.Objectives = Objectives;
             this.CostMatrices = CostMatrices;
             this.Configuration = Configuration;
@@ -91,12 +89,6 @@ namespace IO.Swagger.Model
         public List<Relation> Relations { get; set; }
 
         /// <summary>
-        /// Gets or Sets Algorithm
-        /// </summary>
-        [DataMember(Name="algorithm", EmitDefaultValue=false)]
-        public Algorithm Algorithm { get; set; }
-
-        /// <summary>
         /// An array of objectives
         /// </summary>
         /// <value>An array of objectives</value>
@@ -129,7 +121,6 @@ namespace IO.Swagger.Model
             sb.Append("  Services: ").Append(Services).Append("\n");
             sb.Append("  Shipments: ").Append(Shipments).Append("\n");
             sb.Append("  Relations: ").Append(Relations).Append("\n");
-            sb.Append("  Algorithm: ").Append(Algorithm).Append("\n");
             sb.Append("  Objectives: ").Append(Objectives).Append("\n");
             sb.Append("  CostMatrices: ").Append(CostMatrices).Append("\n");
             sb.Append("  Configuration: ").Append(Configuration).Append("\n");
@@ -193,11 +184,6 @@ namespace IO.Swagger.Model
                     this.Relations.SequenceEqual(input.Relations)
                 ) && 
                 (
-                    this.Algorithm == input.Algorithm ||
-                    (this.Algorithm != null &&
-                    this.Algorithm.Equals(input.Algorithm))
-                ) && 
-                (
                     this.Objectives == input.Objectives ||
                     this.Objectives != null &&
                     this.Objectives.SequenceEqual(input.Objectives)
@@ -233,8 +219,6 @@ namespace IO.Swagger.Model
                     hashCode = hashCode * 59 + this.Shipments.GetHashCode();
                 if (this.Relations != null)
                     hashCode = hashCode * 59 + this.Relations.GetHashCode();
-                if (this.Algorithm != null)
-                    hashCode = hashCode * 59 + this.Algorithm.GetHashCode();
                 if (this.Objectives != null)
                     hashCode = hashCode * 59 + this.Objectives.GetHashCode();
                 if (this.CostMatrices != null)

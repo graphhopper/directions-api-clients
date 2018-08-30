@@ -25,8 +25,6 @@ type Request struct {
 	// An array of relations
 	Relations []Relation `json:"relations,omitempty"`
 
-	Algorithm *Algorithm `json:"algorithm,omitempty"`
-
 	// An array of objectives
 	Objectives []Objective `json:"objectives,omitempty"`
 

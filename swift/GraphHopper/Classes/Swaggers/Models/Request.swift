@@ -19,7 +19,6 @@ public class Request: JSONEncodable {
     public var shipments: [Shipment]?
     /** An array of relations */
     public var relations: [Relation]?
-    public var algorithm: Algorithm?
     /** An array of objectives */
     public var objectives: [Objective]?
     /** An array of cost matrices */
@@ -36,7 +35,6 @@ public class Request: JSONEncodable {
         nillableDictionary["services"] = self.services?.encodeToJSON()
         nillableDictionary["shipments"] = self.shipments?.encodeToJSON()
         nillableDictionary["relations"] = self.relations?.encodeToJSON()
-        nillableDictionary["algorithm"] = self.algorithm?.encodeToJSON()
         nillableDictionary["objectives"] = self.objectives?.encodeToJSON()
         nillableDictionary["cost_matrices"] = self.costMatrices?.encodeToJSON()
         nillableDictionary["configuration"] = self.configuration?.encodeToJSON()

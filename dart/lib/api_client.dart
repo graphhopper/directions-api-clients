@@ -45,8 +45,6 @@ class ApiClient {
           return dson.map(value, new Activity());
         case 'Address':
           return dson.map(value, new Address());
-        case 'Algorithm':
-          return dson.map(value, new Algorithm());
         case 'Configuration':
           return dson.map(value, new Configuration());
         case 'CostMatrix':

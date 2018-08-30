@@ -96,7 +96,6 @@ Class | Method | HTTP request | Description
 
  - [GraphHopperClient::Activity](docs/Activity.md)
  - [GraphHopperClient::Address](docs/Address.md)
- - [GraphHopperClient::Algorithm](docs/Algorithm.md)
  - [GraphHopperClient::Configuration](docs/Configuration.md)
  - [GraphHopperClient::CostMatrix](docs/CostMatrix.md)
  - [GraphHopperClient::CostMatrixData](docs/CostMatrixData.md)

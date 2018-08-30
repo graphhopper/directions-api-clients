@@ -14,7 +14,6 @@
 */
 
 
-#import "SWGAlgorithm.h"
 #import "SWGConfiguration.h"
 #import "SWGCostMatrix.h"
 #import "SWGObjective.h"
@@ -23,8 +22,6 @@
 #import "SWGShipment.h"
 #import "SWGVehicle.h"
 #import "SWGVehicleType.h"
-@protocol SWGAlgorithm;
-@class SWGAlgorithm;
 @protocol SWGConfiguration;
 @class SWGConfiguration;
 @protocol SWGCostMatrix;
@@ -64,8 +61,6 @@
 /* An array of relations [optional]
  */
 @property(nonatomic) NSArray<SWGRelation>* relations;
-
-@property(nonatomic) SWGAlgorithm* algorithm;
 /* An array of objectives [optional]
  */
 @property(nonatomic) NSArray<SWGObjective>* objectives;

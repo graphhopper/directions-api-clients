@@ -16,7 +16,6 @@ import re  # noqa: F401
 
 import six
 
-from swagger_client.models.algorithm import Algorithm  # noqa: F401,E501
 from swagger_client.models.configuration import Configuration  # noqa: F401,E501
 from swagger_client.models.cost_matrix import CostMatrix  # noqa: F401,E501
 from swagger_client.models.objective import Objective  # noqa: F401,E501
@@ -46,7 +45,6 @@ class Request(object):
         'services': 'list[Service]',
         'shipments': 'list[Shipment]',
         'relations': 'list[Relation]',
-        'algorithm': 'Algorithm',
         'objectives': 'list[Objective]',
         'cost_matrices': 'list[CostMatrix]',
         'configuration': 'Configuration'
@@ -58,13 +56,12 @@ class Request(object):
         'services': 'services',
         'shipments': 'shipments',
         'relations': 'relations',
-        'algorithm': 'algorithm',
         'objectives': 'objectives',
         'cost_matrices': 'cost_matrices',
         'configuration': 'configuration'
     }
 
-    def __init__(self, vehicles=None, vehicle_types=None, services=None, shipments=None, relations=None, algorithm=None, objectives=None, cost_matrices=None, configuration=None):  # noqa: E501
+    def __init__(self, vehicles=None, vehicle_types=None, services=None, shipments=None, relations=None, objectives=None, cost_matrices=None, configuration=None):  # noqa: E501
         """Request - a model defined in Swagger"""  # noqa: E501
 
         self._vehicles = None
@@ -72,7 +69,6 @@ class Request(object):
         self._services = None
         self._shipments = None
         self._relations = None
-        self._algorithm = None
         self._objectives = None
         self._cost_matrices = None
         self._configuration = None
@@ -88,8 +84,6 @@ class Request(object):
             self.shipments = shipments
         if relations is not None:
             self.relations = relations
-        if algorithm is not None:
-            self.algorithm = algorithm
         if objectives is not None:
             self.objectives = objectives
         if cost_matrices is not None:
@@ -211,27 +205,6 @@ class Request(object):
         """
 
         self._relations = relations
-
-    @property
-    def algorithm(self):
-        """Gets the algorithm of this Request.  # noqa: E501
-
-
-        :return: The algorithm of this Request.  # noqa: E501
-        :rtype: Algorithm
-        """
-        return self._algorithm
-
-    @algorithm.setter
-    def algorithm(self, algorithm):
-        """Sets the algorithm of this Request.
-
-
-        :param algorithm: The algorithm of this Request.  # noqa: E501
-        :type: Algorithm
-        """
-
-        self._algorithm = algorithm
 
     @property
     def objectives(self):

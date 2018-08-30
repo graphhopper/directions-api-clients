@@ -9,7 +9,6 @@
 
 
 #include <string>
-#include "Algorithm.h"
 #include "Configuration.h"
 #include "CostMatrix.h"
 #include "Objective.h"
@@ -90,13 +89,6 @@ public:
 	/*! \brief Set An array of relations
 	 */
 	void setRelations(std::list <Relation> relations);
-	/*! \brief Get 
-	 */
-	Algorithm getAlgorithm();
-
-	/*! \brief Set 
-	 */
-	void setAlgorithm(Algorithm  algorithm);
 	/*! \brief Get An array of objectives
 	 */
 	std::list<Objective> getObjectives();
@@ -125,7 +117,6 @@ private:
 	std::list <Service>services;
 	std::list <Shipment>shipments;
 	std::list <Relation>relations;
-	Algorithm algorithm;
 	std::list <Objective>objectives;
 	std::list <CostMatrix>cost_matrices;
 	Configuration configuration;

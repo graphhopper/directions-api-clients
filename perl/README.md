@@ -234,7 +234,6 @@ To load the models:
 ```perl
 use WWW::SwaggerClient::Object::Activity;
 use WWW::SwaggerClient::Object::Address;
-use WWW::SwaggerClient::Object::Algorithm;
 use WWW::SwaggerClient::Object::Break;
 use WWW::SwaggerClient::Object::Configuration;
 use WWW::SwaggerClient::Object::CostMatrix;
@@ -297,7 +296,6 @@ use WWW::SwaggerClient::VrpApi;
 # load the models
 use WWW::SwaggerClient::Object::Activity;
 use WWW::SwaggerClient::Object::Address;
-use WWW::SwaggerClient::Object::Algorithm;
 use WWW::SwaggerClient::Object::Break;
 use WWW::SwaggerClient::Object::Configuration;
 use WWW::SwaggerClient::Object::CostMatrix;
@@ -383,7 +381,6 @@ Class | Method | HTTP request | Description
 # DOCUMENTATION FOR MODELS
  - [WWW::SwaggerClient::Object::Activity](docs/Activity.md)
  - [WWW::SwaggerClient::Object::Address](docs/Address.md)
- - [WWW::SwaggerClient::Object::Algorithm](docs/Algorithm.md)
  - [WWW::SwaggerClient::Object::Break](docs/Break.md)
  - [WWW::SwaggerClient::Object::Configuration](docs/Configuration.md)
  - [WWW::SwaggerClient::Object::CostMatrix](docs/CostMatrix.md)

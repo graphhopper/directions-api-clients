@@ -22,7 +22,6 @@
 #include <QJsonObject>
 
 
-#include "SWGAlgorithm.h"
 #include "SWGConfiguration.h"
 #include "SWGCostMatrix.h"
 #include "SWGObjective.h"
@@ -65,9 +64,6 @@ public:
     QList<SWGRelation*>* getRelations();
     void setRelations(QList<SWGRelation*>* relations);
 
-    SWGAlgorithm* getAlgorithm();
-    void setAlgorithm(SWGAlgorithm* algorithm);
-
     QList<SWGObjective*>* getObjectives();
     void setObjectives(QList<SWGObjective*>* objectives);
 
@@ -95,9 +91,6 @@ private:
     
     QList<SWGRelation*>* relations;
     bool m_relations_isSet;
-    
-    SWGAlgorithm* algorithm;
-    bool m_algorithm_isSet;
     
     QList<SWGObjective*>* objectives;
     bool m_objectives_isSet;

@@ -2,8 +2,6 @@ mod activity;
 pub use self::activity::Activity;
 mod address;
 pub use self::address::Address;
-mod algorithm;
-pub use self::algorithm::Algorithm;
 mod configuration;
 pub use self::configuration::Configuration;
 mod cost_matrix;

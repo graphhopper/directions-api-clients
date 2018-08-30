@@ -82,7 +82,6 @@ Class | Description
 ------------- | -------------
  *Activity* | 
  *Address* | 
- *Algorithm* | 
  *Break* | 
  *Configuration* | 
  *CostMatrix* | 

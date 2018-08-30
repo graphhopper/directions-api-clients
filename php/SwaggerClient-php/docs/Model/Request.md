@@ -8,7 +8,6 @@ Name | Type | Description | Notes
 **services** | [**\Swagger\Client\Model\Service[]**](Service.md) | An array of services | [optional] 
 **shipments** | [**\Swagger\Client\Model\Shipment[]**](Shipment.md) | An array of shipments | [optional] 
 **relations** | [**\Swagger\Client\Model\Relation[]**](Relation.md) | An array of relations | [optional] 
-**algorithm** | [**\Swagger\Client\Model\Algorithm**](Algorithm.md) |  | [optional] 
 **objectives** | [**\Swagger\Client\Model\Objective[]**](Objective.md) | An array of objectives | [optional] 
 **cost_matrices** | [**\Swagger\Client\Model\CostMatrix[]**](CostMatrix.md) | An array of cost matrices | [optional] 
 **configuration** | [**\Swagger\Client\Model\Configuration**](Configuration.md) |  | [optional] 

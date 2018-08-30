@@ -99,7 +99,6 @@ Class | Method | HTTP request | Description
 
  - [Activity](docs/Model/Activity.md)
  - [Address](docs/Model/Address.md)
- - [Algorithm](docs/Model/Algorithm.md)
  - [Configuration](docs/Model/Configuration.md)
  - [CostMatrix](docs/Model/CostMatrix.md)
  - [CostMatrixData](docs/Model/CostMatrixData.md)

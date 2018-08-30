@@ -13,7 +13,6 @@ Name | Type | Description | Notes
 **services** | [**ARRAY[Service]**](Service.md) | An array of services | [optional] 
 **shipments** | [**ARRAY[Shipment]**](Shipment.md) | An array of shipments | [optional] 
 **relations** | [**ARRAY[Relation]**](Relation.md) | An array of relations | [optional] 
-**algorithm** | [**Algorithm**](Algorithm.md) |  | [optional] 
 **objectives** | [**ARRAY[Objective]**](Objective.md) | An array of objectives | [optional] 
 **cost_matrices** | [**ARRAY[CostMatrix]**](CostMatrix.md) | An array of cost matrices | [optional] 
 **configuration** | [**Configuration**](Configuration.md) |  | [optional] 

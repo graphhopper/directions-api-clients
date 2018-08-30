@@ -43,7 +43,6 @@ Import the following:
 // load models
 #import <SwaggerClient/SWGActivity.h>
 #import <SwaggerClient/SWGAddress.h>
-#import <SwaggerClient/SWGAlgorithm.h>
 #import <SwaggerClient/SWGBreak.h>
 #import <SwaggerClient/SWGConfiguration.h>
 #import <SwaggerClient/SWGCostMatrix.h>
@@ -154,7 +153,6 @@ Class | Method | HTTP request | Description
 
  - [SWGActivity](docs/SWGActivity.md)
  - [SWGAddress](docs/SWGAddress.md)
- - [SWGAlgorithm](docs/SWGAlgorithm.md)
  - [SWGBreak](docs/SWGBreak.md)
  - [SWGConfiguration](docs/SWGConfiguration.md)
  - [SWGCostMatrix](docs/SWGCostMatrix.md)

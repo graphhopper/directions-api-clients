@@ -17,7 +17,6 @@ from __future__ import absolute_import
 # import models into model package
 from swagger_client.models.activity import Activity
 from swagger_client.models.address import Address
-from swagger_client.models.algorithm import Algorithm
 from swagger_client.models.configuration import Configuration
 from swagger_client.models.cost_matrix import CostMatrix
 from swagger_client.models.cost_matrix_data import CostMatrixData

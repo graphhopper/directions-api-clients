@@ -16,7 +16,6 @@
 
 #include "SWGActivity.h"
 #include "SWGAddress.h"
-#include "SWGAlgorithm.h"
 #include "SWGBreak.h"
 #include "SWGConfiguration.h"
 #include "SWGCostMatrix.h"
@@ -67,9 +66,6 @@ namespace Swagger {
     }
     if(QString("SWGAddress").compare(type) == 0) {
       return new SWGAddress();
-    }
-    if(QString("SWGAlgorithm").compare(type) == 0) {
-      return new SWGAlgorithm();
     }
     if(QString("SWGBreak").compare(type) == 0) {
       return new SWGBreak();

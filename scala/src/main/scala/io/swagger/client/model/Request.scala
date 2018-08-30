@@ -24,7 +24,6 @@ case class Request (
   shipments: Option[List[Shipment]] = None,
   // An array of relations
   relations: Option[List[Relation]] = None,
-  algorithm: Option[Algorithm] = None,
   // An array of objectives
   objectives: Option[List[Objective]] = None,
   // An array of cost matrices

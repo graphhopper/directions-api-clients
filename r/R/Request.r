@@ -14,7 +14,6 @@
 #' @field services 
 #' @field shipments 
 #' @field relations 
-#' @field algorithm 
 #' @field objectives 
 #' @field cost_matrices 
 #' @field configuration 
@@ -30,11 +29,10 @@ Request <- R6::R6Class(
     `services` = NULL,
     `shipments` = NULL,
     `relations` = NULL,
-    `algorithm` = NULL,
     `objectives` = NULL,
     `cost_matrices` = NULL,
     `configuration` = NULL,
-    initialize = function(`vehicles`, `vehicle_types`, `services`, `shipments`, `relations`, `algorithm`, `objectives`, `cost_matrices`, `configuration`){
+    initialize = function(`vehicles`, `vehicle_types`, `services`, `shipments`, `relations`, `objectives`, `cost_matrices`, `configuration`){
       if (!missing(`vehicles`)) {
         stopifnot(is.list(`vehicles`), length(`vehicles`) != 0)
         lapply(`vehicles`, function(x) stopifnot(R6::is.R6(x)))
@@ -59,10 +57,6 @@ Request <- R6::R6Class(
         stopifnot(is.list(`relations`), length(`relations`) != 0)
         lapply(`relations`, function(x) stopifnot(R6::is.R6(x)))
         self$`relations` <- `relations`
-      }
-      if (!missing(`algorithm`)) {
-        stopifnot(R6::is.R6(`algorithm`))
-        self$`algorithm` <- `algorithm`
       }
       if (!missing(`objectives`)) {
         stopifnot(is.list(`objectives`), length(`objectives`) != 0)
@@ -95,9 +89,6 @@ Request <- R6::R6Class(
       }
       if (!is.null(self$`relations`)) {
         RequestObject[['relations']] <- lapply(self$`relations`, function(x) x$toJSON())
-      }
-      if (!is.null(self$`algorithm`)) {
-        RequestObject[['algorithm']] <- self$`algorithm`$toJSON()
       }
       if (!is.null(self$`objectives`)) {
         RequestObject[['objectives']] <- lapply(self$`objectives`, function(x) x$toJSON())
@@ -148,11 +139,6 @@ Request <- R6::R6Class(
           relationsObject
         })
       }
-      if (!is.null(RequestObject$`algorithm`)) {
-        algorithmObject <- Algorithm$new()
-        algorithmObject$fromJSON(jsonlite::toJSON(RequestObject$algorithm, auto_unbox = TRUE))
-        self$`algorithm` <- algorithmObject
-      }
       if (!is.null(RequestObject$`objectives`)) {
         self$`objectives` <- lapply(RequestObject$`objectives`, function(x) {
           objectivesObject <- Objective$new()
@@ -181,7 +167,6 @@ Request <- R6::R6Class(
            "services": [%s],
            "shipments": [%s],
            "relations": [%s],
-           "algorithm": %s,
            "objectives": [%s],
            "cost_matrices": [%s],
            "configuration": %s
@@ -191,7 +176,6 @@ Request <- R6::R6Class(
         lapply(self$`services`, function(x) paste(x$toJSON(), sep=",")),
         lapply(self$`shipments`, function(x) paste(x$toJSON(), sep=",")),
         lapply(self$`relations`, function(x) paste(x$toJSON(), sep=",")),
-        self$`algorithm`$toJSON(),
         lapply(self$`objectives`, function(x) paste(x$toJSON(), sep=",")),
         lapply(self$`cost_matrices`, function(x) paste(x$toJSON(), sep=",")),
         self$`configuration`$toJSON()
@@ -204,8 +188,6 @@ Request <- R6::R6Class(
       self$`services` <- lapply(RequestObject$`services`, function(x) Service$new()$fromJSON(jsonlite::toJSON(x, auto_unbox = TRUE)))
       self$`shipments` <- lapply(RequestObject$`shipments`, function(x) Shipment$new()$fromJSON(jsonlite::toJSON(x, auto_unbox = TRUE)))
       self$`relations` <- lapply(RequestObject$`relations`, function(x) Relation$new()$fromJSON(jsonlite::toJSON(x, auto_unbox = TRUE)))
-      AlgorithmObject <- Algorithm$new()
-      self$`algorithm` <- AlgorithmObject$fromJSON(jsonlite::toJSON(RequestObject$algorithm, auto_unbox = TRUE))
       self$`objectives` <- lapply(RequestObject$`objectives`, function(x) Objective$new()$fromJSON(jsonlite::toJSON(x, auto_unbox = TRUE)))
       self$`cost_matrices` <- lapply(RequestObject$`cost_matrices`, function(x) CostMatrix$new()$fromJSON(jsonlite::toJSON(x, auto_unbox = TRUE)))
       ConfigurationObject <- Configuration$new()

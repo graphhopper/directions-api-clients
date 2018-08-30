@@ -112,13 +112,6 @@ class RequestTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test attribute "algorithm"
-     */
-    public function testPropertyAlgorithm()
-    {
-    }
-
-    /**
      * Test attribute "objectives"
      */
     public function testPropertyObjectives()

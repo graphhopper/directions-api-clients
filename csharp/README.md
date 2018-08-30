@@ -116,7 +116,6 @@ Class | Method | HTTP request | Description
 
  - [Model.Activity](docs/Activity.md)
  - [Model.Address](docs/Address.md)
- - [Model.Algorithm](docs/Algorithm.md)
  - [Model.Break](docs/Break.md)
  - [Model.Configuration](docs/Configuration.md)
  - [Model.CostMatrix](docs/CostMatrix.md)

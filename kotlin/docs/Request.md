@@ -9,7 +9,6 @@ Name | Type | Description | Notes
 **services** | [**kotlin.Array&lt;Service&gt;**](Service.md) | An array of services |  [optional]
 **shipments** | [**kotlin.Array&lt;Shipment&gt;**](Shipment.md) | An array of shipments |  [optional]
 **relations** | [**kotlin.Array&lt;Relation&gt;**](Relation.md) | An array of relations |  [optional]
-**algorithm** | [**Algorithm**](Algorithm.md) |  |  [optional]
 **objectives** | [**kotlin.Array&lt;Objective&gt;**](Objective.md) | An array of objectives |  [optional]
 **cost_matrices** | [**kotlin.Array&lt;CostMatrix&gt;**](CostMatrix.md) | An array of cost matrices |  [optional]
 **configuration** | [**Configuration**](Configuration.md) |  |  [optional]

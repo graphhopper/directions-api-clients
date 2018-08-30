@@ -29,8 +29,6 @@ pub struct Request {
   /// An array of relations
   #[serde(rename = "relations")]
   relations: Option<Vec<::models::Relation>>,
-  #[serde(rename = "algorithm")]
-  algorithm: Option<::models::Algorithm>,
   /// An array of objectives
   #[serde(rename = "objectives")]
   objectives: Option<Vec<::models::Objective>>,
@@ -49,7 +47,6 @@ impl Request {
       services: None,
       shipments: None,
       relations: None,
-      algorithm: None,
       objectives: None,
       cost_matrices: None,
       configuration: None
@@ -139,23 +136,6 @@ impl Request {
 
   pub fn reset_relations(&mut self) {
     self.relations = None;
-  }
-
-  pub fn set_algorithm(&mut self, algorithm: ::models::Algorithm) {
-    self.algorithm = Some(algorithm);
-  }
-
-  pub fn with_algorithm(mut self, algorithm: ::models::Algorithm) -> Request {
-    self.algorithm = Some(algorithm);
-    self
-  }
-
-  pub fn algorithm(&self) -> Option<&::models::Algorithm> {
-    self.algorithm.as_ref()
-  }
-
-  pub fn reset_algorithm(&mut self) {
-    self.algorithm = None;
   }
 
   pub fn set_objectives(&mut self, objectives: Vec<::models::Objective>) {

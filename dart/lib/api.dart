@@ -25,7 +25,6 @@ part 'api/vrp_api.dart';
 
 part 'model/activity.dart';
 part 'model/address.dart';
-part 'model/algorithm.dart';
 part 'model/configuration.dart';
 part 'model/cost_matrix.dart';
 part 'model/cost_matrix_data.dart';

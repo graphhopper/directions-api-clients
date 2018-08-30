@@ -30,7 +30,6 @@ use Log::Any qw($log);
 use Date::Parse;
 use DateTime;
 
-use WWW::SwaggerClient::Object::Algorithm;
 use WWW::SwaggerClient::Object::Configuration;
 use WWW::SwaggerClient::Object::CostMatrix;
 use WWW::SwaggerClient::Object::Objective;
@@ -187,13 +186,6 @@ __PACKAGE__->method_documentation({
     	format => '',
     	read_only => '',
     		},
-    'algorithm' => {
-    	datatype => 'Algorithm',
-    	base_name => 'algorithm',
-    	description => '',
-    	format => '',
-    	read_only => '',
-    		},
     'objectives' => {
     	datatype => 'ARRAY[Objective]',
     	base_name => 'objectives',
@@ -223,7 +215,6 @@ __PACKAGE__->swagger_types( {
     'services' => 'ARRAY[Service]',
     'shipments' => 'ARRAY[Shipment]',
     'relations' => 'ARRAY[Relation]',
-    'algorithm' => 'Algorithm',
     'objectives' => 'ARRAY[Objective]',
     'cost_matrices' => 'ARRAY[CostMatrix]',
     'configuration' => 'Configuration'
@@ -235,7 +226,6 @@ __PACKAGE__->attribute_map( {
     'services' => 'services',
     'shipments' => 'shipments',
     'relations' => 'relations',
-    'algorithm' => 'algorithm',
     'objectives' => 'objectives',
     'cost_matrices' => 'cost_matrices',
     'configuration' => 'configuration'

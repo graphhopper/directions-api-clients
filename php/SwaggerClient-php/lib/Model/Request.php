@@ -62,7 +62,6 @@ class Request implements ModelInterface, ArrayAccess
         'services' => '\Swagger\Client\Model\Service[]',
         'shipments' => '\Swagger\Client\Model\Shipment[]',
         'relations' => '\Swagger\Client\Model\Relation[]',
-        'algorithm' => '\Swagger\Client\Model\Algorithm',
         'objectives' => '\Swagger\Client\Model\Objective[]',
         'cost_matrices' => '\Swagger\Client\Model\CostMatrix[]',
         'configuration' => '\Swagger\Client\Model\Configuration'
@@ -79,7 +78,6 @@ class Request implements ModelInterface, ArrayAccess
         'services' => null,
         'shipments' => null,
         'relations' => null,
-        'algorithm' => null,
         'objectives' => null,
         'cost_matrices' => null,
         'configuration' => null
@@ -117,7 +115,6 @@ class Request implements ModelInterface, ArrayAccess
         'services' => 'services',
         'shipments' => 'shipments',
         'relations' => 'relations',
-        'algorithm' => 'algorithm',
         'objectives' => 'objectives',
         'cost_matrices' => 'cost_matrices',
         'configuration' => 'configuration'
@@ -134,7 +131,6 @@ class Request implements ModelInterface, ArrayAccess
         'services' => 'setServices',
         'shipments' => 'setShipments',
         'relations' => 'setRelations',
-        'algorithm' => 'setAlgorithm',
         'objectives' => 'setObjectives',
         'cost_matrices' => 'setCostMatrices',
         'configuration' => 'setConfiguration'
@@ -151,7 +147,6 @@ class Request implements ModelInterface, ArrayAccess
         'services' => 'getServices',
         'shipments' => 'getShipments',
         'relations' => 'getRelations',
-        'algorithm' => 'getAlgorithm',
         'objectives' => 'getObjectives',
         'cost_matrices' => 'getCostMatrices',
         'configuration' => 'getConfiguration'
@@ -222,7 +217,6 @@ class Request implements ModelInterface, ArrayAccess
         $this->container['services'] = isset($data['services']) ? $data['services'] : null;
         $this->container['shipments'] = isset($data['shipments']) ? $data['shipments'] : null;
         $this->container['relations'] = isset($data['relations']) ? $data['relations'] : null;
-        $this->container['algorithm'] = isset($data['algorithm']) ? $data['algorithm'] : null;
         $this->container['objectives'] = isset($data['objectives']) ? $data['objectives'] : null;
         $this->container['cost_matrices'] = isset($data['cost_matrices']) ? $data['cost_matrices'] : null;
         $this->container['configuration'] = isset($data['configuration']) ? $data['configuration'] : null;
@@ -369,30 +363,6 @@ class Request implements ModelInterface, ArrayAccess
     public function setRelations($relations)
     {
         $this->container['relations'] = $relations;
-
-        return $this;
-    }
-
-    /**
-     * Gets algorithm
-     *
-     * @return \Swagger\Client\Model\Algorithm
-     */
-    public function getAlgorithm()
-    {
-        return $this->container['algorithm'];
-    }
-
-    /**
-     * Sets algorithm
-     *
-     * @param \Swagger\Client\Model\Algorithm $algorithm algorithm
-     *
-     * @return $this
-     */
-    public function setAlgorithm($algorithm)
-    {
-        $this->container['algorithm'] = $algorithm;
 
         return $this;
     }

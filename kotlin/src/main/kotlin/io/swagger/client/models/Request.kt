@@ -11,7 +11,6 @@
 */
 package io.swagger.client.models
 
-import io.swagger.client.models.Algorithm
 import io.swagger.client.models.Configuration
 import io.swagger.client.models.CostMatrix
 import io.swagger.client.models.Objective
@@ -28,7 +27,6 @@ import io.swagger.client.models.VehicleType
  * @param services An array of services
  * @param shipments An array of shipments
  * @param relations An array of relations
- * @param algorithm 
  * @param objectives An array of objectives
  * @param cost_matrices An array of cost matrices
  * @param configuration 
@@ -44,7 +42,6 @@ data class Request (
     val shipments: kotlin.Array<Shipment>? = null,
     /* An array of relations */
     val relations: kotlin.Array<Relation>? = null,
-    val algorithm: Algorithm? = null,
     /* An array of objectives */
     val objectives: kotlin.Array<Objective>? = null,
     /* An array of cost matrices */

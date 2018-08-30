@@ -47,8 +47,6 @@ SWGRequest::init() {
     m_shipments_isSet = false;
     relations = new QList<SWGRelation*>();
     m_relations_isSet = false;
-    algorithm = new SWGAlgorithm();
-    m_algorithm_isSet = false;
     objectives = new QList<SWGObjective*>();
     m_objectives_isSet = false;
     cost_matrices = new QList<SWGCostMatrix*>();
@@ -94,9 +92,6 @@ SWGRequest::cleanup() {
         }
         delete relations;
     }
-    if(algorithm != nullptr) { 
-        delete algorithm;
-    }
     if(objectives != nullptr) { 
         auto arr = objectives;
         for(auto o: *arr) { 
@@ -137,8 +132,6 @@ SWGRequest::fromJsonObject(QJsonObject &pJson) {
     ::Swagger::setValue(&shipments, pJson["shipments"], "QList", "SWGShipment");
     
     ::Swagger::setValue(&relations, pJson["relations"], "QList", "SWGRelation");
-    ::Swagger::setValue(&algorithm, pJson["algorithm"], "SWGAlgorithm", "SWGAlgorithm");
-    
     
     ::Swagger::setValue(&objectives, pJson["objectives"], "QList", "SWGObjective");
     
@@ -179,10 +172,6 @@ SWGRequest::asJsonObject() {
     
     if(relations->size() > 0){
         toJsonArray((QList<void*>*)relations, obj, "relations", "SWGRelation");
-    }
-     
-    if((algorithm != nullptr) && (algorithm->isSet())){
-        toJsonValue(QString("algorithm"), algorithm, obj, QString("SWGAlgorithm"));
     }
     
     if(objectives->size() > 0){
@@ -250,16 +239,6 @@ SWGRequest::setRelations(QList<SWGRelation*>* relations) {
     this->m_relations_isSet = true;
 }
 
-SWGAlgorithm*
-SWGRequest::getAlgorithm() {
-    return algorithm;
-}
-void
-SWGRequest::setAlgorithm(SWGAlgorithm* algorithm) {
-    this->algorithm = algorithm;
-    this->m_algorithm_isSet = true;
-}
-
 QList<SWGObjective*>*
 SWGRequest::getObjectives() {
     return objectives;
@@ -300,7 +279,6 @@ SWGRequest::isSet(){
         if(services->size() > 0){ isObjectUpdated = true; break;}
         if(shipments->size() > 0){ isObjectUpdated = true; break;}
         if(relations->size() > 0){ isObjectUpdated = true; break;}
-        if(algorithm != nullptr && algorithm->isSet()){ isObjectUpdated = true; break;}
         if(objectives->size() > 0){ isObjectUpdated = true; break;}
         if(cost_matrices->size() > 0){ isObjectUpdated = true; break;}
         if(configuration != nullptr && configuration->isSet()){ isObjectUpdated = true; break;}

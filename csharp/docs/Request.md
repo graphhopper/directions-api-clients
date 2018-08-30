@@ -8,7 +8,6 @@ Name | Type | Description | Notes
 **Services** | [**List&lt;Service&gt;**](Service.md) | An array of services | [optional] 
 **Shipments** | [**List&lt;Shipment&gt;**](Shipment.md) | An array of shipments | [optional] 
 **Relations** | [**List&lt;Relation&gt;**](Relation.md) | An array of relations | [optional] 
-**Algorithm** | [**Algorithm**](Algorithm.md) |  | [optional] 
 **Objectives** | [**List&lt;Objective&gt;**](Objective.md) | An array of objectives | [optional] 
 **CostMatrices** | [**List&lt;CostMatrix&gt;**](CostMatrix.md) | An array of cost matrices | [optional] 
 **Configuration** | [**Configuration**](Configuration.md) |  | [optional] 

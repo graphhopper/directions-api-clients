@@ -39,9 +39,6 @@ Request::__init()
 	//new std::list()std::list> relations;
 	//
 	//
-	//
-	//algorithm = new Algorithm();
-	//
 	//new std::list()std::list> objectives;
 	//
 	//
@@ -80,11 +77,6 @@ Request::__cleanup()
 	//relations.RemoveAll(true);
 	//delete relations;
 	//relations = NULL;
-	//}
-	//if(algorithm != NULL) {
-	//
-	//delete algorithm;
-	//algorithm = NULL;
 	//}
 	//if(objectives != NULL) {
 	//objectives.RemoveAll(true);
@@ -228,20 +220,6 @@ Request::fromJson(char* jsonStr)
 			relations = new_list;
 		}
 		
-	}
-	const gchar *algorithmKey = "algorithm";
-	node = json_object_get_member(pJsonObject, algorithmKey);
-	if (node !=NULL) {
-	
-
-		if (isprimitive("Algorithm")) {
-			jsonToValue(&algorithm, node, "Algorithm", "Algorithm");
-		} else {
-			
-			Algorithm* obj = static_cast<Algorithm*> (&algorithm);
-			obj->fromJson(json_to_string(node, false));
-			
-		}
 	}
 	const gchar *objectivesKey = "objectives";
 	node = json_object_get_member(pJsonObject, objectivesKey);
@@ -442,20 +420,6 @@ Request::toJson()
 	
 	const gchar *relationsKey = "relations";
 	json_object_set_member(pJsonObject, relationsKey, node);
-	if (isprimitive("Algorithm")) {
-		Algorithm obj = getAlgorithm();
-		node = converttoJson(&obj, "Algorithm", "");
-	}
-	else {
-		
-		Algorithm obj = static_cast<Algorithm> (getAlgorithm());
-		GError *mygerror;
-		mygerror = NULL;
-		node = json_from_string(obj.toJson(), &mygerror);
-		
-	}
-	const gchar *algorithmKey = "algorithm";
-	json_object_set_member(pJsonObject, algorithmKey, node);
 	if (isprimitive("Objective")) {
 		list<Objective> new_list = static_cast<list <Objective> > (getObjectives());
 		node = converttoJson(&new_list, "Objective", "array");
@@ -586,18 +550,6 @@ void
 Request::setRelations(std::list <Relation> relations)
 {
 	this->relations = relations;
-}
-
-Algorithm
-Request::getAlgorithm()
-{
-	return algorithm;
-}
-
-void
-Request::setAlgorithm(Algorithm  algorithm)
-{
-	this->algorithm = algorithm;
 }
 
 std::list<Objective>

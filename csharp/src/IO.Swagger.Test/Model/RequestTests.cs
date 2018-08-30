@@ -107,14 +107,6 @@ namespace IO.Swagger.Test
             // TODO unit test for the property 'Relations'
         }
         /// <summary>
-        /// Test the property 'Algorithm'
-        /// </summary>
-        [Test]
-        public void AlgorithmTest()
-        {
-            // TODO unit test for the property 'Algorithm'
-        }
-        /// <summary>
         /// Test the property 'Objectives'
         /// </summary>
         [Test]

@@ -1129,8 +1129,6 @@ definitions:
         description: "An array of relations"
         items:
           $ref: "#/definitions/Relation"
-      algorithm:
-        $ref: "#/definitions/Algorithm"
       objectives:
         type: "array"
         description: "An array of objectives"
@@ -1449,9 +1447,6 @@ definitions:
         profile: "profile"
         type: "default"
         url: "url"
-      algorithm:
-        problem_type: "min"
-        objective: "transport_time"
   Vehicle:
     type: "object"
     properties:
@@ -1534,22 +1529,6 @@ definitions:
       vehicle_id: "vehicle_id"
       max_distance: 4
       max_jobs: 1
-  Algorithm:
-    type: "object"
-    properties:
-      problem_type:
-        type: "string"
-        enum:
-        - "min"
-        - "min-max"
-      objective:
-        type: "string"
-        enum:
-        - "transport_time"
-        - "completion_time"
-    example:
-      problem_type: "min"
-      objective: "transport_time"
   Address:
     type: "object"
     properties:

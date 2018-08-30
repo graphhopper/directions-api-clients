@@ -20,7 +20,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.graphhopper.directions.api.client.model.Algorithm;
 import com.graphhopper.directions.api.client.model.CostMatrix;
 import com.graphhopper.directions.api.client.model.ModelConfiguration;
 import com.graphhopper.directions.api.client.model.Objective;
@@ -54,9 +53,6 @@ public class Request {
 
   @SerializedName("relations")
   private List<Relation> relations = null;
-
-  @SerializedName("algorithm")
-  private Algorithm algorithm = null;
 
   @SerializedName("objectives")
   private List<Objective> objectives = null;
@@ -197,24 +193,6 @@ public class Request {
     this.relations = relations;
   }
 
-  public Request algorithm(Algorithm algorithm) {
-    this.algorithm = algorithm;
-    return this;
-  }
-
-   /**
-   * Get algorithm
-   * @return algorithm
-  **/
-  @ApiModelProperty(value = "")
-  public Algorithm getAlgorithm() {
-    return algorithm;
-  }
-
-  public void setAlgorithm(Algorithm algorithm) {
-    this.algorithm = algorithm;
-  }
-
   public Request objectives(List<Objective> objectives) {
     this.objectives = objectives;
     return this;
@@ -300,7 +278,6 @@ public class Request {
         Objects.equals(this.services, request.services) &&
         Objects.equals(this.shipments, request.shipments) &&
         Objects.equals(this.relations, request.relations) &&
-        Objects.equals(this.algorithm, request.algorithm) &&
         Objects.equals(this.objectives, request.objectives) &&
         Objects.equals(this.costMatrices, request.costMatrices) &&
         Objects.equals(this._configuration, request._configuration);
@@ -308,7 +285,7 @@ public class Request {
 
   @Override
   public int hashCode() {
-    return Objects.hash(vehicles, vehicleTypes, services, shipments, relations, algorithm, objectives, costMatrices, _configuration);
+    return Objects.hash(vehicles, vehicleTypes, services, shipments, relations, objectives, costMatrices, _configuration);
   }
 
 
@@ -322,7 +299,6 @@ public class Request {
     sb.append("    services: ").append(toIndentedString(services)).append("\n");
     sb.append("    shipments: ").append(toIndentedString(shipments)).append("\n");
     sb.append("    relations: ").append(toIndentedString(relations)).append("\n");
-    sb.append("    algorithm: ").append(toIndentedString(algorithm)).append("\n");
     sb.append("    objectives: ").append(toIndentedString(objectives)).append("\n");
     sb.append("    costMatrices: ").append(toIndentedString(costMatrices)).append("\n");
     sb.append("    _configuration: ").append(toIndentedString(_configuration)).append("\n");

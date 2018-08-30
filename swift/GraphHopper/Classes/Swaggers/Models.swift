@@ -190,20 +190,6 @@ class Decoders {
             }
 
 
-            // Decoder for [Algorithm]
-            Decoders.addDecoder(clazz: [Algorithm].self) { (source: AnyObject) -> [Algorithm] in
-                return Decoders.decode(clazz: [Algorithm].self, source: source)
-            }
-            // Decoder for Algorithm
-            Decoders.addDecoder(clazz: Algorithm.self) { (source: AnyObject) -> Algorithm in
-                let sourceDictionary = source as! [NSObject:AnyObject]
-                let instance = Algorithm()
-                instance.problemType = Algorithm.ProblemType(rawValue: (sourceDictionary["problem_type"] as? String) ?? "") 
-                instance.objective = Algorithm.Objective(rawValue: (sourceDictionary["objective"] as? String) ?? "") 
-                return instance
-            }
-
-
             // Decoder for [Break]
             Decoders.addDecoder(clazz: [Break].self) { (source: AnyObject) -> [Break] in
                 return Decoders.decode(clazz: [Break].self, source: source)
@@ -536,7 +522,6 @@ class Decoders {
                 instance.services = Decoders.decodeOptional(clazz: Array.self, source: sourceDictionary["services"])
                 instance.shipments = Decoders.decodeOptional(clazz: Array.self, source: sourceDictionary["shipments"])
                 instance.relations = Decoders.decodeOptional(clazz: Array.self, source: sourceDictionary["relations"])
-                instance.algorithm = Decoders.decodeOptional(clazz: Algorithm.self, source: sourceDictionary["algorithm"])
                 instance.objectives = Decoders.decodeOptional(clazz: Array.self, source: sourceDictionary["objectives"])
                 instance.costMatrices = Decoders.decodeOptional(clazz: Array.self, source: sourceDictionary["cost_matrices"])
                 instance.configuration = Decoders.decodeOptional(clazz: Configuration.self, source: sourceDictionary["configuration"])

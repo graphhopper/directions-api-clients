@@ -122,7 +122,6 @@ Class | Method | HTTP request | Description
 
  - [Activity](docs/Activity.md)
  - [Address](docs/Address.md)
- - [Algorithm](docs/Algorithm.md)
  - [CostMatrix](docs/CostMatrix.md)
  - [CostMatrixData](docs/CostMatrixData.md)
  - [CostMatrixDataInfo](docs/CostMatrixDataInfo.md)

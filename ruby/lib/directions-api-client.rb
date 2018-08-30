@@ -19,7 +19,6 @@ require 'directions-api-client/configuration'
 # Models
 require 'directions-api-client/models/activity'
 require 'directions-api-client/models/address'
-require 'directions-api-client/models/algorithm'
 require 'directions-api-client/models/configuration'
 require 'directions-api-client/models/cost_matrix'
 require 'directions-api-client/models/cost_matrix_data'
