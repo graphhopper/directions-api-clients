@@ -1070,9 +1070,6 @@
                         "$ref": "#/definitions/Relation"
                     }
                 },
-                "algorithm": {
-                    "$ref": "#/definitions/Algorithm"
-                },
                 "objectives": {
                     "type": "array",
                     "description": "An array of objectives",
@@ -1152,25 +1149,6 @@
                     "type": "integer",
                     "format": "int32",
                     "description": "max number of activities the vehicle can conduct"
-                }
-            }
-        },
-        "Algorithm": {
-            "type": "object",
-            "properties": {
-                "problem_type": {
-                    "type": "string",
-                    "enum": [
-                        "min",
-                        "min-max"
-                    ]
-                },
-                "objective": {
-                    "type": "string",
-                    "enum": [
-                        "transport_time",
-                        "completion_time"
-                    ]
                 }
             }
         },
