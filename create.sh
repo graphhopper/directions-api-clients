@@ -18,6 +18,9 @@ if [[ ! -f $FILE ]]; then
   wget http://repo1.maven.org/maven2/io/swagger/swagger-codegen-cli/$SW_VERSION/$FILE -O $FILE
   if [[ ! -f $FILE ]]; then
     curl http://repo1.maven.org/maven2/io/swagger/swagger-codegen-cli/$SW_VERSION/$FILE -O $FILE
+    if [[ ! -f $FILE ]]; then
+       wget https://graphhopper.com/public/misc/swagger-codegen-cli-master-2018-01-22.jar -O swagger-codegen-cli-master.jar
+    fi
   fi
 fi
 
