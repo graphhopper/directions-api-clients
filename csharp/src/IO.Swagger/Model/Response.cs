@@ -69,15 +69,15 @@ namespace IO.Swagger.Model
         /// <param name="Copyrights">Copyrights.</param>
         /// <param name="JobId">unique identify of job - which you get when posting your request to the large problem solver.</param>
         /// <param name="Status">indicates the current status of the job.</param>
-        /// <param name="WaitingInQueue">waiting time in ms.</param>
+        /// <param name="WaitingTimeInQueue">waiting time in ms.</param>
         /// <param name="ProcessingTime">processing time in ms. if job is still waiting in queue, processing_time is 0.</param>
         /// <param name="Solution">the solution. only available if status field indicates finished.</param>
-        public Response(List<string> Copyrights = default(List<string>), string JobId = default(string), StatusEnum? Status = default(StatusEnum?), long? WaitingInQueue = default(long?), long? ProcessingTime = default(long?), Solution Solution = default(Solution))
+        public Response(List<string> Copyrights = default(List<string>), string JobId = default(string), StatusEnum? Status = default(StatusEnum?), long? WaitingTimeInQueue = default(long?), long? ProcessingTime = default(long?), Solution Solution = default(Solution))
         {
             this.Copyrights = Copyrights;
             this.JobId = JobId;
             this.Status = Status;
-            this.WaitingInQueue = WaitingInQueue;
+            this.WaitingTimeInQueue = WaitingTimeInQueue;
             this.ProcessingTime = ProcessingTime;
             this.Solution = Solution;
         }
@@ -100,8 +100,8 @@ namespace IO.Swagger.Model
         /// waiting time in ms
         /// </summary>
         /// <value>waiting time in ms</value>
-        [DataMember(Name="waiting_in_queue", EmitDefaultValue=false)]
-        public long? WaitingInQueue { get; set; }
+        [DataMember(Name="waiting_time_in_queue", EmitDefaultValue=false)]
+        public long? WaitingTimeInQueue { get; set; }
 
         /// <summary>
         /// processing time in ms. if job is still waiting in queue, processing_time is 0
@@ -128,7 +128,7 @@ namespace IO.Swagger.Model
             sb.Append("  Copyrights: ").Append(Copyrights).Append("\n");
             sb.Append("  JobId: ").Append(JobId).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
-            sb.Append("  WaitingInQueue: ").Append(WaitingInQueue).Append("\n");
+            sb.Append("  WaitingTimeInQueue: ").Append(WaitingTimeInQueue).Append("\n");
             sb.Append("  ProcessingTime: ").Append(ProcessingTime).Append("\n");
             sb.Append("  Solution: ").Append(Solution).Append("\n");
             sb.Append("}\n");
@@ -181,9 +181,9 @@ namespace IO.Swagger.Model
                     this.Status.Equals(input.Status))
                 ) && 
                 (
-                    this.WaitingInQueue == input.WaitingInQueue ||
-                    (this.WaitingInQueue != null &&
-                    this.WaitingInQueue.Equals(input.WaitingInQueue))
+                    this.WaitingTimeInQueue == input.WaitingTimeInQueue ||
+                    (this.WaitingTimeInQueue != null &&
+                    this.WaitingTimeInQueue.Equals(input.WaitingTimeInQueue))
                 ) && 
                 (
                     this.ProcessingTime == input.ProcessingTime ||
@@ -212,8 +212,8 @@ namespace IO.Swagger.Model
                     hashCode = hashCode * 59 + this.JobId.GetHashCode();
                 if (this.Status != null)
                     hashCode = hashCode * 59 + this.Status.GetHashCode();
-                if (this.WaitingInQueue != null)
-                    hashCode = hashCode * 59 + this.WaitingInQueue.GetHashCode();
+                if (this.WaitingTimeInQueue != null)
+                    hashCode = hashCode * 59 + this.WaitingTimeInQueue.GetHashCode();
                 if (this.ProcessingTime != null)
                     hashCode = hashCode * 59 + this.ProcessingTime.GetHashCode();
                 if (this.Solution != null)

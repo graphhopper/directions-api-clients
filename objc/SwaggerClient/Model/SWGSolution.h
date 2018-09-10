@@ -46,6 +46,15 @@
 /* total waiting time in seconds [optional]
  */
 @property(nonatomic) NSNumber* waitingTime;
+/* total service time in seconds [optional]
+ */
+@property(nonatomic) NSNumber* serviceDuration;
+/* total preparation time in seconds [optional]
+ */
+@property(nonatomic) NSNumber* preparationTime;
+/* total completion time in seconds [optional]
+ */
+@property(nonatomic) NSNumber* completionTime;
 /* number of employed vehicles [optional]
  */
 @property(nonatomic) NSNumber* noVehicles;

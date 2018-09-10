@@ -34,13 +34,25 @@ Activity::__init()
 	//location_id = std::string();
 	//
 	//
+	//address = new Address();
+	//
+	//
 	//arr_time = long(0);
 	//
 	//
 	//end_time = long(0);
 	//
 	//
+	//end_date_time = std::string();
+	//
+	//
+	//arr_date_time = std::string();
+	//
+	//
 	//waiting_time = long(0);
+	//
+	//
+	//preparation_time = long(0);
 	//
 	//
 	//distance = long(0);
@@ -74,6 +86,11 @@ Activity::__cleanup()
 	//delete location_id;
 	//location_id = NULL;
 	//}
+	//if(address != NULL) {
+	//
+	//delete address;
+	//address = NULL;
+	//}
 	//if(arr_time != NULL) {
 	//
 	//delete arr_time;
@@ -84,10 +101,25 @@ Activity::__cleanup()
 	//delete end_time;
 	//end_time = NULL;
 	//}
+	//if(end_date_time != NULL) {
+	//
+	//delete end_date_time;
+	//end_date_time = NULL;
+	//}
+	//if(arr_date_time != NULL) {
+	//
+	//delete arr_date_time;
+	//arr_date_time = NULL;
+	//}
 	//if(waiting_time != NULL) {
 	//
 	//delete waiting_time;
 	//waiting_time = NULL;
+	//}
+	//if(preparation_time != NULL) {
+	//
+	//delete preparation_time;
+	//preparation_time = NULL;
 	//}
 	//if(distance != NULL) {
 	//
@@ -150,6 +182,20 @@ Activity::fromJson(char* jsonStr)
 			
 		}
 	}
+	const gchar *addressKey = "address";
+	node = json_object_get_member(pJsonObject, addressKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("Address")) {
+			jsonToValue(&address, node, "Address", "Address");
+		} else {
+			
+			Address* obj = static_cast<Address*> (&address);
+			obj->fromJson(json_to_string(node, false));
+			
+		}
+	}
 	const gchar *arr_timeKey = "arr_time";
 	node = json_object_get_member(pJsonObject, arr_timeKey);
 	if (node !=NULL) {
@@ -172,6 +218,28 @@ Activity::fromJson(char* jsonStr)
 			
 		}
 	}
+	const gchar *end_date_timeKey = "end_date_time";
+	node = json_object_get_member(pJsonObject, end_date_timeKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&end_date_time, node, "std::string", "");
+		} else {
+			
+		}
+	}
+	const gchar *arr_date_timeKey = "arr_date_time";
+	node = json_object_get_member(pJsonObject, arr_date_timeKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("std::string")) {
+			jsonToValue(&arr_date_time, node, "std::string", "");
+		} else {
+			
+		}
+	}
 	const gchar *waiting_timeKey = "waiting_time";
 	node = json_object_get_member(pJsonObject, waiting_timeKey);
 	if (node !=NULL) {
@@ -179,6 +247,17 @@ Activity::fromJson(char* jsonStr)
 
 		if (isprimitive("long long")) {
 			jsonToValue(&waiting_time, node, "long long", "");
+		} else {
+			
+		}
+	}
+	const gchar *preparation_timeKey = "preparation_time";
+	node = json_object_get_member(pJsonObject, preparation_timeKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("long long")) {
+			jsonToValue(&preparation_time, node, "long long", "");
 		} else {
 			
 		}
@@ -288,6 +367,20 @@ Activity::toJson()
 	}
 	const gchar *location_idKey = "location_id";
 	json_object_set_member(pJsonObject, location_idKey, node);
+	if (isprimitive("Address")) {
+		Address obj = getAddress();
+		node = converttoJson(&obj, "Address", "");
+	}
+	else {
+		
+		Address obj = static_cast<Address> (getAddress());
+		GError *mygerror;
+		mygerror = NULL;
+		node = json_from_string(obj.toJson(), &mygerror);
+		
+	}
+	const gchar *addressKey = "address";
+	json_object_set_member(pJsonObject, addressKey, node);
 	if (isprimitive("long long")) {
 		long long obj = getArrTime();
 		node = converttoJson(&obj, "long long", "");
@@ -306,6 +399,24 @@ Activity::toJson()
 	}
 	const gchar *end_timeKey = "end_time";
 	json_object_set_member(pJsonObject, end_timeKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getEndDateTime();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *end_date_timeKey = "end_date_time";
+	json_object_set_member(pJsonObject, end_date_timeKey, node);
+	if (isprimitive("std::string")) {
+		std::string obj = getArrDateTime();
+		node = converttoJson(&obj, "std::string", "");
+	}
+	else {
+		
+	}
+	const gchar *arr_date_timeKey = "arr_date_time";
+	json_object_set_member(pJsonObject, arr_date_timeKey, node);
 	if (isprimitive("long long")) {
 		long long obj = getWaitingTime();
 		node = converttoJson(&obj, "long long", "");
@@ -315,6 +426,15 @@ Activity::toJson()
 	}
 	const gchar *waiting_timeKey = "waiting_time";
 	json_object_set_member(pJsonObject, waiting_timeKey, node);
+	if (isprimitive("long long")) {
+		long long obj = getPreparationTime();
+		node = converttoJson(&obj, "long long", "");
+	}
+	else {
+		
+	}
+	const gchar *preparation_timeKey = "preparation_time";
+	json_object_set_member(pJsonObject, preparation_timeKey, node);
 	if (isprimitive("long long")) {
 		long long obj = getDistance();
 		node = converttoJson(&obj, "long long", "");
@@ -407,6 +527,18 @@ Activity::setLocationId(std::string  location_id)
 	this->location_id = location_id;
 }
 
+Address
+Activity::getAddress()
+{
+	return address;
+}
+
+void
+Activity::setAddress(Address  address)
+{
+	this->address = address;
+}
+
 long long
 Activity::getArrTime()
 {
@@ -431,6 +563,30 @@ Activity::setEndTime(long long  end_time)
 	this->end_time = end_time;
 }
 
+std::string
+Activity::getEndDateTime()
+{
+	return end_date_time;
+}
+
+void
+Activity::setEndDateTime(std::string  end_date_time)
+{
+	this->end_date_time = end_date_time;
+}
+
+std::string
+Activity::getArrDateTime()
+{
+	return arr_date_time;
+}
+
+void
+Activity::setArrDateTime(std::string  arr_date_time)
+{
+	this->arr_date_time = arr_date_time;
+}
+
 long long
 Activity::getWaitingTime()
 {
@@ -441,6 +597,18 @@ void
 Activity::setWaitingTime(long long  waiting_time)
 {
 	this->waiting_time = waiting_time;
+}
+
+long long
+Activity::getPreparationTime()
+{
+	return preparation_time;
+}
+
+void
+Activity::setPreparationTime(long long  preparation_time)
+{
+	this->preparation_time = preparation_time;
 }
 
 long long

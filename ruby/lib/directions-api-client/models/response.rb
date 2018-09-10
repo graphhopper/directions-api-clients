@@ -24,7 +24,7 @@ module GraphHopperClient
     attr_accessor :status
 
     # waiting time in ms
-    attr_accessor :waiting_in_queue
+    attr_accessor :waiting_time_in_queue
 
     # processing time in ms. if job is still waiting in queue, processing_time is 0
     attr_accessor :processing_time
@@ -60,7 +60,7 @@ module GraphHopperClient
         :'copyrights' => :'copyrights',
         :'job_id' => :'job_id',
         :'status' => :'status',
-        :'waiting_in_queue' => :'waiting_in_queue',
+        :'waiting_time_in_queue' => :'waiting_time_in_queue',
         :'processing_time' => :'processing_time',
         :'solution' => :'solution'
       }
@@ -72,7 +72,7 @@ module GraphHopperClient
         :'copyrights' => :'Array<String>',
         :'job_id' => :'String',
         :'status' => :'String',
-        :'waiting_in_queue' => :'Integer',
+        :'waiting_time_in_queue' => :'Integer',
         :'processing_time' => :'Integer',
         :'solution' => :'Solution'
       }
@@ -100,8 +100,8 @@ module GraphHopperClient
         self.status = attributes[:'status']
       end
 
-      if attributes.has_key?(:'waiting_in_queue')
-        self.waiting_in_queue = attributes[:'waiting_in_queue']
+      if attributes.has_key?(:'waiting_time_in_queue')
+        self.waiting_time_in_queue = attributes[:'waiting_time_in_queue']
       end
 
       if attributes.has_key?(:'processing_time')
@@ -147,7 +147,7 @@ module GraphHopperClient
           copyrights == o.copyrights &&
           job_id == o.job_id &&
           status == o.status &&
-          waiting_in_queue == o.waiting_in_queue &&
+          waiting_time_in_queue == o.waiting_time_in_queue &&
           processing_time == o.processing_time &&
           solution == o.solution
     end
@@ -161,7 +161,7 @@ module GraphHopperClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [copyrights, job_id, status, waiting_in_queue, processing_time, solution].hash
+      [copyrights, job_id, status, waiting_time_in_queue, processing_time, solution].hash
     end
 
     # Builds the object from hash

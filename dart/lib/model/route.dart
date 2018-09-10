@@ -22,6 +22,14 @@ class Route {
   @Property(name: 'waiting_time')
   int waitingTime = null;
   
+/* service duration of route in seconds */
+  @Property(name: 'service_duration')
+  int serviceDuration = null;
+  
+/* preparation time of route in seconds */
+  @Property(name: 'preparation_time')
+  int preparationTime = null;
+  
 /* array of activities */
   @Property(name: 'activities')
   List<Activity> activities = [];
@@ -34,7 +42,7 @@ class Route {
 
   @override
   String toString()  {
-    return 'Route[vehicleId=$vehicleId, distance=$distance, transportTime=$transportTime, completionTime=$completionTime, waitingTime=$waitingTime, activities=$activities, points=$points, ]';
+    return 'Route[vehicleId=$vehicleId, distance=$distance, transportTime=$transportTime, completionTime=$completionTime, waitingTime=$waitingTime, serviceDuration=$serviceDuration, preparationTime=$preparationTime, activities=$activities, points=$points, ]';
   }
 }
 

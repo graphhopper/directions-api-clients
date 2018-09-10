@@ -15,8 +15,8 @@ class Response {
   String status = null;
   //enum statusEnum {  waiting_in_queue,  processing,  finished,  };
 /* waiting time in ms */
-  @Property(name: 'waiting_in_queue')
-  int waitingInQueue = null;
+  @Property(name: 'waiting_time_in_queue')
+  int waitingTimeInQueue = null;
   
 /* processing time in ms. if job is still waiting in queue, processing_time is 0 */
   @Property(name: 'processing_time')
@@ -30,7 +30,7 @@ class Response {
 
   @override
   String toString()  {
-    return 'Response[copyrights=$copyrights, jobId=$jobId, status=$status, waitingInQueue=$waitingInQueue, processingTime=$processingTime, solution=$solution, ]';
+    return 'Response[copyrights=$copyrights, jobId=$jobId, status=$status, waitingTimeInQueue=$waitingTimeInQueue, processingTime=$processingTime, solution=$solution, ]';
   }
 }
 

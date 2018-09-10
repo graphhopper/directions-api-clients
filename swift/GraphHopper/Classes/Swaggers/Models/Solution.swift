@@ -21,6 +21,12 @@ public class Solution: JSONEncodable {
     public var maxOperationTime: Int64?
     /** total waiting time in seconds */
     public var waitingTime: Int64?
+    /** total service time in seconds */
+    public var serviceDuration: Int64?
+    /** total preparation time in seconds */
+    public var preparationTime: Int64?
+    /** total completion time in seconds */
+    public var completionTime: Int64?
     /** number of employed vehicles */
     public var noVehicles: Int32?
     /** number of jobs that could not be assigned to final solution */
@@ -40,6 +46,9 @@ public class Solution: JSONEncodable {
         nillableDictionary["transport_time"] = self.transportTime?.encodeToJSON()
         nillableDictionary["max_operation_time"] = self.maxOperationTime?.encodeToJSON()
         nillableDictionary["waiting_time"] = self.waitingTime?.encodeToJSON()
+        nillableDictionary["service_duration"] = self.serviceDuration?.encodeToJSON()
+        nillableDictionary["preparation_time"] = self.preparationTime?.encodeToJSON()
+        nillableDictionary["completion_time"] = self.completionTime?.encodeToJSON()
         nillableDictionary["no_vehicles"] = self.noVehicles?.encodeToJSON()
         nillableDictionary["no_unassigned"] = self.noUnassigned?.encodeToJSON()
         nillableDictionary["routes"] = self.routes?.encodeToJSON()

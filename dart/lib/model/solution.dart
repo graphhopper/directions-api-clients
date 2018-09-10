@@ -26,6 +26,18 @@ class Solution {
   @Property(name: 'waiting_time')
   int waitingTime = null;
   
+/* total service time in seconds */
+  @Property(name: 'service_duration')
+  int serviceDuration = null;
+  
+/* total preparation time in seconds */
+  @Property(name: 'preparation_time')
+  int preparationTime = null;
+  
+/* total completion time in seconds */
+  @Property(name: 'completion_time')
+  int completionTime = null;
+  
 /* number of employed vehicles */
   @Property(name: 'no_vehicles')
   int noVehicles = null;
@@ -46,7 +58,7 @@ class Solution {
 
   @override
   String toString()  {
-    return 'Solution[costs=$costs, distance=$distance, time=$time, transportTime=$transportTime, maxOperationTime=$maxOperationTime, waitingTime=$waitingTime, noVehicles=$noVehicles, noUnassigned=$noUnassigned, routes=$routes, unassigned=$unassigned, ]';
+    return 'Solution[costs=$costs, distance=$distance, time=$time, transportTime=$transportTime, maxOperationTime=$maxOperationTime, waitingTime=$waitingTime, serviceDuration=$serviceDuration, preparationTime=$preparationTime, completionTime=$completionTime, noVehicles=$noVehicles, noUnassigned=$noUnassigned, routes=$routes, unassigned=$unassigned, ]';
   }
 }
 

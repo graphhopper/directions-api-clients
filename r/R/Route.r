@@ -14,6 +14,8 @@
 #' @field transport_time 
 #' @field completion_time 
 #' @field waiting_time 
+#' @field service_duration 
+#' @field preparation_time 
 #' @field activities 
 #' @field points 
 #'
@@ -28,9 +30,11 @@ Route <- R6::R6Class(
     `transport_time` = NULL,
     `completion_time` = NULL,
     `waiting_time` = NULL,
+    `service_duration` = NULL,
+    `preparation_time` = NULL,
     `activities` = NULL,
     `points` = NULL,
-    initialize = function(`vehicle_id`, `distance`, `transport_time`, `completion_time`, `waiting_time`, `activities`, `points`){
+    initialize = function(`vehicle_id`, `distance`, `transport_time`, `completion_time`, `waiting_time`, `service_duration`, `preparation_time`, `activities`, `points`){
       if (!missing(`vehicle_id`)) {
         stopifnot(is.character(`vehicle_id`), length(`vehicle_id`) == 1)
         self$`vehicle_id` <- `vehicle_id`
@@ -50,6 +54,14 @@ Route <- R6::R6Class(
       if (!missing(`waiting_time`)) {
         stopifnot(is.numeric(`waiting_time`), length(`waiting_time`) == 1)
         self$`waiting_time` <- `waiting_time`
+      }
+      if (!missing(`service_duration`)) {
+        stopifnot(is.numeric(`service_duration`), length(`service_duration`) == 1)
+        self$`service_duration` <- `service_duration`
+      }
+      if (!missing(`preparation_time`)) {
+        stopifnot(is.numeric(`preparation_time`), length(`preparation_time`) == 1)
+        self$`preparation_time` <- `preparation_time`
       }
       if (!missing(`activities`)) {
         stopifnot(is.list(`activities`), length(`activities`) != 0)
@@ -79,6 +91,12 @@ Route <- R6::R6Class(
       if (!is.null(self$`waiting_time`)) {
         RouteObject[['waiting_time']] <- self$`waiting_time`
       }
+      if (!is.null(self$`service_duration`)) {
+        RouteObject[['service_duration']] <- self$`service_duration`
+      }
+      if (!is.null(self$`preparation_time`)) {
+        RouteObject[['preparation_time']] <- self$`preparation_time`
+      }
       if (!is.null(self$`activities`)) {
         RouteObject[['activities']] <- lapply(self$`activities`, function(x) x$toJSON())
       }
@@ -105,6 +123,12 @@ Route <- R6::R6Class(
       if (!is.null(RouteObject$`waiting_time`)) {
         self$`waiting_time` <- RouteObject$`waiting_time`
       }
+      if (!is.null(RouteObject$`service_duration`)) {
+        self$`service_duration` <- RouteObject$`service_duration`
+      }
+      if (!is.null(RouteObject$`preparation_time`)) {
+        self$`preparation_time` <- RouteObject$`preparation_time`
+      }
       if (!is.null(RouteObject$`activities`)) {
         self$`activities` <- lapply(RouteObject$`activities`, function(x) {
           activitiesObject <- Activity$new()
@@ -128,6 +152,8 @@ Route <- R6::R6Class(
            "transport_time": %d,
            "completion_time": %d,
            "waiting_time": %d,
+           "service_duration": %d,
+           "preparation_time": %d,
            "activities": [%s],
            "points": [%s]
         }',
@@ -136,6 +162,8 @@ Route <- R6::R6Class(
         self$`transport_time`,
         self$`completion_time`,
         self$`waiting_time`,
+        self$`service_duration`,
+        self$`preparation_time`,
         lapply(self$`activities`, function(x) paste(x$toJSON(), sep=",")),
         lapply(self$`points`, function(x) paste(x$toJSON(), sep=","))
       )
@@ -147,6 +175,8 @@ Route <- R6::R6Class(
       self$`transport_time` <- RouteObject$`transport_time`
       self$`completion_time` <- RouteObject$`completion_time`
       self$`waiting_time` <- RouteObject$`waiting_time`
+      self$`service_duration` <- RouteObject$`service_duration`
+      self$`preparation_time` <- RouteObject$`preparation_time`
       self$`activities` <- lapply(RouteObject$`activities`, function(x) Activity$new()$fromJSON(jsonlite::toJSON(x, auto_unbox = TRUE)))
       self$`points` <- lapply(RouteObject$`points`, function(x) RoutePoint$new()$fromJSON(jsonlite::toJSON(x, auto_unbox = TRUE)))
     }

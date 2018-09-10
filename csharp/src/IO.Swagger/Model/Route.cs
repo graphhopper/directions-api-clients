@@ -38,15 +38,19 @@ namespace IO.Swagger.Model
         /// <param name="TransportTime">transport time of route in seconds.</param>
         /// <param name="CompletionTime">completion time of route in seconds.</param>
         /// <param name="WaitingTime">waiting time of route in seconds.</param>
+        /// <param name="ServiceDuration">service duration of route in seconds.</param>
+        /// <param name="PreparationTime">preparation time of route in seconds.</param>
         /// <param name="Activities">array of activities.</param>
         /// <param name="Points">array of route planning points.</param>
-        public Route(string VehicleId = default(string), long? Distance = default(long?), long? TransportTime = default(long?), long? CompletionTime = default(long?), long? WaitingTime = default(long?), List<Activity> Activities = default(List<Activity>), List<RoutePoint> Points = default(List<RoutePoint>))
+        public Route(string VehicleId = default(string), long? Distance = default(long?), long? TransportTime = default(long?), long? CompletionTime = default(long?), long? WaitingTime = default(long?), long? ServiceDuration = default(long?), long? PreparationTime = default(long?), List<Activity> Activities = default(List<Activity>), List<RoutePoint> Points = default(List<RoutePoint>))
         {
             this.VehicleId = VehicleId;
             this.Distance = Distance;
             this.TransportTime = TransportTime;
             this.CompletionTime = CompletionTime;
             this.WaitingTime = WaitingTime;
+            this.ServiceDuration = ServiceDuration;
+            this.PreparationTime = PreparationTime;
             this.Activities = Activities;
             this.Points = Points;
         }
@@ -87,6 +91,20 @@ namespace IO.Swagger.Model
         public long? WaitingTime { get; set; }
 
         /// <summary>
+        /// service duration of route in seconds
+        /// </summary>
+        /// <value>service duration of route in seconds</value>
+        [DataMember(Name="service_duration", EmitDefaultValue=false)]
+        public long? ServiceDuration { get; set; }
+
+        /// <summary>
+        /// preparation time of route in seconds
+        /// </summary>
+        /// <value>preparation time of route in seconds</value>
+        [DataMember(Name="preparation_time", EmitDefaultValue=false)]
+        public long? PreparationTime { get; set; }
+
+        /// <summary>
         /// array of activities
         /// </summary>
         /// <value>array of activities</value>
@@ -113,6 +131,8 @@ namespace IO.Swagger.Model
             sb.Append("  TransportTime: ").Append(TransportTime).Append("\n");
             sb.Append("  CompletionTime: ").Append(CompletionTime).Append("\n");
             sb.Append("  WaitingTime: ").Append(WaitingTime).Append("\n");
+            sb.Append("  ServiceDuration: ").Append(ServiceDuration).Append("\n");
+            sb.Append("  PreparationTime: ").Append(PreparationTime).Append("\n");
             sb.Append("  Activities: ").Append(Activities).Append("\n");
             sb.Append("  Points: ").Append(Points).Append("\n");
             sb.Append("}\n");
@@ -175,6 +195,16 @@ namespace IO.Swagger.Model
                     this.WaitingTime.Equals(input.WaitingTime))
                 ) && 
                 (
+                    this.ServiceDuration == input.ServiceDuration ||
+                    (this.ServiceDuration != null &&
+                    this.ServiceDuration.Equals(input.ServiceDuration))
+                ) && 
+                (
+                    this.PreparationTime == input.PreparationTime ||
+                    (this.PreparationTime != null &&
+                    this.PreparationTime.Equals(input.PreparationTime))
+                ) && 
+                (
                     this.Activities == input.Activities ||
                     this.Activities != null &&
                     this.Activities.SequenceEqual(input.Activities)
@@ -205,6 +235,10 @@ namespace IO.Swagger.Model
                     hashCode = hashCode * 59 + this.CompletionTime.GetHashCode();
                 if (this.WaitingTime != null)
                     hashCode = hashCode * 59 + this.WaitingTime.GetHashCode();
+                if (this.ServiceDuration != null)
+                    hashCode = hashCode * 59 + this.ServiceDuration.GetHashCode();
+                if (this.PreparationTime != null)
+                    hashCode = hashCode * 59 + this.PreparationTime.GetHashCode();
                 if (this.Activities != null)
                     hashCode = hashCode * 59 + this.Activities.GetHashCode();
                 if (this.Points != null)

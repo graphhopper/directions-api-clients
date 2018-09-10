@@ -20,7 +20,7 @@ public class Response: JSONEncodable {
     /** indicates the current status of the job */
     public var status: Status?
     /** waiting time in ms */
-    public var waitingInQueue: Int64?
+    public var waitingTimeInQueue: Int64?
     /** processing time in ms. if job is still waiting in queue, processing_time is 0 */
     public var processingTime: Int64?
     /** the solution. only available if status field indicates finished */
@@ -34,7 +34,7 @@ public class Response: JSONEncodable {
         nillableDictionary["copyrights"] = self.copyrights?.encodeToJSON()
         nillableDictionary["job_id"] = self.jobId
         nillableDictionary["status"] = self.status?.rawValue
-        nillableDictionary["waiting_in_queue"] = self.waitingInQueue?.encodeToJSON()
+        nillableDictionary["waiting_time_in_queue"] = self.waitingTimeInQueue?.encodeToJSON()
         nillableDictionary["processing_time"] = self.processingTime?.encodeToJSON()
         nillableDictionary["solution"] = self.solution?.encodeToJSON()
         let dictionary: [String:AnyObject] = APIHelper.rejectNil(nillableDictionary) ?? [:]

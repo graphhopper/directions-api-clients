@@ -26,6 +26,12 @@ case class Solution (
   maxOperationTime: Option[Long] = None,
   // total waiting time in seconds
   waitingTime: Option[Long] = None,
+  // total service time in seconds
+  serviceDuration: Option[Long] = None,
+  // total preparation time in seconds
+  preparationTime: Option[Long] = None,
+  // total completion time in seconds
+  completionTime: Option[Long] = None,
   // number of employed vehicles
   noVehicles: Option[Integer] = None,
   // number of jobs that could not be assigned to final solution

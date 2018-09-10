@@ -20,6 +20,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.graphhopper.directions.api.client.model.Address;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -99,14 +100,26 @@ public class Activity {
   @SerializedName("location_id")
   private String locationId = null;
 
+  @SerializedName("address")
+  private Address address = null;
+
   @SerializedName("arr_time")
   private Long arrTime = null;
 
   @SerializedName("end_time")
   private Long endTime = null;
 
+  @SerializedName("end_date_time")
+  private String endDateTime = null;
+
+  @SerializedName("arr_date_time")
+  private String arrDateTime = null;
+
   @SerializedName("waiting_time")
   private Long waitingTime = null;
+
+  @SerializedName("preparation_time")
+  private Long preparationTime = null;
 
   @SerializedName("distance")
   private Long distance = null;
@@ -174,6 +187,24 @@ public class Activity {
     this.locationId = locationId;
   }
 
+  public Activity address(Address address) {
+    this.address = address;
+    return this;
+  }
+
+   /**
+   * address of activity
+   * @return address
+  **/
+  @ApiModelProperty(value = "address of activity")
+  public Address getAddress() {
+    return address;
+  }
+
+  public void setAddress(Address address) {
+    this.address = address;
+  }
+
   public Activity arrTime(Long arrTime) {
     this.arrTime = arrTime;
     return this;
@@ -210,6 +241,42 @@ public class Activity {
     this.endTime = endTime;
   }
 
+  public Activity endDateTime(String endDateTime) {
+    this.endDateTime = endDateTime;
+    return this;
+  }
+
+   /**
+   * end date time with offset like this 1970-01-01T01:00+01:00
+   * @return endDateTime
+  **/
+  @ApiModelProperty(value = "end date time with offset like this 1970-01-01T01:00+01:00")
+  public String getEndDateTime() {
+    return endDateTime;
+  }
+
+  public void setEndDateTime(String endDateTime) {
+    this.endDateTime = endDateTime;
+  }
+
+  public Activity arrDateTime(String arrDateTime) {
+    this.arrDateTime = arrDateTime;
+    return this;
+  }
+
+   /**
+   * arrival date time with offset like this 1970-01-01T01:00+01:00
+   * @return arrDateTime
+  **/
+  @ApiModelProperty(value = "arrival date time with offset like this 1970-01-01T01:00+01:00")
+  public String getArrDateTime() {
+    return arrDateTime;
+  }
+
+  public void setArrDateTime(String arrDateTime) {
+    this.arrDateTime = arrDateTime;
+  }
+
   public Activity waitingTime(Long waitingTime) {
     this.waitingTime = waitingTime;
     return this;
@@ -226,6 +293,24 @@ public class Activity {
 
   public void setWaitingTime(Long waitingTime) {
     this.waitingTime = waitingTime;
+  }
+
+  public Activity preparationTime(Long preparationTime) {
+    this.preparationTime = preparationTime;
+    return this;
+  }
+
+   /**
+   * preparation time at this activity in seconds
+   * @return preparationTime
+  **/
+  @ApiModelProperty(value = "preparation time at this activity in seconds")
+  public Long getPreparationTime() {
+    return preparationTime;
+  }
+
+  public void setPreparationTime(Long preparationTime) {
+    this.preparationTime = preparationTime;
   }
 
   public Activity distance(Long distance) {
@@ -329,9 +414,13 @@ public class Activity {
     return Objects.equals(this.type, activity.type) &&
         Objects.equals(this.id, activity.id) &&
         Objects.equals(this.locationId, activity.locationId) &&
+        Objects.equals(this.address, activity.address) &&
         Objects.equals(this.arrTime, activity.arrTime) &&
         Objects.equals(this.endTime, activity.endTime) &&
+        Objects.equals(this.endDateTime, activity.endDateTime) &&
+        Objects.equals(this.arrDateTime, activity.arrDateTime) &&
         Objects.equals(this.waitingTime, activity.waitingTime) &&
+        Objects.equals(this.preparationTime, activity.preparationTime) &&
         Objects.equals(this.distance, activity.distance) &&
         Objects.equals(this.drivingTime, activity.drivingTime) &&
         Objects.equals(this.loadBefore, activity.loadBefore) &&
@@ -340,7 +429,7 @@ public class Activity {
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, id, locationId, arrTime, endTime, waitingTime, distance, drivingTime, loadBefore, loadAfter);
+    return Objects.hash(type, id, locationId, address, arrTime, endTime, endDateTime, arrDateTime, waitingTime, preparationTime, distance, drivingTime, loadBefore, loadAfter);
   }
 
 
@@ -352,9 +441,13 @@ public class Activity {
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    locationId: ").append(toIndentedString(locationId)).append("\n");
+    sb.append("    address: ").append(toIndentedString(address)).append("\n");
     sb.append("    arrTime: ").append(toIndentedString(arrTime)).append("\n");
     sb.append("    endTime: ").append(toIndentedString(endTime)).append("\n");
+    sb.append("    endDateTime: ").append(toIndentedString(endDateTime)).append("\n");
+    sb.append("    arrDateTime: ").append(toIndentedString(arrDateTime)).append("\n");
     sb.append("    waitingTime: ").append(toIndentedString(waitingTime)).append("\n");
+    sb.append("    preparationTime: ").append(toIndentedString(preparationTime)).append("\n");
     sb.append("    distance: ").append(toIndentedString(distance)).append("\n");
     sb.append("    drivingTime: ").append(toIndentedString(drivingTime)).append("\n");
     sb.append("    loadBefore: ").append(toIndentedString(loadBefore)).append("\n");

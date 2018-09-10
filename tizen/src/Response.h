@@ -70,11 +70,11 @@ public:
 	void setStatus(std::string  status);
 	/*! \brief Get waiting time in ms
 	 */
-	long long getWaitingInQueue();
+	long long getWaitingTimeInQueue();
 
 	/*! \brief Set waiting time in ms
 	 */
-	void setWaitingInQueue(long long  waiting_in_queue);
+	void setWaitingTimeInQueue(long long  waiting_time_in_queue);
 	/*! \brief Get processing time in ms. if job is still waiting in queue, processing_time is 0
 	 */
 	long long getProcessingTime();
@@ -94,7 +94,7 @@ private:
 	std::list <std::string>copyrights;
 	std::string job_id;
 	std::string status;
-	long long waiting_in_queue;
+	long long waiting_time_in_queue;
 	long long processing_time;
 	Solution solution;
 	void __init();

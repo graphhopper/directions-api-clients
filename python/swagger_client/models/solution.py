@@ -40,6 +40,9 @@ class Solution(object):
         'transport_time': 'int',
         'max_operation_time': 'int',
         'waiting_time': 'int',
+        'service_duration': 'int',
+        'preparation_time': 'int',
+        'completion_time': 'int',
         'no_vehicles': 'int',
         'no_unassigned': 'int',
         'routes': 'list[Route]',
@@ -53,13 +56,16 @@ class Solution(object):
         'transport_time': 'transport_time',
         'max_operation_time': 'max_operation_time',
         'waiting_time': 'waiting_time',
+        'service_duration': 'service_duration',
+        'preparation_time': 'preparation_time',
+        'completion_time': 'completion_time',
         'no_vehicles': 'no_vehicles',
         'no_unassigned': 'no_unassigned',
         'routes': 'routes',
         'unassigned': 'unassigned'
     }
 
-    def __init__(self, costs=None, distance=None, time=None, transport_time=None, max_operation_time=None, waiting_time=None, no_vehicles=None, no_unassigned=None, routes=None, unassigned=None):  # noqa: E501
+    def __init__(self, costs=None, distance=None, time=None, transport_time=None, max_operation_time=None, waiting_time=None, service_duration=None, preparation_time=None, completion_time=None, no_vehicles=None, no_unassigned=None, routes=None, unassigned=None):  # noqa: E501
         """Solution - a model defined in Swagger"""  # noqa: E501
 
         self._costs = None
@@ -68,6 +74,9 @@ class Solution(object):
         self._transport_time = None
         self._max_operation_time = None
         self._waiting_time = None
+        self._service_duration = None
+        self._preparation_time = None
+        self._completion_time = None
         self._no_vehicles = None
         self._no_unassigned = None
         self._routes = None
@@ -86,6 +95,12 @@ class Solution(object):
             self.max_operation_time = max_operation_time
         if waiting_time is not None:
             self.waiting_time = waiting_time
+        if service_duration is not None:
+            self.service_duration = service_duration
+        if preparation_time is not None:
+            self.preparation_time = preparation_time
+        if completion_time is not None:
+            self.completion_time = completion_time
         if no_vehicles is not None:
             self.no_vehicles = no_vehicles
         if no_unassigned is not None:
@@ -232,6 +247,75 @@ class Solution(object):
         """
 
         self._waiting_time = waiting_time
+
+    @property
+    def service_duration(self):
+        """Gets the service_duration of this Solution.  # noqa: E501
+
+        total service time in seconds  # noqa: E501
+
+        :return: The service_duration of this Solution.  # noqa: E501
+        :rtype: int
+        """
+        return self._service_duration
+
+    @service_duration.setter
+    def service_duration(self, service_duration):
+        """Sets the service_duration of this Solution.
+
+        total service time in seconds  # noqa: E501
+
+        :param service_duration: The service_duration of this Solution.  # noqa: E501
+        :type: int
+        """
+
+        self._service_duration = service_duration
+
+    @property
+    def preparation_time(self):
+        """Gets the preparation_time of this Solution.  # noqa: E501
+
+        total preparation time in seconds  # noqa: E501
+
+        :return: The preparation_time of this Solution.  # noqa: E501
+        :rtype: int
+        """
+        return self._preparation_time
+
+    @preparation_time.setter
+    def preparation_time(self, preparation_time):
+        """Sets the preparation_time of this Solution.
+
+        total preparation time in seconds  # noqa: E501
+
+        :param preparation_time: The preparation_time of this Solution.  # noqa: E501
+        :type: int
+        """
+
+        self._preparation_time = preparation_time
+
+    @property
+    def completion_time(self):
+        """Gets the completion_time of this Solution.  # noqa: E501
+
+        total completion time in seconds  # noqa: E501
+
+        :return: The completion_time of this Solution.  # noqa: E501
+        :rtype: int
+        """
+        return self._completion_time
+
+    @completion_time.setter
+    def completion_time(self, completion_time):
+        """Sets the completion_time of this Solution.
+
+        total completion time in seconds  # noqa: E501
+
+        :param completion_time: The completion_time of this Solution.  # noqa: E501
+        :type: int
+        """
+
+        self._completion_time = completion_time
 
     @property
     def no_vehicles(self):

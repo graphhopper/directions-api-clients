@@ -14,6 +14,10 @@ class Activity {
   @Property(name: 'location_id')
   String locationId = null;
   
+/* address of activity */
+  @Property(name: 'address')
+  Address address = null;
+  
 /* arrival time at this activity in seconds */
   @Property(name: 'arr_time')
   int arrTime = null;
@@ -22,9 +26,21 @@ class Activity {
   @Property(name: 'end_time')
   int endTime = null;
   
+/* end date time with offset like this 1970-01-01T01:00+01:00 */
+  @Property(name: 'end_date_time')
+  String endDateTime = null;
+  
+/* arrival date time with offset like this 1970-01-01T01:00+01:00 */
+  @Property(name: 'arr_date_time')
+  String arrDateTime = null;
+  
 /* waiting time at this activity in seconds */
   @Property(name: 'waiting_time')
   int waitingTime = null;
+  
+/* preparation time at this activity in seconds */
+  @Property(name: 'preparation_time')
+  int preparationTime = null;
   
 /* cumulated distance from start to this activity in m */
   @Property(name: 'distance')
@@ -46,7 +62,7 @@ class Activity {
 
   @override
   String toString()  {
-    return 'Activity[type=$type, id=$id, locationId=$locationId, arrTime=$arrTime, endTime=$endTime, waitingTime=$waitingTime, distance=$distance, drivingTime=$drivingTime, loadBefore=$loadBefore, loadAfter=$loadAfter, ]';
+    return 'Activity[type=$type, id=$id, locationId=$locationId, address=$address, arrTime=$arrTime, endTime=$endTime, endDateTime=$endDateTime, arrDateTime=$arrDateTime, waitingTime=$waitingTime, preparationTime=$preparationTime, distance=$distance, drivingTime=$drivingTime, loadBefore=$loadBefore, loadAfter=$loadAfter, ]';
   }
 }
 

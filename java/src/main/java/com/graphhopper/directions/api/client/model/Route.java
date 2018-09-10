@@ -48,6 +48,12 @@ public class Route {
   @SerializedName("waiting_time")
   private Long waitingTime = null;
 
+  @SerializedName("service_duration")
+  private Long serviceDuration = null;
+
+  @SerializedName("preparation_time")
+  private Long preparationTime = null;
+
   @SerializedName("activities")
   private List<Activity> activities = null;
 
@@ -144,6 +150,42 @@ public class Route {
     this.waitingTime = waitingTime;
   }
 
+  public Route serviceDuration(Long serviceDuration) {
+    this.serviceDuration = serviceDuration;
+    return this;
+  }
+
+   /**
+   * service duration of route in seconds
+   * @return serviceDuration
+  **/
+  @ApiModelProperty(value = "service duration of route in seconds")
+  public Long getServiceDuration() {
+    return serviceDuration;
+  }
+
+  public void setServiceDuration(Long serviceDuration) {
+    this.serviceDuration = serviceDuration;
+  }
+
+  public Route preparationTime(Long preparationTime) {
+    this.preparationTime = preparationTime;
+    return this;
+  }
+
+   /**
+   * preparation time of route in seconds
+   * @return preparationTime
+  **/
+  @ApiModelProperty(value = "preparation time of route in seconds")
+  public Long getPreparationTime() {
+    return preparationTime;
+  }
+
+  public void setPreparationTime(Long preparationTime) {
+    this.preparationTime = preparationTime;
+  }
+
   public Route activities(List<Activity> activities) {
     this.activities = activities;
     return this;
@@ -211,13 +253,15 @@ public class Route {
         Objects.equals(this.transportTime, route.transportTime) &&
         Objects.equals(this.completionTime, route.completionTime) &&
         Objects.equals(this.waitingTime, route.waitingTime) &&
+        Objects.equals(this.serviceDuration, route.serviceDuration) &&
+        Objects.equals(this.preparationTime, route.preparationTime) &&
         Objects.equals(this.activities, route.activities) &&
         Objects.equals(this.points, route.points);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(vehicleId, distance, transportTime, completionTime, waitingTime, activities, points);
+    return Objects.hash(vehicleId, distance, transportTime, completionTime, waitingTime, serviceDuration, preparationTime, activities, points);
   }
 
 
@@ -231,6 +275,8 @@ public class Route {
     sb.append("    transportTime: ").append(toIndentedString(transportTime)).append("\n");
     sb.append("    completionTime: ").append(toIndentedString(completionTime)).append("\n");
     sb.append("    waitingTime: ").append(toIndentedString(waitingTime)).append("\n");
+    sb.append("    serviceDuration: ").append(toIndentedString(serviceDuration)).append("\n");
+    sb.append("    preparationTime: ").append(toIndentedString(preparationTime)).append("\n");
     sb.append("    activities: ").append(toIndentedString(activities)).append("\n");
     sb.append("    points: ").append(toIndentedString(points)).append("\n");
     sb.append("}");

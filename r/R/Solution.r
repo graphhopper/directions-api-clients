@@ -15,6 +15,9 @@
 #' @field transport_time 
 #' @field max_operation_time 
 #' @field waiting_time 
+#' @field service_duration 
+#' @field preparation_time 
+#' @field completion_time 
 #' @field no_vehicles 
 #' @field no_unassigned 
 #' @field routes 
@@ -32,11 +35,14 @@ Solution <- R6::R6Class(
     `transport_time` = NULL,
     `max_operation_time` = NULL,
     `waiting_time` = NULL,
+    `service_duration` = NULL,
+    `preparation_time` = NULL,
+    `completion_time` = NULL,
     `no_vehicles` = NULL,
     `no_unassigned` = NULL,
     `routes` = NULL,
     `unassigned` = NULL,
-    initialize = function(`costs`, `distance`, `time`, `transport_time`, `max_operation_time`, `waiting_time`, `no_vehicles`, `no_unassigned`, `routes`, `unassigned`){
+    initialize = function(`costs`, `distance`, `time`, `transport_time`, `max_operation_time`, `waiting_time`, `service_duration`, `preparation_time`, `completion_time`, `no_vehicles`, `no_unassigned`, `routes`, `unassigned`){
       if (!missing(`costs`)) {
         stopifnot(is.numeric(`costs`), length(`costs`) == 1)
         self$`costs` <- `costs`
@@ -60,6 +66,18 @@ Solution <- R6::R6Class(
       if (!missing(`waiting_time`)) {
         stopifnot(is.numeric(`waiting_time`), length(`waiting_time`) == 1)
         self$`waiting_time` <- `waiting_time`
+      }
+      if (!missing(`service_duration`)) {
+        stopifnot(is.numeric(`service_duration`), length(`service_duration`) == 1)
+        self$`service_duration` <- `service_duration`
+      }
+      if (!missing(`preparation_time`)) {
+        stopifnot(is.numeric(`preparation_time`), length(`preparation_time`) == 1)
+        self$`preparation_time` <- `preparation_time`
+      }
+      if (!missing(`completion_time`)) {
+        stopifnot(is.numeric(`completion_time`), length(`completion_time`) == 1)
+        self$`completion_time` <- `completion_time`
       }
       if (!missing(`no_vehicles`)) {
         stopifnot(is.numeric(`no_vehicles`), length(`no_vehicles`) == 1)
@@ -99,6 +117,15 @@ Solution <- R6::R6Class(
       if (!is.null(self$`waiting_time`)) {
         SolutionObject[['waiting_time']] <- self$`waiting_time`
       }
+      if (!is.null(self$`service_duration`)) {
+        SolutionObject[['service_duration']] <- self$`service_duration`
+      }
+      if (!is.null(self$`preparation_time`)) {
+        SolutionObject[['preparation_time']] <- self$`preparation_time`
+      }
+      if (!is.null(self$`completion_time`)) {
+        SolutionObject[['completion_time']] <- self$`completion_time`
+      }
       if (!is.null(self$`no_vehicles`)) {
         SolutionObject[['no_vehicles']] <- self$`no_vehicles`
       }
@@ -134,6 +161,15 @@ Solution <- R6::R6Class(
       if (!is.null(SolutionObject$`waiting_time`)) {
         self$`waiting_time` <- SolutionObject$`waiting_time`
       }
+      if (!is.null(SolutionObject$`service_duration`)) {
+        self$`service_duration` <- SolutionObject$`service_duration`
+      }
+      if (!is.null(SolutionObject$`preparation_time`)) {
+        self$`preparation_time` <- SolutionObject$`preparation_time`
+      }
+      if (!is.null(SolutionObject$`completion_time`)) {
+        self$`completion_time` <- SolutionObject$`completion_time`
+      }
       if (!is.null(SolutionObject$`no_vehicles`)) {
         self$`no_vehicles` <- SolutionObject$`no_vehicles`
       }
@@ -162,6 +198,9 @@ Solution <- R6::R6Class(
            "transport_time": %d,
            "max_operation_time": %d,
            "waiting_time": %d,
+           "service_duration": %d,
+           "preparation_time": %d,
+           "completion_time": %d,
            "no_vehicles": %s,
            "no_unassigned": %s,
            "routes": [%s],
@@ -173,6 +212,9 @@ Solution <- R6::R6Class(
         self$`transport_time`,
         self$`max_operation_time`,
         self$`waiting_time`,
+        self$`service_duration`,
+        self$`preparation_time`,
+        self$`completion_time`,
         self$`no_vehicles`,
         self$`no_unassigned`,
         lapply(self$`routes`, function(x) paste(x$toJSON(), sep=",")),
@@ -187,6 +229,9 @@ Solution <- R6::R6Class(
       self$`transport_time` <- SolutionObject$`transport_time`
       self$`max_operation_time` <- SolutionObject$`max_operation_time`
       self$`waiting_time` <- SolutionObject$`waiting_time`
+      self$`service_duration` <- SolutionObject$`service_duration`
+      self$`preparation_time` <- SolutionObject$`preparation_time`
+      self$`completion_time` <- SolutionObject$`completion_time`
       self$`no_vehicles` <- SolutionObject$`no_vehicles`
       self$`no_unassigned` <- SolutionObject$`no_unassigned`
       self$`routes` <- lapply(SolutionObject$`routes`, function(x) Route$new()$fromJSON(jsonlite::toJSON(x, auto_unbox = TRUE)))

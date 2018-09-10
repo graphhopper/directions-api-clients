@@ -90,6 +90,27 @@ public:
 	/*! \brief Set total waiting time in seconds
 	 */
 	void setWaitingTime(long long  waiting_time);
+	/*! \brief Get total service time in seconds
+	 */
+	long long getServiceDuration();
+
+	/*! \brief Set total service time in seconds
+	 */
+	void setServiceDuration(long long  service_duration);
+	/*! \brief Get total preparation time in seconds
+	 */
+	long long getPreparationTime();
+
+	/*! \brief Set total preparation time in seconds
+	 */
+	void setPreparationTime(long long  preparation_time);
+	/*! \brief Get total completion time in seconds
+	 */
+	long long getCompletionTime();
+
+	/*! \brief Set total completion time in seconds
+	 */
+	void setCompletionTime(long long  completion_time);
 	/*! \brief Get number of employed vehicles
 	 */
 	int getNoVehicles();
@@ -126,6 +147,9 @@ private:
 	long long transport_time;
 	long long max_operation_time;
 	long long waiting_time;
+	long long service_duration;
+	long long preparation_time;
+	long long completion_time;
 	int no_vehicles;
 	int no_unassigned;
 	std::list <Route>routes;

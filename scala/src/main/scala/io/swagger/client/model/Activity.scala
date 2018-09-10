@@ -20,12 +20,20 @@ case class Activity (
   id: Option[String] = None,
   // id that refers to address
   locationId: Option[String] = None,
+  // address of activity
+  address: Option[Address] = None,
   // arrival time at this activity in seconds
   arrTime: Option[Long] = None,
   // end time of and thus departure time at this activity
   endTime: Option[Long] = None,
+  // end date time with offset like this 1970-01-01T01:00+01:00
+  endDateTime: Option[String] = None,
+  // arrival date time with offset like this 1970-01-01T01:00+01:00
+  arrDateTime: Option[String] = None,
   // waiting time at this activity in seconds
   waitingTime: Option[Long] = None,
+  // preparation time at this activity in seconds
+  preparationTime: Option[Long] = None,
   // cumulated distance from start to this activity in m
   distance: Option[Long] = None,
   // driving time of driver in seconds

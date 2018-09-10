@@ -23,15 +23,27 @@ pub struct Activity {
   /// id that refers to address
   #[serde(rename = "location_id")]
   location_id: Option<String>,
+  /// address of activity
+  #[serde(rename = "address")]
+  address: Option<::models::Address>,
   /// arrival time at this activity in seconds
   #[serde(rename = "arr_time")]
   arr_time: Option<i64>,
   /// end time of and thus departure time at this activity
   #[serde(rename = "end_time")]
   end_time: Option<i64>,
+  /// end date time with offset like this 1970-01-01T01:00+01:00
+  #[serde(rename = "end_date_time")]
+  end_date_time: Option<String>,
+  /// arrival date time with offset like this 1970-01-01T01:00+01:00
+  #[serde(rename = "arr_date_time")]
+  arr_date_time: Option<String>,
   /// waiting time at this activity in seconds
   #[serde(rename = "waiting_time")]
   waiting_time: Option<i64>,
+  /// preparation time at this activity in seconds
+  #[serde(rename = "preparation_time")]
+  preparation_time: Option<i64>,
   /// cumulated distance from start to this activity in m
   #[serde(rename = "distance")]
   distance: Option<i64>,
@@ -52,9 +64,13 @@ impl Activity {
       _type: None,
       id: None,
       location_id: None,
+      address: None,
       arr_time: None,
       end_time: None,
+      end_date_time: None,
+      arr_date_time: None,
       waiting_time: None,
+      preparation_time: None,
       distance: None,
       driving_time: None,
       load_before: None,
@@ -113,6 +129,23 @@ impl Activity {
     self.location_id = None;
   }
 
+  pub fn set_address(&mut self, address: ::models::Address) {
+    self.address = Some(address);
+  }
+
+  pub fn with_address(mut self, address: ::models::Address) -> Activity {
+    self.address = Some(address);
+    self
+  }
+
+  pub fn address(&self) -> Option<&::models::Address> {
+    self.address.as_ref()
+  }
+
+  pub fn reset_address(&mut self) {
+    self.address = None;
+  }
+
   pub fn set_arr_time(&mut self, arr_time: i64) {
     self.arr_time = Some(arr_time);
   }
@@ -147,6 +180,40 @@ impl Activity {
     self.end_time = None;
   }
 
+  pub fn set_end_date_time(&mut self, end_date_time: String) {
+    self.end_date_time = Some(end_date_time);
+  }
+
+  pub fn with_end_date_time(mut self, end_date_time: String) -> Activity {
+    self.end_date_time = Some(end_date_time);
+    self
+  }
+
+  pub fn end_date_time(&self) -> Option<&String> {
+    self.end_date_time.as_ref()
+  }
+
+  pub fn reset_end_date_time(&mut self) {
+    self.end_date_time = None;
+  }
+
+  pub fn set_arr_date_time(&mut self, arr_date_time: String) {
+    self.arr_date_time = Some(arr_date_time);
+  }
+
+  pub fn with_arr_date_time(mut self, arr_date_time: String) -> Activity {
+    self.arr_date_time = Some(arr_date_time);
+    self
+  }
+
+  pub fn arr_date_time(&self) -> Option<&String> {
+    self.arr_date_time.as_ref()
+  }
+
+  pub fn reset_arr_date_time(&mut self) {
+    self.arr_date_time = None;
+  }
+
   pub fn set_waiting_time(&mut self, waiting_time: i64) {
     self.waiting_time = Some(waiting_time);
   }
@@ -162,6 +229,23 @@ impl Activity {
 
   pub fn reset_waiting_time(&mut self) {
     self.waiting_time = None;
+  }
+
+  pub fn set_preparation_time(&mut self, preparation_time: i64) {
+    self.preparation_time = Some(preparation_time);
+  }
+
+  pub fn with_preparation_time(mut self, preparation_time: i64) -> Activity {
+    self.preparation_time = Some(preparation_time);
+    self
+  }
+
+  pub fn preparation_time(&self) -> Option<&i64> {
+    self.preparation_time.as_ref()
+  }
+
+  pub fn reset_preparation_time(&mut self) {
+    self.preparation_time = None;
   }
 
   pub fn set_distance(&mut self, distance: i64) {

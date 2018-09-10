@@ -59,6 +59,12 @@ public:
     qint64 getWaitingTime();
     void setWaitingTime(qint64 waiting_time);
 
+    qint64 getServiceDuration();
+    void setServiceDuration(qint64 service_duration);
+
+    qint64 getPreparationTime();
+    void setPreparationTime(qint64 preparation_time);
+
     QList<SWGActivity*>* getActivities();
     void setActivities(QList<SWGActivity*>* activities);
 
@@ -83,6 +89,12 @@ private:
     
     qint64 waiting_time;
     bool m_waiting_time_isSet;
+    
+    qint64 service_duration;
+    bool m_service_duration_isSet;
+    
+    qint64 preparation_time;
+    bool m_preparation_time_isSet;
     
     QList<SWGActivity*>* activities;
     bool m_activities_isSet;

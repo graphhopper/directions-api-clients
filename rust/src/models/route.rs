@@ -29,6 +29,12 @@ pub struct Route {
   /// waiting time of route in seconds
   #[serde(rename = "waiting_time")]
   waiting_time: Option<i64>,
+  /// service duration of route in seconds
+  #[serde(rename = "service_duration")]
+  service_duration: Option<i64>,
+  /// preparation time of route in seconds
+  #[serde(rename = "preparation_time")]
+  preparation_time: Option<i64>,
   /// array of activities
   #[serde(rename = "activities")]
   activities: Option<Vec<::models::Activity>>,
@@ -45,6 +51,8 @@ impl Route {
       transport_time: None,
       completion_time: None,
       waiting_time: None,
+      service_duration: None,
+      preparation_time: None,
       activities: None,
       points: None
     }
@@ -133,6 +141,40 @@ impl Route {
 
   pub fn reset_waiting_time(&mut self) {
     self.waiting_time = None;
+  }
+
+  pub fn set_service_duration(&mut self, service_duration: i64) {
+    self.service_duration = Some(service_duration);
+  }
+
+  pub fn with_service_duration(mut self, service_duration: i64) -> Route {
+    self.service_duration = Some(service_duration);
+    self
+  }
+
+  pub fn service_duration(&self) -> Option<&i64> {
+    self.service_duration.as_ref()
+  }
+
+  pub fn reset_service_duration(&mut self) {
+    self.service_duration = None;
+  }
+
+  pub fn set_preparation_time(&mut self, preparation_time: i64) {
+    self.preparation_time = Some(preparation_time);
+  }
+
+  pub fn with_preparation_time(mut self, preparation_time: i64) -> Route {
+    self.preparation_time = Some(preparation_time);
+    self
+  }
+
+  pub fn preparation_time(&self) -> Option<&i64> {
+    self.preparation_time.as_ref()
+  }
+
+  pub fn reset_preparation_time(&mut self) {
+    self.preparation_time = None;
   }
 
   pub fn set_activities(&mut self, activities: Vec<::models::Activity>) {

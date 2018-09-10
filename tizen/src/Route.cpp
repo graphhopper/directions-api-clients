@@ -39,6 +39,12 @@ Route::__init()
 	//
 	//waiting_time = long(0);
 	//
+	//
+	//service_duration = long(0);
+	//
+	//
+	//preparation_time = long(0);
+	//
 	//new std::list()std::list> activities;
 	//
 	//
@@ -74,6 +80,16 @@ Route::__cleanup()
 	//
 	//delete waiting_time;
 	//waiting_time = NULL;
+	//}
+	//if(service_duration != NULL) {
+	//
+	//delete service_duration;
+	//service_duration = NULL;
+	//}
+	//if(preparation_time != NULL) {
+	//
+	//delete preparation_time;
+	//preparation_time = NULL;
 	//}
 	//if(activities != NULL) {
 	//activities.RemoveAll(true);
@@ -144,6 +160,28 @@ Route::fromJson(char* jsonStr)
 
 		if (isprimitive("long long")) {
 			jsonToValue(&waiting_time, node, "long long", "");
+		} else {
+			
+		}
+	}
+	const gchar *service_durationKey = "service_duration";
+	node = json_object_get_member(pJsonObject, service_durationKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("long long")) {
+			jsonToValue(&service_duration, node, "long long", "");
+		} else {
+			
+		}
+	}
+	const gchar *preparation_timeKey = "preparation_time";
+	node = json_object_get_member(pJsonObject, preparation_timeKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("long long")) {
+			jsonToValue(&preparation_time, node, "long long", "");
 		} else {
 			
 		}
@@ -253,6 +291,24 @@ Route::toJson()
 	}
 	const gchar *waiting_timeKey = "waiting_time";
 	json_object_set_member(pJsonObject, waiting_timeKey, node);
+	if (isprimitive("long long")) {
+		long long obj = getServiceDuration();
+		node = converttoJson(&obj, "long long", "");
+	}
+	else {
+		
+	}
+	const gchar *service_durationKey = "service_duration";
+	json_object_set_member(pJsonObject, service_durationKey, node);
+	if (isprimitive("long long")) {
+		long long obj = getPreparationTime();
+		node = converttoJson(&obj, "long long", "");
+	}
+	else {
+		
+	}
+	const gchar *preparation_timeKey = "preparation_time";
+	json_object_set_member(pJsonObject, preparation_timeKey, node);
 	if (isprimitive("Activity")) {
 		list<Activity> new_list = static_cast<list <Activity> > (getActivities());
 		node = converttoJson(&new_list, "Activity", "array");
@@ -369,6 +425,30 @@ void
 Route::setWaitingTime(long long  waiting_time)
 {
 	this->waiting_time = waiting_time;
+}
+
+long long
+Route::getServiceDuration()
+{
+	return service_duration;
+}
+
+void
+Route::setServiceDuration(long long  service_duration)
+{
+	this->service_duration = service_duration;
+}
+
+long long
+Route::getPreparationTime()
+{
+	return preparation_time;
+}
+
+void
+Route::setPreparationTime(long long  preparation_time)
+{
+	this->preparation_time = preparation_time;
 }
 
 std::list<Activity>

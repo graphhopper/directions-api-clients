@@ -28,6 +28,15 @@ type Solution struct {
 	// total waiting time in seconds
 	WaitingTime int64 `json:"waiting_time,omitempty"`
 
+	// total service time in seconds
+	ServiceDuration int64 `json:"service_duration,omitempty"`
+
+	// total preparation time in seconds
+	PreparationTime int64 `json:"preparation_time,omitempty"`
+
+	// total completion time in seconds
+	CompletionTime int64 `json:"completion_time,omitempty"`
+
 	// number of employed vehicles
 	NoVehicles int32 `json:"no_vehicles,omitempty"`
 

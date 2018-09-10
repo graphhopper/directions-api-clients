@@ -24,6 +24,10 @@ case class Route (
   completionTime: Option[Long] = None,
   // waiting time of route in seconds
   waitingTime: Option[Long] = None,
+  // service duration of route in seconds
+  serviceDuration: Option[Long] = None,
+  // preparation time of route in seconds
+  preparationTime: Option[Long] = None,
   // array of activities
   activities: Option[List[Activity]] = None,
   // array of route planning points

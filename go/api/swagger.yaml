@@ -2037,7 +2037,7 @@ definitions:
         - "waiting_in_queue"
         - "processing"
         - "finished"
-      waiting_in_queue:
+      waiting_time_in_queue:
         type: "integer"
         format: "int64"
         description: "waiting time in ms"
@@ -2050,112 +2050,24 @@ definitions:
         description: "the solution. only available if status field indicates finished"
         $ref: "#/definitions/Solution"
     example:
+      waiting_time_in_queue: 0
       processing_time: 6
       solution:
         costs: 1
-        routes:
-        - completion_time: 1
-          distance: 4
-          transport_time: 7
-          waiting_time: 1
-          activities:
-          - distance: 1
-            waiting_time: 7
-            driving_time: 4
-            end_time: 6
-            load_before:
-            - 5
-            - 5
-            arr_time: 1
-            id: "id"
-            type: "start"
-            location_id: "location_id"
-            load_after:
-            - 9
-            - 9
-          - distance: 1
-            waiting_time: 7
-            driving_time: 4
-            end_time: 6
-            load_before:
-            - 5
-            - 5
-            arr_time: 1
-            id: "id"
-            type: "start"
-            location_id: "location_id"
-            load_after:
-            - 9
-            - 9
-          vehicle_id: "vehicle_id"
-          points:
-          - coordinates:
-            - "{}"
-            - "{}"
-            type: "type"
-          - coordinates:
-            - "{}"
-            - "{}"
-            type: "type"
-        - completion_time: 1
-          distance: 4
-          transport_time: 7
-          waiting_time: 1
-          activities:
-          - distance: 1
-            waiting_time: 7
-            driving_time: 4
-            end_time: 6
-            load_before:
-            - 5
-            - 5
-            arr_time: 1
-            id: "id"
-            type: "start"
-            location_id: "location_id"
-            load_after:
-            - 9
-            - 9
-          - distance: 1
-            waiting_time: 7
-            driving_time: 4
-            end_time: 6
-            load_before:
-            - 5
-            - 5
-            arr_time: 1
-            id: "id"
-            type: "start"
-            location_id: "location_id"
-            load_after:
-            - 9
-            - 9
-          vehicle_id: "vehicle_id"
-          points:
-          - coordinates:
-            - "{}"
-            - "{}"
-            type: "type"
-          - coordinates:
-            - "{}"
-            - "{}"
-            type: "type"
+        completion_time: 4
         distance: 5
         transport_time: 2
         waiting_time: 9
-        no_vehicles: 3
-        time: 5
-        no_unassigned: 2
         unassigned:
           breaks:
           - "breaks"
           - "breaks"
           details:
           - reason: "reason"
-            code: 9
+            code: 6
             id: "id"
           - reason: "reason"
-            code: 9
+            code: 6
             id: "id"
           services:
           - "services"
@@ -2163,12 +2075,143 @@ definitions:
           shipments:
           - "shipments"
           - "shipments"
+        service_duration: 3
+        routes:
+        - completion_time: 6
+          distance: 1
+          transport_time: 1
+          waiting_time: 7
+          activities:
+          - address:
+              street_hint: "street_hint"
+              name: "name"
+              lon: 0.8008281904610115
+              location_id: "location_id"
+              lat: 6.027456183070403
+            arr_date_time: "arr_date_time"
+            distance: 8
+            waiting_time: 9
+            driving_time: 9
+            end_time: 9
+            type: "start"
+            location_id: "location_id"
+            load_after:
+            - 3
+            - 3
+            end_date_time: "end_date_time"
+            preparation_time: 6
+            load_before:
+            - 6
+            - 6
+            arr_time: 5
+            id: "id"
+          - address:
+              street_hint: "street_hint"
+              name: "name"
+              lon: 0.8008281904610115
+              location_id: "location_id"
+              lat: 6.027456183070403
+            arr_date_time: "arr_date_time"
+            distance: 8
+            waiting_time: 9
+            driving_time: 9
+            end_time: 9
+            type: "start"
+            location_id: "location_id"
+            load_after:
+            - 3
+            - 3
+            end_date_time: "end_date_time"
+            preparation_time: 6
+            load_before:
+            - 6
+            - 6
+            arr_time: 5
+            id: "id"
+          preparation_time: 4
+          vehicle_id: "vehicle_id"
+          service_duration: 1
+          points:
+          - coordinates:
+            - "{}"
+            - "{}"
+            type: "type"
+          - coordinates:
+            - "{}"
+            - "{}"
+            type: "type"
+        - completion_time: 6
+          distance: 1
+          transport_time: 1
+          waiting_time: 7
+          activities:
+          - address:
+              street_hint: "street_hint"
+              name: "name"
+              lon: 0.8008281904610115
+              location_id: "location_id"
+              lat: 6.027456183070403
+            arr_date_time: "arr_date_time"
+            distance: 8
+            waiting_time: 9
+            driving_time: 9
+            end_time: 9
+            type: "start"
+            location_id: "location_id"
+            load_after:
+            - 3
+            - 3
+            end_date_time: "end_date_time"
+            preparation_time: 6
+            load_before:
+            - 6
+            - 6
+            arr_time: 5
+            id: "id"
+          - address:
+              street_hint: "street_hint"
+              name: "name"
+              lon: 0.8008281904610115
+              location_id: "location_id"
+              lat: 6.027456183070403
+            arr_date_time: "arr_date_time"
+            distance: 8
+            waiting_time: 9
+            driving_time: 9
+            end_time: 9
+            type: "start"
+            location_id: "location_id"
+            load_after:
+            - 3
+            - 3
+            end_date_time: "end_date_time"
+            preparation_time: 6
+            load_before:
+            - 6
+            - 6
+            arr_time: 5
+            id: "id"
+          preparation_time: 4
+          vehicle_id: "vehicle_id"
+          service_duration: 1
+          points:
+          - coordinates:
+            - "{}"
+            - "{}"
+            type: "type"
+          - coordinates:
+            - "{}"
+            - "{}"
+            type: "type"
+        no_vehicles: 7
+        preparation_time: 2
+        time: 5
+        no_unassigned: 1
         max_operation_time: 7
       copyrights:
       - "copyrights"
       - "copyrights"
       job_id: "job_id"
-      waiting_in_queue: 0
       status: "waiting_in_queue"
   Solution:
     type: "object"
@@ -2197,6 +2240,18 @@ definitions:
         type: "integer"
         format: "int64"
         description: "total waiting time in seconds"
+      service_duration:
+        type: "integer"
+        format: "int64"
+        description: "total service time in seconds"
+      preparation_time:
+        type: "integer"
+        format: "int64"
+        description: "total preparation time in seconds"
+      completion_time:
+        type: "integer"
+        format: "int64"
+        description: "total completion time in seconds"
       no_vehicles:
         type: "integer"
         format: "int32"
@@ -2214,109 +2269,20 @@ definitions:
         $ref: "#/definitions/Solution_unassigned"
     example:
       costs: 1
-      routes:
-      - completion_time: 1
-        distance: 4
-        transport_time: 7
-        waiting_time: 1
-        activities:
-        - distance: 1
-          waiting_time: 7
-          driving_time: 4
-          end_time: 6
-          load_before:
-          - 5
-          - 5
-          arr_time: 1
-          id: "id"
-          type: "start"
-          location_id: "location_id"
-          load_after:
-          - 9
-          - 9
-        - distance: 1
-          waiting_time: 7
-          driving_time: 4
-          end_time: 6
-          load_before:
-          - 5
-          - 5
-          arr_time: 1
-          id: "id"
-          type: "start"
-          location_id: "location_id"
-          load_after:
-          - 9
-          - 9
-        vehicle_id: "vehicle_id"
-        points:
-        - coordinates:
-          - "{}"
-          - "{}"
-          type: "type"
-        - coordinates:
-          - "{}"
-          - "{}"
-          type: "type"
-      - completion_time: 1
-        distance: 4
-        transport_time: 7
-        waiting_time: 1
-        activities:
-        - distance: 1
-          waiting_time: 7
-          driving_time: 4
-          end_time: 6
-          load_before:
-          - 5
-          - 5
-          arr_time: 1
-          id: "id"
-          type: "start"
-          location_id: "location_id"
-          load_after:
-          - 9
-          - 9
-        - distance: 1
-          waiting_time: 7
-          driving_time: 4
-          end_time: 6
-          load_before:
-          - 5
-          - 5
-          arr_time: 1
-          id: "id"
-          type: "start"
-          location_id: "location_id"
-          load_after:
-          - 9
-          - 9
-        vehicle_id: "vehicle_id"
-        points:
-        - coordinates:
-          - "{}"
-          - "{}"
-          type: "type"
-        - coordinates:
-          - "{}"
-          - "{}"
-          type: "type"
+      completion_time: 4
       distance: 5
       transport_time: 2
       waiting_time: 9
-      no_vehicles: 3
-      time: 5
-      no_unassigned: 2
       unassigned:
         breaks:
         - "breaks"
         - "breaks"
         details:
         - reason: "reason"
-          code: 9
+          code: 6
           id: "id"
         - reason: "reason"
-          code: 9
+          code: 6
           id: "id"
         services:
         - "services"
@@ -2324,6 +2290,138 @@ definitions:
         shipments:
         - "shipments"
         - "shipments"
+      service_duration: 3
+      routes:
+      - completion_time: 6
+        distance: 1
+        transport_time: 1
+        waiting_time: 7
+        activities:
+        - address:
+            street_hint: "street_hint"
+            name: "name"
+            lon: 0.8008281904610115
+            location_id: "location_id"
+            lat: 6.027456183070403
+          arr_date_time: "arr_date_time"
+          distance: 8
+          waiting_time: 9
+          driving_time: 9
+          end_time: 9
+          type: "start"
+          location_id: "location_id"
+          load_after:
+          - 3
+          - 3
+          end_date_time: "end_date_time"
+          preparation_time: 6
+          load_before:
+          - 6
+          - 6
+          arr_time: 5
+          id: "id"
+        - address:
+            street_hint: "street_hint"
+            name: "name"
+            lon: 0.8008281904610115
+            location_id: "location_id"
+            lat: 6.027456183070403
+          arr_date_time: "arr_date_time"
+          distance: 8
+          waiting_time: 9
+          driving_time: 9
+          end_time: 9
+          type: "start"
+          location_id: "location_id"
+          load_after:
+          - 3
+          - 3
+          end_date_time: "end_date_time"
+          preparation_time: 6
+          load_before:
+          - 6
+          - 6
+          arr_time: 5
+          id: "id"
+        preparation_time: 4
+        vehicle_id: "vehicle_id"
+        service_duration: 1
+        points:
+        - coordinates:
+          - "{}"
+          - "{}"
+          type: "type"
+        - coordinates:
+          - "{}"
+          - "{}"
+          type: "type"
+      - completion_time: 6
+        distance: 1
+        transport_time: 1
+        waiting_time: 7
+        activities:
+        - address:
+            street_hint: "street_hint"
+            name: "name"
+            lon: 0.8008281904610115
+            location_id: "location_id"
+            lat: 6.027456183070403
+          arr_date_time: "arr_date_time"
+          distance: 8
+          waiting_time: 9
+          driving_time: 9
+          end_time: 9
+          type: "start"
+          location_id: "location_id"
+          load_after:
+          - 3
+          - 3
+          end_date_time: "end_date_time"
+          preparation_time: 6
+          load_before:
+          - 6
+          - 6
+          arr_time: 5
+          id: "id"
+        - address:
+            street_hint: "street_hint"
+            name: "name"
+            lon: 0.8008281904610115
+            location_id: "location_id"
+            lat: 6.027456183070403
+          arr_date_time: "arr_date_time"
+          distance: 8
+          waiting_time: 9
+          driving_time: 9
+          end_time: 9
+          type: "start"
+          location_id: "location_id"
+          load_after:
+          - 3
+          - 3
+          end_date_time: "end_date_time"
+          preparation_time: 6
+          load_before:
+          - 6
+          - 6
+          arr_time: 5
+          id: "id"
+        preparation_time: 4
+        vehicle_id: "vehicle_id"
+        service_duration: 1
+        points:
+        - coordinates:
+          - "{}"
+          - "{}"
+          type: "type"
+        - coordinates:
+          - "{}"
+          - "{}"
+          type: "type"
+      no_vehicles: 7
+      preparation_time: 2
+      time: 5
+      no_unassigned: 1
       max_operation_time: 7
   Detail:
     type: "object"
@@ -2340,7 +2438,7 @@ definitions:
         description: "human readable reason"
     example:
       reason: "reason"
-      code: 9
+      code: 6
       id: "id"
   Route:
     type: "object"
@@ -2364,6 +2462,14 @@ definitions:
         type: "integer"
         format: "int64"
         description: "waiting time of route in seconds"
+      service_duration:
+        type: "integer"
+        format: "int64"
+        description: "service duration of route in seconds"
+      preparation_time:
+        type: "integer"
+        format: "int64"
+        description: "preparation time of route in seconds"
       activities:
         type: "array"
         description: "array of activities"
@@ -2375,40 +2481,60 @@ definitions:
         items:
           $ref: "#/definitions/RoutePoint"
     example:
-      completion_time: 1
-      distance: 4
-      transport_time: 7
-      waiting_time: 1
+      completion_time: 6
+      distance: 1
+      transport_time: 1
+      waiting_time: 7
       activities:
-      - distance: 1
-        waiting_time: 7
-        driving_time: 4
-        end_time: 6
-        load_before:
-        - 5
-        - 5
-        arr_time: 1
-        id: "id"
+      - address:
+          street_hint: "street_hint"
+          name: "name"
+          lon: 0.8008281904610115
+          location_id: "location_id"
+          lat: 6.027456183070403
+        arr_date_time: "arr_date_time"
+        distance: 8
+        waiting_time: 9
+        driving_time: 9
+        end_time: 9
         type: "start"
         location_id: "location_id"
         load_after:
-        - 9
-        - 9
-      - distance: 1
-        waiting_time: 7
-        driving_time: 4
-        end_time: 6
+        - 3
+        - 3
+        end_date_time: "end_date_time"
+        preparation_time: 6
         load_before:
-        - 5
-        - 5
-        arr_time: 1
+        - 6
+        - 6
+        arr_time: 5
         id: "id"
+      - address:
+          street_hint: "street_hint"
+          name: "name"
+          lon: 0.8008281904610115
+          location_id: "location_id"
+          lat: 6.027456183070403
+        arr_date_time: "arr_date_time"
+        distance: 8
+        waiting_time: 9
+        driving_time: 9
+        end_time: 9
         type: "start"
         location_id: "location_id"
         load_after:
-        - 9
-        - 9
+        - 3
+        - 3
+        end_date_time: "end_date_time"
+        preparation_time: 6
+        load_before:
+        - 6
+        - 6
+        arr_time: 5
+        id: "id"
+      preparation_time: 4
       vehicle_id: "vehicle_id"
+      service_duration: 1
       points:
       - coordinates:
         - "{}"
@@ -2455,6 +2581,9 @@ definitions:
       location_id:
         type: "string"
         description: "id that refers to address"
+      address:
+        description: "address of activity"
+        $ref: "#/definitions/Address"
       arr_time:
         type: "integer"
         format: "int64"
@@ -2463,10 +2592,20 @@ definitions:
         type: "integer"
         format: "int64"
         description: "end time of and thus departure time at this activity"
+      end_date_time:
+        type: "string"
+        description: "end date time with offset like this 1970-01-01T01:00+01:00"
+      arr_date_time:
+        type: "string"
+        description: "arrival date time with offset like this 1970-01-01T01:00+01:00"
       waiting_time:
         type: "integer"
         format: "int64"
         description: "waiting time at this activity in seconds"
+      preparation_time:
+        type: "integer"
+        format: "int64"
+        description: "preparation time at this activity in seconds"
       distance:
         type: "integer"
         format: "int64"
@@ -2490,20 +2629,29 @@ definitions:
           format: "int32"
           description: "dimension value"
     example:
-      distance: 1
-      waiting_time: 7
-      driving_time: 4
-      end_time: 6
-      load_before:
-      - 5
-      - 5
-      arr_time: 1
-      id: "id"
+      address:
+        street_hint: "street_hint"
+        name: "name"
+        lon: 0.8008281904610115
+        location_id: "location_id"
+        lat: 6.027456183070403
+      arr_date_time: "arr_date_time"
+      distance: 8
+      waiting_time: 9
+      driving_time: 9
+      end_time: 9
       type: "start"
       location_id: "location_id"
       load_after:
-      - 9
-      - 9
+      - 3
+      - 3
+      end_date_time: "end_date_time"
+      preparation_time: 6
+      load_before:
+      - 6
+      - 6
+      arr_time: 5
+      id: "id"
   IsochroneResponsePolygon_properties:
     properties:
       bucket:
@@ -2612,10 +2760,10 @@ definitions:
       - "breaks"
       details:
       - reason: "reason"
-        code: 9
+        code: 6
         id: "id"
       - reason: "reason"
-        code: 9
+        code: 6
         id: "id"
       services:
       - "services"

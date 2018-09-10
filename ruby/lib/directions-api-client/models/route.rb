@@ -30,6 +30,12 @@ module GraphHopperClient
     # waiting time of route in seconds
     attr_accessor :waiting_time
 
+    # service duration of route in seconds
+    attr_accessor :service_duration
+
+    # preparation time of route in seconds
+    attr_accessor :preparation_time
+
     # array of activities
     attr_accessor :activities
 
@@ -45,6 +51,8 @@ module GraphHopperClient
         :'transport_time' => :'transport_time',
         :'completion_time' => :'completion_time',
         :'waiting_time' => :'waiting_time',
+        :'service_duration' => :'service_duration',
+        :'preparation_time' => :'preparation_time',
         :'activities' => :'activities',
         :'points' => :'points'
       }
@@ -58,6 +66,8 @@ module GraphHopperClient
         :'transport_time' => :'Integer',
         :'completion_time' => :'Integer',
         :'waiting_time' => :'Integer',
+        :'service_duration' => :'Integer',
+        :'preparation_time' => :'Integer',
         :'activities' => :'Array<Activity>',
         :'points' => :'Array<RoutePoint>'
       }
@@ -89,6 +99,14 @@ module GraphHopperClient
 
       if attributes.has_key?(:'waiting_time')
         self.waiting_time = attributes[:'waiting_time']
+      end
+
+      if attributes.has_key?(:'service_duration')
+        self.service_duration = attributes[:'service_duration']
+      end
+
+      if attributes.has_key?(:'preparation_time')
+        self.preparation_time = attributes[:'preparation_time']
       end
 
       if attributes.has_key?(:'activities')
@@ -128,6 +146,8 @@ module GraphHopperClient
           transport_time == o.transport_time &&
           completion_time == o.completion_time &&
           waiting_time == o.waiting_time &&
+          service_duration == o.service_duration &&
+          preparation_time == o.preparation_time &&
           activities == o.activities &&
           points == o.points
     end
@@ -141,7 +161,7 @@ module GraphHopperClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [vehicle_id, distance, transport_time, completion_time, waiting_time, activities, points].hash
+      [vehicle_id, distance, transport_time, completion_time, waiting_time, service_duration, preparation_time, activities, points].hash
     end
 
     # Builds the object from hash

@@ -99,21 +99,29 @@ namespace IO.Swagger.Model
         /// <param name="Type">type of activity.</param>
         /// <param name="Id">id referring to the underlying service or shipment, i.e. the shipment or service this activity belongs to.</param>
         /// <param name="LocationId">id that refers to address.</param>
+        /// <param name="Address">address of activity.</param>
         /// <param name="ArrTime">arrival time at this activity in seconds.</param>
         /// <param name="EndTime">end time of and thus departure time at this activity.</param>
+        /// <param name="EndDateTime">end date time with offset like this 1970-01-01T01:00+01:00.</param>
+        /// <param name="ArrDateTime">arrival date time with offset like this 1970-01-01T01:00+01:00.</param>
         /// <param name="WaitingTime">waiting time at this activity in seconds.</param>
+        /// <param name="PreparationTime">preparation time at this activity in seconds.</param>
         /// <param name="Distance">cumulated distance from start to this activity in m.</param>
         /// <param name="DrivingTime">driving time of driver in seconds.</param>
         /// <param name="LoadBefore">Array with size/capacity dimensions before this activity.</param>
         /// <param name="LoadAfter">Array with size/capacity dimensions after this activity.</param>
-        public Activity(TypeEnum? Type = default(TypeEnum?), string Id = default(string), string LocationId = default(string), long? ArrTime = default(long?), long? EndTime = default(long?), long? WaitingTime = default(long?), long? Distance = default(long?), long? DrivingTime = default(long?), List<int?> LoadBefore = default(List<int?>), List<int?> LoadAfter = default(List<int?>))
+        public Activity(TypeEnum? Type = default(TypeEnum?), string Id = default(string), string LocationId = default(string), Address Address = default(Address), long? ArrTime = default(long?), long? EndTime = default(long?), string EndDateTime = default(string), string ArrDateTime = default(string), long? WaitingTime = default(long?), long? PreparationTime = default(long?), long? Distance = default(long?), long? DrivingTime = default(long?), List<int?> LoadBefore = default(List<int?>), List<int?> LoadAfter = default(List<int?>))
         {
             this.Type = Type;
             this.Id = Id;
             this.LocationId = LocationId;
+            this.Address = Address;
             this.ArrTime = ArrTime;
             this.EndTime = EndTime;
+            this.EndDateTime = EndDateTime;
+            this.ArrDateTime = ArrDateTime;
             this.WaitingTime = WaitingTime;
+            this.PreparationTime = PreparationTime;
             this.Distance = Distance;
             this.DrivingTime = DrivingTime;
             this.LoadBefore = LoadBefore;
@@ -136,6 +144,13 @@ namespace IO.Swagger.Model
         public string LocationId { get; set; }
 
         /// <summary>
+        /// address of activity
+        /// </summary>
+        /// <value>address of activity</value>
+        [DataMember(Name="address", EmitDefaultValue=false)]
+        public Address Address { get; set; }
+
+        /// <summary>
         /// arrival time at this activity in seconds
         /// </summary>
         /// <value>arrival time at this activity in seconds</value>
@@ -150,11 +165,32 @@ namespace IO.Swagger.Model
         public long? EndTime { get; set; }
 
         /// <summary>
+        /// end date time with offset like this 1970-01-01T01:00+01:00
+        /// </summary>
+        /// <value>end date time with offset like this 1970-01-01T01:00+01:00</value>
+        [DataMember(Name="end_date_time", EmitDefaultValue=false)]
+        public string EndDateTime { get; set; }
+
+        /// <summary>
+        /// arrival date time with offset like this 1970-01-01T01:00+01:00
+        /// </summary>
+        /// <value>arrival date time with offset like this 1970-01-01T01:00+01:00</value>
+        [DataMember(Name="arr_date_time", EmitDefaultValue=false)]
+        public string ArrDateTime { get; set; }
+
+        /// <summary>
         /// waiting time at this activity in seconds
         /// </summary>
         /// <value>waiting time at this activity in seconds</value>
         [DataMember(Name="waiting_time", EmitDefaultValue=false)]
         public long? WaitingTime { get; set; }
+
+        /// <summary>
+        /// preparation time at this activity in seconds
+        /// </summary>
+        /// <value>preparation time at this activity in seconds</value>
+        [DataMember(Name="preparation_time", EmitDefaultValue=false)]
+        public long? PreparationTime { get; set; }
 
         /// <summary>
         /// cumulated distance from start to this activity in m
@@ -195,9 +231,13 @@ namespace IO.Swagger.Model
             sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  LocationId: ").Append(LocationId).Append("\n");
+            sb.Append("  Address: ").Append(Address).Append("\n");
             sb.Append("  ArrTime: ").Append(ArrTime).Append("\n");
             sb.Append("  EndTime: ").Append(EndTime).Append("\n");
+            sb.Append("  EndDateTime: ").Append(EndDateTime).Append("\n");
+            sb.Append("  ArrDateTime: ").Append(ArrDateTime).Append("\n");
             sb.Append("  WaitingTime: ").Append(WaitingTime).Append("\n");
+            sb.Append("  PreparationTime: ").Append(PreparationTime).Append("\n");
             sb.Append("  Distance: ").Append(Distance).Append("\n");
             sb.Append("  DrivingTime: ").Append(DrivingTime).Append("\n");
             sb.Append("  LoadBefore: ").Append(LoadBefore).Append("\n");
@@ -252,6 +292,11 @@ namespace IO.Swagger.Model
                     this.LocationId.Equals(input.LocationId))
                 ) && 
                 (
+                    this.Address == input.Address ||
+                    (this.Address != null &&
+                    this.Address.Equals(input.Address))
+                ) && 
+                (
                     this.ArrTime == input.ArrTime ||
                     (this.ArrTime != null &&
                     this.ArrTime.Equals(input.ArrTime))
@@ -262,9 +307,24 @@ namespace IO.Swagger.Model
                     this.EndTime.Equals(input.EndTime))
                 ) && 
                 (
+                    this.EndDateTime == input.EndDateTime ||
+                    (this.EndDateTime != null &&
+                    this.EndDateTime.Equals(input.EndDateTime))
+                ) && 
+                (
+                    this.ArrDateTime == input.ArrDateTime ||
+                    (this.ArrDateTime != null &&
+                    this.ArrDateTime.Equals(input.ArrDateTime))
+                ) && 
+                (
                     this.WaitingTime == input.WaitingTime ||
                     (this.WaitingTime != null &&
                     this.WaitingTime.Equals(input.WaitingTime))
+                ) && 
+                (
+                    this.PreparationTime == input.PreparationTime ||
+                    (this.PreparationTime != null &&
+                    this.PreparationTime.Equals(input.PreparationTime))
                 ) && 
                 (
                     this.Distance == input.Distance ||
@@ -303,12 +363,20 @@ namespace IO.Swagger.Model
                     hashCode = hashCode * 59 + this.Id.GetHashCode();
                 if (this.LocationId != null)
                     hashCode = hashCode * 59 + this.LocationId.GetHashCode();
+                if (this.Address != null)
+                    hashCode = hashCode * 59 + this.Address.GetHashCode();
                 if (this.ArrTime != null)
                     hashCode = hashCode * 59 + this.ArrTime.GetHashCode();
                 if (this.EndTime != null)
                     hashCode = hashCode * 59 + this.EndTime.GetHashCode();
+                if (this.EndDateTime != null)
+                    hashCode = hashCode * 59 + this.EndDateTime.GetHashCode();
+                if (this.ArrDateTime != null)
+                    hashCode = hashCode * 59 + this.ArrDateTime.GetHashCode();
                 if (this.WaitingTime != null)
                     hashCode = hashCode * 59 + this.WaitingTime.GetHashCode();
+                if (this.PreparationTime != null)
+                    hashCode = hashCode * 59 + this.PreparationTime.GetHashCode();
                 if (this.Distance != null)
                     hashCode = hashCode * 59 + this.Distance.GetHashCode();
                 if (this.DrivingTime != null)

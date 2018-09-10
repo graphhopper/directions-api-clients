@@ -8,6 +8,8 @@ Name | Type | Description | Notes
 **TransportTime** | **int64** | transport time of route in seconds | [optional] [default to null]
 **CompletionTime** | **int64** | completion time of route in seconds | [optional] [default to null]
 **WaitingTime** | **int64** | waiting time of route in seconds | [optional] [default to null]
+**ServiceDuration** | **int64** | service duration of route in seconds | [optional] [default to null]
+**PreparationTime** | **int64** | preparation time of route in seconds | [optional] [default to null]
 **Activities** | [**[]Activity**](Activity.md) | array of activities | [optional] [default to null]
 **Points** | [**[]RoutePoint**](RoutePoint.md) | array of route planning points | [optional] [default to null]
 

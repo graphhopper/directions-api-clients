@@ -36,7 +36,7 @@ class Response(object):
         'copyrights': 'list[str]',
         'job_id': 'str',
         'status': 'str',
-        'waiting_in_queue': 'int',
+        'waiting_time_in_queue': 'int',
         'processing_time': 'int',
         'solution': 'Solution'
     }
@@ -45,18 +45,18 @@ class Response(object):
         'copyrights': 'copyrights',
         'job_id': 'job_id',
         'status': 'status',
-        'waiting_in_queue': 'waiting_in_queue',
+        'waiting_time_in_queue': 'waiting_time_in_queue',
         'processing_time': 'processing_time',
         'solution': 'solution'
     }
 
-    def __init__(self, copyrights=None, job_id=None, status=None, waiting_in_queue=None, processing_time=None, solution=None):  # noqa: E501
+    def __init__(self, copyrights=None, job_id=None, status=None, waiting_time_in_queue=None, processing_time=None, solution=None):  # noqa: E501
         """Response - a model defined in Swagger"""  # noqa: E501
 
         self._copyrights = None
         self._job_id = None
         self._status = None
-        self._waiting_in_queue = None
+        self._waiting_time_in_queue = None
         self._processing_time = None
         self._solution = None
         self.discriminator = None
@@ -67,8 +67,8 @@ class Response(object):
             self.job_id = job_id
         if status is not None:
             self.status = status
-        if waiting_in_queue is not None:
-            self.waiting_in_queue = waiting_in_queue
+        if waiting_time_in_queue is not None:
+            self.waiting_time_in_queue = waiting_time_in_queue
         if processing_time is not None:
             self.processing_time = processing_time
         if solution is not None:
@@ -148,27 +148,27 @@ class Response(object):
         self._status = status
 
     @property
-    def waiting_in_queue(self):
-        """Gets the waiting_in_queue of this Response.  # noqa: E501
+    def waiting_time_in_queue(self):
+        """Gets the waiting_time_in_queue of this Response.  # noqa: E501
 
         waiting time in ms  # noqa: E501
 
-        :return: The waiting_in_queue of this Response.  # noqa: E501
+        :return: The waiting_time_in_queue of this Response.  # noqa: E501
         :rtype: int
         """
-        return self._waiting_in_queue
+        return self._waiting_time_in_queue
 
-    @waiting_in_queue.setter
-    def waiting_in_queue(self, waiting_in_queue):
-        """Sets the waiting_in_queue of this Response.
+    @waiting_time_in_queue.setter
+    def waiting_time_in_queue(self, waiting_time_in_queue):
+        """Sets the waiting_time_in_queue of this Response.
 
         waiting time in ms  # noqa: E501
 
-        :param waiting_in_queue: The waiting_in_queue of this Response.  # noqa: E501
+        :param waiting_time_in_queue: The waiting_time_in_queue of this Response.  # noqa: E501
         :type: int
         """
 
-        self._waiting_in_queue = waiting_in_queue
+        self._waiting_time_in_queue = waiting_time_in_queue
 
     @property
     def processing_time(self):

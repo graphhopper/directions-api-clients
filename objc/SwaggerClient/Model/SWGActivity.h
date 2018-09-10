@@ -14,6 +14,9 @@
 */
 
 
+#import "SWGAddress.h"
+@protocol SWGAddress;
+@class SWGAddress;
 
 
 
@@ -31,15 +34,27 @@
 /* id that refers to address [optional]
  */
 @property(nonatomic) NSString* locationId;
+/* address of activity [optional]
+ */
+@property(nonatomic) SWGAddress* address;
 /* arrival time at this activity in seconds [optional]
  */
 @property(nonatomic) NSNumber* arrTime;
 /* end time of and thus departure time at this activity [optional]
  */
 @property(nonatomic) NSNumber* endTime;
+/* end date time with offset like this 1970-01-01T01:00+01:00 [optional]
+ */
+@property(nonatomic) NSString* endDateTime;
+/* arrival date time with offset like this 1970-01-01T01:00+01:00 [optional]
+ */
+@property(nonatomic) NSString* arrDateTime;
 /* waiting time at this activity in seconds [optional]
  */
 @property(nonatomic) NSNumber* waitingTime;
+/* preparation time at this activity in seconds [optional]
+ */
+@property(nonatomic) NSNumber* preparationTime;
 /* cumulated distance from start to this activity in m [optional]
  */
 @property(nonatomic) NSNumber* distance;

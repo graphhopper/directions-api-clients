@@ -43,12 +43,20 @@ SWGActivity::init() {
     m_id_isSet = false;
     location_id = new QString("");
     m_location_id_isSet = false;
+    address = new SWGAddress();
+    m_address_isSet = false;
     arr_time = 0L;
     m_arr_time_isSet = false;
     end_time = 0L;
     m_end_time_isSet = false;
+    end_date_time = new QString("");
+    m_end_date_time_isSet = false;
+    arr_date_time = new QString("");
+    m_arr_date_time_isSet = false;
     waiting_time = 0L;
     m_waiting_time_isSet = false;
+    preparation_time = 0L;
+    m_preparation_time_isSet = false;
     distance = 0L;
     m_distance_isSet = false;
     driving_time = 0L;
@@ -70,7 +78,17 @@ SWGActivity::cleanup() {
     if(location_id != nullptr) { 
         delete location_id;
     }
+    if(address != nullptr) { 
+        delete address;
+    }
 
+
+    if(end_date_time != nullptr) { 
+        delete end_date_time;
+    }
+    if(arr_date_time != nullptr) { 
+        delete arr_date_time;
+    }
 
 
 
@@ -96,11 +114,19 @@ SWGActivity::fromJsonObject(QJsonObject &pJson) {
     
     ::Swagger::setValue(&location_id, pJson["location_id"], "QString", "QString");
     
+    ::Swagger::setValue(&address, pJson["address"], "SWGAddress", "SWGAddress");
+    
     ::Swagger::setValue(&arr_time, pJson["arr_time"], "qint64", "");
     
     ::Swagger::setValue(&end_time, pJson["end_time"], "qint64", "");
     
+    ::Swagger::setValue(&end_date_time, pJson["end_date_time"], "QString", "QString");
+    
+    ::Swagger::setValue(&arr_date_time, pJson["arr_date_time"], "QString", "QString");
+    
     ::Swagger::setValue(&waiting_time, pJson["waiting_time"], "qint64", "");
+    
+    ::Swagger::setValue(&preparation_time, pJson["preparation_time"], "qint64", "");
     
     ::Swagger::setValue(&distance, pJson["distance"], "qint64", "");
     
@@ -137,6 +163,10 @@ SWGActivity::asJsonObject() {
     if(location_id != nullptr && *location_id != QString("")){
         toJsonValue(QString("location_id"), location_id, obj, QString("QString"));
     }
+     
+    if((address != nullptr) && (address->isSet())){
+        toJsonValue(QString("address"), address, obj, QString("SWGAddress"));
+    }
     
     if(m_arr_time_isSet){
         obj->insert("arr_time", QJsonValue(arr_time));
@@ -146,8 +176,20 @@ SWGActivity::asJsonObject() {
         obj->insert("end_time", QJsonValue(end_time));
     }
     
+    if(end_date_time != nullptr && *end_date_time != QString("")){
+        toJsonValue(QString("end_date_time"), end_date_time, obj, QString("QString"));
+    }
+    
+    if(arr_date_time != nullptr && *arr_date_time != QString("")){
+        toJsonValue(QString("arr_date_time"), arr_date_time, obj, QString("QString"));
+    }
+    
     if(m_waiting_time_isSet){
         obj->insert("waiting_time", QJsonValue(waiting_time));
+    }
+    
+    if(m_preparation_time_isSet){
+        obj->insert("preparation_time", QJsonValue(preparation_time));
     }
     
     if(m_distance_isSet){
@@ -199,6 +241,16 @@ SWGActivity::setLocationId(QString* location_id) {
     this->m_location_id_isSet = true;
 }
 
+SWGAddress*
+SWGActivity::getAddress() {
+    return address;
+}
+void
+SWGActivity::setAddress(SWGAddress* address) {
+    this->address = address;
+    this->m_address_isSet = true;
+}
+
 qint64
 SWGActivity::getArrTime() {
     return arr_time;
@@ -219,6 +271,26 @@ SWGActivity::setEndTime(qint64 end_time) {
     this->m_end_time_isSet = true;
 }
 
+QString*
+SWGActivity::getEndDateTime() {
+    return end_date_time;
+}
+void
+SWGActivity::setEndDateTime(QString* end_date_time) {
+    this->end_date_time = end_date_time;
+    this->m_end_date_time_isSet = true;
+}
+
+QString*
+SWGActivity::getArrDateTime() {
+    return arr_date_time;
+}
+void
+SWGActivity::setArrDateTime(QString* arr_date_time) {
+    this->arr_date_time = arr_date_time;
+    this->m_arr_date_time_isSet = true;
+}
+
 qint64
 SWGActivity::getWaitingTime() {
     return waiting_time;
@@ -227,6 +299,16 @@ void
 SWGActivity::setWaitingTime(qint64 waiting_time) {
     this->waiting_time = waiting_time;
     this->m_waiting_time_isSet = true;
+}
+
+qint64
+SWGActivity::getPreparationTime() {
+    return preparation_time;
+}
+void
+SWGActivity::setPreparationTime(qint64 preparation_time) {
+    this->preparation_time = preparation_time;
+    this->m_preparation_time_isSet = true;
 }
 
 qint64
@@ -277,9 +359,13 @@ SWGActivity::isSet(){
         if(type != nullptr && *type != QString("")){ isObjectUpdated = true; break;}
         if(id != nullptr && *id != QString("")){ isObjectUpdated = true; break;}
         if(location_id != nullptr && *location_id != QString("")){ isObjectUpdated = true; break;}
+        if(address != nullptr && address->isSet()){ isObjectUpdated = true; break;}
         if(m_arr_time_isSet){ isObjectUpdated = true; break;}
         if(m_end_time_isSet){ isObjectUpdated = true; break;}
+        if(end_date_time != nullptr && *end_date_time != QString("")){ isObjectUpdated = true; break;}
+        if(arr_date_time != nullptr && *arr_date_time != QString("")){ isObjectUpdated = true; break;}
         if(m_waiting_time_isSet){ isObjectUpdated = true; break;}
+        if(m_preparation_time_isSet){ isObjectUpdated = true; break;}
         if(m_distance_isSet){ isObjectUpdated = true; break;}
         if(m_driving_time_isSet){ isObjectUpdated = true; break;}
         if(m_load_before_isSet){ isObjectUpdated = true; break;}if(load_before->size() > 0){ isObjectUpdated = true; break;}

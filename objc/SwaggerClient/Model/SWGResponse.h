@@ -35,7 +35,7 @@
 @property(nonatomic) NSString* status;
 /* waiting time in ms [optional]
  */
-@property(nonatomic) NSNumber* waitingInQueue;
+@property(nonatomic) NSNumber* waitingTimeInQueue;
 /* processing time in ms. if job is still waiting in queue, processing_time is 0 [optional]
  */
 @property(nonatomic) NSNumber* processingTime;

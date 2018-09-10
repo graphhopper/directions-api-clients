@@ -51,6 +51,15 @@ public class Solution {
   @SerializedName("waiting_time")
   private Long waitingTime = null;
 
+  @SerializedName("service_duration")
+  private Long serviceDuration = null;
+
+  @SerializedName("preparation_time")
+  private Long preparationTime = null;
+
+  @SerializedName("completion_time")
+  private Long completionTime = null;
+
   @SerializedName("no_vehicles")
   private Integer noVehicles = null;
 
@@ -171,6 +180,60 @@ public class Solution {
     this.waitingTime = waitingTime;
   }
 
+  public Solution serviceDuration(Long serviceDuration) {
+    this.serviceDuration = serviceDuration;
+    return this;
+  }
+
+   /**
+   * total service time in seconds
+   * @return serviceDuration
+  **/
+  @ApiModelProperty(value = "total service time in seconds")
+  public Long getServiceDuration() {
+    return serviceDuration;
+  }
+
+  public void setServiceDuration(Long serviceDuration) {
+    this.serviceDuration = serviceDuration;
+  }
+
+  public Solution preparationTime(Long preparationTime) {
+    this.preparationTime = preparationTime;
+    return this;
+  }
+
+   /**
+   * total preparation time in seconds
+   * @return preparationTime
+  **/
+  @ApiModelProperty(value = "total preparation time in seconds")
+  public Long getPreparationTime() {
+    return preparationTime;
+  }
+
+  public void setPreparationTime(Long preparationTime) {
+    this.preparationTime = preparationTime;
+  }
+
+  public Solution completionTime(Long completionTime) {
+    this.completionTime = completionTime;
+    return this;
+  }
+
+   /**
+   * total completion time in seconds
+   * @return completionTime
+  **/
+  @ApiModelProperty(value = "total completion time in seconds")
+  public Long getCompletionTime() {
+    return completionTime;
+  }
+
+  public void setCompletionTime(Long completionTime) {
+    this.completionTime = completionTime;
+  }
+
   public Solution noVehicles(Integer noVehicles) {
     this.noVehicles = noVehicles;
     return this;
@@ -267,6 +330,9 @@ public class Solution {
         Objects.equals(this.transportTime, solution.transportTime) &&
         Objects.equals(this.maxOperationTime, solution.maxOperationTime) &&
         Objects.equals(this.waitingTime, solution.waitingTime) &&
+        Objects.equals(this.serviceDuration, solution.serviceDuration) &&
+        Objects.equals(this.preparationTime, solution.preparationTime) &&
+        Objects.equals(this.completionTime, solution.completionTime) &&
         Objects.equals(this.noVehicles, solution.noVehicles) &&
         Objects.equals(this.noUnassigned, solution.noUnassigned) &&
         Objects.equals(this.routes, solution.routes) &&
@@ -275,7 +341,7 @@ public class Solution {
 
   @Override
   public int hashCode() {
-    return Objects.hash(costs, distance, time, transportTime, maxOperationTime, waitingTime, noVehicles, noUnassigned, routes, unassigned);
+    return Objects.hash(costs, distance, time, transportTime, maxOperationTime, waitingTime, serviceDuration, preparationTime, completionTime, noVehicles, noUnassigned, routes, unassigned);
   }
 
 
@@ -290,6 +356,9 @@ public class Solution {
     sb.append("    transportTime: ").append(toIndentedString(transportTime)).append("\n");
     sb.append("    maxOperationTime: ").append(toIndentedString(maxOperationTime)).append("\n");
     sb.append("    waitingTime: ").append(toIndentedString(waitingTime)).append("\n");
+    sb.append("    serviceDuration: ").append(toIndentedString(serviceDuration)).append("\n");
+    sb.append("    preparationTime: ").append(toIndentedString(preparationTime)).append("\n");
+    sb.append("    completionTime: ").append(toIndentedString(completionTime)).append("\n");
     sb.append("    noVehicles: ").append(toIndentedString(noVehicles)).append("\n");
     sb.append("    noUnassigned: ").append(toIndentedString(noUnassigned)).append("\n");
     sb.append("    routes: ").append(toIndentedString(routes)).append("\n");

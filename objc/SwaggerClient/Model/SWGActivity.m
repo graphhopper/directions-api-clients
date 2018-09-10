@@ -17,7 +17,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"type": @"type", @"_id": @"id", @"locationId": @"location_id", @"arrTime": @"arr_time", @"endTime": @"end_time", @"waitingTime": @"waiting_time", @"distance": @"distance", @"drivingTime": @"driving_time", @"loadBefore": @"load_before", @"loadAfter": @"load_after" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"type": @"type", @"_id": @"id", @"locationId": @"location_id", @"address": @"address", @"arrTime": @"arr_time", @"endTime": @"end_time", @"endDateTime": @"end_date_time", @"arrDateTime": @"arr_date_time", @"waitingTime": @"waiting_time", @"preparationTime": @"preparation_time", @"distance": @"distance", @"drivingTime": @"driving_time", @"loadBefore": @"load_before", @"loadAfter": @"load_after" }];
 }
 
 /**
@@ -27,7 +27,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"type", @"_id", @"locationId", @"arrTime", @"endTime", @"waitingTime", @"distance", @"drivingTime", @"loadBefore", @"loadAfter"];
+  NSArray *optionalProperties = @[@"type", @"_id", @"locationId", @"address", @"arrTime", @"endTime", @"endDateTime", @"arrDateTime", @"waitingTime", @"preparationTime", @"distance", @"drivingTime", @"loadBefore", @"loadAfter"];
   return [optionalProperties containsObject:propertyName];
 }
 

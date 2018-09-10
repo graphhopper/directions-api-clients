@@ -62,6 +62,8 @@ class Route implements ModelInterface, ArrayAccess
         'transport_time' => 'int',
         'completion_time' => 'int',
         'waiting_time' => 'int',
+        'service_duration' => 'int',
+        'preparation_time' => 'int',
         'activities' => '\Swagger\Client\Model\Activity[]',
         'points' => '\Swagger\Client\Model\RoutePoint[]'
     ];
@@ -77,6 +79,8 @@ class Route implements ModelInterface, ArrayAccess
         'transport_time' => 'int64',
         'completion_time' => 'int64',
         'waiting_time' => 'int64',
+        'service_duration' => 'int64',
+        'preparation_time' => 'int64',
         'activities' => null,
         'points' => null
     ];
@@ -113,6 +117,8 @@ class Route implements ModelInterface, ArrayAccess
         'transport_time' => 'transport_time',
         'completion_time' => 'completion_time',
         'waiting_time' => 'waiting_time',
+        'service_duration' => 'service_duration',
+        'preparation_time' => 'preparation_time',
         'activities' => 'activities',
         'points' => 'points'
     ];
@@ -128,6 +134,8 @@ class Route implements ModelInterface, ArrayAccess
         'transport_time' => 'setTransportTime',
         'completion_time' => 'setCompletionTime',
         'waiting_time' => 'setWaitingTime',
+        'service_duration' => 'setServiceDuration',
+        'preparation_time' => 'setPreparationTime',
         'activities' => 'setActivities',
         'points' => 'setPoints'
     ];
@@ -143,6 +151,8 @@ class Route implements ModelInterface, ArrayAccess
         'transport_time' => 'getTransportTime',
         'completion_time' => 'getCompletionTime',
         'waiting_time' => 'getWaitingTime',
+        'service_duration' => 'getServiceDuration',
+        'preparation_time' => 'getPreparationTime',
         'activities' => 'getActivities',
         'points' => 'getPoints'
     ];
@@ -212,6 +222,8 @@ class Route implements ModelInterface, ArrayAccess
         $this->container['transport_time'] = isset($data['transport_time']) ? $data['transport_time'] : null;
         $this->container['completion_time'] = isset($data['completion_time']) ? $data['completion_time'] : null;
         $this->container['waiting_time'] = isset($data['waiting_time']) ? $data['waiting_time'] : null;
+        $this->container['service_duration'] = isset($data['service_duration']) ? $data['service_duration'] : null;
+        $this->container['preparation_time'] = isset($data['preparation_time']) ? $data['preparation_time'] : null;
         $this->container['activities'] = isset($data['activities']) ? $data['activities'] : null;
         $this->container['points'] = isset($data['points']) ? $data['points'] : null;
     }
@@ -357,6 +369,54 @@ class Route implements ModelInterface, ArrayAccess
     public function setWaitingTime($waiting_time)
     {
         $this->container['waiting_time'] = $waiting_time;
+
+        return $this;
+    }
+
+    /**
+     * Gets service_duration
+     *
+     * @return int
+     */
+    public function getServiceDuration()
+    {
+        return $this->container['service_duration'];
+    }
+
+    /**
+     * Sets service_duration
+     *
+     * @param int $service_duration service duration of route in seconds
+     *
+     * @return $this
+     */
+    public function setServiceDuration($service_duration)
+    {
+        $this->container['service_duration'] = $service_duration;
+
+        return $this;
+    }
+
+    /**
+     * Gets preparation_time
+     *
+     * @return int
+     */
+    public function getPreparationTime()
+    {
+        return $this->container['preparation_time'];
+    }
+
+    /**
+     * Sets preparation_time
+     *
+     * @param int $preparation_time preparation time of route in seconds
+     *
+     * @return $this
+     */
+    public function setPreparationTime($preparation_time)
+    {
+        $this->container['preparation_time'] = $preparation_time;
 
         return $this;
     }

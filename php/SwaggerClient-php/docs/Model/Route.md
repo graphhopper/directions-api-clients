@@ -8,6 +8,8 @@ Name | Type | Description | Notes
 **transport_time** | **int** | transport time of route in seconds | [optional] 
 **completion_time** | **int** | completion time of route in seconds | [optional] 
 **waiting_time** | **int** | waiting time of route in seconds | [optional] 
+**service_duration** | **int** | service duration of route in seconds | [optional] 
+**preparation_time** | **int** | preparation time of route in seconds | [optional] 
 **activities** | [**\Swagger\Client\Model\Activity[]**](Activity.md) | array of activities | [optional] 
 **points** | [**\Swagger\Client\Model\RoutePoint[]**](RoutePoint.md) | array of route planning points | [optional] 
 

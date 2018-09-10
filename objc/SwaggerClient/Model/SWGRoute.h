@@ -43,6 +43,12 @@
 /* waiting time of route in seconds [optional]
  */
 @property(nonatomic) NSNumber* waitingTime;
+/* service duration of route in seconds [optional]
+ */
+@property(nonatomic) NSNumber* serviceDuration;
+/* preparation time of route in seconds [optional]
+ */
+@property(nonatomic) NSNumber* preparationTime;
 /* array of activities [optional]
  */
 @property(nonatomic) NSArray<SWGActivity>* activities;

@@ -83,6 +83,20 @@ public:
 	/*! \brief Set waiting time of route in seconds
 	 */
 	void setWaitingTime(long long  waiting_time);
+	/*! \brief Get service duration of route in seconds
+	 */
+	long long getServiceDuration();
+
+	/*! \brief Set service duration of route in seconds
+	 */
+	void setServiceDuration(long long  service_duration);
+	/*! \brief Get preparation time of route in seconds
+	 */
+	long long getPreparationTime();
+
+	/*! \brief Set preparation time of route in seconds
+	 */
+	void setPreparationTime(long long  preparation_time);
 	/*! \brief Get array of activities
 	 */
 	std::list<Activity> getActivities();
@@ -104,6 +118,8 @@ private:
 	long long transport_time;
 	long long completion_time;
 	long long waiting_time;
+	long long service_duration;
+	long long preparation_time;
 	std::list <Activity>activities;
 	std::list <RoutePoint>points;
 	void __init();

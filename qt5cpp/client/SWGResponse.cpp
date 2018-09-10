@@ -43,8 +43,8 @@ SWGResponse::init() {
     m_job_id_isSet = false;
     status = new QString("");
     m_status_isSet = false;
-    waiting_in_queue = 0L;
-    m_waiting_in_queue_isSet = false;
+    waiting_time_in_queue = 0L;
+    m_waiting_time_in_queue_isSet = false;
     processing_time = 0L;
     m_processing_time_isSet = false;
     solution = new SWGSolution();
@@ -90,7 +90,7 @@ SWGResponse::fromJsonObject(QJsonObject &pJson) {
     
     ::Swagger::setValue(&status, pJson["status"], "QString", "QString");
     
-    ::Swagger::setValue(&waiting_in_queue, pJson["waiting_in_queue"], "qint64", "");
+    ::Swagger::setValue(&waiting_time_in_queue, pJson["waiting_time_in_queue"], "qint64", "");
     
     ::Swagger::setValue(&processing_time, pJson["processing_time"], "qint64", "");
     
@@ -124,8 +124,8 @@ SWGResponse::asJsonObject() {
         toJsonValue(QString("status"), status, obj, QString("QString"));
     }
     
-    if(m_waiting_in_queue_isSet){
-        obj->insert("waiting_in_queue", QJsonValue(waiting_in_queue));
+    if(m_waiting_time_in_queue_isSet){
+        obj->insert("waiting_time_in_queue", QJsonValue(waiting_time_in_queue));
     }
     
     if(m_processing_time_isSet){
@@ -170,13 +170,13 @@ SWGResponse::setStatus(QString* status) {
 }
 
 qint64
-SWGResponse::getWaitingInQueue() {
-    return waiting_in_queue;
+SWGResponse::getWaitingTimeInQueue() {
+    return waiting_time_in_queue;
 }
 void
-SWGResponse::setWaitingInQueue(qint64 waiting_in_queue) {
-    this->waiting_in_queue = waiting_in_queue;
-    this->m_waiting_in_queue_isSet = true;
+SWGResponse::setWaitingTimeInQueue(qint64 waiting_time_in_queue) {
+    this->waiting_time_in_queue = waiting_time_in_queue;
+    this->m_waiting_time_in_queue_isSet = true;
 }
 
 qint64
@@ -207,7 +207,7 @@ SWGResponse::isSet(){
         if(copyrights->size() > 0){ isObjectUpdated = true; break;}
         if(job_id != nullptr && *job_id != QString("")){ isObjectUpdated = true; break;}
         if(status != nullptr && *status != QString("")){ isObjectUpdated = true; break;}
-        if(m_waiting_in_queue_isSet){ isObjectUpdated = true; break;}
+        if(m_waiting_time_in_queue_isSet){ isObjectUpdated = true; break;}
         if(m_processing_time_isSet){ isObjectUpdated = true; break;}
         if(solution != nullptr && solution->isSet()){ isObjectUpdated = true; break;}
     }while(false);

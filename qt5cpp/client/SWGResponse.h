@@ -52,8 +52,8 @@ public:
     QString* getStatus();
     void setStatus(QString* status);
 
-    qint64 getWaitingInQueue();
-    void setWaitingInQueue(qint64 waiting_in_queue);
+    qint64 getWaitingTimeInQueue();
+    void setWaitingTimeInQueue(qint64 waiting_time_in_queue);
 
     qint64 getProcessingTime();
     void setProcessingTime(qint64 processing_time);
@@ -74,8 +74,8 @@ private:
     QString* status;
     bool m_status_isSet;
     
-    qint64 waiting_in_queue;
-    bool m_waiting_in_queue_isSet;
+    qint64 waiting_time_in_queue;
+    bool m_waiting_time_in_queue_isSet;
     
     qint64 processing_time;
     bool m_processing_time_isSet;

@@ -47,6 +47,10 @@ SWGRoute::init() {
     m_completion_time_isSet = false;
     waiting_time = 0L;
     m_waiting_time_isSet = false;
+    service_duration = 0L;
+    m_service_duration_isSet = false;
+    preparation_time = 0L;
+    m_preparation_time_isSet = false;
     activities = new QList<SWGActivity*>();
     m_activities_isSet = false;
     points = new QList<SWGRoutePoint*>();
@@ -58,6 +62,8 @@ SWGRoute::cleanup() {
     if(vehicle_id != nullptr) { 
         delete vehicle_id;
     }
+
+
 
 
 
@@ -99,6 +105,10 @@ SWGRoute::fromJsonObject(QJsonObject &pJson) {
     
     ::Swagger::setValue(&waiting_time, pJson["waiting_time"], "qint64", "");
     
+    ::Swagger::setValue(&service_duration, pJson["service_duration"], "qint64", "");
+    
+    ::Swagger::setValue(&preparation_time, pJson["preparation_time"], "qint64", "");
+    
     
     ::Swagger::setValue(&activities, pJson["activities"], "QList", "SWGActivity");
     
@@ -137,6 +147,14 @@ SWGRoute::asJsonObject() {
     
     if(m_waiting_time_isSet){
         obj->insert("waiting_time", QJsonValue(waiting_time));
+    }
+    
+    if(m_service_duration_isSet){
+        obj->insert("service_duration", QJsonValue(service_duration));
+    }
+    
+    if(m_preparation_time_isSet){
+        obj->insert("preparation_time", QJsonValue(preparation_time));
     }
     
     if(activities->size() > 0){
@@ -200,6 +218,26 @@ SWGRoute::setWaitingTime(qint64 waiting_time) {
     this->m_waiting_time_isSet = true;
 }
 
+qint64
+SWGRoute::getServiceDuration() {
+    return service_duration;
+}
+void
+SWGRoute::setServiceDuration(qint64 service_duration) {
+    this->service_duration = service_duration;
+    this->m_service_duration_isSet = true;
+}
+
+qint64
+SWGRoute::getPreparationTime() {
+    return preparation_time;
+}
+void
+SWGRoute::setPreparationTime(qint64 preparation_time) {
+    this->preparation_time = preparation_time;
+    this->m_preparation_time_isSet = true;
+}
+
 QList<SWGActivity*>*
 SWGRoute::getActivities() {
     return activities;
@@ -230,6 +268,8 @@ SWGRoute::isSet(){
         if(m_transport_time_isSet){ isObjectUpdated = true; break;}
         if(m_completion_time_isSet){ isObjectUpdated = true; break;}
         if(m_waiting_time_isSet){ isObjectUpdated = true; break;}
+        if(m_service_duration_isSet){ isObjectUpdated = true; break;}
+        if(m_preparation_time_isSet){ isObjectUpdated = true; break;}
         if(activities->size() > 0){ isObjectUpdated = true; break;}
         if(points->size() > 0){ isObjectUpdated = true; break;}
     }while(false);

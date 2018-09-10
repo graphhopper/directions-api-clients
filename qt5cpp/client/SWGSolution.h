@@ -61,6 +61,15 @@ public:
     qint64 getWaitingTime();
     void setWaitingTime(qint64 waiting_time);
 
+    qint64 getServiceDuration();
+    void setServiceDuration(qint64 service_duration);
+
+    qint64 getPreparationTime();
+    void setPreparationTime(qint64 preparation_time);
+
+    qint64 getCompletionTime();
+    void setCompletionTime(qint64 completion_time);
+
     qint32 getNoVehicles();
     void setNoVehicles(qint32 no_vehicles);
 
@@ -94,6 +103,15 @@ private:
     
     qint64 waiting_time;
     bool m_waiting_time_isSet;
+    
+    qint64 service_duration;
+    bool m_service_duration_isSet;
+    
+    qint64 preparation_time;
+    bool m_preparation_time_isSet;
+    
+    qint64 completion_time;
+    bool m_completion_time_isSet;
     
     qint32 no_vehicles;
     bool m_no_vehicles_isSet;

@@ -18,7 +18,7 @@ import io.swagger.client.models.Solution
  * @param copyrights 
  * @param job_id unique identify of job - which you get when posting your request to the large problem solver
  * @param status indicates the current status of the job
- * @param waiting_in_queue waiting time in ms
+ * @param waiting_time_in_queue waiting time in ms
  * @param processing_time processing time in ms. if job is still waiting in queue, processing_time is 0
  * @param solution the solution. only available if status field indicates finished
  */
@@ -29,7 +29,7 @@ data class Response (
     /* indicates the current status of the job */
     val status: Response.Status? = null,
     /* waiting time in ms */
-    val waiting_in_queue: kotlin.Long? = null,
+    val waiting_time_in_queue: kotlin.Long? = null,
     /* processing time in ms. if job is still waiting in queue, processing_time is 0 */
     val processing_time: kotlin.Long? = null,
     /* the solution. only available if status field indicates finished */

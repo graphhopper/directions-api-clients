@@ -22,6 +22,7 @@
 #include <QJsonObject>
 
 
+#include "SWGAddress.h"
 #include <QList>
 #include <QString>
 
@@ -51,14 +52,26 @@ public:
     QString* getLocationId();
     void setLocationId(QString* location_id);
 
+    SWGAddress* getAddress();
+    void setAddress(SWGAddress* address);
+
     qint64 getArrTime();
     void setArrTime(qint64 arr_time);
 
     qint64 getEndTime();
     void setEndTime(qint64 end_time);
 
+    QString* getEndDateTime();
+    void setEndDateTime(QString* end_date_time);
+
+    QString* getArrDateTime();
+    void setArrDateTime(QString* arr_date_time);
+
     qint64 getWaitingTime();
     void setWaitingTime(qint64 waiting_time);
+
+    qint64 getPreparationTime();
+    void setPreparationTime(qint64 preparation_time);
 
     qint64 getDistance();
     void setDistance(qint64 distance);
@@ -85,14 +98,26 @@ private:
     QString* location_id;
     bool m_location_id_isSet;
     
+    SWGAddress* address;
+    bool m_address_isSet;
+    
     qint64 arr_time;
     bool m_arr_time_isSet;
     
     qint64 end_time;
     bool m_end_time_isSet;
     
+    QString* end_date_time;
+    bool m_end_date_time_isSet;
+    
+    QString* arr_date_time;
+    bool m_arr_date_time_isSet;
+    
     qint64 waiting_time;
     bool m_waiting_time_isSet;
+    
+    qint64 preparation_time;
+    bool m_preparation_time_isSet;
     
     qint64 distance;
     bool m_distance_isSet;

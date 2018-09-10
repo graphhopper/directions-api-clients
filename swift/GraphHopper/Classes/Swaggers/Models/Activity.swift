@@ -25,12 +25,20 @@ public class Activity: JSONEncodable {
     public var id: String?
     /** id that refers to address */
     public var locationId: String?
+    /** address of activity */
+    public var address: Address?
     /** arrival time at this activity in seconds */
     public var arrTime: Int64?
     /** end time of and thus departure time at this activity */
     public var endTime: Int64?
+    /** end date time with offset like this 1970-01-01T01:00+01:00 */
+    public var endDateTime: String?
+    /** arrival date time with offset like this 1970-01-01T01:00+01:00 */
+    public var arrDateTime: String?
     /** waiting time at this activity in seconds */
     public var waitingTime: Int64?
+    /** preparation time at this activity in seconds */
+    public var preparationTime: Int64?
     /** cumulated distance from start to this activity in m */
     public var distance: Int64?
     /** driving time of driver in seconds */
@@ -48,9 +56,13 @@ public class Activity: JSONEncodable {
         nillableDictionary["type"] = self.type?.rawValue
         nillableDictionary["id"] = self.id
         nillableDictionary["location_id"] = self.locationId
+        nillableDictionary["address"] = self.address?.encodeToJSON()
         nillableDictionary["arr_time"] = self.arrTime?.encodeToJSON()
         nillableDictionary["end_time"] = self.endTime?.encodeToJSON()
+        nillableDictionary["end_date_time"] = self.endDateTime
+        nillableDictionary["arr_date_time"] = self.arrDateTime
         nillableDictionary["waiting_time"] = self.waitingTime?.encodeToJSON()
+        nillableDictionary["preparation_time"] = self.preparationTime?.encodeToJSON()
         nillableDictionary["distance"] = self.distance?.encodeToJSON()
         nillableDictionary["driving_time"] = self.drivingTime?.encodeToJSON()
         nillableDictionary["load_before"] = self.loadBefore?.encodeToJSON()

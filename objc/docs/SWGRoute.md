@@ -8,6 +8,8 @@ Name | Type | Description | Notes
 **transportTime** | **NSNumber*** | transport time of route in seconds | [optional] 
 **completionTime** | **NSNumber*** | completion time of route in seconds | [optional] 
 **waitingTime** | **NSNumber*** | waiting time of route in seconds | [optional] 
+**serviceDuration** | **NSNumber*** | service duration of route in seconds | [optional] 
+**preparationTime** | **NSNumber*** | preparation time of route in seconds | [optional] 
 **activities** | [**NSArray&lt;SWGActivity&gt;***](SWGActivity.md) | array of activities | [optional] 
 **points** | [**NSArray&lt;SWGRoutePoint&gt;***](SWGRoutePoint.md) | array of route planning points | [optional] 
 

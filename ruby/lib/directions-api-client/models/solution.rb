@@ -33,6 +33,15 @@ module GraphHopperClient
     # total waiting time in seconds
     attr_accessor :waiting_time
 
+    # total service time in seconds
+    attr_accessor :service_duration
+
+    # total preparation time in seconds
+    attr_accessor :preparation_time
+
+    # total completion time in seconds
+    attr_accessor :completion_time
+
     # number of employed vehicles
     attr_accessor :no_vehicles
 
@@ -54,6 +63,9 @@ module GraphHopperClient
         :'transport_time' => :'transport_time',
         :'max_operation_time' => :'max_operation_time',
         :'waiting_time' => :'waiting_time',
+        :'service_duration' => :'service_duration',
+        :'preparation_time' => :'preparation_time',
+        :'completion_time' => :'completion_time',
         :'no_vehicles' => :'no_vehicles',
         :'no_unassigned' => :'no_unassigned',
         :'routes' => :'routes',
@@ -70,6 +82,9 @@ module GraphHopperClient
         :'transport_time' => :'Integer',
         :'max_operation_time' => :'Integer',
         :'waiting_time' => :'Integer',
+        :'service_duration' => :'Integer',
+        :'preparation_time' => :'Integer',
+        :'completion_time' => :'Integer',
         :'no_vehicles' => :'Integer',
         :'no_unassigned' => :'Integer',
         :'routes' => :'Array<Route>',
@@ -107,6 +122,18 @@ module GraphHopperClient
 
       if attributes.has_key?(:'waiting_time')
         self.waiting_time = attributes[:'waiting_time']
+      end
+
+      if attributes.has_key?(:'service_duration')
+        self.service_duration = attributes[:'service_duration']
+      end
+
+      if attributes.has_key?(:'preparation_time')
+        self.preparation_time = attributes[:'preparation_time']
+      end
+
+      if attributes.has_key?(:'completion_time')
+        self.completion_time = attributes[:'completion_time']
       end
 
       if attributes.has_key?(:'no_vehicles')
@@ -153,6 +180,9 @@ module GraphHopperClient
           transport_time == o.transport_time &&
           max_operation_time == o.max_operation_time &&
           waiting_time == o.waiting_time &&
+          service_duration == o.service_duration &&
+          preparation_time == o.preparation_time &&
+          completion_time == o.completion_time &&
           no_vehicles == o.no_vehicles &&
           no_unassigned == o.no_unassigned &&
           routes == o.routes &&
@@ -168,7 +198,7 @@ module GraphHopperClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [costs, distance, time, transport_time, max_operation_time, waiting_time, no_vehicles, no_unassigned, routes, unassigned].hash
+      [costs, distance, time, transport_time, max_operation_time, waiting_time, service_duration, preparation_time, completion_time, no_vehicles, no_unassigned, routes, unassigned].hash
     end
 
     # Builds the object from hash

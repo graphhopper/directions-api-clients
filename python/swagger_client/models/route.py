@@ -39,6 +39,8 @@ class Route(object):
         'transport_time': 'int',
         'completion_time': 'int',
         'waiting_time': 'int',
+        'service_duration': 'int',
+        'preparation_time': 'int',
         'activities': 'list[Activity]',
         'points': 'list[RoutePoint]'
     }
@@ -49,11 +51,13 @@ class Route(object):
         'transport_time': 'transport_time',
         'completion_time': 'completion_time',
         'waiting_time': 'waiting_time',
+        'service_duration': 'service_duration',
+        'preparation_time': 'preparation_time',
         'activities': 'activities',
         'points': 'points'
     }
 
-    def __init__(self, vehicle_id=None, distance=None, transport_time=None, completion_time=None, waiting_time=None, activities=None, points=None):  # noqa: E501
+    def __init__(self, vehicle_id=None, distance=None, transport_time=None, completion_time=None, waiting_time=None, service_duration=None, preparation_time=None, activities=None, points=None):  # noqa: E501
         """Route - a model defined in Swagger"""  # noqa: E501
 
         self._vehicle_id = None
@@ -61,6 +65,8 @@ class Route(object):
         self._transport_time = None
         self._completion_time = None
         self._waiting_time = None
+        self._service_duration = None
+        self._preparation_time = None
         self._activities = None
         self._points = None
         self.discriminator = None
@@ -75,6 +81,10 @@ class Route(object):
             self.completion_time = completion_time
         if waiting_time is not None:
             self.waiting_time = waiting_time
+        if service_duration is not None:
+            self.service_duration = service_duration
+        if preparation_time is not None:
+            self.preparation_time = preparation_time
         if activities is not None:
             self.activities = activities
         if points is not None:
@@ -194,6 +204,52 @@ class Route(object):
         """
 
         self._waiting_time = waiting_time
+
+    @property
+    def service_duration(self):
+        """Gets the service_duration of this Route.  # noqa: E501
+
+        service duration of route in seconds  # noqa: E501
+
+        :return: The service_duration of this Route.  # noqa: E501
+        :rtype: int
+        """
+        return self._service_duration
+
+    @service_duration.setter
+    def service_duration(self, service_duration):
+        """Sets the service_duration of this Route.
+
+        service duration of route in seconds  # noqa: E501
+
+        :param service_duration: The service_duration of this Route.  # noqa: E501
+        :type: int
+        """
+
+        self._service_duration = service_duration
+
+    @property
+    def preparation_time(self):
+        """Gets the preparation_time of this Route.  # noqa: E501
+
+        preparation time of route in seconds  # noqa: E501
+
+        :return: The preparation_time of this Route.  # noqa: E501
+        :rtype: int
+        """
+        return self._preparation_time
+
+    @preparation_time.setter
+    def preparation_time(self, preparation_time):
+        """Sets the preparation_time of this Route.
+
+        preparation time of route in seconds  # noqa: E501
+
+        :param preparation_time: The preparation_time of this Route.  # noqa: E501
+        :type: int
+        """
+
+        self._preparation_time = preparation_time
 
     @property
     def activities(self):

@@ -49,6 +49,12 @@ SWGSolution::init() {
     m_max_operation_time_isSet = false;
     waiting_time = 0L;
     m_waiting_time_isSet = false;
+    service_duration = 0L;
+    m_service_duration_isSet = false;
+    preparation_time = 0L;
+    m_preparation_time_isSet = false;
+    completion_time = 0L;
+    m_completion_time_isSet = false;
     no_vehicles = 0;
     m_no_vehicles_isSet = false;
     no_unassigned = 0;
@@ -61,6 +67,9 @@ SWGSolution::init() {
 
 void
 SWGSolution::cleanup() {
+
+
+
 
 
 
@@ -103,6 +112,12 @@ SWGSolution::fromJsonObject(QJsonObject &pJson) {
     ::Swagger::setValue(&max_operation_time, pJson["max_operation_time"], "qint64", "");
     
     ::Swagger::setValue(&waiting_time, pJson["waiting_time"], "qint64", "");
+    
+    ::Swagger::setValue(&service_duration, pJson["service_duration"], "qint64", "");
+    
+    ::Swagger::setValue(&preparation_time, pJson["preparation_time"], "qint64", "");
+    
+    ::Swagger::setValue(&completion_time, pJson["completion_time"], "qint64", "");
     
     ::Swagger::setValue(&no_vehicles, pJson["no_vehicles"], "qint32", "");
     
@@ -150,6 +165,18 @@ SWGSolution::asJsonObject() {
     
     if(m_waiting_time_isSet){
         obj->insert("waiting_time", QJsonValue(waiting_time));
+    }
+    
+    if(m_service_duration_isSet){
+        obj->insert("service_duration", QJsonValue(service_duration));
+    }
+    
+    if(m_preparation_time_isSet){
+        obj->insert("preparation_time", QJsonValue(preparation_time));
+    }
+    
+    if(m_completion_time_isSet){
+        obj->insert("completion_time", QJsonValue(completion_time));
     }
     
     if(m_no_vehicles_isSet){
@@ -231,6 +258,36 @@ SWGSolution::setWaitingTime(qint64 waiting_time) {
     this->m_waiting_time_isSet = true;
 }
 
+qint64
+SWGSolution::getServiceDuration() {
+    return service_duration;
+}
+void
+SWGSolution::setServiceDuration(qint64 service_duration) {
+    this->service_duration = service_duration;
+    this->m_service_duration_isSet = true;
+}
+
+qint64
+SWGSolution::getPreparationTime() {
+    return preparation_time;
+}
+void
+SWGSolution::setPreparationTime(qint64 preparation_time) {
+    this->preparation_time = preparation_time;
+    this->m_preparation_time_isSet = true;
+}
+
+qint64
+SWGSolution::getCompletionTime() {
+    return completion_time;
+}
+void
+SWGSolution::setCompletionTime(qint64 completion_time) {
+    this->completion_time = completion_time;
+    this->m_completion_time_isSet = true;
+}
+
 qint32
 SWGSolution::getNoVehicles() {
     return no_vehicles;
@@ -282,6 +339,9 @@ SWGSolution::isSet(){
         if(m_transport_time_isSet){ isObjectUpdated = true; break;}
         if(m_max_operation_time_isSet){ isObjectUpdated = true; break;}
         if(m_waiting_time_isSet){ isObjectUpdated = true; break;}
+        if(m_service_duration_isSet){ isObjectUpdated = true; break;}
+        if(m_preparation_time_isSet){ isObjectUpdated = true; break;}
+        if(m_completion_time_isSet){ isObjectUpdated = true; break;}
         if(m_no_vehicles_isSet){ isObjectUpdated = true; break;}
         if(m_no_unassigned_isSet){ isObjectUpdated = true; break;}
         if(routes->size() > 0){ isObjectUpdated = true; break;}

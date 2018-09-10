@@ -30,6 +30,7 @@ use Log::Any qw($log);
 use Date::Parse;
 use DateTime;
 
+use WWW::SwaggerClient::Object::Address;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
@@ -164,6 +165,13 @@ __PACKAGE__->method_documentation({
     	format => '',
     	read_only => '',
     		},
+    'address' => {
+    	datatype => 'Address',
+    	base_name => 'address',
+    	description => 'address of activity',
+    	format => '',
+    	read_only => '',
+    		},
     'arr_time' => {
     	datatype => 'int',
     	base_name => 'arr_time',
@@ -178,10 +186,31 @@ __PACKAGE__->method_documentation({
     	format => '',
     	read_only => '',
     		},
+    'end_date_time' => {
+    	datatype => 'string',
+    	base_name => 'end_date_time',
+    	description => 'end date time with offset like this 1970-01-01T01:00+01:00',
+    	format => '',
+    	read_only => '',
+    		},
+    'arr_date_time' => {
+    	datatype => 'string',
+    	base_name => 'arr_date_time',
+    	description => 'arrival date time with offset like this 1970-01-01T01:00+01:00',
+    	format => '',
+    	read_only => '',
+    		},
     'waiting_time' => {
     	datatype => 'int',
     	base_name => 'waiting_time',
     	description => 'waiting time at this activity in seconds',
+    	format => '',
+    	read_only => '',
+    		},
+    'preparation_time' => {
+    	datatype => 'int',
+    	base_name => 'preparation_time',
+    	description => 'preparation time at this activity in seconds',
     	format => '',
     	read_only => '',
     		},
@@ -219,9 +248,13 @@ __PACKAGE__->swagger_types( {
     'type' => 'string',
     'id' => 'string',
     'location_id' => 'string',
+    'address' => 'Address',
     'arr_time' => 'int',
     'end_time' => 'int',
+    'end_date_time' => 'string',
+    'arr_date_time' => 'string',
     'waiting_time' => 'int',
+    'preparation_time' => 'int',
     'distance' => 'int',
     'driving_time' => 'int',
     'load_before' => 'ARRAY[int]',
@@ -232,9 +265,13 @@ __PACKAGE__->attribute_map( {
     'type' => 'type',
     'id' => 'id',
     'location_id' => 'location_id',
+    'address' => 'address',
     'arr_time' => 'arr_time',
     'end_time' => 'end_time',
+    'end_date_time' => 'end_date_time',
+    'arr_date_time' => 'arr_date_time',
     'waiting_time' => 'waiting_time',
+    'preparation_time' => 'preparation_time',
     'distance' => 'distance',
     'driving_time' => 'driving_time',
     'load_before' => 'load_before',

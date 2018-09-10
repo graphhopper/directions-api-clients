@@ -32,6 +32,15 @@ pub struct Solution {
   /// total waiting time in seconds
   #[serde(rename = "waiting_time")]
   waiting_time: Option<i64>,
+  /// total service time in seconds
+  #[serde(rename = "service_duration")]
+  service_duration: Option<i64>,
+  /// total preparation time in seconds
+  #[serde(rename = "preparation_time")]
+  preparation_time: Option<i64>,
+  /// total completion time in seconds
+  #[serde(rename = "completion_time")]
+  completion_time: Option<i64>,
   /// number of employed vehicles
   #[serde(rename = "no_vehicles")]
   no_vehicles: Option<i32>,
@@ -54,6 +63,9 @@ impl Solution {
       transport_time: None,
       max_operation_time: None,
       waiting_time: None,
+      service_duration: None,
+      preparation_time: None,
+      completion_time: None,
       no_vehicles: None,
       no_unassigned: None,
       routes: None,
@@ -161,6 +173,57 @@ impl Solution {
 
   pub fn reset_waiting_time(&mut self) {
     self.waiting_time = None;
+  }
+
+  pub fn set_service_duration(&mut self, service_duration: i64) {
+    self.service_duration = Some(service_duration);
+  }
+
+  pub fn with_service_duration(mut self, service_duration: i64) -> Solution {
+    self.service_duration = Some(service_duration);
+    self
+  }
+
+  pub fn service_duration(&self) -> Option<&i64> {
+    self.service_duration.as_ref()
+  }
+
+  pub fn reset_service_duration(&mut self) {
+    self.service_duration = None;
+  }
+
+  pub fn set_preparation_time(&mut self, preparation_time: i64) {
+    self.preparation_time = Some(preparation_time);
+  }
+
+  pub fn with_preparation_time(mut self, preparation_time: i64) -> Solution {
+    self.preparation_time = Some(preparation_time);
+    self
+  }
+
+  pub fn preparation_time(&self) -> Option<&i64> {
+    self.preparation_time.as_ref()
+  }
+
+  pub fn reset_preparation_time(&mut self) {
+    self.preparation_time = None;
+  }
+
+  pub fn set_completion_time(&mut self, completion_time: i64) {
+    self.completion_time = Some(completion_time);
+  }
+
+  pub fn with_completion_time(mut self, completion_time: i64) -> Solution {
+    self.completion_time = Some(completion_time);
+    self
+  }
+
+  pub fn completion_time(&self) -> Option<&i64> {
+    self.completion_time.as_ref()
+  }
+
+  pub fn reset_completion_time(&mut self) {
+    self.completion_time = None;
   }
 
   pub fn set_no_vehicles(&mut self, no_vehicles: i32) {

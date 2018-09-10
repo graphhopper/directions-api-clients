@@ -60,9 +60,13 @@ class Activity implements ModelInterface, ArrayAccess
         'type' => 'string',
         'id' => 'string',
         'location_id' => 'string',
+        'address' => '\Swagger\Client\Model\Address',
         'arr_time' => 'int',
         'end_time' => 'int',
+        'end_date_time' => 'string',
+        'arr_date_time' => 'string',
         'waiting_time' => 'int',
+        'preparation_time' => 'int',
         'distance' => 'int',
         'driving_time' => 'int',
         'load_before' => 'int[]',
@@ -78,9 +82,13 @@ class Activity implements ModelInterface, ArrayAccess
         'type' => null,
         'id' => null,
         'location_id' => null,
+        'address' => null,
         'arr_time' => 'int64',
         'end_time' => 'int64',
+        'end_date_time' => null,
+        'arr_date_time' => null,
         'waiting_time' => 'int64',
+        'preparation_time' => 'int64',
         'distance' => 'int64',
         'driving_time' => 'int64',
         'load_before' => 'int32',
@@ -117,9 +125,13 @@ class Activity implements ModelInterface, ArrayAccess
         'type' => 'type',
         'id' => 'id',
         'location_id' => 'location_id',
+        'address' => 'address',
         'arr_time' => 'arr_time',
         'end_time' => 'end_time',
+        'end_date_time' => 'end_date_time',
+        'arr_date_time' => 'arr_date_time',
         'waiting_time' => 'waiting_time',
+        'preparation_time' => 'preparation_time',
         'distance' => 'distance',
         'driving_time' => 'driving_time',
         'load_before' => 'load_before',
@@ -135,9 +147,13 @@ class Activity implements ModelInterface, ArrayAccess
         'type' => 'setType',
         'id' => 'setId',
         'location_id' => 'setLocationId',
+        'address' => 'setAddress',
         'arr_time' => 'setArrTime',
         'end_time' => 'setEndTime',
+        'end_date_time' => 'setEndDateTime',
+        'arr_date_time' => 'setArrDateTime',
         'waiting_time' => 'setWaitingTime',
+        'preparation_time' => 'setPreparationTime',
         'distance' => 'setDistance',
         'driving_time' => 'setDrivingTime',
         'load_before' => 'setLoadBefore',
@@ -153,9 +169,13 @@ class Activity implements ModelInterface, ArrayAccess
         'type' => 'getType',
         'id' => 'getId',
         'location_id' => 'getLocationId',
+        'address' => 'getAddress',
         'arr_time' => 'getArrTime',
         'end_time' => 'getEndTime',
+        'end_date_time' => 'getEndDateTime',
+        'arr_date_time' => 'getArrDateTime',
         'waiting_time' => 'getWaitingTime',
+        'preparation_time' => 'getPreparationTime',
         'distance' => 'getDistance',
         'driving_time' => 'getDrivingTime',
         'load_before' => 'getLoadBefore',
@@ -252,9 +272,13 @@ class Activity implements ModelInterface, ArrayAccess
         $this->container['type'] = isset($data['type']) ? $data['type'] : null;
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['location_id'] = isset($data['location_id']) ? $data['location_id'] : null;
+        $this->container['address'] = isset($data['address']) ? $data['address'] : null;
         $this->container['arr_time'] = isset($data['arr_time']) ? $data['arr_time'] : null;
         $this->container['end_time'] = isset($data['end_time']) ? $data['end_time'] : null;
+        $this->container['end_date_time'] = isset($data['end_date_time']) ? $data['end_date_time'] : null;
+        $this->container['arr_date_time'] = isset($data['arr_date_time']) ? $data['arr_date_time'] : null;
         $this->container['waiting_time'] = isset($data['waiting_time']) ? $data['waiting_time'] : null;
+        $this->container['preparation_time'] = isset($data['preparation_time']) ? $data['preparation_time'] : null;
         $this->container['distance'] = isset($data['distance']) ? $data['distance'] : null;
         $this->container['driving_time'] = isset($data['driving_time']) ? $data['driving_time'] : null;
         $this->container['load_before'] = isset($data['load_before']) ? $data['load_before'] : null;
@@ -380,6 +404,30 @@ class Activity implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets address
+     *
+     * @return \Swagger\Client\Model\Address
+     */
+    public function getAddress()
+    {
+        return $this->container['address'];
+    }
+
+    /**
+     * Sets address
+     *
+     * @param \Swagger\Client\Model\Address $address address of activity
+     *
+     * @return $this
+     */
+    public function setAddress($address)
+    {
+        $this->container['address'] = $address;
+
+        return $this;
+    }
+
+    /**
      * Gets arr_time
      *
      * @return int
@@ -428,6 +476,54 @@ class Activity implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets end_date_time
+     *
+     * @return string
+     */
+    public function getEndDateTime()
+    {
+        return $this->container['end_date_time'];
+    }
+
+    /**
+     * Sets end_date_time
+     *
+     * @param string $end_date_time end date time with offset like this 1970-01-01T01:00+01:00
+     *
+     * @return $this
+     */
+    public function setEndDateTime($end_date_time)
+    {
+        $this->container['end_date_time'] = $end_date_time;
+
+        return $this;
+    }
+
+    /**
+     * Gets arr_date_time
+     *
+     * @return string
+     */
+    public function getArrDateTime()
+    {
+        return $this->container['arr_date_time'];
+    }
+
+    /**
+     * Sets arr_date_time
+     *
+     * @param string $arr_date_time arrival date time with offset like this 1970-01-01T01:00+01:00
+     *
+     * @return $this
+     */
+    public function setArrDateTime($arr_date_time)
+    {
+        $this->container['arr_date_time'] = $arr_date_time;
+
+        return $this;
+    }
+
+    /**
      * Gets waiting_time
      *
      * @return int
@@ -447,6 +543,30 @@ class Activity implements ModelInterface, ArrayAccess
     public function setWaitingTime($waiting_time)
     {
         $this->container['waiting_time'] = $waiting_time;
+
+        return $this;
+    }
+
+    /**
+     * Gets preparation_time
+     *
+     * @return int
+     */
+    public function getPreparationTime()
+    {
+        return $this->container['preparation_time'];
+    }
+
+    /**
+     * Sets preparation_time
+     *
+     * @param int $preparation_time preparation time at this activity in seconds
+     *
+     * @return $this
+     */
+    public function setPreparationTime($preparation_time)
+    {
+        $this->container['preparation_time'] = $preparation_time;
 
         return $this;
     }

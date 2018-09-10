@@ -8,6 +8,8 @@ Name | Type | Description | Notes
 **TransportTime** | **long?** | transport time of route in seconds | [optional] 
 **CompletionTime** | **long?** | completion time of route in seconds | [optional] 
 **WaitingTime** | **long?** | waiting time of route in seconds | [optional] 
+**ServiceDuration** | **long?** | service duration of route in seconds | [optional] 
+**PreparationTime** | **long?** | preparation time of route in seconds | [optional] 
 **Activities** | [**List&lt;Activity&gt;**](Activity.md) | array of activities | [optional] 
 **Points** | [**List&lt;RoutePoint&gt;**](RoutePoint.md) | array of route planning points | [optional] 
 

@@ -60,7 +60,7 @@ class Response implements ModelInterface, ArrayAccess
         'copyrights' => 'string[]',
         'job_id' => 'string',
         'status' => 'string',
-        'waiting_in_queue' => 'int',
+        'waiting_time_in_queue' => 'int',
         'processing_time' => 'int',
         'solution' => '\Swagger\Client\Model\Solution'
     ];
@@ -74,7 +74,7 @@ class Response implements ModelInterface, ArrayAccess
         'copyrights' => null,
         'job_id' => null,
         'status' => null,
-        'waiting_in_queue' => 'int64',
+        'waiting_time_in_queue' => 'int64',
         'processing_time' => 'int64',
         'solution' => null
     ];
@@ -109,7 +109,7 @@ class Response implements ModelInterface, ArrayAccess
         'copyrights' => 'copyrights',
         'job_id' => 'job_id',
         'status' => 'status',
-        'waiting_in_queue' => 'waiting_in_queue',
+        'waiting_time_in_queue' => 'waiting_time_in_queue',
         'processing_time' => 'processing_time',
         'solution' => 'solution'
     ];
@@ -123,7 +123,7 @@ class Response implements ModelInterface, ArrayAccess
         'copyrights' => 'setCopyrights',
         'job_id' => 'setJobId',
         'status' => 'setStatus',
-        'waiting_in_queue' => 'setWaitingInQueue',
+        'waiting_time_in_queue' => 'setWaitingTimeInQueue',
         'processing_time' => 'setProcessingTime',
         'solution' => 'setSolution'
     ];
@@ -137,7 +137,7 @@ class Response implements ModelInterface, ArrayAccess
         'copyrights' => 'getCopyrights',
         'job_id' => 'getJobId',
         'status' => 'getStatus',
-        'waiting_in_queue' => 'getWaitingInQueue',
+        'waiting_time_in_queue' => 'getWaitingTimeInQueue',
         'processing_time' => 'getProcessingTime',
         'solution' => 'getSolution'
     ];
@@ -222,7 +222,7 @@ class Response implements ModelInterface, ArrayAccess
         $this->container['copyrights'] = isset($data['copyrights']) ? $data['copyrights'] : null;
         $this->container['job_id'] = isset($data['job_id']) ? $data['job_id'] : null;
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
-        $this->container['waiting_in_queue'] = isset($data['waiting_in_queue']) ? $data['waiting_in_queue'] : null;
+        $this->container['waiting_time_in_queue'] = isset($data['waiting_time_in_queue']) ? $data['waiting_time_in_queue'] : null;
         $this->container['processing_time'] = isset($data['processing_time']) ? $data['processing_time'] : null;
         $this->container['solution'] = isset($data['solution']) ? $data['solution'] : null;
     }
@@ -346,25 +346,25 @@ class Response implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets waiting_in_queue
+     * Gets waiting_time_in_queue
      *
      * @return int
      */
-    public function getWaitingInQueue()
+    public function getWaitingTimeInQueue()
     {
-        return $this->container['waiting_in_queue'];
+        return $this->container['waiting_time_in_queue'];
     }
 
     /**
-     * Sets waiting_in_queue
+     * Sets waiting_time_in_queue
      *
-     * @param int $waiting_in_queue waiting time in ms
+     * @param int $waiting_time_in_queue waiting time in ms
      *
      * @return $this
      */
-    public function setWaitingInQueue($waiting_in_queue)
+    public function setWaitingTimeInQueue($waiting_time_in_queue)
     {
-        $this->container['waiting_in_queue'] = $waiting_in_queue;
+        $this->container['waiting_time_in_queue'] = $waiting_time_in_queue;
 
         return $this;
     }

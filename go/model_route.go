@@ -25,6 +25,12 @@ type Route struct {
 	// waiting time of route in seconds
 	WaitingTime int64 `json:"waiting_time,omitempty"`
 
+	// service duration of route in seconds
+	ServiceDuration int64 `json:"service_duration,omitempty"`
+
+	// preparation time of route in seconds
+	PreparationTime int64 `json:"preparation_time,omitempty"`
+
 	// array of activities
 	Activities []Activity `json:"activities,omitempty"`
 

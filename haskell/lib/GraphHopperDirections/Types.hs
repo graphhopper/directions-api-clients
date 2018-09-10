@@ -64,9 +64,13 @@ data Activity = Activity
   { activityType :: Text -- ^ type of activity
   , activityId :: Text -- ^ id referring to the underlying service or shipment, i.e. the shipment or service this activity belongs to
   , activityLocation'Underscoreid :: Text -- ^ id that refers to address
+  , activityAddress :: Address -- ^ address of activity
   , activityArr'Underscoretime :: Integer -- ^ arrival time at this activity in seconds
   , activityEnd'Underscoretime :: Integer -- ^ end time of and thus departure time at this activity
+  , activityEnd'Underscoredate'Underscoretime :: Text -- ^ end date time with offset like this 1970-01-01T01:00+01:00
+  , activityArr'Underscoredate'Underscoretime :: Text -- ^ arrival date time with offset like this 1970-01-01T01:00+01:00
   , activityWaiting'Underscoretime :: Integer -- ^ waiting time at this activity in seconds
+  , activityPreparation'Underscoretime :: Integer -- ^ preparation time at this activity in seconds
   , activityDistance :: Integer -- ^ cumulated distance from start to this activity in m
   , activityDriving'Underscoretime :: Integer -- ^ driving time of driver in seconds
   , activityLoad'Underscorebefore :: [Int] -- ^ Array with size/capacity dimensions before this activity
@@ -370,7 +374,7 @@ data Response = Response
   { responseCopyrights :: [Text] -- ^ 
   , responseJob'Underscoreid :: Text -- ^ unique identify of job - which you get when posting your request to the large problem solver
   , responseStatus :: Text -- ^ indicates the current status of the job
-  , responseWaiting'Underscorein'Underscorequeue :: Integer -- ^ waiting time in ms
+  , responseWaiting'Underscoretime'Underscorein'Underscorequeue :: Integer -- ^ waiting time in ms
   , responseProcessing'Underscoretime :: Integer -- ^ processing time in ms. if job is still waiting in queue, processing_time is 0
   , responseSolution :: Solution -- ^ the solution. only available if status field indicates finished
   } deriving (Show, Eq, Generic)
@@ -435,6 +439,8 @@ data Route = Route
   , routeTransport'Underscoretime :: Integer -- ^ transport time of route in seconds
   , routeCompletion'Underscoretime :: Integer -- ^ completion time of route in seconds
   , routeWaiting'Underscoretime :: Integer -- ^ waiting time of route in seconds
+  , routeService'Underscoreduration :: Integer -- ^ service duration of route in seconds
+  , routePreparation'Underscoretime :: Integer -- ^ preparation time of route in seconds
   , routeActivities :: [Activity] -- ^ array of activities
   , routePoints :: [RoutePoint] -- ^ array of route planning points
   } deriving (Show, Eq, Generic)
@@ -547,6 +553,9 @@ data Solution = Solution
   , solutionTransport'Underscoretime :: Integer -- ^ overall transport time in seconds
   , solutionMax'Underscoreoperation'Underscoretime :: Integer -- ^ operation time of the longest route in seconds
   , solutionWaiting'Underscoretime :: Integer -- ^ total waiting time in seconds
+  , solutionService'Underscoreduration :: Integer -- ^ total service time in seconds
+  , solutionPreparation'Underscoretime :: Integer -- ^ total preparation time in seconds
+  , solutionCompletion'Underscoretime :: Integer -- ^ total completion time in seconds
   , solutionNo'Underscorevehicles :: Int -- ^ number of employed vehicles
   , solutionNo'Underscoreunassigned :: Int -- ^ number of jobs that could not be assigned to final solution
   , solutionRoutes :: [Route] -- ^ An array of routes

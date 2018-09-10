@@ -19,7 +19,7 @@ type Response struct {
 	Status string `json:"status,omitempty"`
 
 	// waiting time in ms
-	WaitingInQueue int64 `json:"waiting_in_queue,omitempty"`
+	WaitingTimeInQueue int64 `json:"waiting_time_in_queue,omitempty"`
 
 	// processing time in ms. if job is still waiting in queue, processing_time is 0
 	ProcessingTime int64 `json:"processing_time,omitempty"`

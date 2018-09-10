@@ -24,14 +24,26 @@ module GraphHopperClient
     # id that refers to address
     attr_accessor :location_id
 
+    # address of activity
+    attr_accessor :address
+
     # arrival time at this activity in seconds
     attr_accessor :arr_time
 
     # end time of and thus departure time at this activity
     attr_accessor :end_time
 
+    # end date time with offset like this 1970-01-01T01:00+01:00
+    attr_accessor :end_date_time
+
+    # arrival date time with offset like this 1970-01-01T01:00+01:00
+    attr_accessor :arr_date_time
+
     # waiting time at this activity in seconds
     attr_accessor :waiting_time
+
+    # preparation time at this activity in seconds
+    attr_accessor :preparation_time
 
     # cumulated distance from start to this activity in m
     attr_accessor :distance
@@ -73,9 +85,13 @@ module GraphHopperClient
         :'type' => :'type',
         :'id' => :'id',
         :'location_id' => :'location_id',
+        :'address' => :'address',
         :'arr_time' => :'arr_time',
         :'end_time' => :'end_time',
+        :'end_date_time' => :'end_date_time',
+        :'arr_date_time' => :'arr_date_time',
         :'waiting_time' => :'waiting_time',
+        :'preparation_time' => :'preparation_time',
         :'distance' => :'distance',
         :'driving_time' => :'driving_time',
         :'load_before' => :'load_before',
@@ -89,9 +105,13 @@ module GraphHopperClient
         :'type' => :'String',
         :'id' => :'String',
         :'location_id' => :'String',
+        :'address' => :'Address',
         :'arr_time' => :'Integer',
         :'end_time' => :'Integer',
+        :'end_date_time' => :'String',
+        :'arr_date_time' => :'String',
         :'waiting_time' => :'Integer',
+        :'preparation_time' => :'Integer',
         :'distance' => :'Integer',
         :'driving_time' => :'Integer',
         :'load_before' => :'Array<Integer>',
@@ -119,6 +139,10 @@ module GraphHopperClient
         self.location_id = attributes[:'location_id']
       end
 
+      if attributes.has_key?(:'address')
+        self.address = attributes[:'address']
+      end
+
       if attributes.has_key?(:'arr_time')
         self.arr_time = attributes[:'arr_time']
       end
@@ -127,8 +151,20 @@ module GraphHopperClient
         self.end_time = attributes[:'end_time']
       end
 
+      if attributes.has_key?(:'end_date_time')
+        self.end_date_time = attributes[:'end_date_time']
+      end
+
+      if attributes.has_key?(:'arr_date_time')
+        self.arr_date_time = attributes[:'arr_date_time']
+      end
+
       if attributes.has_key?(:'waiting_time')
         self.waiting_time = attributes[:'waiting_time']
+      end
+
+      if attributes.has_key?(:'preparation_time')
+        self.preparation_time = attributes[:'preparation_time']
       end
 
       if attributes.has_key?(:'distance')
@@ -186,9 +222,13 @@ module GraphHopperClient
           type == o.type &&
           id == o.id &&
           location_id == o.location_id &&
+          address == o.address &&
           arr_time == o.arr_time &&
           end_time == o.end_time &&
+          end_date_time == o.end_date_time &&
+          arr_date_time == o.arr_date_time &&
           waiting_time == o.waiting_time &&
+          preparation_time == o.preparation_time &&
           distance == o.distance &&
           driving_time == o.driving_time &&
           load_before == o.load_before &&
@@ -204,7 +244,7 @@ module GraphHopperClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [type, id, location_id, arr_time, end_time, waiting_time, distance, driving_time, load_before, load_after].hash
+      [type, id, location_id, address, arr_time, end_time, end_date_time, arr_date_time, waiting_time, preparation_time, distance, driving_time, load_before, load_after].hash
     end
 
     # Builds the object from hash

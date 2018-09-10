@@ -23,8 +23,8 @@ pub struct Response {
   #[serde(rename = "status")]
   status: Option<String>,
   /// waiting time in ms
-  #[serde(rename = "waiting_in_queue")]
-  waiting_in_queue: Option<i64>,
+  #[serde(rename = "waiting_time_in_queue")]
+  waiting_time_in_queue: Option<i64>,
   /// processing time in ms. if job is still waiting in queue, processing_time is 0
   #[serde(rename = "processing_time")]
   processing_time: Option<i64>,
@@ -39,7 +39,7 @@ impl Response {
       copyrights: None,
       job_id: None,
       status: None,
-      waiting_in_queue: None,
+      waiting_time_in_queue: None,
       processing_time: None,
       solution: None
     }
@@ -96,21 +96,21 @@ impl Response {
     self.status = None;
   }
 
-  pub fn set_waiting_in_queue(&mut self, waiting_in_queue: i64) {
-    self.waiting_in_queue = Some(waiting_in_queue);
+  pub fn set_waiting_time_in_queue(&mut self, waiting_time_in_queue: i64) {
+    self.waiting_time_in_queue = Some(waiting_time_in_queue);
   }
 
-  pub fn with_waiting_in_queue(mut self, waiting_in_queue: i64) -> Response {
-    self.waiting_in_queue = Some(waiting_in_queue);
+  pub fn with_waiting_time_in_queue(mut self, waiting_time_in_queue: i64) -> Response {
+    self.waiting_time_in_queue = Some(waiting_time_in_queue);
     self
   }
 
-  pub fn waiting_in_queue(&self) -> Option<&i64> {
-    self.waiting_in_queue.as_ref()
+  pub fn waiting_time_in_queue(&self) -> Option<&i64> {
+    self.waiting_time_in_queue.as_ref()
   }
 
-  pub fn reset_waiting_in_queue(&mut self) {
-    self.waiting_in_queue = None;
+  pub fn reset_waiting_time_in_queue(&mut self) {
+    self.waiting_time_in_queue = None;
   }
 
   pub fn set_processing_time(&mut self, processing_time: i64) {

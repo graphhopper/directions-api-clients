@@ -90,8 +90,8 @@ public class Response {
   @SerializedName("status")
   private StatusEnum status = null;
 
-  @SerializedName("waiting_in_queue")
-  private Long waitingInQueue = null;
+  @SerializedName("waiting_time_in_queue")
+  private Long waitingTimeInQueue = null;
 
   @SerializedName("processing_time")
   private Long processingTime = null;
@@ -161,22 +161,22 @@ public class Response {
     this.status = status;
   }
 
-  public Response waitingInQueue(Long waitingInQueue) {
-    this.waitingInQueue = waitingInQueue;
+  public Response waitingTimeInQueue(Long waitingTimeInQueue) {
+    this.waitingTimeInQueue = waitingTimeInQueue;
     return this;
   }
 
    /**
    * waiting time in ms
-   * @return waitingInQueue
+   * @return waitingTimeInQueue
   **/
   @ApiModelProperty(value = "waiting time in ms")
-  public Long getWaitingInQueue() {
-    return waitingInQueue;
+  public Long getWaitingTimeInQueue() {
+    return waitingTimeInQueue;
   }
 
-  public void setWaitingInQueue(Long waitingInQueue) {
-    this.waitingInQueue = waitingInQueue;
+  public void setWaitingTimeInQueue(Long waitingTimeInQueue) {
+    this.waitingTimeInQueue = waitingTimeInQueue;
   }
 
   public Response processingTime(Long processingTime) {
@@ -228,14 +228,14 @@ public class Response {
     return Objects.equals(this.copyrights, response.copyrights) &&
         Objects.equals(this.jobId, response.jobId) &&
         Objects.equals(this.status, response.status) &&
-        Objects.equals(this.waitingInQueue, response.waitingInQueue) &&
+        Objects.equals(this.waitingTimeInQueue, response.waitingTimeInQueue) &&
         Objects.equals(this.processingTime, response.processingTime) &&
         Objects.equals(this.solution, response.solution);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(copyrights, jobId, status, waitingInQueue, processingTime, solution);
+    return Objects.hash(copyrights, jobId, status, waitingTimeInQueue, processingTime, solution);
   }
 
 
@@ -247,7 +247,7 @@ public class Response {
     sb.append("    copyrights: ").append(toIndentedString(copyrights)).append("\n");
     sb.append("    jobId: ").append(toIndentedString(jobId)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    waitingInQueue: ").append(toIndentedString(waitingInQueue)).append("\n");
+    sb.append("    waitingTimeInQueue: ").append(toIndentedString(waitingTimeInQueue)).append("\n");
     sb.append("    processingTime: ").append(toIndentedString(processingTime)).append("\n");
     sb.append("    solution: ").append(toIndentedString(solution)).append("\n");
     sb.append("}");

@@ -20,7 +20,7 @@ case class Response (
   // indicates the current status of the job
   status: Option[String] = None,
   // waiting time in ms
-  waitingInQueue: Option[Long] = None,
+  waitingTimeInQueue: Option[Long] = None,
   // processing time in ms. if job is still waiting in queue, processing_time is 0
   processingTime: Option[Long] = None,
   // the solution. only available if status field indicates finished

@@ -12,9 +12,13 @@
 #' @field type 
 #' @field id 
 #' @field location_id 
+#' @field address 
 #' @field arr_time 
 #' @field end_time 
+#' @field end_date_time 
+#' @field arr_date_time 
 #' @field waiting_time 
+#' @field preparation_time 
 #' @field distance 
 #' @field driving_time 
 #' @field load_before 
@@ -29,14 +33,18 @@ Activity <- R6::R6Class(
     `type` = NULL,
     `id` = NULL,
     `location_id` = NULL,
+    `address` = NULL,
     `arr_time` = NULL,
     `end_time` = NULL,
+    `end_date_time` = NULL,
+    `arr_date_time` = NULL,
     `waiting_time` = NULL,
+    `preparation_time` = NULL,
     `distance` = NULL,
     `driving_time` = NULL,
     `load_before` = NULL,
     `load_after` = NULL,
-    initialize = function(`type`, `id`, `location_id`, `arr_time`, `end_time`, `waiting_time`, `distance`, `driving_time`, `load_before`, `load_after`){
+    initialize = function(`type`, `id`, `location_id`, `address`, `arr_time`, `end_time`, `end_date_time`, `arr_date_time`, `waiting_time`, `preparation_time`, `distance`, `driving_time`, `load_before`, `load_after`){
       if (!missing(`type`)) {
         stopifnot(is.character(`type`), length(`type`) == 1)
         self$`type` <- `type`
@@ -49,6 +57,10 @@ Activity <- R6::R6Class(
         stopifnot(is.character(`location_id`), length(`location_id`) == 1)
         self$`location_id` <- `location_id`
       }
+      if (!missing(`address`)) {
+        stopifnot(R6::is.R6(`address`))
+        self$`address` <- `address`
+      }
       if (!missing(`arr_time`)) {
         stopifnot(is.numeric(`arr_time`), length(`arr_time`) == 1)
         self$`arr_time` <- `arr_time`
@@ -57,9 +69,21 @@ Activity <- R6::R6Class(
         stopifnot(is.numeric(`end_time`), length(`end_time`) == 1)
         self$`end_time` <- `end_time`
       }
+      if (!missing(`end_date_time`)) {
+        stopifnot(is.character(`end_date_time`), length(`end_date_time`) == 1)
+        self$`end_date_time` <- `end_date_time`
+      }
+      if (!missing(`arr_date_time`)) {
+        stopifnot(is.character(`arr_date_time`), length(`arr_date_time`) == 1)
+        self$`arr_date_time` <- `arr_date_time`
+      }
       if (!missing(`waiting_time`)) {
         stopifnot(is.numeric(`waiting_time`), length(`waiting_time`) == 1)
         self$`waiting_time` <- `waiting_time`
+      }
+      if (!missing(`preparation_time`)) {
+        stopifnot(is.numeric(`preparation_time`), length(`preparation_time`) == 1)
+        self$`preparation_time` <- `preparation_time`
       }
       if (!missing(`distance`)) {
         stopifnot(is.numeric(`distance`), length(`distance`) == 1)
@@ -91,14 +115,26 @@ Activity <- R6::R6Class(
       if (!is.null(self$`location_id`)) {
         ActivityObject[['location_id']] <- self$`location_id`
       }
+      if (!is.null(self$`address`)) {
+        ActivityObject[['address']] <- self$`address`$toJSON()
+      }
       if (!is.null(self$`arr_time`)) {
         ActivityObject[['arr_time']] <- self$`arr_time`
       }
       if (!is.null(self$`end_time`)) {
         ActivityObject[['end_time']] <- self$`end_time`
       }
+      if (!is.null(self$`end_date_time`)) {
+        ActivityObject[['end_date_time']] <- self$`end_date_time`
+      }
+      if (!is.null(self$`arr_date_time`)) {
+        ActivityObject[['arr_date_time']] <- self$`arr_date_time`
+      }
       if (!is.null(self$`waiting_time`)) {
         ActivityObject[['waiting_time']] <- self$`waiting_time`
+      }
+      if (!is.null(self$`preparation_time`)) {
+        ActivityObject[['preparation_time']] <- self$`preparation_time`
       }
       if (!is.null(self$`distance`)) {
         ActivityObject[['distance']] <- self$`distance`
@@ -126,14 +162,28 @@ Activity <- R6::R6Class(
       if (!is.null(ActivityObject$`location_id`)) {
         self$`location_id` <- ActivityObject$`location_id`
       }
+      if (!is.null(ActivityObject$`address`)) {
+        addressObject <- Address$new()
+        addressObject$fromJSON(jsonlite::toJSON(ActivityObject$address, auto_unbox = TRUE))
+        self$`address` <- addressObject
+      }
       if (!is.null(ActivityObject$`arr_time`)) {
         self$`arr_time` <- ActivityObject$`arr_time`
       }
       if (!is.null(ActivityObject$`end_time`)) {
         self$`end_time` <- ActivityObject$`end_time`
       }
+      if (!is.null(ActivityObject$`end_date_time`)) {
+        self$`end_date_time` <- ActivityObject$`end_date_time`
+      }
+      if (!is.null(ActivityObject$`arr_date_time`)) {
+        self$`arr_date_time` <- ActivityObject$`arr_date_time`
+      }
       if (!is.null(ActivityObject$`waiting_time`)) {
         self$`waiting_time` <- ActivityObject$`waiting_time`
+      }
+      if (!is.null(ActivityObject$`preparation_time`)) {
+        self$`preparation_time` <- ActivityObject$`preparation_time`
       }
       if (!is.null(ActivityObject$`distance`)) {
         self$`distance` <- ActivityObject$`distance`
@@ -154,9 +204,13 @@ Activity <- R6::R6Class(
            "type": %s,
            "id": %s,
            "location_id": %s,
+           "address": %s,
            "arr_time": %d,
            "end_time": %d,
+           "end_date_time": %s,
+           "arr_date_time": %s,
            "waiting_time": %d,
+           "preparation_time": %d,
            "distance": %d,
            "driving_time": %d,
            "load_before": [%s],
@@ -165,9 +219,13 @@ Activity <- R6::R6Class(
         self$`type`,
         self$`id`,
         self$`location_id`,
+        self$`address`$toJSON(),
         self$`arr_time`,
         self$`end_time`,
+        self$`end_date_time`,
+        self$`arr_date_time`,
         self$`waiting_time`,
+        self$`preparation_time`,
         self$`distance`,
         self$`driving_time`,
         lapply(self$`load_before`, function(x) paste(paste0('"', x, '"'), sep=",")),
@@ -179,9 +237,14 @@ Activity <- R6::R6Class(
       self$`type` <- ActivityObject$`type`
       self$`id` <- ActivityObject$`id`
       self$`location_id` <- ActivityObject$`location_id`
+      AddressObject <- Address$new()
+      self$`address` <- AddressObject$fromJSON(jsonlite::toJSON(ActivityObject$address, auto_unbox = TRUE))
       self$`arr_time` <- ActivityObject$`arr_time`
       self$`end_time` <- ActivityObject$`end_time`
+      self$`end_date_time` <- ActivityObject$`end_date_time`
+      self$`arr_date_time` <- ActivityObject$`arr_date_time`
       self$`waiting_time` <- ActivityObject$`waiting_time`
+      self$`preparation_time` <- ActivityObject$`preparation_time`
       self$`distance` <- ActivityObject$`distance`
       self$`driving_time` <- ActivityObject$`driving_time`
       self$`load_before` <- ActivityObject$`load_before`

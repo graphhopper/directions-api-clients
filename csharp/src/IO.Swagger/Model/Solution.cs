@@ -39,11 +39,14 @@ namespace IO.Swagger.Model
         /// <param name="TransportTime">overall transport time in seconds.</param>
         /// <param name="MaxOperationTime">operation time of the longest route in seconds.</param>
         /// <param name="WaitingTime">total waiting time in seconds.</param>
+        /// <param name="ServiceDuration">total service time in seconds.</param>
+        /// <param name="PreparationTime">total preparation time in seconds.</param>
+        /// <param name="CompletionTime">total completion time in seconds.</param>
         /// <param name="NoVehicles">number of employed vehicles.</param>
         /// <param name="NoUnassigned">number of jobs that could not be assigned to final solution.</param>
         /// <param name="Routes">An array of routes.</param>
         /// <param name="Unassigned">Unassigned.</param>
-        public Solution(int? Costs = default(int?), int? Distance = default(int?), long? Time = default(long?), long? TransportTime = default(long?), long? MaxOperationTime = default(long?), long? WaitingTime = default(long?), int? NoVehicles = default(int?), int? NoUnassigned = default(int?), List<Route> Routes = default(List<Route>), SolutionUnassigned Unassigned = default(SolutionUnassigned))
+        public Solution(int? Costs = default(int?), int? Distance = default(int?), long? Time = default(long?), long? TransportTime = default(long?), long? MaxOperationTime = default(long?), long? WaitingTime = default(long?), long? ServiceDuration = default(long?), long? PreparationTime = default(long?), long? CompletionTime = default(long?), int? NoVehicles = default(int?), int? NoUnassigned = default(int?), List<Route> Routes = default(List<Route>), SolutionUnassigned Unassigned = default(SolutionUnassigned))
         {
             this.Costs = Costs;
             this.Distance = Distance;
@@ -51,6 +54,9 @@ namespace IO.Swagger.Model
             this.TransportTime = TransportTime;
             this.MaxOperationTime = MaxOperationTime;
             this.WaitingTime = WaitingTime;
+            this.ServiceDuration = ServiceDuration;
+            this.PreparationTime = PreparationTime;
+            this.CompletionTime = CompletionTime;
             this.NoVehicles = NoVehicles;
             this.NoUnassigned = NoUnassigned;
             this.Routes = Routes;
@@ -100,6 +106,27 @@ namespace IO.Swagger.Model
         public long? WaitingTime { get; set; }
 
         /// <summary>
+        /// total service time in seconds
+        /// </summary>
+        /// <value>total service time in seconds</value>
+        [DataMember(Name="service_duration", EmitDefaultValue=false)]
+        public long? ServiceDuration { get; set; }
+
+        /// <summary>
+        /// total preparation time in seconds
+        /// </summary>
+        /// <value>total preparation time in seconds</value>
+        [DataMember(Name="preparation_time", EmitDefaultValue=false)]
+        public long? PreparationTime { get; set; }
+
+        /// <summary>
+        /// total completion time in seconds
+        /// </summary>
+        /// <value>total completion time in seconds</value>
+        [DataMember(Name="completion_time", EmitDefaultValue=false)]
+        public long? CompletionTime { get; set; }
+
+        /// <summary>
         /// number of employed vehicles
         /// </summary>
         /// <value>number of employed vehicles</value>
@@ -140,6 +167,9 @@ namespace IO.Swagger.Model
             sb.Append("  TransportTime: ").Append(TransportTime).Append("\n");
             sb.Append("  MaxOperationTime: ").Append(MaxOperationTime).Append("\n");
             sb.Append("  WaitingTime: ").Append(WaitingTime).Append("\n");
+            sb.Append("  ServiceDuration: ").Append(ServiceDuration).Append("\n");
+            sb.Append("  PreparationTime: ").Append(PreparationTime).Append("\n");
+            sb.Append("  CompletionTime: ").Append(CompletionTime).Append("\n");
             sb.Append("  NoVehicles: ").Append(NoVehicles).Append("\n");
             sb.Append("  NoUnassigned: ").Append(NoUnassigned).Append("\n");
             sb.Append("  Routes: ").Append(Routes).Append("\n");
@@ -209,6 +239,21 @@ namespace IO.Swagger.Model
                     this.WaitingTime.Equals(input.WaitingTime))
                 ) && 
                 (
+                    this.ServiceDuration == input.ServiceDuration ||
+                    (this.ServiceDuration != null &&
+                    this.ServiceDuration.Equals(input.ServiceDuration))
+                ) && 
+                (
+                    this.PreparationTime == input.PreparationTime ||
+                    (this.PreparationTime != null &&
+                    this.PreparationTime.Equals(input.PreparationTime))
+                ) && 
+                (
+                    this.CompletionTime == input.CompletionTime ||
+                    (this.CompletionTime != null &&
+                    this.CompletionTime.Equals(input.CompletionTime))
+                ) && 
+                (
                     this.NoVehicles == input.NoVehicles ||
                     (this.NoVehicles != null &&
                     this.NoVehicles.Equals(input.NoVehicles))
@@ -251,6 +296,12 @@ namespace IO.Swagger.Model
                     hashCode = hashCode * 59 + this.MaxOperationTime.GetHashCode();
                 if (this.WaitingTime != null)
                     hashCode = hashCode * 59 + this.WaitingTime.GetHashCode();
+                if (this.ServiceDuration != null)
+                    hashCode = hashCode * 59 + this.ServiceDuration.GetHashCode();
+                if (this.PreparationTime != null)
+                    hashCode = hashCode * 59 + this.PreparationTime.GetHashCode();
+                if (this.CompletionTime != null)
+                    hashCode = hashCode * 59 + this.CompletionTime.GetHashCode();
                 if (this.NoVehicles != null)
                     hashCode = hashCode * 59 + this.NoVehicles.GetHashCode();
                 if (this.NoUnassigned != null)

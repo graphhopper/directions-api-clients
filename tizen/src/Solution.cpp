@@ -43,6 +43,15 @@ Solution::__init()
 	//waiting_time = long(0);
 	//
 	//
+	//service_duration = long(0);
+	//
+	//
+	//preparation_time = long(0);
+	//
+	//
+	//completion_time = long(0);
+	//
+	//
 	//no_vehicles = int(0);
 	//
 	//
@@ -88,6 +97,21 @@ Solution::__cleanup()
 	//
 	//delete waiting_time;
 	//waiting_time = NULL;
+	//}
+	//if(service_duration != NULL) {
+	//
+	//delete service_duration;
+	//service_duration = NULL;
+	//}
+	//if(preparation_time != NULL) {
+	//
+	//delete preparation_time;
+	//preparation_time = NULL;
+	//}
+	//if(completion_time != NULL) {
+	//
+	//delete completion_time;
+	//completion_time = NULL;
 	//}
 	//if(no_vehicles != NULL) {
 	//
@@ -179,6 +203,39 @@ Solution::fromJson(char* jsonStr)
 
 		if (isprimitive("long long")) {
 			jsonToValue(&waiting_time, node, "long long", "");
+		} else {
+			
+		}
+	}
+	const gchar *service_durationKey = "service_duration";
+	node = json_object_get_member(pJsonObject, service_durationKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("long long")) {
+			jsonToValue(&service_duration, node, "long long", "");
+		} else {
+			
+		}
+	}
+	const gchar *preparation_timeKey = "preparation_time";
+	node = json_object_get_member(pJsonObject, preparation_timeKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("long long")) {
+			jsonToValue(&preparation_time, node, "long long", "");
+		} else {
+			
+		}
+	}
+	const gchar *completion_timeKey = "completion_time";
+	node = json_object_get_member(pJsonObject, completion_timeKey);
+	if (node !=NULL) {
+	
+
+		if (isprimitive("long long")) {
+			jsonToValue(&completion_time, node, "long long", "");
 		} else {
 			
 		}
@@ -309,6 +366,33 @@ Solution::toJson()
 	}
 	const gchar *waiting_timeKey = "waiting_time";
 	json_object_set_member(pJsonObject, waiting_timeKey, node);
+	if (isprimitive("long long")) {
+		long long obj = getServiceDuration();
+		node = converttoJson(&obj, "long long", "");
+	}
+	else {
+		
+	}
+	const gchar *service_durationKey = "service_duration";
+	json_object_set_member(pJsonObject, service_durationKey, node);
+	if (isprimitive("long long")) {
+		long long obj = getPreparationTime();
+		node = converttoJson(&obj, "long long", "");
+	}
+	else {
+		
+	}
+	const gchar *preparation_timeKey = "preparation_time";
+	json_object_set_member(pJsonObject, preparation_timeKey, node);
+	if (isprimitive("long long")) {
+		long long obj = getCompletionTime();
+		node = converttoJson(&obj, "long long", "");
+	}
+	else {
+		
+	}
+	const gchar *completion_timeKey = "completion_time";
+	json_object_set_member(pJsonObject, completion_timeKey, node);
 	if (isprimitive("int")) {
 		int obj = getNoVehicles();
 		node = converttoJson(&obj, "int", "");
@@ -444,6 +528,42 @@ void
 Solution::setWaitingTime(long long  waiting_time)
 {
 	this->waiting_time = waiting_time;
+}
+
+long long
+Solution::getServiceDuration()
+{
+	return service_duration;
+}
+
+void
+Solution::setServiceDuration(long long  service_duration)
+{
+	this->service_duration = service_duration;
+}
+
+long long
+Solution::getPreparationTime()
+{
+	return preparation_time;
+}
+
+void
+Solution::setPreparationTime(long long  preparation_time)
+{
+	this->preparation_time = preparation_time;
+}
+
+long long
+Solution::getCompletionTime()
+{
+	return completion_time;
+}
+
+void
+Solution::setCompletionTime(long long  completion_time)
+{
+	this->completion_time = completion_time;
 }
 
 int

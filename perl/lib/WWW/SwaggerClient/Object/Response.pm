@@ -165,9 +165,9 @@ __PACKAGE__->method_documentation({
     	format => '',
     	read_only => '',
     		},
-    'waiting_in_queue' => {
+    'waiting_time_in_queue' => {
     	datatype => 'int',
-    	base_name => 'waiting_in_queue',
+    	base_name => 'waiting_time_in_queue',
     	description => 'waiting time in ms',
     	format => '',
     	read_only => '',
@@ -192,7 +192,7 @@ __PACKAGE__->swagger_types( {
     'copyrights' => 'ARRAY[string]',
     'job_id' => 'string',
     'status' => 'string',
-    'waiting_in_queue' => 'int',
+    'waiting_time_in_queue' => 'int',
     'processing_time' => 'int',
     'solution' => 'Solution'
 } );
@@ -201,7 +201,7 @@ __PACKAGE__->attribute_map( {
     'copyrights' => 'copyrights',
     'job_id' => 'job_id',
     'status' => 'status',
-    'waiting_in_queue' => 'waiting_in_queue',
+    'waiting_time_in_queue' => 'waiting_time_in_queue',
     'processing_time' => 'processing_time',
     'solution' => 'solution'
 } );

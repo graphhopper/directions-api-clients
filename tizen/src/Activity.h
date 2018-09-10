@@ -9,6 +9,7 @@
 
 
 #include <string>
+#include "Address.h"
 #include <list>
 #include "Object.h"
 
@@ -67,6 +68,13 @@ public:
 	/*! \brief Set id that refers to address
 	 */
 	void setLocationId(std::string  location_id);
+	/*! \brief Get address of activity
+	 */
+	Address getAddress();
+
+	/*! \brief Set address of activity
+	 */
+	void setAddress(Address  address);
 	/*! \brief Get arrival time at this activity in seconds
 	 */
 	long long getArrTime();
@@ -81,6 +89,20 @@ public:
 	/*! \brief Set end time of and thus departure time at this activity
 	 */
 	void setEndTime(long long  end_time);
+	/*! \brief Get end date time with offset like this 1970-01-01T01:00+01:00
+	 */
+	std::string getEndDateTime();
+
+	/*! \brief Set end date time with offset like this 1970-01-01T01:00+01:00
+	 */
+	void setEndDateTime(std::string  end_date_time);
+	/*! \brief Get arrival date time with offset like this 1970-01-01T01:00+01:00
+	 */
+	std::string getArrDateTime();
+
+	/*! \brief Set arrival date time with offset like this 1970-01-01T01:00+01:00
+	 */
+	void setArrDateTime(std::string  arr_date_time);
 	/*! \brief Get waiting time at this activity in seconds
 	 */
 	long long getWaitingTime();
@@ -88,6 +110,13 @@ public:
 	/*! \brief Set waiting time at this activity in seconds
 	 */
 	void setWaitingTime(long long  waiting_time);
+	/*! \brief Get preparation time at this activity in seconds
+	 */
+	long long getPreparationTime();
+
+	/*! \brief Set preparation time at this activity in seconds
+	 */
+	void setPreparationTime(long long  preparation_time);
 	/*! \brief Get cumulated distance from start to this activity in m
 	 */
 	long long getDistance();
@@ -121,9 +150,13 @@ private:
 	std::string type;
 	std::string id;
 	std::string location_id;
+	Address address;
 	long long arr_time;
 	long long end_time;
+	std::string end_date_time;
+	std::string arr_date_time;
 	long long waiting_time;
+	long long preparation_time;
 	long long distance;
 	long long driving_time;
 	std::list <int>load_before;

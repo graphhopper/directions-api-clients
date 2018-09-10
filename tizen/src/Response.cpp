@@ -34,7 +34,7 @@ Response::__init()
 	//status = std::string();
 	//
 	//
-	//waiting_in_queue = long(0);
+	//waiting_time_in_queue = long(0);
 	//
 	//
 	//processing_time = long(0);
@@ -62,10 +62,10 @@ Response::__cleanup()
 	//delete status;
 	//status = NULL;
 	//}
-	//if(waiting_in_queue != NULL) {
+	//if(waiting_time_in_queue != NULL) {
 	//
-	//delete waiting_in_queue;
-	//waiting_in_queue = NULL;
+	//delete waiting_time_in_queue;
+	//waiting_time_in_queue = NULL;
 	//}
 	//if(processing_time != NULL) {
 	//
@@ -129,13 +129,13 @@ Response::fromJson(char* jsonStr)
 			
 		}
 	}
-	const gchar *waiting_in_queueKey = "waiting_in_queue";
-	node = json_object_get_member(pJsonObject, waiting_in_queueKey);
+	const gchar *waiting_time_in_queueKey = "waiting_time_in_queue";
+	node = json_object_get_member(pJsonObject, waiting_time_in_queueKey);
 	if (node !=NULL) {
 	
 
 		if (isprimitive("long long")) {
-			jsonToValue(&waiting_in_queue, node, "long long", "");
+			jsonToValue(&waiting_time_in_queue, node, "long long", "");
 		} else {
 			
 		}
@@ -211,14 +211,14 @@ Response::toJson()
 	const gchar *statusKey = "status";
 	json_object_set_member(pJsonObject, statusKey, node);
 	if (isprimitive("long long")) {
-		long long obj = getWaitingInQueue();
+		long long obj = getWaitingTimeInQueue();
 		node = converttoJson(&obj, "long long", "");
 	}
 	else {
 		
 	}
-	const gchar *waiting_in_queueKey = "waiting_in_queue";
-	json_object_set_member(pJsonObject, waiting_in_queueKey, node);
+	const gchar *waiting_time_in_queueKey = "waiting_time_in_queue";
+	json_object_set_member(pJsonObject, waiting_time_in_queueKey, node);
 	if (isprimitive("long long")) {
 		long long obj = getProcessingTime();
 		node = converttoJson(&obj, "long long", "");
@@ -287,15 +287,15 @@ Response::setStatus(std::string  status)
 }
 
 long long
-Response::getWaitingInQueue()
+Response::getWaitingTimeInQueue()
 {
-	return waiting_in_queue;
+	return waiting_time_in_queue;
 }
 
 void
-Response::setWaitingInQueue(long long  waiting_in_queue)
+Response::setWaitingTimeInQueue(long long  waiting_time_in_queue)
 {
-	this->waiting_in_queue = waiting_in_queue;
+	this->waiting_time_in_queue = waiting_time_in_queue;
 }
 
 long long

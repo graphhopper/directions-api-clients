@@ -8,6 +8,8 @@ Name | Type | Description | Notes
 **transport_time** | **i64** | transport time of route in seconds | [optional] [default to null]
 **completion_time** | **i64** | completion time of route in seconds | [optional] [default to null]
 **waiting_time** | **i64** | waiting time of route in seconds | [optional] [default to null]
+**service_duration** | **i64** | service duration of route in seconds | [optional] [default to null]
+**preparation_time** | **i64** | preparation time of route in seconds | [optional] [default to null]
 **activities** | [**Vec<::models::Activity>**](Activity.md) | array of activities | [optional] [default to null]
 **points** | [**Vec<::models::RoutePoint>**](RoutePoint.md) | array of route planning points | [optional] [default to null]
 
