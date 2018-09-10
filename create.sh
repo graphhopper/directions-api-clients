@@ -65,8 +65,16 @@ function create {
 		;;
   esac
 
+# for now keep directory to keep it simple
+#  if [[ $LANG = "java" ]]; then
+#    mv $DIR/$LANG/pom.xml /tmp/
+#    rm -rf $DIR/$LANG && mkdir $DIR/$LANG
+#    mv /tmp/pom.xml $DIR/$LANG/
+#  else
+#    rm -rf $DIR/$LANG
+#  fi
+
   # echo "create $LANG, config: $CONFIG, additional params: $ADD_PARAMS"
-  rm -rf $DIR/$LANG
   SH="java -jar $FILE generate -i $SPEC -l $LANG $CONFIG -o $DIR/$LANG $ADD_PARAMS"
   echo $SH
   $SH
