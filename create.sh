@@ -7,21 +7,27 @@ DIR=.
 VERSION=0.11-SNAPSHOT
 
 # it is necessary to use the master snapshot to create a proper R and C# client
-SW_VERSION=master
+SW_VERSION=master-2018-01-22
 #SW_VERSION=2.2.3
 FILE=swagger-codegen-cli-$SW_VERSION.jar
 
 NAME=directions-api-client
 GROUP=com.graphhopper
 
-if [[ ! -f $FILE ]]; then
-  wget http://repo1.maven.org/maven2/io/swagger/swagger-codegen-cli/$SW_VERSION/$FILE -O $FILE
-  if [[ ! -f $FILE ]]; then
-    curl http://repo1.maven.org/maven2/io/swagger/swagger-codegen-cli/$SW_VERSION/$FILE -O $FILE
-    if [[ ! -f $FILE ]]; then
-       wget https://graphhopper.com/public/misc/swagger-codegen-cli-master-2018-01-22.jar -O swagger-codegen-cli-master.jar
+if [[ ! -s $FILE ]]; then
+  wget https://graphhopper.com/public/misc/$FILE -O $FILE
+  if [[ ! -s $FILE ]]; then
+    wget http://repo1.maven.org/maven2/io/swagger/swagger-codegen-cli/$SW_VERSION/$FILE -O $FILE
+    if [[ ! -s $FILE ]]; then
+      curl http://repo1.maven.org/maven2/io/swagger/swagger-codegen-cli/$SW_VERSION/$FILE -O $FILE
     fi
   fi
+fi
+
+file_size_kb=$(du -k "$FILE" | cut -f1)
+if [[ $file_size_kb -lt 1000 ]]; then
+  echo corrupt file $FILE, remove it, ensure host exists and try again
+  exit
 fi
 
 function create {
