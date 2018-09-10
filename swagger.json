@@ -1070,6 +1070,9 @@
                         "$ref": "#/definitions/Relation"
                     }
                 },
+                "algorithm": {
+                    "$ref": "#/definitions/Algorithm"
+                },
                 "objectives": {
                     "type": "array",
                     "description": "An array of objectives",
@@ -1149,6 +1152,25 @@
                     "type": "integer",
                     "format": "int32",
                     "description": "max number of activities the vehicle can conduct"
+                }
+            }
+        },
+        "Algorithm": {
+            "type": "object",
+            "properties": {
+                "problem_type": {
+                    "type": "string",
+                    "enum": [
+                        "min",
+                        "min-max"
+                    ]
+                },
+                "objective": {
+                    "type": "string",
+                    "enum": [
+                        "transport_time",
+                        "completion_time"
+                    ]
                 }
             }
         },
@@ -1640,7 +1662,7 @@
                     ],
                     "description": "indicates the current status of the job"
                 },
-                "waiting_in_queue": {
+                "waiting_time_in_queue": {
                     "type": "integer",
                     "format": "int64",
                     "description": "waiting time in ms"
@@ -1688,6 +1710,21 @@
                     "type": "integer",
                     "format": "int64",
                     "description": "total waiting time in seconds"
+                },
+                "service_duration": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "total service time in seconds"
+                },
+                "preparation_time": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "total preparation time in seconds"
+                },
+                "completion_time": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "total completion time in seconds"
                 },
                 "no_vehicles": {
                     "type": "integer",
@@ -1789,6 +1826,16 @@
                     "format": "int64",
                     "description": "waiting time of route in seconds"
                 },
+                "service_duration": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "service duration of route in seconds"
+                },
+                "preparation_time": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "preparation time of route in seconds"
+                },
                 "activities": {
                     "type": "array",
                     "description": "array of activities",
@@ -1844,6 +1891,10 @@
                     "type": "string",
                     "description": "id that refers to address"
                 },
+                "address": {
+                    "$ref": "#/definitions/Address",
+                    "description": "address of activity"
+                },
                 "arr_time": {
                     "type": "integer",
                     "format": "int64",
@@ -1854,10 +1905,23 @@
                     "format": "int64",
                     "description": "end time of and thus departure time at this activity"
                 },
+                "end_date_time": {
+                    "type": "string",
+                    "description": "end date time with offset like this 1970-01-01T01:00+01:00"
+                },
+                "arr_date_time": {
+                    "type": "string",
+                    "description": "arrival date time with offset like this 1970-01-01T01:00+01:00"
+                },
                 "waiting_time": {
                     "type": "integer",
                     "format": "int64",
                     "description": "waiting time at this activity in seconds"
+                },
+                "preparation_time": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "preparation time at this activity in seconds"
                 },
                 "distance": {
                     "type": "integer",
