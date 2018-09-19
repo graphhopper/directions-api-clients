@@ -26,6 +26,7 @@ rust      |  no     |
 scala     |  no     |
 sinatra   |  no     |
 swift     |  no     | Community contribution for the [Routing](https://github.com/rmnblm/GraphHopperRouting) and [Geocoding](https://github.com/rmnblm/GraphHopperGeocoder) API
+symphony  |  -      | Community contribution for the [Geocoding API](https://github.com/Andreas-Schoenefeldt/GraphHopperConnectorBundle)
 tizen     |  no     |
 
 
