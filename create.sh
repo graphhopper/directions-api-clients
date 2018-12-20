@@ -8,7 +8,7 @@ VERSION=0.11-SNAPSHOT
 
 # it is necessary to use the master snapshot to create a proper R and C# client
 SW_VERSION=master-2018-01-22
-#SW_VERSION=2.2.3
+#SW_VERSION=2.4.0
 FILE=swagger-codegen-cli-$SW_VERSION.jar
 
 NAME=directions-api-client
@@ -60,6 +60,10 @@ function create {
 		;;
 	php)
 		CONFIG="--artifact-version $VERSION --git-repo-id $NAME --git-user-id graphhopper --api-package $NAME"
+		;;
+	csharp)
+		VER=$(echo $VERSION | cut -d'-' -f 1)
+		ADD_PARAMS="-DpackageName=GraphHopper,packageVersion=$VER"
 		;;
   	*)
 		;;
