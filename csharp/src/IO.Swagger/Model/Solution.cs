@@ -1,13 +1,12 @@
 /* 
  * GraphHopper Directions API
  *
- * You use the GraphHopper Directions API to add route planning, navigation and route optimization to your software. E.g. the Routing API has turn instructions and elevation data and the Route Optimization API solves your logistic problems and supports various constraints like time window and capacity restrictions. Also it is possible to get all distances between all locations with our fast Matrix API.
+ *  With the [GraphHopper Directions API](https://www.graphhopper.com/products/) you can integrate A-to-B route planning, turn-by-turn navigation, route optimization, isochrone calculations and other tools in your application.  The GraphHopper Directions API consists of the following RESTful web services:   * [Routing](#tag/Routing-API),  * [Route Optimization](#tag/Route-Optimization-API),  * [Isochrone](#tag/Isochrone-API),  * [Map Matching](#tag/Map-Matching-API),  * [Matrix](#tag/Matrix-API) and  * [Geocoding](#tag/Geocoding-API).  # Explore our APIs  To play and see the Route Optimization in action try our [route editor](https://graphhopper.com/blog/2015/07/21/graphhoppers-new-route-optimization-editor/)  which available in the [dashboard](https://graphhopper.com/dashboard/). See how the Routing and Geocoding is integrated in  our route planner website [GraphHopper Maps](https://graphhopper.com/maps) ([sources](https://github.com/graphhopper/graphhopper/tree/0.12/web/src/main/resources/assets)).  And [see below](#section/Explore-our-APIs/Insomnia) for a collection of requests for [Insomnia](https://insomnia.rest/) and [Postman](https://www.getpostman.com/). The request file contains all example requests from this documentation.  ## Get started  1. To use the GraphHopper Directions API you sign up [here](https://graphhopper.com/dashboard/#/register) and create an API key. 2. Read the documentation of the desired API part below. 3. Start using the GraphHopper Directions API. [Our API clients](#section/Explore-our-APIs/API-Clients) can speed up the integration.  To use the GraphHopper Directions API commercially, you can buy paid package [in the dashboard](https://graphhopper.com/dashboard/#/pricing).  ## Contact Us  If you have problems or questions see the following information:   * [FAQ](https://graphhopper.com/api/1/docs/FAQ/)  * [Public forum](https://discuss.graphhopper.com/c/directions-api)       * [Contact us](https://www.graphhopper.com/contact-form/)  To get informed about the newest features and development follow us at [twitter](https://twitter.com/graphhopper/) or [our blog](https://graphhopper.com/blog/).  Furthermore you can watch [this git repository](https://github.com/graphhopper/directions-api-doc) of this documentation, sign up at our [dashboard](https://graphhopper.com/dashboard/) to get the newsletter or sign up at [our forum](https://discuss.graphhopper.com/c/directions-api). Pick the channel you like most.  ## API Clients  To speed up development and make coding easier, we offer the following clients:   * [JavaScript client](https://github.com/graphhopper/directions-api-js-client) - try the [live examples](https://graphhopper.com/api/1/examples/)  * [Others](https://github.com/graphhopper/directions-api-clients) like C#, Ruby, PHP, Python, ... automatically created for the Route Optimization  ### Bandwidth reduction  If you create your own client, make sure it supports http/2 and gzipped responses for best speed.  If you use the Matrix or Route Optimization and want to solve large problems, we recommend you to reduce bandwidth by [compressing your POST request](https://gist.github.com/karussell/82851e303ea7b3459b2dea01f18949f4) and specifying the header as follows: `Content-Encoding: gzip`.  ## Insomnia  To explore our APIs with [Insomnia](https://insomnia.rest/), follow these steps:  1. Open Insomnia and Import [our workspace](https://raw.githubusercontent.com/graphhopper/directions-api-doc/master/web/restclients/GraphHopper-Direction-API-Insomnia.json). 2. Specify [your API key](https://graphhopper.com/dashboard/#/register) in your workspace: Manage Environments -> Base Environment -> `\"api_key\": your API key` 3. Start exploring  ![Insomnia](./img/insomnia.png)  ## Postman  To explore our APIs with [Postman](https://www.getpostman.com/), follow these steps:  1. Import our [request collections](https://raw.githubusercontent.com/graphhopper/directions-api-doc/master/web/restclients/graphhopper_directions_api.postman_collection.json) as well as our [environment file](https://raw.githubusercontent.com/graphhopper/directions-api-doc/master/web/restclients/graphhopper_directions_api.postman_environment.json). 2. Specify [your API key](https://graphhopper.com/dashboard/#/register) in your environment: `\"api_key\": your API key` 3. Start exploring  ![Postman](./img/postman.png)  # Map Data and Routing Profiles  Currently, our main data source is [OpenStreetMap](https://www.openstreetmap.org). We also integrated other network data providers. This chapter gives an overview about the options you have.  ## OpenStreetMap  #### Geographical Coverage  [OpenStreetMap](https://www.openstreetmap.org) covers the entire world. If you want to convince yourself whether we can offer appropriate data for your region, please visit [GraphHopper Maps](https://graphhopper.com/maps/). You can edit and modify OpenStreetMap data if you find that important information is missing, for example, a weight restriction for a bridge. [Here](https://wiki.openstreetmap.org/wiki/Beginners%27_guide) is a beginner's guide that shows how to add data.  If you edited data, we usually consider your data after 1 week at latest.  #### Supported Vehicle Profiles  The Routing, Matrix and Route Optimizations support the following vehicle profiles:  Name       | Description           | Restrictions              | Icon - -- -- -- -- --|:- -- -- -- -- -- -- -- -- -- -- -|:- -- -- -- -- -- -- -- -- -- -- -- -- -|:- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- car        | Car mode              | car access                | ![car image](https://graphhopper.com/maps/img/car.png) small_truck| Small truck like a Mercedes Sprinter, Ford Transit or Iveco Daily | height=2.7m, width=2+0.4m, length=5.5m, weight=2080+1400 kg | ![small truck image](https://graphhopper.com/maps/img/small_truck.png) truck      | Truck like a MAN or Mercedes-Benz Actros | height=3.7m, width=2.6+0.5m, length=12m, weight=13000 + 13000 kg, hgv=yes, 3 Axes | ![truck image](https://graphhopper.com/maps/img/truck.png) scooter    | Moped mode | Fast inner city, often used for food delivery, is able to ignore certain bollards, maximum speed of roughly 50km/h | ![scooter image](https://graphhopper.com/maps/img/scooter.png) foot       | Pedestrian or walking | foot access         | ![foot image](https://graphhopper.com/maps/img/foot.png) hike       | Pedestrian or walking with priority for more beautiful hiking tours and potentially a bit longer than `foot`  | foot access         | ![hike image](https://graphhopper.com/maps/img/hike.png) bike       | Trekking bike avoiding hills | bike access  | ![bike image](https://graphhopper.com/maps/img/bike.png) mtb        | Mountainbike          | bike access         | ![Mountainbike image](https://graphhopper.com/maps/img/mtb.png) racingbike| Bike preferring roads | bike access         | ![racingbike image](https://graphhopper.com/maps/img/racingbike.png)  **Please note, that turn restrictions for motor vehicles such as `car` or `truck` are only considered with `edge_based=true` for the Routing (other APIs will follow).** Or if you already use `ch.disable=true` no additional parameter is required to consider turn restrictions for motor vehicles.  For the free package you can only choose from `car`, `bike` or `foot`.  We also offer a sophisticated `motorcycle` profile powered by the [Kurviger](https://kurviger.de/en) Routing. Kurviger favors curves and slopes while avoiding cities and highways.  Also we offer custom vehicle profiles with different properties, different speed profiles or different access options. To find out more about custom profiles, please [contact us](https://www.graphhopper.com/contact-form/).  ## TomTom  If you need to consider traffic, you can purchase the TomTom add-on.  Please note:   * Currently we only offer this for our [Route Optimization](#tag/Route-Optimization-API).  * This add-on uses the TomTom road network and historical traffic information only. Live traffic is not yet considered. Read more about [how this works](https://www.graphhopper.com/blog/2017/11/06/time-dependent-optimization/).  * Additionally to our terms your end users need to accept the [TomTom Eula](https://www.graphhopper.com/tomtom-end-user-license-agreement/).  * We do *not* use the TomTom web services. We only use their data with our software.   [Contact us](https://www.graphhopper.com/contact-form/) for more details.  #### Geographical Coverage  We offer  - Europe including Russia - North, Central and South America - Saudi Arabia - United Arab Emirates - South Africa - Australia  #### Supported Vehicle Profiles  Name       | Description           | Restrictions              | Icon - -- -- -- -- --|:- -- -- -- -- -- -- -- -- -- -- -|:- -- -- -- -- -- -- -- -- -- -- -- -- -|:- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- car        | Car mode              | car access                | ![car image](https://graphhopper.com/maps/img/car.png) small_truck| Small truck like a Mercedes Sprinter, Ford Transit or Iveco Daily | height=2.7m, width=2+0.4m, length=5.5m, weight=2080+1400 kg | ![small truck image](https://graphhopper.com/maps/img/small_truck.png) 
  *
  * OpenAPI spec version: 1.0.0
- * 
+ * Contact: support@graphhopper.com
  * Generated by: https://github.com/swagger-api/swagger-codegen.git
  */
-
 using System;
 using System.Linq;
 using System.IO;
@@ -25,118 +24,117 @@ using SwaggerDateConverter = IO.Swagger.Client.SwaggerDateConverter;
 namespace IO.Swagger.Model
 {
     /// <summary>
-    /// Solution
+    /// Only available if status field indicates &#x60;finished&#x60;.
     /// </summary>
     [DataContract]
-    public partial class Solution :  IEquatable<Solution>, IValidatableObject
+        public partial class Solution :  IEquatable<Solution>, IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Solution" /> class.
         /// </summary>
-        /// <param name="Costs">overall costs of solution.</param>
-        /// <param name="Distance">overall travel distance in meters.</param>
-        /// <param name="Time">overall transport time in seconds.</param>
-        /// <param name="TransportTime">overall transport time in seconds.</param>
-        /// <param name="MaxOperationTime">operation time of the longest route in seconds.</param>
-        /// <param name="WaitingTime">total waiting time in seconds.</param>
-        /// <param name="ServiceDuration">total service time in seconds.</param>
-        /// <param name="PreparationTime">total preparation time in seconds.</param>
-        /// <param name="CompletionTime">total completion time in seconds.</param>
-        /// <param name="NoVehicles">number of employed vehicles.</param>
-        /// <param name="NoUnassigned">number of jobs that could not be assigned to final solution.</param>
-        /// <param name="Routes">An array of routes.</param>
-        /// <param name="Unassigned">Unassigned.</param>
-        public Solution(int? Costs = default(int?), int? Distance = default(int?), long? Time = default(long?), long? TransportTime = default(long?), long? MaxOperationTime = default(long?), long? WaitingTime = default(long?), long? ServiceDuration = default(long?), long? PreparationTime = default(long?), long? CompletionTime = default(long?), int? NoVehicles = default(int?), int? NoUnassigned = default(int?), List<Route> Routes = default(List<Route>), SolutionUnassigned Unassigned = default(SolutionUnassigned))
+        /// <param name="costs">costs.</param>
+        /// <param name="distance">Overall distance travelled in meter, i.e. the sum of each route&#x27;s transport distance.</param>
+        /// <param name="time">Use &#x60;transport_time&#x60; instead..</param>
+        /// <param name="transportTime">Overall time travelled in seconds, i.e. the sum of each route&#x27;s transport time..</param>
+        /// <param name="maxOperationTime">Operation time of longest route in seconds..</param>
+        /// <param name="waitingTime">Overall waiting time in seconds..</param>
+        /// <param name="serviceDuration">Overall service time in seconds..</param>
+        /// <param name="preparationTime">Overall preparation time in seconds..</param>
+        /// <param name="completionTime">Overall completion time in seconds, i.e. the sum of each routes/drivers operation time..</param>
+        /// <param name="noVehicles">Number of employed vehicles..</param>
+        /// <param name="noUnassigned">Number of jobs that could not be assigned to final solution..</param>
+        /// <param name="routes">An array of routes.</param>
+        /// <param name="unassigned">unassigned.</param>
+        public Solution(int? costs = default(int?), int? distance = default(int?), long? time = default(long?), long? transportTime = default(long?), long? maxOperationTime = default(long?), long? waitingTime = default(long?), long? serviceDuration = default(long?), long? preparationTime = default(long?), long? completionTime = default(long?), int? noVehicles = default(int?), int? noUnassigned = default(int?), List<Route> routes = default(List<Route>), SolutionUnassigned unassigned = default(SolutionUnassigned))
         {
-            this.Costs = Costs;
-            this.Distance = Distance;
-            this.Time = Time;
-            this.TransportTime = TransportTime;
-            this.MaxOperationTime = MaxOperationTime;
-            this.WaitingTime = WaitingTime;
-            this.ServiceDuration = ServiceDuration;
-            this.PreparationTime = PreparationTime;
-            this.CompletionTime = CompletionTime;
-            this.NoVehicles = NoVehicles;
-            this.NoUnassigned = NoUnassigned;
-            this.Routes = Routes;
-            this.Unassigned = Unassigned;
+            this.Costs = costs;
+            this.Distance = distance;
+            this.Time = time;
+            this.TransportTime = transportTime;
+            this.MaxOperationTime = maxOperationTime;
+            this.WaitingTime = waitingTime;
+            this.ServiceDuration = serviceDuration;
+            this.PreparationTime = preparationTime;
+            this.CompletionTime = completionTime;
+            this.NoVehicles = noVehicles;
+            this.NoUnassigned = noUnassigned;
+            this.Routes = routes;
+            this.Unassigned = unassigned;
         }
         
         /// <summary>
-        /// overall costs of solution
+        /// Gets or Sets Costs
         /// </summary>
-        /// <value>overall costs of solution</value>
         [DataMember(Name="costs", EmitDefaultValue=false)]
         public int? Costs { get; set; }
 
         /// <summary>
-        /// overall travel distance in meters
+        /// Overall distance travelled in meter, i.e. the sum of each route&#x27;s transport distance
         /// </summary>
-        /// <value>overall travel distance in meters</value>
+        /// <value>Overall distance travelled in meter, i.e. the sum of each route&#x27;s transport distance</value>
         [DataMember(Name="distance", EmitDefaultValue=false)]
         public int? Distance { get; set; }
 
         /// <summary>
-        /// overall transport time in seconds
+        /// Use &#x60;transport_time&#x60; instead.
         /// </summary>
-        /// <value>overall transport time in seconds</value>
+        /// <value>Use &#x60;transport_time&#x60; instead.</value>
         [DataMember(Name="time", EmitDefaultValue=false)]
         public long? Time { get; set; }
 
         /// <summary>
-        /// overall transport time in seconds
+        /// Overall time travelled in seconds, i.e. the sum of each route&#x27;s transport time.
         /// </summary>
-        /// <value>overall transport time in seconds</value>
+        /// <value>Overall time travelled in seconds, i.e. the sum of each route&#x27;s transport time.</value>
         [DataMember(Name="transport_time", EmitDefaultValue=false)]
         public long? TransportTime { get; set; }
 
         /// <summary>
-        /// operation time of the longest route in seconds
+        /// Operation time of longest route in seconds.
         /// </summary>
-        /// <value>operation time of the longest route in seconds</value>
+        /// <value>Operation time of longest route in seconds.</value>
         [DataMember(Name="max_operation_time", EmitDefaultValue=false)]
         public long? MaxOperationTime { get; set; }
 
         /// <summary>
-        /// total waiting time in seconds
+        /// Overall waiting time in seconds.
         /// </summary>
-        /// <value>total waiting time in seconds</value>
+        /// <value>Overall waiting time in seconds.</value>
         [DataMember(Name="waiting_time", EmitDefaultValue=false)]
         public long? WaitingTime { get; set; }
 
         /// <summary>
-        /// total service time in seconds
+        /// Overall service time in seconds.
         /// </summary>
-        /// <value>total service time in seconds</value>
+        /// <value>Overall service time in seconds.</value>
         [DataMember(Name="service_duration", EmitDefaultValue=false)]
         public long? ServiceDuration { get; set; }
 
         /// <summary>
-        /// total preparation time in seconds
+        /// Overall preparation time in seconds.
         /// </summary>
-        /// <value>total preparation time in seconds</value>
+        /// <value>Overall preparation time in seconds.</value>
         [DataMember(Name="preparation_time", EmitDefaultValue=false)]
         public long? PreparationTime { get; set; }
 
         /// <summary>
-        /// total completion time in seconds
+        /// Overall completion time in seconds, i.e. the sum of each routes/drivers operation time.
         /// </summary>
-        /// <value>total completion time in seconds</value>
+        /// <value>Overall completion time in seconds, i.e. the sum of each routes/drivers operation time.</value>
         [DataMember(Name="completion_time", EmitDefaultValue=false)]
         public long? CompletionTime { get; set; }
 
         /// <summary>
-        /// number of employed vehicles
+        /// Number of employed vehicles.
         /// </summary>
-        /// <value>number of employed vehicles</value>
+        /// <value>Number of employed vehicles.</value>
         [DataMember(Name="no_vehicles", EmitDefaultValue=false)]
         public int? NoVehicles { get; set; }
 
         /// <summary>
-        /// number of jobs that could not be assigned to final solution
+        /// Number of jobs that could not be assigned to final solution.
         /// </summary>
-        /// <value>number of jobs that could not be assigned to final solution</value>
+        /// <value>Number of jobs that could not be assigned to final solution.</value>
         [DataMember(Name="no_unassigned", EmitDefaultValue=false)]
         public int? NoUnassigned { get; set; }
 
@@ -266,6 +264,7 @@ namespace IO.Swagger.Model
                 (
                     this.Routes == input.Routes ||
                     this.Routes != null &&
+                    input.Routes != null &&
                     this.Routes.SequenceEqual(input.Routes)
                 ) && 
                 (
@@ -324,5 +323,4 @@ namespace IO.Swagger.Model
             yield break;
         }
     }
-
 }

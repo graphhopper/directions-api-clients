@@ -1,4 +1,3 @@
-
 # SolutionUnassigned
 
 ## Properties
@@ -8,6 +7,3 @@ Name | Type | Description | Notes
 **shipments** | **List&lt;String&gt;** | An array of ids of unassigned shipments |  [optional]
 **breaks** | **List&lt;String&gt;** | An array of ids of unassigned breaks |  [optional]
 **details** | [**List&lt;Detail&gt;**](Detail.md) | An array of details, i.e. reason for unassigned services or shipments |  [optional]
-
-
-

@@ -16,6 +16,9 @@ package com.graphhopper.directions.api.client.api;
 import com.graphhopper.directions.api.client.ApiException;
 import com.graphhopper.directions.api.client.model.MatrixRequest;
 import com.graphhopper.directions.api.client.model.MatrixResponse;
+import com.graphhopper.directions.api.client.model.VehicleProfileId;
+import com.graphhopper.directions.api.examples.GHApiUtil;
+import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -34,7 +37,10 @@ MatrixApiTest {
 
     private final MatrixApi api = new MatrixApi();
 
-    public static final String KEY = System.getProperty("graphhopper.key", "");
+    @Before
+    public void setUp() {
+        api.setApiClient(GHApiUtil.createClient());
+    }
 
     /**
      * Matrix API
@@ -45,16 +51,15 @@ MatrixApiTest {
      */
     @Test
     public void matrixGetTest() throws ApiException {
-        String key = KEY;
-        List<String> point = Arrays.asList(new String[]{"49.932707,11.588051", "50.241935,10.747375", "50.118817,11.983337"});
+        List<String> point = Arrays.asList("49.932707,11.588051", "50.241935,10.747375", "50.118817,11.983337");
         List<String> fromPoint = null;
         List<String> toPoint = null;
         List<String> pointHints = null;
         List<String> fromPointHints = null;
         List<String> toPointHints = null;
         List<String> outArray = Arrays.asList("weights", "distances", "times");
-        String vehicle = null;
-        MatrixResponse response = api.matrixGet(key, point, fromPoint, toPoint, pointHints, fromPointHints, toPointHints, outArray, vehicle);
+        MatrixResponse response = api.getMatrix(point, fromPoint, toPoint, pointHints, fromPointHints, toPointHints, null,
+                outArray, VehicleProfileId.CAR, false);
         assertEquals(3, response.getDistances().size());
 
     }
@@ -68,27 +73,26 @@ MatrixApiTest {
      */
     @Test
     public void matrixPostTest() throws ApiException {
-        String key = KEY;
         MatrixRequest body = new MatrixRequest();
         List<List<Double>> pointList = new ArrayList<>();
         pointList.add(Arrays.asList(new Double[]{11.588051, 49.932707}));
         pointList.add(Arrays.asList(new Double[]{10.747375, 50.241935}));
         pointList.add(Arrays.asList(new Double[]{11.983337, 50.118817}));
-        body.setPoints(pointList);
+        body.setFromPoints(pointList);
+        body.setToPoints(pointList);
         body.setOutArrays(Arrays.asList("weights", "distances", "times"));
-        MatrixResponse response = api.matrixPost(key, body);
+        MatrixResponse response = api.postMatrix(body);
         assertEquals(3, response.getDistances().size());
     }
 
     @Test
     public void differentFromsAndTos() throws ApiException {
         MatrixRequest request = new MatrixRequest()
-                .points(null)
                 .fromPoints(Arrays.asList(Arrays.asList(2.311129, 48.844055), Arrays.asList(2.351729, 48.836792), Arrays.asList(2.366178, 48.884376)))
                 .toPoints(Arrays.asList(Arrays.asList(2.325425, 48.896827), Arrays.asList(2.212104, 48.893765)))
                 .outArrays(Arrays.asList("times", "distances"))
                 .vehicle("car");
-        MatrixResponse response = new MatrixApi().matrixPost(KEY, request);
+        MatrixResponse response = new MatrixApi().postMatrix(request);
         assertEquals(28, response.getTimes().get(0).get(1).intValue() / 60, 2);
     }
 }

@@ -14,9 +14,9 @@ public class GeocodingExample {
 
     private void start() {
         GeocodingApi geocoding = new GeocodingApi();
-        String key = System.getProperty("graphhopper.key", "");
+        geocoding.setApiClient(GHApiUtil.createClient());
         try {
-            GeocodingResponse geocodingResponse = geocoding.geocodeGet(key, "bautzen", "de", 5, false, "", "default");
+            GeocodingResponse geocodingResponse = geocoding.getGeocode("bautzen", "de", 5, false, false, null, null);
             GeocodingLocation loc0 = geocodingResponse.getHits().get(0);
             System.out.println(loc0.getPoint() + ", " + loc0.getName() + ", " + loc0.getCountry() + ", " + loc0.getState());
         } catch (Exception ex) {

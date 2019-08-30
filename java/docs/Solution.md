@@ -1,22 +1,18 @@
-
 # Solution
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**costs** | **Integer** | overall costs of solution |  [optional]
-**distance** | **Integer** | overall travel distance in meters |  [optional]
-**time** | **Long** | overall transport time in seconds |  [optional]
-**transportTime** | **Long** | overall transport time in seconds |  [optional]
-**maxOperationTime** | **Long** | operation time of the longest route in seconds |  [optional]
-**waitingTime** | **Long** | total waiting time in seconds |  [optional]
-**serviceDuration** | **Long** | total service time in seconds |  [optional]
-**preparationTime** | **Long** | total preparation time in seconds |  [optional]
-**completionTime** | **Long** | total completion time in seconds |  [optional]
-**noVehicles** | **Integer** | number of employed vehicles |  [optional]
-**noUnassigned** | **Integer** | number of jobs that could not be assigned to final solution |  [optional]
+**costs** | **Integer** |  |  [optional]
+**distance** | **Integer** | Overall distance travelled in meter, i.e. the sum of each route&#x27;s transport distance |  [optional]
+**time** | **Long** | Use &#x60;transport_time&#x60; instead. |  [optional]
+**transportTime** | **Long** | Overall time travelled in seconds, i.e. the sum of each route&#x27;s transport time. |  [optional]
+**maxOperationTime** | **Long** | Operation time of longest route in seconds. |  [optional]
+**waitingTime** | **Long** | Overall waiting time in seconds. |  [optional]
+**serviceDuration** | **Long** | Overall service time in seconds. |  [optional]
+**preparationTime** | **Long** | Overall preparation time in seconds. |  [optional]
+**completionTime** | **Long** | Overall completion time in seconds, i.e. the sum of each routes/drivers operation time. |  [optional]
+**noVehicles** | **Integer** | Number of employed vehicles. |  [optional]
+**noUnassigned** | **Integer** | Number of jobs that could not be assigned to final solution. |  [optional]
 **routes** | [**List&lt;Route&gt;**](Route.md) | An array of routes |  [optional]
 **unassigned** | [**SolutionUnassigned**](SolutionUnassigned.md) |  |  [optional]
-
-
-

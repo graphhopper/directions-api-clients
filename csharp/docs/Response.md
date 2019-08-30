@@ -4,11 +4,11 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Copyrights** | **List&lt;string&gt;** |  | [optional] 
-**JobId** | **string** | unique identify of job - which you get when posting your request to the large problem solver | [optional] 
-**Status** | **string** | indicates the current status of the job | [optional] 
-**WaitingTimeInQueue** | **long?** | waiting time in ms | [optional] 
-**ProcessingTime** | **long?** | processing time in ms. if job is still waiting in queue, processing_time is 0 | [optional] 
-**Solution** | [**Solution**](Solution.md) | the solution. only available if status field indicates finished | [optional] 
+**JobId** | **Guid?** | UUID. Unique identifier of job - which you get when posting your request to the large problem solver | [optional] 
+**Status** | **string** | Indicates the current status of the job | [optional] 
+**WaitingTimeInQueue** | **long?** | Waiting time in ms | [optional] 
+**ProcessingTime** | **long?** | Processing time in ms. If job is still waiting in queue, processing_time is 0 | [optional] 
+**Solution** | [**Solution**](Solution.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

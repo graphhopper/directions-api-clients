@@ -8,3 +8,5 @@ nodejs-server/
 *iml
 csharp/nuget.exe
 java-examples/target
+openapi.yaml
+openapi_tmp.yaml
