@@ -39,7 +39,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.graphhopper</groupId>
   <artifactId>directions-api-client</artifactId>
-  <version>0.11-SNAPSHOT</version>
+  <version>0.13.0-pre1</version>
   <scope>compile</scope>
 </dependency>
 ```
