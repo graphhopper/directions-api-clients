@@ -1,4 +1,4 @@
-# IO.Swagger.Api.IsochroneApi
+# GraphHopper.Api.IsochroneApi
 
 All URIs are relative to *https://graphhopper.com/api/1*
 
@@ -18,9 +18,9 @@ Isochrone Request
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using GraphHopper.Api;
+using GraphHopper.Client;
+using GraphHopper.Model;
 
 namespace Example
 {

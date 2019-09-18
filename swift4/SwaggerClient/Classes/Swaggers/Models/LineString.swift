@@ -13,6 +13,7 @@ public struct LineString: Codable {
 
     public var type: String?
 
+    /** A list of coordinate pairs or triples, &#x60;[lon,lat]&#x60; or &#x60;[lon,lat,elevation]&#x60;.  */
     public var coordinates: [[BigDecimal]]?
     public init(type: String?, coordinates: [[BigDecimal]]?) { 
         self.type = type

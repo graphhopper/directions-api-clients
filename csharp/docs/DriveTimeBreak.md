@@ -1,4 +1,4 @@
-# IO.Swagger.Model.DriveTimeBreak
+# GraphHopper.Model.DriveTimeBreak
 ## Properties
 
 Name | Type | Description | Notes

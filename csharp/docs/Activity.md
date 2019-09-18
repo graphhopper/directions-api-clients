@@ -1,4 +1,4 @@
-# IO.Swagger.Model.Activity
+# GraphHopper.Model.Activity
 ## Properties
 
 Name | Type | Description | Notes

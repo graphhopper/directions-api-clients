@@ -1,4 +1,4 @@
-# IO.Swagger.Model.GeocodingResponse
+# GraphHopper.Model.GeocodingResponse
 ## Properties
 
 Name | Type | Description | Notes

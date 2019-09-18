@@ -1,4 +1,4 @@
-# IO.Swagger.Model.MatrixRequest
+# GraphHopper.Model.MatrixRequest
 ## Properties
 
 Name | Type | Description | Notes

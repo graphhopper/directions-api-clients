@@ -1,4 +1,4 @@
-# IO.Swagger.Api.MatrixApi
+# GraphHopper.Api.MatrixApi
 
 All URIs are relative to *https://graphhopper.com/api/1*
 
@@ -21,9 +21,9 @@ The Batch Matrix allows using matrices with more locations and works asynchronou
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using GraphHopper.Api;
+using GraphHopper.Client;
+using GraphHopper.Model;
 
 namespace Example
 {
@@ -86,9 +86,9 @@ Execute a matrix request
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using GraphHopper.Api;
+using GraphHopper.Client;
+using GraphHopper.Model;
 
 namespace Example
 {
@@ -169,9 +169,9 @@ This endpoint returns the solution of posted matrix request. You can fetch it wi
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using GraphHopper.Api;
+using GraphHopper.Client;
+using GraphHopper.Model;
 
 namespace Example
 {
@@ -234,9 +234,9 @@ The GET request has an URL length limitation, which hurts for many locations per
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using GraphHopper.Api;
+using GraphHopper.Client;
+using GraphHopper.Model;
 
 namespace Example
 {

@@ -4,6 +4,6 @@
 language: csharp
 mono:
   - latest
-solution: IO.Swagger.sln
+solution: GraphHopper.sln
 script:
   - /bin/sh ./mono_nunit_test.sh

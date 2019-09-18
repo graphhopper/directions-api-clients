@@ -1,4 +1,4 @@
-# IO.Swagger.Api.RouteOptimizationApi
+# GraphHopper.Api.RouteOptimizationApi
 
 All URIs are relative to *https://graphhopper.com/api/1*
 
@@ -19,9 +19,9 @@ This endpoint returns the solution of posted vehicle routing or traveling salesm
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using GraphHopper.Api;
+using GraphHopper.Client;
+using GraphHopper.Model;
 
 namespace Example
 {
@@ -84,9 +84,9 @@ Solve vehicle routing problem
 ```csharp
 using System;
 using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
+using GraphHopper.Api;
+using GraphHopper.Client;
+using GraphHopper.Model;
 
 namespace Example
 {

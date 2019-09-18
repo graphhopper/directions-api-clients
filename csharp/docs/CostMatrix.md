@@ -1,4 +1,4 @@
-# IO.Swagger.Model.CostMatrix
+# GraphHopper.Model.CostMatrix
 ## Properties
 
 Name | Type | Description | Notes

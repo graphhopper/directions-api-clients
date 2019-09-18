@@ -1,4 +1,4 @@
-# IO.Swagger.Model.Route
+# GraphHopper.Model.Route
 ## Properties
 
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# IO.Swagger.Model.MatrixResponseHints
+# GraphHopper.Model.MatrixResponseHints
 ## Properties
 
 Name | Type | Description | Notes

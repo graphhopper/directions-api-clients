@@ -1,4 +1,4 @@
-# IO.Swagger.Model.EncodedLineString
+# GraphHopper.Model.EncodedLineString
 ## Properties
 
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# IO.Swagger.Model.BadRequest
+# GraphHopper.Model.BadRequest
 ## Properties
 
 Name | Type | Description | Notes

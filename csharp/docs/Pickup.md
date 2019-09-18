@@ -1,4 +1,4 @@
-# IO.Swagger.Model.Pickup
+# GraphHopper.Model.Pickup
 ## Properties
 
 Name | Type | Description | Notes

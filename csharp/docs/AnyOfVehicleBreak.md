@@ -1,4 +1,4 @@
-# IO.Swagger.Model.AnyOfVehicleBreak
+# GraphHopper.Model.AnyOfVehicleBreak
 ## Properties
 
 Name | Type | Description | Notes

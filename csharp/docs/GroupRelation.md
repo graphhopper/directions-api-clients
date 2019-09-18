@@ -1,4 +1,4 @@
-# IO.Swagger.Model.GroupRelation
+# GraphHopper.Model.GroupRelation
 ## Properties
 
 Name | Type | Description | Notes

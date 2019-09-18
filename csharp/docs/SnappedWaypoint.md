@@ -1,4 +1,4 @@
-# IO.Swagger.Model.SnappedWaypoint
+# GraphHopper.Model.SnappedWaypoint
 ## Properties
 
 Name | Type | Description | Notes

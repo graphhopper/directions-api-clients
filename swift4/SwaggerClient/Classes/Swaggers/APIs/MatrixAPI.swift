@@ -79,7 +79,7 @@ open class MatrixAPI {
      - examples: [{contentType=application/json, example={
   "distances" : [ [ 0, 97653, 48887 ], [ 97426, 0, 121035 ], [ 49006, 121049, 0 ] ],
   "times" : [ [ 0, 4197, 2994 ], [ 4192, 0, 6074 ], [ 3006, 6062, 0 ] ],
-  "weights" : [ [ 0.0, 5662.551, 3727.147 ], [ 5653.807, 0.0, 7889.653 ], [ 3741.528, 7878.365, 0.0 ] ],
+  "weights" : [ [ 0, 5662.551, 3727.147 ], [ 5653.807, 0, 7889.653 ], [ 3741.528, 7878.365, 0 ] ],
   "info" : {
     "copyrights" : [ "GraphHopper", "OpenStreetMap contributors" ]
   }
@@ -137,7 +137,7 @@ open class MatrixAPI {
      - examples: [{contentType=application/json, example={
   "distances" : [ [ 0, 97653, 48887 ], [ 97426, 0, 121035 ], [ 49006, 121049, 0 ] ],
   "times" : [ [ 0, 4197, 2994 ], [ 4192, 0, 6074 ], [ 3006, 6062, 0 ] ],
-  "weights" : [ [ 0.0, 5662.551, 3727.147 ], [ 5653.807, 0.0, 7889.653 ], [ 3741.528, 7878.365, 0.0 ] ],
+  "weights" : [ [ 0, 5662.551, 3727.147 ], [ 5653.807, 0, 7889.653 ], [ 3741.528, 7878.365, 0 ] ],
   "info" : {
     "copyrights" : [ "GraphHopper", "OpenStreetMap contributors" ]
   }
@@ -187,7 +187,7 @@ open class MatrixAPI {
      - examples: [{contentType=application/json, example={
   "distances" : [ [ 0, 97653, 48887 ], [ 97426, 0, 121035 ], [ 49006, 121049, 0 ] ],
   "times" : [ [ 0, 4197, 2994 ], [ 4192, 0, 6074 ], [ 3006, 6062, 0 ] ],
-  "weights" : [ [ 0.0, 5662.551, 3727.147 ], [ 5653.807, 0.0, 7889.653 ], [ 3741.528, 7878.365, 0.0 ] ],
+  "weights" : [ [ 0, 5662.551, 3727.147 ], [ 5653.807, 0, 7889.653 ], [ 3741.528, 7878.365, 0 ] ],
   "info" : {
     "copyrights" : [ "GraphHopper", "OpenStreetMap contributors" ]
   }

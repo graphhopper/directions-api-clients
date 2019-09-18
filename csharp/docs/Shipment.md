@@ -1,4 +1,4 @@
-# IO.Swagger.Model.Shipment
+# GraphHopper.Model.Shipment
 ## Properties
 
 Name | Type | Description | Notes

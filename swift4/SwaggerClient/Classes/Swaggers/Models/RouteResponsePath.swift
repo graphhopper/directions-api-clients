@@ -27,7 +27,7 @@ public struct RouteResponsePath: Codable {
 
     public var snappedWaypoints: Object?
 
-    /** Whether the &#x60;points&#x60; and &#x60;snapped_waypoints&#x60; fields are encoded strings rather than GeoJSON LineStrings.  */
+    /** Whether the &#x60;points&#x60; and &#x60;snapped_waypoints&#x60; fields are polyline-encoded strings rather than JSON arrays of coordinates. See the field description for more information on the two formats.  */
     public var pointsEncoded: Bool?
 
     /** The bounding box of the route geometry. Format: &#x60;[minLon, minLat, maxLon, maxLat]&#x60;.  */

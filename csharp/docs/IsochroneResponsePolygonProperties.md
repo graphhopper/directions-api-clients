@@ -1,4 +1,4 @@
-# IO.Swagger.Model.IsochroneResponsePolygonProperties
+# GraphHopper.Model.IsochroneResponsePolygonProperties
 ## Properties
 
 Name | Type | Description | Notes

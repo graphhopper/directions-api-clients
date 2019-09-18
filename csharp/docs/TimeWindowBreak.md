@@ -1,4 +1,4 @@
-# IO.Swagger.Model.TimeWindowBreak
+# GraphHopper.Model.TimeWindowBreak
 ## Properties
 
 Name | Type | Description | Notes

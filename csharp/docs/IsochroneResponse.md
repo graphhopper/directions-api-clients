@@ -1,4 +1,4 @@
-# IO.Swagger.Model.IsochroneResponse
+# GraphHopper.Model.IsochroneResponse
 ## Properties
 
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# IO.Swagger.Model.Polygon
+# GraphHopper.Model.Polygon
 ## Properties
 
 Name | Type | Description | Notes

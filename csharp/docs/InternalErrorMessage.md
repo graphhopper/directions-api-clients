@@ -1,4 +1,4 @@
-# IO.Swagger.Model.InternalErrorMessage
+# GraphHopper.Model.InternalErrorMessage
 ## Properties
 
 Name | Type | Description | Notes

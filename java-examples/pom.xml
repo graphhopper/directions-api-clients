@@ -5,7 +5,7 @@
 
     <groupId>com.graphhopper</groupId>
     <artifactId>directions-api-client-examples</artifactId>
-    <version>0.13.0-pre1</version>
+    <version>0.13.0</version>
     <packaging>jar</packaging>
     <name>GraphHopper Directions API examples</name>
 

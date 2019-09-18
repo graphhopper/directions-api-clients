@@ -1,4 +1,4 @@
-# IO.Swagger.Model.ResponseInfo
+# GraphHopper.Model.ResponseInfo
 ## Properties
 
 Name | Type | Description | Notes

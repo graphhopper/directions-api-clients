@@ -1,4 +1,4 @@
-# IO.Swagger.Model.RoutePoint
+# GraphHopper.Model.RoutePoint
 ## Properties
 
 Name | Type | Description | Notes

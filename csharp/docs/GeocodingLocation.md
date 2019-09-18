@@ -1,4 +1,4 @@
-# IO.Swagger.Model.GeocodingLocation
+# GraphHopper.Model.GeocodingLocation
 ## Properties
 
 Name | Type | Description | Notes

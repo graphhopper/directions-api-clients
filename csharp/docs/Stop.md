@@ -1,4 +1,4 @@
-# IO.Swagger.Model.Stop
+# GraphHopper.Model.Stop
 ## Properties
 
 Name | Type | Description | Notes

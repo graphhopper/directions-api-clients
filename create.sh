@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # currently must be available locally as we need to do "sed" stuff
-SPEC=openapi.yaml
+SPEC=https://docs.graphhopper.com/openapi.yaml
 DIR=.
 
-VERSION=0.13.0-pre1
+VERSION=0.13.0
 
 SW_VERSION=3.0.11
 FILE=swagger-codegen-cli-$SW_VERSION.jar
@@ -68,8 +68,8 @@ function create {
   esac
 
   # This is ugly. The name of our endpoint is "Matrix API" and swagger codegen creates classes like MatrixApiApi and we just want MatrixApi for backward compatibility
-#  cat $SPEC | sed -e 's/Matrix API/Matrix/g' | sed -e 's/Routing API/Routing/g' | sed -e 's/Geocoding API/Geocoding/g' | sed -e 's/Route Optimization API/Route Optimization/g' | sed -e 's/Map Matching API/Map Matching/g' | sed -e 's/Isochrone API/Isochrone/g' > openapi_tmp.yaml
-  SH="java -jar $FILE generate -i openapi_tmp.yaml -l $LANG $CONFIG -o $DIR/$LANG $ADD_PARAMS"
+  curl $SPEC | sed -e 's/Matrix API/Matrix/g' | sed -e 's/Routing API/Routing/g' | sed -e 's/Geocoding API/Geocoding/g' | sed -e 's/Route Optimization API/Route Optimization/g' | sed -e 's/Map Matching API/Map Matching/g' | sed -e 's/Isochrone API/Isochrone/g' > openapi.yaml
+  SH="java -jar $FILE generate -i openapi.yaml -l $LANG $CONFIG -o $DIR/$LANG $ADD_PARAMS"
   echo $SH
   $SH
 }
@@ -79,7 +79,7 @@ if [[ "$LANG" != "" ]]; then
   create $LANG
   exit 0
 else
-  echo "creating all"
+  echo "creating all clients"
   
   # the JS client is just too large and not recommended so use nodejs-server
   # create javascript -> nodejs-server

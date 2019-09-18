@@ -1,4 +1,4 @@
-# IO.Swagger.Model.GHErrorHints
+# GraphHopper.Model.GHErrorHints
 ## Properties
 
 Name | Type | Description | Notes

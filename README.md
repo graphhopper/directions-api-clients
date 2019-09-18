@@ -2,7 +2,22 @@
 
 This project contains API clients that were created from [our OpenAPI specification](https://docs.graphhopper.com/openapi.yaml) for the different languages.
 
-Please see the successfully created one in the subfolders.
+## Deprecated Notice
+
+This repository is likely outdated. Instead easily create sources from an up-to-date
+API specification:
+
+ 1. download our OpenAPI spec [https://docs.graphhopper.com/openapi.yaml](https://docs.graphhopper.com/openapi.yaml)
+ 2. copy & paste it into [this editor](https://editor.swagger.io/)
+ 3. Click on 'Generate Client' and your favourite language
+
+To improve the naming of the classes you can do the following:
+
+```bash
+curl https://docs.graphhopper.com/openapi.yaml | sed -e 's/Matrix API/Matrix/g' | sed -e 's/Routing API/Routing/g' | sed -e 's/Geocoding API/Geocoding/g' | sed -e 's/Route Optimization API/Route Optimization/g' | sed -e 's/Map Matching API/Map Matching/g' | sed -e 's/Isochrone API/Isochrone/g' > openapi.yaml
+```
+
+Please see the successfully created clients in the subfolders.
 
 language  |  tested?| alternative
 :---------|:--------|:------------

@@ -1,4 +1,4 @@
-# IO.Swagger.Model.JobRelation
+# GraphHopper.Model.JobRelation
 ## Properties
 
 Name | Type | Description | Notes

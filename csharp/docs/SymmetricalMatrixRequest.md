@@ -1,4 +1,4 @@
-# IO.Swagger.Model.SymmetricalMatrixRequest
+# GraphHopper.Model.SymmetricalMatrixRequest
 ## Properties
 
 Name | Type | Description | Notes
