@@ -27,6 +27,7 @@ javascript|  no     | Use the [official client](https://github.com/graphhopper/d
 kotlin	  |  no     |
 php       |  no     |
 python    |  no     |
+r lang    |  no     | See https://github.com/crazycapivara/graphhopper-r
 scala     |  no     |
 swift4    |  no     | Community contribution for the [Routing](https://github.com/rmnblm/GraphHopperRouting) and [Geocoding](https://github.com/rmnblm/GraphHopperGeocoder) API
 symphony  |  -      | Community contribution for the [Geocoding API](https://github.com/Andreas-Schoenefeldt/GraphHopperConnectorBundle)
