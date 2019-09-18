@@ -38,7 +38,6 @@ client for this programming language.
 The JavaScript client is handcrafted and can be found in the separate, linked repository.
 
 The Java client is also available [on maven](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22directions-api-client%22).
-An old version 0.10.1-4 supports more languages but less API features.
 
 
 ## Supported APIs
