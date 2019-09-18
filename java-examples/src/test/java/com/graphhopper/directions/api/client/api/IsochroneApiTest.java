@@ -15,6 +15,8 @@ package com.graphhopper.directions.api.client.api;
 
 import com.graphhopper.directions.api.client.ApiException;
 import com.graphhopper.directions.api.client.model.IsochroneResponse;
+import com.graphhopper.directions.api.client.model.VehicleProfileId;
+import com.graphhopper.directions.api.examples.GHApiUtil;
 import org.junit.Test;
 import org.junit.Ignore;
 
@@ -29,8 +31,6 @@ public class IsochroneApiTest {
 
     private final IsochroneApi api = new IsochroneApi();
 
-    public static final String KEY = System.getProperty("graphhopper.key", "");
-
     /**
      * Isochrone Request
      * <p>
@@ -40,14 +40,13 @@ public class IsochroneApiTest {
      */
     @Test
     public void isochroneGetTest() throws ApiException {
+        api.setApiClient(GHApiUtil.createClient());
         String point = "-33.678555,151.303432";
-        String key = KEY;
         Integer timeLimit = null;
         Integer distanceLimit = null;
-        String vehicle = null;
         Integer buckets = null;
         Boolean reverseFlow = null;
-        IsochroneResponse response = api.isochroneGet(point, key, timeLimit, distanceLimit, vehicle, buckets, reverseFlow);
+        IsochroneResponse response = api.getIsochrone(point, timeLimit, distanceLimit, VehicleProfileId.CAR, buckets, reverseFlow, null);
         assertEquals(1, response.getPolygons().size());
 
     }

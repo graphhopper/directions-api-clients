@@ -1,7 +1,6 @@
 package com.graphhopper.directions.api.examples;
 
-import com.graphhopper.directions.api.client.api.VrpApi;
-import com.graphhopper.directions.api.client.api.SolutionApi;
+import com.graphhopper.directions.api.client.api.RouteOptimizationApi;
 import com.graphhopper.directions.api.client.model.*;
 
 import java.util.ArrayList;
@@ -24,22 +23,16 @@ public class TSP_BiggestCitiesInGermanyByBikeExample {
 
     private void start() throws Exception {
         Request request = createRequest();
-        VrpApi vrpApi = new VrpApi();
-
-        // enable debugging for sending and receiving requests
-        // ApiClient client = new ApiClient().setDebugging(true);
-        // vrpApi.setApiClient(client);
-
-        String key = System.getProperty("graphhopper.key", "");
-        JobId jobId = vrpApi.postVrp(key, request);
+        RouteOptimizationApi vrpApi = new RouteOptimizationApi();
+        vrpApi.setApiClient(GHApiUtil.createClient());
+        JobId jobId = vrpApi.solveVRP(request);
 
         System.out.println(getClass() + ", jobId: " + jobId.getJobId());
 
-        SolutionApi solApi = new SolutionApi();
         Response rsp;
 
         while (true) {
-            rsp = solApi.getSolution(key, jobId.getJobId());
+            rsp = vrpApi.getSolution(jobId.getJobId().toString());
             if (rsp.getStatus().equals(Response.StatusEnum.FINISHED)) {
                 break;
             }
@@ -69,7 +62,7 @@ public class TSP_BiggestCitiesInGermanyByBikeExample {
          */
         List<VehicleType> types = new ArrayList<VehicleType>();
         VehicleType type = new VehicleType();
-        type.setProfile(VehicleType.ProfileEnum.BIKE);
+        type.setProfile(VehicleProfileId.BIKE);
         type.setTypeId("my-awesome-bike");
         types.add(type);
         request.setVehicleTypes(types);

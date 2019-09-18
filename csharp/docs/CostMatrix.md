@@ -1,10 +1,9 @@
-# IO.Swagger.Model.CostMatrix
+# GraphHopper.Model.CostMatrix
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | **string** | type of cost matrix, currently default or google are supported | [optional] 
-**Url** | **string** | URL of matrix service | [optional] 
 **LocationIds** | **List&lt;string&gt;** |  | [optional] 
 **Data** | [**CostMatrixData**](CostMatrixData.md) |  | [optional] 
 **Profile** | **string** | vehicle profile or empty if catch all fallback | [optional] 

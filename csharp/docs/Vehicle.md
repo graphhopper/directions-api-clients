@@ -1,21 +1,22 @@
-# IO.Swagger.Model.Vehicle
+# GraphHopper.Model.Vehicle
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**VehicleId** | **string** | Unique identifier of vehicle | [optional] 
-**TypeId** | **string** | Unique identifier referring to the available vehicle types | [optional] 
-**StartAddress** | [**Address**](Address.md) |  | [optional] 
+**VehicleId** | **string** | Specifies the id of the vehicle. Ids need to be unique, thus if there two vehicles with the same id, an exception is thrown. | 
+**TypeId** | **string** | The type_id refers to specified vehicle type (see vehicle types). If it is omitted a default type will be used. | [optional] [default to "default-type"]
+**StartAddress** | [**Address**](Address.md) |  | 
 **EndAddress** | [**Address**](Address.md) |  | [optional] 
-**Break** | [**Break**](Break.md) |  | [optional] 
-**ReturnToDepot** | **bool?** | Indicates whether vehicle should return to start address or not. If not, it can end at any service activity. | [optional] 
-**EarliestStart** | **long?** | earliest start of vehicle at its start location | [optional] 
-**LatestEnd** | **long?** | latest end of vehicle at its end location | [optional] 
-**Skills** | **List&lt;string&gt;** | array of skills | [optional] 
-**MaxDistance** | **long?** | max distance of vehicle | [optional] 
-**MaxDrivingTime** | **long?** | max drive time of vehicle | [optional] 
-**MaxJobs** | **int?** | max number of jobs the vehicle can load | [optional] 
-**MaxActivities** | **int?** | max number of activities the vehicle can conduct | [optional] 
+**Break** | [**AnyOfVehicleBreak**](AnyOfVehicleBreak.md) |  | [optional] 
+**ReturnToDepot** | **bool?** | If it is false, the algorithm decides where to end the vehicle route. It ends in one of your customers&#x27; locations. The end is chosen such that it contributes to the overall objective function, e.g. min transport_time. If it is true, you can either specify a specific end location (which is then regarded as end depot) or you can leave it and the driver returns to its start location. | [optional] [default to true]
+**EarliestStart** | **long?** | Earliest start of vehicle in seconds. It is recommended to use the unix timestamp. | [optional] [default to 0F]
+**LatestEnd** | **long?** | Latest end of vehicle in seconds, i.e. the time the vehicle needs to be at its end location at latest. | [optional] 
+**Skills** | **List&lt;string&gt;** | Array of skills, i.e. array of string (not case sensitive). | [optional] 
+**MaxDistance** | **long?** | Specifies the maximum distance a vehicle can go. | [optional] 
+**MaxDrivingTime** | **long?** | Specifies the maximum drive time a vehicle/driver can go, i.e. the maximum time on the road (service and waiting times are not included here) | [optional] 
+**MaxJobs** | **int?** | Specifies the maximum number of jobs a vehicle can load. | [optional] 
+**MaxActivities** | **int?** | Specifies the maximum number of activities a vehicle can conduct. | [optional] 
+**MoveToEndAddress** | **bool?** | Indicates whether a vehicle should be moved even though it has not been assigned any jobs. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -1,9 +1,8 @@
-# IO.Swagger.Model.GHError
+# GraphHopper.Model.GHError
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Code** | **int?** |  | [optional] 
 **Message** | **string** |  | [optional] 
 **Hints** | [**List&lt;GHErrorHints&gt;**](GHErrorHints.md) |  | [optional] 
 

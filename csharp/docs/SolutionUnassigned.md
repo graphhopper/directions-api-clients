@@ -1,4 +1,4 @@
-# IO.Swagger.Model.SolutionUnassigned
+# GraphHopper.Model.SolutionUnassigned
 ## Properties
 
 Name | Type | Description | Notes

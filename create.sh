@@ -1,14 +1,12 @@
 #!/bin/bash
 
-SPEC=swagger.json
-# SPEC=https://graphhopper.com/api/1/swagger.json
+# currently must be available locally as we need to do "sed" stuff
+SPEC=https://docs.graphhopper.com/openapi.yaml
 DIR=.
 
-VERSION=0.11-SNAPSHOT
+VERSION=0.13.0
 
-# it is necessary to use the master snapshot to create a proper R and C# client
-SW_VERSION=master-2018-01-22
-#SW_VERSION=2.4.0
+SW_VERSION=3.0.11
 FILE=swagger-codegen-cli-$SW_VERSION.jar
 
 NAME=directions-api-client
@@ -17,9 +15,9 @@ GROUP=com.graphhopper
 if [[ ! -s $FILE ]]; then
   wget https://graphhopper.com/public/misc/$FILE -O $FILE
   if [[ ! -s $FILE ]]; then
-    wget http://repo1.maven.org/maven2/io/swagger/swagger-codegen-cli/$SW_VERSION/$FILE -O $FILE
+    wget http://repo1.maven.org/maven2/io/swagger/codegen/v3/swagger-codegen-cli/$SW_VERSION/$FILE -O $FILE
     if [[ ! -s $FILE ]]; then
-      curl http://repo1.maven.org/maven2/io/swagger/swagger-codegen-cli/$SW_VERSION/$FILE -O $FILE
+      curl http://repo1.maven.org/maven2/io/swagger/codegen/v3/swagger-codegen-cli/$SW_VERSION/$FILE -O $FILE
     fi
   fi
 fi
@@ -69,17 +67,9 @@ function create {
 		;;
   esac
 
-# for now keep directory to keep it simple
-#  if [[ $LANG = "java" ]]; then
-#    mv $DIR/$LANG/pom.xml /tmp/
-#    rm -rf $DIR/$LANG && mkdir $DIR/$LANG
-#    mv /tmp/pom.xml $DIR/$LANG/
-#  else
-#    rm -rf $DIR/$LANG
-#  fi
-
-  # echo "create $LANG, config: $CONFIG, additional params: $ADD_PARAMS"
-  SH="java -jar $FILE generate -i $SPEC -l $LANG $CONFIG -o $DIR/$LANG $ADD_PARAMS"
+  # This is ugly. The name of our endpoint is "Matrix API" and swagger codegen creates classes like MatrixApiApi and we just want MatrixApi for backward compatibility
+  curl $SPEC | sed -e 's/Matrix API/Matrix/g' | sed -e 's/Routing API/Routing/g' | sed -e 's/Geocoding API/Geocoding/g' | sed -e 's/Route Optimization API/Route Optimization/g' | sed -e 's/Map Matching API/Map Matching/g' | sed -e 's/Isochrone API/Isochrone/g' > openapi.yaml
+  SH="java -jar $FILE generate -i openapi.yaml -l $LANG $CONFIG -o $DIR/$LANG $ADD_PARAMS"
   echo $SH
   $SH
 }
@@ -89,29 +79,17 @@ if [[ "$LANG" != "" ]]; then
   create $LANG
   exit 0
 else
-  echo "creating all"
+  echo "creating all clients"
   
   # the JS client is just too large and not recommended so use nodejs-server
   # create javascript -> nodejs-server
   
-  create clojure
   create csharp
-  create dart
-  create go
-  create haskell
-  create kotlin
   create java
+  create kotlin-client
   create nodejs-server
-  create objc
-  create perl
   create php
   create python
-  create qt5cpp
-  create r
-  create ruby
-  create rust
   create scala
-  create sinatra
-  create swift
-  create tizen
+  create swift4
 fi
