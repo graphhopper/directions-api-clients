@@ -9,7 +9,7 @@ API specification:
 
  1. download our OpenAPI spec [https://docs.graphhopper.com/openapi.yaml](https://docs.graphhopper.com/openapi.yaml)
  2. copy & paste it into [this editor](https://editor.swagger.io/)
- 3. Click on 'Generate Client' and your favourite language
+ 3. Click on 'Generate Client' and select your favourite language
 
 To improve the naming of the classes you can do the following:
 
