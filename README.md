@@ -1,7 +1,7 @@
 
 ## Deprecated Notice
 
-The sources in this repository are outdated. Instead create fresh sources from [within the browser](https://editor.swagger.io/?url=https://docs.graphhopper.com/openapi.json) (click on 'Generate Client') or via docker:
+The sources in this repository are outdated. Instead create fresh sources from [within the browser](https://editor.swagger.io/?url=https://docs.graphhopper.com/openapi.json) (click on 'Generate Client') or via docker where more languages like ruby are possible:
 
 ```
 docker run --rm -v "${PWD}:/local" openapitools/openapi-generator-cli generate \
