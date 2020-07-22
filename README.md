@@ -10,10 +10,7 @@ docker run --rm -v "${PWD}:/local" openapitools/openapi-generator-cli generate \
     -o /local/out/go
 ```
 
-or from within the browser
-
- 1. Go to this website [https://editor.swagger.io/?url=https://docs.graphhopper.com/openapi.json](https://editor.swagger.io/?url=https://docs.graphhopper.com/openapi.json) which opens our OpenAPI spec in the Swagger Editor.
- 2. Click on 'Generate Client' and select your favourite language
+or from [within the browser](https://editor.swagger.io/?url=https://docs.graphhopper.com/openapi.json) (Click on 'Generate Client').
 
 To improve the naming of the classes you can do the following:
 
