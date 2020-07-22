@@ -1,7 +1,7 @@
 
 ## Deprecated Notice
 
-This repository is likely outdated. Instead you can create sources via docker
+This repository is likely outdated. Instead you can create sources from [within the browser](https://editor.swagger.io/?url=https://docs.graphhopper.com/openapi.json) (Click on 'Generate Client') or via docker
 
 ```
 docker run --rm -v "${PWD}:/local" openapitools/openapi-generator-cli generate \
@@ -9,8 +9,6 @@ docker run --rm -v "${PWD}:/local" openapitools/openapi-generator-cli generate \
     -g go \
     -o /local/out/go
 ```
-
-or from [within the browser](https://editor.swagger.io/?url=https://docs.graphhopper.com/openapi.json) (Click on 'Generate Client').
 
 To improve the naming of the classes you can do the following:
 
