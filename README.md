@@ -7,9 +7,8 @@ This project contains API clients that were created from [our OpenAPI specificat
 This repository is likely outdated. Instead easily create sources from an up-to-date
 API specification:
 
- 1. download our OpenAPI spec [https://docs.graphhopper.com/openapi.yaml](https://docs.graphhopper.com/openapi.yaml)
- 2. copy & paste it into [this editor](https://editor.swagger.io/)
- 3. Click on 'Generate Client' and select your favourite language
+ 1. Go to this website [https://editor.swagger.io/?url=https://docs.graphhopper.com/openapi.json](https://editor.swagger.io/?url=https://docs.graphhopper.com/openapi.json) which opens our OpenAPI spec in the Swagger Editor.
+ 2. Click on 'Generate Client' and select your favourite language
 
 To improve the naming of the classes you can do the following:
 
