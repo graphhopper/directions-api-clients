@@ -16,7 +16,9 @@ To improve the naming of the classes you can do the following:
 curl https://docs.graphhopper.com/openapi.yaml | sed -e 's/Matrix API/Matrix/g' | sed -e 's/Routing API/Routing/g' | sed -e 's/Geocoding API/Geocoding/g' | sed -e 's/Route Optimization API/Route Optimization/g' | sed -e 's/Map Matching API/Map Matching/g' | sed -e 's/Isochrone API/Isochrone/g' > openapi.yaml
 ```
 
-# API clients for the GraphHopper Directions API
+----
+
+## API clients for the GraphHopper Directions API
 
 This project contains API clients that were created from [our OpenAPI specification](https://docs.graphhopper.com/openapi.yaml) for the different languages.
 
